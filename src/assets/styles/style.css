@@ -43,6 +43,7 @@ img {
   padding: 15px 20px;
   border-radius: 5px;
   display: block;
+  cursor: pointer;
 }
 header.active .container .nav ul li a {
   color: #707070;

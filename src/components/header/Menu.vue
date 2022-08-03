@@ -23,6 +23,8 @@ export default {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  /* position:relative;
+  left:30px; */
 }
 
 .nav ul li a {
@@ -30,7 +32,7 @@ export default {
   color: gray;
   font-size: 14px;
   font-weight: 500;
-  padding: 10px 15px;
+  padding: 10px 30px;
 }
 
 .nav ul li a:hover {
