@@ -1,7 +1,7 @@
 <template>
   <section class="logo">
     <router-link to="/">
-      <img src="../../assets/images/logo.png" alt="logo" />
+      <img src="../../assets/images/logo.svg" alt="logo" />
     </router-link>
   </section>
 </template>
@@ -14,8 +14,7 @@ export default {
 
 <style scoped>
 .logo {
-  width: 62px;
-  height: 56px;
+  width: 180px;
 }
 @media (max-width: 479px) and (min-width: 320px) {
   .logo {

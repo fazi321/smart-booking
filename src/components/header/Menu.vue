@@ -2,12 +2,11 @@
   <section class="nav">
     <ul>
       <li><router-link to="#">HOME</router-link></li>
-      <li><router-link to="#">BRANDS</router-link></li>
-      <li><router-link to="#">PRODUCTS</router-link></li>
-      <li><router-link to="#">ABOUT US</router-link></li>
-      <li><router-link to="#">HOW IT WORKS</router-link></li>
-      <li><router-link to="#">NEWS</router-link></li>
-      <li><router-link to="#">CONTACT US</router-link></li>
+      <li><router-link to="#">Apartments</router-link></li>
+      <li><router-link to="#">Farms</router-link></li>
+      <li><router-link to="#">Hotels</router-link></li>
+      <li><router-link to="#">Resorts</router-link></li>
+      <li><router-link to="#">Lounges</router-link></li>
     </ul>
   </section>
 </template>
@@ -28,14 +27,14 @@ export default {
 
 .nav ul li a {
   letter-spacing: 0.38px;
-  color: #fff;
+  color: gray;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 500;
   padding: 10px 15px;
 }
 
 .nav ul li a:hover {
-  color: #f21822;
+  color: #FEBB12;
 }
 @media only screen and (max-width: 1199px) {
   .nav {

@@ -1,8 +1,11 @@
 <template>
   <header :class="['header', { active: active }]">
     <div class="container">
-      <Logo />
-      <Menu />
+      <div class="main-container">
+        <Logo />
+        <Menu />
+        <Profile />
+      </div>
     </div>
   </header>
 </template>
@@ -10,12 +13,14 @@
 <script>
 import Menu from "./Menu.vue";
 import Logo from "./Logo.vue";
+import Profile from "./ProfileLogin.vue";
 
 export default {
   name: "webHeader",
   components: {
     Logo,
     Menu,
+    Profile,
   },
   data() {
     return {
@@ -30,7 +35,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(34, 34, 34, 0.1);
+  /* background-color: rgba(34, 34, 34, 0.1); */
   /* position: fixed; */
   width: 100%;
   border-bottom: 1px solid #eee;
@@ -46,5 +51,15 @@ header.active {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+}
+.main-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.main-container section:nth-child(2), .main-container section:nth-child(3){
+   position:relative;
+   top:8px;
 }
 </style>
