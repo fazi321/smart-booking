@@ -1,46 +1,60 @@
 <template>
   <section :class="['login-signup', { active: model }]">
-    <!-- step one -->
     <div class="primary-login">
       <div class="main-login">
         <div class="logo-close">
+          <div class="logo">
+            <img src="../../assets/images/logo-forms.svg" alt="" />
+          </div>
           <div class="close-icon" @click="close">
             <img src="../../assets/images/close-icon.svg" alt="" />
           </div>
         </div>
         <div class="headings">
-          <h1>Become Vendor</h1>
-          <h4>Please select an option</h4>
+          <h1>SIGNUP</h1>
+          <h4>Please create your account</h4>
         </div>
-        <div class="container-vendor">
-          <div class="cards">
-            <div class="primary-cards">
-              <h5>I represent the</h5>
-              <h6>Company</h6>
-            </div>
-            <div class="primary-cards">
-              <h5>I am a personal</h5>
-              <h6>Host</h6>
-            </div>
-          </div>
+        <div class="login-form">
           <div class="form-container">
-            <div class="input-div">
-              <button type="submit">Next</button>
-            </div>
+            <form autocomplete="off" @submit.prevent="Login">
+              <div class="input-div">
+                <div class="input-primary">
+                  <div class="flag">
+                    <div class="flag-img">
+                      <img src="../../assets/images/flag.svg" alt="flag" />
+                    </div>
+                    <div>
+                      <span>+966</span>
+                    </div>
+                  </div>
+                  <div class="container-input">
+                    <input
+                      type="number"
+                      placeholder="Mobile Number"
+                      v-model="phoneNumber"
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
+              <!-- <div class="error" v-if="!isExist">Password is Incorrect!</div> -->
+              <div class="input-div">
+                <button type="submit">Login</button>
+              </div>
+            </form>
           </div>
-          <!-- <div class="buttom-text">
-            Don’t Have an Account? <span @click="SignUpModel">Sign Up </span>
-          </div> -->
+          <div class="buttom-text">
+            Already Have an Account? <span @click="LoginModel">Login</span>
+          </div>
         </div>
       </div>
     </div>
-    <!-- step one End -->
   </section>
 </template>
 
 <script>
 export default {
-  name: "vendorModel",
+  name: "SignUpModel",
   props: ["model"],
   data() {
     return {
@@ -48,8 +62,12 @@ export default {
     };
   },
   methods: {
-    close() {
-      this.$parent.vendorModel = false;
+    LoginModel() {
+      this.$parent.signUpModel = false;
+      this.$parent.loginModel = true;
+    },
+     close() {
+      this.$parent.signUpModel = false;
     },
   },
 };
@@ -112,14 +130,14 @@ img {
 }
 .headings {
   text-align: center;
-  padding: 0 24px 24px 24px;
+  padding: 24px;
   margin: 15px 0;
 }
 .headings h1 {
   text-transform: uppercase;
   font-weight: bold;
   font-size: 24px;
-  margin-bottom: 26px;
+  margin-bottom: 18px;
 }
 .headings h4 {
   font-weight: 500;
@@ -160,20 +178,19 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 30px;
-  margin-bottom: 18px;
 }
 .input-div button {
+  padding: 15px 30px;
   background: #febb12;
   color: #000;
+  width: 72%;
   font-size: 18px;
   border: none;
-  padding: 14px 30px;
+  padding: 18px 30px;
   border-radius: 50px;
   outline: none;
+  margin-bottom: 40px;
   box-shadow: 0px 2px 4px 1px #c9c9c9a6;
-  min-width: 263px;
-  cursor: pointer;
 }
 .input-div .flag {
   display: flex;
@@ -198,40 +215,6 @@ img {
   color: #febb12;
   cursor: pointer;
 }
-
-/* step one */
-.container-vendor {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
-.container-vendor .cards {
-  display: flex;
-  justify-content: space-between;
-  width: 58%;
-  margin: 20px 0px 40px 0px;
-}
-.container-vendor .primary-cards {
-  width: 150px;
-  height: 130px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  border-radius: 10px;
-  box-shadow: 0px 1px 11px -5px #0000006b;
-  cursor:pointer;
-}
-.container-vendor .primary-cards h6 {
-  color: #febb12;
-  margin-top: 3px;
-}
-.container-vendor .primary-cards h6,
-h5 {
-  font-size: 14px;
-}
-
-/* step one end */
 /* responsive */
 @media (max-width: 479px) and (min-width: 320px) {
   .primary-login {
