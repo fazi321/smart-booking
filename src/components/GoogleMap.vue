@@ -33,8 +33,8 @@ export default {
   data() {
     return {
       map: null,
-      zoom: 10,
-      center: { lat: 23.8859, lng: 45.0792 },
+      zoom: 7,
+      center: { lat: 24.9582, lng: 46.7008 },
       currentRepo: {
         lat: "",
         lng: "",
@@ -86,7 +86,6 @@ export default {
 <style>
 .location-set {
   position: relative;
-  margin-top: 30px;
 }
 .location-set .auto-input {
   position: absolute;
@@ -112,7 +111,7 @@ export default {
   min-width: 331px;
 }
 .location-set .vue-map{
-  height: 15rem!important;
+  height: 14rem!important;
   border-radius: 20px!important;
 }
 </style>

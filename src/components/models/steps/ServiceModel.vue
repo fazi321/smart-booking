@@ -137,38 +137,40 @@
           <h1>Service Description</h1>
           <h4>Address & Location</h4>
         </div>
-        <div class="map">
-         <GoogleMap />
-        </div>
-        <div class="container-vendor">
-          <div>
-            <div class="inputs-container">
-              <div>
-                <input type="text" placeholder="Address" />
-              </div>
-              <div>
-                <input type="text" placeholder="Property Number" />
-              </div>
-              <div>
-                <input type="text" placeholder="City" />
-              </div>
-              <div>
-                <input type="text" placeholder="Area" />
-              </div>
-              <div>
-                <input type="text" placeholder="Landmark" />
-              </div>
-              <div>
-                <input
-                  type="text"
-                  placeholder="Property Description (Arabic)"
-                />
+        <div class="map-container">
+          <div class="map">
+            <GoogleMap />
+          </div>
+          <div class="container-vendor">
+            <div>
+              <div class="inputs-container">
+                <div>
+                  <input type="text" placeholder="Address" />
+                </div>
+                <div>
+                  <input type="text" placeholder="Property Number" />
+                </div>
+                <div>
+                  <input type="text" placeholder="City" />
+                </div>
+                <div>
+                  <input type="text" placeholder="Area" />
+                </div>
+                <div>
+                  <input type="text" placeholder="Landmark" />
+                </div>
+                <div>
+                  <input
+                    type="text"
+                    placeholder="Property Description (Arabic)"
+                  />
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="form-container">
-          <div class="input-div">
+        <div class="form-container ">
+          <div class="input-div step-btn">
             <button type="submit">Next</button>
           </div>
         </div>
@@ -179,12 +181,12 @@
 </template>
 
 <script>
-import GoogleMap from '../../GoogleMap.vue';
+import GoogleMap from "../../GoogleMap.vue";
 export default {
   name: "AddServiceModel",
   props: ["model"],
-  components:{
-   GoogleMap,
+  components: {
+    GoogleMap,
   },
   data() {
     return {
@@ -421,8 +423,17 @@ img {
   color: #febb12;
   font-size: 12px;
 }
-.map{
+.map-container{
+  height: 350px;
+  overflow-y: scroll;
   margin-bottom:30px;
+}
+.map-container .inputs-container input{
+  min-width:220px;
+}
+.map {
+  margin-bottom: 30px;
+  padding: 0 28px;
 }
 /* step two end */
 </style>

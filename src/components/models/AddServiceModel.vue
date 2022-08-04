@@ -72,18 +72,22 @@
     <InfoModel v-if="isSubmitted && accountOpt == 'info'" :model="true" />
     <!-- Description start -->
     <ServiceModel v-if="isSubmitted && accountOpt == 'service'" :model="true" />
+    <!-- price start -->
+    <PriceModel v-if="isSubmitted && accountOpt == 'price'" :model="true" />
   </section>
 </template>
 
 <script>
 import InfoModel from "./steps/InfoModel.vue";
 import ServiceModel from "./steps/ServiceModel.vue";
+import PriceModel from "./steps/PriceModel.vue";
 export default {
   name: "AddServiceModel",
   props: ["model"],
   components: {
     InfoModel,
     ServiceModel,
+    PriceModel,
   },
   data() {
     return {
