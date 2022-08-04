@@ -5,15 +5,15 @@
     <LoginModel :model="loginModel" />
     <SignUpModel :model="signUpModel" />
     <VendorModel :model="vendorModel" />
-    <AddServiceModel :model="true"/>
+    <AddServiceModel :model="false"/>
   </section>
 </template>
 
 <script>
-import LoginModel from "@/components/loginModels/LoginModel.vue";
-import SignUpModel from "../models/SignUpModel.vue";
-import VendorModel from "../models/VendorModel.vue";
-import AddServiceModel from "@/components/loginModels/AddServiceModel.vue";
+import LoginModel from "@/components/models/LoginModel.vue";
+import SignUpModel from "@/components/models/SignUpModel.vue";
+import VendorModel from "@/components/models/VendorModel.vue";
+import AddServiceModel from "@/components/models/AddServiceModel.vue";
 export default {
   name: "webProfile",
   components: {
