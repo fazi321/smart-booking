@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800&display=swap");
+
 body {
   margin: 0;
   padding: 0;
@@ -24,6 +25,7 @@ ul {
   padding: 0;
   margin: 0;
 }
+
 img {
   width: 100%;
   height: 100%;
@@ -37,6 +39,7 @@ img {
   max-width: 1266px;
   margin: 0 auto;
 }
+
 .btn {
   letter-spacing: 0.63px;
   text-align: center;
@@ -45,22 +48,88 @@ img {
   display: block;
   cursor: pointer;
 }
+
 header.active .container .nav ul li a {
   color: #707070;
 }
+
 .header.active .register a {
   color: #707070;
+}
+
+/* hero slider  */
+.hero-slider .carousel__pagination {
+  margin: 0;
+  top: -110px;
+  position: relative;
+}
+
+.hero-slider .carousel__pagination-button {
+  background-color: #FEBB12;
+  opacity: 0.4;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+}
+
+.hero-slider .carousel__pagination-button--active {
+  background-color: #FEBB12;
+  opacity: unset;
+}
+
+.hero-slider .carousel__prev,
+.hero-slider .carousel__next {
+  background-color: #fff;
+  width: 50px;
+  height: 40px;
+  box-shadow: 0px 0px 10px #0000001A;
+  border-radius: 6px;
+  opacity: 1;
+}
+
+.hero-slider .carousel__prev img,
+.hero-slider .carousel__next img {
+  width: 25px;
+  height: 35px;
+}
+/* Hotel slider  */
+.hotel-slider .carousel__prev,
+.hotel-slider .carousel__next {
+  background-color: #fff;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  width: 40px;
+  height: 40px;
+}
+.hotel-slider .carousel__prev{
+  left: 25px;
+}
+.hotel-slider .carousel__next{
+  right: 20px;
+}
+.hotel-slider .carousel__prev--in-active,
+.hotel-slider .carousel__next--in-active {
+  display: none;
+}
+.hotel-slider .carousel__slide {
+  padding: 0 8px;
+}
+
+.carousel__icon {
+  fill: #000;
 }
 /* reponsive start */
 @media only screen and (max-width: 1199px) {
   .container {
     width: 100%;
   }
+
   header.header .container .nav ul li a {
     color: #707070;
   }
+
   .header.header .register a {
     color: #707070;
   }
 }
+
 /* reponsive end */

@@ -1,0 +1,47 @@
+<template>
+  <div class="container smart-booking">
+    <div class="smart-title">
+      <h1>EXPLORE MORE ON SMART BOOKINGS</h1>
+    </div>
+    <div class="card-container">
+      <SmartBookingCard />
+      <SmartBookingCard />
+      <SmartBookingCard />
+      <SmartBookingCard />
+    </div>
+  </div>
+</template>
+
+<script>
+import SmartBookingCard from "@/components/common/BookingCard.vue";
+export default {
+  name: "SmartBooking",
+  components: {
+    SmartBookingCard
+  }
+};
+</script>
+
+<style scoped>
+.card-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 30px 0;
+}
+.smart-booking {
+  padding: 10px 0;
+}
+.smart-title {
+  width: 100%;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+}
+.smart-title h1 {
+  font-size: 26px;
+  color: #231f20;
+  opacity: 0.8;
+  letter-spacing: 0.7px;
+}
+</style>
