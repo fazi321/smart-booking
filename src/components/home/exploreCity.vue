@@ -32,16 +32,5 @@ export default {
 .smart-booking {
   padding: 10px 0;
 }
-.smart-title {
-  width: 100%;
-  padding: 15px;
-  display: flex;
-  justify-content: center;
-}
-.smart-title h1 {
-  font-size: 26px;
-  color: #231f20;
-  opacity: 0.8;
-  letter-spacing: 0.7px;
-}
+
 </style>

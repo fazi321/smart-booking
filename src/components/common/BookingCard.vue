@@ -32,10 +32,11 @@ export default {
   padding: 5px 0 10px 0;
 }
 .smart-card .detail h5 {
-  font-size: 18px;
+  font-size: 16px;
   color: #000000;
   opacity: 0.8;
   text-align: center;
+  font-weight: normal;
 }
 .smart-card .detail p {
   font-size: 14px;

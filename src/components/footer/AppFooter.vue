@@ -130,7 +130,8 @@ export default {
 .footer .footer-row .col h3 {
   color: #000000;
   opacity: 50%;
-  font-size: 18px;
+  font-size: 16px;
+  font-weight: normal;
   text-align: left;
 }
 .contact {
@@ -211,7 +212,7 @@ export default {
 .reserved p {
   color: #000000;
   opacity: 50%;
-  font-size: 16px;
+  font-size: 14px;
   text-align: left;
 }
 /* reponsive start */

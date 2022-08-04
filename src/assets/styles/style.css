@@ -92,6 +92,18 @@ header.active .container .nav ul li a {
   width: 25px;
   height: 35px;
 }
+.smart-title {
+  width: 100%;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+}
+.smart-title h1 {
+  font-size: 24px;
+  color: #231f20;
+  opacity: 0.8;
+  letter-spacing: 0.7px;
+}
 /* Hotel slider  */
 .hotel-slider .carousel__prev,
 .hotel-slider .carousel__next {
