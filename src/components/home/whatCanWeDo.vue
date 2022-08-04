@@ -4,12 +4,11 @@
       <h1>WHAT CAN WE DO FOR YOU?</h1>
     </div>
     <div class="card-container">
-      <WhatWeDo />
-      <WhatWeDo />
-      <WhatWeDo />
-      <WhatWeDo />
-      <WhatWeDo />
-      <WhatWeDo />
+      <WhatWeDo
+        v-for="(item, index) in WhatWeDo"
+        :dataItem="item"
+        :key="index"
+      />
     </div>
   </div>
 </template>
@@ -19,8 +18,16 @@ import WhatWeDo from "@/components/common/WeDo.vue";
 export default {
   name: "WhatCanWeDo",
   components: {
-    WhatWeDo
-  }
+    WhatWeDo,
+  },
+  data() {
+    return {
+      WhatWeDo: [
+        { title: "Apartments", image: "apartment.svg", categoryCount: "681" },
+        { title: "Apartments", image: "apartment.svg", categoryCount: "681" },
+      ],
+    };
+  },
 };
 </script>
 

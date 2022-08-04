@@ -1,17 +1,19 @@
 <template>
   <section class="what-card">
     <div class="image">
-      <img src="../../assets/images/reserve.svg" />
+      <img :src="require(`../../assets/images/${dataItem.image}`)" />
     </div>
     <div class="detail">
-      <h5>Instant Reservation</h5>
-      <p>Your reservation is 100% guaranteed.</p>
+      <h5>{{dataItem.title}}</h5>
+      <p>{{dataItem.text }} Your reservation is 100% guaranteed.</p>
     </div>
   </section>
 </template>
 
 <script>
-export default {};
+export default {
+  props:['dataItem']
+};
 </script>
 
 <style scoped>

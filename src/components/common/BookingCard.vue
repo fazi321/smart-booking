@@ -1,11 +1,11 @@
 <template>
-  <section class="smart-card">
+  <section class="smart-card" v-if="dataItem">
     <div class="image">
-      <img src="../../assets/images/apartment.svg" />
+      <img :src="require(`../../assets/images/${dataItem.image}`)" />
     </div>
     <div class="detail">
-      <h5>Apartments</h5>
-      <p>681</p>
+      <h5>{{dataItem.title}}</h5>
+      <p>{{dataItem.categoryCount}}</p>
     </div>
   </section>
 </template>
@@ -13,6 +13,7 @@
 <script>
 export default {
     name: "BookingCard",
+    props:['dataItem'],
 };
 </script>
 

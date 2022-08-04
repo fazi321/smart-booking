@@ -4,10 +4,11 @@
       <h1>EXPLORE CITIES</h1>
     </div>
     <div class="card-container">
-      <SmartBookingCard />
-      <SmartBookingCard />
-      <SmartBookingCard />
-      <SmartBookingCard />
+      <SmartBookingCard
+        v-for="(item, index) in smartBooking"
+        :dataItem="item"
+        :key="index"
+      />
     </div>
   </div>
 </template>
@@ -17,8 +18,16 @@ import SmartBookingCard from "@/components/common/BookingCard.vue";
 export default {
   name: "ExploreCity",
   components: {
-    SmartBookingCard
-  }
+    SmartBookingCard,
+  },
+  data() {
+    return {
+      smartBooking: [
+        { title: "Apartments", image: "apartment.svg", categoryCount: "681" },
+        { title: "Apartments", image: "apartment.svg", categoryCount: "681" },
+      ],
+    };
+  },
 };
 </script>
 
