@@ -11,8 +11,8 @@
           </div>
         </div>
         <div class="headings">
-          <h1>login</h1>
-          <h4>Please Sign In to continue</h4>
+          <h1>SIGNUP</h1>
+          <h4>Please create your account</h4>
         </div>
         <div class="login-form">
           <div class="form-container">
@@ -44,7 +44,7 @@
             </form>
           </div>
           <div class="buttom-text">
-            Don’t Have an Account? <span @click="SignUpModel">Sign Up </span>
+            Already Have an Account? <span @click="LoginModel">Login</span>
           </div>
         </div>
       </div>
@@ -54,7 +54,7 @@
 
 <script>
 export default {
-  name: "LoginModel",
+  name: "SignUpModel",
   props: ["model"],
   data() {
     return {
@@ -62,12 +62,12 @@ export default {
     };
   },
   methods: {
-    SignUpModel() {
-      this.$parent.loginModel = false;
-      this.$parent.signUpModel = true;
+    LoginModel() {
+      this.$parent.signUpModel = false;
+      this.$parent.loginModel = true;
     },
-    close() {
-      this.$parent.loginModel = false;
+     close() {
+      this.$parent.signUpModel = false;
     },
   },
 };

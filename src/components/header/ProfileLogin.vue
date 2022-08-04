@@ -5,19 +5,22 @@
     <LoginModel :model="loginModel" />
     <SignUpModel :model="signUpModel" />
     <VendorModel :model="vendorModel" />
+    <AddServiceModel :model="true"/>
   </section>
 </template>
 
 <script>
-import LoginModel from "../models/LoginModel.vue";
+import LoginModel from "@/components/loginModels/LoginModel.vue";
 import SignUpModel from "../models/SignUpModel.vue";
 import VendorModel from "../models/VendorModel.vue";
+import AddServiceModel from "@/components/loginModels/AddServiceModel.vue";
 export default {
   name: "webProfile",
   components: {
     LoginModel,
     SignUpModel,
     VendorModel,
+    AddServiceModel,
   },
   data() {
     return {
