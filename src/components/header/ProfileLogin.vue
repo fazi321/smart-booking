@@ -5,7 +5,7 @@
     <LoginModel :model="loginModel" />
     <SignUpModel :model="signUpModel" />
     <VendorModel :model="vendorModel" />
-    <AddServiceModel :model="false"/>
+    <AddServiceModel :model="true"/>
   </section>
 </template>
 

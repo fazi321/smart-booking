@@ -391,7 +391,7 @@ h5 {
   border: none;
   box-shadow: 0px 0px 8px 2px #e9e8e8;
   color: #c4c4c4;
-  min-width: 235px;
+  min-width: 230px;
   margin: 8px 0;
 }
 .inputs-container input::placeholder {

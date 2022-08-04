@@ -2,148 +2,94 @@
   <section :class="['login-signup', { active: model }]">
     <!-- step one -->
     <div class="primary-login" v-if="!isSubmitted">
-      <div class="main-login">
+      <div class="main-login add-services">
         <div class="logo-close">
           <div class="close-icon" @click="close">
             <img src="../../assets/images/close-icon.svg" alt="" />
           </div>
         </div>
-        <div class="headings vendor-text">
+        <div class="headings">
           <h1>Add Service</h1>
           <h4>Please add details for new service</h4>
         </div>
         <div class="container-vendor">
           <div class="cards">
             <div
-              :class="['primary-cards', { active: accountOpt == 'comp' }]"
-              @click="selectedOptions('comp')"
+              :class="['primary-cards', { active: accountOpt == 'info' }]"
+              @click="selectedOptions('info')"
             >
-              <h5>I represent the</h5>
-              <h6>Company</h6>
+              <div class="category-img">
+                <img src="../../assets/images/basic.svg" alt="" />
+              </div>
+              <div class="content">
+                <h5>Basic Information</h5>
+                <h6>
+                  Lorem ipsum dolor sit amet, consectetur <br />
+                  adipiscing elit. Fusce ac odio at urna curs <br />us lacinia.
+                </h6>
+              </div>
             </div>
             <div
-              :class="['primary-cards', { active: accountOpt == 'host' }]"
-              @click="selectedOptions('host')"
+              :class="['primary-cards', { active: accountOpt == 'service' }]"
+              @click="selectedOptions('service')"
             >
-              <h5>I am a personal</h5>
-              <h6>Host</h6>
+              <div class="category-img">
+                <img src="../../assets/images/servies.svg" alt="" />
+              </div>
+              <div class="content">
+                <h5>Service Description</h5>
+                <h6>
+                  Lorem ipsum dolor sit amet, consectetur <br />
+                  adipiscing elit. Fusce ac odio at urna curs <br />us lacinia.
+                </h6>
+              </div>
+            </div>
+            <div
+              :class="['primary-cards', { active: accountOpt == 'price' }]"
+              @click="selectedOptions('price')"
+            >
+              <div class="category-img">
+                <img src="../../assets/images/price.svg" alt="" />
+              </div>
+              <div class="content">
+                <h5>Price Details</h5>
+                <h6>
+                  Lorem ipsum dolor sit amet, consectetur <br />
+                  adipiscing elit. Fusce ac odio at urna curs <br />us lacinia.
+                </h6>
+              </div>
             </div>
           </div>
           <div class="form-container">
-            <div class="input-div">
+            <div class="input-div step-btn">
               <button type="submit" @click="accountSelected">Next</button>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <!-- step one End -->
-    <section class="main-section" v-if="isSubmitted">
-      <!-- step Two -->
-      <div class="primary-login company" v-if="!nextStep">
-        <div class="main-login">
-          <div class="logo-close">
-            <div class="close-icon" @click="close">
-              <img src="../../assets/images/close-icon.svg" alt="" />
-            </div>
-          </div>
-          <div class="headings">
-            <h1>Become Vendor</h1>
-            <h4 v-if="accountOpt == 'comp'">
-              I Represent the <span>Company</span>
-            </h4>
-            <h4 v-if="accountOpt == 'host'">
-              I am a personal <span>Host</span>
-            </h4>
-          </div>
-          <div class="container-vendor">
-            <div :class="['transitionBox', { transitionActive: istransition }]">
-              <div class="inputs-container">
-                <div>
-                  <input type="text" placeholder="First Name" />
-                </div>
-                <div>
-                  <input type="text" placeholder="Last Name" />
-                </div>
-                <div>
-                  <input type="number" placeholder="Mobile Number" />
-                </div>
-                <div>
-                  <input type="Email" placeholder="Email" />
-                </div>
-                <div>
-                  <input type="text" placeholder="Address" />
-                </div>
-                <div v-if="accountOpt == 'host'">
-                  <input type="text" placeholder="Nationality" />
-                </div>
-                <div>
-                  <input type="number" placeholder="Commercial ID No" />
-                </div>
-              </div>
-              <div class="upload-file">
-                <label for="inputTag">
-                  Upload File
-                  <input id="inputTag" type="file" />
-                </label>
-              </div>
-            </div>
-            <div class="form-container">
-              <div class="input-div">
-                <button @click="stepTwo">Next</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- step one Two -->
-      <!-- step Two -->
-      <div class="primary-login success" v-if="nextStep == 1">
-        <div class="main-login">
-          <div class="logo-close">
-            <div class="close-icon" @click="close">
-              <img src="../../assets/images/close-icon.svg" alt="" />
-            </div>
-          </div>
-          <div class="headings">
-            <h1>Become Vendor</h1>
-          </div>
-          <div class="container-vendor">
-            <div class="success-img">
-              <img src="../../assets/images/success.svg" alt="" />
-            </div>
-            <div class="success-content">
-              <h5>Request Submitted Successfully!</h5>
-              <p>
-                Your request for become Vendor have been sent <br />
-                successfully. Once it approved you will get the <br />
-                notification.
-              </p>
-            </div>
-            <div class="form-container">
-              <div class="input-div">
-                <button type="submit">Next</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- step one Two -->
-    </section>
+    <!-- basic information start -->
+    <InfoModel v-if="isSubmitted && accountOpt == 'info'" :model="true" />
+    <!-- Description start -->
+    <ServiceModel v-if="isSubmitted && accountOpt == 'service'" :model="true" />
   </section>
 </template>
 
 <script>
+import InfoModel from "./steps/InfoModel.vue";
+import ServiceModel from "./steps/ServiceModel.vue";
 export default {
   name: "AddServiceModel",
   props: ["model"],
+  components: {
+    InfoModel,
+    ServiceModel,
+  },
   data() {
     return {
-      phoneNumber: null,
       accountOpt: null,
       isSubmitted: false,
       nextStep: null,
-      istransition: false,
     };
   },
   methods: {
@@ -153,44 +99,19 @@ export default {
     accountSelected() {
       if (!this.accountOpt) return;
       this.isSubmitted = true;
-      setTimeout(() => {
-        this.istransition = true;
-      }, 100);
-    },
-    stepTwo() {
-      this.nextStep = 1;
     },
     close() {
       this.$parent.vendorModel = false;
-      this.accountOpt = null;
-      this.isSubmitted = false;
-      this.nextStep = null;
-      this.istransition = false;
     },
   },
 };
 </script>
 
 <style scoped>
-/* transition */
-.transitionBox {
-  transition: 0.3s;
-  transform: translateX(100%);
-}
-.transitionActive {
-  transform: translateX(0);
-}
-/* transition */
 .main-section {
   display: flex;
   justify-content: center;
   width: 100%;
-}
-.error {
-  padding: 10px 0;
-  text-align: center;
-  font-size: 14px;
-  color: red;
 }
 .login-signup {
   position: fixed;
@@ -258,6 +179,9 @@ img {
 .headings h4 span {
   color: #febb12;
 }
+.add-services .headings {
+  padding-bottom: 5px;
+}
 .login-form .input-primary {
   display: flex;
   height: 42px;
@@ -267,27 +191,6 @@ img {
   margin-bottom: 35px;
   align-items: center;
   width: 62%;
-}
-.container-input {
-  width: 90%;
-}
-.login-form input {
-  width: 100%;
-  /* height: 42px; */
-  border: none;
-  outline: none;
-  user-select: none;
-  margin-left: 10px;
-}
-.login-form input::placeholder {
-  color: #b0b0b0;
-}
-.form-container {
-  display: flex;
-  justify-content: center;
-}
-.form-container form {
-  width: 100%;
 }
 .input-div {
   display: flex;
@@ -308,30 +211,10 @@ img {
   min-width: 263px;
   cursor: pointer;
 }
-.input-div .flag {
-  display: flex;
-  align-items: center;
+.step-btn {
+  margin-top: 10px;
+  margin-bottom: 5px;
 }
-.input-div .flag span {
-  color: #b0b0b0;
-  font-size: 14px;
-}
-.input-div .flag .flag-img {
-  width: 20px;
-  position: relative;
-  top: 2px;
-  right: 3px;
-}
-.buttom-text {
-  text-align: center;
-  font-size: 14px;
-}
-.buttom-text span {
-  text-align: center;
-  color: #febb12;
-  cursor: pointer;
-}
-
 /* step one */
 .container-vendor {
   align-items: center;
@@ -343,107 +226,41 @@ img {
 .container-vendor .cards {
   display: flex;
   justify-content: space-between;
-  width: 58%;
-  margin: 20px 0px 40px 0px;
+  width: 98%;
+  flex-wrap: wrap;
+  padding: 10px;
 }
 .container-vendor .primary-cards {
-  width: 150px;
-  height: 130px;
+  width: 45%;
+  height: 100px;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
   border-radius: 10px;
   box-shadow: 0px 1px 11px -5px #0000006b;
   cursor: pointer;
   border: 1px solid transparent;
+  padding: 0 8px;
+  margin-bottom: 22px;
+}
+.container-vendor .primary-cards .category-img {
+  width: 36px;
+  position: relative;
+  left: 14px;
+}
+.container-vendor .primary-cards .content {
+  text-align: left;
+  line-height: 1.5;
 }
 .container-vendor .primary-cards.active {
   border: 1px solid #febb12;
 }
 .container-vendor .primary-cards h6 {
-  color: #febb12;
-  margin-top: 3px;
-}
-.container-vendor .primary-cards h6,
-h5 {
-  font-size: 14px;
-}
-/* step one end */
-
-/* step two start */
-.company {
-  padding: 25px 25px 10px 25px;
-}
-.company .headings {
-  padding: 0 24px 9px 24px;
-}
-.inputs-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  padding: 0 30px;
-}
-.inputs-container input {
-  outline: none;
-  font-size: 12px;
-  padding: 18px 20px;
-  border-radius: 50px;
-  border: none;
-  box-shadow: 0px 0px 8px 2px #e9e8e8;
-  color: #c4c4c4;
-  min-width: 235px;
-  margin: 8px 0;
-}
-.inputs-container input::placeholder {
-  color: #c4c4c4;
-}
-.upload-file input {
-  display: none;
-}
-.upload-file {
-  margin: 30px 10px 10px 10px;
-}
-.upload-file label {
-  box-shadow: 0px 0px 8px 2px #e9e8e8;
-  cursor: pointer;
-  border-radius: 5px;
-  padding: 10px 24px;
-  color: #febb12;
-  font-size: 12px;
-}
-/* step two end */
-
-/* step success start */
-.success-img {
-  width: 140px;
-  height: 144px;
-  margin-bottom: 20px;
-}
-.success .headings {
-  padding: 0 24px 0px 24px;
-}
-.success {
-  padding: 25px 25px 10px 25px;
-}
-.success-content h5 {
-  color: #000000;
-  margin: 16px 0;
-  font-size: 18px;
-}
-.success-content p {
   color: #393f45;
-  font-size: 12px;
-  line-height: 1.8;
+  margin-top: 3px;
+  font-size: 10px;
 }
-/* step success end */
-
-/* responsive */
-@media (max-width: 479px) and (min-width: 320px) {
-  .primary-login {
-    width: 84%;
-  }
-  .headings h1 {
-    font-size: 20px;
-  }
+.container-vendor .primary-cards h5 {
+  font-size: 14px;
 }
 </style>
