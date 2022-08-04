@@ -23,8 +23,10 @@ export default {
   data() {
     return {
       smartBooking: [
-        { title: "Apartments", image: "apartment.svg", categoryCount: "681" },
-        { title: "Apartments", image: "apartment.svg", categoryCount: "681" },
+        { title: "Jeddah", image: "jeddah.png", categoryCount: "681" },
+        { title: "Medina", image: "medina.png", categoryCount: "681" },
+        { title: "Riyadh", image: "riyadh.png", categoryCount: "681" },
+        { title: "Mecca", image: "mecca.png", categoryCount: "681" },
       ],
     };
   },

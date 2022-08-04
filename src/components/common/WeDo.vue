@@ -5,7 +5,7 @@
     </div>
     <div class="detail">
       <h5>{{dataItem.title}}</h5>
-      <p>{{dataItem.text }} Your reservation is 100% guaranteed.</p>
+      <p>{{dataItem.text }} </p>
     </div>
   </section>
 </template>
@@ -40,6 +40,7 @@ export default {
 .what-card .detail {
   padding: 5px 0 10px 0;
   line-height: 1.8;
+  width: 80%;
 }
 .what-card .detail h5 {
   font-size: 14px;
