@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
-import Apartments from "../views/Apartment.vue";
+import Hotel from "../views/Hotel.vue";
+import HotelDetail from "../views/HotelDetail.vue";
+import Profile from "../views/Profile.vue";
 
 const routes = [
   {
@@ -9,9 +11,19 @@ const routes = [
     component: Home,
   },
   {
-    path: "/apartments",
-    name: "apartment",
-    component: Apartments,
+    path: "/hotel",
+    name: "hotel",
+    component: Hotel,
+  },
+  {
+    path: "/hotel-detail",
+    name: "hotelDetail",
+    component: HotelDetail,
+  },
+  {
+    path: "/my-profile",
+    name: "profile",
+    component: Profile,
   },
   {
     path: "/about",

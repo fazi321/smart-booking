@@ -348,9 +348,9 @@
 </template>
 
 <script>
-import PriceSlider from "../apartment/priceSlider.vue";
+import PriceSlider from "../hotel/priceSlider.vue";
 export default {
-  name: "ApartmentsFilters",
+  name: "HotelFilters",
   components: {
     PriceSlider
   }
@@ -358,9 +358,9 @@ export default {
 </script>
 
 <style scoped>
-.last-block{
-  border-bottom: none!important;
-  padding-bottom: 40px!important;
+.last-block {
+  border-bottom: none !important;
+  padding-bottom: 40px !important;
 }
 .apartments-filters {
   box-shadow: 0px 0px 17px #0000001a;

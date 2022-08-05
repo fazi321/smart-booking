@@ -3,7 +3,7 @@
     <Filters />
     <div class="apartment-wrapper">
       <div class="apartment-left">
-        <AparmentsFilters />
+        <HotelFilters />
       </div>
       <div class="apartment-right">
         <FilterCard />
@@ -30,15 +30,15 @@
 </template>
 
 <script>
-import Filters from "../apartment/filter.vue";
-import AparmentsFilters from "../apartment/apartmentFliters.vue";
+import Filters from "../hotel/filter.vue";
+import HotelFilters from "../hotel/hotelFliters.vue";
 import FilterCard from "../common/filterCard.vue";
 import Paginate from "vuejs-paginate-next";
 export default {
-  name: "ApartmentMain",
+  name: "HotelMain",
   components: {
     Filters,
-    AparmentsFilters,
+    HotelFilters,
     FilterCard,
     Paginate
   },

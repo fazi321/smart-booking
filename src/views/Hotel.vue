@@ -1,20 +1,20 @@
 <template>
    <div>
     <Header/>
-    <Apartment/>
+    <Hotel/>
    </div>
 </template>
 
 <script>
 import Header from "@/components/header/index.vue";
-import Apartment from "@/components/apartment/index.vue";
+import Hotel from "@/components/hotel/index.vue";
 
 
 export default {
   name: "AparmentView",
   components: {
     Header,
-    Apartment,
+    Hotel,
    
   }
 };
