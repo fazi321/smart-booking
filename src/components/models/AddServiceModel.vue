@@ -69,11 +69,11 @@
       </div>
     </div>
     <!-- basic information start -->
-    <InfoModel v-if="isSubmitted && accountOpt == 'info'" :model="true" />
+    <InfoModel v-if="isSubmitted && accountOpt == 'info'" :model="true" @close="close"/>
     <!-- Description start -->
-    <ServiceModel v-if="isSubmitted && accountOpt == 'service'" :model="true" />
+    <ServiceModel v-if="isSubmitted && accountOpt == 'service'" :model="true" @close="close"/>
     <!-- price start -->
-    <PriceModel v-if="isSubmitted && accountOpt == 'price'" :model="true" />
+    <PriceModel v-if="isSubmitted && accountOpt == 'price'" :model="true"  @close="close"/>
   </section>
 </template>
 
@@ -105,7 +105,8 @@ export default {
       this.isSubmitted = true;
     },
     close() {
-      this.$parent.vendorModel = false;
+      this.isSubmitted = false;
+      this.$parent.serviceModel = false;
     },
   },
 };

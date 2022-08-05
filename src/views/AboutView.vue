@@ -1,5 +1,19 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
+  <div>
+     <SuccessModel/>
   </div>
 </template>
+
+<script>
+import SuccessModel from '@/components/models/SuccessModel.vue'
+  export default {
+    components:{
+      SuccessModel
+    }
+    
+  }
+</script>
+
+<style lang="scss" scoped>
+
+</style>

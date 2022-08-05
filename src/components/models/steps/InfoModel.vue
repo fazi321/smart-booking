@@ -333,7 +333,7 @@ export default {
       this.isSubmitted = true;
     },
     close() {
-      this.$parent.vendorModel = false;
+      this.$emit('close')
     },
   },
 };

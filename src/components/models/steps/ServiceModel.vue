@@ -169,7 +169,7 @@
             </div>
           </div>
         </div>
-        <div class="form-container ">
+        <div class="form-container">
           <div class="input-div step-btn">
             <button type="submit">Next</button>
           </div>
@@ -200,7 +200,7 @@ export default {
       this.step = step;
     },
     close() {
-      this.$parent.vendorModel = false;
+      this.$emit("close");
     },
   },
 };
@@ -423,13 +423,13 @@ img {
   color: #febb12;
   font-size: 12px;
 }
-.map-container{
+.map-container {
   height: 350px;
   overflow-y: scroll;
-  margin-bottom:30px;
+  margin-bottom: 30px;
 }
-.map-container .inputs-container input{
-  min-width:220px;
+.map-container .inputs-container input {
+  min-width: 220px;
 }
 .map {
   margin-bottom: 30px;

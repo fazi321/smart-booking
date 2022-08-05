@@ -1,7 +1,7 @@
 <template>
   <section :class="['account-container', { active: model }]">
     <!-- step one -->
-    <div class="primary-login" v-if="step == 1">
+    <section class="primary-login" v-if="step == 1">
       <div class="main-login add-services">
         <div class="logo-close">
           <div class="close-icon" @click="close">
@@ -133,12 +133,24 @@
             </div>
             <div class="date-input">
               <div @click="showModelDate('fd')">
-                <input type="text" placeholder="From Date" v-model="fromDate"/>
-                <input type="date" @change="checkDate" id="date" ref="fd" v-model="fromDate" />
+                <input type="text" placeholder="From Date" v-model="fromDate" />
+                <input
+                  type="date"
+                  @change="checkDate"
+                  id="date"
+                  ref="fd"
+                  v-model="fromDate"
+                />
               </div>
               <div @click="showModelDate('td')">
                 <input type="text" placeholder="To Date" v-model="toDate" />
-                <input type="date" @change="checkDate" id="date" ref="td" v-model="toDate" />
+                <input
+                  type="date"
+                  @change="checkDate"
+                  id="date"
+                  ref="td"
+                  v-model="toDate"
+                />
               </div>
             </div>
           </div>
@@ -150,11 +162,23 @@
             <div class="date-input">
               <div @click="showModelDate('cn')">
                 <input type="text" placeholder="Check in" v-model="checkIn" />
-                <input type="date" @change="checkDate" id="date" ref="cn" v-model="checkIn"/>
+                <input
+                  type="date"
+                  @change="checkDate"
+                  id="date"
+                  ref="cn"
+                  v-model="checkIn"
+                />
               </div>
               <div @click="showModelDate('co')">
-                <input type="text" placeholder="Check out" v-model="checkOut"/>
-                <input type="date" @change="checkDate" id="date" ref="co" v-model="checkOut" />
+                <input type="text" placeholder="Check out" v-model="checkOut" />
+                <input
+                  type="date"
+                  @change="checkDate"
+                  id="date"
+                  ref="co"
+                  v-model="checkOut"
+                />
               </div>
             </div>
           </div>
@@ -165,24 +189,332 @@
           </div>
         </div>
       </div>
-    </div>
-    <!-- step one End -->
+    </section>
+    <!-- step two End -->
+    <section class="primary-login" v-if="step == 2">
+      <div class="main-login add-services">
+        <div class="logo-close">
+          <div class="close-icon" @click="close">
+            <img src="../../../assets/images/close-icon.svg" alt="" />
+          </div>
+        </div>
+        <div class="headings">
+          <h1>Price Details</h1>
+          <h4>Booking Settings</h4>
+        </div>
+        <section class="booking">
+          <div>
+            <div class="head">
+              <h1>Category</h1>
+            </div>
+            <div class="container-service container-amenities">
+              <div class="cards">
+                <div
+                  :class="{ active: serviceType == 'familiesSingle' }"
+                  @click="selectedOptions('familiesSingle')"
+                >
+                  <img src="../../../assets/images/familiesSingle.svg" alt="" />
+                  <h6>Families &</h6>
+                  <h6>Singles</h6>
+                </div>
+                <div
+                  :class="{ active: serviceType == 'families' }"
+                  @click="selectedOptions('families')"
+                >
+                  <img src="../../../assets/images/families.svg" alt="" />
+                  <h6>Families Only</h6>
+                </div>
+                <div
+                  :class="{ active: serviceType == 'ladies' }"
+                  @click="selectedOptions('ladies')"
+                >
+                  <img src="../../../assets/images/ladies.svg" alt="" />
+                  <h6>Ladies Only</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="head">
+              <h1>Other</h1>
+            </div>
+            <div class="container-service container-amenities card-other">
+              <div class="cards">
+                <div>
+                  <div class="content">
+                    <h5>Booking Type</h5>
+                    <h6>Booking Type name here</h6>
+                  </div>
+                </div>
+                <div>
+                  <div class="content">
+                    <h5>Cancellation Policy</h5>
+                    <h6>Cancellation Policy name here</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="deposite-section">
+            <div class="head">
+              <h5>Security Deposit</h5>
+            </div>
+            <div class="toggle-btn">
+              <label class="switch">
+                <input type="checkbox" />
+                <span class="slider"></span>
+              </label>
+            </div>
+          </div>
+          <div class="deposite-section deposite-set">
+            <div class="head">
+              <h5>Last Minute Discount</h5>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipis<br />cing elit.
+                Integer consectetur nulla at enim aliqu<br />et, lobortis ipsum
+                molestie.
+              </p>
+            </div>
+            <div class="toggle-btn">
+              <label class="switch">
+                <input type="checkbox" />
+                <span class="slider"></span>
+              </label>
+            </div>
+          </div>
+        </section>
+        <div class="form-container">
+          <div class="input-div">
+            <button type="submit" @click="changeStep(3)">Next</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- step three -->
+    <section class="primary-login" v-if="step == 3">
+      <div class="main-login add-services">
+        <div class="logo-close">
+          <div class="close-icon" @click="close">
+            <img src="../../../assets/images/close-icon.svg" alt="" />
+          </div>
+        </div>
+        <div class="headings">
+          <h1>Price Details</h1>
+          <h4>Booking Type</h4>
+        </div>
+        <section class="booking-type">
+          <div class="booking-card">
+            <div class="cards">
+              <div :class="['primary-cards']">
+                <div class="rounded-btn"></div>
+                <div class="card-container">
+                  <div class="category-img">
+                    <img src="../../../assets/images/instant.svg" alt="" />
+                  </div>
+                </div>
+                <div class="content">
+                  <h5>Instant Booking</h5>
+                  <h6>
+                    Lorem ipsum dolor sit amet, consectetur <br />
+                    adipiscing elit. Fusce ac odio at urna curs <br />us
+                    lacinia.
+                  </h6>
+                </div>
+              </div>
+              <div :class="['primary-cards']">
+                <div class="rounded-btn"></div>
+                <div class="card-container">
+                  <div class="category-img">
+                    <img src="../../../assets/images/request.svg" alt="" />
+                  </div>
+                </div>
+                <div class="content">
+                  <h5>24-Hour Request</h5>
+                  <h6>
+                    Lorem ipsum dolor sit amet, consectetur <br />
+                    adipiscing elit. Fusce ac odio at urna curs <br />us
+                    lacinia.
+                  </h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <div class="form-container">
+          <div class="input-div">
+            <button type="submit" @click="changeStep(4)">Next</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- step 4 -->
+    <section class="primary-login cancelation" v-if="step == 4">
+      <div class="main-login add-services">
+        <div class="logo-close">
+          <div class="close-icon" @click="close">
+            <img src="../../../assets/images/close-icon.svg" alt="" />
+          </div>
+        </div>
+        <div class="headings">
+          <h1>Price Details</h1>
+          <h4>Cancellation Policy</h4>
+        </div>
+        <section class="booking-type">
+          <div class="booking-card">
+            <div class="cards">
+              <div :class="['primary-cards']">
+                <div class="rounded-btn"></div>
+                <div class="content">
+                  <h5>Flexible</h5>
+                  <h6>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Fusce ac odio at urna curs us lacinia.
+                  </h6>
+                </div>
+              </div>
+              <div :class="['primary-cards']">
+                <div class="rounded-btn"></div>
+                <div class="content">
+                  <h5>Moderate</h5>
+                  <h6>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Fusce ac odio at urna curs us lacinia.
+                  </h6>
+                </div>
+              </div>
+              <div :class="['primary-cards']">
+                <div class="rounded-btn"></div>
+                <div class="content">
+                  <h5>Strict</h5>
+                  <h6>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Fusce ac odio at urna curs us lacinia.
+                  </h6>
+                </div>
+              </div>
+              <div :class="['primary-cards']">
+                <div class="rounded-btn"></div>
+                <div class="content">
+                  <h5>Non-Refundable</h5>
+                  <h6>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Fusce ac odio at urna curs us lacinia.
+                  </h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <div class="form-container">
+          <div class="input-div">
+            <button type="submit" @click="changeStep(5)">Next</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- step five -->
+    <section class="primary-login cancelation" v-if="step == 5">
+      <div class="main-login add-services">
+        <div class="logo-close">
+          <div class="close-icon" @click="close">
+            <img src="../../../assets/images/close-icon.svg" alt="" />
+          </div>
+        </div>
+        <div class="headings">
+          <h1>Price Details</h1>
+          <h4>Add-Ons</h4>
+        </div>
+        <section class="price price-unset">
+          <div class="container-price">
+            <div class="price-primary">
+              <div class="head-price">
+                <h5>Name</h5>
+                <h5>Price</h5>
+              </div>
+            </div>
+            <!-- block -->
+            <div class="price-inputs">
+              <div class="price-checkbox">
+                <label class="container-input"
+                  >Sleepover
+                  <input type="checkbox" />
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+              <div class="input-price">
+                <input type="text" />
+              </div>
+            </div>
+            <!-- block -->
+            <div class="price-inputs">
+              <div class="price-checkbox">
+                <label class="container-input"
+                  >Birthday Arrangements
+                  <input type="checkbox" />
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+              <div class="input-price">
+                <input type="text" />
+              </div>
+            </div>
+            <!-- block -->
+            <div class="price-inputs">
+              <div class="price-checkbox">
+                <label class="container-input"
+                  >Wedding Arrangements
+                  <input type="checkbox" />
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+              <div class="input-price">
+                <input type="text" />
+              </div>
+            </div>
+            <!-- block -->
+            <div class="price-inputs">
+              <div class="price-checkbox">
+                <label class="container-input"
+                  >Buffets
+                  <input type="checkbox" />
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+              <div class="input-price">
+                <input type="text" />
+              </div>
+            </div>
+          </div>
+        </section>
+        <div class="form-container">
+          <div class="input-div">
+            <button type="submit" @click="changeStep(6)">Next</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <SuccessModel v-if="step == 6"/>
   </section>
 </template>
 
 <script>
+import SuccessModel from '@/components/models/SuccessModel.vue';
 export default {
   name: "AddServiceModel",
   props: ["model"],
+  components:{
+    SuccessModel
+  },
   data() {
     return {
       nextStep: null,
       step: 1,
-    //  data picker
+      //  data picker
       fromDate: null,
       toDate: null,
       checkIn: null,
-      checkOut: null
+      checkOut: null,
+      serviceType: null,
       // date picker
     };
   },
@@ -199,8 +531,11 @@ export default {
       // if (!this.serviceType) return;
       this.step = step;
     },
+    selectedOptions(opt) {
+      this.serviceType = opt;
+    },
     close() {
-      this.$parent.vendorModel = false;
+      this.$emit('close')
     },
   },
 };
@@ -431,5 +766,230 @@ img {
 .price {
   height: 350px;
   overflow-y: scroll;
+}
+/* step two */
+.head {
+  text-align: left;
+  width: 92%;
+  margin: 18px auto 20px auto;
+}
+.head {
+  text-align: left;
+  width: 92%;
+  margin: 18px auto 20px auto;
+}
+.container-service .cards img {
+  width: 40px;
+  height: 25px;
+  margin: 0px 0 15px 0;
+}
+.container-amenities .cards > div {
+  height: 90px;
+  margin: 10px 36px 14px 0px;
+}
+.container-amenities .cards > div h6 {
+  font-size: 12px;
+}
+.container-amenities .cards > div:nth-child(4n + 0) {
+  margin-right: 0;
+}
+.container-service .cards {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0px 14px;
+}
+.container-service .cards > div {
+  box-shadow: 0px 1px 12px -2px #00000040;
+  width: 106px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  margin: 10px 30px 14px 10px;
+  border-radius: 10px;
+  font-size: 24px;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+.container-service .cards .active {
+  border: 1px solid #febb12;
+}
+.card-other .cards {
+  justify-content: flex-start;
+  display: flex;
+}
+.card-other .cards > div {
+  width: 205px;
+  align-items: flex-start;
+  text-align: left;
+  padding: 0px 20px;
+  height: 80px;
+}
+.card-other .content {
+  line-height: 2;
+}
+.card-other .content h5 {
+  font-size: 16px;
+}
+.card-other .content h6 {
+  font-size: 12px;
+}
+.deposite-section {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 45px 0 25px;
+}
+.deposite-section .toggle-btn {
+  display: flex;
+  align-items: center;
+}
+.deposite-set .toggle-btn {
+  display: unset;
+  margin-top: 10px;
+}
+.deposite-set .head {
+  margin-top: 16px;
+}
+/* toggle btn */
+.toggle-btn .switch {
+  position: relative;
+  display: inline-block;
+  width: 58px;
+  height: 24px;
+}
+
+.toggle-btn .switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-btn .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #e7e7e7;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.toggle-btn .slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  left: 4px;
+  bottom: 4px;
+  background-color: #b2b2b2;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  top: 3px;
+}
+
+.toggle-btn input:checked + .slider {
+  background-color: #febb12;
+}
+
+.toggle-btn input:focus + .slider {
+  box-shadow: 0 0 1px #b2b2b2;
+}
+
+.toggle-btn input:checked + .slider:before {
+  -webkit-transform: translateX(33px);
+  -ms-transform: translateX(33px);
+  transform: translateX(33px);
+}
+.head p {
+  font-size: 12px;
+  margin-top: 10px;
+  line-height: 1.5;
+}
+.booking {
+  height: 350px;
+  overflow-y: scroll;
+}
+/* step three */
+.booking-type .cards {
+  display: flex;
+  justify-content: space-between;
+  width: 98%;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+.booking-type .primary-cards {
+  width: 46%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 0px 1px 11px -5px #0000006b;
+  cursor: pointer;
+  border: 1px solid transparent;
+  padding: 0;
+  margin-bottom: 22px;
+  position: relative;
+}
+.booking-type .primary-cards .category-img {
+  width: 50px;
+  height: 50px;
+  position: relative;
+  left: 14px;
+  border-radius: 50%;
+  box-shadow: 0px 1px 11px -5px #0000006b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.booking-type .primary-cards .category-img img {
+  width: 60%;
+  height: 60%;
+}
+.booking-type .primary-cards .content {
+  text-align: left;
+  line-height: 1.5;
+}
+.booking-type .primary-cards.active {
+  border: 1px solid #febb12;
+}
+.booking-type .primary-cards h6 {
+  color: #393f45;
+  margin-top: 3px;
+  font-size: 8px;
+}
+.booking-type .primary-cards h5 {
+  font-size: 14px;
+}
+.booking-type .card-container {
+  width: 28%;
+}
+.primary-cards .rounded-btn {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  box-shadow: 0px 1px 12px -2px #00000040;
+  position: absolute;
+  right: 10px;
+}
+/* step 4 */
+.cancelation .booking-type .cards {
+  padding: 10px 0;
+}
+.cancelation .booking-type .primary-cards {
+  padding-left: 10px;
+  height: 80px;
+}
+.cancelation .booking-type .primary-cards .content {
+  width: 83%;
+}
+/* step 5 */
+.price-unset {
+  height: unset;
+  overflow-y:unset ;
 }
 </style>
