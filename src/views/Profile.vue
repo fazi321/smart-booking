@@ -120,5 +120,6 @@ export default {
   width: 29%;
   font-weight: 600;
   margin-top: 40px;
+  cursor: pointer;
 }
 </style>

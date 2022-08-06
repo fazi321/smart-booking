@@ -3,6 +3,7 @@ import Home from "../views/Home.vue";
 import Hotel from "../views/Hotel.vue";
 import HotelDetail from "../views/HotelDetail.vue";
 import Profile from "../views/Profile.vue";
+import Messages from "../views/Messages.vue";
 
 const routes = [
   {
@@ -24,6 +25,11 @@ const routes = [
     path: "/my-profile",
     name: "profile",
     component: Profile,
+  },
+  {
+    path: "/messages",
+    name: "messages",
+    component: Messages,
   },
   {
     path: "/about",
