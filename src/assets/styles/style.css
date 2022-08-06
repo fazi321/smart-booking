@@ -147,6 +147,7 @@ header.active .container .nav ul li a {
 }
 .hotel-slider .carousel__prev{
   left: 25px;
+  display: none;
 }
 .hotel-slider .carousel__next{
   right: 20px;

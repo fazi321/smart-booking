@@ -26,9 +26,6 @@ export default {
 </script>
 
 <style scoped>
-a{
-    text-decoration: none;
-}
 .filter-card {
   display: flex;
   box-shadow: 0px 0px 10px #0000001a;
