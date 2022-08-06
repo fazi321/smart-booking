@@ -120,14 +120,22 @@ header.active .container .nav ul li a {
   border-radius: 50%;
   cursor: pointer;
 }
-
+.service-pagination .page-item:last-child{
+  display: none;
+}
+.service-pagination .page-item .page-link {
+  border-radius: 11px!important;
+  color: #5372E7;
+}
 .disabled .page-link {
   color: #eee !important;
 }
-
+.service-pagination .active .page-link{
+  color: #fff !important;
+}
 .active .page-link {
   background-color: #FEBB12;
-  color: #000 !important;
+  color: #000 ;
 }
 /* Hotel slider  */
 .hotel-slider .carousel__prev,

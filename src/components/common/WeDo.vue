@@ -1,5 +1,5 @@
 <template>
-  <section class="what-card">
+  <router-link to="" class="what-card">
     <div class="image">
       <img :src="require(`../../assets/images/${dataItem.image}`)" />
     </div>
@@ -7,7 +7,7 @@
       <h5>{{dataItem.title}}</h5>
       <p>{{dataItem.text }} </p>
     </div>
-  </section>
+  </router-link>
 </template>
 
 <script>

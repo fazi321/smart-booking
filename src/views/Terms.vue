@@ -2,7 +2,7 @@
   <default-layout>
     <section class="container">
       <div class="privacy">
-        <h1>ABOUT US</h1>
+        <h1>TERMS OF USE</h1>
       </div>
       <div class="content">
         <h3>LOREM IPSUM</h3>

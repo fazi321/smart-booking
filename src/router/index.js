@@ -4,6 +4,11 @@ import Hotel from "../views/Hotel.vue";
 import HotelDetail from "../views/HotelDetail.vue";
 import Profile from "../views/Profile.vue";
 import Messages from "../views/Messages.vue";
+import ServiceBooking from "../views/ServiceBooking.vue";
+import ServiceDetail from "../views/ServiceDetail.vue";
+import Privacy from "../views/Privacy.vue";
+import Faqs from "../views/Faqs.vue";
+import Terms from "../views/Terms.vue";
 
 const routes = [
   {
@@ -30,6 +35,31 @@ const routes = [
     path: "/messages",
     name: "messages",
     component: Messages,
+  },
+  {
+    path: "/privacy",
+    name: "privacy",
+    component: Privacy,
+  },
+  {
+    path: "/faqs",
+    name: "faqs",
+    component: Faqs,
+  },
+  {
+    path: "/term-conditions",
+    name: "terms",
+    component: Terms,
+  },
+  {
+    path: "/service-booking",
+    name: "ServiceBooking",
+    component: ServiceBooking,
+  },
+  {
+    path: "/service-details",
+    name: "ServiceDetail",
+    component: ServiceDetail,
   },
   {
     path: "/about",
