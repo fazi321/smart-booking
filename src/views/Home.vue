@@ -1,10 +1,10 @@
 <template>
   <default-layout>
     <HeroSlider />
-    <HotelSlider/>
-    <SmartBooking/>
-    <ExploreCity/>
-    <WhatCanWeDo/>
+    <HotelSlider />
+    <SmartBooking />
+    <ExploreCity />
+    <WhatCanWeDo />
   </default-layout>
 </template>
 
@@ -25,6 +25,6 @@ export default {
     SmartBooking,
     ExploreCity,
     WhatCanWeDo,
-  }
+  },
 };
 </script>

@@ -92,6 +92,9 @@ header.active .container .nav ul li a {
   width: 25px;
   height: 35px;
 }
+.hero-slider .carousel__prev, .hero-slider .carousel__next{
+  top:40%;
+}
 .smart-title {
   width: 100%;
   padding: 15px;
