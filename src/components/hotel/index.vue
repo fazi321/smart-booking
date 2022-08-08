@@ -1,5 +1,8 @@
 <template>
   <div class="container apartment-main">
+    <div class="search-wrapper">
+      <SearchHeader/>
+    </div>
     <Filters />
     <div class="apartment-wrapper">
       <div class="apartment-left">
@@ -33,6 +36,7 @@
 import Filters from "../hotel/filter.vue";
 import HotelFilters from "../hotel/hotelFliters.vue";
 import FilterCard from "../common/filterCard.vue";
+import SearchHeader from "../SearchHeader.vue";
 import Paginate from "vuejs-paginate-next";
 export default {
   name: "HotelMain",
@@ -40,7 +44,8 @@ export default {
     Filters,
     HotelFilters,
     FilterCard,
-    Paginate
+    Paginate,
+    SearchHeader
   },
   methods: {
     clickCallback(num) {
@@ -51,6 +56,9 @@ export default {
 </script>
 
 <style scoped>
+.search-wrapper{
+  margin-bottom: 50px;
+}
 .apartment-main {
   padding: 15px 0;
 }

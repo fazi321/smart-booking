@@ -138,4 +138,33 @@ export default {
   opacity: 0.6;
   font-size: 14px;
 }
+.favourite .filter-card .card-detail .heading h5 {
+  font-size: 16px!important;
+  font-weight: 600;
+}
+.favourite .rating .star{
+  font-size: 28px!important;
+}
+.favourite .filter-card .card-detail p{
+  font-size: 12px!important;
+}
+.favourite .filter-card .card-detail .sar h6{
+  font-size: 18px!important;
+}
+.favourite .filter-card .card-detail .sar{
+  padding-top: 5px!important;
+}
+.favourite .filter-card .card-detail .sar p{
+  font-size: 12px!important;
+  padding-top: 10px!important;
+}
+.favourite .rating{
+  padding: 10px 0!important;
+}
+.favourite .filter-card .image{
+  width: 35%!important;
+}
+.favourite .filter-card .card-detail{
+  width: 60%!important;
+}
 </style>

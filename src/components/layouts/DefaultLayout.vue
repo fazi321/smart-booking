@@ -1,6 +1,7 @@
 <template>
   <div>
     <Header />
+    
     <slot />
     <Footer />
   </div>
@@ -14,7 +15,8 @@ export default {
   name: "DefaultLayout",
   components: {
     Header,
-    Footer
+    Footer,
+
   }
 };
 </script>

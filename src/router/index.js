@@ -9,6 +9,8 @@ import ServiceDetail from "../views/ServiceDetail.vue";
 import Privacy from "../views/Privacy.vue";
 import Faqs from "../views/Faqs.vue";
 import Terms from "../views/Terms.vue";
+import MyServices from "../views/MyServices.vue";
+import Favourites from "../views/Favourites.vue";
 
 const routes = [
   {
@@ -32,9 +34,19 @@ const routes = [
     component: Profile,
   },
   {
+    path: "/my-services",
+    name: "myservices",
+    component: MyServices,
+  },
+  {
     path: "/messages",
     name: "messages",
     component: Messages,
+  },
+  {
+    path: "/favourites",
+    name: "Favourites",
+    component: Favourites,
   },
   {
     path: "/privacy",

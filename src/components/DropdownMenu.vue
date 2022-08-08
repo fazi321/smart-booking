@@ -2,8 +2,77 @@
   <section class="dropdown">
     <ul>
       <li>
+        <router-link to="/my-profile">
+          <span>My Profile</span>
+        </router-link>
+      </li>
+      <li>
+        <router-link to="/messages">
+          <span>Messages</span>
+        </router-link>
+      </li>
+      <li>
         <router-link to="#demo">
-          <span>My Profile</span><span>new</span>
+          <span>Balance</span>
+          <span>SAR 500</span>
+        </router-link>
+      </li>
+      <li>
+        <router-link to="/my-services">
+          <span>My Services</span>
+        </router-link>
+      </li>
+      <li>
+        <router-link to="/service-booking">
+          <span>Service Bookings</span>
+        </router-link>
+      </li>
+      <li>
+        <router-link to="/favourites">
+          <span>Favourites</span>
+        </router-link>
+      </li>
+      <li>
+        <router-link to="#demo">
+          <span>Language</span>
+          <span>Eng</span>
+        </router-link>
+      </li>
+      <li>
+        <router-link to="#demo">
+          <span>Price Display</span>
+          <span>SAR</span>
+        </router-link>
+      </li>
+      <li>
+        <router-link to="#demo">
+          <span>Distance</span>
+          <span>km</span>
+        </router-link>
+      </li>
+      <li>
+        <router-link to="/privacy">
+          <span>Privacy Policy</span>
+        </router-link>
+      </li>
+      <li>
+        <router-link to="/faqs">
+          <span>FAQs</span>
+        </router-link>
+      </li>
+      <li>
+        <router-link to="/term-conditions">
+          <span>Term of Use</span>
+        </router-link>
+      </li>
+      <li>
+        <router-link to="/about">
+          <span>About Us</span>
+        </router-link>
+      </li>
+      <li>
+        <router-link to="#demo">
+          <span>Logout</span>
         </router-link>
       </li>
     </ul>
@@ -25,13 +94,17 @@ export default {};
   padding: 10px;
   border-radius: 7px;
   z-index: 2;
-  right: 27px;
+  right: 22px;
+  top: 43px;
+  height: 530px;
 }
+
 .dropdown ul li a {
   color: #000;
   display: flex;
   justify-content: space-between;
   font-size: 14px;
+  padding: 10px 0;
 }
 .dropdown ul li a span:nth-child(2) {
   color: #febb12;

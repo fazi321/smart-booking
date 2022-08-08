@@ -1,11 +1,11 @@
 <template>
   <section class="nav">
     <ul>
-      <li><router-link to="#">HOME</router-link></li>
-      <li><router-link to="#">Apartments</router-link></li>
-      <li><router-link to="#">Farms</router-link></li>
-      <li><router-link to="#">Hotels</router-link></li>
-      <li><router-link to="#">Resorts</router-link></li>
+      <li><router-link to="/">HOME</router-link></li>
+      <li><router-link to="/hotel">Apartments</router-link></li>
+      <li><router-link to="/hotel">Farms</router-link></li>
+      <li><router-link to="/hotel">Hotels</router-link></li>
+      <li><router-link to="/hotel">Resorts</router-link></li>
       <li><router-link to="#">Lounges</router-link></li>
     </ul>
   </section>

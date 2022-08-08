@@ -86,7 +86,7 @@
           <div>
             <div class="icon-img">
               <div>
-                <img src="../../assets/images/Indoor.svg" alt />
+                <img src="../../assets/images/indoor.svg" alt />
               </div>
             </div>
             <p>Indoor Swimming Pool</p>
@@ -96,7 +96,7 @@
           <div>
             <div class="icon-img">
               <div>
-                <img src="../../assets/images/Outdoor.svg" alt />
+                <img src="../../assets/images/outdoor.svg" alt />
               </div>
             </div>
             <p>Outdoor Swimming Pool</p>
@@ -116,7 +116,7 @@
           <div>
             <div class="icon-img">
               <div>
-                <img src="../../assets/images/Playground.svg" alt />
+                <img src="../../assets/images/playground.svg" alt />
               </div>
             </div>
             <p>Playground</p>
@@ -153,7 +153,7 @@
           <div>
             <div class="icon-img">
               <div>
-                <img src="../../assets/images/Wheelchair.svg" alt />
+                <img src="../../assets/images/wheelchair.svg" alt />
               </div>
             </div>
             <p>Wheelchair Access</p>
@@ -173,7 +173,7 @@
           <div>
             <div class="icon-img">
               <div>
-                <img src="../../assets/images/Doorman.svg" alt />
+                <img src="../../assets/images/doorman.svg" alt />
               </div>
             </div>
             <p>Doorman</p>

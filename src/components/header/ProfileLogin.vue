@@ -90,6 +90,7 @@ export default {
   top: -26px;
   font-size: 12px;
   right: 0;
+  cursor: pointer;
 }
 .btns > section {
   display: flex;
