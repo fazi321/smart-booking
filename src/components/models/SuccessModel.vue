@@ -30,7 +30,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  methods:{
+    close(){
+      this.$emit('close')
+    }
+  }
+};
 </script>
 
 <style scoped>

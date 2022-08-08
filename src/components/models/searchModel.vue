@@ -156,7 +156,7 @@ export default {
   data() {
     return {
       accountOpt: null,
-      step: 2,
+      step: 1,
       date: null,
     };
   },
@@ -171,7 +171,7 @@ export default {
       //   this.isSubmitted = true;
     },
     close() {
-      this.$parent.vendorModel = false;
+      this.$parent.searchModel = false;
     },
   },
 };

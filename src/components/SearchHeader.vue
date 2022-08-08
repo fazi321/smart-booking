@@ -72,7 +72,7 @@
         </div>
       </div>
       <!-- block -->
-      <div class="search-block search-btn">
+      <div class="search-block search-btn" @click="showModel">
         <div class="head-category">
           <div class="img">
             <img src="./../assets/images/icon-search.svg" alt="search" />
@@ -83,7 +83,7 @@
         </div>
       </div>
     </div>
-    <SearchModel :model="false" />
+    <SearchModel :model="searchModel" />
   </section>
 </template>
 
@@ -91,8 +91,18 @@
 import SearchModel from "./models/searchModel.vue";
 
 export default {
+  data() {
+    return {
+      searchModel: false,
+    };
+  },
   components: {
     SearchModel,
+  },
+  methods: {
+    showModel() {
+      this.searchModel = !this.searchModel;
+    },
   },
 };
 </script>

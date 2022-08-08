@@ -493,7 +493,7 @@
         </div>
       </div>
     </section>
-    <SuccessModel v-if="step == 6"/>
+    <SuccessModel v-if="step == 6" @close="close"/>
   </section>
 </template>
 

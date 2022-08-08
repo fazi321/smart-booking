@@ -96,7 +96,7 @@
         </div>
       </section>
       <!-- step Two -->
-      <SuccessModel v-if="nextStep == 1" />
+      <SuccessModel v-if="nextStep == 1" @close="close"/>
     </section>
   </section>
 </template>
