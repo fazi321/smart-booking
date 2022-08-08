@@ -11,9 +11,11 @@
     "@fawmi/vue-google-maps": "^0.9.72",
     "@vuepic/vue-datepicker": "^3.4.1",
     "core-js": "^3.8.3",
+    "multi-range-slider-vue": "^1.1.4",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3",
     "vue3-carousel": "^0.1.40",
+    "vuejs-paginate-next": "^1.0.2",
     "vuex": "^4.0.0"
   },
   "devDependencies": {

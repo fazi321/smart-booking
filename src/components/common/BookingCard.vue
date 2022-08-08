@@ -1,5 +1,5 @@
 <template>
-  <section class="smart-card" v-if="dataItem">
+  <router-link to="/hotel" class="smart-card" v-if="dataItem">
     <div class="image">
       <img :src="require(`../../assets/images/${dataItem.image}`)" />
     </div>
@@ -7,7 +7,7 @@
       <h5>{{dataItem.title}}</h5>
       <p>{{dataItem.categoryCount}}</p>
     </div>
-  </section>
+  </router-link>
 </template>
 
 <script>

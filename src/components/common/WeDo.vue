@@ -1,13 +1,13 @@
 <template>
-  <section class="what-card">
+  <router-link to="" class="what-card">
     <div class="image">
       <img :src="require(`../../assets/images/${dataItem.image}`)" />
     </div>
     <div class="detail">
       <h5>{{dataItem.title}}</h5>
-      <p>{{dataItem.text }} Your reservation is 100% guaranteed.</p>
+      <p>{{dataItem.text }} </p>
     </div>
-  </section>
+  </router-link>
 </template>
 
 <script>
@@ -40,6 +40,7 @@ export default {
 .what-card .detail {
   padding: 5px 0 10px 0;
   line-height: 1.8;
+  width: 80%;
 }
 .what-card .detail h5 {
   font-size: 14px;

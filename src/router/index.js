@@ -1,11 +1,65 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
+import Hotel from "../views/Hotel.vue";
+import HotelDetail from "../views/HotelDetail.vue";
+import Profile from "../views/Profile.vue";
+import Messages from "../views/Messages.vue";
+import ServiceBooking from "../views/ServiceBooking.vue";
+import ServiceDetail from "../views/ServiceDetail.vue";
+import Privacy from "../views/Privacy.vue";
+import Faqs from "../views/Faqs.vue";
+import Terms from "../views/Terms.vue";
 
 const routes = [
   {
     path: "/",
     name: "home",
     component: Home,
+  },
+  {
+    path: "/hotel",
+    name: "hotel",
+    component: Hotel,
+  },
+  {
+    path: "/hotel-detail",
+    name: "hotelDetail",
+    component: HotelDetail,
+  },
+  {
+    path: "/my-profile",
+    name: "profile",
+    component: Profile,
+  },
+  {
+    path: "/messages",
+    name: "messages",
+    component: Messages,
+  },
+  {
+    path: "/privacy",
+    name: "privacy",
+    component: Privacy,
+  },
+  {
+    path: "/faqs",
+    name: "faqs",
+    component: Faqs,
+  },
+  {
+    path: "/term-conditions",
+    name: "terms",
+    component: Terms,
+  },
+  {
+    path: "/service-booking",
+    name: "ServiceBooking",
+    component: ServiceBooking,
+  },
+  {
+    path: "/service-details",
+    name: "ServiceDetail",
+    component: ServiceDetail,
   },
   {
     path: "/about",

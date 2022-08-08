@@ -1,6 +1,6 @@
 <template>
   <footer class="footer">
-    <div class="footer-container">
+    <div class="footer-container container">
       <section class="footer-row">
         <div class="col">
           <h3 class="contact">CONTACT US</h3>
@@ -114,9 +114,7 @@ export default {
   width: 100%;
 }
 .footer .footer-container {
-  max-width: 1220px;
-  margin: 0 auto;
-   background: #e9ebee;
+  background: #e9ebee;
 }
 .footer .footer-row {
   padding: 15px;

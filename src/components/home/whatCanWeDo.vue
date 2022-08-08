@@ -4,11 +4,7 @@
       <h1>WHAT CAN WE DO FOR YOU?</h1>
     </div>
     <div class="card-container">
-      <WhatWeDo
-        v-for="(item, index) in WhatWeDo"
-        :dataItem="item"
-        :key="index"
-      />
+      <WhatWeDo v-for="(item, index) in WhatWeDo" :dataItem="item" :key="index" />
     </div>
   </div>
 </template>
@@ -18,16 +14,20 @@ import WhatWeDo from "@/components/common/WeDo.vue";
 export default {
   name: "WhatCanWeDo",
   components: {
-    WhatWeDo,
+    WhatWeDo
   },
   data() {
     return {
       WhatWeDo: [
-        { title: "Apartments", image: "apartment.svg", categoryCount: "681" },
-        { title: "Apartments", image: "apartment.svg", categoryCount: "681" },
-      ],
+        { title: "Instant Reservation", image: "reserve.svg", text: "Your reservation is 100% guaranteed." },
+        { title: "Customer service", image: "customer.svg", text: "We support you throughout the week" },
+        { title: "Advanced and intelligent search", image: "search.svg", text: "All kinds of search at your fingertips" },
+        { title: "Safe Payment Methods", image: "payment.svg", text: "Multiple and secure payment methods" },
+        { title: "Trusted Reviews", image: "review.svg", text: "Certified reviews and comments" },
+        { title: "Photos and videos", image: "photo.svg", text: "See photos from your place" }
+      ]
     };
-  },
+  }
 };
 </script>
 
@@ -41,5 +41,4 @@ export default {
 .smart-booking {
   padding: 10px 0;
 }
-
 </style>
