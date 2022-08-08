@@ -54,7 +54,7 @@
           </div>
         </div>
         <div>
-          <input type="date" placeholder="dd-mm-yyyy"/>
+          <input type="date" placeholder="dd-mm-yyyy" />
         </div>
       </div>
       <!-- block -->
@@ -68,7 +68,7 @@
           </div>
         </div>
         <div>
-          <input type="date" placeholder="dd-mm-yyyy"/>
+          <input type="date" placeholder="dd-mm-yyyy" ref="dateShow" />
         </div>
       </div>
       <!-- block -->
@@ -83,11 +83,18 @@
         </div>
       </div>
     </div>
+    <SearchModel :model="false" />
   </section>
 </template>
 
 <script>
-export default {};
+import SearchModel from "./models/searchModel.vue";
+
+export default {
+  components: {
+    SearchModel,
+  },
+};
 </script>
 
 <style scoped>

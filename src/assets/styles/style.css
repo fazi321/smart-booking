@@ -132,6 +132,46 @@ header.active .container .nav ul li a {
 .carousel__icon {
   fill: #000;
 }
+.date-container .dp__calendar_header_item div{
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.7;
+}
+.date-container .dp__calendar_header_item{
+  background: #eee;
+}
+.date-container .dp__calendar_row {
+  font-weight: 600;
+}
+.date-container .dp__today {
+  border:1px solid #FEBB12;
+}
+.date-container .dp__active_date{
+ background-color: #FEBB12;
+}
+.date-container .dp__relative{
+  border:unset;
+}
+.date-container .dp__cell_inner{
+  margin:0 8px;
+  height: 20px;
+  font-size: 12px;
+  width: 20px;
+}
+.date-container .dp__month_year_select {
+  width:100%;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.date-container .dp__month_year_select:nth-child(3){
+  display:none
+}
+.date-container .dp__calendar_header_separator{
+  display: none;
+}
+.date-container .dp__calendar_row >div:last-child{
+  color: #ef4056;
+}
 /* reponsive start */
 @media only screen and (max-width: 1199px) {
   .container {
