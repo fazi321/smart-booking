@@ -21,15 +21,31 @@
         <img src="../../assets/images/time.svg" />
         <input type="text" placeholder="Check-out time" />
       </div>
-      <div class="book-btn">
+      <div class="book-btn" @click="BookingModelShow">
         <button>Book</button>
       </div>
     </div>
+      <BookModel v-if="bookingModel" />
   </section>
 </template>
 
 <script>
-export default {};
+import BookModel from "@/components/models/BookModel.vue";
+export default {
+  components: {
+    BookModel
+  },
+  data() {
+    return {
+      bookingModel: false,
+    };
+  },
+  methods: {
+    BookingModelShow() {
+      this.bookingModel = !this.bookingModel;
+    },
+  }
+};
 </script>
 
 <style scoped>
@@ -98,6 +114,7 @@ export default {};
   letter-spacing: 0px;
   color: #04304b;
   font-size: 18px;
+  font-weight: 600;
   box-shadow: 0px 0px 10px #00000012;
   border-radius: 53px;
   opacity: 1;
