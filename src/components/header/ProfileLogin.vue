@@ -29,7 +29,7 @@ import LoginModel from "@/components/models/LoginModel.vue";
 import SignUpModel from "@/components/models/SignUpModel.vue";
 import VendorModel from "@/components/models/VendorModel.vue";
 import AddServiceModel from "@/components/models/AddServiceModel.vue";
-import DropDownMenu from "./DropDownMenu.vue";
+import DropDownMenu from "@/components/header/DropDownMenu.vue";
 export default {
   name: "webProfile",
   components: {
