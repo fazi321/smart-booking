@@ -5,7 +5,7 @@
     <LoginModel :model="loginModel" />
     <SignUpModel :model="signUpModel" />
     <VendorModel :model="vendorModel" />
-    <AddServiceModel :model="false"/>
+    <AddServiceModel :model="serviceModel"/>
   </section>
 </template>
 
@@ -27,6 +27,7 @@ export default {
       loginModel: false,
       signUpModel: false,
       vendorModel:false,
+      serviceModel:false,
     };
   },
   methods: {

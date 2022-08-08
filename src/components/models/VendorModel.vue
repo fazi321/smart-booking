@@ -1,7 +1,7 @@
 <template>
   <section :class="['login-signup', { active: model }]">
     <!-- step one -->
-    <div class="primary-login" v-if="!isSubmitted">
+    <section class="primary-login" v-if="!isSubmitted">
       <div class="main-login">
         <div class="logo-close">
           <div class="close-icon" @click="close">
@@ -36,11 +36,10 @@
           </div>
         </div>
       </div>
-    </div>
-    <!-- step one End -->
+    </section>
+    <!-- step Two -->
     <section class="main-section" v-if="isSubmitted">
-      <!-- step Two -->
-      <div class="primary-login company" v-if="!nextStep">
+      <section class="primary-login company" v-if="!nextStep">
         <div class="main-login">
           <div class="logo-close">
             <div class="close-icon" @click="close">
@@ -95,48 +94,21 @@
             </div>
           </div>
         </div>
-      </div>
-      <!-- step one Two -->
+      </section>
       <!-- step Two -->
-      <div class="primary-login success" v-if="nextStep == 1">
-        <div class="main-login">
-          <div class="logo-close">
-            <div class="close-icon" @click="close">
-              <img src="../../assets/images/close-icon.svg" alt="" />
-            </div>
-          </div>
-          <div class="headings">
-            <h1>Become Vendor</h1>
-          </div>
-          <div class="container-vendor">
-            <div class="success-img">
-              <img src="../../assets/images/success.svg" alt="" />
-            </div>
-            <div class="success-content">
-              <h5>Request Submitted Successfully!</h5>
-              <p>
-                Your request for become Vendor have been sent <br />
-                successfully. Once it approved you will get the <br />
-                notification.
-              </p>
-            </div>
-            <div class="form-container">
-              <div class="input-div">
-                <button type="submit">Next</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- step one Two -->
+      <SuccessModel v-if="nextStep == 1" />
     </section>
   </section>
 </template>
 
 <script>
+import SuccessModel from "@/components/models/SuccessModel.vue";
 export default {
   name: "vendorModel",
   props: ["model"],
+  components: {
+    SuccessModel,
+  },
   data() {
     return {
       phoneNumber: null,
@@ -391,7 +363,7 @@ h5 {
   border: none;
   box-shadow: 0px 0px 8px 2px #e9e8e8;
   color: #c4c4c4;
-  min-width: 235px;
+  min-width: 230px;
   margin: 8px 0;
 }
 .inputs-container input::placeholder {
@@ -411,32 +383,6 @@ h5 {
   color: #febb12;
   font-size: 12px;
 }
-/* step two end */
-
-/* step success start */
-.success-img {
-  width: 140px;
-  height: 144px;
-  margin-bottom: 20px;
-}
-.success .headings {
-  padding: 0 24px 0px 24px;
-}
-.success {
-  padding: 25px 25px 10px 25px;
-}
-.success-content h5 {
-  color: #000000;
-  margin: 16px 0;
-  font-size: 18px;
-}
-.success-content p {
-  color: #393f45;
-  font-size: 12px;
-  line-height: 1.8;
-}
-/* step success end */
-
 /* responsive */
 @media (max-width: 479px) and (min-width: 320px) {
   .primary-login {
