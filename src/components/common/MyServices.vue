@@ -26,7 +26,7 @@
 
 <script>
 export default {
-  name: "FilterCard"
+  name: "FilterCard",
 };
 </script>
 
@@ -36,11 +36,12 @@ export default {
   box-shadow: 0px 0px 10px #0000001a;
   border-radius: 20px;
   opacity: 1;
-  margin-bottom: 10px;
+  margin-bottom: 18px;
   cursor: pointer;
 }
 .filter-card .image {
-  width: 35%;
+  width: 28%;
+  padding-left: 10px;
 }
 .filter-card .image img {
   width: 100%;

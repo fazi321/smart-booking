@@ -1,6 +1,6 @@
 <template>
   <section class="search">
-    <div class="primary-search">
+    <div :class="['primary-search', {shadowFull : $route.path == '/'}]">
       <!-- block -->
       <div class="search-block">
         <div class="head-category">
@@ -112,14 +112,17 @@ export default {
   display: flex;
   justify-content: center;
 }
+
 .search .primary-search {
   display: flex;
   justify-content: space-between;
-  /* box-shadow: 0px 0px 6px 2px #cfcfcf6b; */
-  box-shadow: 0px 2px 4px 0px #cfcfcf6b;
+  box-shadow: 0px 0px 6px 2px #cfcfcf6b;
   border-radius: 5px;
   padding-left: 18px;
   background: #fff;
+}
+.shadowFull{
+  box-shadow: 0px 2px 4px 0px #cfcfcf6b!important;
 }
 .search .head-category {
   display: flex;

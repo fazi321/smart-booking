@@ -220,7 +220,7 @@
                   :class="{ active: serviceType == 'Indoor' }"
                   @click="selectedOptions('Indoor')"
                 >
-                  <img src="../../../assets/images/indoor.svg" alt="" />
+                  <img src="../../../assets/images/Indoor.svg" alt="" />
                   <h6>Indoor</h6>
                   <h6>Swimming Pool</h6>
                 </div>
@@ -228,7 +228,7 @@
                   :class="{ active: serviceType == 'Outdoor' }"
                   @click="selectedOptions('Outdoor')"
                 >
-                  <img src="../../../assets/images/outdoor.svg" alt="" />
+                  <img src="../../../assets/images/Outdoor.svg" alt="" />
                   <h6>Outdoor</h6>
                   <h6>Swimming Pool</h6>
                 </div>
@@ -244,7 +244,7 @@
                   :class="{ active: serviceType == 'Playground' }"
                   @click="selectedOptions('Playground')"
                 >
-                  <img src="../../../assets/images/playground.svg" alt="" />
+                  <img src="../../../assets/images/Playground.svg" alt="" />
                   <h6>Playground</h6>
                 </div>
                 <div
@@ -275,7 +275,7 @@
                   :class="{ active: serviceType == 'Wheelchair' }"
                   @click="selectedOptions('Wheelchair')"
                 >
-                  <img src="../../../assets/images/wheelchair.svg" alt="" />
+                  <img src="../../../assets/images/Wheelchair.svg" alt="" />
                    <h6>Wheelchair</h6>
                    <h6>Access</h6>
                 </div>
@@ -291,7 +291,7 @@
                   :class="{ active: serviceType == 'Doorman' }"
                   @click="selectedOptions('Doorman')"
                 >
-                  <img src="../../../assets/images/doorman.svg" alt="" />
+                  <img src="../../../assets/images/Doorman.svg" alt="" />
                   <h6>Doorman</h6>
                 </div>
               </div>

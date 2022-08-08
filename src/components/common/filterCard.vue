@@ -41,14 +41,14 @@ export default {
 <style scoped>
 .filter-card {
   display: flex;
-  box-shadow: 0px 0px 10px #0000001a;
-  border-radius: 20px;
-  opacity: 1;
-  margin-bottom: 10px;
+  box-shadow: 0px 0px 3px 2px #0000000d;
+  border-radius: 12px;
+  margin-bottom: 15px;
   cursor: pointer;
+  height: 185px;
 }
 .filter-card .image {
-  width: 25%;
+  width: 23%;
 }
 .filter-card .image img {
   width: 100%;
@@ -68,15 +68,15 @@ export default {
   letter-spacing: 0px;
   color: #000000;
   opacity: 0.8;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: normal;
 }
 .filter-card .card-detail .heading .wish {
   box-shadow: 0px 0px 10px #00000012;
   opacity: 1;
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  width: 42px;
+  height: 42px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -104,7 +104,7 @@ export default {
   letter-spacing: 2.04px;
   color: #febb12;
   opacity: 1;
-  font-size: 24px;
+  font-size: 18px;
   margin-right: 20px;
   font-weight: normal;
 }
@@ -123,7 +123,7 @@ export default {
   align-items: center;
 }
 .rating .star {
-  font-size: 32px;
+  font-size: 28px;
   color: #fdc350;
   margin-right: 5px;
   cursor: pointer;

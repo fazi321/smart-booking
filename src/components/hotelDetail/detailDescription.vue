@@ -20,15 +20,15 @@ export default {
   letter-spacing: 0px;
   color: #000000;
   opacity: 0.8;
-  font-size: 24px;
+  font-size: 18px;
   padding-bottom: 15px;
 }
 .description p {
-  font-size: 16px;
+  font-size: 14px;
   text-align: left;
   letter-spacing: 0px;
   color: #000000;
   opacity: 0.6;
-  line-height: 1.8;
+  line-height: 2.2;
 }
 </style>

@@ -86,7 +86,7 @@
           <div>
             <div class="icon-img">
               <div>
-                <img src="../../assets/images/indoor.svg" alt />
+                <img src="../../assets/images/Indoor.svg" alt />
               </div>
             </div>
             <p>Indoor Swimming Pool</p>
@@ -96,7 +96,7 @@
           <div>
             <div class="icon-img">
               <div>
-                <img src="../../assets/images/outdoor.svg" alt />
+                <img src="../../assets/images/Outdoor.svg" alt />
               </div>
             </div>
             <p>Outdoor Swimming Pool</p>
@@ -116,7 +116,7 @@
           <div>
             <div class="icon-img">
               <div>
-                <img src="../../assets/images/playground.svg" alt />
+                <img src="../../assets/images/Playground.svg" alt />
               </div>
             </div>
             <p>Playground</p>
@@ -153,7 +153,7 @@
           <div>
             <div class="icon-img">
               <div>
-                <img src="../../assets/images/wheelchair.svg" alt />
+                <img src="../../assets/images/Wheelchair.svg" alt />
               </div>
             </div>
             <p>Wheelchair Access</p>
@@ -173,7 +173,7 @@
           <div>
             <div class="icon-img">
               <div>
-                <img src="../../assets/images/doorman.svg" alt />
+                <img src="../../assets/images/Doorman.svg" alt />
               </div>
             </div>
             <p>Doorman</p>
@@ -211,7 +211,7 @@ export default {
   letter-spacing: 0px;
   color: #000000;
   opacity: 0.8;
-  font-size: 16px;
+  font-size: 12px;
 }
 .facility-card {
   display: flex;
@@ -233,8 +233,8 @@ export default {
   flex-direction: column;
 }
 .facility-card .icon-card .icon-img {
-  width: 70px;
-  height: 70px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   box-shadow: 0px 0px 10px #00000012;
   opacity: 1;

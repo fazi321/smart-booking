@@ -76,8 +76,8 @@ export default {
   box-shadow: 0px 0px 10px #00000012;
   opacity: 1;
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  width: 42px;
+  height: 42px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -105,7 +105,7 @@ export default {
   letter-spacing: 2.04px;
   color: #febb12;
   opacity: 1;
-  font-size: 20px;
+  font-size: 18px;
   margin-right: 10px;
   font-weight: normal;
 }

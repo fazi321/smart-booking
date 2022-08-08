@@ -29,13 +29,14 @@ export default {
 .filter-card {
   display: flex;
   box-shadow: 0px 0px 10px #0000001a;
-  border-radius: 20px;
+  border-radius: 12px;
   opacity: 1;
   margin-bottom: 20px;
   cursor: pointer;
 }
 .filter-card .image {
-  width: 40%;
+  width: 30%;
+  display: flex;
 }
 .filter-card .image img {
   width: 100%;
@@ -55,16 +56,16 @@ export default {
   letter-spacing: 0px;
   color: #000000;
   opacity: 0.8;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: normal;
   line-height: 1.5;
 }
 .filter-card .card-detail .heading .wish {
-  box-shadow: 0px 0px 10px #00000012;
+  box-shadow: 0px 0px 3px 2px #0000000d;
   opacity: 1;
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  width: 42px;
+  height: 42px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -79,7 +80,7 @@ export default {
   letter-spacing: 0px;
   color: #000000;
   opacity: 0.5;
-  font-size: 14px;
+  font-size: 12px;
   padding: 15px 0;
 }
 .filter-card .card-detail .sar {
@@ -109,7 +110,7 @@ export default {
   align-items: center;
 }
 .rating .star {
-  font-size: 32px;
+  font-size: 28px;
   color: #fdc350;
   margin-right: 5px;
   cursor: pointer;

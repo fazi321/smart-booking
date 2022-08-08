@@ -67,6 +67,6 @@ export default {
   flex-wrap: wrap;
 }
 .booking-cards .card {
-  width: 47%;
+  width: 49%;
 }
 </style>

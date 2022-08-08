@@ -41,6 +41,6 @@ export default {
   width: 60%;
 }
 .details-main .detail-right {
-  width: 35%;
+  width: 30%;
 }
 </style>

@@ -55,9 +55,15 @@ export default {
 };
 </script>
 
+<style>
+.search-wrapper .search .primary-search{
+  width: 70%;
+}
+</style>
 <style scoped>
 .search-wrapper{
   margin-bottom: 50px;
+  margin-top:10px;
 }
 .apartment-main {
   padding: 15px 0;

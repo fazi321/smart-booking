@@ -60,7 +60,7 @@ export default {
   letter-spacing: 0.6px;
   color: #231f20;
   opacity: 0.8;
-  font-size: 24px;
+  font-size: 18px;
   padding-top: 10px;
 }
 .overview {
@@ -94,7 +94,7 @@ export default {
   width: 38%;
 }
 .hotel-images .big-img img {
-  height: 380px;
+  height: 339px;
 }
 .small-images {
   display: flex;
@@ -105,7 +105,7 @@ export default {
   width: 48.5%;
 }
 .small-images div img {
-  height: 180px;
+  height: 160px;
   margin-bottom: 15px;
 }
 </style>

@@ -86,21 +86,20 @@ export default {};
 <style scoped>
 .dropdown {
   position: absolute;
-  bottom: -45px;
   background: #fff;
   box-shadow: 0px 0px 7px 0px #adadada6;
-  width: 100%;
+  width: 70%;
   text-align: left;
-  padding: 10px;
-  border-radius: 7px;
+  padding: 10px 14px;
+  border-radius: 14px;
   z-index: 2;
-  right: 22px;
-  top: 43px;
-  height: 530px;
+  right: 35px;
+  top: 50px;
+  min-height: 503px;
 }
 
 .dropdown ul li a {
-  color: #000;
+  color: #828282;
   display: flex;
   justify-content: space-between;
   font-size: 14px;

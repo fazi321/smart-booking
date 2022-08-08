@@ -10,7 +10,7 @@
       :minValue="oBarMinValue"
       :maxValue="oBarMaxValue"
       :max="500"
-      :min="-100"
+      :min="0"
       :step="5"
       :rangeMargin="0"
       @input="update_oBarValues"
@@ -25,12 +25,12 @@ import "../../../node_modules/multi-range-slider-vue/MultiRangeSliderBarOnly.css
 export default {
   data() {
     return {
-      oBarMinValue: 12,
-      oBarMaxValue: 350
+      oBarMinValue: 0,
+      oBarMaxValue: 500,
     };
   },
   components: {
-    MultiRangeSlider
+    MultiRangeSlider,
   },
   methods: {
     update_oBarValues(e) {
@@ -52,7 +52,7 @@ export default {
 }
 .multi-range-slider-bar-only .bar-inner {
   background-color: #febb12 !important;
-  height: 6px;
+  height: 5px;
   border: none !important;
   box-shadow: unset !important;
 }
@@ -60,8 +60,13 @@ export default {
   background-color: #febb12 !important;
   border: none !important;
   box-shadow: unset !important;
+  width: 18px;
+  height: 18px;
+  margin: -7px;
 }
-
+.multi-range-slider-bar-only .thumb .caption {
+  display: none!important;
+}
 .multi-range-slider-bar-only .thumb::after {
   background-color: #febb12 !important;
   border: none !important;
