@@ -424,7 +424,7 @@
           <h1>Price Details</h1>
           <h4>Add-Ons</h4>
         </div>
-        <section class="price price-unset">
+        <section class="price-unset">
           <div class="container-price">
             <div class="price-primary">
               <div class="head-price">
@@ -913,6 +913,9 @@ img {
 .booking {
   height: 350px;
   overflow-y: scroll;
+}
+.booking .head h1{
+  font-size:14px;
 }
 /* step three */
 .booking-type .cards {

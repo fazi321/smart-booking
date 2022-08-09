@@ -206,6 +206,9 @@ header.active .container .nav ul li a {
 .date-container .dp__calendar_row >div:last-child{
   color: #ef4056;
 }
+.head h1{
+  font-size:14px;
+}
 /* reponsive start */
 @media only screen and (max-width: 1199px) {
   .container {
