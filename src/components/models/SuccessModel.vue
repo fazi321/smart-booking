@@ -48,7 +48,7 @@ export default {
   overflow: hidden;
 }
 .success {
-  width: 46%;
+  width: 623px;
   background: #fff;
   height: fit-content;
   padding: 25px;

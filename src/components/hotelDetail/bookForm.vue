@@ -2,7 +2,7 @@
   <section class="form-book">
     <div class="book-container">
       <div class="heading">
-        <h6>SAR 120</h6>
+        <h6>SAR 120 </h6>
         <p>Per Night</p>
       </div>
       <div class="filter-option">
