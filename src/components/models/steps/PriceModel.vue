@@ -303,7 +303,7 @@
           <h4>Booking Type</h4>
         </div>
         <section class="booking-type">
-          <div class="booking-card">
+          <div class="booking-card book-instant">
             <div class="cards">
               <div :class="['primary-cards']">
                 <div class="rounded-btn"></div>
@@ -937,6 +937,9 @@ img {
   padding: 0;
   margin-bottom: 22px;
   position: relative;
+}
+.book-instant .primary-cards{
+  width: 47%!important;
 }
 .booking-type .primary-cards .category-img {
   width: 50px;
