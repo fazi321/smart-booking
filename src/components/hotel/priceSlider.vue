@@ -40,8 +40,8 @@ export default {
   },
 };
 </script> 
-<style >
-.price {
+<style scoped>
+.app-content .price {
   display: flex;
   justify-content: space-between;
   padding: 10px;
