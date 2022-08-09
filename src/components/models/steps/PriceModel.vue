@@ -820,11 +820,12 @@ img {
   display: flex;
 }
 .card-other .cards > div {
-  width: 205px;
+  width: 226px;
   align-items: flex-start;
   text-align: left;
   padding: 0px 19px;
   height: 80px;
+  margin: 10px 16px 14px 10px;
 }
 .card-other .content {
   line-height: 2;
