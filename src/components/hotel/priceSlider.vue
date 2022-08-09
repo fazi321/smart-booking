@@ -40,7 +40,7 @@ export default {
   },
 };
 </script> 
-<style scoped>
+<style >
 .app-content .price {
   display: flex;
   justify-content: space-between;
