@@ -41,7 +41,7 @@ export default {
 };
 </script> 
 <style >
-.price {
+.app-content .price {
   display: flex;
   justify-content: space-between;
   padding: 10px;

@@ -215,7 +215,7 @@ export default {
   visibility: visible;
 }
 .primary-login {
-  width: 623px;
+  width: 46%;
   background: #fff;
   height: fit-content;
   padding: 25px;
