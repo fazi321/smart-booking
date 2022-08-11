@@ -1,6 +1,6 @@
 <template>
   <section :class="['login-signup', { active: model }]">
-    <OtpModel @submited="checkOTP" :model="otpModel" />
+    <OtpModel @submited="checkOTP" :model="otpModel" :otpC="verifyOtp" />
     <div class="primary-login">
       <div class="main-login">
         <div class="logo-close">
@@ -96,7 +96,7 @@ export default {
       if (this.verifyOtp == val) {
         // var time = new Date(new Date().getTime() + 1 * 60 * 1000);
         Cookies.set("Authorization", this.userData.token, { expires: 7 });
-        this.$store.dispatch("auth/login", this.userData);
+        this.$store.dispatch("auth/login", this.userData.user);
         this.close();
         this.$swal({
           icon: "success",

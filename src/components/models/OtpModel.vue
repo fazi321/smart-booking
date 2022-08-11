@@ -1,6 +1,7 @@
 <template>
   <section :class="['login-signup', { active: model }]">
     <div class="primary-login">
+      <h1>{{otpC}}</h1>
       <div class="main-login">
         <div class="logo-close">
           <div class="logo">
@@ -48,7 +49,7 @@ import VOtpInput from "vue3-otp-input";
 
 export default {
   name: "LoginModel",
-  props: ["model"],
+  props: ["model", "otpC"],
   components: {
     VOtpInput,
   },

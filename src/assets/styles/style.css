@@ -221,6 +221,9 @@ header.active .container .nav ul li a {
   height: 40px;
   text-align: center;
 }
+.swal2-popup{
+  border:1px solid #febb12!important;
+}
 /* reponsive start */
 @media only screen and (max-width: 1199px) {
   .container {
