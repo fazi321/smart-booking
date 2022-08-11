@@ -1,7 +1,6 @@
 <template>
   <section class="btns">
-    <h1 @click="logedIn" class="demo-login">Login</h1>
-    <section v-if="loggedIn">
+    <section v-if="!$store.state.auth.user">
       <button class="btn btn-transparent" @click="vendorModelShow">
         Become Vendor
       </button>
@@ -12,7 +11,10 @@
     </section>
     <!-- after login -->
     <section v-else class="dropdown-container">
-      <button class="btn btn-transparent add-services" @click="serviceModelShow">
+      <button
+        class="btn btn-transparent add-services"
+        @click="serviceModelShow"
+      >
         Add Service
       </button>
       <div class="avatar">
@@ -45,8 +47,6 @@ export default {
       signUpModel: false,
       vendorModel: false,
       serviceModel: false,
-      // after logged in
-      loggedIn: true,
     };
   },
   methods: {
@@ -58,9 +58,6 @@ export default {
     },
     serviceModelShow() {
       this.serviceModel = !this.serviceModel;
-    },
-    logedIn() {
-      this.loggedIn = !this.loggedIn;
     },
   },
 };
@@ -79,11 +76,11 @@ export default {
   align-items: center;
   justify-content: center;
 }
-.add-services{
-  padding: 12px 35px!important;
+.add-services {
+  padding: 12px 35px !important;
 }
-.dropdown-container{
-  position:relative;
+.dropdown-container {
+  position: relative;
 }
 .demo-login {
   position: absolute;

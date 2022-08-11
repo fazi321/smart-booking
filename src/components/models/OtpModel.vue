@@ -1,6 +1,5 @@
 <template>
   <section :class="['login-signup', { active: model }]">
-    <OtpModel @submited="checkOTP" :model="otpModel" />
     <div class="primary-login">
       <div class="main-login">
         <div class="logo-close">
@@ -12,42 +11,31 @@
           </div>
         </div>
         <div class="headings">
-          <h1>login</h1>
-          <h4>Please Sign In to continue</h4>
+          <h1>Enter the code?</h1>
+          <h4>Enter the code that you received through SMS</h4>
         </div>
         <div class="login-form">
           <div class="form-container">
-            <form autocomplete="off" @submit.prevent="Login">
-              <div class="input-div">
-                <div class="input-primary">
-                  <div class="flag">
-                    <div class="flag-img">
-                      <img src="../../assets/images/flag.svg" alt="flag" />
-                    </div>
-                    <div>
-                      <span>+966</span>
-                    </div>
-                  </div>
-                  <div class="container-input">
-                    <input
-                      type="number"
-                      placeholder="Mobile Number"
-                      v-model="phoneNumber"
-                      required
-                    />
-                  </div>
-                  <div class="error" v-if="isError">Mobile Number Error!</div>
-                </div>
-              </div>
-              <div class="input-div">
-                <button v-if="!loading" type="submit">Login</button>
-                <button v-else>Loading...</button>
-              </div>
-            </form>
+            <v-otp-input
+              ref="otpInput"
+              input-classes="otp-input"
+              separator=""
+              :num-inputs="4"
+              :should-auto-focus="true"
+              :is-input-num="true"
+              @on-change="handleOnChange"
+              @on-complete="handleOnComplete"
+            />
           </div>
-          <div class="buttom-text">
+          <div class="input-div">
+            <button type="submit" v-if="otp.length == 4" @click="submitOtp">
+              Verify
+            </button>
+            <button class="submit-div" v-else>Verify</button>
+          </div>
+          <!-- <div class="buttom-text">
             Don’t Have an Account? <span @click="SignUpModel">Sign Up </span>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
@@ -55,68 +43,35 @@
 </template>
 
 <script>
-import OtpModel from "./OtpModel.vue";
-import Cookies from "js-cookie";
+// Import in a Vue component
+import VOtpInput from "vue3-otp-input";
 
 export default {
   name: "LoginModel",
   props: ["model"],
   components: {
-    OtpModel,
+    VOtpInput,
   },
   data() {
     return {
-      phoneNumber: null,
-      verifyOtp: "",
-      userData: {},
-      otpModel: false,
-      loading: false,
-      isError: false,
+      otp: "",
     };
   },
   methods: {
-    async Login() {
-      this.loading = true;
-      try {
-        const res = await this.$axios.post("/api/v1/user/login", {
-          phone: `92${this.phoneNumber}`,
-        });
-        if (res) {
-          this.otpModel = true;
-          this.verifyOtp = res.data.user.otp;
-          this.userData = res.data;
-          this.loading = false;
-        }
-      } catch (error) {
-        this.isError = true;
-        this.loading = false;
-      }
-    },
-    checkOTP(val) {
-      if (this.verifyOtp == val) {
-        // var time = new Date(new Date().getTime() + 1 * 60 * 1000);
-        Cookies.set("Authorization", this.userData.token, { expires: 7 });
-        this.$store.dispatch("auth/login", this.userData);
-        this.close();
-        this.$swal({
-          icon: "success",
-          title: "Success!",
-          showConfirmButton: false,
-          timer: 3000,
-        });
-      }
-    },
-    SignUpModel() {
-      this.$parent.loginModel = false;
-      this.$parent.signUpModel = true;
+    async submitOtp() {
+      this.$emit("submited", this.otp);
     },
     close() {
-      this.$parent.loginModel = false;
+      this.$parent.otpModel = false;
     },
-  },
-  watch: {
-    phoneNumber: function () {
-      this.isError = false;
+    handleOnComplete(value) {
+      this.otp = value;
+    },
+    handleOnChange(value) {
+      this.otp = value;
+    },
+    handleClearInput() {
+      this.$refs.otpInput.clearInput();
     },
   },
 };
@@ -128,10 +83,6 @@ export default {
   text-align: center;
   font-size: 14px;
   color: red;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  bottom: -35px;
 }
 .login-signup {
   position: fixed;
@@ -205,7 +156,6 @@ img {
   margin-bottom: 35px;
   align-items: center;
   width: 62%;
-  position: relative;
 }
 .container-input {
   width: 90%;
@@ -224,7 +174,9 @@ img {
 .form-container {
   display: flex;
   justify-content: center;
+  margin-bottom: 36px;
 }
+
 .form-container form {
   width: 100%;
 }
@@ -246,6 +198,9 @@ img {
   margin-bottom: 40px;
   box-shadow: 0px 2px 4px 1px #c9c9c9a6;
   cursor: pointer;
+}
+.input-div .submit-div {
+  background: #d1d1d1;
 }
 .input-div .flag {
   display: flex;
