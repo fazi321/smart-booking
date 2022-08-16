@@ -2,7 +2,7 @@
   <section class="btns">
     <section v-if="!$store.state.auth.user">
       <button class="btn btn-transparent" @click="vendorModelShow">
-        Become Vendor v
+        Become Vendor
       </button>
       <button class="btn btn-filled" @click="loginModelShow">Login</button>
       <LoginModel :model="loginModel" />
