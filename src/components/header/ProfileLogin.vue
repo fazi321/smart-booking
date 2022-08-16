@@ -17,10 +17,12 @@
       >
         Add Service
       </button>
-      <div class="avatar">
-        <img src="../../assets/images/profile.svg" alt="avatar" />
+      <div id="demo">
+        <div class="avatar" @click="toggleDropdown">
+          <img src="../../assets/images/profile.svg" alt="avatar" />
+        </div>
+        <DropDownMenu v-if="dropDown" />
       </div>
-      <DropDownMenu />
       <AddServiceModel :model="serviceModel" />
     </section>
   </section>
@@ -32,6 +34,7 @@ import SignUpModel from "@/components/models/SignUpModel.vue";
 import VendorModel from "@/components/models/VendorModel.vue";
 import AddServiceModel from "@/components/models/AddServiceModel.vue";
 import DropDownMenu from "../DropdownMenu.vue";
+
 export default {
   name: "webProfile",
   components: {
@@ -47,9 +50,27 @@ export default {
       signUpModel: false,
       vendorModel: false,
       serviceModel: false,
+      dropDown: false,
     };
   },
+  mounted() {
+    var close = () => {
+      this.dropDown = false;
+    };
+    window.addEventListener("click", function (e) {
+      var doc = document.getElementById("demo");
+      if (doc) {
+        var ele = doc.contains(e.target);
+        if (!ele) {
+          close();
+        }
+      }
+    });
+  },
   methods: {
+    toggleDropdown() {
+      this.dropDown = !this.dropDown;
+    },
     loginModelShow() {
       this.loginModel = !this.loginModel;
     },
@@ -58,6 +79,9 @@ export default {
     },
     serviceModelShow() {
       this.serviceModel = !this.serviceModel;
+    },
+    closeModal() {
+      console.log("working");
     },
   },
 };

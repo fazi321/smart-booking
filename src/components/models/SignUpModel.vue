@@ -17,7 +17,7 @@
         </div>
         <div class="login-form">
           <div class="form-container">
-            <form autocomplete="off" @submit.prevent="Login">
+            <form autocomplete="off" @submit.prevent="signUp">
               <div class="input-div">
                 <div class="input-primary">
                   <div class="flag">
@@ -73,7 +73,7 @@ export default {
     };
   },
   methods: {
-    async Login() {
+    async signUp() {
       this.loading = true;
       try {
         const res = await this.$axios.post("/api/v1/user/signup", {

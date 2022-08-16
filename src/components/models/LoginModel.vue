@@ -132,6 +132,7 @@ export default {
   bottom: 0;
   width: 100%;
   bottom: -35px;
+  left:0;
 }
 .login-signup {
   position: fixed;

@@ -2,7 +2,6 @@
   <section class="container hotel-slider">
     <carousel
       :settings="settings"
-      :autoplay="false"
       :wrap-around="true"
       :breakpoints="breakpoints"
       class="carousel-container"

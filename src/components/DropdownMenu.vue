@@ -91,6 +91,9 @@ export default {
         showConfirmButton: false,
         timer: 3000,
       });
+      setTimeout(() => {
+        this.$router.push("/");
+      }, 2000);
     },
   },
 };

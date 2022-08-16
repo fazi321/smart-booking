@@ -1,5 +1,6 @@
 import axios from "@/services/axios";
 import Cookies from "js-cookie";
+import authHeader from '../services/authHeaders'
 
 export default {
   namespaced: true,
@@ -22,40 +23,12 @@ export default {
     login({ commit }, payload) {
       commit("SET_USER", payload);
     },
-    async signUp({ commit }, payload) {
-      commit("SET_LOADING", true);
-      try {
-        const res = await axios().post("/api/v1/user/signup", {
-          phone: payload,
-        });
-        if (res) {
-          // var time = new Date(new Date().getTime() + 1 * 60 * 1000);
-          Cookies.set("Authorization", res.data.token, { expires: 7 });
-          commit("SET_USER", res.data);
-          commit("SET_LOADING", false);
-          return res.data;
-        }
-      } catch (error) {
-        commit("SET_LOADING", false);
-      }
-    },
     async profile({ commit }) {
-      var config = () => {
-        var cookie = Cookies.get("Authorization");
-        if (cookie) {
-          var con = {
-            headers: {
-              Authorization: `Bearer ${cookie}`,
-            },
-          };
-          return con;
-        }
-      };
-      const userData = await axios().get("/api/v1/user/profile", config());
+      const userData = await axios().get("/api/v1/user/profile", authHeader());
       commit("SET_USER", userData.data);
     },
     logOut({ commit }) {
-      Cookies.remove("Authorization")
+      Cookies.remove("Authorization");
       commit("LOGOUT", null);
     },
   },

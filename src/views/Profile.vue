@@ -15,15 +15,51 @@
           <h6>Personal Information</h6>
           <form class="form">
             <div>
-              <input type="text" placeholder="First Name" />
-              <input type="text" placeholder="Last Name" />
-              <input type="number" placeholder="Mobile Number" />
-              <input type="email" placeholder="Email" />
-              <input type="text" placeholder="Nationality" />
-              <input type="number" placeholder="ID Number" />
-              <input type="text" placeholder="Address" />
-              <input type="number" placeholder="Date of Birth" />
-              <input type="text" placeholder="Gender" />
+              <input
+                type="text"
+                placeholder="First Name"
+                v-model="userProfile.firstName"
+              />
+              <input
+                type="text"
+                placeholder="Last Name"
+                v-model="userProfile.lastName"
+              />
+              <input
+                type="number"
+                placeholder="Mobile Number"
+                v-model="userProfile.phone"
+              />
+              <input
+                type="email"
+                placeholder="Email"
+                v-model="userProfile.email"
+              />
+              <input
+                type="text"
+                placeholder="Nationality"
+                v-model="userProfile.nationality"
+              />
+              <input
+                type="number"
+                placeholder="ID Number"
+                v-model="userProfile.commId"
+              />
+              <input
+                type="text"
+                placeholder="Address"
+                v-model="userProfile.address"
+              />
+              <input
+                type="text"
+                placeholder="Date of Birth"
+                v-model="userProfile.dob"
+              />
+              <input
+                type="text"
+                style="visibility: hidden"
+                placeholder="Gender"
+              />
             </div>
             <input class="submit" type="submit" value="Update" />
           </form>
@@ -35,17 +71,75 @@
 
 <script>
 import DefaultLayout from "@/components/layouts/DefaultLayout.vue";
+import Cookies from "js-cookie";
 
 export default {
   name: "HotelDetailView",
   components: {
     DefaultLayout,
   },
+  data() {
+    return {
+      userProfile: {},
+    };
+  },
   mounted() {
-    const user = this.$store.state.auth.user;
-    if (!user.firstName) {
-      this.$store.dispatch("auth/profile");
+    let auth = Cookies.get("Authorization");
+    if (!auth) {
+      this.$router.push("/");
     }
+  },
+  methods: {
+    getProfile() {
+      // if not user
+      // const user = this.$store.state.auth.user;
+      // if (!user) {
+      //   this.$store.dispatch("auth/profile");
+      // }
+      // Set user data
+      if (this.$store.state.auth.user) {
+        var {
+          firstName,
+          lastName,
+          phone,
+          email,
+          nationality,
+          commId,
+          address,
+          dob,
+        } = this.$store.state.auth.user;
+        this.userProfile.firstName = firstName;
+        this.userProfile.lastName = lastName;
+        this.userProfile.phone = phone;
+        this.userProfile.email = email;
+        this.userProfile.nationality = nationality;
+        this.userProfile.commId = commId;
+        this.userProfile.address = address;
+        this.userProfile.dob = this.formatDated(dob);
+      }
+    },
+    formatDated(date) {
+      var d = new Date(date),
+        month = "" + (d.getMonth() + 1),
+        day = "" + d.getDate(),
+        year = d.getFullYear();
+
+      if (month.length < 2) month = "0" + month;
+      if (day.length < 2) day = "0" + day;
+      if (year && month && day) {
+        return [year, month, day].join("-");
+      } else {
+        return;
+      }
+    },
+  },
+  watch: {
+    "$store.state.auth.user": {
+      immediate: true,
+      handler() {
+        this.getProfile();
+      },
+    },
   },
 };
 </script>
