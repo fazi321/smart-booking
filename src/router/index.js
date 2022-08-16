@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
-import Hotel from "../views/Hotel.vue";
+import Listings from "../views/Listings.vue";
 import HotelDetail from "../views/HotelDetail.vue";
 import Profile from "../views/Profile.vue";
 import Messages from "../views/Messages.vue";
@@ -19,9 +19,9 @@ const routes = [
     component: Home,
   },
   {
-    path: "/hotel",
-    name: "hotel",
-    component: Hotel,
+    path: "/:category",
+    name: "category",
+    component: Listings,
   },
   {
     path: "/hotel-detail",

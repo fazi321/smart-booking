@@ -103,7 +103,7 @@
                 </div>
                 <div>
                   <input
-                    type="number"
+                    type="text"
                     placeholder="Commercial ID No"
                     v-model="vendor.commId"
                   />

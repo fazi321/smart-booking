@@ -1,7 +1,7 @@
 <template>
   <div class="container apartment-main">
     <div class="search-wrapper">
-      <SearchHeader/>
+      <SearchHeader />
     </div>
     <Filters />
     <div class="apartment-wrapper">
@@ -9,12 +9,11 @@
         <HotelFilters />
       </div>
       <div class="apartment-right">
-        <FilterCard />
-        <FilterCard />
-        <FilterCard />
-        <FilterCard />
-        <FilterCard />
-        <FilterCard />
+        <FilterCard
+          v-for="(items, index) in dataCard"
+          :key="index"
+          :item="items"
+        />
         <div class="pagination-container">
           <paginate
             :page-range="3"
@@ -33,8 +32,8 @@
 </template>
 
 <script>
-import Filters from "../hotel/filter.vue";
-import HotelFilters from "../hotel/hotelFliters.vue";
+import Filters from "./filter.vue";
+import HotelFilters from "./hotelFliters.vue";
 import FilterCard from "../common/filterCard.vue";
 import SearchHeader from "../SearchHeader.vue";
 import Paginate from "vuejs-paginate-next";
@@ -45,25 +44,53 @@ export default {
     HotelFilters,
     FilterCard,
     Paginate,
-    SearchHeader
+    SearchHeader,
+  },
+  data() {
+    return {
+      dataCard: [],
+    };
   },
   methods: {
+    async getData() {
+      var catType = this.$route.params.category;
+      if (catType) {
+        var cat =
+          catType != "farms" && catType != "resorts"
+            ? catType.slice(0, -1)
+            : catType;
+        try {
+          var res = await this.$axios.get(`/api/v1/${cat}`);
+          this.dataCard = res.data;
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    },
     clickCallback(num) {
       this.$refs.slider.slideTo(num);
-    }
-  }
+    },
+  },
+  watch: {
+    $route: {
+      immediate: true,
+      handler() {
+        this.getData();
+      },
+    },
+  },
 };
 </script>
 
 <style>
-.search-wrapper .search .primary-search{
+.search-wrapper .search .primary-search {
   width: 70%;
 }
 </style>
 <style scoped>
-.search-wrapper{
+.search-wrapper {
   margin-bottom: 50px;
-  margin-top:10px;
+  margin-top: 10px;
 }
 .apartment-main {
   padding: 15px 0;

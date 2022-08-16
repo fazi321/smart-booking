@@ -1,19 +1,19 @@
 <template>
-  <sction>
+  <section>
     <Header />
-    <Hotel />
-  </sction>
+    <Listing />
+  </section>
 </template>
 
 <script>
 import Header from "@/components/header/index.vue";
-import Hotel from "@/components/hotel/index.vue";
+import Listing from "@/components/listings/index.vue";
 
 export default {
   name: "AparmentView",
   components: {
     Header,
-    Hotel,
+    Listing,
   },
 };
 </script>

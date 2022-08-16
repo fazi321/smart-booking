@@ -348,7 +348,7 @@
 </template>
 
 <script>
-import PriceSlider from "../hotel/priceSlider.vue";
+import PriceSlider from "./priceSlider.vue";
 export default {
   name: "HotelFilters",
   components: {

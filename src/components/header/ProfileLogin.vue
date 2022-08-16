@@ -80,9 +80,6 @@ export default {
     serviceModelShow() {
       this.serviceModel = !this.serviceModel;
     },
-    closeModal() {
-      console.log("working");
-    },
   },
 };
 </script>

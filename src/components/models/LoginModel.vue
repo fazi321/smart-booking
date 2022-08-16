@@ -96,6 +96,7 @@ export default {
       if (this.verifyOtp == val) {
         // var time = new Date(new Date().getTime() + 1 * 60 * 1000);
         Cookies.set("Authorization", this.userData.token, { expires: 7 });
+        this.$axios.defaults.headers.common["Authorization"] =  `bearer ${this.userData.token}`
         this.$store.dispatch("auth/login", this.userData.user);
         this.close();
         this.$swal({

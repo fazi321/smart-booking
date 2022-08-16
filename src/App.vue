@@ -7,7 +7,7 @@ export default {
   beforeCreate() {
     let auth = Cookies.get("Authorization");
     if (auth) {
-      this.$axios.defaults.headers.common["Authorization"] = auth;
+      this.$axios.defaults.headers.common["Authorization"] =  `bearer ${auth}`;
       this.$store.dispatch("auth/profile");
     } else {
       this.$axios.defaults.headers.common["Authorization"] = "";

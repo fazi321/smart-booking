@@ -15,7 +15,8 @@
           </svg>
         </div>
       </div>
-      <p>Riyadh, KSA</p>
+      <!-- <p>Riyadh, KSA</p> -->
+      <p>{{item.address.address}}</p>
       <div class="rating">
         <span class="star">&starf;</span>
         <span class="star">&starf;</span>
@@ -34,7 +35,8 @@
 
 <script>
 export default {
-  name: "FilterCard"
+  props: ["item"],
+  name: "FilterCard",
 };
 </script>
 
@@ -139,32 +141,32 @@ export default {
   font-size: 14px;
 }
 .favourite .filter-card .card-detail .heading h5 {
-  font-size: 16px!important;
+  font-size: 16px !important;
   font-weight: 600;
 }
-.favourite .rating .star{
-  font-size: 28px!important;
+.favourite .rating .star {
+  font-size: 28px !important;
 }
-.favourite .filter-card .card-detail p{
-  font-size: 12px!important;
+.favourite .filter-card .card-detail p {
+  font-size: 12px !important;
 }
-.favourite .filter-card .card-detail .sar h6{
-  font-size: 18px!important;
+.favourite .filter-card .card-detail .sar h6 {
+  font-size: 18px !important;
 }
-.favourite .filter-card .card-detail .sar{
-  padding-top: 5px!important;
+.favourite .filter-card .card-detail .sar {
+  padding-top: 5px !important;
 }
-.favourite .filter-card .card-detail .sar p{
-  font-size: 12px!important;
-  padding-top: 10px!important;
+.favourite .filter-card .card-detail .sar p {
+  font-size: 12px !important;
+  padding-top: 10px !important;
 }
-.favourite .rating{
-  padding: 10px 0!important;
+.favourite .rating {
+  padding: 10px 0 !important;
 }
-.favourite .filter-card .image{
-  width: 35%!important;
+.favourite .filter-card .image {
+  width: 35% !important;
 }
-.favourite .filter-card .card-detail{
-  width: 60%!important;
+.favourite .filter-card .card-detail {
+  width: 60% !important;
 }
 </style>
