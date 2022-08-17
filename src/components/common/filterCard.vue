@@ -5,7 +5,7 @@
     </div>
     <div class="card-detail">
       <div class="heading">
-        <h5>Lorem Ipsum Farm</h5>
+        <h5>{{item.description.nameInEnglish}}</h5>
         <div class="wish">
           <svg class="svg-icon" viewBox="0 0 20 20">
             <path
@@ -26,7 +26,7 @@
         <span class="rating-counter">(381)</span>
       </div>
       <div class="sar">
-        <h6>SAR 120</h6>
+        <h6>SAR {{item.price.dayPrice}}</h6>
         <p>Per Night</p>
       </div>
     </div>
