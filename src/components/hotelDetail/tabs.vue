@@ -2,13 +2,30 @@
   <section>
     <div class="detail-tabs">
       <div class="tabs">
-        <p class="active">Facilities</p>
-        <p>Reviews</p>
-        <p>Terms & Conditions</p>
-        <p>Map</p>
+        <p
+          :class="{ active: tab == 'Facilities' }"
+          @click="selected('Facilities')"
+        >
+          Facilities
+        </p>
+        <p :class="{ active: tab == 'Reviews' }" @click="selected('Reviews')">
+          Reviews
+        </p>
+        <p :class="{ active: tab == 'Terms' }" @click="selected('Terms')">
+          Terms & Conditions
+        </p>
+        <p :class="{ active: tab == 'Map' }" @click="selected('Map')">Map</p>
       </div>
     </div>
-    <Facilities/>
+    <Facilities v-if="tab == 'Facilities'" />
+    <Facilities v-if="tab == 'Reviews'" />
+    <section v-if="tab == 'Terms'" class="terms">
+      <p v-if="storeState.terms">{{ storeState.terms }}</p>
+      <p v-else>NOT FOUND</p>
+    </section>
+    <section v-if="tab == 'Map'" class="terms">
+      <p>Map</p>
+    </section>
   </section>
 </template>
 
@@ -16,13 +33,34 @@
 import Facilities from "@/components/hotelDetail/facilities.vue";
 export default {
   name: "DetailTabs",
-   components: {
-    Facilities
-  }
+  components: {
+    Facilities,
+  },
+  computed: {
+    storeState: function () {
+      return this.$store.state.details.details;
+    },
+  },
+  data() {
+    return {
+      tab: "Facilities",
+    };
+  },
+  methods: {
+    selected(val) {
+      this.tab = val;
+    },
+  },
 };
 </script>
 
 <style scoped>
+.terms p {
+  text-align: left;
+  font-size: 14px;
+  color: #c2c2c2;
+  line-height: 1.5;
+}
 .detail-tabs {
   display: flex;
   justify-content: center;

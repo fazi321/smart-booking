@@ -1,5 +1,5 @@
 <template>
-  <router-link to="/hotel-detail" class="filter-card">
+  <router-link :to="`${$route.path}/${item._id}`" class="filter-card">
     <div class="image">
       <img src="../../assets/images/hotel-img.svg" />
     </div>

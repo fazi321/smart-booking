@@ -78,7 +78,7 @@ export default {
     async Login() {
       this.loading = true;
       try {
-        const res = await this.$axios.post("/api/v1/user/login", {
+        const res = await this.$axios.post("user/login", {
           phone: `92${this.phoneNumber}`,
         });
         if (res) {

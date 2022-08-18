@@ -169,12 +169,12 @@ export default {
         var res = {};
         if (this.accountOpt == "host") {
           res = await this.$axios.put(
-            "/api/v1/user/upgrade-vender-host",
+            "user/upgrade-vender-host",
             this.vendor
           );
         } else {
           res = await this.$axios.put(
-            "/api/v1/user/upgrade-vender-company",
+            "user/upgrade-vender-company",
             this.vendor
           );
         }

@@ -4,10 +4,10 @@
     <div class="details-main container">
       <section class="detail-left">
         <HotelDescription />
-        <DetailTabs/>
+        <DetailTabs />
       </section>
       <section class="detail-right">
-        <FormBook/>
+        <FormBook />
       </section>
     </div>
   </default-layout>
@@ -27,8 +27,19 @@ export default {
     HotelCard,
     HotelDescription,
     DetailTabs,
-    FormBook
-  }
+    FormBook,
+  },
+  mounted() {
+    this.getDetail();
+  },
+  methods: {
+    async getDetail() {
+      var { cat, id } = this.$route.params;
+      var cate = cat != "farms" && cat != "resorts" ? cat.slice(0, -1) : cat;
+      var q = { cate, id };
+      this.$store.dispatch("details/getDetail", q);
+    },
+  },
 };
 </script>
 <style scoped>

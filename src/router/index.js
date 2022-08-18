@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
 import Listings from "../views/Listings.vue";
-import HotelDetail from "../views/HotelDetail.vue";
+import Detail from "../views/Detail.vue";
 import Profile from "../views/Profile.vue";
 import Messages from "../views/Messages.vue";
 import ServiceBooking from "../views/ServiceBooking.vue";
@@ -24,9 +24,9 @@ const routes = [
     component: Listings,
   },
   {
-    path: "/hotel-detail",
-    name: "hotelDetail",
-    component: HotelDetail,
+    path: "/:cat/:id",
+    name: "Detail",
+    component: Detail,
   },
   {
     path: "/my-profile",

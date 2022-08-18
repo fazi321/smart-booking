@@ -76,7 +76,7 @@ export default {
     async signUp() {
       this.loading = true;
       try {
-        const res = await this.$axios.post("/api/v1/user/signup", {
+        const res = await this.$axios.post("user/signup", {
           phone: `92${this.phoneNumber}`,
         });
         if (res) {

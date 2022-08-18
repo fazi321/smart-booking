@@ -2,12 +2,14 @@
   <section class="container">
     <div class="hotel-wrapper">
       <div class="title">
-        <h2>Lorem Ipsum Hotel</h2>
+        <h2 v-if="storeState.description">
+          {{ storeState.description.nameInEnglish }}
+        </h2>
       </div>
       <div class="overview">
         <div class="icon">
           <img src="../../assets/images/place.svg" alt />
-          <p>Riyadh</p>
+          <p v-if="storeState.address">{{ storeState.address.city }}</p>
         </div>
         <div class="icon">
           <img src="../../assets/images/star.svg" alt />
@@ -19,7 +21,9 @@
         </div>
         <div class="icon">
           <img src="../../assets/images/family.svg" alt />
-          <p>For Families</p>
+          <p v-if="storeState.bookingSetting">
+            {{ storeState.bookingSetting.bookingFor }}
+          </p>
         </div>
         <div class="icon">
           <img src="../../assets/images/glob.svg" alt />
@@ -47,7 +51,12 @@
 
 <script>
 export default {
-  name: "HotelCard"
+  name: "HotelCard",
+  computed: {
+    storeState: function () {
+      return this.$store.state.details.details;
+    },
+  },
 };
 </script>
 

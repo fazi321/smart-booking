@@ -60,7 +60,7 @@ export default {
             ? catType.slice(0, -1)
             : catType;
         try {
-          var res = await this.$axios.get(`/api/v1/${cat}`);
+          var res = await this.$axios.get(`${cat}`);
           this.dataCard = res.data;
         } catch (error) {
           console.log(error);

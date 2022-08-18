@@ -24,7 +24,7 @@ export default {
       commit("SET_USER", payload);
     },
     async profile({ commit }) {
-      const userData = await axios().get("/api/v1/user/profile", authHeader());
+      const userData = await axios().get("user/profile", authHeader());
       commit("SET_USER", userData.data);
     },
     logOut({ commit }) {
