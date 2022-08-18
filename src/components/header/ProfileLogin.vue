@@ -7,12 +7,14 @@
       <button class="btn btn-filled" @click="loginModelShow">Login</button>
       <LoginModel :model="loginModel" />
       <SignUpModel :model="signUpModel" />
-      <VendorModel :model="vendorModel" />
     </section>
     <!-- after login -->
     <section v-else class="dropdown-container">
+      <button class="btn btn-transparent" @click="vendorModelShow">
+        Become Vendor
+      </button>
       <button
-        class="btn btn-transparent add-services"
+        class="btn btn-filled add-services"
         @click="serviceModelShow"
       >
         Add Service
@@ -24,6 +26,7 @@
         <DropDownMenu v-if="dropDown" />
       </div>
       <AddServiceModel :model="serviceModel" />
+      <VendorModel :model="vendorModel" />
     </section>
   </section>
 </template>
@@ -34,6 +37,7 @@ import SignUpModel from "@/components/models/SignUpModel.vue";
 import VendorModel from "@/components/models/VendorModel.vue";
 import AddServiceModel from "@/components/models/AddServiceModel.vue";
 import DropDownMenu from "../DropdownMenu.vue";
+import Cookies from "js-cookie";
 
 export default {
   name: "webProfile",
@@ -75,6 +79,11 @@ export default {
       this.loginModel = !this.loginModel;
     },
     vendorModelShow() {
+      let auth = Cookies.get("Authorization");
+      if (!auth) {
+        this.loginModelShow();
+        return;
+      }
       this.vendorModel = !this.vendorModel;
     },
     serviceModelShow() {
@@ -98,10 +107,14 @@ export default {
   justify-content: center;
 }
 .add-services {
-  padding: 12px 35px !important;
+  padding: 12px 20px!important;
+  margin-right: 10px;
 }
 .dropdown-container {
   position: relative;
+}
+.dropdown-container .btn{
+  padding:10px 10px;
 }
 .demo-login {
   position: absolute;

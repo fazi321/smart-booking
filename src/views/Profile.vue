@@ -13,7 +13,7 @@
         </div>
         <div class="profile-form">
           <h6>Personal Information</h6>
-          <form class="form">
+          <form class="form" @submit="onSubmit">
             <div>
               <input
                 type="text"
@@ -61,7 +61,12 @@
                 placeholder="Gender"
               />
             </div>
-            <input class="submit" type="submit" value="Update" />
+            <input
+              :disabled="loading"
+              class="submit"
+              type="submit"
+              :value="!loading ? 'Update' : 'loading'"
+            />
           </form>
         </div>
       </div>
@@ -81,6 +86,7 @@ export default {
   data() {
     return {
       userProfile: {},
+      loading: false,
     };
   },
   mounted() {
@@ -90,6 +96,28 @@ export default {
     }
   },
   methods: {
+    async onSubmit(e) {
+      e.preventDefault();
+      try {
+        this.loading = true;
+        var res = await this.$axios.put(
+          "user/profile/update",
+          this.userProfile
+        );
+        if (res) {
+          this.$swal({
+            icon: "success",
+            title: "Success!",
+            showConfirmButton: false,
+            timer: 3000,
+          });
+          this.loading = false;
+        }
+      } catch (error) {
+        this.loading = false;
+        console.log(error);
+      }
+    },
     getProfile() {
       // if not user
       // const user = this.$store.state.auth.user;

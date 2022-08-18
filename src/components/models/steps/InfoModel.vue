@@ -95,16 +95,66 @@
           <div>
             <div class="inputs-container">
               <div>
-                <input type="text" placeholder="Sections" />
+                <input
+                  type="text"
+                  placeholder="Sections"
+                  v-model="unitsAndGuest.section"
+                />
               </div>
               <div>
-                <input type="text" placeholder="Bedrooms" />
+                <input
+                  type="text"
+                  placeholder="Bedrooms"
+                  v-model="unitsAndGuest.bedrooms"
+                />
               </div>
               <div>
-                <input type="text" placeholder="Double Beds" />
+                <input
+                  type="text"
+                  placeholder="Room Type"
+                  v-model="unitsAndGuest.roomType"
+                />
               </div>
               <div>
-                <input type="text" placeholder="Single Beds" />
+                <input
+                  type="text"
+                  placeholder="number Units"
+                  v-model="unitsAndGuest.numberUnits"
+                />
+              </div>
+              <div>
+                <input
+                  type="text"
+                  placeholder="number Children"
+                  v-model="unitsAndGuest.numberChildren"
+                />
+              </div>
+              <div>
+                <input
+                  type="text"
+                  placeholder="single Beds"
+                  v-model="unitsAndGuest.singleBeds"
+                />
+              </div>
+              <div>
+                <input
+                  type="text"
+                  placeholder="living Room"
+                  v-model="unitsAndGuest.livingRoom"
+                />
+              </div>
+              <div>
+                <input
+                  type="text"
+                  placeholder="bathrooms"
+                  v-model="unitsAndGuest.bathrooms"
+                />
+              </div>
+              <!-- <div>
+                <input type="text" placeholder="Double Beds" v-model="unitsAndGuest.boubleBeds"/>
+              </div>
+              <div>
+                <input type="text" placeholder="Single Beds" v-model="unitsAndGuest.singleBeds" />
               </div>
               <div>
                 <input type="text" placeholder="Indoor Seating" />
@@ -120,7 +170,7 @@
               </div>
               <div>
                 <input type="text" placeholder="Maximum Guests" />
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
@@ -152,50 +202,50 @@
             <div class="container-service container-amenities">
               <div class="cards">
                 <div
-                  :class="{ active: serviceType == 'Chalets' }"
-                  @click="selectedOptions('Chalets')"
+                  :class="{ active: isExist('Gym') }"
+                  @click="selectedAmenities('Gym')"
                 >
                   <img src="../../../assets/images/gym.svg" alt="" />
                   <h6>Gym</h6>
                 </div>
                 <div
-                  :class="{ active: serviceType == 'Billiard' }"
-                  @click="selectedOptions('Billiard')"
+                  :class="{ active: isExist('Billiard') }"
+                  @click="selectedAmenities('Billiard')"
                 >
                   <img src="../../../assets/images/Billiard.svg" alt="" />
                   <h6>Billiard</h6>
                 </div>
                 <div
-                  :class="{ active: serviceType == 'Tennis Court' }"
-                  @click="selectedOptions('Tennis Court')"
+                  :class="{ active: isExist('Tennis Court') }"
+                  @click="selectedAmenities('Tennis Court')"
                 >
                   <img src="../../../assets/images/Tennis.svg" alt="" />
                   <h6>Tennis Court</h6>
                 </div>
                 <div
-                  :class="{ active: serviceType == 'Air Hockey' }"
-                  @click="selectedOptions('Air Hockey')"
+                  :class="{ active: isExist('Air Hockey') }"
+                  @click="selectedAmenities('Air Hockey')"
                 >
                   <img src="../../../assets/images/hockey.svg" alt="" />
                   <h6>Air Hockey</h6>
                 </div>
                 <div
-                  :class="{ active: serviceType == 'Trampoline' }"
-                  @click="selectedOptions('Trampoline')"
+                  :class="{ active: isExist('Trampoline') }"
+                  @click="selectedAmenities('Trampoline')"
                 >
                   <img src="../../../assets/images/Trampoline.svg" alt="" />
                   <h6>Trampoline</h6>
                 </div>
                 <div
-                  :class="{ active: serviceType == 'Soccer Field' }"
-                  @click="selectedOptions('Soccer Field')"
+                  :class="{ active: isExist('Soccer Field') }"
+                  @click="selectedAmenities('Soccer Field')"
                 >
                   <img src="../../../assets/images/SoccerField.svg" alt="" />
                   <h6>Soccer Field</h6>
                 </div>
                 <div
-                  :class="{ active: serviceType == 'Vollyball' }"
-                  @click="selectedOptions('Vollyball')"
+                  :class="{ active: isExist('Vollyball') }"
+                  @click="selectedAmenities('Vollyball')"
                 >
                   <img src="../../../assets/images/Vollyball.svg" alt="" />
                   <h6>Vollyball</h6>
@@ -210,46 +260,46 @@
             <div class="container-service container-amenities">
               <div class="cards">
                 <div
-                  :class="{ active: serviceType == 'Steam Bath' }"
-                  @click="selectedOptions('Steam Bath')"
+                  :class="{ active: isExist('Steam Bath') }"
+                  @click="selectedAmenities('Steam Bath')"
                 >
                   <img src="../../../assets/images/SteamBath.svg" alt="" />
                   <h6>Steam Bath</h6>
                 </div>
                 <div
-                  :class="{ active: serviceType == 'Indoor' }"
-                  @click="selectedOptions('Indoor')"
+                  :class="{ active: isExist('Indoor') }"
+                  @click="selectedAmenities('Indoor')"
                 >
                   <img src="../../../assets/images/indoor.svg" alt="" />
                   <h6>Indoor</h6>
                   <h6>Swimming Pool</h6>
                 </div>
                 <div
-                  :class="{ active: serviceType == 'Outdoor' }"
-                  @click="selectedOptions('Outdoor')"
+                  :class="{ active: isExist('Outdoor') }"
+                  @click="selectedAmenities('Outdoor')"
                 >
                   <img src="../../../assets/images/outdoor.svg" alt="" />
                   <h6>Outdoor</h6>
                   <h6>Swimming Pool</h6>
                 </div>
                 <div
-                  :class="{ active: serviceType == 'Swimming Pool' }"
-                  @click="selectedOptions('Swimming Pool')"
+                  :class="{ active: isExist('Swimming Pool') }"
+                  @click="selectedAmenities('Swimming Pool')"
                 >
                   <img src="../../../assets/images/SwimmingPool.svg" alt="" />
                   <h6>Swimming Pool</h6>
                   <h6>Heater</h6>
                 </div>
                 <div
-                  :class="{ active: serviceType == 'Playground' }"
-                  @click="selectedOptions('Playground')"
+                  :class="{ active: isExist('Playground') }"
+                  @click="selectedAmenities('Playground')"
                 >
                   <img src="../../../assets/images/playground.svg" alt="" />
                   <h6>Playground</h6>
                 </div>
                 <div
-                  :class="{ active: serviceType == 'Hot Tub' }"
-                  @click="selectedOptions('Hot Tub')"
+                  :class="{ active: isExist('Hot Tub') }"
+                  @click="selectedAmenities('Hot Tub')"
                 >
                   <img src="../../../assets/images/HotTub.svg" alt="" />
                   <h6>Hot Tub</h6>
@@ -264,32 +314,32 @@
             <div class="container-service container-amenities">
               <div class="cards">
                 <div
-                  :class="{ active: serviceType == '24 Hours' }"
-                  @click="selectedOptions('24 Hours')"
+                  :class="{ active: isExist('24 Hours') }"
+                  @click="selectedAmenities('24 Hours')"
                 >
                   <img src="../../../assets/images/24Hours.svg" alt="" />
                   <h6>24 Hours</h6>
-                   <h6>Access</h6>
+                  <h6>Access</h6>
                 </div>
                 <div
-                  :class="{ active: serviceType == 'Wheelchair' }"
-                  @click="selectedOptions('Wheelchair')"
+                  :class="{ active: isExist('Wheelchair') }"
+                  @click="selectedAmenities('Wheelchair')"
                 >
                   <img src="../../../assets/images/wheelchair.svg" alt="" />
-                   <h6>Wheelchair</h6>
-                   <h6>Access</h6>
+                  <h6>Wheelchair</h6>
+                  <h6>Access</h6>
                 </div>
                 <div
-                  :class="{ active: serviceType == 'Private' }"
-                  @click="selectedOptions('Private')"
+                  :class="{ active: isExist('Private') }"
+                  @click="selectedAmenities('Private')"
                 >
                   <img src="../../../assets/images/Private.svg" alt="" />
                   <h6>Private</h6>
                   <h6>Entrance</h6>
                 </div>
                 <div
-                  :class="{ active: serviceType == 'Doorman' }"
-                  @click="selectedOptions('Doorman')"
+                  :class="{ active: isExist('Doorman') }"
+                  @click="selectedAmenities('Doorman')"
                 >
                   <img src="../../../assets/images/doorman.svg" alt="" />
                   <h6>Doorman</h6>
@@ -300,7 +350,7 @@
         </section>
         <div class="form-container">
           <div class="input-div step-btn">
-            <button type="submit">Next</button>
+            <button type="submit" @click="lastStepClicked">Next</button>
           </div>
         </div>
       </div>
@@ -321,11 +371,28 @@ export default {
       nextStep: null,
       step: 1,
       // istransition: false,
+      AmenitieSelected: [],
+      unitsAndGuest: {},
+      leisure: {},
     };
   },
   methods: {
+    isExist(val) {
+      return this.AmenitieSelected.indexOf(val) !== -1;
+    },
     selectedOptions(opt) {
       this.serviceType = opt;
+    },
+    selectedAmenities(val) {
+      if (!this.isExist(val)) {
+        this.AmenitieSelected.push(val);
+        this.leisure[val] = true;
+      } else {
+        this.AmenitieSelected = this.AmenitieSelected.filter(function (value) {
+          return value != val;
+        });
+        delete this.leisure[val];
+      }
     },
     changeStep(step) {
       if (!this.serviceType) return;
@@ -333,7 +400,14 @@ export default {
       this.isSubmitted = true;
     },
     close() {
-      this.$emit('close')
+      this.$emit("close");
+    },
+    lastStepClicked() {
+      var basicInfo = {};
+      basicInfo.unitsAndGuest = this.unitsAndGuest;
+      basicInfo.leisure = this.leisure;
+      this.$parent.accountOpt = "service";
+      this.$emit("basicInfo", basicInfo);
     },
   },
 };
@@ -549,8 +623,8 @@ img {
   height: 90px;
   margin: 10px 36px 14px 0px;
 }
-.container-amenities .cards > div h6{
-  font-size:12px;
+.container-amenities .cards > div h6 {
+  font-size: 12px;
 }
 .container-amenities .cards > div:nth-child(4n + 0) {
   margin-right: 0;

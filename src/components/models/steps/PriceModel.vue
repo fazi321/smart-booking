@@ -16,7 +16,7 @@
           <div class="container-price">
             <div class="price-primary">
               <div class="head-price">
-                <h5>Name</h5>
+                <h5>Name </h5>
                 <h5>Price</h5>
               </div>
             </div>
@@ -26,12 +26,12 @@
                 <label class="container-input"
                   >Weekdays
                   <p>(Sun-Wed)</p>
-                  <input type="checkbox" />
+                  <input type="checkbox" v-model="price.weekdays"/>
                   <span class="checkmark"></span>
                 </label>
               </div>
               <div class="input-price">
-                <input type="text" />
+                <input type="text" v-model="price.weekdays"/>
               </div>
             </div>
             <!-- block -->
@@ -516,6 +516,7 @@ export default {
       checkOut: null,
       serviceType: null,
       // date picker
+      price:{},
     };
   },
   methods: {

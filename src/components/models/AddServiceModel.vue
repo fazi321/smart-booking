@@ -69,9 +69,9 @@
       </div>
     </div>
     <!-- basic information start -->
-    <InfoModel v-if="isSubmitted && accountOpt == 'info'" :model="true" @close="close"/>
+    <InfoModel v-if="isSubmitted && accountOpt == 'info'" :model="true" @close="close" @basicInfo="basicData"/>
     <!-- Description start -->
-    <ServiceModel v-if="isSubmitted && accountOpt == 'service'" :model="true" @close="close"/>
+    <ServiceModel v-if="isSubmitted && accountOpt == 'service'" :model="true" @close="close" @decription="decription"/>
     <!-- price start -->
     <PriceModel v-if="isSubmitted && accountOpt == 'price'" :model="true"  @close="close"/>
   </section>
@@ -97,6 +97,12 @@ export default {
     };
   },
   methods: {
+    basicData(val){
+      console.log(val, 'basic')
+    },
+    decription(val){
+     console.log(val, 'description')
+    },
     selectedOptions(opt) {
       this.accountOpt = opt;
     },

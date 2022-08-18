@@ -17,42 +17,42 @@
             <div>
               <label class="container-input"
                 >Events & Parties allowed
-                <input type="checkbox" />
+                <input type="checkbox" v-model="rules.EventsPartiesallowed" />
                 <span class="checkmark"></span>
               </label>
             </div>
             <div>
               <label class="container-input"
                 >Pets Allowed
-                <input type="checkbox" />
+                <input type="checkbox" v-model="rules.petsAllowed" />
                 <span class="checkmark"></span>
               </label>
             </div>
             <div>
               <label class="container-input"
                 >Smoking Allowed
-                <input type="checkbox" />
+                <input type="checkbox" v-model="rules.smokingAllowed" />
                 <span class="checkmark"></span>
               </label>
             </div>
             <div>
               <label class="container-input"
                 >Suitable for Childrens (2-14)
-                <input type="checkbox" />
+                <input type="checkbox" v-model="rules.suitableForChildrens" />
                 <span class="checkmark"></span>
               </label>
             </div>
             <div>
               <label class="container-input"
                 >Suitable for grooms
-                <input type="checkbox" />
+                <input type="checkbox" v-model="rules.suitableForGrooms" />
                 <span class="checkmark"></span>
               </label>
             </div>
             <div>
               <label class="container-input"
                 >Suitable for Infants (Under 2)
-                <input type="checkbox" />
+                <input type="checkbox" v-model="rules.suitableForInfants" />
                 <span class="checkmark"></span>
               </label>
             </div>
@@ -82,21 +82,38 @@
           <div>
             <div class="inputs-container">
               <div>
-                <input type="text" placeholder="Service Name (English)" />
+                <input
+                  type="text"
+                  placeholder="Service Name (English)"
+                  v-model="description.nameInEnglish"
+                />
               </div>
               <div>
-                <input type="text" placeholder="Service Name (Arabic)" />
+                <input
+                  type="text"
+                  placeholder="Service Name (Arabic)"
+                  v-model="description.nameInArabic"
+                />
               </div>
               <div>
-                <input type="text" placeholder="Secondary Phone Number" />
+                <input
+                  type="text"
+                  placeholder="Secondary Phone Number"
+                  v-model="description.secondryPhone"
+                />
               </div>
               <div>
-                <input type="text" placeholder="Area" />
+                <input
+                  type="text"
+                  placeholder="Area"
+                  v-model="description.areaSqm"
+                />
               </div>
               <div>
                 <input
                   type="text"
                   placeholder="Property Description (English)"
+                  v-model="description.descriptionInEnglish"
                 />
               </div>
               <div>
@@ -106,6 +123,7 @@
                 <input
                   type="text"
                   placeholder="Property Description (Arabic)"
+                  v-model="description.descriptionInArabic"
                 />
               </div>
             </div>
@@ -145,33 +163,53 @@
             <div>
               <div class="inputs-container">
                 <div>
-                  <input type="text" placeholder="Address" />
-                </div>
-                <div>
-                  <input type="text" placeholder="Property Number" />
-                </div>
-                <div>
-                  <input type="text" placeholder="City" />
-                </div>
-                <div>
-                  <input type="text" placeholder="Area" />
-                </div>
-                <div>
-                  <input type="text" placeholder="Landmark" />
+                  <input
+                    type="text"
+                    placeholder="Address"
+                    v-model="address.address"
+                  />
                 </div>
                 <div>
                   <input
                     type="text"
-                    placeholder="Property Description (Arabic)"
+                    placeholder="Property Number"
+                    v-model="address.houseNumber"
                   />
                 </div>
+                <div>
+                  <input
+                    type="text"
+                    placeholder="City"
+                    v-model="address.city"
+                  />
+                </div>
+                <div>
+                  <input
+                    type="text"
+                    placeholder="Area"
+                    v-model="address.area"
+                  />
+                </div>
+                <div>
+                  <input
+                    type="text"
+                    placeholder="Landmark"
+                    v-model="address.landMark"
+                  />
+                </div>
+                <!-- <div>
+                  <input
+                    type="text"
+                    placeholder="Property Description (Arabic)"
+                  />
+                </div> -->
               </div>
             </div>
           </div>
         </div>
         <div class="form-container">
           <div class="input-div step-btn">
-            <button type="submit">Next</button>
+            <button type="submit" @click="submited">Next</button>
           </div>
         </div>
       </div>
@@ -191,10 +229,28 @@ export default {
   data() {
     return {
       nextStep: null,
+      rules: {},
+      description: {},
+      address: {},
       step: 1,
     };
   },
   methods: {
+    submited() {
+      const newObj = {};
+      for (const [key, value] of Object.entries(this.rules)) {
+        if (value) {
+          newObj[key] = value;
+        }
+      }
+      var finalDetail = {
+        description: { rules: { ...newObj }, ...this.description },
+        address: { ...this.address },
+      };
+      console.log(finalDetail);
+      this.$emit("decription", finalDetail);
+      this.$parent.accountOpt = "price";
+    },
     changeStep(step) {
       // if (!this.serviceType) return;
       this.step = step;

@@ -104,7 +104,7 @@ export default {
   position: absolute;
   background: #fff;
   box-shadow: 0px 0px 7px 0px #adadada6;
-  width: 70%;
+  width: 160px;
   text-align: left;
   padding: 10px 14px;
   border-radius: 14px;
