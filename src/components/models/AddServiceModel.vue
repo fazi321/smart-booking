@@ -1,7 +1,7 @@
 <template>
   <section :class="['login-signup', { active: model }]">
     <!-- step one -->
-    <div class="primary-login" v-if="!isSubmitted">
+    <div class="primary-login" v-if="step == 1">
       <div class="main-login add-services">
         <div class="logo-close">
           <div class="close-icon" @click="close">
@@ -68,12 +68,68 @@
         </div>
       </div>
     </div>
-    <!-- basic information start -->
-    <InfoModel v-if="isSubmitted && accountOpt == 'info'" :model="true" @close="close" @basicInfo="basicData"/>
-    <!-- Description start -->
-    <ServiceModel v-if="isSubmitted && accountOpt == 'service'" :model="true" @close="close" @decription="decription"/>
-    <!-- price start -->
-    <PriceModel v-if="isSubmitted && accountOpt == 'price'" :model="true"  @close="close"/>
+    <!-- categories -->
+    <div class="primary-login" v-if="step == 2">
+      <div class="main-login add-services">
+        <div class="logo-close">
+          <div class="close-icon" @click="close">
+            <img src="../../assets/images/close-icon.svg" alt="" />
+          </div>
+        </div>
+        <div class="headings">
+          <h1>Basic Information</h1>
+          <h4>Service type</h4>
+        </div>
+        <div class="container-service">
+          <div class="cards">
+            <div
+              v-for="(item, index) in categories"
+              :key="index"
+              :class="{
+                active: serviceType && serviceType.category == item.category,
+              }"
+              @click="selectedCategory(item)"
+            >
+              <h6 v-if="item.category != 'Wedding_Halls'">
+                {{ item.category }}
+              </h6>
+              <div v-if="item.category == 'Wedding_Halls'">
+                <h6>Wedding</h6>
+                <h6>Halls</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-container">
+          <div class="input-div step-btn">
+            <button type="submit" @click="changeSteps">Next</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section v-if="serviceType && serviceType.category == 'Resorts'">
+      <!-- basic information start -->
+      <InfoModel
+        v-if="isSubmitted && accountOpt == 'info'"
+        :model="true"
+        @close="close"
+        @basicInfo="basicData"
+      />
+      <!-- Description start -->
+      <ServiceModel
+        v-if="isSubmitted && accountOpt == 'service'"
+        :model="true"
+        @close="close"
+        @decription="decription"
+      />
+      <!-- price start -->
+      <PriceModel
+        v-if="isSubmitted && accountOpt == 'price'"
+        :model="true"
+        @close="close"
+        @price="pricing"
+      />
+    </section>
   </section>
 </template>
 
@@ -94,26 +150,83 @@ export default {
       accountOpt: null,
       isSubmitted: false,
       nextStep: null,
+      step: 1,
+      categories: [],
+      //  detail
+      serviceType: {},
+      basicD: {},
+      dataDec: {},
+      dataP: {},
+      finalData: {},
     };
   },
   methods: {
-    basicData(val){
-      console.log(val, 'basic')
+    selectedCategory(opt) {
+      this.serviceType = opt;
     },
-    decription(val){
-     console.log(val, 'description')
+    basicData(val) {
+      this.basicD = val;
+    },
+    decription(val) {
+      this.dataDec = val;
+    },
+    pricing(val) {
+      this.dataP = val;
+      var dataPayload = {
+        ...this.basicD,
+        ...this.dataDec,
+        ...this.dataP,
+        categoryId: this.serviceType._id,
+      };
+      this.finalData = this.dataPayload;
+      console.log(dataPayload);
+      this.submit(dataPayload);
+    },
+    async submit(payload) {
+      var cate = this.serviceType.category.toLowerCase();
+      try {
+        const res = await this.$axios.post(cate, payload);
+        if (res) {
+          console.log(res);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    changeSteps() {
+      this.isSubmitted = true;
     },
     selectedOptions(opt) {
       this.accountOpt = opt;
     },
     accountSelected() {
       if (!this.accountOpt) return;
-      this.isSubmitted = true;
+      this.step = 2;
+      // this.isSubmitted = true;
+    },
+    async getCategories() {
+      try {
+        var res = await this.$axios.get("services/categories");
+        this.categories = res.data;
+      } catch (error) {
+        console.log(error);
+      }
     },
     close() {
-      this.isSubmitted = false;
+      (this.accountOpt = null),
+        (this.isSubmitted = false),
+        (this.nextStep = null),
+        (this.serviceType = null),
+        (this.isSubmitted = false);
+      this.step = 1;
+      this.basicD = {};
+      this.dataDec = {};
+      this.dataP = {};
       this.$parent.serviceModel = false;
     },
+  },
+  mounted() {
+    this.getCategories();
   },
 };
 </script>
@@ -274,4 +387,34 @@ img {
 .container-vendor .primary-cards h5 {
   font-size: 14px;
 }
+/* categories */
+.container-service {
+  display: flex;
+  overflow: hidden;
+  justify-content: center;
+}
+.container-service .cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 90%;
+}
+.container-service .cards > div {
+  box-shadow: 0 1px 12px -2px #00000040;
+  width: 106px;
+  height: 76px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  margin: 10px 10px 14px 10px;
+  border-radius: 10px;
+  font-size: 24px;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+.container-service .cards .active {
+  border: 1px solid #febb12;
+}
+/* categories */
 </style>

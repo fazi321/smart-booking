@@ -10,64 +10,95 @@
         </div>
         <div class="headings">
           <h1>Basic Information</h1>
-          <h4>Service type</h4>
+          <h4>Rooms & Guests</h4>
         </div>
-        <div class="container-service">
-          <div class="cards">
-            <div
-              :class="{ active: serviceType == 'Chalets' }"
-              @click="selectedOptions('Chalets')"
-            >
-              <h6>Chalets</h6>
-            </div>
-            <div
-              :class="{ active: serviceType == 'Resorts' }"
-              @click="selectedOptions('Resorts')"
-            >
-              <h6>Resorts</h6>
-            </div>
-            <div
-              :class="{ active: serviceType == 'Stadium' }"
-              @click="selectedOptions('Stadium')"
-            >
-              <h6>Stadium</h6>
-            </div>
-            <div
-              :class="{ active: serviceType == 'Apartment' }"
-              @click="selectedOptions('Apartment')"
-            >
-              <h6>Apartment</h6>
-            </div>
-            <div
-              :class="{ active: serviceType == 'Lounges' }"
-              @click="selectedOptions('Lounges')"
-            >
-              <h6>Lounges</h6>
-            </div>
-            <div
-              :class="{ active: serviceType == 'Camps' }"
-              @click="selectedOptions('Camps')"
-            >
-              <h6>Camps</h6>
-            </div>
-            <div
-              :class="{ active: serviceType == 'Wedding' }"
-              @click="selectedOptions('Wedding')"
-            >
-              <h6>Wedding</h6>
-              <h6>Halls</h6>
-            </div>
-            <div
-              :class="{ active: serviceType == 'Farms' }"
-              @click="selectedOptions('Farms')"
-            >
-              <h6>Farms</h6>
-            </div>
-            <div
-              :class="{ active: serviceType == 'Hotel' }"
-              @click="selectedOptions('Hotel')"
-            >
-              <h6>Hotel</h6>
+        <div class="container-vendor">
+          <div>
+            <div class="inputs-container">
+              <div>
+                <input
+                  type="text"
+                  placeholder="Number of Rooms"
+                  v-model="roomsGuest.numRooms"
+                />
+              </div>
+              <!-- <div>
+                <input
+                  type="text"
+                  placeholder="Bedrooms"
+                  v-model="unitsAndGuest.bedrooms"
+                />
+              </div> -->
+              <div>
+                <input
+                  type="test"
+                  placeholder="Section"
+                  v-model="roomsGuest.section"
+                />
+              </div>
+              <div>
+                <input
+                  type="number"
+                  placeholder="bedrooms"
+                  v-model="roomsGuest.bedrooms"
+                />
+              </div>
+              <div>
+                <input
+                  type="number"
+                  placeholder="doubleBed"
+                  v-model="roomsGuest.doubleBed"
+                />
+              </div>
+              <div>
+                <input
+                  type="number"
+                  placeholder="singleBed"
+                  v-model="roomsGuest.singleBed"
+                />
+              </div>
+              <div>
+                <input
+                  type="number"
+                  placeholder="max Guest"
+                  v-model="roomsGuest.maxGuest"
+                />
+              </div>
+              <div>
+                <input
+                  type="number"
+                  placeholder="bathrooms"
+                  v-model="roomsGuest.bathrooms"
+                />
+              </div>
+              <!-- <div>
+                <input
+                  type="number"
+                  placeholder="living Room"
+                  v-model="unitsAndGuest.livingRoom"
+                />
+              </div> -->
+              <div class="rules">
+                <label class="container-input"
+                  >Indoor Seating
+                  <input type="checkbox" v-model="roomsGuest.indoorSeating" />
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+              <div class="rules">
+                <label class="container-input"
+                  >Outdoor Seating
+                  <input type="checkbox" v-model="roomsGuest.outdoorSeating" />
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+              <div class="rules">
+                <label class="container-input"
+                  >Addition Seating
+                  <input type="checkbox" v-model="roomsGuest.additionSeating" />
+                  <span class="checkmark"></span>
+                </label>
+              </div>
             </div>
           </div>
         </div>
@@ -78,112 +109,9 @@
         </div>
       </div>
     </div>
-    <!-- step one End -->
-    <!-- step two -->
-    <div class="primary-login" v-if="step == 2">
-      <div class="main-login add-services">
-        <div class="logo-close">
-          <div class="close-icon" @click="close">
-            <img src="../../../assets/images/close-icon.svg" alt="" />
-          </div>
-        </div>
-        <div class="headings">
-          <h1>Basic Information</h1>
-          <h4>Rooms & Guests</h4>
-        </div>
-        <div class="container-vendor">
-          <div>
-            <div class="inputs-container">
-              <div>
-                <input
-                  type="text"
-                  placeholder="Sections"
-                  v-model="unitsAndGuest.section"
-                />
-              </div>
-              <div>
-                <input
-                  type="text"
-                  placeholder="Bedrooms"
-                  v-model="unitsAndGuest.bedrooms"
-                />
-              </div>
-              <div>
-                <input
-                  type="text"
-                  placeholder="Room Type"
-                  v-model="unitsAndGuest.roomType"
-                />
-              </div>
-              <div>
-                <input
-                  type="text"
-                  placeholder="number Units"
-                  v-model="unitsAndGuest.numberUnits"
-                />
-              </div>
-              <div>
-                <input
-                  type="text"
-                  placeholder="number Children"
-                  v-model="unitsAndGuest.numberChildren"
-                />
-              </div>
-              <div>
-                <input
-                  type="text"
-                  placeholder="single Beds"
-                  v-model="unitsAndGuest.singleBeds"
-                />
-              </div>
-              <div>
-                <input
-                  type="text"
-                  placeholder="living Room"
-                  v-model="unitsAndGuest.livingRoom"
-                />
-              </div>
-              <div>
-                <input
-                  type="text"
-                  placeholder="bathrooms"
-                  v-model="unitsAndGuest.bathrooms"
-                />
-              </div>
-              <!-- <div>
-                <input type="text" placeholder="Double Beds" v-model="unitsAndGuest.boubleBeds"/>
-              </div>
-              <div>
-                <input type="text" placeholder="Single Beds" v-model="unitsAndGuest.singleBeds" />
-              </div>
-              <div>
-                <input type="text" placeholder="Indoor Seating" />
-              </div>
-              <div>
-                <input type="text" placeholder="Outdoor Seating" />
-              </div>
-              <div>
-                <input type="text" placeholder="Additional Seating" />
-              </div>
-              <div>
-                <input type="text" placeholder="Bathrooms" />
-              </div>
-              <div>
-                <input type="text" placeholder="Maximum Guests" />
-              </div> -->
-            </div>
-          </div>
-        </div>
-        <div class="form-container">
-          <div class="input-div step-btn">
-            <button type="submit" @click="changeStep(3)">Next</button>
-          </div>
-        </div>
-      </div>
-    </div>
     <!-- step two End -->
     <!-- step three -->
-    <div class="primary-login" v-if="step == 3">
+    <div class="primary-login" v-if="step == 2">
       <div class="main-login add-services">
         <div class="logo-close">
           <div class="close-icon" @click="close">
@@ -202,53 +130,88 @@
             <div class="container-service container-amenities">
               <div class="cards">
                 <div
-                  :class="{ active: isExist('Gym') }"
-                  @click="selectedAmenities('Gym')"
+                  :class="{ active: isExist('gym') }"
+                  @click="selectedAmenities('gym')"
                 >
                   <img src="../../../assets/images/gym.svg" alt="" />
                   <h6>Gym</h6>
                 </div>
                 <div
-                  :class="{ active: isExist('Billiard') }"
-                  @click="selectedAmenities('Billiard')"
+                  :class="{ active: isExist('billard') }"
+                  @click="selectedAmenities('billard')"
                 >
                   <img src="../../../assets/images/Billiard.svg" alt="" />
                   <h6>Billiard</h6>
                 </div>
                 <div
-                  :class="{ active: isExist('Tennis Court') }"
-                  @click="selectedAmenities('Tennis Court')"
+                  :class="{ active: isExist('tennisCourt') }"
+                  @click="selectedAmenities('tennisCourt')"
                 >
                   <img src="../../../assets/images/Tennis.svg" alt="" />
                   <h6>Tennis Court</h6>
                 </div>
                 <div
-                  :class="{ active: isExist('Air Hockey') }"
-                  @click="selectedAmenities('Air Hockey')"
+                  :class="{ active: isExist('airHockeyTable') }"
+                  @click="selectedAmenities('airHockeyTable')"
                 >
                   <img src="../../../assets/images/hockey.svg" alt="" />
                   <h6>Air Hockey</h6>
                 </div>
                 <div
-                  :class="{ active: isExist('Trampoline') }"
-                  @click="selectedAmenities('Trampoline')"
+                  :class="{ active: isExist('soccerField') }"
+                  @click="selectedAmenities('soccerField')"
                 >
-                  <img src="../../../assets/images/Trampoline.svg" alt="" />
-                  <h6>Trampoline</h6>
-                </div>
-                <div
-                  :class="{ active: isExist('Soccer Field') }"
-                  @click="selectedAmenities('Soccer Field')"
-                >
-                  <img src="../../../assets/images/SoccerField.svg" alt="" />
+                  <img src="../../../assets/images/hockey.svg" alt="" />
                   <h6>Soccer Field</h6>
                 </div>
                 <div
-                  :class="{ active: isExist('Vollyball') }"
-                  @click="selectedAmenities('Vollyball')"
+                  :class="{ active: isExist('volleyBall') }"
+                  @click="selectedAmenities('volleyBall')"
                 >
-                  <img src="../../../assets/images/Vollyball.svg" alt="" />
-                  <h6>Vollyball</h6>
+                  <img src="../../../assets/images/hockey.svg" alt="" />
+                  <h6>Volley Ball</h6>
+                </div>
+                <div
+                  :class="{ active: isExist('trambolin') }"
+                  @click="selectedAmenities('trambolin')"
+                >
+                  <img src="../../../assets/images/hockey.svg" alt="" />
+                  <h6>Trambolin</h6>
+                </div>
+                <div
+                  :class="{ active: isExist('airSlider') }"
+                  @click="selectedAmenities('airSlider')"
+                >
+                  <img src="../../../assets/images/HotTub.svg" alt="" />
+                  <h6>Air Slider</h6>
+                </div>
+                <div
+                  :class="{ active: isExist('sandGames') }"
+                  @click="selectedAmenities('sandGames')"
+                >
+                  <img src="../../../assets/images/HotTub.svg" alt="" />
+                  <h6>Sand Games</h6>
+                </div>
+                <div
+                  :class="{ active: isExist('waterGames') }"
+                  @click="selectedAmenities('waterGames')"
+                >
+                  <img src="../../../assets/images/HotTub.svg" alt="" />
+                  <h6>Water Games</h6>
+                </div>
+                <div
+                  :class="{ active: isExist('hotTub') }"
+                  @click="selectedAmenities('hotTub')"
+                >
+                  <img src="../../../assets/images/HotTub.svg" alt="" />
+                  <h6>hotTub</h6>
+                </div>
+                <div
+                  :class="{ active: isExist('steamBath') }"
+                  @click="selectedAmenities('steamBath')"
+                >
+                  <img src="../../../assets/images/HotTub.svg" alt="" />
+                  <h6>Steam Bath</h6>
                 </div>
               </div>
             </div>
@@ -260,89 +223,115 @@
             <div class="container-service container-amenities">
               <div class="cards">
                 <div
-                  :class="{ active: isExist('Steam Bath') }"
-                  @click="selectedAmenities('Steam Bath')"
-                >
-                  <img src="../../../assets/images/SteamBath.svg" alt="" />
-                  <h6>Steam Bath</h6>
-                </div>
-                <div
-                  :class="{ active: isExist('Indoor') }"
-                  @click="selectedAmenities('Indoor')"
+                  :class="{ active: isExist('indoorSwimmingPool') }"
+                  @click="selectedAmenities('indoorSwimmingPool')"
                 >
                   <img src="../../../assets/images/indoor.svg" alt="" />
                   <h6>Indoor</h6>
                   <h6>Swimming Pool</h6>
                 </div>
                 <div
-                  :class="{ active: isExist('Outdoor') }"
-                  @click="selectedAmenities('Outdoor')"
+                  :class="{ active: isExist('outdoorSwimmingPool') }"
+                  @click="selectedAmenities('outdoorSwimmingPool')"
                 >
                   <img src="../../../assets/images/outdoor.svg" alt="" />
                   <h6>Outdoor</h6>
                   <h6>Swimming Pool</h6>
                 </div>
                 <div
-                  :class="{ active: isExist('Swimming Pool') }"
-                  @click="selectedAmenities('Swimming Pool')"
-                >
-                  <img src="../../../assets/images/SwimmingPool.svg" alt="" />
-                  <h6>Swimming Pool</h6>
-                  <h6>Heater</h6>
-                </div>
-                <div
-                  :class="{ active: isExist('Playground') }"
-                  @click="selectedAmenities('Playground')"
+                  :class="{ active: isExist('playground') }"
+                  @click="selectedAmenities('playground')"
                 >
                   <img src="../../../assets/images/playground.svg" alt="" />
                   <h6>Playground</h6>
                 </div>
                 <div
-                  :class="{ active: isExist('Hot Tub') }"
-                  @click="selectedAmenities('Hot Tub')"
-                >
-                  <img src="../../../assets/images/HotTub.svg" alt="" />
-                  <h6>Hot Tub</h6>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div>
-            <div class="head">
-              <h1>Sports</h1>
-            </div>
-            <div class="container-service container-amenities">
-              <div class="cards">
-                <div
-                  :class="{ active: isExist('24 Hours') }"
-                  @click="selectedAmenities('24 Hours')"
+                  :class="{ active: isExist('accessInHours') }"
+                  @click="selectedAmenities('accessInHours')"
                 >
                   <img src="../../../assets/images/24Hours.svg" alt="" />
                   <h6>24 Hours</h6>
                   <h6>Access</h6>
                 </div>
                 <div
-                  :class="{ active: isExist('Wheelchair') }"
-                  @click="selectedAmenities('Wheelchair')"
+                  :class="{ active: isExist('weelChaireAccess') }"
+                  @click="selectedAmenities('weelChaireAccess')"
                 >
-                  <img src="../../../assets/images/wheelchair.svg" alt="" />
-                  <h6>Wheelchair</h6>
+                  <img src="../../../assets/images/Vollyball.svg" alt="" />
+                  <h6>weel Chaire</h6>
                   <h6>Access</h6>
                 </div>
                 <div
-                  :class="{ active: isExist('Private') }"
-                  @click="selectedAmenities('Private')"
+                  :class="{ active: isExist('privateEntrance') }"
+                  @click="selectedAmenities('privateEntrance')"
                 >
                   <img src="../../../assets/images/Private.svg" alt="" />
-                  <h6>Private</h6>
+                  <h6>private</h6>
                   <h6>Entrance</h6>
                 </div>
                 <div
-                  :class="{ active: isExist('Doorman') }"
-                  @click="selectedAmenities('Doorman')"
+                  :class="{ active: isExist('doorman') }"
+                  @click="selectedAmenities('doorman')"
                 >
                   <img src="../../../assets/images/doorman.svg" alt="" />
                   <h6>Doorman</h6>
+                </div>
+                <div
+                  :class="{ active: isExist('elevator') }"
+                  @click="selectedAmenities('elevator')"
+                >
+                  <img src="../../../assets/images/Vollyball.svg" alt="" />
+                  <h6>Elevator</h6>
+                </div>
+                <div
+                  :class="{ active: isExist('saftyBox') }"
+                  @click="selectedAmenities('saftyBox')"
+                >
+                  <img src="../../../assets/images/Vollyball.svg" alt="" />
+                  <h6>Safty Box</h6>
+                </div>
+                <div
+                  :class="{ active: isExist('airConditioning') }"
+                  @click="selectedAmenities('airConditioning')"
+                >
+                  <img src="../../../assets/images/Vollyball.svg" alt="" />
+                  <h6>Air</h6>
+                  <h6>Conditioning</h6>
+                </div>
+                <div
+                  :class="{ active: isExist('tv') }"
+                  @click="selectedAmenities('tv')"
+                >
+                  <img src="../../../assets/images/Vollyball.svg" alt="" />
+                  <h6>tv</h6>
+                </div>
+                <div
+                  :class="{ active: isExist('wifi') }"
+                  @click="selectedAmenities('wifi')"
+                >
+                  <img src="../../../assets/images/Vollyball.svg" alt="" />
+                  <h6>wifi</h6>
+                </div>
+                <div
+                  :class="{ active: isExist('stage') }"
+                  @click="selectedAmenities('stage')"
+                >
+                  <img src="../../../assets/images/Vollyball.svg" alt="" />
+                  <h6>stage</h6>
+                </div>
+                <div
+                  :class="{ active: isExist('speakers') }"
+                  @click="selectedAmenities('speakers')"
+                >
+                  <img src="../../../assets/images/Vollyball.svg" alt="" />
+                  <h6>Speakers</h6>
+                </div>
+                <div
+                  :class="{ active: isExist('laserLights') }"
+                  @click="selectedAmenities('laserLights')"
+                >
+                  <img src="../../../assets/images/Vollyball.svg" alt="" />
+                  <h6>laserLights</h6>
                 </div>
               </div>
             </div>
@@ -373,15 +362,13 @@ export default {
       // istransition: false,
       AmenitieSelected: [],
       unitsAndGuest: {},
+      roomsGuest: {},
       leisure: {},
     };
   },
   methods: {
     isExist(val) {
       return this.AmenitieSelected.indexOf(val) !== -1;
-    },
-    selectedOptions(opt) {
-      this.serviceType = opt;
     },
     selectedAmenities(val) {
       if (!this.isExist(val)) {
@@ -395,16 +382,15 @@ export default {
       }
     },
     changeStep(step) {
-      if (!this.serviceType) return;
       this.step = step;
-      this.isSubmitted = true;
+      // this.isSubmitted = true;
     },
     close() {
       this.$emit("close");
     },
     lastStepClicked() {
       var basicInfo = {};
-      basicInfo.unitsAndGuest = this.unitsAndGuest;
+      basicInfo.roomsGuest = this.roomsGuest;
       basicInfo.leisure = this.leisure;
       this.$parent.accountOpt = "service";
       this.$emit("basicInfo", basicInfo);
@@ -532,6 +518,69 @@ img {
   margin-bottom: 5px;
 }
 /* step one */
+.rules {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 85%;
+}
+.rules > div {
+  width: 42%;
+}
+.rules .container-input {
+  margin: 20px 0;
+  display: block;
+  color: #c4c9d5;
+  position: relative;
+  padding-left: 35px;
+  cursor: pointer;
+  font-size: 14px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: left;
+}
+/* Hide the browser's default checkbox */
+.rules .container-input input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+/* Create a custom checkbox */
+.rules .checkmark {
+  position: absolute;
+  top: -5px;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  border-radius: 5px;
+  box-shadow: 0px 1px 12px -2px #00000040;
+}
+/* Create the checkmark/indicator (hidden when not checked) */
+.rules .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+/* Show the checkmark when checked */
+.rules .container-input input:checked ~ .checkmark:after {
+  display: block;
+}
+/* Style the checkmark/indicator */
+.rules .container-input .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid #febb12;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
 .container-service {
   display: flex;
   overflow: hidden;
