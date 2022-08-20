@@ -1147,4 +1147,67 @@ img {
   height: unset;
   overflow-y: unset;
 }
+.rules {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 85%;
+}
+.rules > div {
+  width: 42%;
+}
+.rules .container-input {
+  margin: 20px 0;
+  display: block;
+  color: #c4c9d5;
+  position: relative;
+  padding-left: 35px;
+  cursor: pointer;
+  font-size: 14px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: left;
+}
+/* Hide the browser's default checkbox */
+.rules .container-input input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+/* Create a custom checkbox */
+.rules .checkmark {
+  position: absolute;
+  top: -5px;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  border-radius: 5px;
+  box-shadow: 0px 1px 12px -2px #00000040;
+}
+/* Create the checkmark/indicator (hidden when not checked) */
+.rules .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+/* Show the checkmark when checked */
+.rules .container-input input:checked ~ .checkmark:after {
+  display: block;
+}
+/* Style the checkmark/indicator */
+.rules .container-input .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid #febb12;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
 </style>
