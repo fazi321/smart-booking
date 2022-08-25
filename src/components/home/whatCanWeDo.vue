@@ -41,4 +41,7 @@ export default {
 .smart-booking {
   padding: 10px 0;
 }
+@media (max-width: 479px) and (min-width: 320px) {
+  
+}
 </style>

@@ -96,7 +96,6 @@ header.active .container .nav ul li a {
   top:40%;
 }
 .smart-title {
-  width: 100%;
   padding: 15px;
   display: flex;
   justify-content: center;
@@ -208,6 +207,21 @@ header.active .container .nav ul li a {
 }
 .head h1{
   font-size:14px;
+}
+@media (max-width: 479px) and (min-width: 320px) {
+  .hero-slider .carousel__prev, .hero-slider .carousel__next{
+    display: none;
+  }
+  .hero-slider .carousel__slide{
+    height: unset!important;
+  }
+  .hero-slider .carousel__pagination{
+    top: 0;
+    position: unset;
+  }
+  .smart-title h1{
+    font-size: 18px;
+  }
 }
 /* reponsive start */
 @media only screen and (max-width: 1199px) {

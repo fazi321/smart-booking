@@ -513,4 +513,7 @@ export default {
   cursor: pointer;
   border-radius: 50%;
 }
+@media (max-width: 479px) and (min-width: 320px) {
+  
+}
 </style>

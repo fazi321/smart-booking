@@ -1,7 +1,7 @@
 <template>
   <div class="container apartment-main">
     <div class="search-wrapper">
-      <SearchHeader/>
+      <SearchHeader />
     </div>
     <Filters />
     <div class="apartment-wrapper">
@@ -45,25 +45,25 @@ export default {
     HotelFilters,
     FilterCard,
     Paginate,
-    SearchHeader
+    SearchHeader,
   },
   methods: {
     clickCallback(num) {
       this.$refs.slider.slideTo(num);
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style>
-.search-wrapper .search .primary-search{
+.search-wrapper .search .primary-search {
   width: 70%;
 }
 </style>
 <style scoped>
-.search-wrapper{
+.search-wrapper {
   margin-bottom: 50px;
-  margin-top:10px;
+  margin-top: 10px;
 }
 .apartment-main {
   padding: 15px 0;
@@ -80,5 +80,19 @@ export default {
 .apartment-wrapper .apartment-right {
   width: 70%;
   padding-right: 20px;
+}
+@media (max-width: 479px) and (min-width: 320px) {
+  .search-wrapper .search .primary-search {
+    width: 90%;
+  }
+  .apartment-wrapper .apartment-left {
+    width: 100%;
+    margin: 10px;
+  }
+  .apartment-wrapper .apartment-right {
+    width: 94%;
+    padding-right: 0px;
+    margin: 10px;
+  }
 }
 </style>

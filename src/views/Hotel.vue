@@ -1,6 +1,11 @@
 <template>
    <div>
-    <Header/>
+    <div class="desktop-header">
+      <Header />
+    </div>
+    <div class="mobile-header">
+      <MobHeader />
+    </div>
     <Hotel/>
    </div>
 </template>
@@ -8,14 +13,31 @@
 <script>
 import Header from "@/components/header/index.vue";
 import Hotel from "@/components/hotel/index.vue";
-
+import MobHeader from "@/components/mobHeader/index";
 
 export default {
   name: "AparmentView",
   components: {
     Header,
     Hotel,
+    MobHeader
    
   }
 };
 </script>
+<style scoped>
+.desktop-header {
+  display: block;
+}
+.mobile-header {
+  display: none;
+}
+@media (max-width: 479px) and (min-width: 320px) {
+  .desktop-header {
+    display: none;
+  }
+  .mobile-header {
+    display: block;
+  }
+}
+</style>

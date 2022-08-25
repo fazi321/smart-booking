@@ -8,6 +8,7 @@
       <li><router-link to="/hotel">Resorts</router-link></li>
       <li><router-link to="#">Lounges</router-link></li>
     </ul>
+    
   </section>
 </template>
 

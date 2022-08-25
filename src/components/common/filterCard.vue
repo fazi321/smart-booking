@@ -34,7 +34,7 @@
 
 <script>
 export default {
-  name: "FilterCard"
+  name: "FilterCard",
 };
 </script>
 
@@ -139,32 +139,68 @@ export default {
   font-size: 14px;
 }
 .favourite .filter-card .card-detail .heading h5 {
-  font-size: 16px!important;
+  font-size: 16px !important;
   font-weight: 600;
 }
-.favourite .rating .star{
-  font-size: 28px!important;
+.favourite .rating .star {
+  font-size: 28px !important;
 }
-.favourite .filter-card .card-detail p{
-  font-size: 12px!important;
+.favourite .filter-card .card-detail p {
+  font-size: 12px !important;
 }
-.favourite .filter-card .card-detail .sar h6{
-  font-size: 18px!important;
+.favourite .filter-card .card-detail .sar h6 {
+  font-size: 18px !important;
 }
-.favourite .filter-card .card-detail .sar{
-  padding-top: 5px!important;
+.favourite .filter-card .card-detail .sar {
+  padding-top: 5px !important;
 }
-.favourite .filter-card .card-detail .sar p{
-  font-size: 12px!important;
-  padding-top: 10px!important;
+.favourite .filter-card .card-detail .sar p {
+  font-size: 12px !important;
+  padding-top: 10px !important;
 }
-.favourite .rating{
-  padding: 10px 0!important;
+.favourite .rating {
+  padding: 10px 0 !important;
 }
-.favourite .filter-card .image{
-  width: 35%!important;
+.favourite .filter-card .image {
+  width: 35% !important;
 }
-.favourite .filter-card .card-detail{
-  width: 60%!important;
+.favourite .filter-card .card-detail {
+  width: 60% !important;
+}
+@media (max-width: 479px) and (min-width: 320px) {
+  .filter-card {
+    height: unset !important;
+  }
+  .filter-card .image {
+    width: 40%;
+    display: flex;
+  }
+  .filter-card .card-detail {
+    width: 60%;
+    padding: 10px;
+  }
+  .filter-card .card-detail .heading h5 {
+    font-size: 12px;
+  }
+  .filter-card .card-detail .heading .wish {
+    width: 25px;
+    height: 25px;
+  }
+  .rating {
+    padding: 7px 0 10px 0;
+  }
+  .filter-card .card-detail p {
+    font-size: 10px;
+    padding-top: 8px;
+  }
+  .filter-card .card-detail .sar {
+    padding-top: 0;
+  }
+  .filter-card .card-detail .sar h6 {
+    font-size: 14px;
+  }
+  .filter-card .card-detail .sar p {
+    font-size: 10px;
+  }
 }
 </style>
