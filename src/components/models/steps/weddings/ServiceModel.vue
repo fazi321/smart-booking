@@ -5,7 +5,7 @@
       <div class="main-login add-services">
         <div class="logo-close">
           <div class="close-icon" @click="close">
-            <img src="../../../assets/images/close-icon.svg" alt="" />
+            <img src="../../../../assets/images/close-icon.svg" alt="" />
           </div>
         </div>
         <div class="headings">
@@ -30,6 +30,13 @@
             </div> -->
             <div>
               <label class="container-input"
+                >Event Parties Allowed
+                <input type="checkbox" v-model="rules.eventPartiesAllowed" />
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div>
+              <label class="container-input"
                 >Smoking Allowed
                 <input type="checkbox" v-model="rules.smokingAllowed" />
                 <span class="checkmark"></span>
@@ -42,13 +49,13 @@
                 <span class="checkmark"></span>
               </label>
             </div>
-            <div>
+            <!-- <div>
               <label class="container-input"
                 >Suitable For Childrens
                 <input type="checkbox" v-model="rules.suitableForChildrens" />
                 <span class="checkmark"></span>
               </label>
-            </div>
+            </div> -->
             <div>
               <label class="container-input"
                 >Suitable For Grooms
@@ -56,13 +63,13 @@
                 <span class="checkmark"></span>
               </label>
             </div>
-            <div>
+            <!-- <div>
               <label class="container-input"
                 >suitable For Infants
                 <input type="checkbox" v-model="rules.suitableForInfants" />
                 <span class="checkmark"></span>
               </label>
-            </div>
+            </div> -->
             <div>
               <label class="container-input"
                 >Fire Alaram
@@ -165,11 +172,11 @@
       </div>
     </div>
     <!-- kethen -->
-    <!-- <div class="primary-login" v-if="step == 2">
+    <div class="primary-login" v-if="step == 2">
       <div class="main-login add-services">
         <div class="logo-close">
           <div class="close-icon" @click="close">
-            <img src="../../../assets/images/close-icon.svg" alt="" />
+            <img src="../../../../assets/images/close-icon.svg" alt="" />
           </div>
         </div>
         <div class="headings">
@@ -201,22 +208,8 @@
             </div>
             <div>
               <label class="container-input"
-                >CoffeeMachine
-                <input type="checkbox" v-model="kitchen.coffeeMachine" />
-                <span class="checkmark"></span>
-              </label>
-            </div>
-            <div>
-              <label class="container-input"
                 >Kettle
                 <input type="checkbox" v-model="kitchen.kettle" />
-                <span class="checkmark"></span>
-              </label>
-            </div>
-            <div>
-              <label class="container-input"
-                >HotBeverage
-                <input type="checkbox" v-model="kitchen.hotBeverage" />
                 <span class="checkmark"></span>
               </label>
             </div>
@@ -249,14 +242,14 @@
           </div>
         </div>
       </div>
-    </div> -->
+    </div>
     <!-- step one End -->
     <!-- bath Rooms -->
-    <!-- <div class="primary-login" v-if="step == 2">
+    <div class="primary-login" v-if="step == 3">
       <div class="main-login add-services">
         <div class="logo-close">
           <div class="close-icon" @click="close">
-            <img src="../../../assets/images/close-icon.svg" alt="" />
+            <img src="../../../../assets/images/close-icon.svg" alt="" />
           </div>
         </div>
         <div class="headings">
@@ -307,50 +300,66 @@
                 <span class="checkmark"></span>
               </label>
             </div>
-            <div>
-              <label class="container-input"
-                >Extra Pillow
-                <input type="checkbox" v-model="roomsbath.extraPillow" />
-                <span class="checkmark"></span>
-              </label>
-            </div>
-            <div>
-              <label class="container-input"
-                >Bed Sheet
-                <input type="checkbox" v-model="roomsbath.bedSheet" />
-                <span class="checkmark"></span>
-              </label>
-            </div>
-            <div>
-              <label class="container-input"
-                >Washer
-                <input type="checkbox" v-model="roomsbath.washer" />
-                <span class="checkmark"></span>
-              </label>
-            </div>
-            <div>
-              <label class="container-input"
-                >Iron
-                <input type="checkbox" v-model="roomsbath.iron" />
-                <span class="checkmark"></span>
-              </label>
-            </div>
           </div>
         </div>
         <div class="form-container">
           <div class="input-div">
-            <button type="submit" @click="changeStep(3)">Next</button>
+            <button type="submit" @click="changeStep(5)">Next</button>
           </div>
         </div>
       </div>
-    </div> -->
+    </div>
     <!-- step one End -->
-    <!-- step three -->
-    <div class="primary-login" v-if="step == 2">
+    <!-- out door -->
+    <div class="primary-login" v-if="step == 5">
       <div class="main-login add-services">
         <div class="logo-close">
           <div class="close-icon" @click="close">
-            <img src="../../../assets/images/close-icon.svg" alt="" />
+            <img src="../../../../assets/images/close-icon.svg" alt="" />
+          </div>
+        </div>
+        <div class="headings">
+          <h1>Service Description</h1>
+          <h4>Out door</h4>
+        </div>
+        <div class="container-rules">
+          <div class="rules">
+            <!-- <div>
+              <label class="container-input"
+                >Grill
+                <input type="checkbox" v-model="outdoors.grill" />
+                <span class="checkmark"></span>
+              </label>
+            </div> -->
+            <div>
+              <label class="container-input"
+                >Green Yard
+                <input type="checkbox" v-model="outdoors.greenYard" />
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <!-- <div>
+              <label class="container-input"
+                >MandiPit
+                <input type="checkbox" v-model="outdoors.mandiPit" />
+                <span class="checkmark"></span>
+              </label>
+            </div> -->
+          </div>
+        </div>
+        <div class="form-container">
+          <div class="input-div">
+            <button type="submit" @click="changeStep(6)">Next</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- step three -->
+    <div class="primary-login" v-if="step == 6">
+      <div class="main-login add-services">
+        <div class="logo-close">
+          <div class="close-icon" @click="close">
+            <img src="../../../../assets/images/close-icon.svg" alt="" />
           </div>
         </div>
         <div class="headings">
@@ -419,18 +428,18 @@
         </div>
         <div class="form-container">
           <div class="input-div">
-            <button type="submit" @click="changeStep(3)">Next</button>
+            <button type="submit" @click="changeStep(7)">Next</button>
           </div>
         </div>
       </div>
     </div>
     <!-- step two End -->
     <!-- step three -->
-    <div class="primary-login" v-if="step == 3">
+    <div class="primary-login" v-if="step == 7">
       <div class="main-login add-services">
         <div class="logo-close">
           <div class="close-icon" @click="close">
-            <img src="../../../assets/images/close-icon.svg" alt="" />
+            <img src="../../../../assets/images/close-icon.svg" alt="" />
           </div>
         </div>
         <div class="headings">
@@ -501,7 +510,7 @@
 </template>
 
 <script>
-import GoogleMap from "../../GoogleMap.vue";
+import GoogleMap from "../../../GoogleMap.vue";
 export default {
   name: "AddServiceModel",
   props: ["model"],
@@ -520,6 +529,7 @@ export default {
       location: {},
       suitableFor: {},
       suitablePrice: {},
+      outdoors: {},
       step: 1,
     };
   },
@@ -532,7 +542,7 @@ export default {
       for (let i = 0; i < e.target.files.length; i++) {
         formData.append("image", e.target.files[i]);
       }
-      this.$emit('images', formData)
+      this.$emit("images", formData);
     },
     submited() {
       // sutable childcheck
@@ -554,6 +564,7 @@ export default {
         }
       }
       var { location } = this.location;
+      var outdoors = this.outdoors;
       var finalDetail = {
         description: {
           rules: { ...newObj, ...newObjC },
@@ -563,6 +574,7 @@ export default {
         kitchen: { ...this.kitchen },
         address: { ...this.address },
         location,
+        outdoors,
         roomsbath: { ...this.roomsbath },
       };
       console.log(finalDetail);

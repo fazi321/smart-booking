@@ -5,7 +5,7 @@
       <div class="main-login add-services">
         <div class="logo-close">
           <div class="close-icon" @click="close">
-            <img src="../../../assets/images/close-icon.svg" alt="" />
+            <img src="../../../../assets/images/close-icon.svg" alt="" />
           </div>
         </div>
         <div class="headings">
@@ -24,8 +24,8 @@
             <div class="price-inputs">
               <div class="price-checkbox">
                 <label class="container-input"
-                  >Days Price
-                  <input type="checkbox" v-model="daySelected.dayPrice" />
+                  >Hour Price
+                  <input type="checkbox" v-model="daySelected.hourPrice" />
                   <span class="checkmark"></span>
                 </label>
               </div>
@@ -34,7 +34,7 @@
               </div>
             </div>
             <!-- block -->
-            <div class="price-inputs">
+            <!-- <div class="price-inputs">
               <div class="price-checkbox">
                 <label class="container-input"
                   >Weekdays
@@ -46,9 +46,9 @@
               <div class="input-price">
                 <input type="number" v-model="price.weekendPrice" />
               </div>
-            </div>
+            </div> -->
             <!-- block -->
-            <div class="price-inputs">
+            <!-- <div class="price-inputs">
               <div class="price-checkbox">
                 <label class="container-input"
                   >Sunday
@@ -59,9 +59,9 @@
               <div class="input-price">
                 <input type="number" v-model="price.sundayPrice" />
               </div>
-            </div>
+            </div> -->
             <!-- block -->
-            <div class="price-inputs">
+            <!-- <div class="price-inputs">
               <div class="price-checkbox">
                 <label class="container-input"
                   >Monday
@@ -72,9 +72,9 @@
               <div class="input-price">
                 <input type="number" v-model="price.mondayPrice" />
               </div>
-            </div>
+            </div> -->
             <!-- block -->
-            <div class="price-inputs">
+            <!-- <div class="price-inputs">
               <div class="price-checkbox">
                 <label class="container-input"
                   >Tuesday
@@ -85,9 +85,9 @@
               <div class="input-price">
                 <input type="number" v-model="price.tuesdayPrice" />
               </div>
-            </div>
+            </div> -->
             <!-- block -->
-            <div class="price-inputs">
+            <!-- <div class="price-inputs">
               <div class="price-checkbox">
                 <label class="container-input"
                   >Wednesday
@@ -98,9 +98,9 @@
               <div class="input-price">
                 <input type="number" v-model="price.wednesdayPrice" />
               </div>
-            </div>
+            </div> -->
             <!-- block -->
-            <div class="price-inputs">
+            <!-- <div class="price-inputs">
               <div class="price-checkbox">
                 <label class="container-input"
                   >Thursday
@@ -111,9 +111,9 @@
               <div class="input-price">
                 <input type="number" v-model="price.thrusdayPrice" />
               </div>
-            </div>
+            </div> -->
             <!-- block -->
-            <div class="price-inputs">
+            <!-- <div class="price-inputs">
               <div class="price-checkbox">
                 <label class="container-input"
                   >Friday
@@ -124,9 +124,9 @@
               <div class="input-price">
                 <input type="number" v-model="price.fridayPrice" />
               </div>
-            </div>
+            </div> -->
             <!-- block -->
-            <div class="price-inputs">
+            <!-- <div class="price-inputs">
               <div class="price-checkbox">
                 <label class="container-input"
                   >Saturday
@@ -137,7 +137,7 @@
               <div class="input-price">
                 <input type="number" v-model="price.saturdayPrice" />
               </div>
-            </div>
+            </div> -->
             <!-- block -->
           </div>
           <!-- <div class="booking-date">
@@ -172,6 +172,22 @@
           <!-- block -->
           <div class="booking-date">
             <div class="head-booking">
+              <h5>Set Time & Date</h5>
+            </div>
+            <div class="date-input">
+              <div>
+                <!-- <input type="text" placeholder="Check in" v-model="checkIn" /> -->
+                <input type="time" v-model="setTime" id="date" ref="cn" />
+              </div>
+              <div>
+                <!-- <input type="text" placeholder="Check out" v-model="checkOut" /> -->
+                <input type="Date" v-model="setDate" id="date" ref="co" />
+              </div>
+            </div>
+          </div>
+          <!-- block -->
+          <div class="booking-date">
+            <div class="head-booking">
               <h5>Select Check-in & Check-out times</h5>
             </div>
             <div class="date-input">
@@ -198,7 +214,7 @@
       <div class="main-login add-services">
         <div class="logo-close">
           <div class="close-icon" @click="close">
-            <img src="../../../assets/images/close-icon.svg" alt="" />
+            <img src="../../../../assets/images/close-icon.svg" alt="" />
           </div>
         </div>
         <div class="headings">
@@ -218,7 +234,10 @@
                   }"
                   @click="bookSettings('Families_and_Singles')"
                 >
-                  <img src="../../../assets/images/familiesSingle.svg" alt="" />
+                  <img
+                    src="../../../../assets/images/familiesSingle.svg"
+                    alt=""
+                  />
                   <h6>Families &</h6>
                   <h6>Singles</h6>
                 </div>
@@ -228,7 +247,7 @@
                   }"
                   @click="bookSettings('families_only')"
                 >
-                  <img src="../../../assets/images/families.svg" alt="" />
+                  <img src="../../../../assets/images/families.svg" alt="" />
                   <h6>Families Only</h6>
                 </div>
                 <div
@@ -237,7 +256,7 @@
                   }"
                   @click="bookSettings('ladies_only')"
                 >
-                  <img src="../../../assets/images/ladies.svg" alt="" />
+                  <img src="../../../../assets/images/ladies.svg" alt="" />
                   <h6>Ladies Only</h6>
                 </div>
               </div>
@@ -310,7 +329,7 @@
       <div class="main-login add-services">
         <div class="logo-close">
           <div class="close-icon" @click="close">
-            <img src="../../../assets/images/close-icon.svg" alt="" />
+            <img src="../../../../assets/images/close-icon.svg" alt="" />
           </div>
         </div>
         <div class="headings">
@@ -330,7 +349,7 @@
                 <div class="rounded-btn"></div>
                 <div class="card-container">
                   <div class="category-img">
-                    <img src="../../../assets/images/instant.svg" alt="" />
+                    <img src="../../../../assets/images/instant.svg" alt="" />
                   </div>
                 </div>
                 <div :class="['content']">
@@ -352,7 +371,7 @@
                 <div class="rounded-btn"></div>
                 <div class="card-container">
                   <div class="category-img">
-                    <img src="../../../assets/images/request.svg" alt="" />
+                    <img src="../../../../assets/images/request.svg" alt="" />
                   </div>
                 </div>
                 <div :class="['content']">
@@ -379,7 +398,7 @@
       <div class="main-login add-services">
         <div class="logo-close">
           <div class="close-icon" @click="close">
-            <img src="../../../assets/images/close-icon.svg" alt="" />
+            <img src="../../../../assets/images/close-icon.svg" alt="" />
           </div>
         </div>
         <div class="headings">
@@ -471,7 +490,7 @@
       <div class="main-login add-services">
         <div class="logo-close">
           <div class="close-icon" @click="close">
-            <img src="../../../assets/images/close-icon.svg" alt="" />
+            <img src="../../../../assets/images/close-icon.svg" alt="" />
           </div>
         </div>
         <div class="headings">
@@ -516,7 +535,7 @@
               </div>
             </div> -->
             <!-- block -->
-            <div class="price-inputs">
+            <!-- <div class="price-inputs">
               <div class="price-checkbox">
                 <label class="container-input"
                   >buffet
@@ -541,7 +560,7 @@
                 <input type="checkbox" v-model="addOnsPrice.weddingCake" />
                 <span class="checkmark"></span>
               </label>
-            </div>
+            </div> -->
             <!-- block -->
             <!-- <div class="price-inputs">
               <div class="price-checkbox">
@@ -587,6 +606,8 @@ export default {
       checkOut: null,
       serviceType: null,
       showPopUp: null,
+      setTime: null,
+      setDate: null,
       // date picker
       price: {},
       daySelected: {},
@@ -607,6 +628,13 @@ export default {
             }
           }
         }
+      }
+      // set time and price in price
+      if (this.setTime) {
+        newObj.setTime = this.setTime;
+      }
+      if (this.setDate) {
+        newObj.setDate = this.setDate;
       }
       //  time check in out
       var check = {};

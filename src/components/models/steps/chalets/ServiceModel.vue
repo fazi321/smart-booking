@@ -5,7 +5,7 @@
       <div class="main-login add-services">
         <div class="logo-close">
           <div class="close-icon" @click="close">
-            <img src="../../../assets/images/close-icon.svg" alt="" />
+            <img src="../../../../assets/images/close-icon.svg" alt="" />
           </div>
         </div>
         <div class="headings">
@@ -169,7 +169,7 @@
       <div class="main-login add-services">
         <div class="logo-close">
           <div class="close-icon" @click="close">
-            <img src="../../../assets/images/close-icon.svg" alt="" />
+            <img src="../../../../assets/images/close-icon.svg" alt="" />
           </div>
         </div>
         <div class="headings">
@@ -256,7 +256,7 @@
       <div class="main-login add-services">
         <div class="logo-close">
           <div class="close-icon" @click="close">
-            <img src="../../../assets/images/close-icon.svg" alt="" />
+            <img src="../../../../assets/images/close-icon.svg" alt="" />
           </div>
         </div>
         <div class="headings">
@@ -350,7 +350,7 @@
       <div class="main-login add-services">
         <div class="logo-close">
           <div class="close-icon" @click="close">
-            <img src="../../../assets/images/close-icon.svg" alt="" />
+            <img src="../../../../assets/images/close-icon.svg" alt="" />
           </div>
         </div>
         <div class="headings">
@@ -430,7 +430,7 @@
       <div class="main-login add-services">
         <div class="logo-close">
           <div class="close-icon" @click="close">
-            <img src="../../../assets/images/close-icon.svg" alt="" />
+            <img src="../../../../assets/images/close-icon.svg" alt="" />
           </div>
         </div>
         <div class="headings">
@@ -501,7 +501,7 @@
 </template>
 
 <script>
-import GoogleMap from "../../GoogleMap.vue";
+import GoogleMap from "../../../GoogleMap.vue";
 export default {
   name: "AddServiceModel",
   props: ["model"],

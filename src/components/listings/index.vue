@@ -8,7 +8,7 @@
       <div class="apartment-left">
         <HotelFilters />
       </div>
-      <div class="apartment-right">
+      <div class="apartment-right" v-if="dataCard">
         <FilterCard
           v-for="(items, index) in dataCard"
           :key="index"

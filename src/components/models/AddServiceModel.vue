@@ -107,6 +107,7 @@
         </div>
       </div>
     </div>
+    <!-- Resort -->
     <section v-if="serviceType && serviceType.category == 'Resorts'">
       <!-- basic information start -->
       <InfoModel
@@ -120,6 +121,7 @@
         v-if="isSubmitted && accountOpt == 'service'"
         :model="true"
         @close="close"
+        @images="formData"
         @decription="decription"
       />
       <!-- price start -->
@@ -130,13 +132,217 @@
         @price="pricing"
       />
     </section>
+    <!-- stadium  -->
+    <section v-if="serviceType && serviceType.category == 'Stadium'">
+      <!-- basic information start -->
+      <InfoModelStadium
+        v-if="isSubmitted && accountOpt == 'info'"
+        :model="true"
+        @close="close"
+        @basicInfo="basicData"
+      />
+      <!-- Description start -->
+      <ServiceModelStadium
+        v-if="isSubmitted && accountOpt == 'service'"
+        :model="true"
+        @close="close"
+        @images="formData"
+        @decription="decription"
+      />
+      <!-- price start -->
+      <PriceModelStadium
+        v-if="isSubmitted && accountOpt == 'price'"
+        :model="true"
+        @close="close"
+        @price="pricing"
+      />
+    </section>
+     <!-- Appartments -->
+    <section v-if="serviceType && serviceType.category == 'Apartment'">
+      <!-- basic information start -->
+      <InfoModelAppartments
+        v-if="isSubmitted && accountOpt == 'info'"
+        :model="true"
+        @close="close"
+        @basicInfo="basicData"
+      />
+      <!-- Description start -->
+      <ServiceModelAppartments
+        v-if="isSubmitted && accountOpt == 'service'"
+        :model="true"
+        @close="close"
+        @images="formData"
+        @decription="decription"
+      />
+      <!-- price start -->
+      <PriceModelAppartments
+        v-if="isSubmitted && accountOpt == 'price'"
+        :model="true"
+        @close="close"
+        @price="pricing"
+      />
+    </section>
+    <!-- Lounges -->
+    <section v-if="serviceType && serviceType.category == 'Lounges'">
+      <!-- basic information start -->
+      <InfoModelLoungs
+        v-if="isSubmitted && accountOpt == 'info'"
+        :model="true"
+        @close="close"
+        @basicInfo="basicData"
+      />
+      <!-- Description start -->
+      <ServiceModelLoungs
+        v-if="isSubmitted && accountOpt == 'service'"
+        :model="true"
+        @close="close"
+        @images="formData"
+        @decription="decription"
+      />
+      <!-- price start -->
+      <PriceModelLoungs
+        v-if="isSubmitted && accountOpt == 'price'"
+        :model="true"
+        @close="close"
+        @price="pricing"
+      />
+    </section>
+    <!-- Camps -->
+    <section v-if="serviceType && serviceType.category == 'Camps'">
+      <!-- basic information start -->
+      <InfoModelCamps
+        v-if="isSubmitted && accountOpt == 'info'"
+        :model="true"
+        @close="close"
+        @basicInfo="basicData"
+      />
+      <!-- Description start -->
+      <ServiceModelCamps
+        v-if="isSubmitted && accountOpt == 'service'"
+        :model="true"
+        @close="close"
+        @images="formData"
+        @decription="decription"
+      />
+      <!-- price start -->
+      <PriceModelCamps
+        v-if="isSubmitted && accountOpt == 'price'"
+        :model="true"
+        @close="close"
+        @price="pricing"
+      />
+    </section>
+    <!-- Wedding -->
+    <section v-if="serviceType && serviceType.category == 'Wedding_Halls'">
+      <!-- basic information start -->
+      <InfoModelWeddings
+        v-if="isSubmitted && accountOpt == 'info'"
+        :model="true"
+        @close="close"
+        @basicInfo="basicData"
+      />
+      <!-- Description start -->
+      <ServiceModelWeddings
+        v-if="isSubmitted && accountOpt == 'service'"
+        :model="true"
+        @close="close"
+        @images="formData"
+        @decription="decription"
+      />
+      <!-- price start -->
+      <PriceModelWeddings
+        v-if="isSubmitted && accountOpt == 'price'"
+        :model="true"
+        @close="close"
+        @price="pricing"
+      />
+    </section>
+    <!-- Farms -->
+    <section v-if="serviceType && serviceType.category == 'Farms'">
+      <!-- basic information start -->
+      <InfoModelFarms
+        v-if="isSubmitted && accountOpt == 'info'"
+        :model="true"
+        @close="close"
+        @basicInfo="basicData"
+      />
+      <!-- Description start -->
+      <ServiceModelFarms
+        v-if="isSubmitted && accountOpt == 'service'"
+        :model="true"
+        @close="close"
+        @images="formData"
+        @decription="decription"
+      />
+      <!-- price start -->
+      <PriceModelFarms
+        v-if="isSubmitted && accountOpt == 'price'"
+        :model="true"
+        @close="close"
+        @price="pricing"
+      />
+    </section>
+    <!-- Hotels -->
+    <section v-if="serviceType && serviceType.category == 'Hotel'">
+      <!-- basic information start -->
+      <InfoModelHotels
+        v-if="isSubmitted && accountOpt == 'info'"
+        :model="true"
+        @close="close"
+        @basicInfo="basicData"
+      />
+      <!-- Description start -->
+      <ServiceModelHotels
+        v-if="isSubmitted && accountOpt == 'service'"
+        :model="true"
+        @close="close"
+        @images="formData"
+        @decription="decription"
+      />
+      <!-- price start -->
+      <PriceModelHotels
+        v-if="isSubmitted && accountOpt == 'price'"
+        :model="true"
+        @close="close"
+        @price="pricing"
+      />
+    </section>
   </section>
 </template>
 
 <script>
+// RESORTS
 import InfoModel from "./steps/InfoModel.vue";
 import ServiceModel from "./steps/ServiceModel.vue";
 import PriceModel from "./steps/PriceModel.vue";
+// STADIUM
+import InfoModelStadium from "./steps/stepsStadium/InfoModel.vue";
+import ServiceModelStadium from "./steps/stepsStadium//ServiceModel.vue";
+import PriceModelStadium from "./steps/stepsStadium/PriceModel.vue";
+// APPARTMENTS
+import InfoModelAppartments from "./steps/stepsAppartments/InfoModel.vue";
+import ServiceModelAppartments from "./steps/stepsAppartments//ServiceModel.vue";
+import PriceModelAppartments from "./steps/stepsAppartments/PriceModel.vue";
+// Loungs
+import InfoModelLoungs from "./steps/loungs/InfoModel.vue";
+import ServiceModelLoungs from "./steps/loungs//ServiceModel.vue";
+import PriceModelLoungs from "./steps/loungs/PriceModel.vue";
+// Camps
+import InfoModelCamps from "./steps/camps/InfoModel.vue";
+import ServiceModelCamps from "./steps/camps//ServiceModel.vue";
+import PriceModelCamps from "./steps/camps/PriceModel.vue";
+// Weddings
+import InfoModelWeddings from "./steps/weddings/InfoModel.vue";
+import ServiceModelWeddings from "./steps/weddings//ServiceModel.vue";
+import PriceModelWeddings from "./steps/weddings/PriceModel.vue";
+// Farms
+import InfoModelFarms from "./steps/farms/InfoModel.vue";
+import ServiceModelFarms from "./steps/farms//ServiceModel.vue";
+import PriceModelFarms from "./steps/farms/PriceModel.vue";
+// Hotels
+import InfoModelHotels from "./steps/hotels/InfoModel.vue";
+import ServiceModelHotels from "./steps/hotels//ServiceModel.vue";
+import PriceModelHotels from "./steps/hotels/PriceModel.vue";
 export default {
   name: "AddServiceModel",
   props: ["model"],
@@ -144,6 +350,34 @@ export default {
     InfoModel,
     ServiceModel,
     PriceModel,
+    //stadium
+    InfoModelStadium,
+    ServiceModelStadium,
+    PriceModelStadium,
+    // appartments
+    InfoModelAppartments,
+    ServiceModelAppartments,
+    PriceModelAppartments,
+    // Loungs
+    InfoModelLoungs,
+    ServiceModelLoungs,
+    PriceModelLoungs,
+    // Camps
+    InfoModelCamps,
+    ServiceModelCamps,
+    PriceModelCamps,
+    // Wedding
+    InfoModelWeddings,
+    ServiceModelWeddings,
+    PriceModelWeddings,
+    // Farms
+    InfoModelFarms,
+    ServiceModelFarms,
+    PriceModelFarms,
+    // Hotels
+    InfoModelHotels,
+    ServiceModelHotels,
+    PriceModelHotels,
   },
   data() {
     return {
@@ -158,6 +392,7 @@ export default {
       dataDec: {},
       dataP: {},
       finalData: {},
+      myImages: {},
     };
   },
   methods: {
@@ -170,7 +405,7 @@ export default {
     decription(val) {
       this.dataDec = val;
     },
-    pricing(val) {
+    async pricing(val) {
       this.dataP = val;
       var dataPayload = {
         ...this.basicD,
@@ -179,11 +414,21 @@ export default {
         categoryId: this.serviceType._id,
       };
       this.finalData = this.dataPayload;
-      console.log(dataPayload);
-      this.submit(dataPayload);
+      var uploadedImages = await this.uploadFiles();
+      if (uploadedImages) {
+        var imagesArr = Object.values(uploadedImages);
+        dataPayload.description.images = imagesArr;
+        this.submit(dataPayload);
+      }
     },
     async submit(payload) {
       var cate = this.serviceType.category.toLowerCase();
+      if(cate == 'lounges'){
+        cate = 'lounge'
+      }
+      if(cate == 'wedding_halls'){
+        cate = 'weddinghalls'
+      }
       try {
         const res = await this.$axios.post(cate, payload);
         if (res) {
@@ -192,6 +437,25 @@ export default {
       } catch (error) {
         console.log(error);
       }
+    },
+    async uploadFiles() {
+      try {
+        const imagesData = await this.$axios.post(
+          "user/upload",
+          this.myImages,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+        return imagesData.data;
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    formData(formImage) {
+      this.myImages = formImage;
     },
     changeSteps() {
       this.isSubmitted = true;
@@ -208,6 +472,7 @@ export default {
       try {
         var res = await this.$axios.get("services/categories");
         this.categories = res.data;
+        console.log(res.data)
       } catch (error) {
         console.log(error);
       }

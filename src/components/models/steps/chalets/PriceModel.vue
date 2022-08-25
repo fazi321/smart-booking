@@ -5,7 +5,7 @@
       <div class="main-login add-services">
         <div class="logo-close">
           <div class="close-icon" @click="close">
-            <img src="../../../assets/images/close-icon.svg" alt="" />
+            <img src="../../../../assets/images/close-icon.svg" alt="" />
           </div>
         </div>
         <div class="headings">
@@ -198,7 +198,7 @@
       <div class="main-login add-services">
         <div class="logo-close">
           <div class="close-icon" @click="close">
-            <img src="../../../assets/images/close-icon.svg" alt="" />
+            <img src="../../../../assets/images/close-icon.svg" alt="" />
           </div>
         </div>
         <div class="headings">
@@ -218,7 +218,7 @@
                   }"
                   @click="bookSettings('Families_and_Singles')"
                 >
-                  <img src="../../../assets/images/familiesSingle.svg" alt="" />
+                  <img src="../../../../assets/images/familiesSingle.svg" alt="" />
                   <h6>Families &</h6>
                   <h6>Singles</h6>
                 </div>
@@ -228,7 +228,7 @@
                   }"
                   @click="bookSettings('families_only')"
                 >
-                  <img src="../../../assets/images/families.svg" alt="" />
+                  <img src="../../../../assets/images/families.svg" alt="" />
                   <h6>Families Only</h6>
                 </div>
                 <div
@@ -237,7 +237,7 @@
                   }"
                   @click="bookSettings('ladies_only')"
                 >
-                  <img src="../../../assets/images/ladies.svg" alt="" />
+                  <img src="../../../../assets/images/ladies.svg" alt="" />
                   <h6>Ladies Only</h6>
                 </div>
               </div>
@@ -310,7 +310,7 @@
       <div class="main-login add-services">
         <div class="logo-close">
           <div class="close-icon" @click="close">
-            <img src="../../../assets/images/close-icon.svg" alt="" />
+            <img src="../../../../assets/images/close-icon.svg" alt="" />
           </div>
         </div>
         <div class="headings">
@@ -330,7 +330,7 @@
                 <div class="rounded-btn"></div>
                 <div class="card-container">
                   <div class="category-img">
-                    <img src="../../../assets/images/instant.svg" alt="" />
+                    <img src="../../../../assets/images/instant.svg" alt="" />
                   </div>
                 </div>
                 <div :class="['content']">
@@ -352,7 +352,7 @@
                 <div class="rounded-btn"></div>
                 <div class="card-container">
                   <div class="category-img">
-                    <img src="../../../assets/images/request.svg" alt="" />
+                    <img src="../../../../assets/images/request.svg" alt="" />
                   </div>
                 </div>
                 <div :class="['content']">
@@ -379,7 +379,7 @@
       <div class="main-login add-services">
         <div class="logo-close">
           <div class="close-icon" @click="close">
-            <img src="../../../assets/images/close-icon.svg" alt="" />
+            <img src="../../../../assets/images/close-icon.svg" alt="" />
           </div>
         </div>
         <div class="headings">
@@ -471,7 +471,7 @@
       <div class="main-login add-services">
         <div class="logo-close">
           <div class="close-icon" @click="close">
-            <img src="../../../assets/images/close-icon.svg" alt="" />
+            <img src="../../../../assets/images/close-icon.svg" alt="" />
           </div>
         </div>
         <div class="headings">

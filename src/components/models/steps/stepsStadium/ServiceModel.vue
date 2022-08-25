@@ -5,12 +5,12 @@
       <div class="main-login add-services">
         <div class="logo-close">
           <div class="close-icon" @click="close">
-            <img src="../../../assets/images/close-icon.svg" alt="" />
+            <img src="../../../../assets/images/close-icon.svg" alt="" />
           </div>
         </div>
         <div class="headings">
           <h1>Service Description</h1>
-          <h4>Rules & Safty</h4>
+          <h4>Safty</h4>
         </div>
         <div class="container-rules">
           <div class="rules">
@@ -28,48 +28,6 @@
                 <span class="checkmark"></span>
               </label>
             </div> -->
-            <div>
-              <label class="container-input"
-                >Smoking Allowed
-                <input type="checkbox" v-model="rules.smokingAllowed" />
-                <span class="checkmark"></span>
-              </label>
-            </div>
-            <div>
-              <label class="container-input"
-                >Pets Allowed
-                <input type="checkbox" v-model="rules.petsAllowed" />
-                <span class="checkmark"></span>
-              </label>
-            </div>
-            <div>
-              <label class="container-input"
-                >Suitable For Childrens
-                <input type="checkbox" v-model="rules.suitableForChildrens" />
-                <span class="checkmark"></span>
-              </label>
-            </div>
-            <div>
-              <label class="container-input"
-                >Suitable For Grooms
-                <input type="checkbox" v-model="rules.suitableForGrooms" />
-                <span class="checkmark"></span>
-              </label>
-            </div>
-            <div>
-              <label class="container-input"
-                >suitable For Infants
-                <input type="checkbox" v-model="rules.suitableForInfants" />
-                <span class="checkmark"></span>
-              </label>
-            </div>
-            <div>
-              <label class="container-input"
-                >Fire Alaram
-                <input type="checkbox" v-model="safty.fireAlaram" />
-                <span class="checkmark"></span>
-              </label>
-            </div>
             <div>
               <label class="container-input"
                 >Carbon Monoxide Alarams
@@ -114,9 +72,8 @@
             </div> -->
             <!-- block -->
           </div>
-          <section class="price-container">
+          <!-- <section class="price-container">
             <div class="container-price">
-              <!-- block -->
               <div class="price-inputs">
                 <div class="price-checkbox">
                   <label class="container-input"
@@ -135,7 +92,6 @@
                   />
                 </div>
               </div>
-              <!-- block -->
               <div class="price-inputs">
                 <div class="price-checkbox">
                   <label class="container-input"
@@ -155,7 +111,7 @@
                 </div>
               </div>
             </div>
-          </section>
+          </section> -->
         </div>
         <div class="form-container">
           <div class="input-div">
@@ -252,11 +208,11 @@
     </div> -->
     <!-- step one End -->
     <!-- bath Rooms -->
-    <!-- <div class="primary-login" v-if="step == 2">
+    <div class="primary-login" v-if="step == 2">
       <div class="main-login add-services">
         <div class="logo-close">
           <div class="close-icon" @click="close">
-            <img src="../../../assets/images/close-icon.svg" alt="" />
+            <img src="../../../../assets/images/close-icon.svg" alt="" />
           </div>
         </div>
         <div class="headings">
@@ -265,13 +221,13 @@
         </div>
         <div class="container-rules">
           <div class="rules">
-            <div>
+            <!-- <div>
               <label class="container-input"
                 >hanger
                 <input type="checkbox" v-model="roomsbath.hanger" />
                 <span class="checkmark"></span>
               </label>
-            </div>
+            </div> -->
             <div>
               <label class="container-input"
                 >SoapTissue
@@ -293,13 +249,13 @@
                 <span class="checkmark"></span>
               </label>
             </div>
-            <div>
+            <!-- <div>
               <label class="container-input"
                 >MassageChair
                 <input type="checkbox" v-model="roomsbath.massageChair" />
                 <span class="checkmark"></span>
               </label>
-            </div>
+            </div> -->
             <div>
               <label class="container-input"
                 >Hair Dryer
@@ -308,6 +264,13 @@
               </label>
             </div>
             <div>
+              <label class="container-input"
+                >closet
+                <input type="checkbox" v-model="roomsbath.closet" />
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <!-- <div>
               <label class="container-input"
                 >Extra Pillow
                 <input type="checkbox" v-model="roomsbath.extraPillow" />
@@ -334,7 +297,7 @@
                 <input type="checkbox" v-model="roomsbath.iron" />
                 <span class="checkmark"></span>
               </label>
-            </div>
+            </div> -->
           </div>
         </div>
         <div class="form-container">
@@ -343,14 +306,14 @@
           </div>
         </div>
       </div>
-    </div> -->
+    </div>
     <!-- step one End -->
     <!-- step three -->
-    <div class="primary-login" v-if="step == 2">
+    <div class="primary-login" v-if="step == 3">
       <div class="main-login add-services">
         <div class="logo-close">
           <div class="close-icon" @click="close">
-            <img src="../../../assets/images/close-icon.svg" alt="" />
+            <img src="../../../../assets/images/close-icon.svg" alt="" />
           </div>
         </div>
         <div class="headings">
@@ -402,6 +365,13 @@
                   v-model="description.descriptionInArabic"
                 />
               </div>
+              <div>
+                <input
+                  type="text"
+                  placeholder="Pitch Grass Type"
+                  v-model="description.PitchGrassType"
+                />
+              </div>
             </div>
           </div>
           <div class="upload-file">
@@ -419,18 +389,18 @@
         </div>
         <div class="form-container">
           <div class="input-div">
-            <button type="submit" @click="changeStep(3)">Next</button>
+            <button type="submit" @click="changeStep(4)">Next</button>
           </div>
         </div>
       </div>
     </div>
     <!-- step two End -->
     <!-- step three -->
-    <div class="primary-login" v-if="step == 3">
+    <div class="primary-login" v-if="step == 4">
       <div class="main-login add-services">
         <div class="logo-close">
           <div class="close-icon" @click="close">
-            <img src="../../../assets/images/close-icon.svg" alt="" />
+            <img src="../../../../assets/images/close-icon.svg" alt="" />
           </div>
         </div>
         <div class="headings">
@@ -501,7 +471,7 @@
 </template>
 
 <script>
-import GoogleMap from "../../GoogleMap.vue";
+import GoogleMap from "../../../GoogleMap.vue";
 export default {
   name: "AddServiceModel",
   props: ["model"],
@@ -511,9 +481,9 @@ export default {
   data() {
     return {
       nextStep: null,
-      rules: {},
+      // rules: {},
       safty: {},
-      kitchen: {},
+      // kitchen: {},
       roomsbath: {},
       description: {},
       address: {},
@@ -547,20 +517,20 @@ export default {
         }
       }
       // price
-      const newObj = {};
-      for (const [key, value] of Object.entries(this.rules)) {
-        if (value) {
-          newObj[key] = value;
-        }
-      }
+      // const newObj = {};
+      // for (const [key, value] of Object.entries(this.rules)) {
+      //   if (value) {
+      //     newObj[key] = value;
+      //   }
+      // }
       var { location } = this.location;
       var finalDetail = {
         description: {
-          rules: { ...newObj, ...newObjC },
+          // rules: { ...newObj, ...newObjC },
           safty: { ...this.safty },
           ...this.description,
         },
-        kitchen: { ...this.kitchen },
+        // kitchen: { ...this.kitchen },
         address: { ...this.address },
         location,
         roomsbath: { ...this.roomsbath },

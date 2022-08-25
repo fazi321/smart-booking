@@ -1,6 +1,6 @@
 <template>
   <section class="btns">
-    <section v-if="!$store.state.auth.user">
+    <section v-if="!$store.state.auth.user || !user">
       <button class="btn btn-transparent" @click="vendorModelShow">
         Become Vendor
       </button>
@@ -13,10 +13,7 @@
       <button class="btn btn-transparent" @click="vendorModelShow">
         Become Vendor
       </button>
-      <button
-        class="btn btn-filled add-services"
-        @click="serviceModelShow"
-      >
+      <button class="btn btn-filled add-services" @click="serviceModelShow">
         Add Service
       </button>
       <div id="demo">
@@ -55,6 +52,7 @@ export default {
       vendorModel: false,
       serviceModel: false,
       dropDown: false,
+      user: false,
     };
   },
   mounted() {
@@ -90,6 +88,14 @@ export default {
       this.serviceModel = !this.serviceModel;
     },
   },
+  created(){
+     let auth = Cookies.get("Authorization");
+     if(!auth){
+       this.user =  false;
+     }else{
+       this.user = true;
+     }
+  }
 };
 </script>
 
@@ -107,14 +113,14 @@ export default {
   justify-content: center;
 }
 .add-services {
-  padding: 12px 20px!important;
+  padding: 12px 20px !important;
   margin-right: 10px;
 }
 .dropdown-container {
   position: relative;
 }
-.dropdown-container .btn{
-  padding:10px 10px;
+.dropdown-container .btn {
+  padding: 10px 10px;
 }
 .demo-login {
   position: absolute;

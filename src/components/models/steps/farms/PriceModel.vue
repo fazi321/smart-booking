@@ -5,7 +5,7 @@
       <div class="main-login add-services">
         <div class="logo-close">
           <div class="close-icon" @click="close">
-            <img src="../../../assets/images/close-icon.svg" alt="" />
+            <img src="../../../../assets/images/close-icon.svg" alt="" />
           </div>
         </div>
         <div class="headings">
@@ -198,7 +198,7 @@
       <div class="main-login add-services">
         <div class="logo-close">
           <div class="close-icon" @click="close">
-            <img src="../../../assets/images/close-icon.svg" alt="" />
+            <img src="../../../../assets/images/close-icon.svg" alt="" />
           </div>
         </div>
         <div class="headings">
@@ -218,7 +218,10 @@
                   }"
                   @click="bookSettings('Families_and_Singles')"
                 >
-                  <img src="../../../assets/images/familiesSingle.svg" alt="" />
+                  <img
+                    src="../../../../assets/images/familiesSingle.svg"
+                    alt=""
+                  />
                   <h6>Families &</h6>
                   <h6>Singles</h6>
                 </div>
@@ -228,7 +231,7 @@
                   }"
                   @click="bookSettings('families_only')"
                 >
-                  <img src="../../../assets/images/families.svg" alt="" />
+                  <img src="../../../../assets/images/families.svg" alt="" />
                   <h6>Families Only</h6>
                 </div>
                 <div
@@ -237,7 +240,7 @@
                   }"
                   @click="bookSettings('ladies_only')"
                 >
-                  <img src="../../../assets/images/ladies.svg" alt="" />
+                  <img src="../../../../assets/images/ladies.svg" alt="" />
                   <h6>Ladies Only</h6>
                 </div>
               </div>
@@ -310,7 +313,7 @@
       <div class="main-login add-services">
         <div class="logo-close">
           <div class="close-icon" @click="close">
-            <img src="../../../assets/images/close-icon.svg" alt="" />
+            <img src="../../../../assets/images/close-icon.svg" alt="" />
           </div>
         </div>
         <div class="headings">
@@ -330,7 +333,7 @@
                 <div class="rounded-btn"></div>
                 <div class="card-container">
                   <div class="category-img">
-                    <img src="../../../assets/images/instant.svg" alt="" />
+                    <img src="../../../../assets/images/instant.svg" alt="" />
                   </div>
                 </div>
                 <div :class="['content']">
@@ -352,7 +355,7 @@
                 <div class="rounded-btn"></div>
                 <div class="card-container">
                   <div class="category-img">
-                    <img src="../../../assets/images/request.svg" alt="" />
+                    <img src="../../../../assets/images/request.svg" alt="" />
                   </div>
                 </div>
                 <div :class="['content']">
@@ -379,7 +382,7 @@
       <div class="main-login add-services">
         <div class="logo-close">
           <div class="close-icon" @click="close">
-            <img src="../../../assets/images/close-icon.svg" alt="" />
+            <img src="../../../../assets/images/close-icon.svg" alt="" />
           </div>
         </div>
         <div class="headings">
@@ -471,7 +474,7 @@
       <div class="main-login add-services">
         <div class="logo-close">
           <div class="close-icon" @click="close">
-            <img src="../../../assets/images/close-icon.svg" alt="" />
+            <img src="../../../../assets/images/close-icon.svg" alt="" />
           </div>
         </div>
         <div class="headings">
@@ -500,6 +503,63 @@
               </div>
             </div>
             <!-- block -->
+            <div class="price-inputs">
+              <div class="price-checkbox">
+                <label class="container-input"
+                  >Sleepover
+                  <input type="checkbox" v-model="addOnsCheck.sleepover" />
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+              <div class="input-price">
+                <input type="text" v-model="addOnsPrice.sleepover" />
+              </div>
+            </div>
+            <!-- block -->
+            <div class="price-inputs">
+              <div class="price-checkbox">
+                <label class="container-input"
+                  >Brithday Arrangements
+                  <input
+                    type="checkbox"
+                    v-model="addOnsCheck.brithdayArrangements"
+                  />
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+              <div class="input-price">
+                <input type="text" v-model="addOnsPrice.brithdayArrangements" />
+              </div>
+            </div>
+            <!-- block -->
+            <div class="price-inputs">
+              <div class="price-checkbox">
+                <label class="container-input"
+                  >Wedding Arrangements
+                  <input
+                    type="checkbox"
+                    v-model="addOnsCheck.weddingArrangements"
+                  />
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+              <div class="input-price">
+                <input type="text" v-model="addOnsPrice.weddingArrangements" />
+              </div>
+            </div>
+            <!-- block -->
+            <div class="price-inputs">
+              <div class="price-checkbox">
+                <label class="container-input"
+                  >buffet
+                  <input type="checkbox" v-model="addOnsCheck.buffet" />
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+              <div class="input-price">
+                <input type="text" v-model="addOnsPrice.buffet" />
+              </div>
+            </div>
             <!-- <div class="price-inputs">
               <div class="price-checkbox">
                 <label class="container-input"
@@ -516,7 +576,7 @@
               </div>
             </div> -->
             <!-- block -->
-            <div class="price-inputs">
+            <!-- <div class="price-inputs">
               <div class="price-checkbox">
                 <label class="container-input"
                   >buffet
@@ -541,7 +601,7 @@
                 <input type="checkbox" v-model="addOnsPrice.weddingCake" />
                 <span class="checkmark"></span>
               </label>
-            </div>
+            </div> -->
             <!-- block -->
             <!-- <div class="price-inputs">
               <div class="price-checkbox">
@@ -628,7 +688,7 @@ export default {
       var finalData = {
         addOns: { ...newAddon },
         price: { ...newObj },
-        check: { ...check },
+        // check: { ...check },
         bookingSetting: { ...this.bookingSetting },
       };
       this.$emit("price", finalData);
