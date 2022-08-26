@@ -170,6 +170,21 @@
             </div>
           </div> -->
           <!-- block -->
+          <div class="booking-date">
+            <div class="head-booking">
+              <h5>Select Check-in & Check-out times</h5>
+            </div>
+            <div class="date-input">
+              <div @click="showModelDate('cn')">
+                <!-- <input type="text" placeholder="Check in" v-model="checkIn" /> -->
+                <input type="time" v-model="checkIn" id="date" ref="cn" />
+              </div>
+              <div @click="showModelDate('co')">
+                <!-- <input type="text" placeholder="Check out" v-model="checkOut" /> -->
+                <input type="time" v-model="checkOut" id="date" ref="co" />
+              </div>
+            </div>
+          </div>
         </section>
         <div class="form-container">
           <div class="input-div">
@@ -488,7 +503,7 @@
               </div>
             </div>
             <!-- block -->
-            <div class="price-inputs">
+            <!-- <div class="price-inputs">
               <div class="price-checkbox">
                 <label class="container-input"
                   >Sleepover
@@ -499,9 +514,9 @@
               <div class="input-price">
                 <input type="text" v-model="addOnsPrice.sleepover" />
               </div>
-            </div>
+            </div> -->
             <!-- block -->
-            <div class="price-inputs">
+            <!-- <div class="price-inputs">
               <div class="price-checkbox">
                 <label class="container-input"
                   >Brithday Arrangements
@@ -515,7 +530,7 @@
               <div class="input-price">
                 <input type="text" v-model="addOnsPrice.brithdayArrangements" />
               </div>
-            </div>
+            </div> -->
             <!-- block -->
             <div class="price-inputs">
               <div class="price-checkbox">
@@ -533,7 +548,7 @@
               </div>
             </div>
             <!-- block -->
-            <div class="price-inputs">
+            <!-- <div class="price-inputs">
               <div class="price-checkbox">
                 <label class="container-input"
                   >buffet
@@ -544,7 +559,7 @@
               <div class="input-price">
                 <input type="text" v-model="addOnsPrice.buffet" />
               </div>
-            </div>
+            </div> -->
             <!-- <div class="price-inputs">
               <div class="price-checkbox">
                 <label class="container-input"
@@ -628,8 +643,8 @@ export default {
       //  data picker
       fromDate: null,
       toDate: null,
-      // checkIn: null,
-      // checkOut: null,
+      checkIn: null,
+      checkOut: null,
       serviceType: null,
       showPopUp: null,
       // date picker
@@ -654,11 +669,11 @@ export default {
         }
       }
       //  time check in out
-      // var check = {};
-      // if (this.checkIn && this.checkOut) {
-      //   check.checkInTime = this.timeFormate(this.checkIn);
-      //   check.checkOutTime = this.timeFormate(this.checkOut);
-      // }
+      var check = {};
+      if (this.checkIn && this.checkOut) {
+        check.checkInTime = this.timeFormate(this.checkIn);
+        check.checkOutTime = this.timeFormate(this.checkOut);
+      }
       // addon's
       const newAddon = {};
       for (const [key, value] of Object.entries(this.addOnsCheck)) {

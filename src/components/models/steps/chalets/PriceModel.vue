@@ -500,7 +500,7 @@
               </div>
             </div>
             <!-- block -->
-            <!-- <div class="price-inputs">
+            <div class="price-inputs">
               <div class="price-checkbox">
                 <label class="container-input"
                   >Birthday Arrangements
@@ -514,9 +514,40 @@
               <div class="input-price">
                 <input type="text" v-model="addOnsPrice.BirthdayArrangements" />
               </div>
-            </div> -->
+            </div>
             <!-- block -->
             <div class="price-inputs">
+              <div class="price-checkbox">
+                <label class="container-input"
+                  >Wedding Arrangements
+                  <input
+                    type="checkbox"
+                    v-model="addOnsCheck.weddingArrangements"
+                  />
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+              <div class="input-price">
+                <input type="text" v-model="addOnsPrice.weddingArrangements" />
+              </div>
+            </div>
+            <!-- block -->
+            <div class="price-inputs">
+              <div class="price-checkbox">
+                <label class="container-input"
+                  >Sleepover
+                  <input
+                    type="checkbox"
+                    v-model="addOnsCheck.sleepover"
+                  />
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+              <div class="input-price">
+                <input type="text" v-model="addOnsPrice.sleepover" />
+              </div>
+            </div>
+            <!-- <div class="price-inputs">
               <div class="price-checkbox">
                 <label class="container-input"
                   >buffet
@@ -541,7 +572,7 @@
                 <input type="checkbox" v-model="addOnsPrice.weddingCake" />
                 <span class="checkmark"></span>
               </label>
-            </div>
+            </div> -->
             <!-- block -->
             <!-- <div class="price-inputs">
               <div class="price-checkbox">

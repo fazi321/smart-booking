@@ -42,13 +42,13 @@
                 <span class="checkmark"></span>
               </label>
             </div>
-            <div>
+            <!-- <div>
               <label class="container-input"
                 >Suitable For Childrens
                 <input type="checkbox" v-model="rules.suitableForChildrens" />
                 <span class="checkmark"></span>
               </label>
-            </div>
+            </div> -->
             <div>
               <label class="container-input"
                 >Suitable For Grooms
@@ -56,13 +56,13 @@
                 <span class="checkmark"></span>
               </label>
             </div>
-            <div>
+            <!-- <div>
               <label class="container-input"
                 >suitable For Infants
                 <input type="checkbox" v-model="rules.suitableForInfants" />
                 <span class="checkmark"></span>
               </label>
-            </div>
+            </div> -->
             <div>
               <label class="container-input"
                 >Fire Alaram

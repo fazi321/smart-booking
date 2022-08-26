@@ -14,13 +14,13 @@
         </div>
         <div class="container-rules">
           <div class="rules">
-            <!-- <div>
+            <div>
               <label class="container-input"
                 >Events & Parties allowed
                 <input type="checkbox" v-model="rules.EventsPartiesallowed" />
                 <span class="checkmark"></span>
               </label>
-            </div> -->
+            </div>
             <!-- <div>
               <label class="container-input"
                 >Pets Allowed
@@ -44,22 +44,8 @@
             </div>
             <div>
               <label class="container-input"
-                >Suitable For Childrens
-                <input type="checkbox" v-model="rules.suitableForChildrens" />
-                <span class="checkmark"></span>
-              </label>
-            </div>
-            <div>
-              <label class="container-input"
                 >Suitable For Grooms
                 <input type="checkbox" v-model="rules.suitableForGrooms" />
-                <span class="checkmark"></span>
-              </label>
-            </div>
-            <div>
-              <label class="container-input"
-                >suitable For Infants
-                <input type="checkbox" v-model="rules.suitableForInfants" />
                 <span class="checkmark"></span>
               </label>
             </div>
@@ -165,7 +151,7 @@
       </div>
     </div>
     <!-- kethen -->
-    <!-- <div class="primary-login" v-if="step == 2">
+    <div class="primary-login" v-if="step == 2">
       <div class="main-login add-services">
         <div class="logo-close">
           <div class="close-icon" @click="close">
@@ -203,6 +189,13 @@
               <label class="container-input"
                 >CoffeeMachine
                 <input type="checkbox" v-model="kitchen.coffeeMachine" />
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div>
+              <label class="container-input"
+                >FirePlace
+                <input type="checkbox" v-model="kitchen.firePlace" />
                 <span class="checkmark"></span>
               </label>
             </div>
@@ -249,10 +242,10 @@
           </div>
         </div>
       </div>
-    </div> -->
+    </div>
     <!-- step one End -->
     <!-- bath Rooms -->
-    <!-- <div class="primary-login" v-if="step == 2">
+    <div class="primary-login" v-if="step == 3">
       <div class="main-login add-services">
         <div class="logo-close">
           <div class="close-icon" @click="close">
@@ -339,14 +332,58 @@
         </div>
         <div class="form-container">
           <div class="input-div">
-            <button type="submit" @click="changeStep(3)">Next</button>
+            <button type="submit" @click="changeStep(4)">Next</button>
           </div>
         </div>
       </div>
-    </div> -->
+    </div>
     <!-- step one End -->
+    <!-- out door -->
+    <div class="primary-login" v-if="step == 4">
+      <div class="main-login add-services">
+        <div class="logo-close">
+          <div class="close-icon" @click="close">
+            <img src="../../../../assets/images/close-icon.svg" alt="" />
+          </div>
+        </div>
+        <div class="headings">
+          <h1>Service Description</h1>
+          <h4>Out door</h4>
+        </div>
+        <div class="container-rules">
+          <div class="rules">
+            <div>
+              <label class="container-input"
+                >Grill
+                <input type="checkbox" v-model="outdoors.grill" />
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div>
+              <label class="container-input"
+                >Green Yard
+                <input type="checkbox" v-model="outdoors.greenYard" />
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <!-- <div>
+              <label class="container-input"
+                >MandiPit
+                <input type="checkbox" v-model="outdoors.mandiPit" />
+                <span class="checkmark"></span>
+              </label>
+            </div> -->
+          </div>
+        </div>
+        <div class="form-container">
+          <div class="input-div">
+            <button type="submit" @click="changeStep(5)">Next</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- step three -->
-    <div class="primary-login" v-if="step == 2">
+    <div class="primary-login" v-if="step == 5">
       <div class="main-login add-services">
         <div class="logo-close">
           <div class="close-icon" @click="close">
@@ -419,14 +456,14 @@
         </div>
         <div class="form-container">
           <div class="input-div">
-            <button type="submit" @click="changeStep(3)">Next</button>
+            <button type="submit" @click="changeStep(6)">Next</button>
           </div>
         </div>
       </div>
     </div>
     <!-- step two End -->
     <!-- step three -->
-    <div class="primary-login" v-if="step == 3">
+    <div class="primary-login" v-if="step == 6">
       <div class="main-login add-services">
         <div class="logo-close">
           <div class="close-icon" @click="close">
@@ -518,6 +555,7 @@ export default {
       description: {},
       address: {},
       location: {},
+      outdoors:{},
       suitableFor: {},
       suitablePrice: {},
       step: 1,
@@ -554,6 +592,7 @@ export default {
         }
       }
       var { location } = this.location;
+      var outdoors = this.outdoors;
       var finalDetail = {
         description: {
           rules: { ...newObj, ...newObjC },
@@ -563,6 +602,7 @@ export default {
         kitchen: { ...this.kitchen },
         address: { ...this.address },
         location,
+        outdoors,
         roomsbath: { ...this.roomsbath },
       };
       console.log(finalDetail);

@@ -240,3 +240,77 @@ header.active .container .nav ul li a {
 }
 
 /* reponsive end */
+/* check box and input  */
+.price-inputs {
+  display: flex;
+  justify-content: space-between;
+}
+.price-inputs .price-checkbox .container-input p {
+  font-size: 12px;
+  display: inline-block;
+}
+.price-inputs .price-checkbox .container-input {
+  margin: 16px 0;
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  cursor: pointer;
+  font-size: 14px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: left;
+}
+/* Hide the browser's default checkbox */
+.price-inputs .price-checkbox .container-input input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+/* Create a custom checkbox */
+.price-inputs .price-checkbox .checkmark {
+  position: absolute;
+  top: -5px;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  border-radius: 20px;
+  box-shadow: 0px 1px 12px -2px #00000040;
+}
+/* Create the checkmark/indicator (hidden when not checked) */
+.price-inputs .price-checkbox .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+/* Show the checkmark when checked */
+.price-inputs
+  .price-checkbox
+  .container-input
+  input:checked
+  ~ .checkmark:after {
+  display: block;
+}
+/* Style the checkmark/indicator */
+.price-inputs .price-checkbox .container-input .checkmark:after {
+  left: 5px;
+  top: 5px;
+  width: 15px;
+  height: 15px;
+  background: #febb12;
+  border-radius: 35px;
+}
+.input-price input {
+  outline: none;
+  border-radius: 20px;
+  border: unset;
+  box-shadow: 0px 1px 12px -2px #00000040;
+  padding: 8px;
+  width: 82px;
+}
+/* .price-container {
+  width: 85%;
+} */

@@ -28,13 +28,13 @@
                 <span class="checkmark"></span>
               </label>
             </div> -->
-            <div>
+            <!-- <div>
               <label class="container-input"
                 >Event Parties Allowed
                 <input type="checkbox" v-model="rules.eventPartiesAllowed" />
                 <span class="checkmark"></span>
               </label>
-            </div>
+            </div> -->
             <div>
               <label class="container-input"
                 >Smoking Allowed
@@ -42,13 +42,13 @@
                 <span class="checkmark"></span>
               </label>
             </div>
-            <div>
+            <!-- <div>
               <label class="container-input"
                 >Pets Allowed
                 <input type="checkbox" v-model="rules.petsAllowed" />
                 <span class="checkmark"></span>
               </label>
-            </div>
+            </div> -->
             <!-- <div>
               <label class="container-input"
                 >Suitable For Childrens
@@ -56,13 +56,13 @@
                 <span class="checkmark"></span>
               </label>
             </div> -->
-            <div>
+            <!-- <div>
               <label class="container-input"
                 >Suitable For Grooms
                 <input type="checkbox" v-model="rules.suitableForGrooms" />
                 <span class="checkmark"></span>
               </label>
-            </div>
+            </div> -->
             <!-- <div>
               <label class="container-input"
                 >suitable For Infants
@@ -127,10 +127,10 @@
               <div class="price-inputs">
                 <div class="price-checkbox">
                   <label class="container-input"
-                    >Suitable For Childrens
+                    >Audditionail Rules
                     <input
                       type="checkbox"
-                      v-model="suitableFor.suitableForChildrens"
+                      v-model="suitableFor.audditionailRules"
                     />
                     <span class="checkmark"></span>
                   </label>
@@ -138,12 +138,12 @@
                 <div class="input-price">
                   <input
                     type="number"
-                    v-model="suitablePrice.suitableForChildrens"
+                    v-model="suitablePrice.audditionailRules"
                   />
                 </div>
               </div>
               <!-- block -->
-              <div class="price-inputs">
+              <!-- <div class="price-inputs">
                 <div class="price-checkbox">
                   <label class="container-input"
                     >Suitable For Infants
@@ -160,7 +160,7 @@
                     v-model="suitablePrice.suitableForInfants"
                   />
                 </div>
-              </div>
+              </div> -->
             </div>
           </section>
         </div>
@@ -213,13 +213,13 @@
                 <span class="checkmark"></span>
               </label>
             </div>
-            <div>
+            <!-- <div>
               <label class="container-input"
                 >Fire Place
                 <input type="checkbox" v-model="kitchen.firePlace" />
                 <span class="checkmark"></span>
               </label>
-            </div>
+            </div> -->
             <div>
               <label class="container-input"
                 >Kettle
@@ -349,6 +349,13 @@
                 <span class="checkmark"></span>
               </label>
             </div>
+            <div>
+              <label class="container-input"
+                >Balcony
+                <input type="checkbox" v-model="roomsbath.balcony" />
+                <span class="checkmark"></span>
+              </label>
+            </div>
           </div>
         </div>
         <div class="form-container">
@@ -369,28 +376,28 @@
         </div>
         <div class="headings">
           <h1>Service Description</h1>
-          <h4>Out door</h4>
+          <h4>Free Meal</h4>
         </div>
         <div class="container-rules">
           <div class="rules">
             <div>
               <label class="container-input"
-                >Grill
-                <input type="checkbox" v-model="outdoors.grill" />
+                >Break fast
+                <input type="checkbox" v-model="freeMeal.breakfast" />
                 <span class="checkmark"></span>
               </label>
             </div>
             <div>
               <label class="container-input"
-                >Green Yard
-                <input type="checkbox" v-model="outdoors.greenYard" />
+                >Lunch
+                <input type="checkbox" v-model="freeMeal.lunch" />
                 <span class="checkmark"></span>
               </label>
             </div>
             <div>
               <label class="container-input"
-                >MandiPit
-                <input type="checkbox" v-model="outdoors.mandiPit" />
+                >Dinner
+                <input type="checkbox" v-model="freeMeal.dinner" />
                 <span class="checkmark"></span>
               </label>
             </div>
@@ -578,7 +585,8 @@ export default {
       location: {},
       suitableFor: {},
       suitablePrice: {},
-      outdoors:{},
+      // outdoors:{},
+      freeMeal:{},
       step: 1,
     };
   },
@@ -613,7 +621,7 @@ export default {
         }
       }
       var { location } = this.location;
-      var outdoors = this.outdoors;
+      var freeMeal = this.freeMeal;
       var finalDetail = {
         description: {
           rules: { ...newObj, ...newObjC },
@@ -623,7 +631,7 @@ export default {
         kitchen: { ...this.kitchen },
         address: { ...this.address },
         location,
-        outdoors,
+        freeMeal,
         roomsbath: { ...this.roomsbath },
       };
       console.log(finalDetail);

@@ -107,6 +107,31 @@
         </div>
       </div>
     </div>
+    <!-- Chalets -->
+    <section v-if="serviceType && serviceType.category == 'Chalets'">
+      <!-- basic information start -->
+      <InfoModelChalets
+        v-if="isSubmitted && accountOpt == 'info'"
+        :model="true"
+        @close="close"
+        @basicInfo="basicData"
+      />
+      <!-- Description start -->
+      <ServiceModelChalets
+        v-if="isSubmitted && accountOpt == 'service'"
+        :model="true"
+        @close="close"
+        @images="formData"
+        @decription="decription"
+      />
+      <!-- price start -->
+      <PriceModelChalets
+        v-if="isSubmitted && accountOpt == 'price'"
+        :model="true"
+        @close="close"
+        @price="pricing"
+      />
+    </section>
     <!-- Resort -->
     <section v-if="serviceType && serviceType.category == 'Resorts'">
       <!-- basic information start -->
@@ -157,7 +182,7 @@
         @price="pricing"
       />
     </section>
-     <!-- Appartments -->
+    <!-- Appartments -->
     <section v-if="serviceType && serviceType.category == 'Apartment'">
       <!-- basic information start -->
       <InfoModelAppartments
@@ -311,6 +336,10 @@
 </template>
 
 <script>
+// CHALETS
+import InfoModelChalets from "./steps/chalets/InfoModel.vue";
+import ServiceModelChalets from "./steps/chalets/ServiceModel.vue";
+import PriceModelChalets from "./steps/chalets/PriceModel.vue";
 // RESORTS
 import InfoModel from "./steps/InfoModel.vue";
 import ServiceModel from "./steps/ServiceModel.vue";
@@ -347,6 +376,11 @@ export default {
   name: "AddServiceModel",
   props: ["model"],
   components: {
+    // chalets
+    InfoModelChalets,
+    ServiceModelChalets,
+    PriceModelChalets,
+    // resorts
     InfoModel,
     ServiceModel,
     PriceModel,
@@ -423,16 +457,28 @@ export default {
     },
     async submit(payload) {
       var cate = this.serviceType.category.toLowerCase();
-      if(cate == 'lounges'){
-        cate = 'lounge'
+      if (cate == "lounges") {
+        cate = "lounge";
       }
-      if(cate == 'wedding_halls'){
-        cate = 'weddinghalls'
+      if (cate == "wedding_halls") {
+        cate = "weddinghalls";
+      }
+      if (cate == "chalets") {
+        cate = "chalet";
       }
       try {
         const res = await this.$axios.post(cate, payload);
         if (res) {
-          console.log(res);
+          // console.log(res);
+          this.$swal({
+            icon: "success",
+            title: "Success!",
+            showConfirmButton: false,
+            timer: 3000,
+          });
+          setTimeout(() => {
+            this.$router.push("/my-services");
+          }, 5000);
         }
       } catch (error) {
         console.log(error);
@@ -472,7 +518,7 @@ export default {
       try {
         var res = await this.$axios.get("services/categories");
         this.categories = res.data;
-        console.log(res.data)
+        // console.log(res.data);
       } catch (error) {
         console.log(error);
       }

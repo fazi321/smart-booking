@@ -39,6 +39,13 @@
               <div>
                 <input
                   type="number"
+                  placeholder="Bedrooms"
+                  v-model="roomsGuest.bedrooms"
+                />
+              </div>
+              <div>
+                <input
+                  type="number"
                   placeholder="doubleBed"
                   v-model="roomsGuest.doubleBed"
                 />
@@ -64,13 +71,13 @@
                   v-model="roomsGuest.bathrooms"
                 />
               </div>
-              <div>
+              <!-- <div>
                 <input
                   type="number"
                   placeholder="NumOf Majles Tents"
                   v-model="roomsGuest.numOfMajlesTents"
                 />
-              </div>
+              </div> -->
               <!-- <div>
                 <input
                   type="number"
@@ -89,6 +96,13 @@
                 <label class="container-input"
                   >Outdoor Seating
                   <input type="checkbox" v-model="roomsGuest.outdoorSeating" />
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+              <div class="rules">
+                <label class="container-input"
+                  >Addition Seating
+                  <input type="checkbox" v-model="roomsGuest.additionSeating" />
                   <span class="checkmark"></span>
                 </label>
               </div>
@@ -231,13 +245,13 @@
                   <h6>Outdoor</h6>
                   <h6>Swimming Pool</h6>
                 </div>
-                <div
+                <!-- <div
                   :class="{ active: isExist('playground') }"
                   @click="selectedAmenities('playground')"
                 >
                   <img src="../../../../assets/images/playground.svg" alt="" />
                   <h6>Playground</h6>
-                </div>
+                </div> -->
                 <div
                   :class="{ active: isExist('accessInHours') }"
                   @click="selectedAmenities('accessInHours')"
@@ -329,6 +343,23 @@
               </div>
             </div>
           </div>
+          <section class="price-container">
+            <div class="container-price">
+              <!-- block -->
+              <div class="price-inputs">
+                <div class="price-checkbox">
+                  <label class="container-input"
+                    >24 Hours Access
+                    <input type="checkbox" v-model="accessCheck" />
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+                <div class="input-price">
+                  <input type="number" v-model="accessInHoursCheck" />
+                </div>
+              </div>
+            </div>
+          </section>
         </section>
         <div class="form-container">
           <div class="input-div step-btn">
@@ -357,6 +388,8 @@ export default {
       unitsAndGuest: {},
       roomsGuest: {},
       leisure: {},
+      accessCheck: false,
+      accessInHoursCheck: null,
     };
   },
   methods: {
@@ -383,6 +416,11 @@ export default {
     },
     lastStepClicked() {
       var basicInfo = {};
+      if (this.accessCheck) {
+        this.leisure.accessInHours = this.accessInHoursCheck;
+      } else {
+        delete this.leisure.accessInHours;
+      }
       basicInfo.roomsGuest = this.roomsGuest;
       basicInfo.leisure = this.leisure;
       this.$parent.accountOpt = "service";

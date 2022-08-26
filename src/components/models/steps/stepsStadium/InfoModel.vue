@@ -10,7 +10,7 @@
         </div>
         <div class="headings">
           <h1>Basic Information</h1>
-           <h1>Stadium</h1>
+          <h1>Stadium</h1>
           <h4>Rooms & Guests</h4>
         </div>
         <div class="container-vendor">
@@ -178,6 +178,23 @@
               </div>
             </div>
           </div>
+          <section class="price-container">
+            <div class="container-price">
+              <!-- block -->
+              <div class="price-inputs">
+                <div class="price-checkbox">
+                  <label class="container-input"
+                    >24 Hours Access
+                    <input type="checkbox" v-model="accessCheck" />
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+                <div class="input-price">
+                  <input type="number" v-model="accessInHoursCheck" />
+                </div>
+              </div>
+            </div>
+          </section>
         </section>
         <div class="form-container">
           <div class="input-div step-btn">
@@ -206,6 +223,8 @@ export default {
       unitsAndGuest: {},
       roomsGuest: {},
       leisure: {},
+      accessCheck: false,
+      accessInHoursCheck: null,
     };
   },
   methods: {
@@ -232,6 +251,11 @@ export default {
     },
     lastStepClicked() {
       var basicInfo = {};
+      if (this.accessCheck) {
+        this.leisure.accessInHours = this.accessInHoursCheck;
+      } else {
+        delete this.leisure.accessInHours;
+      }
       basicInfo.roomsGuest = this.roomsGuest;
       basicInfo.leisure = this.leisure;
       this.$parent.accountOpt = "service";
