@@ -5,19 +5,19 @@
         <router-link to="/">HOME</router-link>
       </li>
       <li :class="{ active: $route.params.category == 'apartments' }">
-        <router-link to="/apartments">Apartments</router-link>
+        <router-link to="/apartments?page=1">Apartments</router-link>
       </li>
       <li :class="{ active: $route.params.category == 'farms' }">
-        <router-link to="/farms">Farms</router-link>
+        <router-link to="/farms?page=1">Farms</router-link>
       </li>
       <li :class="{ active: $route.params.category == 'hotels' }">
-        <router-link to="/hotels">Hotels</router-link>
+        <router-link to="/hotels?page=1">Hotels</router-link>
       </li>
       <li :class="{ active: $route.params.category == 'resorts' }">
-        <router-link to="/resorts">Resorts</router-link>
+        <router-link to="/resorts?page=1">Resorts</router-link>
       </li>
       <li :class="{ active: $route.params.category == 'lounges' }">
-        <router-link to="/lounges">Lounges</router-link>
+        <router-link to="/lounges?page=1">Lounges</router-link>
       </li>
     </ul>
   </section>

@@ -24,17 +24,19 @@
       <p v-else>NOT FOUND</p>
     </section>
     <section v-if="tab == 'Map'" class="terms">
-      <p>Map</p>
+      <MapDetail />
     </section>
   </section>
 </template>
 
 <script>
 import Facilities from "@/components/hotelDetail/facilities.vue";
+import MapDetail from "@/components/common/mapDetail.vue"
 export default {
   name: "DetailTabs",
   components: {
     Facilities,
+    MapDetail
   },
   computed: {
     storeState: function () {
