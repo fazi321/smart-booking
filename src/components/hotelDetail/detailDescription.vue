@@ -1,7 +1,7 @@
 <template>
   <section class="description">
     <h3>Description</h3>
-    <p v-if="storeState.description">
+    <p v-if="storeState && storeState.description">
       {{ storeState.description.descriptionInEnglish }}
     </p>
     <p v-else>

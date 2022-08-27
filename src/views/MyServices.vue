@@ -6,7 +6,10 @@
       </div>
       <div class="service-container">
         <div class="booking-cards">
-          <div class="card">
+          <div class="card" v-for="(item, key) in dataCard" :key="key">
+            <MyServicesCard :items="item"/>
+          </div>
+          <!-- <div class="card">
             <MyServicesCard />
           </div>
           <div class="card">
@@ -20,10 +23,7 @@
           </div>
           <div class="card">
             <MyServicesCard />
-          </div>
-          <div class="card">
-            <MyServicesCard />
-          </div>
+          </div> -->
         </div>
       </div>
     </section>
@@ -38,8 +38,31 @@ export default {
   name: "MyServices",
   components: {
     DefaultLayout,
-    MyServicesCard
-  }
+    MyServicesCard,
+  },
+  data() {
+    return {
+      dataCard: [],
+    };
+  },
+  methods: {
+    async getData() {
+      try {
+        var res = await this.$axios.get(`services`);
+        // console.log(res.data, "-->");
+        this.dataCard = res.data;
+      } catch (error) {
+        console.log(error);
+      }
+    },
+
+    // clickCallback(num) {
+    //   this.$refs.slider.slideTo(num);
+    // },
+  },
+  mounted() {
+    this.getData();
+  },
 };
 </script>
 <style scoped>

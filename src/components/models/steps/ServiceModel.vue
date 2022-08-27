@@ -409,6 +409,7 @@
               Add service image
               <input
                 id="inputTag"
+                name="image"
                 type="file"
                 @change="handleChange"
                 accept="image/png, image/gif, image/jpeg"

@@ -2,14 +2,14 @@
   <section class="container">
     <div class="hotel-wrapper">
       <div class="title">
-        <h2 v-if="storeState.description">
+        <h2 v-if="storeState && storeState.description">
           {{ storeState.description.nameInEnglish }}
         </h2>
       </div>
       <div class="overview">
         <div class="icon">
           <img src="../../assets/images/place.svg" alt />
-          <p v-if="storeState.address">{{ storeState.address.city }}</p>
+          <p v-if="storeState && storeState.address">{{ storeState.address.city }}</p>
         </div>
         <div class="icon">
           <img src="../../assets/images/star.svg" alt />
@@ -21,7 +21,7 @@
         </div>
         <div class="icon">
           <img src="../../assets/images/family.svg" alt />
-          <p v-if="storeState.bookingSetting">
+          <p v-if="storeState && storeState.bookingSetting">
             {{ storeState.bookingSetting.bookingFor }}
           </p>
         </div>
@@ -54,7 +54,7 @@ export default {
   name: "HotelCard",
   computed: {
     storeState: function () {
-      return this.$store.state.details.details;
+      return this.$store.state.details && this.$store.state.details.details;
     },
   },
 };

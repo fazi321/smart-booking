@@ -14,7 +14,13 @@ export default {
     async getDetail({ commit }, payload) {
       try {
         const dataDetail = await axios().get(`${payload.cate}/${payload.id}`);
-        commit("SET_DATA", dataDetail.data[0]);
+        // services
+        console.log(dataDetail)
+        if(payload.cate == 'services'){
+          commit("SET_DATA", dataDetail.data);
+        }else{
+          commit("SET_DATA", dataDetail.data[0]);
+        }
       } catch (error) {
         console.log(error);
       }

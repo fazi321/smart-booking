@@ -11,13 +11,13 @@
         <BookCard />
       </div>
       <div class="service-details">
-        <div>
+        <div >
           <p>Check-in Date</p>
-          <p>22/05/2022</p>
+          <p>{{checkIn.checkInDate}}</p>
         </div>
         <div>
           <p>Check-out Date</p>
-          <p>24/05/2022</p>
+          <p>{{checkIn.checkOutDate}}</p>
         </div>
         <div>
           <p>Nights</p>
@@ -25,7 +25,7 @@
         </div>
         <div>
           <p>Vendor ID</p>
-          <p>Lorem Ipsum</p>
+          <p>{{storeState.vender}}</p>
         </div>
       </div>
       <!-- Payment Options  -->
@@ -100,7 +100,7 @@
       </div>
 
       <div class="book-btn">
-        <button>Pay (SAR 500)</button>
+        <button>Pay (SAR {{storeState.price.dayPrice}})</button>
       </div>
     </div>
   </section>
@@ -110,11 +110,17 @@
 import BookCard from "@/components/hotelDetail/bookCard.vue";
 export default {
   name: "BookModel",
+  props:['checkIn'],
   components: {
     BookCard
   },
   data() {
     return {};
+  },
+  computed: {
+    storeState: function () {
+      return this.$store.state.details && this.$store.state.details.details;
+    },
   },
   methods: {
     closeSlide() {

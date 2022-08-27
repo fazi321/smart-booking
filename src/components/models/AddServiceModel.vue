@@ -449,9 +449,13 @@ export default {
       };
       this.finalData = this.dataPayload;
       var uploadedImages = await this.uploadFiles();
-      if (uploadedImages) {
-        var imagesArr = Object.values(uploadedImages);
-        dataPayload.description.images = imagesArr;
+      if (Object.keys(this.myImages).length) {
+        if (uploadedImages) {
+          var imagesArr = Object.values(uploadedImages);
+          dataPayload.description.images = imagesArr;
+          this.submit(dataPayload);
+        }
+      } else {
         this.submit(dataPayload);
       }
     },

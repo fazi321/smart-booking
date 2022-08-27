@@ -1,23 +1,23 @@
 <template>
-  <router-link to="/hotel-detail" class="filter-card">
+  <router-link :to="`services/${items._id}`" class="filter-card">
     <div class="image">
       <img src="../../assets/images/hotel-img.svg" />
     </div>
     <div class="card-detail">
       <div class="heading">
-        <h5>Lorem Ipsum Hotel</h5>
+        <h5>{{items && items.description && items.description.nameInEnglish}}</h5>
         <div class="wish">
           <img src="../../assets/images/delete.svg" />
         </div>
       </div>
       <p>The ulitimate 5 star hotel</p>
-      <p>Riyadh, KSA</p>
+      <p>{{items && items.address && items.address.city}}</p>
       <p>
-        <span>2 Rooms</span>,
-        <span>2 Bathrooms</span>
+        <span>{{items && items.roomsGuest && items.roomsGuest.numRooms}} Rooms</span>,
+        <span>{{items && items.roomsGuest && items.roomsGuest.bathrooms}} Bathrooms</span>
       </p>
       <div class="sar">
-        <h6>SAR 120</h6>
+        <h6>SAR {{items && items.price && items.price.dayPrice}}</h6>
         <p>Per Night</p>
       </div>
     </div>
@@ -27,6 +27,7 @@
 <script>
 export default {
   name: "FilterCard",
+  props:['items']
 };
 </script>
 

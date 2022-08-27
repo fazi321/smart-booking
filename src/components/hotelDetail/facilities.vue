@@ -7,7 +7,7 @@
       <div class="facility-card">
         <div
           class="icon-card"
-          v-if="storeState.leisure && storeState.leisure.gym"
+          v-if="storeState && storeState.leisure && storeState.leisure.gym"
         >
           <div>
             <div class="icon-img">
@@ -20,7 +20,7 @@
         </div>
         <div
           class="icon-card"
-          v-if="storeState.leisure && storeState.leisure.billard"
+          v-if="storeState && storeState.leisure && storeState.leisure.billard"
         >
           <div>
             <div class="icon-img">
@@ -33,7 +33,7 @@
         </div>
         <div
           class="icon-card"
-          v-if="storeState.leisure && storeState.leisure.tennisCourt"
+          v-if="storeState && storeState.leisure && storeState.leisure.tennisCourt"
         >
           <div>
             <div class="icon-img">
@@ -46,7 +46,7 @@
         </div>
         <div
           class="icon-card"
-          v-if="storeState.leisure && storeState.leisure.airHockey"
+          v-if="storeState && storeState.leisure && storeState.leisure.airHockey"
         >
           <div>
             <div class="icon-img">
@@ -59,7 +59,7 @@
         </div>
         <div
           class="icon-card"
-          v-if="storeState.leisure && storeState.leisure.soccerField"
+          v-if="storeState && storeState.leisure && storeState.leisure.soccerField"
         >
           <div>
             <div class="icon-img">
@@ -72,7 +72,7 @@
         </div>
         <div
           class="icon-card"
-          v-if="storeState.leisure && storeState.leisure.vollyBall"
+          v-if="storeState && storeState.leisure && storeState.leisure.vollyBall"
         >
           <div>
             <div class="icon-img">
@@ -92,7 +92,7 @@
       <div class="facility-card">
         <div
           class="icon-card"
-          v-if="storeState.leisure && storeState.leisure.steamBath"
+          v-if="storeState && storeState.leisure && storeState.leisure.steamBath"
         >
           <div>
             <div class="icon-img">
@@ -105,7 +105,7 @@
         </div>
         <div
           class="icon-card"
-          v-if="storeState.leisure && storeState.leisure.indoorSwimmingPool"
+          v-if="storeState && storeState.leisure && storeState.leisure.indoorSwimmingPool"
         >
           <div>
             <div class="icon-img">
@@ -118,7 +118,7 @@
         </div>
         <div
           class="icon-card"
-          v-if="storeState.leisure && storeState.leisure.outdoorSwimmingPool"
+          v-if="storeState && storeState.leisure && storeState.leisure.outdoorSwimmingPool"
         >
           <div>
             <div class="icon-img">
@@ -131,7 +131,7 @@
         </div>
         <div
           class="icon-card"
-          v-if="storeState.leisure && storeState.leisure.SwimmingPoolHeater"
+          v-if="storeState && storeState.leisure && storeState.leisure.SwimmingPoolHeater"
         >
           <div>
             <div class="icon-img">
@@ -144,7 +144,7 @@
         </div>
         <div
           class="icon-card"
-          v-if="storeState.leisure && storeState.leisure.playground"
+          v-if="storeState && storeState.leisure && storeState.leisure.playground"
         >
           <div>
             <div class="icon-img">
@@ -157,7 +157,7 @@
         </div>
         <div
           class="icon-card"
-          v-if="storeState.leisure && storeState.leisure.hotTub"
+          v-if="storeState && storeState.leisure && storeState.leisure.hotTub"
         >
           <div>
             <div class="icon-img">
@@ -177,7 +177,7 @@
       <div class="facility-card">
         <div
           class="icon-card"
-          v-if="storeState.leisure && storeState.leisure.accessInHours"
+          v-if="storeState && storeState.leisure && storeState.leisure.accessInHours"
         >
           <div>
             <div class="icon-img">
@@ -190,7 +190,7 @@
         </div>
         <div
           class="icon-card"
-          v-if="storeState.leisure && storeState.leisure.wheelChairAccess"
+          v-if="storeState && storeState.leisure && storeState.leisure.wheelChairAccess"
         >
           <div>
             <div class="icon-img">
@@ -203,7 +203,7 @@
         </div>
         <div
           class="icon-card"
-          v-if="storeState.leisure && storeState.leisure.privateEntrance"
+          v-if="storeState && storeState.leisure && storeState.leisure.privateEntrance"
         >
           <div>
             <div class="icon-img">
@@ -216,7 +216,7 @@
         </div>
         <div
           class="icon-card"
-          v-if="storeState.leisure && storeState.leisure.doorman"
+          v-if="storeState && storeState.leisure && storeState.leisure.doorman"
         >
           <div>
             <div class="icon-img">

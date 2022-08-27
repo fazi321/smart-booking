@@ -6,7 +6,7 @@
         <HotelDescription />
         <DetailTabs />
       </section>
-      <section class="detail-right">
+      <section class="detail-right" v-if="$route.params.cat != 'services'">
         <FormBook />
       </section>
     </div>
@@ -35,7 +35,7 @@ export default {
   methods: {
     async getDetail() {
       var { cat, id } = this.$route.params;
-      var cate = cat != "farms" && cat != "resorts" ? cat.slice(0, -1) : cat;
+      var cate = cat != "farms" && cat != "resorts" && cat != 'services' ? cat.slice(0, -1) : cat;
       var q = { cate, id };
       this.$store.dispatch("details/getDetail", q);
     },
