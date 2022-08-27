@@ -1,6 +1,6 @@
 <template>
   <section :class="['login-signup', { active: model }]">
-    <OtpModel @submited="checkOTP" :model="otpModel" :otpC="verifyOtp"/>
+    <OtpModel @submited="checkOTP" :model="otpModel" :otpC="verifyOtp" ref="otp"/>
     <div class="primary-login">
       <div class="main-login">
         <div class="logo-close">
@@ -98,6 +98,8 @@ export default {
           showConfirmButton: false,
           timer: 3000,
         });
+      }else{
+        this.$refs.otp.error = true;
       }
     },
     LoginModel() {

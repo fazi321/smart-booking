@@ -4,7 +4,7 @@
       <div class="service-booking">
         <h1>MY SERVICES</h1>
       </div>
-      <div class="service-container">
+      <div class="service-container" v-if="!loading">
         <div class="booking-cards">
           <div class="card" v-for="(item, key) in dataCard" :key="key">
             <MyServicesCard :items="item"/>
@@ -26,6 +26,9 @@
           </div> -->
         </div>
       </div>
+      <div v-else>
+        loading...
+      </div>
     </section>
   </default-layout>
 </template>
@@ -43,15 +46,19 @@ export default {
   data() {
     return {
       dataCard: [],
+      loading: false,
     };
   },
   methods: {
     async getData() {
       try {
+        this.loading = true;
         var res = await this.$axios.get(`services`);
         // console.log(res.data, "-->");
         this.dataCard = res.data;
+         this.loading = false;
       } catch (error) {
+         this.loading = false;
         console.log(error);
       }
     },

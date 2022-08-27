@@ -28,6 +28,7 @@
               @on-complete="handleOnComplete"
             />
           </div>
+          <div v-if="error" class="error">Invalid Otp</div>
           <div class="input-div">
             <button type="submit" v-if="otp.length == 4" @click="submitOtp">
               Verify
@@ -56,6 +57,7 @@ export default {
   data() {
     return {
       otp: "",
+      error: false,
     };
   },
   methods: {
@@ -67,9 +69,11 @@ export default {
     },
     handleOnComplete(value) {
       this.otp = value;
+      this.error = false;
     },
     handleOnChange(value) {
       this.otp = value;
+      this.error = false;
     },
     handleClearInput() {
       this.$refs.otpInput.clearInput();

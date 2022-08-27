@@ -87,6 +87,14 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
+  scrollBehavior() {
+    // if (to.path === '/search' || to.path === '/blog') return
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve({ behavior: 'smooth', left: 0, top: 0 })
+      }, 100)
+    })
+  },
 });
 
 export default router;

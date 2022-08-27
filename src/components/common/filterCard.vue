@@ -1,12 +1,12 @@
 <template>
   <router-link :to="`${$route.path}/${item._id}`" class="filter-card">
     <div class="image">
-      <img src="../../assets/images/hotel-img.svg" />
-      <!-- <img :src="item.description.images[0]" /> -->
+      <img :src="item.description.images[0]" v-if="checkLink(item.description.images[0])"/>
+      <img src="../../assets/images/hotel-img.svg" v-else />
     </div>
     <div class="card-detail">
       <div class="heading">
-        <h5>{{item.description.nameInEnglish}}</h5>
+        <h5>{{ item.description.nameInEnglish }}</h5>
         <div class="wish">
           <svg class="svg-icon" viewBox="0 0 20 20">
             <path
@@ -17,7 +17,7 @@
         </div>
       </div>
       <!-- <p>Riyadh, KSA</p> -->
-      <p>{{item.address && item.address.address}}</p>
+      <p>{{ item.address && item.address.address }}</p>
       <div class="rating">
         <span class="star">&starf;</span>
         <span class="star">&starf;</span>
@@ -27,7 +27,7 @@
         <span class="rating-counter">(381)</span>
       </div>
       <div class="sar">
-        <h6>SAR {{item.price && item.price.dayPrice}}</h6>
+        <h6>SAR {{ item.price && item.price.dayPrice }}</h6>
         <p>Per Night</p>
       </div>
     </div>
@@ -38,6 +38,19 @@
 export default {
   props: ["item"],
   name: "FilterCard",
+  methods: {
+    checkLink(isLink) {
+      if (
+        new RegExp(
+          "([a-zA-Z0-9]+://)?([a-zA-Z0-9_]+:[a-zA-Z0-9_]+@)?([a-zA-Z0-9.-]+\\.[A-Za-z]{2,4})(:[0-9]+)?(/.*)?"
+        ).test(isLink)
+      ) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+  },
 };
 </script>
 
@@ -55,6 +68,7 @@ export default {
 }
 .filter-card .image img {
   width: 100%;
+  border-radius: 13px;
 }
 .filter-card .card-detail {
   padding: 20px;

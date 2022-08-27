@@ -8,7 +8,7 @@
       <div class="apartment-left">
         <HotelFilters />
       </div>
-      <div class="apartment-right" v-if="dataCard">
+      <div class="apartment-right" v-if="dataCard && !loading">
         <FilterCard
           v-for="(items, index) in dataCard"
           :key="index"
@@ -26,6 +26,9 @@
             :page-class="'page-item'"
           ></paginate>
         </div>
+      </div>
+      <div v-else>
+        <h1>Loading...</h1>
       </div>
     </div>
   </div>
@@ -49,6 +52,7 @@ export default {
   data() {
     return {
       dataCard: [],
+      loading:false,
     };
   },
   methods: {
@@ -60,9 +64,14 @@ export default {
             ? catType.slice(0, -1)
             : catType;
         try {
+          this.loading = true;
           var res = await this.$axios.get(`${cat}`);
-          this.dataCard = res.data;
+          if (res) {
+            this.dataCard = res.data;
+            this.loading = false;
+          }
         } catch (error) {
+          this.loading = false;
           console.log(error);
         }
       }
