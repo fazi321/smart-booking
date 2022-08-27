@@ -30,8 +30,8 @@
               </div>
             </div>
             <div
-              :class="['primary-cards', { active: accountOpt == 'info' }]"
-              @click="selectedOptions('service')"
+              :class="['primary-cards', { active: accountOpt == 'service' }]"
+              @click="selectedOptions('info')"
             >
               <div class="category-img">
                 <img src="../../assets/images/servies.svg" alt="" />
@@ -45,8 +45,8 @@
               </div>
             </div>
             <div
-              :class="['primary-cards', { active: accountOpt == 'info' }]"
-              @click="selectedOptions('price')"
+              :class="['primary-cards', { active: accountOpt == 'price' }]"
+              @click="selectedOptions('info')"
             >
               <div class="category-img">
                 <img src="../../assets/images/price.svg" alt="" />
@@ -118,7 +118,7 @@
       />
       <!-- Description start -->
       <ServiceModelChalets
-        v-if="isSubmitted "
+        v-if="isSubmitted && accountOpt == 'service'"
         :model="true"
         @close="close"
         @images="formData"
@@ -126,7 +126,7 @@
       />
       <!-- price start -->
       <PriceModelChalets
-        v-if="isSubmitted "
+        v-if="isSubmitted && accountOpt == 'price'"
         :model="true"
         @close="close"
         @price="pricing"
@@ -143,7 +143,7 @@
       />
       <!-- Description start -->
       <ServiceModel
-        v-if="isSubmitted "
+        v-if="isSubmitted && accountOpt == 'service'"
         :model="true"
         @close="close"
         @images="formData"
@@ -151,7 +151,7 @@
       />
       <!-- price start -->
       <PriceModel
-        v-if="isSubmitted "
+        v-if="isSubmitted && accountOpt == 'price'"
         :model="true"
         @close="close"
         @price="pricing"
@@ -168,7 +168,7 @@
       />
       <!-- Description start -->
       <ServiceModelStadium
-        v-if="isSubmitted "
+        v-if="isSubmitted && accountOpt == 'service'"
         :model="true"
         @close="close"
         @images="formData"
@@ -176,7 +176,7 @@
       />
       <!-- price start -->
       <PriceModelStadium
-        v-if="isSubmitted "
+        v-if="isSubmitted && accountOpt == 'price'"
         :model="true"
         @close="close"
         @price="pricing"
@@ -193,7 +193,7 @@
       />
       <!-- Description start -->
       <ServiceModelAppartments
-        v-if="isSubmitted "
+        v-if="isSubmitted && accountOpt == 'service'"
         :model="true"
         @close="close"
         @images="formData"
@@ -201,7 +201,7 @@
       />
       <!-- price start -->
       <PriceModelAppartments
-        v-if="isSubmitted "
+        v-if="isSubmitted && accountOpt == 'price'"
         :model="true"
         @close="close"
         @price="pricing"
@@ -218,7 +218,7 @@
       />
       <!-- Description start -->
       <ServiceModelLoungs
-        v-if="isSubmitted "
+        v-if="isSubmitted && accountOpt == 'service'"
         :model="true"
         @close="close"
         @images="formData"
@@ -226,7 +226,7 @@
       />
       <!-- price start -->
       <PriceModelLoungs
-        v-if="isSubmitted "
+        v-if="isSubmitted && accountOpt == 'price'"
         :model="true"
         @close="close"
         @price="pricing"
@@ -243,7 +243,7 @@
       />
       <!-- Description start -->
       <ServiceModelCamps
-        v-if="isSubmitted "
+        v-if="isSubmitted && accountOpt == 'service'"
         :model="true"
         @close="close"
         @images="formData"
@@ -251,7 +251,7 @@
       />
       <!-- price start -->
       <PriceModelCamps
-        v-if="isSubmitted "
+        v-if="isSubmitted && accountOpt == 'price'"
         :model="true"
         @close="close"
         @price="pricing"
@@ -268,7 +268,7 @@
       />
       <!-- Description start -->
       <ServiceModelWeddings
-        v-if="isSubmitted "
+        v-if="isSubmitted && accountOpt == 'service'"
         :model="true"
         @close="close"
         @images="formData"
@@ -276,7 +276,7 @@
       />
       <!-- price start -->
       <PriceModelWeddings
-        v-if="isSubmitted "
+        v-if="isSubmitted && accountOpt == 'price'"
         :model="true"
         @close="close"
         @price="pricing"
@@ -293,7 +293,7 @@
       />
       <!-- Description start -->
       <ServiceModelFarms
-        v-if="isSubmitted "
+        v-if="isSubmitted && accountOpt == 'service'"
         :model="true"
         @close="close"
         @images="formData"
@@ -301,7 +301,7 @@
       />
       <!-- price start -->
       <PriceModelFarms
-        v-if="isSubmitted "
+        v-if="isSubmitted && accountOpt == 'price'"
         :model="true"
         @close="close"
         @price="pricing"
@@ -318,7 +318,7 @@
       />
       <!-- Description start -->
       <ServiceModelHotels
-        v-if="isSubmitted "
+        v-if="isSubmitted && accountOpt == 'service'"
         :model="true"
         @close="close"
         @images="formData"
@@ -326,7 +326,7 @@
       />
       <!-- price start -->
       <PriceModelHotels
-        v-if="isSubmitted "
+        v-if="isSubmitted && accountOpt == 'price'"
         :model="true"
         @close="close"
         @price="pricing"
