@@ -106,7 +106,7 @@ export default {
           old = oldValue.category;
         }
         if (newValue.category != old) {
-          this.pageSelected = 1;
+          this.pageSelected = 1
           this.getData();
         }
       },

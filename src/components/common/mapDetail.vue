@@ -5,26 +5,17 @@
       :zoom="zoom"
       :disableDefaultUI="true"
       :options="mapOptions"
-      @center_changed="updateCenter"
       map-type-id="terrain"
       style="width: 100%; height: 20rem"
     >
-      <!-- <GMapAutocomplete
-        class="auto-input"
-        placeholder="e.g: Bahria Town"
-        @place_changed="setPlace"
-      >
-      </GMapAutocomplete> -->
-      <!-- <GMapCluster :zoomOnClick="true">
-        <GMapMarker
-          :key="index"
-          v-for="(m, index) in markers"
-          :position="m.position"
-          :clickable="true"
-          :draggable="true"
-          @click="center = m.position"
-        />
-      </GMapCluster> -->
+      <GMapMarker
+        :key="index"
+        v-for="(m, index) in markers"
+        :position="m.position"
+        :clickable="true"
+        :draggable="true"
+        @click="center = m.position"
+      />
     </GMapMap>
   </div>
 </template>
@@ -33,12 +24,8 @@ export default {
   data() {
     return {
       map: null,
-      zoom: 7,
+      zoom: 6,
       center: { lat: 24.9582, lng: 46.7008 },
-      currentRepo: {
-        lat: "",
-        lng: "",
-      },
       mapOptions: {
         zoomControl: false,
         mapTypeControl: false,
@@ -48,39 +35,31 @@ export default {
         fullscreenControl: false,
         disableDefaultUi: false,
         clickableIcons: false,
-      }
-      // markers: [
-      //   {
-      //     position: {
-      //       lat: 38.093048,
-      //       lng: 73.84212,
-      //     },
-      //   },
-      // ],
+      },
+      markers: [
+        {
+          id: "4",
+          position: {
+            lat: 24.9582,
+            lng: 46.7008,
+          },
+        },
+      ],
     };
   },
-  methods: {
-    updateCenter(latLng) {
-      this.currentRepo = {
-        lat: latLng.lat(),
-        lng: latLng.lng(),
-      };
-      this.$emit("latlng", this.currentRepo);
+  computed: {
+    storeState: function () {
+      return this.$store.state.details.details;
     },
-    setPlace(place) {
-      this.zoom = 8;
-      this.center.lat = place.geometry.location.lat();
-      this.center.lng = place.geometry.location.lng();
-      this.currentRepo = {
-        lat: place.geometry.location.lat(),
-        lng: place.geometry.location.lng(),
-      };
-    },
-    // submit() {
-    //   if (!this.currentRepo.lat && !this.currentRepo.lng) return;
-    //   this.$emit("latlng", this.currentRepo);
-    // },
   },
+  mounted(){
+    var loc = this.storeState.location && this.storeState.location.coordinates;
+    this.center.lat = loc[0];
+    this.center.lng = loc[1];
+    // mark
+    this.markers[0].position.lat = loc[0];
+    this.markers[0].position.lng = loc[1];
+  }
 };
 </script>
 
@@ -111,8 +90,8 @@ export default {
   font-size: 14px;
   min-width: 331px;
 }
-.location-set .vue-map{
-  height: 14rem!important;
-  border-radius: 20px!important;
+.location-set .vue-map {
+  height: 14rem !important;
+  border-radius: 20px !important;
 }
 </style>
