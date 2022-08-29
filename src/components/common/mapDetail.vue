@@ -52,14 +52,19 @@ export default {
       return this.$store.state.details.details;
     },
   },
-  mounted(){
-    var loc = this.storeState.location && this.storeState.location.coordinates;
-    this.center.lat = loc[0];
-    this.center.lng = loc[1];
-    // mark
-    this.markers[0].position.lat = loc[0];
-    this.markers[0].position.lng = loc[1];
-  }
+  mounted() {
+    var loc =
+      this.storeState &&
+      this.storeState.location &&
+      this.storeState.location.coordinates;
+    if (loc) {
+      this.center.lat = loc[0];
+      this.center.lng = loc[1];
+      // mark
+      this.markers[0].position.lat = loc[0];
+      this.markers[0].position.lng = loc[1];
+    }
+  },
 };
 </script>
 
