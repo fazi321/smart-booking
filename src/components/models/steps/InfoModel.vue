@@ -212,6 +212,7 @@
                 >
                   <img src="../../../assets/images/HotTub.svg" alt="" />
                   <h6>Steam Bath</h6>
+                  
                 </div>
               </div>
             </div>
