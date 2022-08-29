@@ -148,6 +148,7 @@ export default {
   margin-top: 20px;
   width: 100%;
 }
+
 .search-block input::placeholder {
   color: gray;
   font-weight: bold;
@@ -158,7 +159,6 @@ export default {
 }
 .search-btn {
   background: #0e4763;
-  /* box-shadow: 0px 0px 6px 2px #cfcfcf6b; */
   border-radius: 5px;
   overflow: hidden;
   display: flex;
