@@ -49,9 +49,13 @@ export default {
     // breakpoints are mobile first
     // any settings not specified will fallback to the carousel settings
     breakpoints: {
+      300: {
+        itemsToShow: 1,
+        snapAlign: "center"
+      },
       // 700px and up
       700: {
-        itemsToShow: 3.5,
+        itemsToShow: 2.3,
         snapAlign: "center"
       },
       // 1024 and up
@@ -75,4 +79,11 @@ export default {
 /* .hotel-image img {
   width: 500px;
 } */
+@media (max-width: 479px) and (min-width: 320px) {
+.hotel-slider{
+  min-height: 100%;
+  padding: 10px 0!important;
+}
+}
+
 </style>

@@ -20,6 +20,7 @@
         <router-link to="/lounges?page=1">Lounges</router-link>
       </li>
     </ul>
+    
   </section>
 </template>
 

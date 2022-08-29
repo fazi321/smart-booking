@@ -113,4 +113,11 @@ export default {
 .carousel__slide img {
   width: 100%;
 }
+@media (max-width: 479px) and (min-width: 320px) {
+ 
+  .hero-slider .search {
+  position: unset!important;
+
+}
+}
 </style>

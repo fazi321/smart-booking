@@ -1,6 +1,6 @@
 <template>
   <section class="search">
-    <div :class="['primary-search', {shadowFull : $route.path == '/'}]">
+    <div :class="['primary-search', { shadowFull: $route.path == '/' }]">
       <!-- block -->
       <div class="search-block">
         <div class="head-category">
@@ -121,8 +121,8 @@ export default {
   padding-left: 18px;
   background: #fff;
 }
-.shadowFull{
-  box-shadow: 0px 2px 4px 0px #cfcfcf6b!important;
+.shadowFull {
+  box-shadow: 0px 2px 4px 0px #cfcfcf6b !important;
 }
 .search .head-category {
   display: flex;
@@ -170,5 +170,19 @@ export default {
 }
 .search-btn .img {
   width: 18px !important;
+}
+@media (max-width: 479px) and (min-width: 320px) {
+  .search .primary-search {
+    flex-direction: column;
+    width: 100% !important;
+    padding-left: 0px;
+    margin: 0 10px;
+  }
+  .search-block {
+    width: 88% !important;
+  }
+  .search-block input {
+    width: 90%;
+  }
 }
 </style>
