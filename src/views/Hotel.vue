@@ -16,6 +16,10 @@ export default {
     Header,
     Hotel,
    
-  }
+  },
+  async mounted() {
+    const resp = await this.$axios.get('/api/v1/category',{})
+    console.log(resp)
+  },
 };
 </script>

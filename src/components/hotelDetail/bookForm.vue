@@ -2,7 +2,7 @@
   <section class="form-book">
     <div class="book-container">
       <div class="heading">
-        <h6>SAR 120</h6>
+        <h6>SAR 120 </h6>
         <p>Per Night</p>
       </div>
       <div class="filter-option">
@@ -113,7 +113,7 @@ export default {
   text-align: center;
   letter-spacing: 0px;
   color: #04304b;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 600;
   box-shadow: 0px 0px 10px #00000012;
   border-radius: 53px;

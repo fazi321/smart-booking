@@ -325,7 +325,8 @@ export default {
   letter-spacing: 0px;
   color: #000000;
   font-weight: normal;
-  opacity: 0.7;
+  color:#9A9A9A;
+  /* opacity: 0.7; */
   font-size: 12px;
 }
 .profile-image {

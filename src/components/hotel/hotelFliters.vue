@@ -363,15 +363,15 @@ export default {
   padding-bottom: 40px !important;
 }
 .apartments-filters {
-  box-shadow: 0px 0px 17px #0000001a;
-  border-radius: 34px;
+  box-shadow: 0px 0px 7px 1px #0000001a;
+  border-radius: 18px;
   opacity: 1;
   height: 100%;
   width: 100%;
 }
 .apartments-filters .inner h6 {
   color: #0e4763;
-  font-size: 16px;
+  font-size: 14px;
   text-align: left;
   padding: 25px 15px 0 15px;
 }
@@ -394,7 +394,7 @@ export default {
   color: #a5a5a5;
   font-size: 12px;
   width: 100%;
-  padding: 15px 0;
+  padding: 14px 0;
   cursor: pointer;
 }
 .apartments-filters .form .checkbox {
@@ -423,7 +423,7 @@ export default {
   padding-left: 35px;
   margin-bottom: 15px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 12px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -440,19 +440,19 @@ export default {
 }
 .checkmark {
   position: absolute;
-  top: 0;
+  top: 2px;
   left: 0;
-  height: 24px;
-  width: 24px;
+  height: 20px;
+  width: 20px;
   background-color: #fff;
   border-radius: 4px;
-  box-shadow: 0px 0px 8px #0000000f;
+  box-shadow: 0px 0px 4px #0000000f;
   opacity: 1;
 }
 
-.checkbox-container input:checked ~ .checkmark {
-  background-color: #2196f3;
-}
+/* .checkbox-container input:checked ~ .checkmark {
+  background-color: #febb12;
+} */
 .checkmark:after {
   content: "";
   position: absolute;
@@ -463,11 +463,11 @@ export default {
 }
 
 .checkbox-container .checkmark:after {
-  left: 9px;
-  top: 5px;
+  left: 6px;
+  top: 3px;
   width: 5px;
   height: 10px;
-  border: solid white;
+  border: solid #febb12;
   border-width: 0 3px 3px 0;
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
@@ -502,7 +502,7 @@ export default {
 }
 .bedrooms .count span {
   margin: 5px;
-  font-size: 16px;
+  font-size: 14px;
   color: #000000;
   font-weight: 600;
 }

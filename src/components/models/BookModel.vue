@@ -235,11 +235,11 @@ export default {
   position: absolute;
   top: 0;
   left: 0;
-  height: 24px;
-  width: 24px;
+  height: 20px;
+  width: 20px;
   background-color: #fff;
   border-radius: 50%;
-  box-shadow: 0px 0px 8px #0000000f;
+  box-shadow: 0px 0px 4px #0000000f;
   opacity: 1;
 }
 
@@ -325,7 +325,7 @@ export default {
   text-align: center;
   letter-spacing: 0px;
   color: #04304b;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 600;
   box-shadow: 0px 0px 10px #00000012;
   border-radius: 53px;

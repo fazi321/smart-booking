@@ -11,41 +11,31 @@
           </div>
         </div>
         <div class="headings">
-          <h1>SIGNUP</h1>
-          <h4>Please create your account</h4>
+          <h1>Enter the code?</h1>
+          <h4>Enter the code that you received through SMS</h4>
         </div>
         <div class="login-form">
           <div class="form-container">
-            <form autocomplete="off" @submit.prevent="Login">
-              <div class="input-div">
-                <div class="input-primary">
-                  <div class="flag">
-                    <div class="flag-img">
-                      <img src="../../assets/images/flag.svg" alt="flag" />
-                    </div>
-                    <div>
-                      <span>+966</span>
-                    </div>
-                  </div>
-                  <div class="container-input">
-                    <input
-                      type="number"
-                      placeholder="Mobile Number"
-                      v-model="phoneNumber"
-                      required
-                    />
-                  </div>
-                </div>
-              </div>
-              <!-- <div class="error" v-if="!isExist">Password is Incorrect!</div> -->
-              <div class="input-div">
-                <button type="submit">Login</button>
-              </div>
-            </form>
+            <v-otp-input
+              ref="otpInput"
+              input-classes="otp-input"
+              separator=""
+              :num-inputs="4"
+              :should-auto-focus="true"
+              :is-input-num="true"
+              @on-change="handleOnChange"
+              @on-complete="handleOnComplete"
+            />
           </div>
-          <div class="buttom-text">
-            Already Have an Account? <span @click="LoginModel">Login</span>
+          <div class="input-div">
+            <button type="submit" v-if="otp.length == 4" @click="submitOtp">
+              Verify
+            </button>
+            <button class="submit-div" v-else>Verify</button>
           </div>
+          <!-- <div class="buttom-text">
+            Don’t Have an Account? <span @click="SignUpModel">Sign Up </span>
+          </div> -->
         </div>
       </div>
     </div>
@@ -53,21 +43,35 @@
 </template>
 
 <script>
+// Import in a Vue component
+import VOtpInput from "vue3-otp-input";
+
 export default {
-  name: "SignUpModel",
+  name: "LoginModel",
   props: ["model"],
+  components: {
+    VOtpInput,
+  },
   data() {
     return {
-      phoneNumber: null,
+      otp: "",
     };
   },
   methods: {
-    LoginModel() {
-      this.$parent.signUpModel = false;
-      this.$parent.loginModel = true;
+    async submitOtp() {
+      this.$emit("submited", this.otp);
     },
-     close() {
-      this.$parent.signUpModel = false;
+    close() {
+      this.$parent.otpModel = false;
+    },
+    handleOnComplete(value) {
+      this.otp = value;
+    },
+    handleOnChange(value) {
+      this.otp = value;
+    },
+    handleClearInput() {
+      this.$refs.otpInput.clearInput();
     },
   },
 };
@@ -170,7 +174,9 @@ img {
 .form-container {
   display: flex;
   justify-content: center;
+  margin-bottom: 36px;
 }
+
 .form-container form {
   width: 100%;
 }
@@ -191,6 +197,10 @@ img {
   outline: none;
   margin-bottom: 40px;
   box-shadow: 0px 2px 4px 1px #c9c9c9a6;
+  cursor: pointer;
+}
+.input-div .submit-div {
+  background: #d1d1d1;
 }
 .input-div .flag {
   display: flex;

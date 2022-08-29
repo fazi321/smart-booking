@@ -38,7 +38,7 @@ export default {
   /* background-color: rgba(34, 34, 34, 0.1); */
   /* position: fixed; */
   width: 100%;
-  border-bottom: 1px solid #eee;
+  /* border-bottom: 1px solid #eee; */
   min-height: 70px;
   transition: all 0.5s;
 }

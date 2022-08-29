@@ -1,5 +1,6 @@
 <template>
   <section :class="['login-signup', { active: model }]">
+    <OtpModel @submited="checkOTP" :model="otpModel" />
     <div class="primary-login">
       <div class="main-login">
         <div class="logo-close">
@@ -35,11 +36,12 @@
                       required
                     />
                   </div>
+                  <div class="error" v-if="isError">Mobile Number Error!</div>
                 </div>
               </div>
-              <!-- <div class="error" v-if="!isExist">Password is Incorrect!</div> -->
               <div class="input-div">
-                <button type="submit">Login</button>
+                <button v-if="!loading" type="submit">Login</button>
+                <button v-else>Loading...</button>
               </div>
             </form>
           </div>
@@ -53,21 +55,68 @@
 </template>
 
 <script>
+import OtpModel from "./OtpModel.vue";
+import Cookies from "js-cookie";
+
 export default {
   name: "LoginModel",
   props: ["model"],
+  components: {
+    OtpModel,
+  },
   data() {
     return {
       phoneNumber: null,
+      verifyOtp: "",
+      userData: {},
+      otpModel: false,
+      loading: false,
+      isError: false,
     };
   },
   methods: {
+    async Login() {
+      this.loading = true;
+      try {
+        const res = await this.$axios.post("/api/v1/user/login", {
+          phone: `92${this.phoneNumber}`,
+        });
+        if (res) {
+          this.otpModel = true;
+          this.verifyOtp = res.data.user.otp;
+          this.userData = res.data;
+          this.loading = false;
+        }
+      } catch (error) {
+        this.isError = true;
+        this.loading = false;
+      }
+    },
+    checkOTP(val) {
+      if (this.verifyOtp == val) {
+        // var time = new Date(new Date().getTime() + 1 * 60 * 1000);
+        Cookies.set("Authorization", this.userData.token, { expires: 7 });
+        this.$store.dispatch("auth/login", this.userData);
+        this.close();
+        this.$swal({
+          icon: "success",
+          title: "Success!",
+          showConfirmButton: false,
+          timer: 3000,
+        });
+      }
+    },
     SignUpModel() {
       this.$parent.loginModel = false;
       this.$parent.signUpModel = true;
     },
     close() {
       this.$parent.loginModel = false;
+    },
+  },
+  watch: {
+    phoneNumber: function () {
+      this.isError = false;
     },
   },
 };
@@ -79,6 +128,10 @@ export default {
   text-align: center;
   font-size: 14px;
   color: red;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  bottom: -35px;
 }
 .login-signup {
   position: fixed;
@@ -97,7 +150,7 @@ export default {
   visibility: visible;
 }
 .primary-login {
-  width: 46%;
+  width: 623px;
   background: #fff;
   height: fit-content;
   padding: 25px;
@@ -152,6 +205,7 @@ img {
   margin-bottom: 35px;
   align-items: center;
   width: 62%;
+  position: relative;
 }
 .container-input {
   width: 90%;
@@ -191,6 +245,7 @@ img {
   outline: none;
   margin-bottom: 40px;
   box-shadow: 0px 2px 4px 1px #c9c9c9a6;
+  cursor: pointer;
 }
 .input-div .flag {
   display: flex;

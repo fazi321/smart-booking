@@ -30,7 +30,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  methods:{
+    close(){
+      this.$emit('close')
+    }
+  }
+};
 </script>
 
 <style scoped>
@@ -42,7 +48,7 @@ export default {};
   overflow: hidden;
 }
 .success {
-  width: 46%;
+  width: 623px;
   background: #fff;
   height: fit-content;
   padding: 25px;

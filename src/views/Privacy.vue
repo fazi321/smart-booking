@@ -47,7 +47,7 @@ export default {
   letter-spacing: 0.6px;
   color: #febb12;
   opacity: 1;
-  font-size: 18px;
+  font-size: 16px;
 }
 .content p {
   text-align: left;

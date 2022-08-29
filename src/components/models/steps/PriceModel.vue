@@ -12,7 +12,7 @@
           <h1>Price Details</h1>
           <h4>Pricing</h4>
         </div>
-        <section class="price">
+        <section class="price-container">
           <div class="container-price">
             <div class="price-primary">
               <div class="head-price">
@@ -303,7 +303,7 @@
           <h4>Booking Type</h4>
         </div>
         <section class="booking-type">
-          <div class="booking-card">
+          <div class="booking-card book-instant">
             <div class="cards">
               <div :class="['primary-cards']">
                 <div class="rounded-btn"></div>
@@ -424,7 +424,7 @@
           <h1>Price Details</h1>
           <h4>Add-Ons</h4>
         </div>
-        <section class="price price-unset">
+        <section class="price-unset">
           <div class="container-price">
             <div class="price-primary">
               <div class="head-price">
@@ -493,7 +493,7 @@
         </div>
       </div>
     </section>
-    <SuccessModel v-if="step == 6"/>
+    <SuccessModel v-if="step == 6" @close="close"/>
   </section>
 </template>
 
@@ -580,7 +580,7 @@ export default {
   visibility: visible;
 }
 .primary-login {
-  width: 46%;
+  width: 623px;
   background: #fff;
   height: fit-content;
   padding: 25px;
@@ -763,7 +763,7 @@ img {
   min-width: 220px;
   margin: 8px 0;
 }
-.price {
+.price-container {
   height: 350px;
   overflow-y: scroll;
 }
@@ -820,11 +820,12 @@ img {
   display: flex;
 }
 .card-other .cards > div {
-  width: 205px;
+  width: 226px;
   align-items: flex-start;
   text-align: left;
-  padding: 0px 20px;
+  padding: 0px 19px;
   height: 80px;
+  margin: 10px 16px 14px 10px;
 }
 .card-other .content {
   line-height: 2;
@@ -914,6 +915,9 @@ img {
   height: 350px;
   overflow-y: scroll;
 }
+.booking .head h1{
+  font-size:14px;
+}
 /* step three */
 .booking-type .cards {
   display: flex;
@@ -934,6 +938,9 @@ img {
   padding: 0;
   margin-bottom: 22px;
   position: relative;
+}
+.book-instant .primary-cards{
+  width: 47%!important;
 }
 .booking-type .primary-cards .category-img {
   width: 50px;

@@ -105,7 +105,7 @@ export default {
   z-index: 99;
 }
 .primary-login {
-  width: 40%;
+  width: 623px;
   background: #fff;
   height: 550px;
   padding: 25px;

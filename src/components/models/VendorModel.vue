@@ -96,7 +96,7 @@
         </div>
       </section>
       <!-- step Two -->
-      <SuccessModel v-if="nextStep == 1" />
+      <SuccessModel v-if="nextStep == 1" @close="close"/>
     </section>
   </section>
 </template>
@@ -181,7 +181,7 @@ export default {
   visibility: visible;
 }
 .primary-login {
-  width: 46%;
+  width: 623px;
   background: #fff;
   height: fit-content;
   padding: 25px;

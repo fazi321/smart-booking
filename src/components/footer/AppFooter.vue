@@ -42,19 +42,19 @@
           <h3>QUICK LINKS</h3>
           <ul class="contact-list">
             <li class="fist-list">
-              <router-link to="/about">About Us</router-link>
+              <router-link to="/">Farms</router-link>
             </li>
             <li class="fist-list">
-              <router-link to="#">Contact Us</router-link>
+              <router-link to="#">Resorts</router-link>
             </li>
             <li class="fist-list">
-              <router-link to="/privacy">Privacy Policy</router-link>
+              <router-link to="/">Stadium</router-link>
             </li>
             <li class="fist-list">
-              <router-link to="#">Support</router-link>
+              <router-link to="#">Apartments</router-link>
             </li>
             <li class="fist-list">
-              <router-link to="/term-conditions">Term & Conditions</router-link>
+              <router-link to="/">Chalets</router-link>
             </li>
           </ul>
         </div>

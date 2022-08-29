@@ -88,7 +88,7 @@ export default {
   letter-spacing: 0.75px;
   color: #000000;
   opacity: 0.8;
-  font-size: 18px;
+  font-size: 16px;
   padding: 15px 0;
 }
 .profile-form .form > div {
@@ -102,7 +102,7 @@ export default {
   outline: none;
   color: #0e4763;
   font-size: 14px;
-  width: 25%;
+  width: 23%;
   padding: 20px 25px;
   border-radius: 46px;
   opacity: 1;
