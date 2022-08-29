@@ -36,7 +36,10 @@
         <div class="big-img">
           <img
             :src="storeState.description.images[0]"
-            v-if="storeState.description.images[0] && checkLink(storeState.description.images[0])"
+            v-if="
+              storeState.description.images[0] &&
+              checkLink(storeState.description.images[0])
+            "
             alt=""
           />
           <img src="../../assets/images/hotel-big.png" v-else />
@@ -45,13 +48,19 @@
           <div>
             <img
               :src="storeState.description.images[1]"
-              v-if="storeState.description.images[1] && checkLink(storeState.description.images[1])"
+              v-if="
+                storeState.description.images[1] &&
+                checkLink(storeState.description.images[1])
+              "
               alt=""
             />
             <img src="../../assets/images/hotel-mid1.png" v-else />
             <img
               :src="storeState.description.images[2]"
-              v-if="storeState.description.images[2] && checkLink(storeState.description.images[2])"
+              v-if="
+                storeState.description.images[2] &&
+                checkLink(storeState.description.images[2])
+              "
               alt=""
             />
             <img src="../../assets/images/hotel-mid2.png" v-else />
@@ -59,16 +68,37 @@
           <div>
             <img
               :src="storeState.description.images[3]"
-              v-if="storeState.description.images[3] && checkLink(storeState.description.images[3])"
+              v-if="
+                storeState.description.images[3] &&
+                checkLink(storeState.description.images[3])
+              "
               alt=""
             />
             <img src="../../assets/images/hotel-mid3.png" v-else />
             <img
               :src="storeState.description.images[4]"
-              v-if="storeState.description.images[4] && checkLink(storeState.description.images[4])"
+              v-if="
+                storeState.description.images[4] &&
+                checkLink(storeState.description.images[4])
+              "
               alt=""
             />
             <img src="../../assets/images/hotel-mid4.png" v-else />
+          </div>
+        </div>
+      </div>
+      <div class="hotel-images image-skeleton" v-else>
+        <div class="big-img">
+          <p></p>
+        </div>
+        <div class="small-images">
+          <div>
+            <p></p>
+            <p></p>
+          </div>
+          <div>
+            <p></p>
+            <p></p>
           </div>
         </div>
       </div>
@@ -138,7 +168,7 @@ export default {
   justify-content: space-between;
   padding: 20px 0;
 }
-.hotel-images img{
+.hotel-images img {
   border-radius: 14px;
 }
 .hotel-images .big-img {
@@ -158,5 +188,16 @@ export default {
 .small-images div img {
   height: 160px;
   margin-bottom: 15px;
+}
+.image-skeleton .big-img p {
+  height: 339px;
+  background: #eee;
+  border-radius: 11px;
+}
+.image-skeleton .small-images div p {
+  height: 160px;
+  background: #eee;
+  margin-bottom: 15px;
+  border-radius: 11px;
 }
 </style>

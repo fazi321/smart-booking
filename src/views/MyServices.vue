@@ -9,25 +9,13 @@
           <div class="card" v-for="(item, key) in dataCard" :key="key">
             <MyServicesCard :items="item"/>
           </div>
-          <!-- <div class="card">
-            <MyServicesCard />
-          </div>
-          <div class="card">
-            <MyServicesCard />
-          </div>
-          <div class="card">
-            <MyServicesCard />
-          </div>
-          <div class="card">
-            <MyServicesCard />
-          </div>
-          <div class="card">
-            <MyServicesCard />
-          </div> -->
+         
         </div>
       </div>
-      <div v-else>
-        loading...
+      <div class="booking-cards" v-else>
+       <div class="card"  v-for="(skeleton, loading) in skeleton" :key="loading">
+        <CardSkeleton/>
+       </div>
       </div>
     </section>
   </default-layout>
@@ -36,17 +24,20 @@
 <script>
 import DefaultLayout from "@/components/layouts/DefaultLayout.vue";
 import MyServicesCard from "@/components/common/MyServices.vue";
+import CardSkeleton from "@/components/common/cardSkeleton.vue";
 
 export default {
   name: "MyServices",
   components: {
     DefaultLayout,
     MyServicesCard,
+    CardSkeleton
   },
   data() {
     return {
       dataCard: [],
       loading: false,
+      skeleton: 8,
     };
   },
   methods: {

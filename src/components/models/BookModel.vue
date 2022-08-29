@@ -11,13 +11,13 @@
         <BookCard />
       </div>
       <div class="service-details">
-        <div >
+        <div>
           <p>Check-in Date</p>
-          <p>{{checkIn.checkInDate}}</p>
+          <p>{{ checkIn.checkInDate }}</p>
         </div>
         <div>
           <p>Check-out Date</p>
-          <p>{{checkIn.checkOutDate}}</p>
+          <p>{{ checkIn.checkOutDate }}</p>
         </div>
         <div>
           <p>Nights</p>
@@ -25,7 +25,7 @@
         </div>
         <div>
           <p>Vendor ID</p>
-          <p>{{storeState.vender}}</p>
+          <p>{{ storeState.vender }}</p>
         </div>
       </div>
       <!-- Payment Options  -->
@@ -100,7 +100,7 @@
       </div>
 
       <div class="book-btn">
-        <button>Pay (SAR {{storeState.price.dayPrice}})</button>
+        <button>Pay (SAR {{ storeState.price.dayPrice }})</button>
       </div>
     </div>
   </section>
@@ -110,9 +110,9 @@
 import BookCard from "@/components/hotelDetail/bookCard.vue";
 export default {
   name: "BookModel",
-  props:['checkIn'],
+  props: ["checkIn"],
   components: {
-    BookCard
+    BookCard,
   },
   data() {
     return {};
@@ -125,8 +125,8 @@ export default {
   methods: {
     closeSlide() {
       this.$parent.bookingModel = false;
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -239,7 +239,7 @@ export default {
 }
 .checkmark {
   position: absolute;
-  top: 0;
+  top: 3px;
   left: 0;
   height: 20px;
   width: 20px;
@@ -262,12 +262,12 @@ export default {
 }
 
 .checkbox-container .checkmark:after {
-  left: 9px;
-  top: 5px;
-  width: 5px;
-  height: 10px;
+  left: 7px;
+  top: 4px;
+  width: 4px;
+  height: 8px;
   border: solid white;
-  border-width: 0 3px 3px 0;
+  border-width: 0 2px 2px 0;
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);

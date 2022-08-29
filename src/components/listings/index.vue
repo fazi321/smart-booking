@@ -28,8 +28,8 @@
           ></paginate>
         </div>
       </div>
-      <div v-else>
-        <h1>Loading...</h1>
+      <div class="apartment-right" v-else>
+        <SkeletonCard v-for="(skeleton, loading) in skeleton" :key="loading" />
       </div>
     </div>
   </div>
@@ -39,6 +39,7 @@
 import Filters from "./filter.vue";
 import HotelFilters from "./hotelFliters.vue";
 import FilterCard from "../common/filterCard.vue";
+import SkeletonCard from "../common/cardSkeleton.vue";
 import SearchHeader from "../SearchHeader.vue";
 import Paginate from "vuejs-paginate-next";
 export default {
@@ -49,6 +50,7 @@ export default {
     FilterCard,
     Paginate,
     SearchHeader,
+    SkeletonCard,
   },
   data() {
     return {
@@ -57,6 +59,7 @@ export default {
       filteredData: [],
       loading: false,
       pageCount: 15,
+      skeleton: 6,
     };
   },
   created() {

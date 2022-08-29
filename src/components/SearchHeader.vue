@@ -143,13 +143,13 @@ export default {
 .search-block input {
   border: none;
   outline: none;
-  color: #000;
+  color: gray;
   font-weight: bold;
   margin-top: 20px;
   width: 100%;
 }
 .search-block input::placeholder {
-  color: #000;
+  color: gray;
   font-weight: bold;
 }
 .search-block {
