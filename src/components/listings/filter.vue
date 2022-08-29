@@ -37,6 +37,7 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  
   padding: 15px 0;
 }
 .filters-container div h6 {
