@@ -1,5 +1,5 @@
 <template>
-  <router-link to="/hotel" class="smart-card" v-if="dataItem">
+  <router-link :to="`${dataItem.link}`" class="smart-card" v-if="dataItem">
     <div class="image">
       <img :src="require(`../../assets/images/${dataItem.image}`)" />
     </div>

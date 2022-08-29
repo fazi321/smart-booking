@@ -23,10 +23,10 @@ export default {
   data() {
     return {
       smartBooking: [
-        { title: "Apartments", image: "apartment.svg", categoryCount: "681" },
-        { title: "Hotels", image: "hotel.svg", categoryCount: "681" },
-        { title: "Camps", image: "camps.svg", categoryCount: "681" },
-        { title: "Resorts", image: "resort.png", categoryCount: "681" },
+        { title: "Apartments", image: "apartment.svg", categoryCount: "681", link:"/apartments?page=1"},
+        { title: "Hotels", image: "hotel.svg", categoryCount: "681", link:"/hotels?page=1" },
+        { title: "Camps", image: "camps.svg", categoryCount: "681" , link:"/camps?page=1"},
+        { title: "Resorts", image: "resort.png", categoryCount: "681", link:"/resorts?page=1" },
       ],
     };
   },

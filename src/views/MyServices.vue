@@ -9,10 +9,9 @@
           <div class="card" v-for="(item, key) in dataCard" :key="key">
             <MyServicesCard :items="item"/>
           </div>
-         
         </div>
       </div>
-      <div class="booking-cards" v-else>
+      <div class="booking-cards service-skeleton" v-else>
        <div class="card"  v-for="(skeleton, loading) in skeleton" :key="loading">
         <CardSkeleton/>
        </div>

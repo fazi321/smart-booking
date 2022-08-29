@@ -25,17 +25,27 @@ export default {
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
+  height: 185px;
 }
 .smart-card .image {
   border-radius: 17px;
-  width: 35%;
+  width: 23%;
   background: #eee;
-  height: 200px;
 }
-
+.service-skeleton .smart-card .image {
+  border-radius: 17px;
+  width: 30%;
+  background: #eee;
+}
+.service-skeleton .smart-card .detail{
+  width: 64%;
+}
+.service-skeleton .smart-card{
+  height: 172px;
+}
 .smart-card .detail {
   padding: 20px;
-  width: 60%;
+  width: 72%;
   display: flex;
   flex-direction: column;
 }
