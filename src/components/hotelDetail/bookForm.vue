@@ -5,9 +5,19 @@
         <h6>SAR {{ storeState && storeState.price.dayPrice }}</h6>
         <p>Per Night</p>
       </div>
-      <div :class="['filter-option', {'active': error.checkInDate && !inputDetail.checkInDate}]" @click="showModelDate('cn')">
+      <div
+        :class="[
+          'filter-option',
+          { active: error.checkInDate && !inputDetail.checkInDate },
+        ]"
+        @click="showModelDate('cn')"
+      >
         <img src="../../assets/images/date.svg" />
-        <input type="text" v-model="inputDetail.checkInDate" placeholder="Check-in date" />
+        <input
+          type="text"
+          v-model="inputDetail.checkInDate"
+          placeholder="Check-in date"
+        />
         <input
           type="date"
           v-model="inputDetail.checkInDate"
@@ -16,9 +26,19 @@
           @change="dateChange($event, 'cn')"
         />
       </div>
-      <div :class="['filter-option', {'active': error.checkOutDate && !inputDetail.checkOutDate }]" @click="showModelDate('co')">
+      <div
+        :class="[
+          'filter-option',
+          { active: error.checkOutDate && !inputDetail.checkOutDate },
+        ]"
+        @click="showModelDate('co')"
+      >
         <img src="../../assets/images/date.svg" />
-        <input type="text" v-model="inputDetail.checkOutDate" placeholder="Check-in date" />
+        <input
+          type="text"
+          v-model="inputDetail.checkOutDate"
+          placeholder="Check-in date"
+        />
         <input
           type="date"
           v-model="inputDetail.checkOutDate"
@@ -27,17 +47,33 @@
           @change="dateChange($event, 'co')"
         />
       </div>
-      <div :class="['filter-option', {'active': error.checkInTime && !inputDetail.checkInTime}]" @click="showModelDate('cit')">
+      <div
+        :class="[
+          'filter-option',
+          { active: error.checkInTime && !inputDetail.checkInTime },
+        ]"
+        @click="showModelDate('cit')"
+      >
         <img src="../../assets/images/time.svg" />
-        <input type="text" v-model="inputDetail.checkInTime" placeholder="Check-in time" />
+        <input
+          type="text"
+          v-model="inputDetail.checkInTime"
+          placeholder="Check-in time"
+        />
         <input
           type="time"
           id="date"
           ref="cit"
-          @change="timeChange($event, 'cit')"
+          @input="timeChange($event, 'cit')"
         />
       </div>
-      <div :class="['filter-option', {'active': error.checkOutTime && !inputDetail.checkOutTime}]" @click="showModelDate('cot')">
+      <div
+        :class="[
+          'filter-option',
+          { active: error.checkOutTime && !inputDetail.checkOutTime },
+        ]"
+        @click="showModelDate('cot')"
+      >
         <img src="../../assets/images/time.svg" />
         <input
           type="text"
@@ -48,14 +84,14 @@
           type="time"
           id="date"
           ref="cot"
-          @change="timeChange($event, 'cot')"
+          @input="timeChange($event, 'cot')"
         />
       </div>
       <div class="book-btn" @click="BookingModelShow">
         <button>Book</button>
       </div>
     </div>
-    <BookModel v-if="bookingModel" :checkIn="inputDetail"/>
+    <BookModel v-if="bookingModel" :checkIn="inputDetail" />
   </section>
 </template>
 
@@ -68,12 +104,8 @@ export default {
   data() {
     return {
       bookingModel: false,
-      inputDetail:{},
-      error:{},
-      // checkInDate: null,
-      // checkOutDate: null,
-      // checkInTime: null,
-      // checkOutTime: null,
+      inputDetail: {},
+      error: {},
     };
   },
   computed: {
@@ -83,8 +115,6 @@ export default {
   },
   methods: {
     dateChange(e, val) {
-      const today = new Date('08-08-2022 14:48 UTC');
-      console.log(today.toISOString())
       var getDate = convertDateToUTC(new Date(e.target.value));
       function convertDateToUTC(date) {
         return new Date(
@@ -103,9 +133,11 @@ export default {
     timeChange(e, val) {
       if (val == "cit") {
         this.inputDetail.checkInTime = this.timeFormate(e.target.value);
+        this.inputDetail.timeIn = e.target.value;
       }
       if (val == "cot") {
         this.inputDetail.checkOutTime = this.timeFormate(e.target.value);
+        this.inputDetail.timeOut = e.target.value;
       }
     },
     timeFormate(time) {
@@ -130,18 +162,19 @@ export default {
       return timeIs;
     },
     BookingModelShow() {
-      var { checkInDate, checkOutDate, checkInTime, checkOutTime } = this.inputDetail;
-      if(!checkInDate){
-       return this.error.checkInDate = true;
+      var { checkInDate, checkOutDate, checkInTime, checkOutTime } =
+        this.inputDetail;
+      if (!checkInDate) {
+        return (this.error.checkInDate = true);
       }
-      if(!checkOutDate){
-       return this.error.checkOutDate = true;
+      if (!checkOutDate) {
+        return (this.error.checkOutDate = true);
       }
-      if(!checkInTime){
-       return this.error.checkInTime = true;
+      if (!checkInTime) {
+        return (this.error.checkInTime = true);
       }
-      if(!checkOutTime){
-       return this.error.checkOutTime = true;
+      if (!checkOutTime) {
+        return (this.error.checkOutTime = true);
       }
       this.bookingModel = !this.bookingModel;
     },
@@ -202,10 +235,10 @@ export default {
   cursor: pointer;
   margin-top: 20px;
   position: relative;
-  border:1px solid transparent;
+  border: 1px solid transparent;
 }
 .book-container .filter-option.active {
-  border:1px solid red;
+  border: 1px solid red;
 }
 .filter-option #date {
   position: absolute;

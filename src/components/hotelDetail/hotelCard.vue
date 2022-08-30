@@ -19,7 +19,7 @@
         </div>
         <div class="icon">
           <img src="../../assets/images/sq.svg" alt />
-          <p>2400 sq2</p>
+          <p>{{storeState.description && storeState.description.areaSqm}} sq2</p>
         </div>
         <div class="icon">
           <img src="../../assets/images/family.svg" alt />
