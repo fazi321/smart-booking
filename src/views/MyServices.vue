@@ -7,7 +7,7 @@
       <div class="service-container" v-if="!loading">
         <div class="booking-cards">
           <div class="card" v-for="(item, key) in dataCard" :key="key">
-            <MyServicesCard :items="item"/>
+            <MyServicesCard :items="item" @deleteItem="deleteCard"/>
           </div>
         </div>
       </div>
@@ -44,19 +44,41 @@ export default {
       try {
         this.loading = true;
         var res = await this.$axios.get(`services`);
-        // console.log(res.data, "-->");
         this.dataCard = res.data;
-         this.loading = false;
+        this.loading = false;
       } catch (error) {
          this.loading = false;
         console.log(error);
       }
     },
-
+    async deleteCard(id){
+      try {
+        var res = await this.$axios.delete(`services/delete-any/${id}`);
+        if(res){
+          var updateCard = this.dataCard.filter((item) => item._id != id);
+          this.dataCard = updateCard;
+          this.$swal({
+            icon: "success",
+            title: "Success!",
+            showConfirmButton: false,
+            timer: 3000,
+          });
+        }
+      } catch (error) {
+        this.$swal({
+            icon: "error",
+            title: "Some Thing Went Wrong!",
+            showConfirmButton: false,
+            timer: 3000,
+          });
+        console.log(error);
+      }
+    }
     // clickCallback(num) {
     //   this.$refs.slider.slideTo(num);
     // },
   },
+
   mounted() {
     this.getData();
   },

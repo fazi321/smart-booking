@@ -5,7 +5,7 @@
         <h6>SAR {{ storeState && storeState.price.dayPrice }}</h6>
         <p>Per Night</p>
       </div>
-      <div class="filter-option" @click="showModelDate('cn')">
+      <div :class="['filter-option', {'active': error.checkInDate && !inputDetail.checkInDate}]" @click="showModelDate('cn')">
         <img src="../../assets/images/date.svg" />
         <input type="text" v-model="inputDetail.checkInDate" placeholder="Check-in date" />
         <input
@@ -16,7 +16,7 @@
           @change="dateChange($event, 'cn')"
         />
       </div>
-      <div class="filter-option" @click="showModelDate('co')">
+      <div :class="['filter-option', {'active': error.checkOutDate && !inputDetail.checkOutDate }]" @click="showModelDate('co')">
         <img src="../../assets/images/date.svg" />
         <input type="text" v-model="inputDetail.checkOutDate" placeholder="Check-in date" />
         <input
@@ -27,7 +27,7 @@
           @change="dateChange($event, 'co')"
         />
       </div>
-      <div class="filter-option" @click="showModelDate('cit')">
+      <div :class="['filter-option', {'active': error.checkInTime && !inputDetail.checkInTime}]" @click="showModelDate('cit')">
         <img src="../../assets/images/time.svg" />
         <input type="text" v-model="inputDetail.checkInTime" placeholder="Check-in time" />
         <input
@@ -37,7 +37,7 @@
           @change="timeChange($event, 'cit')"
         />
       </div>
-      <div class="filter-option" @click="showModelDate('cot')">
+      <div :class="['filter-option', {'active': error.checkOutTime && !inputDetail.checkOutTime}]" @click="showModelDate('cot')">
         <img src="../../assets/images/time.svg" />
         <input
           type="text"
@@ -69,6 +69,7 @@ export default {
     return {
       bookingModel: false,
       inputDetail:{},
+      error:{},
       // checkInDate: null,
       // checkOutDate: null,
       // checkInTime: null,
@@ -129,6 +130,19 @@ export default {
       return timeIs;
     },
     BookingModelShow() {
+      var { checkInDate, checkOutDate, checkInTime, checkOutTime } = this.inputDetail;
+      if(!checkInDate){
+       return this.error.checkInDate = true;
+      }
+      if(!checkOutDate){
+       return this.error.checkOutDate = true;
+      }
+      if(!checkInTime){
+       return this.error.checkInTime = true;
+      }
+      if(!checkOutTime){
+       return this.error.checkOutTime = true;
+      }
       this.bookingModel = !this.bookingModel;
     },
     showModelDate(val) {
@@ -188,6 +202,10 @@ export default {
   cursor: pointer;
   margin-top: 20px;
   position: relative;
+  border:1px solid transparent;
+}
+.book-container .filter-option.active {
+  border:1px solid red;
 }
 .filter-option #date {
   position: absolute;

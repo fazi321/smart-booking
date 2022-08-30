@@ -21,7 +21,11 @@
         </div>
         <div>
           <p>Nights</p>
-          <p>2</p>
+          <div class="count">
+            <img src="../../assets/images/sub.png" @click="executer('dec')"/>
+            <span>{{rooms}}</span>
+            <img src="../../assets/images/plus.png" @click="executer('inc')"/>
+          </div>
         </div>
         <div>
           <p>Vendor ID</p>
@@ -115,7 +119,9 @@ export default {
     BookCard,
   },
   data() {
-    return {};
+    return {
+      rooms:1,
+    };
   },
   computed: {
     storeState: function () {
@@ -123,6 +129,14 @@ export default {
     },
   },
   methods: {
+    executer(val){
+      if(val == 'inc'){
+        this.rooms++
+      }
+      if(val == 'dec' && this.rooms > 1){
+        this.rooms--
+      }
+    },
     closeSlide() {
       this.$parent.bookingModel = false;
     },
@@ -131,6 +145,14 @@ export default {
 </script>
 
 <style scoped>
+.count img{
+  width:25px;
+  cursor: pointer;
+}
+.count span{
+  min-width: 20px;
+  font-weight: bold;
+}
 .login-signup {
   position: fixed;
   top: 0;

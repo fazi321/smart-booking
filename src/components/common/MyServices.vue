@@ -1,14 +1,15 @@
 <template>
-  <router-link :to="`services/${items._id}`" class="filter-card">
+  <section class="card-main">
+    <div class="wish" @click="deleteItem(items._id)">
+      <img src="../../assets/images/delete.svg" />
+    </div>
+    <router-link :to="`services/${items._id}`" class="filter-card">
     <div class="image">
       <img src="../../assets/images/hotel-img.svg" />
     </div>
     <div class="card-detail">
       <div class="heading">
         <h5>{{items && items.description && items.description.nameInEnglish}}</h5>
-        <div class="wish">
-          <img src="../../assets/images/delete.svg" />
-        </div>
       </div>
       <p>The ulitimate 5 star hotel</p>
       <p>{{items && items.address && items.address.city}}</p>
@@ -22,12 +23,18 @@
       </div>
     </div>
   </router-link>
+  </section>
 </template>
 
 <script>
 export default {
   name: "FilterCard",
-  props:['items']
+  props:['items'],
+  methods:{
+    deleteItem(id){
+      this.$emit('deleteItem', id)
+    }
+  }
 };
 </script>
 
@@ -65,13 +72,18 @@ export default {
   font-size: 16px;
   font-weight: 600;
 }
-.filter-card .card-detail .heading .wish {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.card-main{
+  position: relative;
+}
+.card-main .wish {
   position: absolute;
   right: 24px;
   top: 35%;
+  z-index: 10;
+}
+.card-main .wish img{
+  width: 40px;
+  cursor: pointer;
 }
 .filter-card .card-detail .heading img {
   width: 40px;
