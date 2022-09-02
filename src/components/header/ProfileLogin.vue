@@ -1,6 +1,6 @@
 <template>
   <section class="btns">
-    <section v-if="!$store.state.auth.user || !user">
+    <section v-if="!$store.state.auth.user">
       <button class="btn btn-transparent" @click="vendorModelShow">
         Become Vendor
       </button>
