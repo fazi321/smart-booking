@@ -3,7 +3,7 @@ import axios from "axios";
 
 export default () =>
   axios.create({
-    baseURL: "http://testingserver.tech:5000/api/v1/",
+    baseURL: "https://13.229.167.135:4000/api/v1/",
     withCredentials: false,
     // headers: authHeader(),
   });
