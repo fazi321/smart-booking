@@ -136,4 +136,10 @@ img {
   line-height: 1.8;
 }
 /* step success end */
+/* responsive */
+@media (max-width: 479px) and (min-width: 320px) {
+  .success{
+    width:300px;
+  }
+}
 </style>

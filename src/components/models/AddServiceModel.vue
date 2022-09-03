@@ -732,4 +732,20 @@ img {
   border: 1px solid #febb12;
 }
 /* categories */
+@media (max-width: 479px) and (min-width: 320px) {
+  .container-vendor .primary-cards{
+    width: 87%;
+  }
+  .container-vendor .cards{
+    justify-content: center;
+  }
+  .primary-login{
+    width:82%;
+  }
+  .container-service .cards > div{
+    margin: 5px 5px 5px 5px;
+    width: 79px;
+    font-size:18px;
+  }
+}
 </style>

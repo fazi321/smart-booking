@@ -1,7 +1,6 @@
 <template>
   <div>
     <Header />
-    
     <slot />
     <Footer />
   </div>
@@ -16,7 +15,6 @@ export default {
   components: {
     Header,
     Footer,
-
   }
 };
 </script>

@@ -168,10 +168,7 @@ export default {
       try {
         var res = {};
         if (this.accountOpt == "host") {
-          res = await this.$axios.put(
-            "user/upgrade-vender-host",
-            this.vendor
-          );
+          res = await this.$axios.put("user/upgrade-vender-host", this.vendor);
         } else {
           res = await this.$axios.put(
             "user/upgrade-vender-company",
@@ -444,6 +441,12 @@ h5 {
   }
   .headings h1 {
     font-size: 20px;
+  }
+  .container-vendor .cards {
+    width: 100%;
+  }
+  .container-vendor .primary-cards {
+    margin: 0 10px;
   }
 }
 </style>

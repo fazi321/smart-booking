@@ -716,4 +716,5 @@ img {
 .price-container > div {
   width: 92%;
 }
+
 </style>

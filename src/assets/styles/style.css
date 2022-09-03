@@ -221,8 +221,8 @@ header.active .container .nav ul li a {
   height: 40px;
   text-align: center;
 }
-.swal2-popup{
-  border:1px solid #febb12!important;
+.swal2-popup {
+  border: 1px solid #febb12 !important;
 }
 /* reponsive start */
 @media only screen and (max-width: 1199px) {
@@ -314,3 +314,72 @@ header.active .container .nav ul li a {
 /* .price-container {
   width: 85%;
 } */
+/* responsive */
+@media (max-width: 479px) and (min-width: 320px) {
+  .inputs-container {
+    overflow: scroll;
+    height: 314px;
+    padding: 0px 20px !important;
+  }
+  .primary-login {
+    width: 83% !important;
+  }
+  .container-amenities .cards > div {
+    height: 80px !important;
+    width: 86px !important;
+    margin: 10px 14px 14px 0px !important;
+  }
+  .container-amenities .cards {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+  .container-amenities .cards > div:nth-child(4n + 0) {
+    margin-right: 14px !important;
+  }
+  .rules {
+    width: 100% !important;
+  }
+  .rules .container-input {
+    font-size: 12px !important;
+  }
+  .price-container {
+    width: 100% !important;
+  }
+  .container-price {
+    width: 95% !important;
+    padding: 0 6px !important;
+  }
+  .booking-date {
+    padding: 0 !important;
+  }
+  .booking-date .date-input {
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+  }
+  .card-other .cards {
+    flex-direction: column !important;
+  }
+  .card-other .cards > div {
+    width: 82% !important;
+    margin: 10px 4px !important;
+  }
+  .container-service .cards {
+    padding: 0 !important;
+  }
+  .booking-type .cards {
+    flex-direction: column !important;
+  }
+  .book-instant .primary-cards {
+    width: 96% !important;
+  }
+  .booking-type .primary-cards {
+    width: 98% !important;
+  }
+  .map-container .inputs-container {
+    overflow: unset !important;
+    height: unset !important;
+  }
+  .deposite-section {
+    padding: 0px 8px 0 8px;
+  }
+}
