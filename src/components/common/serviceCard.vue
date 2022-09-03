@@ -125,4 +125,40 @@ export default {
   opacity: 0.6;
   font-size: 14px;
 }
+@media (max-width: 479px) and (min-width: 320px) {
+  .filter-card {
+    height: unset !important;
+  }
+  .filter-card .image {
+    width: 40%;
+    display: flex;
+  }
+  .filter-card .card-detail {
+    width: 60%;
+    padding: 10px;
+  }
+  .filter-card .card-detail .heading h5 {
+    font-size: 12px;
+  }
+  .filter-card .card-detail .heading .wish {
+    width: 25px;
+    height: 25px;
+  }
+  .rating {
+    padding: 7px 0 10px 0;
+  }
+  .filter-card .card-detail p {
+    font-size: 10px;
+    padding-top: 8px;
+  }
+  .filter-card .card-detail .sar {
+    padding-top: 0;
+  }
+  .filter-card .card-detail .sar h6 {
+    font-size: 14px;
+  }
+  .filter-card .card-detail .sar p {
+    font-size: 10px;
+  }
+}
 </style>

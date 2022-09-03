@@ -144,4 +144,18 @@ export default {
   width: 70%;
   padding-right: 20px;
 }
+@media (max-width: 479px) and (min-width: 320px) {
+  .search-wrapper .search .primary-search {
+    width: 90%;
+  }
+  .apartment-wrapper .apartment-left {
+    width: 100%;
+    margin: 10px;
+  }
+  .apartment-wrapper .apartment-right {
+    width: 94%;
+    padding-right: 0px;
+    margin: 10px;
+  }
+}
 </style>

@@ -7,14 +7,18 @@
       <div class="service-container" v-if="!loading">
         <div class="booking-cards">
           <div class="card" v-for="(item, key) in dataCard" :key="key">
-            <MyServicesCard :items="item" @deleteItem="deleteCard"/>
+            <MyServicesCard :items="item" @deleteItem="deleteCard" />
           </div>
         </div>
       </div>
       <div class="booking-cards service-skeleton" v-else>
-       <div class="card"  v-for="(skeleton, loading) in skeleton" :key="loading">
-        <CardSkeleton/>
-       </div>
+        <div
+          class="card"
+          v-for="(skeleton, loading) in skeleton"
+          :key="loading"
+        >
+          <CardSkeleton />
+        </div>
       </div>
     </section>
   </default-layout>
@@ -30,7 +34,7 @@ export default {
   components: {
     DefaultLayout,
     MyServicesCard,
-    CardSkeleton
+    CardSkeleton,
   },
   data() {
     return {
@@ -47,14 +51,14 @@ export default {
         this.dataCard = res.data;
         this.loading = false;
       } catch (error) {
-         this.loading = false;
+        this.loading = false;
         console.log(error);
       }
     },
-    async deleteCard(id){
+    async deleteCard(id) {
       try {
         var res = await this.$axios.delete(`services/delete-any/${id}`);
-        if(res){
+        if (res) {
           var updateCard = this.dataCard.filter((item) => item._id != id);
           this.dataCard = updateCard;
           this.$swal({
@@ -66,14 +70,14 @@ export default {
         }
       } catch (error) {
         this.$swal({
-            icon: "error",
-            title: "Some Thing Went Wrong!",
-            showConfirmButton: false,
-            timer: 3000,
-          });
+          icon: "error",
+          title: "Some Thing Went Wrong!",
+          showConfirmButton: false,
+          timer: 3000,
+        });
         console.log(error);
       }
-    }
+    },
     // clickCallback(num) {
     //   this.$refs.slider.slideTo(num);
     // },
@@ -110,5 +114,16 @@ export default {
 }
 .booking-cards .card {
   width: 49%;
+}
+@media (max-width: 479px) and (min-width: 320px) {
+  .booking-cards {
+    margin: 0 10px;
+  }
+  .booking-cards .card {
+    width: 100%;
+  }
+   .service-container h3{
+    margin: 0 10px;
+  }
 }
 </style>

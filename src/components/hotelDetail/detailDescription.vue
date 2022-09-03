@@ -47,4 +47,7 @@ export default {
   opacity: 0.6;
   line-height: 2.2;
 }
+@media (max-width: 479px) and (min-width: 320px) {
+  
+}
 </style>

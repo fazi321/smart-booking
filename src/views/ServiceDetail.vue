@@ -363,4 +363,12 @@ export default {
   opacity: 0.7;
   font-size: 12px;
 }
+@media (max-width: 479px) and (min-width: 320px) {
+  .service-detail{
+    overflow: scroll;
+  }
+  .service-container{
+    margin: 0 10px;
+  }
+}
 </style>

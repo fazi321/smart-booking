@@ -19,7 +19,9 @@
         </div>
         <div class="icon">
           <img src="../../assets/images/sq.svg" alt />
-          <p>{{storeState.description && storeState.description.areaSqm}} sq2</p>
+          <p>
+            {{ storeState.description && storeState.description.areaSqm }} sq2
+          </p>
         </div>
         <div class="icon">
           <img src="../../assets/images/family.svg" alt />
@@ -167,6 +169,7 @@ export default {
   display: flex;
   justify-content: space-between;
   padding: 20px 0;
+  flex-wrap: wrap;
 }
 .hotel-images img {
   border-radius: 14px;
@@ -199,5 +202,27 @@ export default {
   background: #eee;
   margin-bottom: 15px;
   border-radius: 11px;
+}
+@media (max-width: 479px) and (min-width: 320px) {
+  .hotel-wrapper {
+    margin: 0 10px;
+  }
+  .overview {
+    flex-wrap: wrap;
+  }
+  .overview .icon {
+    margin-bottom: 10px;
+    margin-right: 15px;
+  }
+  /* .hotel-images {
+    margin: 10px;
+  } */
+  .hotel-images .big-img {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  .small-images {
+    width: 100%;
+  }
 }
 </style>

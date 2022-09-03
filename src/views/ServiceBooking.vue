@@ -93,4 +93,15 @@ export default {
 .booking-cards .card {
   width: 49%;
 }
+@media (max-width: 479px) and (min-width: 320px) {
+  .booking-cards {
+    margin: 0 10px;
+  }
+  .booking-cards .card {
+    width: 100%;
+  }
+   .service-container h3{
+    margin: 0 10px;
+  }
+}
 </style>
