@@ -1,5 +1,6 @@
 <template>
   <section :class="['login-signup', { active: model }]">
+    <OtpModel @submited="checkOTP" :model="otpModel" :otpC="verifyOtp" ref="otp"/>
     <div class="primary-login">
       <div class="main-login">
         <div class="logo-close">
@@ -16,7 +17,7 @@
         </div>
         <div class="login-form">
           <div class="form-container">
-            <form autocomplete="off" @submit.prevent="Login">
+            <form autocomplete="off" @submit.prevent="signUp">
               <div class="input-div">
                 <div class="input-primary">
                   <div class="flag">
@@ -35,11 +36,13 @@
                       required
                     />
                   </div>
+                  <div class="error" v-if="isError">Mobile Number Error!</div>
                 </div>
               </div>
               <!-- <div class="error" v-if="!isExist">Password is Incorrect!</div> -->
               <div class="input-div">
-                <button type="submit">Login</button>
+                <button v-if="!loading" type="submit">Signup</button>
+                <button v-else>Loading...</button>
               </div>
             </form>
           </div>
@@ -53,21 +56,64 @@
 </template>
 
 <script>
+import OtpModel from "./OtpModel.vue";
 export default {
   name: "SignUpModel",
   props: ["model"],
+  components: {
+    OtpModel,
+  },
   data() {
     return {
       phoneNumber: null,
+      verifyOtp: "",
+      otpModel: false,
+      loading: false,
+      isError: false,
     };
   },
   methods: {
+    async signUp() {
+      this.loading = true;
+      try {
+        const res = await this.$axios.post("user/signup", {
+          phone: `92${this.phoneNumber}`,
+        });
+        if (res) {
+          this.otpModel = true;
+          this.loading = false;
+          this.verifyOtp = res.data.otp;
+        }
+      } catch (error) {
+        this.isError = true;
+        this.loading = false;
+      }
+    },
+    checkOTP(val) {
+      if (this.verifyOtp == val) {
+        this.close();
+        this.$swal({
+          icon: "success",
+          title: "Success!",
+          showConfirmButton: false,
+          timer: 3000,
+        });
+      }else{
+        this.$refs.otp.error = true;
+      }
+    },
     LoginModel() {
       this.$parent.signUpModel = false;
       this.$parent.loginModel = true;
     },
-     close() {
+    close() {
+      this.otpModel = false;
       this.$parent.signUpModel = false;
+    },
+  },
+  watch: {
+    phoneNumber: function () {
+      this.isError = false;
     },
   },
 };
@@ -79,6 +125,10 @@ export default {
   text-align: center;
   font-size: 14px;
   color: red;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  bottom: -35px;
 }
 .login-signup {
   position: fixed;
@@ -191,6 +241,7 @@ img {
   outline: none;
   margin-bottom: 40px;
   box-shadow: 0px 2px 4px 1px #c9c9c9a6;
+  cursor: pointer;
 }
 .input-div .flag {
   display: flex;

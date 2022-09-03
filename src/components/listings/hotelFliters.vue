@@ -348,7 +348,7 @@
 </template>
 
 <script>
-import PriceSlider from "../hotel/priceSlider.vue";
+import PriceSlider from "./priceSlider.vue";
 export default {
   name: "HotelFilters",
   components: {
@@ -512,8 +512,5 @@ export default {
   height: 30px;
   cursor: pointer;
   border-radius: 50%;
-}
-@media (max-width: 479px) and (min-width: 320px) {
-  
 }
 </style>

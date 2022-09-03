@@ -4,27 +4,17 @@
       <div class="service-booking">
         <h1>MY SERVICES</h1>
       </div>
-      <div class="service-container">
+      <div class="service-container" v-if="!loading">
         <div class="booking-cards">
-          <div class="card">
-            <MyServicesCard />
-          </div>
-          <div class="card">
-            <MyServicesCard />
-          </div>
-          <div class="card">
-            <MyServicesCard />
-          </div>
-          <div class="card">
-            <MyServicesCard />
-          </div>
-          <div class="card">
-            <MyServicesCard />
-          </div>
-          <div class="card">
-            <MyServicesCard />
+          <div class="card" v-for="(item, key) in dataCard" :key="key">
+            <MyServicesCard :items="item" @deleteItem="deleteCard"/>
           </div>
         </div>
+      </div>
+      <div class="booking-cards service-skeleton" v-else>
+       <div class="card"  v-for="(skeleton, loading) in skeleton" :key="loading">
+        <CardSkeleton/>
+       </div>
       </div>
     </section>
   </default-layout>
@@ -33,13 +23,65 @@
 <script>
 import DefaultLayout from "@/components/layouts/DefaultLayout.vue";
 import MyServicesCard from "@/components/common/MyServices.vue";
+import CardSkeleton from "@/components/common/cardSkeleton.vue";
 
 export default {
   name: "MyServices",
   components: {
     DefaultLayout,
-    MyServicesCard
-  }
+    MyServicesCard,
+    CardSkeleton
+  },
+  data() {
+    return {
+      dataCard: [],
+      loading: false,
+      skeleton: 8,
+    };
+  },
+  methods: {
+    async getData() {
+      try {
+        this.loading = true;
+        var res = await this.$axios.get(`services`);
+        this.dataCard = res.data;
+        this.loading = false;
+      } catch (error) {
+         this.loading = false;
+        console.log(error);
+      }
+    },
+    async deleteCard(id){
+      try {
+        var res = await this.$axios.delete(`services/delete-any/${id}`);
+        if(res){
+          var updateCard = this.dataCard.filter((item) => item._id != id);
+          this.dataCard = updateCard;
+          this.$swal({
+            icon: "success",
+            title: "Success!",
+            showConfirmButton: false,
+            timer: 3000,
+          });
+        }
+      } catch (error) {
+        this.$swal({
+            icon: "error",
+            title: "Some Thing Went Wrong!",
+            showConfirmButton: false,
+            timer: 3000,
+          });
+        console.log(error);
+      }
+    }
+    // clickCallback(num) {
+    //   this.$refs.slider.slideTo(num);
+    // },
+  },
+
+  mounted() {
+    this.getData();
+  },
 };
 </script>
 <style scoped>

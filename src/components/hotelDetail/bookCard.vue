@@ -1,11 +1,15 @@
 <template>
   <router-link to="/hotel-detail" class="filter-card">
     <div class="image">
-      <img src="../../assets/images/hotel-img.svg" />
+      <img
+        :src="storeState.description.images[0]"
+        v-if="checkLink(storeState.description.images[0])"
+      />
+      <img src="../../assets/images/hotel-img.svg" v-else />
     </div>
     <div class="card-detail">
-      <div class="heading">
-        <h5>Lorem Ipsum Farm</h5>
+      <div class="heading" v-if="storeState && storeState.description">
+        <h5>{{ storeState.description.nameInEnglish }}</h5>
         <!-- <div class="wish">
           <svg class="svg-icon" viewBox="0 0 20 20">
             <path
@@ -15,7 +19,9 @@
           </svg>
         </div> -->
       </div>
-      <p>Riyadh, KSA</p>
+      <p v-if="storeState && storeState.address">
+        {{ storeState.address.city }}
+      </p>
       <div class="rating">
         <span class="star">&starf;</span>
         <span class="star">&starf;</span>
@@ -25,7 +31,7 @@
         <span class="rating-counter">(381)</span>
       </div>
       <div class="sar">
-        <h6>SAR 120</h6>
+        <h6>SAR {{ storeState.price.dayPrice }}</h6>
         <p>Per Night</p>
       </div>
     </div>
@@ -34,7 +40,25 @@
 
 <script>
 export default {
-  name: "BookCard"
+  name: "BookCard",
+  computed: {
+    storeState: function () {
+      return this.$store.state.details && this.$store.state.details.details;
+    },
+  },
+  methods: {
+    checkLink(isLink) {
+      if (
+        new RegExp(
+          "([a-zA-Z0-9]+://)?([a-zA-Z0-9_]+:[a-zA-Z0-9_]+@)?([a-zA-Z0-9.-]+\\.[A-Za-z]{2,4})(:[0-9]+)?(/.*)?"
+        ).test(isLink)
+      ) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+  },
 };
 </script>
 
@@ -53,6 +77,7 @@ export default {
 }
 .filter-card .image img {
   width: 100%;
+  border-radius: 13px;
 }
 .filter-card .card-detail {
   padding: 20px;

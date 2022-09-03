@@ -1,11 +1,12 @@
 <template>
-  <router-link to="/hotel-detail" class="filter-card">
+  <router-link :to="`${$route.path}/${item._id}`" class="filter-card">
     <div class="image">
-      <img src="../../assets/images/hotel-img.svg" />
+      <img :src="item.description.images[0]" v-if="checkLink(item.description.images[0])"/>
+      <img src="../../assets/images/hotel-img.svg" v-else />
     </div>
     <div class="card-detail">
       <div class="heading">
-        <h5>Lorem Ipsum Farm</h5>
+        <h5>{{ item.description.nameInEnglish }}</h5>
         <div class="wish">
           <svg class="svg-icon" viewBox="0 0 20 20">
             <path
@@ -15,7 +16,8 @@
           </svg>
         </div>
       </div>
-      <p>Riyadh, KSA</p>
+      <!-- <p>Riyadh, KSA</p> -->
+      <p>{{ item.address && item.address.address }}</p>
       <div class="rating">
         <span class="star">&starf;</span>
         <span class="star">&starf;</span>
@@ -25,7 +27,7 @@
         <span class="rating-counter">(381)</span>
       </div>
       <div class="sar">
-        <h6>SAR 120</h6>
+        <h6>SAR {{ item.price && item.price.dayPrice }}</h6>
         <p>Per Night</p>
       </div>
     </div>
@@ -34,7 +36,21 @@
 
 <script>
 export default {
+  props: ["item"],
   name: "FilterCard",
+  methods: {
+    checkLink(isLink) {
+      if (
+        new RegExp(
+          "([a-zA-Z0-9]+://)?([a-zA-Z0-9_]+:[a-zA-Z0-9_]+@)?([a-zA-Z0-9.-]+\\.[A-Za-z]{2,4})(:[0-9]+)?(/.*)?"
+        ).test(isLink)
+      ) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+  },
 };
 </script>
 
@@ -52,6 +68,7 @@ export default {
 }
 .filter-card .image img {
   width: 100%;
+  border-radius: 13px;
 }
 .filter-card .card-detail {
   padding: 20px;
@@ -166,41 +183,5 @@ export default {
 }
 .favourite .filter-card .card-detail {
   width: 60% !important;
-}
-@media (max-width: 479px) and (min-width: 320px) {
-  .filter-card {
-    height: unset !important;
-  }
-  .filter-card .image {
-    width: 40%;
-    display: flex;
-  }
-  .filter-card .card-detail {
-    width: 60%;
-    padding: 10px;
-  }
-  .filter-card .card-detail .heading h5 {
-    font-size: 12px;
-  }
-  .filter-card .card-detail .heading .wish {
-    width: 25px;
-    height: 25px;
-  }
-  .rating {
-    padding: 7px 0 10px 0;
-  }
-  .filter-card .card-detail p {
-    font-size: 10px;
-    padding-top: 8px;
-  }
-  .filter-card .card-detail .sar {
-    padding-top: 0;
-  }
-  .filter-card .card-detail .sar h6 {
-    font-size: 14px;
-  }
-  .filter-card .card-detail .sar p {
-    font-size: 10px;
-  }
 }
 </style>

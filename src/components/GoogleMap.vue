@@ -65,6 +65,7 @@ export default {
         lat: latLng.lat(),
         lng: latLng.lng(),
       };
+      this.$emit("latlng", this.currentRepo);
     },
     setPlace(place) {
       this.zoom = 8;

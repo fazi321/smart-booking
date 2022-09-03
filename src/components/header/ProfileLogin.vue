@@ -1,25 +1,29 @@
 <template>
   <section class="btns">
-    <h1 @click="logedIn" class="demo-login">Login</h1>
-    <section v-if="loggedIn">
+    <section v-if="!$store.state.auth.user">
       <button class="btn btn-transparent" @click="vendorModelShow">
         Become Vendor
       </button>
       <button class="btn btn-filled" @click="loginModelShow">Login</button>
       <LoginModel :model="loginModel" />
       <SignUpModel :model="signUpModel" />
-      <VendorModel :model="vendorModel" />
     </section>
     <!-- after login -->
     <section v-else class="dropdown-container">
-      <button class="btn btn-transparent add-services" @click="serviceModelShow">
+      <button class="btn btn-transparent" @click="vendorModelShow">
+        Become Vendor
+      </button>
+      <button class="btn btn-filled add-services" @click="serviceModelShow">
         Add Service
       </button>
-      <div class="avatar">
-        <img src="../../assets/images/profile.svg" alt="avatar" />
+      <div id="demo">
+        <div class="avatar" @click="toggleDropdown">
+          <img src="../../assets/images/profile.svg" alt="avatar" />
+        </div>
+        <DropDownMenu v-if="dropDown" />
       </div>
-      <DropDownMenu />
       <AddServiceModel :model="serviceModel" />
+      <VendorModel :model="vendorModel" />
     </section>
   </section>
 </template>
@@ -30,6 +34,8 @@ import SignUpModel from "@/components/models/SignUpModel.vue";
 import VendorModel from "@/components/models/VendorModel.vue";
 import AddServiceModel from "@/components/models/AddServiceModel.vue";
 import DropDownMenu from "../DropdownMenu.vue";
+import Cookies from "js-cookie";
+
 export default {
   name: "webProfile",
   components: {
@@ -45,24 +51,51 @@ export default {
       signUpModel: false,
       vendorModel: false,
       serviceModel: false,
-      // after logged in
-      loggedIn: true,
+      dropDown: false,
+      user: false,
     };
   },
+  mounted() {
+    var close = () => {
+      this.dropDown = false;
+    };
+    window.addEventListener("click", function (e) {
+      var doc = document.getElementById("demo");
+      if (doc) {
+        var ele = doc.contains(e.target);
+        if (!ele) {
+          close();
+        }
+      }
+    });
+  },
   methods: {
+    toggleDropdown() {
+      this.dropDown = !this.dropDown;
+    },
     loginModelShow() {
       this.loginModel = !this.loginModel;
     },
     vendorModelShow() {
+      let auth = Cookies.get("Authorization");
+      if (!auth) {
+        this.loginModelShow();
+        return;
+      }
       this.vendorModel = !this.vendorModel;
     },
     serviceModelShow() {
       this.serviceModel = !this.serviceModel;
     },
-    logedIn() {
-      this.loggedIn = !this.loggedIn;
-    },
   },
+  created(){
+     let auth = Cookies.get("Authorization");
+     if(!auth){
+       this.user =  false;
+     }else{
+       this.user = true;
+     }
+  }
 };
 </script>
 
@@ -79,11 +112,15 @@ export default {
   align-items: center;
   justify-content: center;
 }
-.add-services{
-  padding: 12px 35px!important;
+.add-services {
+  padding: 12px 20px !important;
+  margin-right: 10px;
 }
-.dropdown-container{
-  position:relative;
+.dropdown-container {
+  position: relative;
+}
+.dropdown-container .btn {
+  padding: 10px 10px;
 }
 .demo-login {
   position: absolute;

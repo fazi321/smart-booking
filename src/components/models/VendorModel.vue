@@ -55,29 +55,58 @@
               I am a personal <span>Host</span>
             </h4>
           </div>
-          <div class="container-vendor">
+          <form class="container-vendor" @submit="onSubmit">
             <div :class="['transitionBox', { transitionActive: istransition }]">
               <div class="inputs-container">
                 <div>
-                  <input type="text" placeholder="First Name" />
+                  <input
+                    type="text"
+                    placeholder="First Name"
+                    v-model="vendor.firstName"
+                  />
                 </div>
                 <div>
-                  <input type="text" placeholder="Last Name" />
+                  <input
+                    type="text"
+                    placeholder="Last Name"
+                    v-model="vendor.lastName"
+                  />
                 </div>
                 <div>
-                  <input type="number" placeholder="Mobile Number" />
+                  <input
+                    type="number"
+                    placeholder="Mobile Number"
+                    v-model="vendor.phone"
+                  />
                 </div>
                 <div>
-                  <input type="Email" placeholder="Email" />
+                  <input
+                    type="Email"
+                    placeholder="Email"
+                    required
+                    v-model="vendor.email"
+                  />
                 </div>
                 <div>
-                  <input type="text" placeholder="Address" />
+                  <input
+                    type="text"
+                    placeholder="Address"
+                    v-model="vendor.address"
+                  />
                 </div>
                 <div v-if="accountOpt == 'host'">
-                  <input type="text" placeholder="Nationality" />
+                  <input
+                    type="text"
+                    placeholder="Nationality"
+                    v-model="vendor.nationality"
+                  />
                 </div>
                 <div>
-                  <input type="number" placeholder="Commercial ID No" />
+                  <input
+                    type="text"
+                    placeholder="Commercial ID No"
+                    v-model="vendor.commId"
+                  />
                 </div>
               </div>
               <div class="upload-file">
@@ -89,14 +118,14 @@
             </div>
             <div class="form-container">
               <div class="input-div">
-                <button @click="stepTwo">Next</button>
+                <button type="submit">Next</button>
               </div>
             </div>
-          </div>
+          </form>
         </div>
       </section>
       <!-- step Two -->
-      <SuccessModel v-if="nextStep == 1" @close="close"/>
+      <SuccessModel v-if="nextStep == 1" @close="close" />
     </section>
   </section>
 </template>
@@ -116,6 +145,8 @@ export default {
       isSubmitted: false,
       nextStep: null,
       istransition: false,
+      // model
+      vendor: {},
     };
   },
   methods: {
@@ -132,7 +163,30 @@ export default {
     stepTwo() {
       this.nextStep = 1;
     },
+    async onSubmit(e) {
+      e.preventDefault();
+      try {
+        var res = {};
+        if (this.accountOpt == "host") {
+          res = await this.$axios.put(
+            "user/upgrade-vender-host",
+            this.vendor
+          );
+        } else {
+          res = await this.$axios.put(
+            "user/upgrade-vender-company",
+            this.vendor
+          );
+        }
+        if (res) {
+          this.stepTwo();
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    },
     close() {
+      this.vendor = {};
       this.$parent.vendorModel = false;
       this.accountOpt = null;
       this.isSubmitted = false;

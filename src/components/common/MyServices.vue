@@ -1,32 +1,40 @@
 <template>
-  <router-link to="/hotel-detail" class="filter-card">
+  <section class="card-main">
+    <div class="wish" @click="deleteItem(items._id)">
+      <img src="../../assets/images/delete.svg" />
+    </div>
+    <router-link :to="`services/${items._id}`" class="filter-card">
     <div class="image">
       <img src="../../assets/images/hotel-img.svg" />
     </div>
     <div class="card-detail">
       <div class="heading">
-        <h5>Lorem Ipsum Hotel</h5>
-        <div class="wish">
-          <img src="../../assets/images/delete.svg" />
-        </div>
+        <h5>{{items && items.description && items.description.nameInEnglish}}</h5>
       </div>
       <p>The ulitimate 5 star hotel</p>
-      <p>Riyadh, KSA</p>
+      <p>{{items && items.address && items.address.city}}</p>
       <p>
-        <span>2 Rooms</span>,
-        <span>2 Bathrooms</span>
+        <span>{{items && items.roomsGuest && items.roomsGuest.numRooms}} Rooms</span>,
+        <span>{{items && items.roomsGuest && items.roomsGuest.bathrooms}} Bathrooms</span>
       </p>
       <div class="sar">
-        <h6>SAR 120</h6>
+        <h6>SAR {{items && items.price && items.price.dayPrice}}</h6>
         <p>Per Night</p>
       </div>
     </div>
   </router-link>
+  </section>
 </template>
 
 <script>
 export default {
   name: "FilterCard",
+  props:['items'],
+  methods:{
+    deleteItem(id){
+      this.$emit('deleteItem', id)
+    }
+  }
 };
 </script>
 
@@ -64,13 +72,18 @@ export default {
   font-size: 16px;
   font-weight: 600;
 }
-.filter-card .card-detail .heading .wish {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.card-main{
+  position: relative;
+}
+.card-main .wish {
   position: absolute;
   right: 24px;
   top: 35%;
+  z-index: 10;
+}
+.card-main .wish img{
+  width: 40px;
+  cursor: pointer;
 }
 .filter-card .card-detail .heading img {
   width: 40px;

@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
-import Hotel from "../views/Hotel.vue";
-import HotelDetail from "../views/HotelDetail.vue";
+import Listings from "../views/Listings.vue";
+import Detail from "../views/Detail.vue";
 import Profile from "../views/Profile.vue";
 import Messages from "../views/Messages.vue";
 import ServiceBooking from "../views/ServiceBooking.vue";
@@ -19,14 +19,14 @@ const routes = [
     component: Home,
   },
   {
-    path: "/hotel",
-    name: "hotel",
-    component: Hotel,
+    path: "/:category",
+    name: "category",
+    component: Listings,
   },
   {
-    path: "/hotel-detail",
-    name: "hotelDetail",
-    component: HotelDetail,
+    path: "/:cat/:id",
+    name: "Detail",
+    component: Detail,
   },
   {
     path: "/my-profile",
@@ -87,6 +87,14 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
+  scrollBehavior() {
+    // if (to.path === '/search' || to.path === '/blog') return
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve({ behavior: 'smooth', left: 0, top: 0 })
+      }, 100)
+    })
+  },
 });
 
 export default router;

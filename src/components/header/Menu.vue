@@ -1,14 +1,25 @@
 <template>
   <section class="nav">
     <ul>
-      <li><router-link to="/">HOME</router-link></li>
-      <li><router-link to="/hotel">Apartments</router-link></li>
-      <li><router-link to="/hotel">Farms</router-link></li>
-      <li><router-link to="/hotel">Hotels</router-link></li>
-      <li><router-link to="/hotel">Resorts</router-link></li>
-      <li><router-link to="#">Lounges</router-link></li>
+      <li :class="{ active: $route.path == '/' }">
+        <router-link to="/">HOME</router-link>
+      </li>
+      <li :class="{ active: $route.params.category == 'apartments' }">
+        <router-link to="/apartments?page=1">Apartments</router-link>
+      </li>
+      <li :class="{ active: $route.params.category == 'farms' }">
+        <router-link to="/farms?page=1">Farms</router-link>
+      </li>
+      <li :class="{ active: $route.params.category == 'hotels' }">
+        <router-link to="/hotels?page=1">Hotels</router-link>
+      </li>
+      <li :class="{ active: $route.params.category == 'resorts' }">
+        <router-link to="/resorts?page=1">Resorts</router-link>
+      </li>
+      <li :class="{ active: $route.params.category == 'lounges' }">
+        <router-link to="/lounges?page=1">Lounges</router-link>
+      </li>
     </ul>
-    
   </section>
 </template>
 
@@ -37,7 +48,10 @@ export default {
 }
 
 .nav ul li a:hover {
-  color: #FEBB12;
+  color: #febb12;
+}
+.nav ul li.active a {
+  color: #febb12;
 }
 @media only screen and (max-width: 1199px) {
   .nav {

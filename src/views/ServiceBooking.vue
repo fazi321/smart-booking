@@ -7,7 +7,10 @@
       <div class="service-container">
         <h3>You can your service booking here</h3>
         <div class="booking-cards">
-          <div class="card">
+          <div class="card" v-for="(item, index) in dataCard" :key="index">
+            <ServiesCard :items="item"/>
+          </div>
+          <!-- <div class="card">
             <ServiesCard />
           </div>
           <div class="card">
@@ -21,10 +24,7 @@
           </div>
           <div class="card">
             <ServiesCard />
-          </div>
-          <div class="card">
-            <ServiesCard />
-          </div>
+          </div> -->
         </div>
       </div>
     </section>
@@ -40,7 +40,30 @@ export default {
   components: {
     DefaultLayout,
     ServiesCard
-  }
+  },
+  data() {
+    return {
+      dataCard: [],
+    };
+  },
+  methods: {
+    async getData() {
+      try {
+        var res = await this.$axios.get(`booking`);
+        console.log(res.data, "-->");
+        this.dataCard = res.data;
+      } catch (error) {
+        console.log(error);
+      }
+    },
+
+    // clickCallback(num) {
+    //   this.$refs.slider.slideTo(num);
+    // },
+  },
+  mounted() {
+    this.getData();
+  },
 };
 </script>
 <style scoped>

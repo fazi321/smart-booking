@@ -1,5 +1,6 @@
 <template>
   <section :class="['login-signup', { active: model }]">
+    <OtpModel @submited="checkOTP" :model="otpModel" :otpC="verifyOtp" ref="otp"/>
     <div class="primary-login">
       <div class="main-login">
         <div class="logo-close">
@@ -35,11 +36,12 @@
                       required
                     />
                   </div>
+                  <div class="error" v-if="isError">Mobile Number Error!</div>
                 </div>
               </div>
-              <!-- <div class="error" v-if="!isExist">Password is Incorrect!</div> -->
               <div class="input-div">
-                <button type="submit">Login</button>
+                <button v-if="!loading" type="submit">Login</button>
+                <button v-else>Loading...</button>
               </div>
             </form>
           </div>
@@ -53,21 +55,72 @@
 </template>
 
 <script>
+import OtpModel from "./OtpModel.vue";
+import Cookies from "js-cookie";
+
 export default {
   name: "LoginModel",
   props: ["model"],
+  components: {
+    OtpModel,
+  },
   data() {
     return {
       phoneNumber: null,
+      verifyOtp: "",
+      userData: {},
+      otpModel: false,
+      loading: false,
+      isError: false,
     };
   },
   methods: {
+    async Login() {
+      this.loading = true;
+      try {
+        const res = await this.$axios.post("user/login", {
+          phone: `92${this.phoneNumber}`,
+        });
+        if (res) {
+          this.otpModel = true;
+          this.verifyOtp = res.data.user.otp;
+          this.userData = res.data;
+          this.loading = false;
+        }
+      } catch (error) {
+        this.isError = true;
+        this.loading = false;
+      }
+    },
+    checkOTP(val) {
+      if (this.verifyOtp == val) {
+        // var time = new Date(new Date().getTime() + 1 * 60 * 1000);
+        Cookies.set("Authorization", this.userData.token, { expires: 7 });
+        this.$axios.defaults.headers.common["Authorization"] =  `bearer ${this.userData.token}`
+        this.$store.dispatch("auth/login", this.userData.user);
+        this.close();
+        this.$swal({
+          icon: "success",
+          title: "Success!",
+          showConfirmButton: false,
+          timer: 3000,
+        });
+        this.otpModel = false;
+      }else{
+        this.$refs.otp.error = true;
+      }
+    },
     SignUpModel() {
       this.$parent.loginModel = false;
       this.$parent.signUpModel = true;
     },
     close() {
       this.$parent.loginModel = false;
+    },
+  },
+  watch: {
+    phoneNumber: function () {
+      this.isError = false;
     },
   },
 };
@@ -79,6 +132,11 @@ export default {
   text-align: center;
   font-size: 14px;
   color: red;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  bottom: -35px;
+  left:0;
 }
 .login-signup {
   position: fixed;
@@ -152,6 +210,7 @@ img {
   margin-bottom: 35px;
   align-items: center;
   width: 62%;
+  position: relative;
 }
 .container-input {
   width: 90%;
@@ -191,6 +250,7 @@ img {
   outline: none;
   margin-bottom: 40px;
   box-shadow: 0px 2px 4px 1px #c9c9c9a6;
+  cursor: pointer;
 }
 .input-div .flag {
   display: flex;

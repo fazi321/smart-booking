@@ -1,5 +1,5 @@
 <template>
-  <router-link to="/hotel" class="smart-card" v-if="dataItem">
+  <router-link :to="`${dataItem.link}`" class="smart-card" v-if="dataItem">
     <div class="image">
       <img :src="require(`../../assets/images/${dataItem.image}`)" />
     </div>
@@ -44,11 +44,5 @@ export default {
   color: #000000;
   opacity: 0.6;
   text-align: center;
-}
-@media (max-width: 479px) and (min-width: 320px) {
-  .smart-card {
-    width: 48%;
-    margin: 10px 0;
-  }
 }
 </style>

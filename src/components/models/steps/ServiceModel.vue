@@ -10,53 +10,152 @@
         </div>
         <div class="headings">
           <h1>Service Description</h1>
-          <h4>Rules</h4>
+          <h4>Rules & Safty</h4>
         </div>
         <div class="container-rules">
           <div class="rules">
-            <div>
+            <!-- <div>
               <label class="container-input"
                 >Events & Parties allowed
-                <input type="checkbox" />
+                <input type="checkbox" v-model="rules.EventsPartiesallowed" />
+                <span class="checkmark"></span>
+              </label>
+            </div> -->
+            <!-- <div>
+              <label class="container-input"
+                >Pets Allowed
+                <input type="checkbox" v-model="rules.petsAllowed" />
+                <span class="checkmark"></span>
+              </label>
+            </div> -->
+            <div>
+              <label class="container-input"
+                >Smoking Allowed
+                <input type="checkbox" v-model="rules.smokingAllowed" />
                 <span class="checkmark"></span>
               </label>
             </div>
             <div>
               <label class="container-input"
                 >Pets Allowed
-                <input type="checkbox" />
+                <input type="checkbox" v-model="rules.petsAllowed" />
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <!-- <div>
+              <label class="container-input"
+                >Suitable For Childrens
+                <input type="checkbox" v-model="rules.suitableForChildrens" />
+                <span class="checkmark"></span>
+              </label>
+            </div> -->
+            <div>
+              <label class="container-input"
+                >Suitable For Grooms
+                <input type="checkbox" v-model="rules.suitableForGrooms" />
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <!-- <div>
+              <label class="container-input"
+                >suitable For Infants
+                <input type="checkbox" v-model="rules.suitableForInfants" />
+                <span class="checkmark"></span>
+              </label>
+            </div> -->
+            <div>
+              <label class="container-input"
+                >Fire Alaram
+                <input type="checkbox" v-model="safty.fireAlaram" />
                 <span class="checkmark"></span>
               </label>
             </div>
             <div>
               <label class="container-input"
-                >Smoking Allowed
-                <input type="checkbox" />
+                >Carbon Monoxide Alarams
+                <input type="checkbox" v-model="safty.carbonMonoxideAlarams" />
                 <span class="checkmark"></span>
               </label>
             </div>
             <div>
+              <label class="container-input"
+                >fire Extinguisher
+                <input type="checkbox" v-model="safty.fireExtinguisher" />
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div>
+              <label class="container-input"
+                >first Aid Kit
+                <input type="checkbox" v-model="safty.firstAidKit" />
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <!-- <div>
               <label class="container-input"
                 >Suitable for Childrens (2-14)
-                <input type="checkbox" />
+                <input type="checkbox" v-model="rules.suitableForChildrens" />
                 <span class="checkmark"></span>
               </label>
-            </div>
-            <div>
+            </div> -->
+            <!-- <div>
               <label class="container-input"
                 >Suitable for grooms
-                <input type="checkbox" />
+                <input type="checkbox" v-model="rules.suitableForGrooms" />
                 <span class="checkmark"></span>
               </label>
-            </div>
-            <div>
+            </div> -->
+            <!-- <div>
               <label class="container-input"
                 >Suitable for Infants (Under 2)
-                <input type="checkbox" />
+                <input type="checkbox" v-model="rules.suitableForInfants" />
                 <span class="checkmark"></span>
               </label>
-            </div>
+            </div> -->
+            <!-- block -->
           </div>
+          <section class="price-container">
+            <div class="container-price">
+              <!-- block -->
+              <div class="price-inputs">
+                <div class="price-checkbox">
+                  <label class="container-input"
+                    >Suitable For Childrens
+                    <input
+                      type="checkbox"
+                      v-model="suitableFor.suitableForChildrens"
+                    />
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+                <div class="input-price">
+                  <input
+                    type="number"
+                    v-model="suitablePrice.suitableForChildrens"
+                  />
+                </div>
+              </div>
+              <!-- block -->
+              <div class="price-inputs">
+                <div class="price-checkbox">
+                  <label class="container-input"
+                    >Suitable For Infants
+                    <input
+                      type="checkbox"
+                      v-model="suitableFor.suitableForInfants"
+                    />
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+                <div class="input-price">
+                  <input
+                    type="number"
+                    v-model="suitablePrice.suitableForInfants"
+                  />
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
         <div class="form-container">
           <div class="input-div">
@@ -65,8 +164,188 @@
         </div>
       </div>
     </div>
+    <!-- kethen -->
+    <!-- <div class="primary-login" v-if="step == 2">
+      <div class="main-login add-services">
+        <div class="logo-close">
+          <div class="close-icon" @click="close">
+            <img src="../../../assets/images/close-icon.svg" alt="" />
+          </div>
+        </div>
+        <div class="headings">
+          <h1>Service Description</h1>
+          <h4>kitchen</h4>
+        </div>
+        <div class="container-rules">
+          <div class="rules">
+            <div>
+              <label class="container-input"
+                >Kitchen Utensils
+                <input type="checkbox" v-model="kitchen.kitchenUtensils" />
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div>
+              <label class="container-input"
+                >Dining Table
+                <input type="checkbox" v-model="kitchen.diningTable" />
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div>
+              <label class="container-input"
+                >Microwave
+                <input type="checkbox" v-model="kitchen.microwave" />
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div>
+              <label class="container-input"
+                >CoffeeMachine
+                <input type="checkbox" v-model="kitchen.coffeeMachine" />
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div>
+              <label class="container-input"
+                >Kettle
+                <input type="checkbox" v-model="kitchen.kettle" />
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div>
+              <label class="container-input"
+                >HotBeverage
+                <input type="checkbox" v-model="kitchen.hotBeverage" />
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div>
+              <label class="container-input"
+                >Oven
+                <input type="checkbox" v-model="kitchen.oven" />
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div>
+              <label class="container-input"
+                >Stove
+                <input type="checkbox" v-model="kitchen.stove" />
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div>
+              <label class="container-input"
+                >Refrigerator
+                <input type="checkbox" v-model="kitchen.refrigerator" />
+                <span class="checkmark"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="form-container">
+          <div class="input-div">
+            <button type="submit" @click="changeStep(3)">Next</button>
+          </div>
+        </div>
+      </div>
+    </div> -->
     <!-- step one End -->
-    <!-- step two -->
+    <!-- bath Rooms -->
+    <!-- <div class="primary-login" v-if="step == 2">
+      <div class="main-login add-services">
+        <div class="logo-close">
+          <div class="close-icon" @click="close">
+            <img src="../../../assets/images/close-icon.svg" alt="" />
+          </div>
+        </div>
+        <div class="headings">
+          <h1>Service Description</h1>
+          <h4>Rooms Bath</h4>
+        </div>
+        <div class="container-rules">
+          <div class="rules">
+            <div>
+              <label class="container-input"
+                >hanger
+                <input type="checkbox" v-model="roomsbath.hanger" />
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div>
+              <label class="container-input"
+                >SoapTissue
+                <input type="checkbox" v-model="roomsbath.soapTissue" />
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div>
+              <label class="container-input"
+                >Shampoo
+                <input type="checkbox" v-model="roomsbath.shampoo" />
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div>
+              <label class="container-input"
+                >Towels
+                <input type="checkbox" v-model="roomsbath.towels" />
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div>
+              <label class="container-input"
+                >MassageChair
+                <input type="checkbox" v-model="roomsbath.massageChair" />
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div>
+              <label class="container-input"
+                >Hair Dryer
+                <input type="checkbox" v-model="roomsbath.hairDryer" />
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div>
+              <label class="container-input"
+                >Extra Pillow
+                <input type="checkbox" v-model="roomsbath.extraPillow" />
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div>
+              <label class="container-input"
+                >Bed Sheet
+                <input type="checkbox" v-model="roomsbath.bedSheet" />
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div>
+              <label class="container-input"
+                >Washer
+                <input type="checkbox" v-model="roomsbath.washer" />
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div>
+              <label class="container-input"
+                >Iron
+                <input type="checkbox" v-model="roomsbath.iron" />
+                <span class="checkmark"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="form-container">
+          <div class="input-div">
+            <button type="submit" @click="changeStep(3)">Next</button>
+          </div>
+        </div>
+      </div>
+    </div> -->
+    <!-- step one End -->
+    <!-- step three -->
     <div class="primary-login" v-if="step == 2">
       <div class="main-login add-services">
         <div class="logo-close">
@@ -82,30 +361,45 @@
           <div>
             <div class="inputs-container">
               <div>
-                <input type="text" placeholder="Service Name (English)" />
+                <input
+                  type="text"
+                  placeholder="Service Name (English)"
+                  v-model="description.nameInEnglish"
+                />
               </div>
               <div>
-                <input type="text" placeholder="Service Name (Arabic)" />
+                <input
+                  type="text"
+                  placeholder="Service Name (Arabic)"
+                  v-model="description.nameInArabic"
+                />
               </div>
               <div>
-                <input type="text" placeholder="Secondary Phone Number" />
+                <input
+                  type="text"
+                  placeholder="Secondary Phone Number"
+                  v-model="description.secondryPhone"
+                />
               </div>
               <div>
-                <input type="text" placeholder="Area" />
+                <input
+                  type="number"
+                  placeholder="Area"
+                  v-model="description.areaSqm"
+                />
               </div>
               <div>
                 <input
                   type="text"
                   placeholder="Property Description (English)"
+                  v-model="description.descriptionInEnglish"
                 />
-              </div>
-              <div>
-                <input type="text" placeholder="Outdoor Seating" />
               </div>
               <div>
                 <input
                   type="text"
                   placeholder="Property Description (Arabic)"
+                  v-model="description.descriptionInArabic"
                 />
               </div>
             </div>
@@ -113,7 +407,14 @@
           <div class="upload-file">
             <label for="inputTag">
               Add service image
-              <input id="inputTag" type="file" />
+              <input
+                id="inputTag"
+                name="image"
+                type="file"
+                @change="handleChange"
+                accept="image/png, image/gif, image/jpeg"
+                multiple
+              />
             </label>
           </div>
         </div>
@@ -139,39 +440,59 @@
         </div>
         <div class="map-container">
           <div class="map">
-            <GoogleMap />
+            <GoogleMap @latlng="latLng" />
           </div>
           <div class="container-vendor">
             <div>
               <div class="inputs-container">
                 <div>
-                  <input type="text" placeholder="Address" />
-                </div>
-                <div>
-                  <input type="text" placeholder="Property Number" />
-                </div>
-                <div>
-                  <input type="text" placeholder="City" />
-                </div>
-                <div>
-                  <input type="text" placeholder="Area" />
-                </div>
-                <div>
-                  <input type="text" placeholder="Landmark" />
+                  <input
+                    type="text"
+                    placeholder="Address"
+                    v-model="address.address"
+                  />
                 </div>
                 <div>
                   <input
                     type="text"
-                    placeholder="Property Description (Arabic)"
+                    placeholder="Property Number"
+                    v-model="address.houseNumber"
                   />
                 </div>
+                <div>
+                  <input
+                    type="text"
+                    placeholder="City"
+                    v-model="address.city"
+                  />
+                </div>
+                <div>
+                  <input
+                    type="text"
+                    placeholder="Area"
+                    v-model="address.area"
+                  />
+                </div>
+                <div>
+                  <input
+                    type="text"
+                    placeholder="Landmark"
+                    v-model="address.landMark"
+                  />
+                </div>
+                <!-- <div>
+                  <input
+                    type="text"
+                    placeholder="Property Description (Arabic)"
+                  />
+                </div> -->
               </div>
             </div>
           </div>
         </div>
         <div class="form-container">
           <div class="input-div step-btn">
-            <button type="submit">Next</button>
+            <button type="submit" @click="submited">Next</button>
           </div>
         </div>
       </div>
@@ -191,10 +512,64 @@ export default {
   data() {
     return {
       nextStep: null,
+      rules: {},
+      safty: {},
+      kitchen: {},
+      roomsbath: {},
+      description: {},
+      address: {},
+      location: {},
+      suitableFor: {},
+      suitablePrice: {},
       step: 1,
     };
   },
   methods: {
+    latLng({ lat, lng }) {
+      this.location = { location: { coordinates: [lat, lng] } };
+    },
+    handleChange(e) {
+      let formData = new FormData();
+      for (let i = 0; i < e.target.files.length; i++) {
+        formData.append("image", e.target.files[i]);
+      }
+      this.$emit('images', formData)
+    },
+    submited() {
+      // sutable childcheck
+      const newObjC = {};
+      for (const [key, value] of Object.entries(this.suitableFor)) {
+        if (value) {
+          for (const [pkey, pValue] of Object.entries(this.suitablePrice)) {
+            if (key == pkey) {
+              newObjC[key] = pValue;
+            }
+          }
+        }
+      }
+      // price
+      const newObj = {};
+      for (const [key, value] of Object.entries(this.rules)) {
+        if (value) {
+          newObj[key] = value;
+        }
+      }
+      var { location } = this.location;
+      var finalDetail = {
+        description: {
+          rules: { ...newObj, ...newObjC },
+          safty: { ...this.safty },
+          ...this.description,
+        },
+        kitchen: { ...this.kitchen },
+        address: { ...this.address },
+        location,
+        roomsbath: { ...this.roomsbath },
+      };
+      console.log(finalDetail);
+      this.$emit("decription", finalDetail);
+      this.$parent.accountOpt = "price";
+    },
     changeStep(step) {
       // if (!this.serviceType) return;
       this.step = step;
@@ -316,8 +691,10 @@ img {
 }
 /* step one */
 .container-rules {
+  align-items: center;
   display: flex;
   justify-content: center;
+  flex-direction: column;
 }
 .rules {
   display: flex;
@@ -436,4 +813,77 @@ img {
   padding: 0 28px;
 }
 /* step two end */
+.price-inputs {
+  display: flex;
+  justify-content: space-between;
+}
+.price-inputs .price-checkbox .container-input p {
+  font-size: 12px;
+  display: inline-block;
+}
+.price-inputs .price-checkbox .container-input {
+  margin: 16px 0;
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  cursor: pointer;
+  font-size: 14px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: left;
+}
+/* Hide the browser's default checkbox */
+.price-inputs .price-checkbox .container-input input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+/* Create a custom checkbox */
+.price-inputs .price-checkbox .checkmark {
+  position: absolute;
+  top: -5px;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  border-radius: 20px;
+  box-shadow: 0px 1px 12px -2px #00000040;
+}
+/* Create the checkmark/indicator (hidden when not checked) */
+.price-inputs .price-checkbox .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+/* Show the checkmark when checked */
+.price-inputs
+  .price-checkbox
+  .container-input
+  input:checked
+  ~ .checkmark:after {
+  display: block;
+}
+/* Style the checkmark/indicator */
+.price-inputs .price-checkbox .container-input .checkmark:after {
+  left: 5px;
+  top: 5px;
+  width: 15px;
+  height: 15px;
+  background: #febb12;
+  border-radius: 35px;
+}
+.input-price input {
+  outline: none;
+  border-radius: 20px;
+  border: unset;
+  box-shadow: 0px 1px 12px -2px #00000040;
+  padding: 8px;
+  width: 82px;
+}
+.price-container {
+  width: 85%;
+}
 </style>

@@ -28,7 +28,7 @@
 
 <script>
 export default {
-  name: "ApartFilter",
+  name: "ApartFilter"
 };
 </script>
 
@@ -37,6 +37,7 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  
   padding: 15px 0;
 }
 .filters-container div h6 {
@@ -54,6 +55,7 @@ export default {
   justify-content: center;
   margin-right: 20px;
   width: 100%;
+ 
 }
 .filter-buttons .filter-option img {
   width: 15px;
@@ -66,19 +68,7 @@ export default {
   color: #0e4763;
   font-size: 14px;
   width: 70%;
-  cursor: pointer;
-  padding: 10px 0;
-}
-@media (max-width: 479px) and (min-width: 320px) {
-  .filter-buttons .filter-option select {
-    width: 55%;
-  }
-  .filter-buttons .filter-option {
-    margin-right: 6px;
-    width: 125px;
-  }
-  .filters-container div h6{
-    margin-left: 10px;
-  }
+   cursor: pointer;
+   padding: 10px 0;
 }
 </style>

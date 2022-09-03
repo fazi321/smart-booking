@@ -24,14 +24,27 @@
             <div class="price-inputs">
               <div class="price-checkbox">
                 <label class="container-input"
-                  >Weekdays
-                  <p>(Sun-Wed)</p>
-                  <input type="checkbox" />
+                  >Days Price
+                  <input type="checkbox" v-model="daySelected.dayPrice" />
                   <span class="checkmark"></span>
                 </label>
               </div>
               <div class="input-price">
-                <input type="text" />
+                <input type="number" v-model="price.dayPrice" />
+              </div>
+            </div>
+            <!-- block -->
+            <div class="price-inputs">
+              <div class="price-checkbox">
+                <label class="container-input"
+                  >Weekdays
+                  <p>(Sun-Wed)</p>
+                  <input type="checkbox" v-model="daySelected.weekendPrice" />
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+              <div class="input-price">
+                <input type="number" v-model="price.weekendPrice" />
               </div>
             </div>
             <!-- block -->
@@ -39,12 +52,12 @@
               <div class="price-checkbox">
                 <label class="container-input"
                   >Sunday
-                  <input type="checkbox" />
+                  <input type="checkbox" v-model="daySelected.sundayPrice" />
                   <span class="checkmark"></span>
                 </label>
               </div>
               <div class="input-price">
-                <input type="text" />
+                <input type="number" v-model="price.sundayPrice" />
               </div>
             </div>
             <!-- block -->
@@ -52,12 +65,12 @@
               <div class="price-checkbox">
                 <label class="container-input"
                   >Monday
-                  <input type="checkbox" />
+                  <input type="checkbox" v-model="daySelected.mondayPrice" />
                   <span class="checkmark"></span>
                 </label>
               </div>
               <div class="input-price">
-                <input type="text" />
+                <input type="number" v-model="price.mondayPrice" />
               </div>
             </div>
             <!-- block -->
@@ -65,12 +78,12 @@
               <div class="price-checkbox">
                 <label class="container-input"
                   >Tuesday
-                  <input type="checkbox" />
+                  <input type="checkbox" v-model="daySelected.tuesdayPrice" />
                   <span class="checkmark"></span>
                 </label>
               </div>
               <div class="input-price">
-                <input type="text" />
+                <input type="number" v-model="price.tuesdayPrice" />
               </div>
             </div>
             <!-- block -->
@@ -78,12 +91,12 @@
               <div class="price-checkbox">
                 <label class="container-input"
                   >Wednesday
-                  <input type="checkbox" />
+                  <input type="checkbox" v-model="daySelected.wednesdayPrice" />
                   <span class="checkmark"></span>
                 </label>
               </div>
               <div class="input-price">
-                <input type="text" />
+                <input type="number" v-model="price.wednesdayPrice" />
               </div>
             </div>
             <!-- block -->
@@ -91,12 +104,12 @@
               <div class="price-checkbox">
                 <label class="container-input"
                   >Thursday
-                  <input type="checkbox" />
+                  <input type="checkbox" v-model="daySelected.thrusdayPrice" />
                   <span class="checkmark"></span>
                 </label>
               </div>
               <div class="input-price">
-                <input type="text" />
+                <input type="number" v-model="price.thrusdayPrice" />
               </div>
             </div>
             <!-- block -->
@@ -104,12 +117,12 @@
               <div class="price-checkbox">
                 <label class="container-input"
                   >Friday
-                  <input type="checkbox" />
+                  <input type="checkbox" v-model="daySelected.fridayPrice" />
                   <span class="checkmark"></span>
                 </label>
               </div>
               <div class="input-price">
-                <input type="text" />
+                <input type="number" v-model="price.fridayPrice" />
               </div>
             </div>
             <!-- block -->
@@ -117,19 +130,21 @@
               <div class="price-checkbox">
                 <label class="container-input"
                   >Saturday
-                  <input type="checkbox" />
+                  <input type="checkbox" v-model="daySelected.saturdayPrice" />
                   <span class="checkmark"></span>
                 </label>
               </div>
               <div class="input-price">
-                <input type="text" />
+                <input type="number" v-model="price.saturdayPrice" />
               </div>
             </div>
             <!-- block -->
           </div>
-          <div class="booking-date">
+          <!-- <div class="booking-date">
             <div class="head-booking">
-              <h5>How long the service will be open for booking?</h5>
+              <h5 @click="submitedData">
+                How long the service will be open for booking?
+              </h5>
             </div>
             <div class="date-input">
               <div @click="showModelDate('fd')">
@@ -153,7 +168,7 @@
                 />
               </div>
             </div>
-          </div>
+          </div> -->
           <!-- block -->
           <div class="booking-date">
             <div class="head-booking">
@@ -161,24 +176,12 @@
             </div>
             <div class="date-input">
               <div @click="showModelDate('cn')">
-                <input type="text" placeholder="Check in" v-model="checkIn" />
-                <input
-                  type="date"
-                  @change="checkDate"
-                  id="date"
-                  ref="cn"
-                  v-model="checkIn"
-                />
+                <!-- <input type="text" placeholder="Check in" v-model="checkIn" /> -->
+                <input type="time" v-model="checkIn" id="date" ref="cn" />
               </div>
               <div @click="showModelDate('co')">
-                <input type="text" placeholder="Check out" v-model="checkOut" />
-                <input
-                  type="date"
-                  @change="checkDate"
-                  id="date"
-                  ref="co"
-                  v-model="checkOut"
-                />
+                <!-- <input type="text" placeholder="Check out" v-model="checkOut" /> -->
+                <input type="time" v-model="checkOut" id="date" ref="co" />
               </div>
             </div>
           </div>
@@ -210,23 +213,29 @@
             <div class="container-service container-amenities">
               <div class="cards">
                 <div
-                  :class="{ active: serviceType == 'familiesSingle' }"
-                  @click="selectedOptions('familiesSingle')"
+                  :class="{
+                    active: bookingSetting.bookingFor == 'Families_and_Singles',
+                  }"
+                  @click="bookSettings('Families_and_Singles')"
                 >
                   <img src="../../../assets/images/familiesSingle.svg" alt="" />
                   <h6>Families &</h6>
                   <h6>Singles</h6>
                 </div>
                 <div
-                  :class="{ active: serviceType == 'families' }"
-                  @click="selectedOptions('families')"
+                  :class="{
+                    active: bookingSetting.bookingFor == 'families_only',
+                  }"
+                  @click="bookSettings('families_only')"
                 >
                   <img src="../../../assets/images/families.svg" alt="" />
                   <h6>Families Only</h6>
                 </div>
                 <div
-                  :class="{ active: serviceType == 'ladies' }"
-                  @click="selectedOptions('ladies')"
+                  :class="{
+                    active: bookingSetting.bookingFor == 'ladies_only',
+                  }"
+                  @click="bookSettings('ladies_only')"
                 >
                   <img src="../../../assets/images/ladies.svg" alt="" />
                   <h6>Ladies Only</h6>
@@ -241,13 +250,13 @@
             <div class="container-service container-amenities card-other">
               <div class="cards">
                 <div>
-                  <div class="content">
+                  <div class="content" @click="showBookPop('book')">
                     <h5>Booking Type</h5>
                     <h6>Booking Type name here</h6>
                   </div>
                 </div>
                 <div>
-                  <div class="content">
+                  <div class="content" @click="showBookPop('cencel')">
                     <h5>Cancellation Policy</h5>
                     <h6>Cancellation Policy name here</h6>
                   </div>
@@ -261,7 +270,10 @@
             </div>
             <div class="toggle-btn">
               <label class="switch">
-                <input type="checkbox" />
+                <input
+                  type="checkbox"
+                  v-model="bookingSetting.securityDeposit"
+                />
                 <span class="slider"></span>
               </label>
             </div>
@@ -277,7 +289,10 @@
             </div>
             <div class="toggle-btn">
               <label class="switch">
-                <input type="checkbox" />
+                <input
+                  type="checkbox"
+                  v-model="bookingSetting.lastMinuteDiscount"
+                />
                 <span class="slider"></span>
               </label>
             </div>
@@ -285,13 +300,13 @@
         </section>
         <div class="form-container">
           <div class="input-div">
-            <button type="submit" @click="changeStep(3)">Next</button>
+            <button type="submit" @click="changeStep(5)">Next</button>
           </div>
         </div>
       </div>
     </section>
     <!-- step three -->
-    <section class="primary-login" v-if="step == 3">
+    <section class="primary-login" v-if="showPopUp == 'book'">
       <div class="main-login add-services">
         <div class="logo-close">
           <div class="close-icon" @click="close">
@@ -305,14 +320,20 @@
         <section class="booking-type">
           <div class="booking-card book-instant">
             <div class="cards">
-              <div :class="['primary-cards']">
+              <div
+                :class="[
+                  'primary-cards',
+                  { active: bookingSetting.bookingType == 'instant' },
+                ]"
+                @click="bookInstant('instant')"
+              >
                 <div class="rounded-btn"></div>
                 <div class="card-container">
                   <div class="category-img">
                     <img src="../../../assets/images/instant.svg" alt="" />
                   </div>
                 </div>
-                <div class="content">
+                <div :class="['content']">
                   <h5>Instant Booking</h5>
                   <h6>
                     Lorem ipsum dolor sit amet, consectetur <br />
@@ -321,14 +342,20 @@
                   </h6>
                 </div>
               </div>
-              <div :class="['primary-cards']">
+              <div
+                :class="[
+                  'primary-cards',
+                  { active: bookingSetting.bookingType == '24-Hour request' },
+                ]"
+                @click="bookInstant('24-Hour request')"
+              >
                 <div class="rounded-btn"></div>
                 <div class="card-container">
                   <div class="category-img">
                     <img src="../../../assets/images/request.svg" alt="" />
                   </div>
                 </div>
-                <div class="content">
+                <div :class="['content']">
                   <h5>24-Hour Request</h5>
                   <h6>
                     Lorem ipsum dolor sit amet, consectetur <br />
@@ -342,13 +369,13 @@
         </section>
         <div class="form-container">
           <div class="input-div">
-            <button type="submit" @click="changeStep(4)">Next</button>
+            <button type="submit" @click="changeStep(2)">Next</button>
           </div>
         </div>
       </div>
     </section>
     <!-- step 4 -->
-    <section class="primary-login cancelation" v-if="step == 4">
+    <section class="primary-login cancelation" v-if="showPopUp == 'cencel'">
       <div class="main-login add-services">
         <div class="logo-close">
           <div class="close-icon" @click="close">
@@ -362,7 +389,13 @@
         <section class="booking-type">
           <div class="booking-card">
             <div class="cards">
-              <div :class="['primary-cards']">
+              <div
+                :class="[
+                  'primary-cards',
+                  { active: bookingSetting.canellationPolicy == 'Flexible' },
+                ]"
+                @click="cancelation('Flexible')"
+              >
                 <div class="rounded-btn"></div>
                 <div class="content">
                   <h5>Flexible</h5>
@@ -372,7 +405,13 @@
                   </h6>
                 </div>
               </div>
-              <div :class="['primary-cards']">
+              <div
+                :class="[
+                  'primary-cards',
+                  { active: bookingSetting.canellationPolicy == 'Moderate' },
+                ]"
+                @click="cancelation('Moderate')"
+              >
                 <div class="rounded-btn"></div>
                 <div class="content">
                   <h5>Moderate</h5>
@@ -382,7 +421,13 @@
                   </h6>
                 </div>
               </div>
-              <div :class="['primary-cards']">
+              <div
+                :class="[
+                  'primary-cards',
+                  { active: bookingSetting.canellationPolicy == 'Strict' },
+                ]"
+                @click="cancelation('Strict')"
+              >
                 <div class="rounded-btn"></div>
                 <div class="content">
                   <h5>Strict</h5>
@@ -392,7 +437,16 @@
                   </h6>
                 </div>
               </div>
-              <div :class="['primary-cards']">
+              <div
+                :class="[
+                  'primary-cards',
+                  {
+                    active:
+                      bookingSetting.canellationPolicy == 'Non-Refundable',
+                  },
+                ]"
+                @click="cancelation('Non-Refundable')"
+              >
                 <div class="rounded-btn"></div>
                 <div class="content">
                   <h5>Non-Refundable</h5>
@@ -407,7 +461,7 @@
         </section>
         <div class="form-container">
           <div class="input-div">
-            <button type="submit" @click="changeStep(5)">Next</button>
+            <button type="submit" @click="changeStep(2)">Next</button>
           </div>
         </div>
       </div>
@@ -436,74 +490,91 @@
             <div class="price-inputs">
               <div class="price-checkbox">
                 <label class="container-input"
-                  >Sleepover
-                  <input type="checkbox" />
+                  >Name Price
+                  <input type="checkbox" v-model="addOnsCheck.namePrice" />
                   <span class="checkmark"></span>
                 </label>
               </div>
               <div class="input-price">
-                <input type="text" />
+                <input type="text" v-model="addOnsPrice.namePrice" />
               </div>
             </div>
             <!-- block -->
-            <div class="price-inputs">
+            <!-- <div class="price-inputs">
               <div class="price-checkbox">
                 <label class="container-input"
                   >Birthday Arrangements
-                  <input type="checkbox" />
+                  <input
+                    type="checkbox"
+                    v-model="addOnsCheck.BirthdayArrangements"
+                  />
                   <span class="checkmark"></span>
                 </label>
               </div>
               <div class="input-price">
-                <input type="text" />
+                <input type="text" v-model="addOnsPrice.BirthdayArrangements" />
               </div>
-            </div>
+            </div> -->
             <!-- block -->
             <div class="price-inputs">
               <div class="price-checkbox">
                 <label class="container-input"
-                  >Wedding Arrangements
-                  <input type="checkbox" />
+                  >buffet
+                  <input type="checkbox" v-model="addOnsCheck.buffet" />
                   <span class="checkmark"></span>
                 </label>
               </div>
               <div class="input-price">
-                <input type="text" />
+                <input type="text" v-model="addOnsPrice.buffet" />
               </div>
             </div>
+            <div class="rules">
+              <label class="container-input"
+                >Photographer
+                <input type="checkbox" v-model="addOnsPrice.Photographer" />
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div class="rules">
+              <label class="container-input"
+                >wedding Cake
+                <input type="checkbox" v-model="addOnsPrice.weddingCake" />
+                <span class="checkmark"></span>
+              </label>
+            </div>
             <!-- block -->
-            <div class="price-inputs">
+            <!-- <div class="price-inputs">
               <div class="price-checkbox">
                 <label class="container-input"
                   >Buffets
-                  <input type="checkbox" />
+                  <input type="checkbox" v-model="addOnsCheck.Buffets" />
                   <span class="checkmark"></span>
                 </label>
               </div>
               <div class="input-price">
-                <input type="text" />
+                <input type="text" v-model="addOnsPrice.Buffets" />
               </div>
-            </div>
+            </div> -->
           </div>
         </section>
         <div class="form-container">
           <div class="input-div">
-            <button type="submit" @click="changeStep(6)">Next</button>
+            <button type="submit" @click="submitedData">Next</button>
           </div>
         </div>
       </div>
     </section>
-    <SuccessModel v-if="step == 6" @close="close"/>
+    <SuccessModel v-if="step == 6" @close="close" />
   </section>
 </template>
 
 <script>
-import SuccessModel from '@/components/models/SuccessModel.vue';
+import SuccessModel from "@/components/models/SuccessModel.vue";
 export default {
   name: "AddServiceModel",
   props: ["model"],
-  components:{
-    SuccessModel
+  components: {
+    SuccessModel,
   },
   data() {
     return {
@@ -515,10 +586,59 @@ export default {
       checkIn: null,
       checkOut: null,
       serviceType: null,
+      showPopUp: null,
       // date picker
+      price: {},
+      daySelected: {},
+      bookingSetting: {},
+      addOnsCheck: {},
+      addOnsPrice: {},
     };
   },
   methods: {
+    submitedData() {
+      // price
+      const newObj = {};
+      for (const [key, value] of Object.entries(this.daySelected)) {
+        if (value) {
+          for (const [pkey, pValue] of Object.entries(this.price)) {
+            if (key == pkey) {
+              newObj[key] = pValue;
+            }
+          }
+        }
+      }
+      //  time check in out
+      var check = {};
+      if (this.checkIn && this.checkOut) {
+        check.checkInTime = this.timeFormate(this.checkIn);
+        check.checkOutTime = this.timeFormate(this.checkOut);
+      }
+      // addon's
+      const newAddon = {};
+      for (const [key, value] of Object.entries(this.addOnsCheck)) {
+        if (value) {
+          for (const [pkey, pValue] of Object.entries(this.addOnsPrice)) {
+            if (key == pkey) {
+              newAddon[key] = pValue;
+            }
+          }
+        }
+      }
+      var finalData = {
+        addOns: { ...newAddon },
+        price: { ...newObj },
+        check: { ...check },
+        bookingSetting: { ...this.bookingSetting },
+      };
+      this.$emit("price", finalData);
+    },
+    bookInstant(val) {
+      this.bookingSetting.bookingType = val;
+    },
+    cancelation(val) {
+      this.bookingSetting.canellationPolicy = val;
+    },
     showModelDate(val) {
       var isShow = this.$refs[val];
       try {
@@ -527,27 +647,55 @@ export default {
         console.log(error);
       }
     },
+    showBookPop(val) {
+      (this.step = ""), (this.showPopUp = val);
+    },
+    timeFormate(time) {
+      var timeSplit = time.split(":"),
+        hours,
+        minutes,
+        meridian;
+      hours = timeSplit[0];
+      minutes = timeSplit[1];
+      if (hours > 12) {
+        meridian = "PM";
+        hours -= 12;
+      } else if (hours < 12) {
+        meridian = "AM";
+        if (hours == 0) {
+          hours = 12;
+        }
+      } else {
+        meridian = "PM";
+      }
+      var timeIs = hours + ":" + minutes + ":" + meridian;
+      return timeIs;
+    },
     changeStep(step) {
       // if (!this.serviceType) return;
       this.step = step;
+      this.showPopUp = null;
     },
     selectedOptions(opt) {
       this.serviceType = opt;
     },
+    bookSettings(val) {
+      this.bookingSetting.bookingFor = val;
+    },
     close() {
-      this.$emit('close')
+      this.$emit("close");
     },
   },
 };
 </script>
 
 <style scoped>
-#date {
+/* #date {
   visibility: hidden;
   position: absolute;
   top: 0;
   left: 0;
-}
+} */
 /* transition */
 .transitionBox {
   transition: 0.3s;
@@ -915,8 +1063,8 @@ img {
   height: 350px;
   overflow-y: scroll;
 }
-.booking .head h1{
-  font-size:14px;
+.booking .head h1 {
+  font-size: 14px;
 }
 /* step three */
 .booking-type .cards {
@@ -939,8 +1087,8 @@ img {
   margin-bottom: 22px;
   position: relative;
 }
-.book-instant .primary-cards{
-  width: 47%!important;
+.book-instant .primary-cards {
+  width: 47% !important;
 }
 .booking-type .primary-cards .category-img {
   width: 50px;
@@ -997,6 +1145,69 @@ img {
 /* step 5 */
 .price-unset {
   height: unset;
-  overflow-y:unset ;
+  overflow-y: unset;
+}
+.rules {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 85%;
+}
+.rules > div {
+  width: 42%;
+}
+.rules .container-input {
+  margin: 20px 0;
+  display: block;
+  color: #c4c9d5;
+  position: relative;
+  padding-left: 35px;
+  cursor: pointer;
+  font-size: 14px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: left;
+}
+/* Hide the browser's default checkbox */
+.rules .container-input input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+/* Create a custom checkbox */
+.rules .checkmark {
+  position: absolute;
+  top: -5px;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  border-radius: 5px;
+  box-shadow: 0px 1px 12px -2px #00000040;
+}
+/* Create the checkmark/indicator (hidden when not checked) */
+.rules .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+/* Show the checkmark when checked */
+.rules .container-input input:checked ~ .checkmark:after {
+  display: block;
+}
+/* Style the checkmark/indicator */
+.rules .container-input .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid #febb12;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 </style>

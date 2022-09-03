@@ -5,7 +5,10 @@
     <div class="facility-icons">
       <h6>Sports</h6>
       <div class="facility-card">
-        <div class="icon-card">
+        <div
+          class="icon-card"
+          v-if="storeState && storeState.leisure && storeState.leisure.gym"
+        >
           <div>
             <div class="icon-img">
               <div>
@@ -15,7 +18,10 @@
             <p>Gym</p>
           </div>
         </div>
-        <div class="icon-card">
+        <div
+          class="icon-card"
+          v-if="storeState && storeState.leisure && storeState.leisure.billard"
+        >
           <div>
             <div class="icon-img">
               <div>
@@ -25,7 +31,10 @@
             <p>Billiard</p>
           </div>
         </div>
-        <div class="icon-card">
+        <div
+          class="icon-card"
+          v-if="storeState && storeState.leisure && storeState.leisure.tennisCourt"
+        >
           <div>
             <div class="icon-img">
               <div>
@@ -35,7 +44,10 @@
             <p>Tennis Court</p>
           </div>
         </div>
-        <div class="icon-card">
+        <div
+          class="icon-card"
+          v-if="storeState && storeState.leisure && storeState.leisure.airHockey"
+        >
           <div>
             <div class="icon-img">
               <div>
@@ -45,7 +57,10 @@
             <p>Air Hockey</p>
           </div>
         </div>
-        <div class="icon-card">
+        <div
+          class="icon-card"
+          v-if="storeState && storeState.leisure && storeState.leisure.soccerField"
+        >
           <div>
             <div class="icon-img">
               <div>
@@ -55,7 +70,10 @@
             <p>Soccer Field</p>
           </div>
         </div>
-        <div class="icon-card">
+        <div
+          class="icon-card"
+          v-if="storeState && storeState.leisure && storeState.leisure.vollyBall"
+        >
           <div>
             <div class="icon-img">
               <div>
@@ -72,7 +90,10 @@
     <div class="facility-icons">
       <h6>Leisure</h6>
       <div class="facility-card">
-        <div class="icon-card">
+        <div
+          class="icon-card"
+          v-if="storeState && storeState.leisure && storeState.leisure.steamBath"
+        >
           <div>
             <div class="icon-img">
               <div>
@@ -82,7 +103,10 @@
             <p>Steam Bath</p>
           </div>
         </div>
-        <div class="icon-card">
+        <div
+          class="icon-card"
+          v-if="storeState && storeState.leisure && storeState.leisure.indoorSwimmingPool"
+        >
           <div>
             <div class="icon-img">
               <div>
@@ -92,7 +116,10 @@
             <p>Indoor Swimming Pool</p>
           </div>
         </div>
-        <div class="icon-card">
+        <div
+          class="icon-card"
+          v-if="storeState && storeState.leisure && storeState.leisure.outdoorSwimmingPool"
+        >
           <div>
             <div class="icon-img">
               <div>
@@ -102,7 +129,10 @@
             <p>Outdoor Swimming Pool</p>
           </div>
         </div>
-        <div class="icon-card">
+        <div
+          class="icon-card"
+          v-if="storeState && storeState.leisure && storeState.leisure.SwimmingPoolHeater"
+        >
           <div>
             <div class="icon-img">
               <div>
@@ -112,7 +142,10 @@
             <p>Swimming Pool Heater</p>
           </div>
         </div>
-        <div class="icon-card">
+        <div
+          class="icon-card"
+          v-if="storeState && storeState.leisure && storeState.leisure.playground"
+        >
           <div>
             <div class="icon-img">
               <div>
@@ -122,7 +155,10 @@
             <p>Playground</p>
           </div>
         </div>
-        <div class="icon-card">
+        <div
+          class="icon-card"
+          v-if="storeState && storeState.leisure && storeState.leisure.hotTub"
+        >
           <div>
             <div class="icon-img">
               <div>
@@ -139,7 +175,10 @@
     <div class="facility-icons">
       <h6>Home Amenities</h6>
       <div class="facility-card">
-        <div class="icon-card">
+        <div
+          class="icon-card"
+          v-if="storeState && storeState.leisure && storeState.leisure.accessInHours"
+        >
           <div>
             <div class="icon-img">
               <div>
@@ -149,7 +188,10 @@
             <p>24 Hours Access</p>
           </div>
         </div>
-        <div class="icon-card">
+        <div
+          class="icon-card"
+          v-if="storeState && storeState.leisure && storeState.leisure.wheelChairAccess"
+        >
           <div>
             <div class="icon-img">
               <div>
@@ -159,7 +201,10 @@
             <p>Wheelchair Access</p>
           </div>
         </div>
-        <div class="icon-card">
+        <div
+          class="icon-card"
+          v-if="storeState && storeState.leisure && storeState.leisure.privateEntrance"
+        >
           <div>
             <div class="icon-img">
               <div>
@@ -169,7 +214,10 @@
             <p>Private Entrance</p>
           </div>
         </div>
-        <div class="icon-card">
+        <div
+          class="icon-card"
+          v-if="storeState && storeState.leisure && storeState.leisure.doorman"
+        >
           <div>
             <div class="icon-img">
               <div>
@@ -187,7 +235,12 @@
 
 <script>
 export default {
-  name: "DetailFacilities"
+  name: "DetailFacilities",
+  computed: {
+    storeState: function () {
+      return this.$store.state.details.details;
+    },
+  },
 };
 </script>
 

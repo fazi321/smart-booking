@@ -1,31 +1,97 @@
 <template>
   <section class="form-book">
     <div class="book-container">
-      <div class="heading">
-        <h6>SAR 120 </h6>
+      <div class="heading" v-if="storeState && storeState.price">
+        <h6>SAR {{ storeState && storeState.price.dayPrice }}</h6>
         <p>Per Night</p>
       </div>
-      <div class="filter-option">
+      <div
+        :class="[
+          'filter-option',
+          { active: error.checkInDate && !inputDetail.checkInDate },
+        ]"
+        @click="showModelDate('cn')"
+      >
         <img src="../../assets/images/date.svg" />
-        <input type="text" placeholder="Check-in date" />
+        <input
+          type="text"
+          v-model="inputDetail.checkInDate"
+          placeholder="Check-in date"
+        />
+        <input
+          type="date"
+          v-model="inputDetail.checkInDate"
+          id="date"
+          ref="cn"
+          @change="dateChange($event, 'cn')"
+        />
       </div>
-      <div class="filter-option">
+      <div
+        :class="[
+          'filter-option',
+          { active: error.checkOutDate && !inputDetail.checkOutDate },
+        ]"
+        @click="showModelDate('co')"
+      >
         <img src="../../assets/images/date.svg" />
-        <input type="text" placeholder="Check-out date" />
+        <input
+          type="text"
+          v-model="inputDetail.checkOutDate"
+          placeholder="Check-in date"
+        />
+        <input
+          type="date"
+          v-model="inputDetail.checkOutDate"
+          id="date"
+          ref="co"
+          @change="dateChange($event, 'co')"
+        />
       </div>
-      <div class="filter-option">
+      <div
+        :class="[
+          'filter-option',
+          { active: error.checkInTime && !inputDetail.checkInTime },
+        ]"
+        @click="showModelDate('cit')"
+      >
         <img src="../../assets/images/time.svg" />
-        <input type="text" placeholder="Check-in time" />
+        <input
+          type="text"
+          v-model="inputDetail.checkInTime"
+          placeholder="Check-in time"
+        />
+        <input
+          type="time"
+          id="date"
+          ref="cit"
+          @input="timeChange($event, 'cit')"
+        />
       </div>
-      <div class="filter-option">
+      <div
+        :class="[
+          'filter-option',
+          { active: error.checkOutTime && !inputDetail.checkOutTime },
+        ]"
+        @click="showModelDate('cot')"
+      >
         <img src="../../assets/images/time.svg" />
-        <input type="text" placeholder="Check-out time" />
+        <input
+          type="text"
+          v-model="inputDetail.checkOutTime"
+          placeholder="Check-out time"
+        />
+        <input
+          type="time"
+          id="date"
+          ref="cot"
+          @input="timeChange($event, 'cot')"
+        />
       </div>
       <div class="book-btn" @click="BookingModelShow">
         <button>Book</button>
       </div>
     </div>
-      <BookModel v-if="bookingModel" />
+    <BookModel v-if="bookingModel" :checkIn="inputDetail" />
   </section>
 </template>
 
@@ -33,22 +99,101 @@
 import BookModel from "@/components/models/BookModel.vue";
 export default {
   components: {
-    BookModel
+    BookModel,
   },
   data() {
     return {
       bookingModel: false,
+      inputDetail: {},
+      error: {},
     };
   },
+  computed: {
+    storeState: function () {
+      return this.$store.state.details.details;
+    },
+  },
   methods: {
+    dateChange(e, val) {
+      var getDate = convertDateToUTC(new Date(e.target.value));
+      function convertDateToUTC(date) {
+        return new Date(
+          date.getUTCFullYear(),
+          date.getUTCMonth(),
+          date.getUTCDate()
+        );
+      }
+      if (val == "cn") {
+        this.inputDetail.checkInDate = getDate.toLocaleDateString("en-GB");
+      }
+      if (val == "co") {
+        this.inputDetail.checkOutDate = getDate.toLocaleDateString("en-GB");
+      }
+    },
+    timeChange(e, val) {
+      if (val == "cit") {
+        this.inputDetail.checkInTime = this.timeFormate(e.target.value);
+        this.inputDetail.timeIn = e.target.value;
+      }
+      if (val == "cot") {
+        this.inputDetail.checkOutTime = this.timeFormate(e.target.value);
+        this.inputDetail.timeOut = e.target.value;
+      }
+    },
+    timeFormate(time) {
+      var timeSplit = time.split(":"),
+        hours,
+        minutes,
+        meridian;
+      hours = timeSplit[0];
+      minutes = timeSplit[1];
+      if (hours > 12) {
+        meridian = "PM";
+        hours -= 12;
+      } else if (hours < 12) {
+        meridian = "AM";
+        if (hours == 0) {
+          hours = 12;
+        }
+      } else {
+        meridian = "PM";
+      }
+      var timeIs = hours + ":" + minutes + ":" + meridian;
+      return timeIs;
+    },
     BookingModelShow() {
+      var { checkInDate, checkOutDate, checkInTime, checkOutTime } =
+        this.inputDetail;
+      if (!checkInDate) {
+        return (this.error.checkInDate = true);
+      }
+      if (!checkOutDate) {
+        return (this.error.checkOutDate = true);
+      }
+      if (!checkInTime) {
+        return (this.error.checkInTime = true);
+      }
+      if (!checkOutTime) {
+        return (this.error.checkOutTime = true);
+      }
       this.bookingModel = !this.bookingModel;
     },
-  }
+    showModelDate(val) {
+      var isShow = this.$refs[val];
+      try {
+        isShow.showPicker();
+      } catch (error) {
+        console.log(error);
+      }
+    },
+  },
 };
 </script>
 
 <style scoped>
+#date {
+  visibility: hidden;
+}
 .form-book {
   box-shadow: 0px 0px 10px #0000001a;
   border-radius: 20px;
@@ -89,6 +234,15 @@ export default {
   padding: 0 25px;
   cursor: pointer;
   margin-top: 20px;
+  position: relative;
+  border: 1px solid transparent;
+}
+.book-container .filter-option.active {
+  border: 1px solid red;
+}
+.filter-option #date {
+  position: absolute;
+  left: 20px;
 }
 .book-container .filter-option img {
   width: 18px;

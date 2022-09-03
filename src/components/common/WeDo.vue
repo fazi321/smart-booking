@@ -55,10 +55,4 @@ export default {
   opacity: 0.6;
   text-align: left;
 }
-@media (max-width: 479px) and (min-width: 320px) {
-  .what-card{
-    width: 100%;
-    margin: 0 10px 20px 10px;
-  }
-}
 </style>

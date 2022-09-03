@@ -1,19 +1,35 @@
 <template>
   <section class="description">
     <h3>Description</h3>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce erat turpis, bibendum eu tortor ut, sagittis scelerisque ante. Maecenas pretium justo id orci lacinia, eget dictum magna dapibus. Nunc condimentum nunc quis mi lobortis, in euismod lorem tincidunt. Quisque finibus congue condimentum. Quisque euismod, nisl non malesuada accumsan, ex mauris porta arcu, nec tempus lorem massa quis orci. Suspendisse non tellus sem. Aliquam eu elit velit.</p>
+    <p v-if="storeState && storeState.description">
+      {{ storeState.description.descriptionInEnglish }}
+    </p>
+    <p v-else>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce erat
+      turpis, bibendum eu tortor ut, sagittis scelerisque ante. Maecenas pretium
+      justo id orci lacinia, eget dictum magna dapibus. Nunc condimentum nunc
+      quis mi lobortis, in euismod lorem tincidunt. Quisque finibus congue
+      condimentum. Quisque euismod, nisl non malesuada accumsan, ex mauris porta
+      arcu, nec tempus lorem massa quis orci. Suspendisse non tellus sem.
+      Aliquam eu elit velit.
+    </p>
   </section>
 </template>
 
 <script>
 export default {
-  name: "DetailDescription"
+  name: "DetailDescription",
+  computed: {
+    storeState: function () {
+      return this.$store.state.details.details;
+    },
+  },
 };
 </script>
 
 <style scoped>
 .description {
-    padding-bottom: 20px;
+  padding-bottom: 20px;
 }
 .description h3 {
   text-align: left;

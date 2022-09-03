@@ -1,27 +1,27 @@
 <template>
   <router-link to="/service-details">
     <section class="filter-card">
-    <div class="image">
-      <img src="../../assets/images/hotel-img.svg" />
-    </div>
-    <div class="card-detail">
-      <div class="heading">
-        <h5>Lorem Ipsum Farm</h5>
+      <div class="image">
+        <img src="../../assets/images/hotel-img.svg" />
       </div>
-      <p>Riyadh, KSA</p>
-
-      <div class="sar">
-        <h6>Bookings:</h6>
-        <p>3</p>
+      <div class="card-detail">
+        <div class="heading">
+          <h5>{{ items.service.name.description.nameInEnglish }}</h5>
+        </div>
+        <p>{{ items.service.name.address.city }}</p>
+        <div class="sar">
+          <h6>Bookings:</h6>
+          <p>3</p>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
   </router-link>
 </template>
 
 <script>
 export default {
-  name: "ServiesCard"
+  name: "ServiesCard",
+  props: ["items"],
 };
 </script>
 
