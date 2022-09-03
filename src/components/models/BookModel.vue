@@ -242,7 +242,6 @@ export default {
   box-shadow: 0px 0px 4px #0000000f;
   opacity: 1;
 }
-
 .checkbox-container input:checked ~ .checkmark {
   background-color: #2196f3;
 }
@@ -254,7 +253,6 @@ export default {
 .checkbox-container input:checked ~ .checkmark:after {
   display: block;
 }
-
 .checkbox-container .checkmark:after {
   left: 9px;
   top: 5px;
