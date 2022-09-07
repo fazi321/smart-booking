@@ -93,7 +93,7 @@ export default {
   left: 0;
 }
 .hero-slider .primary-search {
-  box-shadow: 0px 4px 8px -3px #cfcfcf6b!important;
+  box-shadow: 0px 4px 8px -3px #cfcfcf6b !important;
 }
 .layout {
   position: absolute;
@@ -112,5 +112,10 @@ export default {
 }
 .carousel__slide img {
   width: 100%;
+}
+@media (max-width: 479px) and (min-width: 320px) {
+  .hero-slider .search {
+    position: unset !important;
+  }
 }
 </style>

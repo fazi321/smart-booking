@@ -71,4 +71,16 @@ export default {
    cursor: pointer;
    padding: 10px 0;
 }
+@media (max-width: 479px) and (min-width: 320px) {
+  .filter-buttons .filter-option select {
+    width: 55%;
+  }
+  .filter-buttons .filter-option {
+    margin-right: 6px;
+    width: 125px;
+  }
+  .filters-container div h6{
+    margin-left: 10px;
+  }
+}
 </style>

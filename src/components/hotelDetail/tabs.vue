@@ -99,4 +99,12 @@ export default {
   border-radius: 12px;
   opacity: 1;
 }
+@media (max-width: 479px) and (min-width: 320px) {
+  .detail-tabs .tabs{
+    width: 100%;
+  }
+  .detail-tabs .tabs p{
+    padding: 12px 15px;
+  }
+}
 </style>

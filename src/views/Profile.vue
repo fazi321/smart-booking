@@ -250,4 +250,12 @@ export default {
   margin-top: 40px;
   cursor: pointer;
 }
+@media (max-width: 479px) and (min-width: 320px) {
+  .profile-form{
+    margin: 0 10px;
+  }
+  .profile-form .form input{
+    width: 85%;
+  }
+}
 </style>
