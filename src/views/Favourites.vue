@@ -19,23 +19,8 @@
           </div>
         </section>
         <div class="booking-cards favourite">
-          <div class="card">
-            <MyServicesCard />
-          </div>
-          <div class="card">
-            <MyServicesCard />
-          </div>
-          <div class="card">
-            <MyServicesCard />
-          </div>
-          <div class="card">
-            <MyServicesCard />
-          </div>
-          <div class="card">
-            <MyServicesCard />
-          </div>
-          <div class="card">
-            <MyServicesCard />
+           <div class="card" v-for="(item, key) in favList" :key="key">
+            <MyServicesCard :item="item" @removedWish="getFav"/>
           </div>
         </div>
         <div class="pagination-container">
@@ -62,12 +47,30 @@ import Paginate from "vuejs-paginate-next";
 
 export default {
   name: "FavouritesView",
+  data(){
+   return {
+     favList: [],
+   }
+  },
   components: {
     DefaultLayout,
     MyServicesCard,
     Paginate
   },
+  mounted(){
+    this.getFav();
+  },
   methods: {
+    async getFav() {
+      try {
+        var res = await this.$axios.get("user/favorite");
+        this.favList = res.data;
+        console.log(res.data)
+        // console.log(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    },
     clickCallback(num) {
       this.$refs.slider.slideTo(num);
     }

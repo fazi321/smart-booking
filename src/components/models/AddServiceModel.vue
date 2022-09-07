@@ -506,6 +506,8 @@ export default {
     },
     formData(formImage) {
       this.myImages = formImage;
+      this.uploadFiles();
+      console.log(this.myImages)
     },
     changeSteps() {
       this.isSubmitted = true;

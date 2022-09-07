@@ -1,5 +1,6 @@
 <template>
   <section class="card-main">
+    <h1>{{items._id}}</h1>
     <div class="wish" @click="deleteItem(items._id)">
       <img src="../../assets/images/delete.svg" />
     </div>
