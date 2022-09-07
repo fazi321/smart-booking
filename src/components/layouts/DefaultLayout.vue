@@ -22,11 +22,7 @@ export default {
     Header,
     MobHeader,
     Footer,
-<<<<<<< HEAD
-  }
-=======
   },
->>>>>>> 1b42b97580470c70ea9baf01ce757529e8f85c33
 };
 </script>
 <style scoped>
