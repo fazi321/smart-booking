@@ -1,0 +1,179 @@
+<template>
+  <default-layout>
+    <div class="search-wrapper">
+      <SearchHeader />
+    </div>
+    <section class="container" v-if="!loading">
+      <div class="service-booking">
+        <h1>SEARCH</h1>
+      </div>
+      <div class="service-container" v-if="favList && favList.length">
+        <!-- <section class="filters-container">
+          <div class="filter-buttons">
+            <div class="filter-option">
+              <img src="../assets/images/sort.svg" />
+              <select name="sort">
+                <option value>Sort by</option>
+                <option value>Price low to high</option>
+                <option value>Price high to low</option>
+                <option value>Discount low to high</option>
+              </select>
+            </div>
+          </div>
+        </section> -->
+        <div class="booking-cards favourite">
+          <div class="card" v-for="(item, key) in favList" :key="key">
+            <MyServicesCard :item="item" @removedWish="getFav" />
+          </div>
+        </div>
+        <div class="pagination-container">
+          <paginate
+            :page-range="3"
+            :margin-pages="2"
+            :page-count="10"
+            :click-handler="clickCallback"
+            :prev-text="'<'"
+            :next-text="'>'"
+            :container-class="'pagination'"
+            :page-class="'page-item'"
+          ></paginate>
+        </div>
+      </div>
+      <section>
+        <h1>not Found</h1>
+      </section>
+    </section>
+    <section v-else>
+      <h1>loading...</h1>
+    </section>
+  </default-layout>
+</template>
+
+<script>
+import DefaultLayout from "@/components/layouts/DefaultLayout.vue";
+import MyServicesCard from "@/components/common/filterCard.vue";
+import Paginate from "vuejs-paginate-next";
+import SearchHeader from "@/components/SearchHeader.vue";
+
+export default {
+  name: "FavouritesView",
+  data() {
+    return {
+      favList: [],
+      loading: false,
+    };
+  },
+  components: {
+    DefaultLayout,
+    MyServicesCard,
+    Paginate,
+    SearchHeader,
+  },
+  mounted() {
+    this.getData();
+  },
+  methods: {
+    async getData() {
+      var q = this.$route.query;
+      delete q.page;
+      try {
+        this.loading = true;
+        var res = await this.$axios.get("services/filter", {
+          params: q,
+        });
+        this.favList = res.data;
+        this.loading = false;
+        // console.log(res.data);
+      } catch (error) {
+        this.loading = false;
+        console.log(error);
+      }
+    },
+    clickCallback(num) {
+      this.$refs.slider.slideTo(num);
+    },
+  },
+  watch: {
+    "$route": {
+      handler() {
+        this.getData();
+      },
+    },
+  },
+};
+</script>
+<style scoped>
+.service-booking {
+  padding: 30px 0;
+}
+.service-booking h1 {
+  font-size: 20px;
+  letter-spacing: 0.7px;
+  color: #231f20;
+  opacity: 0.8;
+}
+.service-container h3 {
+  text-align: left;
+  letter-spacing: 0.5px;
+  color: #231f20;
+  opacity: 0.8;
+  font-size: 16px;
+  padding: 15px 0;
+}
+.booking-cards {
+  padding: 20px 0 0px 0;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.booking-cards .card {
+  width: 47%;
+}
+.filters-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 15px 0;
+}
+.filters-container div h6 {
+  color: #0e4763;
+  font-size: 18px;
+}
+.filter-buttons {
+  display: flex;
+}
+.filter-buttons .filter-option {
+  border: 1px solid #0e4763;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
+  width: 100%;
+}
+.filter-buttons .filter-option img {
+  width: 15px;
+  height: 15px;
+  margin-right: 10px;
+}
+.filter-buttons .filter-option select {
+  border: none;
+  outline: none;
+  color: #0e4763;
+  font-size: 14px;
+  width: 70%;
+  cursor: pointer;
+  padding: 10px 0;
+}
+@media (max-width: 479px) and (min-width: 320px) {
+  .booking-cards {
+    margin: 0 10px;
+  }
+  .booking-cards .card {
+    width: 100%;
+  }
+  .service-container h3 {
+    margin: 0 10px;
+  }
+}
+</style>

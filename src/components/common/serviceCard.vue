@@ -5,10 +5,23 @@
         <img src="../../assets/images/hotel-img.svg" />
       </div>
       <div class="card-detail">
-        <div class="heading">
+        <div
+          class="heading"
+          v-if="
+            items.service &&
+            items.service.name &&
+            items.service.name.description
+          "
+        >
           <h5>{{ items.service.name.description.nameInEnglish }}</h5>
         </div>
-        <p>{{ items.service.name.address.city }}</p>
+        <p
+          v-if="
+            items.service && items.service.name && items.service.name.address
+          "
+        >
+          {{ items.service.name.address.city }}
+        </p>
         <div class="sar">
           <h6>Bookings:</h6>
           <p>3</p>

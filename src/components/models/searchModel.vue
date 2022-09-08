@@ -10,23 +10,52 @@
         </div>
         <div class="headings vendor-text">
           <h1>City</h1>
-          <h2><span>Riyadh</span></h2>
+          <h2>
+            <span>{{ city }}</span>
+          </h2>
           <h4>Please select the category</h4>
         </div>
         <div class="container-vendor">
           <div class="cards">
             <!-- block -->
             <div
-              :class="['primary-cards', { active: accountOpt == 'Hotels' }]"
-              @click="selectedOptions('Hotels')"
+              v-for="(item, index) in $store.state.details.categories"
+              :key="index"
+              :class="[
+                'primary-cards',
+                { active: accountOpt == item.category },
+              ]"
+              @click="selectedOptions(item.category, item._id )"
+              v-show="item.category != 'Wedding_Halls'"
             >
-              <h5>Hotels</h5>
-              <div class="card-image">
+              <h5>{{ item.category }}</h5>
+              <div class="card-image" v-if="item.category == 'Hotel'">
                 <img src="../../assets/images/hotels.png" alt="" />
+              </div>
+              <div class="card-image" v-if="item.category == 'Apartment'">
+                <img src="../../assets/images/apart.png" alt="" />
+              </div>
+              <div class="card-image" v-if="item.category == 'Resorts'">
+                <img src="../../assets/images/res.png" alt="" />
+              </div>
+              <div class="card-image" v-if="item.category == 'Farms'">
+                <img src="../../assets/images/farms.png" alt="" />
+              </div>
+              <div class="card-image" v-if="item.category == 'Lounges'">
+                <img src="../../assets/images/Lounges.png" alt="" />
+              </div>
+              <div class="card-image" v-if="item.category == 'Stadium'">
+                <img src="../../assets/images/Stadium.png" alt="" />
+              </div>
+              <div class="card-image" v-if="item.category == 'Chalets'">
+                <img src="../../assets/images/Chalets.png" alt="" />
+              </div>
+              <div class="card-image" v-if="item.category == 'Camps'">
+                <img src="../../assets/images/Campsi.png" alt="" />
               </div>
             </div>
             <!-- block -->
-            <div
+            <!-- <div
               :class="['primary-cards', { active: accountOpt == 'Apartments' }]"
               @click="selectedOptions('Apartments')"
             >
@@ -34,9 +63,9 @@
               <div class="card-image">
                 <img src="../../assets/images/apart.png" alt="" />
               </div>
-            </div>
+            </div> -->
             <!-- block -->
-            <div
+            <!-- <div
               :class="['primary-cards', { active: accountOpt == 'Resorts' }]"
               @click="selectedOptions('Resorts')"
             >
@@ -44,9 +73,9 @@
               <div class="card-image">
                 <img src="../../assets/images/res.png" alt="" />
               </div>
-            </div>
+            </div> -->
             <!-- block -->
-            <div
+            <!-- <div
               :class="['primary-cards', { active: accountOpt == 'Farms' }]"
               @click="selectedOptions('Farms')"
             >
@@ -54,9 +83,9 @@
               <div class="card-image">
                 <img src="../../assets/images/farms.png" alt="" />
               </div>
-            </div>
+            </div> -->
             <!-- block -->
-            <div
+            <!-- <div
               :class="['primary-cards', { active: accountOpt == 'Lounges' }]"
               @click="selectedOptions('Lounges')"
             >
@@ -64,9 +93,9 @@
               <div class="card-image">
                 <img src="../../assets/images/Lounges.png" alt="" />
               </div>
-            </div>
+            </div> -->
             <!-- block -->
-            <div
+            <!-- <div
               :class="['primary-cards', { active: accountOpt == 'Stadium' }]"
               @click="selectedOptions('Stadium')"
             >
@@ -74,9 +103,9 @@
               <div class="card-image">
                 <img src="../../assets/images/Stadium.png" alt="" />
               </div>
-            </div>
+            </div> -->
             <!-- block -->
-            <div
+            <!-- <div
               :class="['primary-cards', { active: accountOpt == 'Chalets' }]"
               @click="selectedOptions('Chalets')"
             >
@@ -84,9 +113,9 @@
               <div class="card-image">
                 <img src="../../assets/images/Chalets.png" alt="" />
               </div>
-            </div>
+            </div> -->
             <!-- block -->
-            <div
+            <!-- <div
               :class="['primary-cards', { active: accountOpt == 'Camps' }]"
               @click="selectedOptions('Camps')"
             >
@@ -94,18 +123,18 @@
               <div class="card-image">
                 <img src="../../assets/images/Campsi.png" alt="" />
               </div>
+            </div> -->
+          </div>
+          <div class="form-container">
+            <div class="input-div">
+              <button type="submit" @click="search">Next</button>
             </div>
           </div>
-          <!-- <div class="form-container">
-            <div class="input-div">
-              <button type="submit" @click="accountSelected(2)">Next</button>
-            </div>
-          </div> -->
         </div>
       </div>
     </section>
     <!-- step two -->
-    <section class="primary-login" v-if="step == 2">
+    <!-- <section class="primary-login" v-if="step == 2">
       <div class="main-login">
         <div class="logo-close">
           <div class="close-icon" @click="close">
@@ -140,35 +169,39 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
   </section>
 </template>
 
 <script>
-import Datepicker from "@vuepic/vue-datepicker";
-import "@vuepic/vue-datepicker/dist/main.css";
+// import Datepicker from "@vuepic/vue-datepicker";
+// import "@vuepic/vue-datepicker/dist/main.css";
 export default {
   name: "SearchModel",
-  props: ["model"],
-  components: {
-    Datepicker,
-  },
+  props: ["model", "city"],
+  // components: {
+  //   Datepicker,
+  // },
   data() {
     return {
       accountOpt: null,
       step: 1,
       date: null,
+      category:{},
     };
   },
   methods: {
-    selectedOptions(opt) {
+    selectedOptions(opt, id) {
       this.accountOpt = opt;
-      if (!this.accountOpt) return;
-      this.step = 2;
+      this.category.categoryId = id;
     },
     accountSelected() {
       if (!this.accountOpt) return;
       //   this.isSubmitted = true;
+    },
+    search(){
+      this.$emit('search', this.category)
+      this.$parent.searchModel = false;
     },
     close() {
       this.$parent.searchModel = false;

@@ -83,7 +83,7 @@
         <div class="container-service">
           <div class="cards">
             <div
-              v-for="(item, index) in categories"
+              v-for="(item, index) in $store.state.details.categories"
               :key="index"
               :class="{
                 active: serviceType && serviceType.category == item.category,
@@ -520,15 +520,6 @@ export default {
       this.step = 2;
       // this.isSubmitted = true;
     },
-    async getCategories() {
-      try {
-        var res = await this.$axios.get("services/categories");
-        this.categories = res.data;
-        // console.log(res.data);
-      } catch (error) {
-        console.log(error);
-      }
-    },
     close() {
       (this.accountOpt = null),
         (this.isSubmitted = false),
@@ -541,9 +532,6 @@ export default {
       this.dataP = {};
       this.$parent.serviceModel = false;
     },
-  },
-  mounted() {
-    this.getCategories();
   },
 };
 </script>

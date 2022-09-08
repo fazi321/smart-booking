@@ -12,7 +12,7 @@
           </div>
         </div>
         <div class="location">
-          <input type="text" :placeholder="'Riyadh'" />
+          <input type="text" :placeholder="'Riyadh'" v-model="search.city" />
         </div>
       </div>
       <!-- block -->
@@ -26,7 +26,7 @@
           </div>
         </div>
         <div>
-          <input type="text" :placeholder="'Farms'" />
+          <input type="text" :placeholder="'Farms'" v-model="search.type" />
         </div>
       </div>
       <!-- block -->
@@ -40,7 +40,7 @@
           </div>
         </div>
         <div>
-          <input type="number" :placeholder="'2'" />
+          <input type="number" :placeholder="'1'" v-model="search.rooms" />
         </div>
       </div>
       <!-- block -->
@@ -54,7 +54,11 @@
           </div>
         </div>
         <div>
-          <input type="date" placeholder="dd-mm-yyyy" />
+          <input
+            type="date"
+            placeholder="dd-mm-yyyy"
+            v-model="search.checkIn"
+          />
         </div>
       </div>
       <!-- block -->
@@ -68,7 +72,11 @@
           </div>
         </div>
         <div>
-          <input type="date" placeholder="dd-mm-yyyy" ref="dateShow" />
+          <input
+            type="date"
+            placeholder="dd-mm-yyyy"
+            v-model="search.checkOut"
+          />
         </div>
       </div>
       <!-- block -->
@@ -83,7 +91,7 @@
         </div>
       </div>
     </div>
-    <SearchModel :model="searchModel" />
+    <SearchModel :model="searchModel" :city="search.city" @search="searchNow" />
   </section>
 </template>
 
@@ -93,6 +101,7 @@ import SearchModel from "./models/searchModel.vue";
 export default {
   data() {
     return {
+      search: {},
       searchModel: false,
     };
   },
@@ -100,9 +109,51 @@ export default {
     SearchModel,
   },
   methods: {
+    formateDate(val) {
+      const index = val.indexOf("-");
+      const last = val.lastIndexOf("-");
+      let year = val.substring(0, index);
+      let month = val.substring(index + 1, last);
+      let day = val.substring(last + 1);
+      var myDate = day + "/" + month + "/" + year;
+      return myDate;
+    },
+    searchNow(id) {
+      var data = { ...this.search, ...id };
+      if (data.checkIn) {
+        data.checkIn = this.formateDate(data.checkIn);
+      }
+      if (data.checkOut) {
+        data.checkOut = this.formateDate(data.checkOut);
+      }
+      if(data.rooms){
+       data.rooms = data.rooms.toString()
+      }
+      var url = this.constructURL("/", "search", data) + "page=1";
+      this.$router.push(url);
+    },
+    constructURL(url, category, fl) {
+      if (category) url += category + "?";
+      Object.keys(fl).forEach((e) => {
+        if (fl[e] && fl[e] !== "undefined" && fl[e].length > 0)
+          url += `${e}=${fl[e]}&`;
+      });
+      return url;
+    },
     showModel() {
       this.searchModel = !this.searchModel;
     },
+  },
+  mounted() {
+    var route = this.$route;
+    console.log(route);
+    if (route.name == "search") {
+      var { city, checkIn, checkOut, rooms } = route.query;
+      this.search.city = city;
+      this.search.checkIn = checkIn;
+      this.search.checkOut = checkOut;
+      this.search.rooms = rooms;
+    }
   },
 };
 </script>

@@ -13,6 +13,9 @@ export default {
       this.$axios.defaults.headers.common["Authorization"] = "";
     }
   },
+  mounted(){
+    this.$store.dispatch('details/getCategories')
+  }
 };
 </script>
 

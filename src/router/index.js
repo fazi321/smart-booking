@@ -11,6 +11,7 @@ import Faqs from "../views/Faqs.vue";
 import Terms from "../views/Terms.vue";
 import MyServices from "../views/MyServices.vue";
 import Favourites from "../views/Favourites.vue";
+import Search from "../views/SearchView.vue";
 
 const routes = [
   {
@@ -72,6 +73,11 @@ const routes = [
     path: "/service-details",
     name: "ServiceDetail",
     component: ServiceDetail,
+  },
+  {
+    path: "/search",
+    name: "search",
+    component: Search,
   },
   {
     path: "/about",
