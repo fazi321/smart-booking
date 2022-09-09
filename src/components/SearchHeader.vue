@@ -146,7 +146,7 @@ export default {
   },
   mounted() {
     var route = this.$route;
-    console.log(route);
+    // console.log(route);
     if (route.name == "search") {
       var { city, checkIn, checkOut, rooms } = route.query;
       this.search.city = city;

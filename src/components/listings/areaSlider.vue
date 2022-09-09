@@ -28,7 +28,7 @@ export default {
     return {
       oBarMinValue: 0,
       oBarMaxValue: 500,
-      price: {},
+      area: {},
     };
   },
   components: {
@@ -36,22 +36,23 @@ export default {
   },
   mounted() {
     /* eslint-disable */ 
-    var { minPrice, maxPrice } = this.$route.query;
-    if (minPrice) {
-      this.oBarMinValue = parseInt(minPrice);
+    var { minArea, maxArea } = this.$route.query;
+    if (minArea) {
+      this.oBarMinValue = parseInt(minArea);
     }
-    if (maxPrice) {
-      this.oBarMaxValue = parseInt(maxPrice);
+    if (maxArea) {
+      this.oBarMaxValue = parseInt(maxArea);
     }
     var x = document.getElementsByClassName("thumb");
     // for price
-    var minPrice = () => this.minPrice();
-    var maxPrice = () => this.maxPrice();
-    x[0].addEventListener("click", () => {
-      minPrice();
+    var minArea = () => this.minArea();
+    var maxArea = () => this.maxArea();
+    x[2].addEventListener("click", () => {
+      minArea();
+
     });
-    x[1].addEventListener("click", () => {
-      maxPrice();
+    x[3].addEventListener("click", () => {
+      maxArea();
     });
   },
   methods: {
@@ -59,22 +60,22 @@ export default {
       this.oBarMinValue = e.minValue;
       this.oBarMaxValue = e.maxValue;
     },
-    minPrice() {
-      this.price.minPrice = this.oBarMinValue;
+    minArea() {
+      this.area.minArea = this.oBarMinValue;
       this.dragEnd();
     },
-    maxPrice() {
-      this.price.maxPrice = this.oBarMaxValue;
+    maxArea() {
+      this.area.maxArea = this.oBarMaxValue;
       this.dragEnd();
     },
     dragEnd() {
-      if(this.price.minPrice){
-         this.price.minPrice = this.price.minPrice.toString();
+      if(this.area.minArea){
+         this.area.minArea = this.area.minArea.toString();
       }
-      if(this.price.maxPrice){
-        this.price.maxPrice = this.price.maxPrice.toString();
+      if(this.area.maxArea){
+        this.area.maxArea = this.area.maxArea.toString();
       }
-      this.$emit("values", this.price);
+      this.$emit("values", this.area);
     },
   },
 };

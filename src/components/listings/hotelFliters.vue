@@ -6,28 +6,46 @@
         <h6>Location Filter</h6>
         <div class="form">
           <div class="option">
-            <select name="sort">
+            <input
+              type="text"
+              placeholder="Destination"
+              v-model="filters.destination"
+              @blur="handleBlur"
+            />
+            <!-- <select name="sort">
               <option value>Destination</option>
               <option value>Price low to high</option>
               <option value>Price high to low</option>
               <option value>Discount low to high</option>
-            </select>
+            </select> -->
           </div>
           <div class="option">
-            <select name="sort">
+            <input
+              type="text"
+              placeholder="District"
+              v-model="filters.district"
+              @blur="handleBlur"
+            />
+            <!-- <select name="sort">
               <option value>District</option>
               <option value>Price low to high</option>
               <option value>Price high to low</option>
               <option value>Discount low to high</option>
-            </select>
+            </select> -->
           </div>
           <div class="option">
-            <select name="sort">
+            <input
+              type="text"
+              placeholder="Direction"
+              v-model="filters.direction"
+              @blur="handleBlur"
+            />
+            <!-- <select name="sort">
               <option value>Direction</option>
               <option value>Price low to high</option>
               <option value>Price high to low</option>
               <option value>Discount low to high</option>
-            </select>
+            </select> -->
           </div>
         </div>
       </section>
@@ -59,35 +77,67 @@
       <!-- Vacation Rental section  -->
       <section class="location-filter">
         <h6>Vacation Rental types</h6>
-        <form class="form">
-          <label class="checkbox-container">
-            Room
-            <!-- <input type="checkbox" checked="" /> -->
-            <input type="checkbox" />
-            <span class="checkmark"></span>
-          </label>
-          <label class="checkbox-container">
-            House
-            <input type="checkbox" />
-            <span class="checkmark"></span>
-          </label>
-          <label class="checkbox-container">
-            Farm
-            <!-- <input type="checkbox" checked="" /> -->
-            <input type="checkbox" />
-            <span class="checkmark"></span>
-          </label>
-          <label class="checkbox-container">
-            Resort
-            <input type="checkbox" />
-            <span class="checkmark"></span>
-          </label>
-          <label class="checkbox-container">
-            Chalet
-            <!-- <input type="checkbox" checked="" /> -->
-            <input type="checkbox" />
-            <span class="checkmark"></span>
-          </label>
+        <form class="form radio">
+          <div class="radio-input">
+            <input
+              type="radio"
+              id="test1"
+              name="radio-group"
+              value="Hotels"
+              @change="rentalVacation"
+            />
+            <label for="test1">Hotels</label>
+          </div>
+          <div class="radio-input">
+            <input
+              type="radio"
+              id="test2"
+              name="radio-group"
+              value="Rooms"
+              @change="rentalVacation"
+            />
+            <label for="test2">Room</label>
+          </div>
+          <div class="radio-input">
+            <input
+              type="radio"
+              id="test3"
+              name="radio-group"
+              value="House"
+              @change="rentalVacation"
+            />
+            <label for="test3">House</label>
+          </div>
+          <div class="radio-input">
+            <input
+              type="radio"
+              id="test4"
+              name="radio-group"
+              value="Farm"
+              @change="rentalVacation"
+            />
+            <label for="test4">Farm</label>
+          </div>
+          <div class="radio-input">
+            <input
+              type="radio"
+              id="test5"
+              name="radio-group"
+              value="Resort"
+              @change="rentalVacation"
+            />
+            <label for="test5">Resort</label>
+          </div>
+          <div class="radio-input">
+            <input
+              type="radio"
+              id="test6"
+              name="radio-group"
+              value="Chalet"
+              @change="rentalVacation"
+            />
+            <label for="test6">Chalet</label>
+          </div>
         </form>
       </section>
       <!-- Vacation Rental section  -->
@@ -114,7 +164,7 @@
       <section class="location-filter">
         <h6>Price Filters</h6>
         <form class="form">
-          <PriceSlider />
+          <PriceSlider  @values="dataRange" />
         </form>
       </section>
       <!-- Price Filters section  -->
@@ -122,7 +172,7 @@
       <section class="location-filter">
         <h6>Space Filters</h6>
         <form class="form">
-          <PriceSlider />
+          <AreaSlider  @values="areaRange"/>
         </form>
       </section>
       <!-- Space Filters section  -->
@@ -349,11 +399,56 @@
 
 <script>
 import PriceSlider from "./priceSlider.vue";
+import AreaSlider from "./areaSlider.vue";
 export default {
   name: "HotelFilters",
+  data() {
+    return {
+      filters: {},
+    };
+  },
   components: {
-    PriceSlider
-  }
+    PriceSlider,
+    AreaSlider,
+  },
+  mounted(){
+    var {minPrice, maxPrice, minArea, maxArea} = this.$route.query;
+    this.filters.minPrice = minPrice;
+    this.filters.maxPrice = maxPrice;
+    this.filters.minArea = minArea;
+    this.filters.maxArea = maxArea;
+  },
+  methods: {
+    rentalVacation(e) {
+      this.filters.rentalType = e.target.value;
+      // this.pushUrl();
+    },
+    dataRange(val) {
+      this.filters.minPrice = val.minPrice;
+      this.filters.maxPrice = val.maxPrice;
+      this.pushUrl();
+    },
+    areaRange(val) {
+      this.filters.minArea = val.minArea;
+      this.filters.maxArea = val.maxArea;
+      this.pushUrl();
+    },
+    handleBlur() {
+      this.pushUrl();
+    },
+    pushUrl() {
+      var url = this.constructURL("/", "apartments", this.filters) + "page=1";
+      this.$router.push(url);
+    },
+    constructURL(url, category, fl) {
+      if (category) url += category + "?";
+      Object.keys(fl).forEach((e) => {
+        if (fl[e] && fl[e] !== "undefined" && fl[e].length > 0)
+          url += `${e}=${fl[e]}&`;
+      });
+      return url;
+    },
+  },
 };
 </script>
 
@@ -388,7 +483,7 @@ export default {
   padding: 0 15px;
   margin: 10px 0;
 }
-.apartments-filters .form select {
+.apartments-filters .form input {
   border: none;
   outline: none;
   color: #a5a5a5;
@@ -512,5 +607,59 @@ export default {
   height: 30px;
   cursor: pointer;
   border-radius: 50%;
+}
+.radio .radio-input {
+  margin-bottom: 15px;
+}
+.radio [type="radio"]:checked,
+[type="radio"]:not(:checked) {
+  position: absolute;
+  left: -9999px;
+}
+.radio [type="radio"]:checked + label,
+[type="radio"]:not(:checked) + label {
+  position: relative;
+  padding-left: 35px;
+  cursor: pointer;
+  line-height: 20px;
+  display: inline-block;
+  color: #000;
+  font-size: 12px;
+}
+.radio [type="radio"]:checked + label:before,
+[type="radio"]:not(:checked) + label:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -3px;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #f1f1f1;
+  border-radius: 4px;
+  box-shadow: 0px 0px 4px #0000000f;
+  background: #fff;
+}
+.radio [type="radio"]:checked + label:after,
+[type="radio"]:not(:checked) + label:after {
+  content: "";
+  width: 5px;
+  height: 10px;
+  background: #fff;
+  position: absolute;
+  top: 0;
+  left: 7px;
+  border: solid #febb12;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg) !important;
+}
+.radio [type="radio"]:not(:checked) + label:after {
+  opacity: 0;
+  -webkit-transform: scale(0);
+  transform: scale(0);
+}
+.radio [type="radio"]:checked + label:after {
+  opacity: 1;
+  -webkit-transform: scale(1);
+  transform: scale(1);
 }
 </style>
