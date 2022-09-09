@@ -8,16 +8,26 @@
           <div class="option">
             <input
               type="text"
+              placeholder="Name"
+              v-model="filters.name"
+              @blur="handleBlur"
+            />
+          </div>
+          <div class="option">
+            <input
+              type="text"
+              placeholder="City"
+              v-model="filters.city"
+              @blur="handleBlur"
+            />
+          </div>
+          <div class="option">
+            <input
+              type="text"
               placeholder="Destination"
               v-model="filters.destination"
               @blur="handleBlur"
             />
-            <!-- <select name="sort">
-              <option value>Destination</option>
-              <option value>Price low to high</option>
-              <option value>Price high to low</option>
-              <option value>Discount low to high</option>
-            </select> -->
           </div>
           <div class="option">
             <input
@@ -85,6 +95,7 @@
               name="radio-group"
               value="Hotels"
               @change="rentalVacation"
+              :checked="filters.rentalType == 'Hotels'"
             />
             <label for="test1">Hotels</label>
           </div>
@@ -95,6 +106,7 @@
               name="radio-group"
               value="Rooms"
               @change="rentalVacation"
+              :checked="filters.rentalType == 'Rooms'"
             />
             <label for="test2">Room</label>
           </div>
@@ -105,6 +117,7 @@
               name="radio-group"
               value="House"
               @change="rentalVacation"
+              :checked="filters.rentalType == 'House'"
             />
             <label for="test3">House</label>
           </div>
@@ -115,6 +128,7 @@
               name="radio-group"
               value="Farm"
               @change="rentalVacation"
+              :checked="filters.rentalType == 'Farm'"
             />
             <label for="test4">Farm</label>
           </div>
@@ -125,6 +139,7 @@
               name="radio-group"
               value="Resort"
               @change="rentalVacation"
+              :checked="filters.rentalType == 'Resort'"
             />
             <label for="test5">Resort</label>
           </div>
@@ -135,6 +150,7 @@
               name="radio-group"
               value="Chalet"
               @change="rentalVacation"
+              :checked="filters.rentalType == 'Chalet'"
             />
             <label for="test6">Chalet</label>
           </div>
@@ -164,7 +180,7 @@
       <section class="location-filter">
         <h6>Price Filters</h6>
         <form class="form">
-          <PriceSlider  @values="dataRange" />
+          <PriceSlider @values="dataRange" />
         </form>
       </section>
       <!-- Price Filters section  -->
@@ -172,7 +188,7 @@
       <section class="location-filter">
         <h6>Space Filters</h6>
         <form class="form">
-          <AreaSlider  @values="areaRange"/>
+          <AreaSlider @values="areaRange" />
         </form>
       </section>
       <!-- Space Filters section  -->
@@ -255,21 +271,26 @@
             </div>
           </div>
           <label class="checkbox-container">
-            Tissues
-            <input type="checkbox" />
+            Soap & Tissues
+            <input
+              type="checkbox"
+              value="soapTissue"
+              @change="toggleFacilities"
+              :checked="filters.soapTissue"
+            />
             <span class="checkmark"></span>
           </label>
           <label class="checkbox-container">
-            Soap
+            Shampoo
             <!-- <input type="checkbox" checked="" /> -->
-            <input type="checkbox" />
+            <input type="checkbox" value="shampoo" @change="toggleFacilities" :checked="filters.shampoo" />
             <span class="checkmark"></span>
           </label>
-          <label class="checkbox-container">
+          <!-- <label class="checkbox-container">
             Bathtub
             <input type="checkbox" />
             <span class="checkmark"></span>
-          </label>
+          </label> -->
         </form>
       </section>
       <!-- Bathroom Filters section  -->
@@ -326,24 +347,40 @@
       <!-- Pool Type Filters section  -->
       <!-- Facilities Filters section  -->
       <section class="location-filter">
-        <h6>Pool Type Filters</h6>
+        <h6>Facilities</h6>
         <form class="form">
           <label class="checkbox-container">
-            Internet
-            <input type="checkbox" />
+            Wifi
+            <input type="checkbox" value="wifi" @change="toggleFacilities" :checked="filters.wifi" />
             <span class="checkmark"></span>
           </label>
           <label class="checkbox-container">
             Speakers
             <!-- <input type="checkbox" checked="" /> -->
-            <input type="checkbox" />
+            <input
+              type="checkbox"
+              value="speakers"
+              @change="toggleFacilities"
+              :checked="filters.speakers"
+            />
             <span class="checkmark"></span>
           </label>
           <label class="checkbox-container">
+            Playground
+            <!-- <input type="checkbox" checked="" /> -->
+            <input
+              type="checkbox"
+              value="playground"
+              @change="toggleFacilities"
+              :checked="filters.playground"
+            />
+            <span class="checkmark"></span>
+          </label>
+          <!-- <label class="checkbox-container">
             Jacuzzi
             <input type="checkbox" />
             <span class="checkmark"></span>
-          </label>
+          </label> -->
         </form>
       </section>
       <!-- Facilities Filters section  -->
@@ -376,18 +413,49 @@
         <form class="form last-block">
           <label class="checkbox-container">
             Oven
-            <input type="checkbox" />
+            <input type="checkbox" value="oven" @change="toggleFacilities" :checked="filters.oven" />
             <span class="checkmark"></span>
           </label>
           <label class="checkbox-container">
             Refrigerator
             <!-- <input type="checkbox" checked="" /> -->
-            <input type="checkbox" />
+            <input
+              type="checkbox"
+              value="refrigerator"
+              @change="toggleFacilities"
+              :checked="filters.refrigerator"
+            />
             <span class="checkmark"></span>
           </label>
           <label class="checkbox-container">
             Microwave
-            <input type="checkbox" />
+            <input
+              type="checkbox"
+              value="microwave"
+              @change="toggleFacilities"
+              :checked="filters.microwave"
+              
+            />
+            <span class="checkmark"></span>
+          </label>
+          <label class="checkbox-container">
+            Coffe Machine
+            <input
+              type="checkbox"
+              value="coffeMachine"
+              @change="toggleFacilities"
+              :checked="filters.coffeMachine"
+            />
+            <span class="checkmark"></span>
+          </label>
+          <label class="checkbox-container">
+            Kichen Utensils
+            <input
+              type="checkbox"
+              value="kichenUtensils"
+              @change="toggleFacilities"
+              :checked="filters.kichenUtensils"
+            />
             <span class="checkmark"></span>
           </label>
         </form>
@@ -400,6 +468,7 @@
 <script>
 import PriceSlider from "./priceSlider.vue";
 import AreaSlider from "./areaSlider.vue";
+// import facilitiesVue from '../hotelDetail/facilities.vue';
 export default {
   name: "HotelFilters",
   data() {
@@ -411,17 +480,23 @@ export default {
     PriceSlider,
     AreaSlider,
   },
-  mounted(){
-    var {minPrice, maxPrice, minArea, maxArea} = this.$route.query;
-    this.filters.minPrice = minPrice;
-    this.filters.maxPrice = maxPrice;
-    this.filters.minArea = minArea;
-    this.filters.maxArea = maxArea;
+  mounted() {
+    var q = this.$route.query;
+    delete q.page;
+    this.filters = q;
   },
   methods: {
     rentalVacation(e) {
       this.filters.rentalType = e.target.value;
-      // this.pushUrl();
+      this.pushUrl();
+    },
+    toggleFacilities(ev) {
+      if (this.filters[ev.target.value]) {
+        this.filters[ev.target.value] = false;
+      } else {
+        this.filters[ev.target.value] = true;
+      }
+      this.pushUrl();
     },
     dataRange(val) {
       this.filters.minPrice = val.minPrice;
@@ -443,8 +518,8 @@ export default {
     constructURL(url, category, fl) {
       if (category) url += category + "?";
       Object.keys(fl).forEach((e) => {
-        if (fl[e] && fl[e] !== "undefined" && fl[e].length > 0)
-          url += `${e}=${fl[e]}&`;
+        // && fl[e].length > 0
+        if (fl[e] && fl[e] !== "undefined") url += `${e}=${fl[e]}&`;
       });
       return url;
     },

@@ -8,25 +8,28 @@
       <div class="apartment-left">
         <HotelFilters />
       </div>
-      <div class="apartment-right" v-if="filteredData && !loading">
-        <FilterCard
-          v-for="(items, index) in filteredData"
-          :key="index"
-          :item="items"
-        />
-        <div class="pagination-container">
-          <paginate
-            v-model="pageSelected"
-            :page-range="3"
-            :margin-pages="2"
-            :page-count="pageCount"
-            :click-handler="clickCallback"
-            :prev-text="'<'"
-            :next-text="'>'"
-            :container-class="'pagination'"
-            :page-class="'page-item'"
-          ></paginate>
+      <div class="apartment-right" v-if="!loading">
+        <div v-if="filteredData && filteredData.length">
+          <FilterCard
+            v-for="(items, index) in filteredData"
+            :key="index"
+            :item="items"
+          />
+          <div class="pagination-container">
+            <paginate
+              v-model="pageSelected"
+              :page-range="3"
+              :margin-pages="2"
+              :page-count="pageCount"
+              :click-handler="clickCallback"
+              :prev-text="'<'"
+              :next-text="'>'"
+              :container-class="'pagination'"
+              :page-class="'page-item'"
+            ></paginate>
+          </div>
         </div>
+        <div class="text-container" v-else>NOT FOUND SOME THING WENT WRONG</div>
       </div>
       <div class="apartment-right" v-else>
         <SkeletonCard v-for="(skeleton, loading) in skeleton" :key="loading" />
@@ -109,7 +112,7 @@ export default {
           old = oldValue.category;
         }
         if (newValue.category != old) {
-          this.pageSelected = 1
+          this.pageSelected = 1;
           this.getData();
         }
       },
@@ -119,6 +122,11 @@ export default {
 </script>
 
 <style>
+.text-container {
+  color: #e3e3e3;
+  font-size: 28px;
+  margin-top: 45px;
+}
 .search-wrapper .search .primary-search {
   width: 70%;
 }
