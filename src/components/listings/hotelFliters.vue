@@ -283,7 +283,12 @@
           <label class="checkbox-container">
             Shampoo
             <!-- <input type="checkbox" checked="" /> -->
-            <input type="checkbox" value="shampoo" @change="toggleFacilities" :checked="filters.shampoo" />
+            <input
+              type="checkbox"
+              value="shampoo"
+              @change="toggleFacilities"
+              :checked="filters.shampoo"
+            />
             <span class="checkmark"></span>
           </label>
           <!-- <label class="checkbox-container">
@@ -351,7 +356,12 @@
         <form class="form">
           <label class="checkbox-container">
             Wifi
-            <input type="checkbox" value="wifi" @change="toggleFacilities" :checked="filters.wifi" />
+            <input
+              type="checkbox"
+              value="wifi"
+              @change="toggleFacilities"
+              :checked="filters.wifi"
+            />
             <span class="checkmark"></span>
           </label>
           <label class="checkbox-container">
@@ -413,7 +423,12 @@
         <form class="form last-block">
           <label class="checkbox-container">
             Oven
-            <input type="checkbox" value="oven" @change="toggleFacilities" :checked="filters.oven" />
+            <input
+              type="checkbox"
+              value="oven"
+              @change="toggleFacilities"
+              :checked="filters.oven"
+            />
             <span class="checkmark"></span>
           </label>
           <label class="checkbox-container">
@@ -434,7 +449,6 @@
               value="microwave"
               @change="toggleFacilities"
               :checked="filters.microwave"
-              
             />
             <span class="checkmark"></span>
           </label>
@@ -512,7 +526,7 @@ export default {
       this.pushUrl();
     },
     pushUrl() {
-      var url = this.constructURL("/", "apartments", this.filters) + "page=1";
+      var url = this.constructURL("/", "filters", this.filters) + "page=1";
       this.$router.push(url);
     },
     constructURL(url, category, fl) {
@@ -522,6 +536,16 @@ export default {
         if (fl[e] && fl[e] !== "undefined") url += `${e}=${fl[e]}&`;
       });
       return url;
+    },
+  },
+  watch: {
+    "$route.query": {
+      immediate: true,
+      handler() {
+        var q = this.$route.query;
+        delete q.page;
+        this.filters = q;
+      },
     },
   },
 };

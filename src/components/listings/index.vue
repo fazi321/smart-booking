@@ -63,6 +63,8 @@ export default {
       loading: false,
       pageCount: 15,
       skeleton: 6,
+      // prevent double api
+      isLoaded: false,
     };
   },
   created() {
@@ -71,6 +73,7 @@ export default {
   methods: {
     async getData() {
       var catType = this.$route.params.category;
+      this.pageSelected = this.$route.query.page;
       if (catType) {
         var cat =
           catType != "farms" && catType != "resorts"
@@ -82,7 +85,7 @@ export default {
           if (res) {
             this.dataCard = res.data;
             this.pageCount = res.data.length / 15;
-            this.filterByPage(this.$route.query.page || 1);
+            this.filterByPage(this.pageSelected || 1);
             this.loading = false;
           }
         } catch (error) {
@@ -96,10 +99,47 @@ export default {
       var copyTo = page * 15;
       this.filteredData = this.dataCard.slice(copyFrom, copyTo);
     },
+    constructURL(url, fl) {
+      url += "?";
+      Object.keys(fl).forEach((e) => {
+        if (fl[e] && fl[e] !== "undefined" && fl[e].length > 0)
+          url += `${e}=${fl[e]}&`;
+      });
+      return url;
+    },
+    pushUrl(page) {
+      var q = this.$route.query;
+      delete q.page;
+      var url = this.constructURL(this.$route.path, q) + "page=" + page;
+      this.$router.push(url);
+    },
     clickCallback(num) {
-      this.$router.push(`${this.$route.path}?page=${num}`);
+      this.isLoaded = true;
+      this.pushUrl(num);
       this.filterByPage(num);
-      // this.$refs.slider.slideTo(num);
+    },
+    async filters() {
+      // if (this.isLoaded) return;
+      var q = this.$route.query;
+      this.pageSelected = q.page;
+      var check = { ...q };
+      delete check.page;
+      try {
+        this.loading = true;
+        var res = await this.$axios.get(`services/deepfilter`, {
+          params: check,
+        });
+        if (res) {
+          this.isLoaded = true;
+          this.dataCard = res.data.service;
+          this.pageCount = res.data.service.length / 15;
+          this.filterByPage(this.pageSelected || 1);
+          this.loading = false;
+        }
+      } catch (error) {
+        this.isLoaded = false;
+        this.loading = false;
+      }
     },
   },
   watch: {
@@ -113,7 +153,13 @@ export default {
         }
         if (newValue.category != old) {
           this.pageSelected = 1;
-          this.getData();
+          if (this.$route.path != "/filters") {
+            this.getData();
+          }
+          if (this.$route.path == "/filters") {
+          // this.isLoaded = false;
+          this.filters();
+        }
         }
       },
     },
