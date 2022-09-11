@@ -64,7 +64,7 @@ export default {
       pageCount: 15,
       skeleton: 6,
       // prevent double api
-      isLoaded: false,
+      isLoad: true,
     };
   },
   created() {
@@ -73,7 +73,7 @@ export default {
   methods: {
     async getData() {
       var catType = this.$route.params.category;
-      this.pageSelected = this.$route.query.page;
+      this.pageSelected = parseInt(this.$route.query.page);
       if (catType) {
         var cat =
           catType != "farms" && catType != "resorts"
@@ -84,7 +84,7 @@ export default {
           var res = await this.$axios.get(`${cat}`);
           if (res) {
             this.dataCard = res.data;
-            this.pageCount = res.data.length / 15;
+            this.pageCount = Math.ceil(res.data.length / 15);
             this.filterByPage(this.pageSelected || 1);
             this.loading = false;
           }
@@ -114,12 +114,15 @@ export default {
       this.$router.push(url);
     },
     clickCallback(num) {
-      this.isLoaded = true;
+      this.isLoad = false;
       this.pushUrl(num);
       this.filterByPage(num);
+      setTimeout(() => {
+        this.isLoad = true;
+      }, 500);
     },
     async filters() {
-      // if (this.isLoaded) return;
+      if (!this.isLoad) return;
       var q = this.$route.query;
       this.pageSelected = q.page;
       var check = { ...q };
@@ -130,14 +133,12 @@ export default {
           params: check,
         });
         if (res) {
-          this.isLoaded = true;
           this.dataCard = res.data.service;
-          this.pageCount = res.data.service.length / 15;
+          this.pageCount = Math.ceil(res.data.total / 15);
           this.filterByPage(this.pageSelected || 1);
           this.loading = false;
         }
       } catch (error) {
-        this.isLoaded = false;
         this.loading = false;
       }
     },
@@ -151,15 +152,14 @@ export default {
         if (oldValue) {
           old = oldValue.category;
         }
+        if (this.$route.path == "/filters") {
+          this.filters();
+        }
         if (newValue.category != old) {
           this.pageSelected = 1;
           if (this.$route.path != "/filters") {
             this.getData();
           }
-          if (this.$route.path == "/filters") {
-          // this.isLoaded = false;
-          this.filters();
-        }
         }
       },
     },

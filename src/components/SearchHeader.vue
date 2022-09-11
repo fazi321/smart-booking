@@ -94,7 +94,6 @@
         <div>
           <input
             type="date"
-            placeholder="dd-mm-yyyy"
             v-model="search.checkIn"
           />
         </div>
@@ -166,23 +165,23 @@ export default {
       this.search.city = city;
       console.log(city)
     },
-    formateDate(val) {
-      const index = val.indexOf("-");
-      const last = val.lastIndexOf("-");
-      let year = val.substring(0, index);
-      let month = val.substring(index + 1, last);
-      let day = val.substring(last + 1);
-      var myDate = day + "/" + month + "/" + year;
-      return myDate;
-    },
+    // formateDate(val) {
+    //   const index = val.indexOf("-");
+    //   const last = val.lastIndexOf("-");
+    //   let year = val.substring(0, index);
+    //   let month = val.substring(index + 1, last);
+    //   let day = val.substring(last + 1);
+    //   var myDate = day + "/" + month + "/" + year;
+    //   return myDate;
+    // },
     searchNow(id) {
       var data = { ...this.search, ...id };
-      if (data.checkIn) {
-        data.checkIn = this.formateDate(data.checkIn);
-      }
-      if (data.checkOut) {
-        data.checkOut = this.formateDate(data.checkOut);
-      }
+      // if (data.checkIn) {
+      //   data.checkIn = this.formateDate(data.checkIn);
+      // }
+      // if (data.checkOut) {
+      //   data.checkOut = this.formateDate(data.checkOut);
+      // }
       if (data.rooms) {
         data.rooms = data.rooms.toString();
       }

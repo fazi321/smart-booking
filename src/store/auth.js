@@ -24,8 +24,12 @@ export default {
       commit("SET_USER", payload);
     },
     async profile({ commit }) {
-      const userData = await axios().get("user/profile", authHeader());
-      commit("SET_USER", userData.data);
+      try {
+        const userData = await axios().get("user/profile", authHeader());
+        commit("SET_USER", userData.data);
+      } catch (error) {
+        console.log(error)
+      }
     },
     logOut({ commit }) {
       Cookies.remove("Authorization");

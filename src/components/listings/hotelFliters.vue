@@ -67,19 +67,34 @@
           <label class="checkbox-container">
             Available Only
             <!-- <input type="checkbox" checked="" /> -->
-            <input type="checkbox" />
+            <input
+              type="checkbox"
+              value="availableOnly"
+              @change="toggleFacilities"
+              :checked="filters.availableOnly"
+            />
             <span class="checkmark"></span>
           </label>
           <label class="checkbox-container">
             Offers Only
-            <input type="checkbox" />
+            <input
+              type="checkbox"
+              value="offersOnly"
+              @change="toggleFacilities"
+              :checked="filters.offersOnly"
+            />
             <span class="checkmark"></span>
           </label>
           <div class="input">
             <input type="text" placeholder="Search by property name" />
           </div>
           <div class="input">
-            <input type="text" placeholder="Search by unit name" />
+            <input
+              type="text"
+              placeholder="Search by unit name"
+              v-model="filters.unitName"
+              @blur="handleBlur"
+            />
           </div>
         </form>
       </section>
@@ -199,29 +214,50 @@
           <label class="checkbox-container">
             All
             <!-- <input type="checkbox" checked="" /> -->
-            <input type="checkbox" />
+            <input
+              type="checkbox"
+              value="reviewAll"
+              @change="reviewsFilters"
+              :checked="filters.reviewAll"
+            />
             <span class="checkmark"></span>
           </label>
           <label class="checkbox-container">
             +5 Excellent
-            <input type="checkbox" />
+            <input
+              type="checkbox"
+              @change="reviewsValues('excellent', '5')"
+              :checked="filters.excellent"
+            />
             <span class="checkmark"></span>
           </label>
           <label class="checkbox-container">
             +4 Very Good
             <!-- <input type="checkbox" checked="" /> -->
-            <input type="checkbox" />
+            <input
+              type="checkbox"
+              @change="reviewsValues('veryGood', '4')"
+              :checked="filters.veryGood"
+            />
             <span class="checkmark"></span>
           </label>
           <label class="checkbox-container">
             +3 Good
-            <input type="checkbox" />
+            <input
+              type="checkbox"
+              @change="reviewsValues('good', '3')"
+              :checked="filters.good"
+            />
             <span class="checkmark"></span>
           </label>
           <label class="checkbox-container">
             +2 Fair
             <!-- <input type="checkbox" checked="" /> -->
-            <input type="checkbox" />
+            <input
+              type="checkbox"
+              @change="reviewsValues('fair', '2')"
+              :checked="filters.fair"
+            />
             <span class="checkmark"></span>
           </label>
         </form>
@@ -232,27 +268,45 @@
         <h6>Bedroom Filters</h6>
         <form class="form">
           <div class="bedrooms">
-            <span>Rooms</span>
+            <span>bedroom</span>
             <div class="count">
-              <img src="../../assets/images/sub.png" />
-              <span>2</span>
-              <img src="../../assets/images/plus.png" />
+              <img
+                src="../../assets/images/sub.png"
+                @click="valueDecIn('bedroom', 'dec')"
+              />
+              <span>{{ filters.bathrooms || 0 }}</span>
+              <img
+                src="../../assets/images/plus.png"
+                @click="valueDecIn('bedroom', 'inc')"
+              />
             </div>
           </div>
           <div class="bedrooms">
             <span>Single Beds</span>
             <div class="count">
-              <img src="../../assets/images/sub.png" />
-              <span>2</span>
-              <img src="../../assets/images/plus.png" />
+              <img
+                src="../../assets/images/sub.png"
+                @click="valueDecIn('singleBeds', 'dec')"
+              />
+              <span>{{ filters.singleBeds || 0 }}</span>
+              <img
+                src="../../assets/images/plus.png"
+                @click="valueDecIn('singleBeds', 'inc')"
+              />
             </div>
           </div>
           <div class="bedrooms">
             <span>Double Bed</span>
             <div class="count">
-              <img src="../../assets/images/sub.png" />
-              <span>2</span>
-              <img src="../../assets/images/plus.png" />
+              <img
+                src="../../assets/images/sub.png"
+                @click="valueDecIn('doubleBed', 'dec')"
+              />
+              <span>{{ filters.doubleBed || 0 }}</span>
+              <img
+                src="../../assets/images/plus.png"
+                @click="valueDecIn('doubleBed', 'inc')"
+              />
             </div>
           </div>
         </form>
@@ -263,11 +317,17 @@
         <h6>Bathroom Filters</h6>
         <form class="form">
           <div class="bedrooms">
-            <span>Rooms</span>
+            <span>Bathrooms</span>
             <div class="count">
-              <img src="../../assets/images/sub.png" />
-              <span>2</span>
-              <img src="../../assets/images/plus.png" />
+              <img
+                src="../../assets/images/sub.png"
+                @click="valueDecIn('bathrooms', 'dec')"
+              />
+              <span>{{ filters.bathrooms || 0 }}</span>
+              <img
+                src="../../assets/images/plus.png"
+                @click="valueDecIn('bathrooms', 'inc')"
+              />
             </div>
           </div>
           <label class="checkbox-container">
@@ -282,12 +342,41 @@
           </label>
           <label class="checkbox-container">
             Shampoo
-            <!-- <input type="checkbox" checked="" /> -->
             <input
               type="checkbox"
               value="shampoo"
               @change="toggleFacilities"
               :checked="filters.shampoo"
+            />
+            <span class="checkmark"></span>
+          </label>
+          <label class="checkbox-container">
+            Tissue
+            <input
+              type="checkbox"
+              value="tissue"
+              @change="toggleFacilities"
+              :checked="filters.tissue"
+            />
+            <span class="checkmark"></span>
+          </label>
+          <label class="checkbox-container">
+            Soap
+            <input
+              type="checkbox"
+              value="soap"
+              @change="toggleFacilities"
+              :checked="filters.soap"
+            />
+            <span class="checkmark"></span>
+          </label>
+          <label class="checkbox-container">
+            Bathtub
+            <input
+              type="checkbox"
+              value="bathtub"
+              @change="toggleFacilities"
+              :checked="filters.bathtub"
             />
             <span class="checkmark"></span>
           </label>
@@ -306,9 +395,15 @@
           <div class="bedrooms">
             <span>Guests</span>
             <div class="count">
-              <img src="../../assets/images/sub.png" />
-              <span>2</span>
-              <img src="../../assets/images/plus.png" />
+              <img
+                src="../../assets/images/sub.png"
+                @click="valueDecIn('guests', 'dec')"
+              />
+              <span>{{ filters.guests || 0 }}</span>
+              <img
+                src="../../assets/images/plus.png"
+                @click="valueDecIn('guests', 'inc')"
+              />
             </div>
           </div>
         </form>
@@ -319,10 +414,20 @@
         <h6>Check-in & Check-out Filters</h6>
         <form class="form">
           <div class="input">
-            <input type="text" placeholder="Chekck-in time" />
+            <input
+              type="date"
+              placeholder="Chekck-in time"
+              @change="getCheckIn"
+              v-model="filters.checkIn"
+            />
           </div>
           <div class="input">
-            <input type="text" placeholder="Check-out time" />
+            <input
+              type="date"
+              placeholder="Check-out time"
+              @change="getCheckOut"
+              :value="filters.checkOut"
+            />
           </div>
         </form>
       </section>
@@ -331,20 +436,48 @@
       <section class="location-filter">
         <h6>Pool Type Filters</h6>
         <form class="form">
+          <!-- <div class="bedrooms">
+            <span>Swimming Pool With Heat</span>
+            <div class="count">
+              <img
+                src="../../assets/images/sub.png"
+                @click="valueDecIn('swimmingPoolWithHeat', 'dec')"
+              />
+              <span>{{ filters.swimmingPoolWithHeat || 0 }}</span>
+              <img
+                src="../../assets/images/plus.png"
+                @click="valueDecIn('swimmingPoolWithHeat', 'inc')"
+              />
+            </div>
+          </div> -->
           <label class="checkbox-container">
             All
-            <input type="checkbox" />
+            <input
+              type="checkbox"
+              value="poolAll"
+              @change="toggleFacilities"
+              :checked="filters.poolAll"
+            />
             <span class="checkmark"></span>
           </label>
           <label class="checkbox-container">
-            Swimming pool with heat
-            <!-- <input type="checkbox" checked="" /> -->
-            <input type="checkbox" />
+            Swimming Pool WithHeat
+            <input
+              type="checkbox"
+              value="swimmingPoolWithHeat"
+              @change="toggleFacilities"
+              :checked="filters.swimmingPoolWithHeat"
+            />
             <span class="checkmark"></span>
           </label>
           <label class="checkbox-container">
             No Pool
-            <input type="checkbox" />
+            <input
+              type="checkbox"
+              value="noPool"
+              @change="toggleFacilities"
+              :checked="filters.noPool"
+            />
             <span class="checkmark"></span>
           </label>
         </form>
@@ -377,7 +510,6 @@
           </label>
           <label class="checkbox-container">
             Playground
-            <!-- <input type="checkbox" checked="" /> -->
             <input
               type="checkbox"
               value="playground"
@@ -386,6 +518,36 @@
             />
             <span class="checkmark"></span>
           </label>
+          <label class="checkbox-container">
+            Football Court
+            <input
+              type="checkbox"
+              value="footballCourt"
+              @change="toggleFacilities"
+              :checked="filters.footballCourt"
+            />
+            <span class="checkmark"></span>
+          </label>
+          <label class="checkbox-container">
+            Volleyball Court
+            <input
+              type="checkbox"
+              value="volleyballcourt"
+              @change="toggleFacilities"
+              :checked="filters.volleyballcourt"
+            />
+            <span class="checkmark"></span>
+          </label>
+          <!-- <label class="checkbox-container">
+            Volleyballcourt
+            <input
+              type="checkbox"
+              value="volleyballcourt"
+              @change="toggleFacilities"
+              :checked="filters.volleyballcourt"
+            />
+            <span class="checkmark"></span>
+          </label> -->
           <!-- <label class="checkbox-container">
             Jacuzzi
             <input type="checkbox" />
@@ -400,18 +562,42 @@
         <form class="form">
           <label class="checkbox-container">
             Couples
-            <input type="checkbox" />
+            <input
+              type="checkbox"
+              value="couples"
+              @change="toggleFacilities"
+              :checked="filters.couples"
+            />
             <span class="checkmark"></span>
           </label>
           <label class="checkbox-container">
             Families only
-            <!-- <input type="checkbox" checked="" /> -->
-            <input type="checkbox" />
+            <input
+              type="checkbox"
+              value="familiesOnly"
+              @change="toggleFacilities"
+              :checked="filters.familiesOnly"
+            />
             <span class="checkmark"></span>
           </label>
           <label class="checkbox-container">
-            Singles only
-            <input type="checkbox" />
+            Singles Only
+            <input
+              type="checkbox"
+              value="singlesOnly"
+              @change="toggleFacilities"
+              :checked="filters.singlesOnly"
+            />
+            <span class="checkmark"></span>
+          </label>
+          <label class="checkbox-container">
+            Travelers
+            <input
+              type="checkbox"
+              value="travelers"
+              @change="toggleFacilities"
+              :checked="filters.travelers"
+            />
             <span class="checkmark"></span>
           </label>
         </form>
@@ -420,7 +606,7 @@
       <!-- Kitchen Facilities Filters section  -->
       <section class="location-filter">
         <h6>Kitchen Facilities Filters</h6>
-        <form class="form last-block">
+        <form class="form">
           <label class="checkbox-container">
             Oven
             <input
@@ -453,6 +639,16 @@
             <span class="checkmark"></span>
           </label>
           <label class="checkbox-container">
+            Barbeque Corner
+            <input
+              type="checkbox"
+              value="barbequeCorne"
+              @change="toggleFacilities"
+              :checked="filters.barbequeCorne"
+            />
+            <span class="checkmark"></span>
+          </label>
+          <label class="checkbox-container">
             Coffe Machine
             <input
               type="checkbox"
@@ -472,9 +668,76 @@
             />
             <span class="checkmark"></span>
           </label>
+          <label class="checkbox-container">
+            Wood Stove
+            <input
+              type="checkbox"
+              value="woodStove"
+              @change="toggleFacilities"
+              :checked="filters.woodStove"
+            />
+            <span class="checkmark"></span>
+          </label>
         </form>
       </section>
       <!-- Kitchen Facilities Filters section  -->
+      <!-- add Facilities Filters section  -->
+      <section class="location-filter">
+        <h6>Other</h6>
+        <form class="form last-block">
+          <label class="checkbox-container">
+            Indoor With Barrier
+            <input
+              type="checkbox"
+              value="indoorWithBarrier"
+              @change="toggleFacilities"
+              :checked="filters.indoorWithBarrier"
+            />
+            <span class="checkmark"></span>
+          </label>
+          <label class="checkbox-container">
+            Indoor Without Barrier
+            <input
+              type="checkbox"
+              value="indoorWithoutBarrier"
+              @change="toggleFacilities"
+              :checked="filters.indoorWithoutBarrier"
+            />
+            <span class="checkmark"></span>
+          </label>
+          <label class="checkbox-container">
+            Outdoor With Barrier
+            <input
+              type="checkbox"
+              value="outdoorWithBarrier"
+              @change="toggleFacilities"
+              :checked="filters.outdoorWithBarrier"
+            />
+            <span class="checkmark"></span>
+          </label>
+          <label class="checkbox-container">
+            Outdoor Without Barrier
+            <input
+              type="checkbox"
+              value="outdoorWithoutBarrier"
+              @change="toggleFacilities"
+              :checked="filters.outdoorWithoutBarrier"
+            />
+            <span class="checkmark"></span>
+          </label>
+          <label class="checkbox-container">
+            Swimming With Water Games
+            <input
+              type="checkbox"
+              value="swimmingWithWaterGames"
+              @change="toggleFacilities"
+              :checked="filters.swimmingWithWaterGames"
+            />
+            <span class="checkmark"></span>
+          </label>
+        </form>
+      </section>
+      <!-- add Facilities Filters section  -->
     </div>
   </section>
 </template>
@@ -500,8 +763,46 @@ export default {
     this.filters = q;
   },
   methods: {
+    getCheckIn(ev) {
+      this.filters.checkIn = ev.target.value;
+      this.pushUrl();
+    },
+    getCheckOut(ev) {
+      this.filters.checkOut = ev.target.value;
+      this.pushUrl();
+    },
+    valueDecIn(key, op) {
+      if (op == "inc") {
+        var exist = key in this.filters;
+        if (!exist) {
+          this.filters[key] = 0;
+        }
+        this.filters[key] = this.filters[key] + 1;
+        console.log(this.filters);
+      } else {
+        if (this.filters[key] <= 0) return;
+        this.filters[key] = this.filters[key] - 1;
+      }
+      this.pushUrl();
+    },
     rentalVacation(e) {
       this.filters.rentalType = e.target.value;
+      this.pushUrl();
+    },
+    reviewsFilters(ev) {
+      if (this.filters[ev.target.value]) {
+        delete this.filters[ev.target.value];
+      } else {
+        this.filters[ev.target.value] = ev.target.value;
+      }
+      this.pushUrl();
+    },
+    reviewsValues(key, value) {
+      if (this.filters[key] == value) {
+        delete this.filters[key];
+      } else {
+        this.filters[key] = value;
+      }
       this.pushUrl();
     },
     toggleFacilities(ev) {

@@ -5,6 +5,7 @@
     <SmartBooking />
     <ExploreCity />
     <WhatCanWeDo />
+    <!-- <h1 @click="send">Send Message</h1> -->
   </default-layout>
 </template>
 
@@ -26,12 +27,22 @@ export default {
     ExploreCity,
     WhatCanWeDo,
   },
+  // methods: {
+  //   send() {
+  //     // eslint-disable-next-line
+  //     const socket = io("ws://localhost:3000/");
+  //     socket.emit("howdy", "stranger");
+  //   },
+  // },
   // mounted() {
-  //   const socket = io("http://13.229.167.135:5000");
+  //   const socket = io("ws://13.229.167.135:4000");
   //   socket.on("connect", () => {
-  //     console.log(socket.connected); // true
+  //     console.log(socket && socket.id);
+  //     console.log('connected')
   //   });
-  //   console.log(socket);
+  //   socket.on("hello", (arg) => {
+  //     console.log(arg, "=>");
+  //   });
   // },
 };
 </script>
