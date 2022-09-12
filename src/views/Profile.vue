@@ -5,14 +5,20 @@
         <h1>MY PROFILE</h1>
         <div class="profile-container">
           <div class="profile-image">
+            <img :src="url" alt="avatar" v-if="url" />
             <img
               src="../assets/images/profile-image.svg"
               alt="avatar"
-              v-if="!$store.state.auth.user || !$store.state.auth.user.file"
+              v-else-if="
+                !$store.state.auth.user || !$store.state.auth.user.file
+              "
             />
             <img :src="$store.state.auth.user.file" alt="avatar" v-else />
             <div class="camera">
-              <img src="../assets/images/camera.svg" alt />
+              <label for="inputTag">
+                <img src="../assets/images/camera.svg" alt />
+                <input id="inputTag" type="file" @change="profileImage" />
+              </label>
             </div>
           </div>
         </div>
@@ -92,6 +98,8 @@ export default {
     return {
       userProfile: {},
       loading: false,
+      url: "",
+      formData: null,
     };
   },
   mounted() {
@@ -101,10 +109,31 @@ export default {
     }
   },
   methods: {
+    profileImage(event) {
+      this.url = URL.createObjectURL(event.target.files[0]);
+      let formData = new FormData();
+      formData.append("image", event.target.files[0]);
+      this.formData = formData;
+    },
     async onSubmit(e) {
       e.preventDefault();
       try {
         this.loading = true;
+        if (this.formData) {
+          var uploadedImages = await this.uploadFiles();
+          this.userProfile.file = uploadedImages;
+          this.uploadData();
+        } else {
+          this.uploadData();
+        }
+      } catch (error) {
+        this.loading = false;
+        console.log(error);
+      }
+    },
+    async uploadData() {
+      this.loading = true;
+      try {
         var res = await this.$axios.put(
           "user/profile/update",
           this.userProfile
@@ -118,8 +147,25 @@ export default {
           });
           this.loading = false;
         }
+        this.$store.dispatch('auth/setProfile', res.data)
       } catch (error) {
         this.loading = false;
+        console.log(error);
+      }
+    },
+    async uploadFiles() {
+      try {
+        const imagesData = await this.$axios.post(
+          "user/upload",
+          this.formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+        return imagesData.data.url;
+      } catch (error) {
         console.log(error);
       }
     },
@@ -207,6 +253,9 @@ export default {
   right: 0;
   bottom: 0;
   cursor: pointer;
+}
+.profile-container .profile-image .camera input {
+  display: none;
 }
 .profile-container .profile-image .camera {
   width: 30px;

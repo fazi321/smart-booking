@@ -20,7 +20,11 @@ export default {
     },
   },
   actions: {
+    
     login({ commit }, payload) {
+      commit("SET_USER", payload);
+    },
+    setProfile({commit}, payload){
       commit("SET_USER", payload);
     },
     async profile({ commit }) {
