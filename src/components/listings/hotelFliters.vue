@@ -274,7 +274,7 @@
                 src="../../assets/images/sub.png"
                 @click="valueDecIn('bedroom', 'dec')"
               />
-              <span>{{ filters.bathrooms || 0 }}</span>
+              <span>{{ filters.bedroom || 0 }}</span>
               <img
                 src="../../assets/images/plus.png"
                 @click="valueDecIn('bedroom', 'inc')"
@@ -777,11 +777,11 @@ export default {
         if (!exist) {
           this.filters[key] = 0;
         }
-        this.filters[key] = this.filters[key] + 1;
+        this.filters[key] = parseInt(this.filters[key]) + 1;
         console.log(this.filters);
       } else {
         if (this.filters[key] <= 0) return;
-        this.filters[key] = this.filters[key] - 1;
+        this.filters[key] = parseInt(this.filters[key]) - 1;
       }
       this.pushUrl();
     },
