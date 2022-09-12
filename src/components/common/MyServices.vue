@@ -4,37 +4,64 @@
       <img src="../../assets/images/delete.svg" />
     </div>
     <router-link :to="`services/${items._id}`" class="filter-card">
-    <div class="image">
-      <img src="../../assets/images/hotel-img.svg" />
-    </div>
-    <div class="card-detail">
-      <div class="heading">
-        <h5>{{items && items.description && items.description.nameInEnglish}}</h5>
+      <div class="image" v-if="items && items.description">
+        <img
+          :src="items.description.images[0]"
+          v-if="checkLink(items.description.images[0])"
+        />
+        <img src="../../assets/images/hotel-img.svg"  />
       </div>
-      <p>The ulitimate 5 star hotel</p>
-      <p>{{items && items.address && items.address.city}}</p>
-      <p>
-        <span>{{items && items.roomsGuest && items.roomsGuest.numRooms}} Rooms</span>,
-        <span>{{items && items.roomsGuest && items.roomsGuest.bathrooms}} Bathrooms</span>
-      </p>
-      <div class="sar">
-        <h6>SAR {{items && items.price && items.price.dayPrice}}</h6>
-        <p>Per Night</p>
+      <div class="card-detail">
+        <div class="heading">
+          <h5>
+            {{ items && items.description && items.description.nameInEnglish }}
+          </h5>
+        </div>
+        <p>The ulitimate 5 star hotel</p>
+        <p>{{ items && items.address && items.address.city }}</p>
+        <p>
+          <span
+            >{{
+              items && items.roomsGuest && items.roomsGuest.numRooms
+            }}
+            Rooms</span
+          >,
+          <span
+            >{{
+              items && items.roomsGuest && items.roomsGuest.bathrooms
+            }}
+            Bathrooms</span
+          >
+        </p>
+        <div class="sar">
+          <h6>SAR {{ items && items.price && items.price.dayPrice }}</h6>
+          <p>Per Night</p>
+        </div>
       </div>
-    </div>
-  </router-link>
+    </router-link>
   </section>
 </template>
 
 <script>
 export default {
   name: "FilterCard",
-  props:['items'],
-  methods:{
-    deleteItem(id){
-      this.$emit('deleteItem', id)
-    }
-  }
+  props: ["items"],
+  methods: {
+    checkLink(isLink) {
+      if (
+        new RegExp(
+          "([a-zA-Z0-9]+://)?([a-zA-Z0-9_]+:[a-zA-Z0-9_]+@)?([a-zA-Z0-9.-]+\\.[A-Za-z]{2,4})(:[0-9]+)?(/.*)?"
+        ).test(isLink)
+      ) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+    deleteItem(id) {
+      this.$emit("deleteItem", id);
+    },
+  },
 };
 </script>
 
@@ -72,7 +99,7 @@ export default {
   font-size: 16px;
   font-weight: 600;
 }
-.card-main{
+.card-main {
   position: relative;
 }
 .card-main .wish {
@@ -81,7 +108,7 @@ export default {
   top: 35%;
   z-index: 10;
 }
-.card-main .wish img{
+.card-main .wish img {
   width: 40px;
   cursor: pointer;
 }

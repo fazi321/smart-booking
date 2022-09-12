@@ -5,7 +5,12 @@
         <h1>MY PROFILE</h1>
         <div class="profile-container">
           <div class="profile-image">
-            <img src="../assets/images/profile-image.svg" alt />
+            <img
+              src="../assets/images/profile-image.svg"
+              alt="avatar"
+              v-if="!$store.state.auth.user || !$store.state.auth.user.file"
+            />
+            <img :src="$store.state.auth.user.file" alt="avatar" v-else />
             <div class="camera">
               <img src="../assets/images/camera.svg" alt />
             </div>
@@ -251,10 +256,10 @@ export default {
   cursor: pointer;
 }
 @media (max-width: 479px) and (min-width: 320px) {
-  .profile-form{
+  .profile-form {
     margin: 0 10px;
   }
-  .profile-form .form input{
+  .profile-form .form input {
     width: 85%;
   }
 }

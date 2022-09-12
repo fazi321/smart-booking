@@ -18,7 +18,8 @@
       </button>
       <div id="demo">
         <div class="avatar" @click="toggleDropdown">
-          <img src="../../assets/images/profile.svg" alt="avatar" />
+          <img src="../../assets/images/profile.svg" alt="avatar" v-if="!$store.state.auth.user || !$store.state.auth.user.file" />
+          <img :src="$store.state.auth.user.file" alt="avatar" v-else />
         </div>
         <DropDownMenu v-if="dropDown" />
       </div>

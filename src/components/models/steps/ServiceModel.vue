@@ -531,7 +531,7 @@ export default {
     handleChange(e) {
       let formData = new FormData();
       for (let i = 0; i < e.target.files.length; i++) {
-        formData.append("image", e.target.files[i]);
+        formData.append("images", e.target.files[i]);
       }
       this.$emit('images', formData)
     },

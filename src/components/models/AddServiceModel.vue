@@ -449,7 +449,7 @@ export default {
       };
       this.finalData = this.dataPayload;
       var uploadedImages = await this.uploadFiles();
-      if (Object.keys(this.myImages).length) {
+      if (this.myImages) {
         if (uploadedImages) {
           var imagesArr = Object.values(uploadedImages);
           dataPayload.description.images = imagesArr;
@@ -491,7 +491,7 @@ export default {
     async uploadFiles() {
       try {
         const imagesData = await this.$axios.post(
-          "user/upload",
+          "http://13.229.167.135:5000/api/v1/user/upload-multiple",
           this.myImages,
           {
             headers: {
