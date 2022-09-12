@@ -5,6 +5,7 @@ export default {
   state: {
     details: [],
     categories:[],
+    btnLastLoading:false,
   },
   mutations: {
     SET_DATA(state, data) {
@@ -13,8 +14,14 @@ export default {
     SET_CAT(state, data) {
       state.categories = data;
     },
+    SET_LOADING(state, data) {
+      state.btnLastLoading = data;
+    },
   },
   actions: {
+    setLoading({commit}, payload){
+       commit("SET_LOADING", payload)
+    },
     async getCategories({commit}) {
       try {
         var res = await axios().get("services/categories");

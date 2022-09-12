@@ -49,7 +49,9 @@
         <div
           class="icon-card"
           v-if="
-            storeState && storeState.leisure && storeState.leisure.airHockey
+            storeState &&
+            storeState.leisure &&
+            storeState.leisure.airHockeyTable
           "
         >
           <div>

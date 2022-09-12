@@ -104,9 +104,9 @@ export default {
 .avatar {
   border-radius: 50%;
   overflow: hidden;
-  width: 40px;
+  width: 36px;
   background: #fff;
-  height: 40px;
+  height: 36px;
   cursor: pointer;
   box-shadow: 0 2px 5px #888888a6;
   display: flex;

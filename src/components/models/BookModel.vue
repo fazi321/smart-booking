@@ -233,7 +233,7 @@ export default {
   },
   methods: {
     async paymentBooking() {
-      var { number, month, year, cvc, name } = this.error;
+      var { number, month, year, cvc, name } = this.payments;
       if (!number) {
         return (this.error.number = true);
       }

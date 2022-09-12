@@ -1,6 +1,11 @@
 <template>
   <section :class="['login-signup', { active: model }]">
-    <OtpModel @submited="checkOTP" :model="otpModel" :otpC="verifyOtp" ref="otp"/>
+    <OtpModel
+      @submited="checkOTP"
+      :model="otpModel"
+      :otpC="verifyOtp"
+      ref="otp"
+    />
     <div class="primary-login">
       <div class="main-login">
         <div class="logo-close">
@@ -85,6 +90,12 @@ export default {
           this.verifyOtp = res.data.otp;
         }
       } catch (error) {
+        this.$swal({
+          icon: "error",
+          title: error.response.data.error,
+          showConfirmButton: false,
+          timer: 3000,
+        });
         this.isError = true;
         this.loading = false;
       }
@@ -98,7 +109,7 @@ export default {
           showConfirmButton: false,
           timer: 3000,
         });
-      }else{
+      } else {
         this.$refs.otp.error = true;
       }
     },
@@ -201,6 +212,7 @@ img {
   box-shadow: 0px 0px 3px 1px #f1f1f1;
   margin-bottom: 35px;
   align-items: center;
+  position: relative;
   width: 62%;
 }
 .container-input {

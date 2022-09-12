@@ -480,15 +480,18 @@ export default {
             showConfirmButton: false,
             timer: 3000,
           });
+          this.$store.dispatch('details/setLoading', false)
           setTimeout(() => {
             this.$router.push("/my-services");
-          }, 5000);
+          }, 3000);
         }
       } catch (error) {
+        this.$store.dispatch('details/setLoading', false)
         console.log(error);
       }
     },
     async uploadFiles() {
+      this.$store.dispatch('details/setLoading', true)
       try {
         const imagesData = await this.$axios.post(
           "http://13.229.167.135:5000/api/v1/user/upload-multiple",
@@ -501,6 +504,7 @@ export default {
         );
         return imagesData.data;
       } catch (error) {
+        this.$store.dispatch('details/setLoading', false)
         console.log(error);
       }
     },

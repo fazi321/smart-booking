@@ -9,7 +9,7 @@
           :src="items.description.images[0]"
           v-if="checkLink(items.description.images[0])"
         />
-        <img src="../../assets/images/hotel-img.svg"  />
+        <img src="../../assets/images/hotel-img.svg" v-else />
       </div>
       <div class="card-detail">
         <div class="heading">
@@ -21,16 +21,33 @@
         <p>{{ items && items.address && items.address.city }}</p>
         <p>
           <span
+           v-if="items && items.roomsGuest"
             >{{
               items && items.roomsGuest && items.roomsGuest.numRooms
             }}
             Rooms</span
-          >,
+          >
           <span
+           v-if="items && items.roomsGuest"
             >{{
               items && items.roomsGuest && items.roomsGuest.bathrooms
             }}
             Bathrooms</span
+          >
+          <!-- unit guest -->
+           <span
+           v-if="items && items.unitsAndGuest"
+            >{{
+              items && items.unitsAndGuest && items.unitsAndGuest.numberUnits
+            }}
+            Rooms </span
+          >
+          <span
+           v-if="items && items.unitsAndGuest"
+            >{{
+              items && items.unitsAndGuest && items.unitsAndGuest.bathrooms
+            }}
+             Bathrooms</span
           >
         </p>
         <div class="sar">
@@ -75,11 +92,15 @@ export default {
   cursor: pointer;
 }
 .filter-card .image {
-  width: 28%;
+  width: 35%;
   padding-left: 10px;
+  padding: 10px;
+  height: 172px;
 }
 .filter-card .image img {
   width: 100%;
+  height: 100%;
+  border-radius: 11px;
 }
 .filter-card .card-detail {
   padding: 20px;
@@ -152,6 +173,7 @@ export default {
   .filter-card .image {
     width: 40%;
     display: flex;
+    height: 110px;
   }
   .filter-card .card-detail {
     width: 60%;

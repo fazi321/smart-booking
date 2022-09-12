@@ -108,7 +108,7 @@ export default {
   text-align: left;
   padding: 10px 14px;
   border-radius: 14px;
-  z-index: 2;
+  z-index: 50;
   right: 35px;
   top: 50px;
   min-height: 503px;

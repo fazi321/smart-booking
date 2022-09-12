@@ -603,8 +603,11 @@
           </div>
         </section>
         <div class="form-container">
-          <div class="input-div">
+          <div class="input-div" v-if="!$store.state.details.btnLastLoading">
             <button type="submit" @click="submitedData">Next</button>
+          </div>
+          <div class="input-div" v-else>
+            <button type="submit">Loading...</button>
           </div>
         </div>
       </div>
