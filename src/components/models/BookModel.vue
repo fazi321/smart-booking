@@ -9,110 +9,110 @@
         <div class="service-heading">
           <h2>Booking</h2>
         </div>
-        <div class="booking-card">
-          <BookCard />
-        </div>
-        <div class="service-details">
-          <div>
-            <p>Check-in Date</p>
-            <p>{{ checkIn.checkInDate }}</p>
+
+        <div class="main-wrapper">
+          <div class="booking-card">
+            <BookCard />
           </div>
-          <div>
-            <p>Check-out Date</p>
-            <p>{{ checkIn.checkOutDate }}</p>
-          </div>
-          <div>
-            <p>Nights</p>
-            <div class="count">
-              <img src="../../assets/images/sub.png" @click="executer('dec')" />
-              <span>{{ rooms }}</span>
-              <img
-                src="../../assets/images/plus.png"
-                @click="executer('inc')"
-              />
+          <div class="service-details">
+            <div>
+              <p>Check-in Date</p>
+              <p>{{ checkIn.checkInDate }}</p>
+            </div>
+            <div>
+              <p>Check-out Date</p>
+              <p>{{ checkIn.checkOutDate }}</p>
+            </div>
+            <div>
+              <p>Nights</p>
+              <div class="count">
+                <img src="../../assets/images/sub.png" @click="executer('dec')" />
+                <span>{{ rooms }}</span>
+                <img src="../../assets/images/plus.png" @click="executer('inc')" />
+              </div>
+            </div>
+            <div>
+              <p>Vendor ID</p>
+              <p>{{ storeState.vender }}</p>
             </div>
           </div>
-          <div>
-            <p>Vendor ID</p>
-            <p>{{ storeState.vender }}</p>
-          </div>
-        </div>
-        <!-- Payment Options  -->
-        <section class="Payment">
-          <h6>Payment Options</h6>
-          <form class="form">
-            <label class="checkbox-container">
-              Full Payment (SAR {{ storeState.price.dayPrice }})
-              <input type="checkbox" />
-              <span class="checkmark"></span>
-            </label>
-            <div class="payment-option">
+          <!-- Payment Options  -->
+          <section class="Payment">
+            <h6>Payment Options</h6>
+            <form class="form">
               <label class="checkbox-container">
-                Partial Payment (SAR {{ halfPrice }})
+                Full Payment (SAR {{ storeState.price.dayPrice }})
                 <input type="checkbox" />
                 <span class="checkmark"></span>
               </label>
-              <p>You can pay the remaining amount at the location</p>
+              <div class="payment-option">
+                <label class="checkbox-container">
+                  Partial Payment (SAR {{ halfPrice }})
+                  <input type="checkbox" />
+                  <span class="checkmark"></span>
+                </label>
+                <p>You can pay the remaining amount at the location</p>
+              </div>
+            </form>
+          </section>
+          <!-- Payment Options  -->
+          <!-- Payment Method  -->
+          <section class="Payment">
+            <h6>Payment Method</h6>
+            <form class="form">
+              <div class="payment-option">
+                <label class="checkbox-container">
+                  <img src="../../assets/images/master.png" />
+                  <img src="../../assets/images/visa.svg" />
+                  <input type="radio" name="payments" v-model="paymentMethod" />
+                  <span class="checkmark"></span>
+                </label>
+                <p>You can pay with Visa or MasterCard</p>
+              </div>
+              <div class="payment-option">
+                <label class="checkbox-container">
+                  <img src="../../assets/images/pay.svg" />
+                  <input type="radio" name="payments" v-model="paymentMethod" />
+                  <span class="checkmark"></span>
+                </label>
+                <p>You can pay with ApplePay</p>
+              </div>
+              <div class="payment-option tamara">
+                <label class="checkbox-container">
+                  <img src="../../assets/images/tamara.png" />
+                  <input type="radio" name="payments" v-model="paymentMethod" />
+                  <span class="checkmark"></span>
+                </label>
+                <p>Pay with installments with no interest</p>
+              </div>
+            </form>
+          </section>
+          <!-- Payment Method  -->
+          <div class="terms-container">
+            <div>
+              <h4>Terms & Conditions</h4>
+              <ul>
+                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+              </ul>
             </div>
-          </form>
-        </section>
-        <!-- Payment Options  -->
-        <!-- Payment Method  -->
-        <section class="Payment">
-          <h6>Payment Method</h6>
-          <form class="form">
-            <div class="payment-option">
-              <label class="checkbox-container">
-                <img src="../../assets/images/master.png" />
-                <img src="../../assets/images/visa.svg" />
-                <input type="radio" name="payments" v-model="paymentMethod" />
-                <span class="checkmark"></span>
-              </label>
-              <p>You can pay with Visa or MasterCard</p>
+            <div>
+              <h4>Cancellation Policy</h4>
+              <ul>
+                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+              </ul>
             </div>
-            <div class="payment-option">
-              <label class="checkbox-container">
-                <img src="../../assets/images/pay.svg" />
-                <input type="radio" name="payments" v-model="paymentMethod" />
-                <span class="checkmark"></span>
-              </label>
-              <p>You can pay with ApplePay</p>
-            </div>
-            <div class="payment-option tamara">
-              <label class="checkbox-container">
-                <img src="../../assets/images/tamara.png" />
-                <input type="radio" name="payments" v-model="paymentMethod" />
-                <span class="checkmark"></span>
-              </label>
-              <p>Pay with installments with no interest</p>
-            </div>
-          </form>
-        </section>
-        <!-- Payment Method  -->
-        <div class="terms-container">
-          <div>
-            <h4>Terms & Conditions</h4>
-            <ul>
-              <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-              <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-              <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-            </ul>
-          </div>
-          <div>
-            <h4>Cancellation Policy</h4>
-            <ul>
-              <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-              <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-              <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-            </ul>
           </div>
         </div>
         <div class="book-btn">
           <button @click="bookingForm" :disabled="loadingBook">
             {{
-              !loadingBook
-                ? `Pay (SAR ${storeState.price.dayPrice} )`
-                : "Loading..."
+            !loadingBook
+            ? `Pay (SAR ${storeState.price.dayPrice} )`
+            : "Loading..."
             }}
           </button>
         </div>
@@ -132,52 +132,32 @@
             <div class="inputs-payments">
               <div>
                 <div class="input-primary">
-                  <input
-                    :class="{ active: error.number && !payments.number }"
-                    type="number"
-                    :placeholder="'Number'"
-                    v-model="payments.number"
-                  />
+                  <input :class="{ active: error.number && !payments.number }" type="number" :placeholder="'Number'"
+                    v-model="payments.number" />
                 </div>
               </div>
               <div>
                 <div class="input-primary">
-                  <input
-                    :class="{ active: error.month && !payments.month }"
-                    type="number"
-                    :placeholder="'Month'"
-                    v-model="payments.month"
-                  />
+                  <input :class="{ active: error.month && !payments.month }" type="number" :placeholder="'Month'"
+                    v-model="payments.month" />
                 </div>
               </div>
               <div>
                 <div class="input-primary">
-                  <input
-                    :class="{ active: error.year && !payments.year }"
-                    type="number"
-                    :placeholder="'Year'"
-                    v-model="payments.year"
-                  />
+                  <input :class="{ active: error.year && !payments.year }" type="number" :placeholder="'Year'"
+                    v-model="payments.year" />
                 </div>
               </div>
               <div>
                 <div class="input-primary">
-                  <input
-                    :class="{ active: error.cvc && !payments.cvc }"
-                    type="number"
-                    :placeholder="'CVC'"
-                    v-model="payments.cvc"
-                  />
+                  <input :class="{ active: error.cvc && !payments.cvc }" type="number" :placeholder="'CVC'"
+                    v-model="payments.cvc" />
                 </div>
               </div>
               <div>
                 <div class="input-primary">
-                  <input
-                    type="text"
-                    :class="{ active: error.name && !payments.name }"
-                    :placeholder="'Name'"
-                    v-model="payments.name"
-                  />
+                  <input type="text" :class="{ active: error.name && !payments.name }" :placeholder="'Name'"
+                    v-model="payments.name" />
                 </div>
               </div>
             </div>
@@ -185,9 +165,9 @@
           <div class="book-btn">
             <button @click="paymentBooking" :disabled="loadingPay">
               {{
-                !loadingPay
-                  ? `Pay (SAR ${storeState.price.dayPrice} )`
-                  : "Loading..."
+              !loadingPay
+              ? `Pay (SAR ${storeState.price.dayPrice} )`
+              : "Loading..."
               }}
             </button>
           </div>
@@ -356,14 +336,20 @@ export default {
 </script>
 
 <style scoped>
+  .main-wrapper{
+    height: 400px;
+    overflow-y: scroll;
+  }
 .count img {
   width: 25px;
   cursor: pointer;
 }
+
 .count span {
   min-width: 20px;
   font-weight: bold;
 }
+
 .login-signup {
   position: fixed;
   top: 0;
@@ -376,22 +362,25 @@ export default {
   align-items: center;
   z-index: 99;
 }
+
 .primary-login {
   width: 52%;
   background: #fff;
-  height: 550px;
+  height: 480px;
   padding: 25px 0;
   border-radius: 20px;
   position: relative;
-  overflow: scroll;
 }
+
 .primary-login::-webkit-scrollbar {
   display: none;
 }
+
 .primary-login {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
 .close-icon {
   cursor: pointer;
   top: 15px;
@@ -402,22 +391,27 @@ export default {
   cursor: pointer;
   z-index: 99;
 }
+
 .service-heading h2 {
   letter-spacing: 0px;
   color: #000000;
   opacity: 0.8;
   font-size: 20px;
+  padding-bottom: 15px;
 }
+
 .service-details {
   padding: 10px 20px;
   border-bottom: 1px solid #eee;
 }
+
 .service-details div {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 8px 0;
 }
+
 .service-details div p {
   text-align: left;
   letter-spacing: 0px;
@@ -425,29 +419,35 @@ export default {
   opacity: 1;
   font-size: 14px;
 }
+
 .booking-card {
-  margin-top: 40px;
+  margin-top: 20px;
   padding: 0 20px;
 }
+
 .form {
   padding: 20px;
   border-bottom: 0.5px solid #0000000f;
   text-align: left;
 }
+
 .form .checkbox {
   margin: 10px 0 15px 0;
   display: flex;
   align-items: center;
 }
+
 .tamara .checkbox-container img {
   width: 70px !important;
   height: 22px;
 }
+
 .checkbox-container img {
   width: 44px;
   margin-right: 15px;
   margin-bottom: 5px;
 }
+
 .checkbox-container {
   display: flex;
   align-items: center;
@@ -463,6 +463,7 @@ export default {
   color: #000000;
   height: 25px;
 }
+
 .checkbox-container input {
   position: absolute;
   opacity: 0;
@@ -470,6 +471,7 @@ export default {
   height: 0;
   width: 0;
 }
+
 .checkmark {
   position: absolute;
   top: 3px;
@@ -481,17 +483,21 @@ export default {
   box-shadow: 0px 0px 4px #0000000f;
   opacity: 1;
 }
-.checkbox-container input:checked ~ .checkmark {
+
+.checkbox-container input:checked~.checkmark {
   background-color: #2196f3;
 }
+
 .checkmark:after {
   content: "";
   position: absolute;
   display: none;
 }
-.checkbox-container input:checked ~ .checkmark:after {
+
+.checkbox-container input:checked~.checkmark:after {
   display: block;
 }
+
 .checkbox-container .checkmark:after {
   left: 7px;
   top: 4px;
@@ -503,6 +509,7 @@ export default {
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
+
 .Payment h6 {
   font-size: 14px;
   text-align: left;
@@ -511,9 +518,11 @@ export default {
   opacity: 0.8;
   padding: 15px 15px 0 20px;
 }
+
 .payment-option {
   padding: 12px 0;
 }
+
 .payment-option p {
   text-align: left;
   letter-spacing: 0px;
@@ -524,11 +533,13 @@ export default {
   margin-top: -10px;
   font-weight: 200;
 }
+
 .terms-container {
   padding: 15px 20px;
   display: flex;
   justify-content: space-between;
 }
+
 .terms-container h4 {
   text-align: left;
   letter-spacing: 0.4px;
@@ -537,14 +548,17 @@ export default {
   font-size: 16px;
   padding: 5px 0 10px 0;
 }
-.terms-container > div {
+
+.terms-container>div {
   width: 50%;
 }
-.terms-container > div ul {
+
+.terms-container>div ul {
   list-style: disc;
   padding-left: 15px;
 }
-.terms-container > div ul li {
+
+.terms-container>div ul li {
   text-align: left;
   letter-spacing: 0px;
   color: #000000;
@@ -552,9 +566,11 @@ export default {
   font-size: 11px;
   line-height: 1.8;
 }
+
 .book-btn {
-  margin: 30px;
+  margin: 15px;
 }
+
 .book-btn button {
   border: none;
   outline: none;
@@ -570,11 +586,13 @@ export default {
   background: #febb12;
   cursor: pointer;
 }
+
 .inputs-main {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
 }
+
 .inputs-payments {
   display: flex;
   width: 80%;
@@ -582,6 +600,7 @@ export default {
   margin-top: 30px;
   flex-wrap: wrap;
 }
+
 .inputs-payments .input-primary input {
   outline: none;
   font-size: 12px;
@@ -593,12 +612,15 @@ export default {
   min-width: 230px;
   margin: 8px 0;
 }
+
 .inputs-payments .input-primary .active {
   border: 1px solid red;
 }
+
 .payment {
   height: 300px;
 }
+
 /* responsive */
 @media (max-width: 479px) and (min-width: 320px) {
   .primary-login {
