@@ -113,17 +113,23 @@ export default {
 </script>
 
 <style scoped>
+#demo{
+  display: flex;
+  align-items: center;
+}
 .avatar {
   border-radius: 50%;
   overflow: hidden;
-  width: 36px;
+  width: 38px;
   background: #fff;
-  height: 36px;
+  height: 38px;
   cursor: pointer;
   box-shadow: 0 2px 5px #888888a6;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  top:1px;
 }
 .add-services {
   padding: 12px 20px !important;

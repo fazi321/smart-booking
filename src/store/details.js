@@ -35,7 +35,7 @@ export default {
       try {
         const dataDetail = await axios().get(`${payload.cate}/${payload.id}`);
         // services
-        console.log(dataDetail)
+        // console.log(dataDetail)
         if(payload.cate == 'services'){
           commit("SET_DATA", dataDetail.data);
         }else{

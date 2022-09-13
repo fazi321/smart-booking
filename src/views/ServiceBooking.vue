@@ -50,7 +50,7 @@ export default {
     async getData() {
       try {
         var res = await this.$axios.get(`booking`);
-        console.log(res.data, "-->");
+        // console.log(res.data, "-->");
         this.dataCard = res.data;
       } catch (error) {
         console.log(error);

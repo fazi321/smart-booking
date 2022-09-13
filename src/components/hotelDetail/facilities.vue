@@ -2,7 +2,7 @@
   <section class="facilities-container">
     <h5>Amenities</h5>
     <!-- Sports -->
-    <div class="facility-icons">
+    <div class="facility-icons" v-if="sportsCheck">
       <h6>Sports</h6>
       <div class="facility-card">
         <div
@@ -81,7 +81,22 @@
         <div
           class="icon-card"
           v-if="
-            storeState && storeState.leisure && storeState.leisure.vollyBall
+            storeState && storeState.leisure && storeState.leisure.trambolin
+          "
+        >
+          <div>
+            <div class="icon-img">
+              <div>
+                <img src="../../assets/images/vollybal.svg" alt />
+              </div>
+            </div>
+            <p>Trambolin</p>
+          </div>
+        </div>
+        <div
+          class="icon-card"
+          v-if="
+            storeState && storeState.leisure && storeState.leisure.volleyBall
           "
         >
           <div>
@@ -97,7 +112,7 @@
     </div>
     <!-- Sports -->
     <!-- Leisure -->
-    <div class="facility-icons">
+    <div class="facility-icons" v-if="Leisure">
       <h6>Leisure</h6>
       <div class="facility-card">
         <div
@@ -113,6 +128,51 @@
               </div>
             </div>
             <p>Steam Bath</p>
+          </div>
+        </div>
+        <div
+          class="icon-card"
+          v-if="
+            storeState && storeState.leisure && storeState.leisure.airSlider
+          "
+        >
+          <div>
+            <div class="icon-img">
+              <div>
+                <img src="../../assets/images/steam.svg" alt />
+              </div>
+            </div>
+            <p>Air Slider</p>
+          </div>
+        </div>
+        <div
+          class="icon-card"
+          v-if="
+            storeState && storeState.leisure && storeState.leisure.sandGames
+          "
+        >
+          <div>
+            <div class="icon-img">
+              <div>
+                <img src="../../assets/images/steam.svg" alt />
+              </div>
+            </div>
+            <p>Sand Games</p>
+          </div>
+        </div>
+        <div
+          class="icon-card"
+          v-if="
+            storeState && storeState.leisure && storeState.leisure.waterGames
+          "
+        >
+          <div>
+            <div class="icon-img">
+              <div>
+                <img src="../../assets/images/steam.svg" alt />
+              </div>
+            </div>
+            <p>Water Games</p>
           </div>
         </div>
         <div
@@ -154,7 +214,7 @@
           v-if="
             storeState &&
             storeState.leisure &&
-            storeState.leisure.SwimmingPoolHeater
+            storeState.leisure.swimmingPoolWithHeat
           "
         >
           <div>
@@ -164,6 +224,21 @@
               </div>
             </div>
             <p>Swimming Pool Heater</p>
+          </div>
+        </div>
+        <div
+          class="icon-card"
+          v-if="
+            storeState && storeState.leisure && storeState.leisure.hairStylist
+          "
+        >
+          <div>
+            <div class="icon-img">
+              <div>
+                <img src="../../assets/images/steam.svg" alt />
+              </div>
+            </div>
+            <p>Hair Stylist</p>
           </div>
         </div>
         <div
@@ -183,6 +258,19 @@
         </div>
         <div
           class="icon-card"
+          v-if="storeState && storeState.leisure && storeState.leisure.spa"
+        >
+          <div>
+            <div class="icon-img">
+              <div>
+                <img src="../../assets/images/steam.svg" alt />
+              </div>
+            </div>
+            <p>Spa</p>
+          </div>
+        </div>
+        <div
+          class="icon-card"
           v-if="storeState && storeState.leisure && storeState.leisure.hotTub"
         >
           <div>
@@ -196,9 +284,8 @@
         </div>
       </div>
     </div>
-    <!-- Leisure -->
     <!-- Home Amenities -->
-    <div class="facility-icons">
+    <div class="facility-icons" v-if="Amenities">
       <h6>Home Amenities</h6>
       <div class="facility-card">
         <div
@@ -221,7 +308,7 @@
           v-if="
             storeState &&
             storeState.leisure &&
-            storeState.leisure.wheelChairAccess
+            storeState.leisure.weelChaireAccess
           "
         >
           <div>
@@ -263,6 +350,129 @@
             <p>Doorman</p>
           </div>
         </div>
+        <div
+          class="icon-card"
+          v-if="storeState && storeState.leisure && storeState.leisure.parking"
+        >
+          <div>
+            <div class="icon-img">
+              <div>
+                <img src="../../assets/images/doorman.svg" alt />
+              </div>
+            </div>
+            <p>Parking</p>
+          </div>
+        </div>
+        <div
+          class="icon-card"
+          v-if="storeState && storeState.leisure && storeState.leisure.elevator"
+        >
+          <div>
+            <div class="icon-img">
+              <div>
+                <img src="../../assets/images/doorman.svg" alt />
+              </div>
+            </div>
+            <p>Elevator</p>
+          </div>
+        </div>
+        <div
+          class="icon-card"
+          v-if="storeState && storeState.leisure && storeState.leisure.saftyBox"
+        >
+          <div>
+            <div class="icon-img">
+              <div>
+                <img src="../../assets/images/doorman.svg" alt />
+              </div>
+            </div>
+            <p>Safty Box</p>
+          </div>
+        </div>
+        <div
+          class="icon-card"
+          v-if="
+            storeState &&
+            storeState.leisure &&
+            storeState.leisure.airConditioning
+          "
+        >
+          <div>
+            <div class="icon-img">
+              <div>
+                <img src="../../assets/images/doorman.svg" alt />
+              </div>
+            </div>
+            <p>Air Conditioning</p>
+          </div>
+        </div>
+        <div
+          class="icon-card"
+          v-if="storeState && storeState.leisure && storeState.leisure.tv"
+        >
+          <div>
+            <div class="icon-img">
+              <div>
+                <img src="../../assets/images/doorman.svg" alt />
+              </div>
+            </div>
+            <p>tv</p>
+          </div>
+        </div>
+        <div
+          class="icon-card"
+          v-if="storeState && storeState.leisure && storeState.leisure.wifi"
+        >
+          <div>
+            <div class="icon-img">
+              <div>
+                <img src="../../assets/images/doorman.svg" alt />
+              </div>
+            </div>
+            <p>Wifi</p>
+          </div>
+        </div>
+        <div
+          class="icon-card"
+          v-if="storeState && storeState.leisure && storeState.leisure.speakers"
+        >
+          <div>
+            <div class="icon-img">
+              <div>
+                <img src="../../assets/images/doorman.svg" alt />
+              </div>
+            </div>
+            <p>Speakers</p>
+          </div>
+        </div>
+        <div
+          class="icon-card"
+          v-if="storeState && storeState.leisure && storeState.leisure.stage"
+        >
+          <div>
+            <div class="icon-img">
+              <div>
+                <img src="../../assets/images/doorman.svg" alt />
+              </div>
+            </div>
+            <p>Stage</p>
+          </div>
+        </div>
+        <div
+          class="icon-card"
+          v-if="
+            storeState && storeState.leisure && storeState.leisure.laserLights
+          "
+        >
+          <div>
+            <div class="icon-img">
+              <div>
+                <img src="../../assets/images/doorman.svg" alt />
+              </div>
+            </div>
+            <p>Laser Lights</p>
+          </div>
+        </div>
       </div>
     </div>
     <!-- Home Amenities -->
@@ -275,6 +485,63 @@ export default {
   computed: {
     storeState: function () {
       return this.$store.state.details.details;
+    },
+    sportsCheck: function () {
+      if (
+        (this.storeState.leisure && this.storeState.leisure.gym) ||
+        (this.storeState.leisure && this.storeState.leisure.billard) ||
+        (this.storeState.leisure && this.storeState.leisure.tennisCourt) ||
+        (this.storeState.leisure && this.storeState.leisure.soccerField) ||
+        (this.storeState.leisure && this.storeState.leisure.trambolin) ||
+        (this.storeState.leisure && this.storeState.leisure.volleyBall) ||
+        (this.storeState.leisure && this.storeState.leisure.airHockeyTable)
+      ) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+    Leisure: function () {
+      if (
+        (this.storeState.leisure && this.storeState.leisure.steamBath) ||
+        (this.storeState.leisure &&
+          this.storeState.leisure.indoorSwimmingPool) ||
+        (this.storeState.leisure &&
+          this.storeState.leisure.outdoorSwimmingPool) ||
+        (this.storeState.leisure && this.storeState.leisure.hairStylist) ||
+        (this.storeState.leisure && this.storeState.leisure.airSlider) ||
+        (this.storeState.leisure && this.storeState.leisure.sandGames) ||
+        (this.storeState.leisure && this.storeState.leisure.waterGames) ||
+        (this.storeState.leisure &&
+          this.storeState.leisure.swimmingPoolWithHeat) ||
+        (this.storeState.leisure && this.storeState.leisure.playground) ||
+        (this.storeState.leisure && this.storeState.leisure.spa) ||
+        (this.storeState.leisure && this.storeState.leisure.hotTub)
+      ) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+    Amenities: function () {
+      if (
+        (this.storeState.leisure && this.storeState.leisure.weelChaireAccess) ||
+        (this.storeState.leisure && this.storeState.leisure.privateEntrance) ||
+        (this.storeState.leisure && this.storeState.leisure.doorman) ||
+        (this.storeState.leisure && this.storeState.leisure.parking) ||
+        (this.storeState.leisure && this.storeState.leisure.elevator) ||
+        (this.storeState.leisure && this.storeState.leisure.saftyBox) ||
+        (this.storeState.leisure && this.storeState.leisure.tv) ||
+        (this.storeState.leisure && this.storeState.leisure.wifi) ||
+        (this.storeState.leisure && this.storeState.leisure.speakers) ||
+        (this.storeState.leisure && this.storeState.leisure.stage) ||
+        (this.storeState.leisure && this.storeState.leisure.accessInHours) ||
+        (this.storeState.leisure && this.storeState.leisure.laserLights)
+      ) {
+        return true;
+      } else {
+        return false;
+      }
     },
   },
 };
