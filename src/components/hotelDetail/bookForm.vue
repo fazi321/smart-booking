@@ -255,7 +255,7 @@ export default {
   color: #0e4763;
   font-size: 14px;
   width: 100%;
-  padding: 20px 0;
+  padding: 16px 0;
 }
 .book-btn {
   margin: 30px;
