@@ -114,11 +114,11 @@ export default {
           otp: otp,
         });
         if (res) {
-          Cookies.set("Authorization", this.userData.token, { expires: 7 });
+          Cookies.set("Authorization", res.data.token, { expires: 7 });
           this.$axios.defaults.headers.common[
             "Authorization"
-          ] = `bearer ${this.userData.token}`;
-          this.$store.dispatch("auth/login", this.userData.user);
+          ] = `bearer ${res.data.token}`;
+          this.$store.dispatch("auth/login", res.data.update);
           this.close();
           this.$swal({
             icon: "success",

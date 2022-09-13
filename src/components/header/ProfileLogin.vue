@@ -10,15 +10,27 @@
     </section>
     <!-- after login -->
     <section v-else class="dropdown-container">
-      <button class="btn btn-transparent" v-if="$store.state.auth.user.verify" @click="vendorModelShow">
+      <button
+        class="btn btn-transparent"
+        v-if="$store.state.auth.user.verify"
+        @click="vendorModelShow"
+      >
         Become Vendor
       </button>
-      <button class="btn btn-filled add-services" v-if="$store.state.auth.user.verify" @click="serviceModelShow">
+      <button
+        class="btn btn-filled add-services"
+        v-if="$store.state.auth.user.verify && $store.state.auth.user.host || $store.state.auth.user.verify && $store.state.auth.user.company"
+        @click="serviceModelShow"
+      >
         Add Service
       </button>
       <div id="demo">
         <div class="avatar" @click="toggleDropdown">
-          <img src="../../assets/images/profile.svg" alt="avatar" v-if="!$store.state.auth.user || !$store.state.auth.user.file" />
+          <img
+            src="../../assets/images/profile.svg"
+            alt="avatar"
+            v-if="!$store.state.auth.user || !$store.state.auth.user.file"
+          />
           <img :src="$store.state.auth.user.file" alt="avatar" v-else />
         </div>
         <DropDownMenu v-if="dropDown" />
@@ -89,14 +101,14 @@ export default {
       this.serviceModel = !this.serviceModel;
     },
   },
-  created(){
-     let auth = Cookies.get("Authorization");
-     if(!auth){
-       this.user =  false;
-     }else{
-       this.user = true;
-     }
-  }
+  created() {
+    let auth = Cookies.get("Authorization");
+    if (!auth) {
+      this.user = false;
+    } else {
+      this.user = true;
+    }
+  },
 };
 </script>
 
