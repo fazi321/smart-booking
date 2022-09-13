@@ -47,6 +47,7 @@ export default {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  padding-bottom: 50px;
 }
 .details-main .detail-left {
   width: 60%;

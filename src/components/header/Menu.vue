@@ -44,7 +44,7 @@ export default {
   color: gray;
   font-size: 14px;
   font-weight: 500;
-  padding: 10px 30px;
+  padding: 10px 25px;
 }
 
 .nav ul li a:hover {

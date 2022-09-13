@@ -83,7 +83,7 @@ export default {
   color: #000000;
   opacity: 0.4;
   font-size: 12px;
-  padding: 15px 30px;
+  padding: 15px 25px;
   cursor: pointer;
 }
 .detail-tabs .tabs .active {
