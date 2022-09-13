@@ -53,7 +53,7 @@ export default {
   width: 60%;
 }
 .details-main .detail-right {
-  width: 30%;
+  width: 28%;
 }
 @media (max-width: 479px) and (min-width: 320px) {
   .details-main .detail-left {

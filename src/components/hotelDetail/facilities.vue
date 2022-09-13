@@ -334,8 +334,8 @@ export default {
   align-items: center;
 }
 .facility-card .icon-card .icon-img div {
-  width: 40px;
-  height: 40px;
+  width: 38px;
+  height: 38px;
   display: flex;
   justify-content: center;
   align-items: center;

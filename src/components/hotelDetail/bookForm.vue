@@ -210,7 +210,7 @@ export default {
   padding: 20px 0;
 }
 .book-container .heading h6 {
-  font-size: 24px;
+  font-size: 18px;
   text-align: center;
   letter-spacing: 2.04px;
   color: #febb12;
