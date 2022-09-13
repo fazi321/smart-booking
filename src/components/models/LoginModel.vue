@@ -1,6 +1,11 @@
 <template>
   <section :class="['login-signup', { active: model }]">
-    <OtpModel @submited="checkOTP" :model="otpModel" :otpC="verifyOtp" ref="otp"/>
+    <OtpModel
+      @submited="checkOTP"
+      :model="otpModel"
+      :otpC="verifyOtp"
+      ref="otp"
+    />
     <div class="primary-login">
       <div class="main-login">
         <div class="logo-close">
@@ -94,20 +99,39 @@ export default {
     },
     checkOTP(val) {
       if (this.verifyOtp == val) {
+        this.varify(this.verifyOtp);
         // var time = new Date(new Date().getTime() + 1 * 60 * 1000);
-        Cookies.set("Authorization", this.userData.token, { expires: 7 });
-        this.$axios.defaults.headers.common["Authorization"] =  `bearer ${this.userData.token}`
-        this.$store.dispatch("auth/login", this.userData.user);
-        this.close();
-        this.$swal({
-          icon: "success",
-          title: "Success!",
-          showConfirmButton: false,
-          timer: 3000,
-        });
-        this.otpModel = false;
-      }else{
+      } else {
         this.$refs.otp.error = true;
+      }
+    },
+    async varify(otp) {
+      this.$refs.otp.otploading = true;
+      try {
+        var phone = this.userData.user.phone;
+        const res = await this.$axios.post("user/verify", {
+          phone: `${phone}`,
+          otp: otp,
+        });
+        if (res) {
+          Cookies.set("Authorization", this.userData.token, { expires: 7 });
+          this.$axios.defaults.headers.common[
+            "Authorization"
+          ] = `bearer ${this.userData.token}`;
+          this.$store.dispatch("auth/login", this.userData.user);
+          this.close();
+          this.$swal({
+            icon: "success",
+            title: "Success!",
+            showConfirmButton: false,
+            timer: 3000,
+          });
+          this.$refs.otp.otploading = false;
+          this.otpModel = false;
+        }
+      } catch (error) {
+        this.$refs.otp.otploading = false;
+        console.log(error);
       }
     },
     SignUpModel() {
@@ -136,7 +160,7 @@ export default {
   bottom: 0;
   width: 100%;
   bottom: -35px;
-  left:0;
+  left: 0;
 }
 .login-signup {
   position: fixed;

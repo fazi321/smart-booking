@@ -1,7 +1,7 @@
 <template>
   <section :class="['login-signup', { active: model }]">
     <div class="primary-login">
-      <h1>{{otpC}}</h1>
+      <h1>{{ otpC }}</h1>
       <div class="main-login">
         <div class="logo-close">
           <div class="logo">
@@ -29,11 +29,16 @@
             />
           </div>
           <div v-if="error" class="error">Invalid Otp</div>
-          <div class="input-div">
-            <button type="submit" v-if="otp.length == 4" @click="submitOtp">
-              Verify
-            </button>
-            <button class="submit-div" v-else>Verify</button>
+          <div >
+            <div class="input-div" v-if="!otploading">
+              <button type="submit" v-if="otp.length == 4" @click="submitOtp">
+                Verify
+              </button>
+              <button class="submit-div" v-else>Verify</button>
+            </div>
+            <div class="input-div" v-else>
+              <button class="submit-div">Loading...</button>
+            </div>
           </div>
           <!-- <div class="buttom-text">
             Don’t Have an Account? <span @click="SignUpModel">Sign Up </span>
@@ -58,6 +63,7 @@ export default {
     return {
       otp: "",
       error: false,
+      otploading: false,
     };
   },
   methods: {

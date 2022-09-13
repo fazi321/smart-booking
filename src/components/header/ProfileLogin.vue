@@ -10,10 +10,10 @@
     </section>
     <!-- after login -->
     <section v-else class="dropdown-container">
-      <button class="btn btn-transparent" @click="vendorModelShow">
+      <button class="btn btn-transparent" v-if="$store.state.auth.user.verify" @click="vendorModelShow">
         Become Vendor
       </button>
-      <button class="btn btn-filled add-services" @click="serviceModelShow">
+      <button class="btn btn-filled add-services" v-if="$store.state.auth.user.verify" @click="serviceModelShow">
         Add Service
       </button>
       <div id="demo">
