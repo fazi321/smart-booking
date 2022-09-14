@@ -467,9 +467,9 @@ export default {
       if (cate == "wedding_halls") {
         cate = "weddinghalls";
       }
-      if (cate == "chalets") {
-        cate = "chalet";
-      }
+      // if (cate == "chalets") {
+      //   cate = "chalet";
+      // }
       try {
         const res = await this.$axios.post(cate, payload);
         if (res) {

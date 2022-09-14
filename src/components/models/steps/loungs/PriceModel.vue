@@ -177,11 +177,11 @@
             <div class="date-input">
               <div @click="showModelDate('cn')">
                 <!-- <input type="text" placeholder="Check in" v-model="checkIn" /> -->
-                <input type="time" v-model="checkIn" id="date" ref="cn" />
+                <input type="date" v-model="checkIn" id="date" ref="cn" />
               </div>
               <div @click="showModelDate('co')">
                 <!-- <input type="text" placeholder="Check out" v-model="checkOut" /> -->
-                <input type="time" v-model="checkOut" id="date" ref="co" />
+                <input type="date" v-model="checkOut" id="date" ref="co" />
               </div>
             </div>
           </div>
@@ -218,7 +218,10 @@
                   }"
                   @click="bookSettings('Families_and_Singles')"
                 >
-                  <img src="../../../../assets/images/familiesSingle.svg" alt="" />
+                  <img
+                    src="../../../../assets/images/familiesSingle.svg"
+                    alt=""
+                  />
                   <h6>Families &</h6>
                   <h6>Singles</h6>
                 </div>
@@ -504,7 +507,10 @@
               <div class="price-checkbox">
                 <label class="container-input"
                   >Wedding Arrangements
-                  <input type="checkbox" v-model="addOnsCheck.weddingArrangements" />
+                  <input
+                    type="checkbox"
+                    v-model="addOnsCheck.weddingArrangements"
+                  />
                   <span class="checkmark"></span>
                 </label>
               </div>
@@ -612,6 +618,10 @@ export default {
     };
   },
   methods: {
+    dateFormate(value) {
+      var date = new Date(value);
+      return date.toLocaleDateString("en-GB");
+    },
     submitedData() {
       // price
       const newObj = {};
@@ -626,9 +636,11 @@ export default {
       }
       //  time check in out
       var check = {};
-      if (this.checkIn && this.checkOut) {
-        check.checkInTime = this.timeFormate(this.checkIn);
-        check.checkOutTime = this.timeFormate(this.checkOut);
+      if (this.checkIn) {
+        check.checkInTime = this.dateFormate(this.checkIn);
+      }
+      if (this.checkOut) {
+        check.checkOutTime = this.dateFormate(this.checkOut);
       }
       // addon's
       const newAddon = {};
@@ -666,27 +678,27 @@ export default {
     showBookPop(val) {
       (this.step = ""), (this.showPopUp = val);
     },
-    timeFormate(time) {
-      var timeSplit = time.split(":"),
-        hours,
-        minutes,
-        meridian;
-      hours = timeSplit[0];
-      minutes = timeSplit[1];
-      if (hours > 12) {
-        meridian = "PM";
-        hours -= 12;
-      } else if (hours < 12) {
-        meridian = "AM";
-        if (hours == 0) {
-          hours = 12;
-        }
-      } else {
-        meridian = "PM";
-      }
-      var timeIs = hours + ":" + minutes + ":" + meridian;
-      return timeIs;
-    },
+    // timeFormate(time) {
+    //   var timeSplit = time.split(":"),
+    //     hours,
+    //     minutes,
+    //     meridian;
+    //   hours = timeSplit[0];
+    //   minutes = timeSplit[1];
+    //   if (hours > 12) {
+    //     meridian = "PM";
+    //     hours -= 12;
+    //   } else if (hours < 12) {
+    //     meridian = "AM";
+    //     if (hours == 0) {
+    //       hours = 12;
+    //     }
+    //   } else {
+    //     meridian = "PM";
+    //   }
+    //   var timeIs = hours + ":" + minutes + ":" + meridian;
+    //   return timeIs;
+    // },
     changeStep(step) {
       // if (!this.serviceType) return;
       this.step = step;
