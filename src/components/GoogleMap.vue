@@ -1,14 +1,25 @@
 <template>
   <div class="location-set">
     <GMapMap
+      
       :center="center"
       :zoom="zoom"
+      :onClick="clicked"
       :disableDefaultUI="true"
       :options="mapOptions"
       @center_changed="updateCenter"
       map-type-id="terrain"
       style="width: 100%; height: 20rem"
     >
+      <GMapMarker
+        :key="index"
+        v-for="(m, index) in markers"
+        :position="m.position"
+        :clickable="true"
+        :draggable="false"
+        @click="center = m.position"
+      />
+      <!-- :icon="'https://developers.google.com/maps/documentation/javascript/examples/full/images/info-i_maps.png'" -->
       <!-- <GMapAutocomplete
         class="auto-input"
         placeholder="e.g: Bahria Town"
@@ -48,23 +59,48 @@ export default {
         fullscreenControl: false,
         disableDefaultUi: false,
         clickableIcons: false,
-      }
-      // markers: [
-      //   {
-      //     position: {
-      //       lat: 38.093048,
-      //       lng: 73.84212,
-      //     },
-      //   },
-      // ],
+      },
+      markers: [
+        {
+          position: {
+            lat: 38.093048,
+            lng: 73.84212,
+          },
+        },
+      ],
     };
   },
+  mounted() {
+    this.getLocation();
+  },
   methods: {
+    clicked(){
+       this.markers[0].position.lat = this.currentRepo.lat;
+       this.markers[0].position.lng = this.currentRepo.lng;
+    },
+    showPosition(position) {
+      (this.center = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+      }),
+      // mark
+      this.markers[0].position.lat = position.coords.latitude;
+      this.markers[0].position.lng = position.coords.longitude;
+    },
+    getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(this.showPosition);
+      } else {
+        console.log("Geolocation is not supported by this browser.");
+      }
+    },
     updateCenter(latLng) {
       this.currentRepo = {
         lat: latLng.lat(),
         lng: latLng.lng(),
       };
+      this.markers[0].position.lat = latLng.lat();
+      this.markers[0].position.lng = latLng.lng();
       this.$emit("latlng", this.currentRepo);
     },
     setPlace(place) {
@@ -111,8 +147,8 @@ export default {
   font-size: 14px;
   min-width: 331px;
 }
-.location-set .vue-map{
-  height: 14rem!important;
-  border-radius: 20px!important;
+.location-set .vue-map {
+  height: 14rem !important;
+  border-radius: 20px !important;
 }
 </style>
