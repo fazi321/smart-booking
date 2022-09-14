@@ -113,7 +113,7 @@
                   :class="{ active: isExist('weelChaireAccess') }"
                   @click="selectedAmenities('weelChaireAccess')"
                 >
-                  <img src="../../../../assets/images/Vollyball.svg" alt="" />
+                  <img src="../../../../assets/images/wheelchair.svg" alt="" />
                   <h6>weel Chaire</h6>
                   <h6>Access</h6>
                 </div>
@@ -136,7 +136,7 @@
                   :class="{ active: isExist('airConditioning') }"
                   @click="selectedAmenities('airConditioning')"
                 >
-                  <img src="../../../../assets/images/Vollyball.svg" alt="" />
+                  <img src="../../../../assets/images/air.svg" alt="" />
                   <h6>Air</h6>
                   <h6>Conditioning</h6>
                 </div>
@@ -144,14 +144,14 @@
                   :class="{ active: isExist('tv') }"
                   @click="selectedAmenities('tv')"
                 >
-                  <img src="../../../../assets/images/Vollyball.svg" alt="" />
+                  <img src="../../../../assets/images/tv.svg" alt="" />
                   <h6>tv</h6>
                 </div>
                 <div
                   :class="{ active: isExist('wifi') }"
                   @click="selectedAmenities('wifi')"
                 >
-                  <img src="../../../../assets/images/Vollyball.svg" alt="" />
+                  <img src="../../../../assets/images/wifi.svg" alt="" />
                   <h6>wifi</h6>
                 </div>
                 <!-- <div

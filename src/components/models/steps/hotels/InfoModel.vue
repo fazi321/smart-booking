@@ -210,7 +210,7 @@
                   :class="{ active: isExist('steamBath') }"
                   @click="selectedAmenities('steamBath')"
                 >
-                  <img src="../../../../assets/images/HotTub.svg" alt="" />
+                  <img src="../../../../assets/images/steam.svg" alt="" />
                   <h6>Steam Bath</h6>
                 </div>
               </div>
@@ -249,7 +249,7 @@
                   :class="{ active: isExist('hairStylist') }"
                   @click="selectedAmenities('hairStylist')"
                 >
-                  <img src="../../../../assets/images/playground.svg" alt="" />
+                  <img src="../../../../assets/images/Vollyball.svg" alt="" />
                   <h6>Hair Stylist</h6>
                 </div>
                 <div
@@ -271,7 +271,7 @@
                   :class="{ active: isExist('weelChaireAccess') }"
                   @click="selectedAmenities('weelChaireAccess')"
                 >
-                  <img src="../../../../assets/images/Vollyball.svg" alt="" />
+                  <img src="../../../../assets/images/wheelchair.svg" alt="" />
                   <h6>weel Chaire</h6>
                   <h6>Access</h6>
                 </div>
@@ -294,14 +294,14 @@
                   :class="{ active: isExist('parking') }"
                   @click="selectedAmenities('parking')"
                 >
-                  <img src="../../../../assets/images/doorman.svg" alt="" />
+                  <img src="../../../../assets/images/P.svg" alt="" />
                   <h6>Parking</h6>
                 </div>
                 <div
                   :class="{ active: isExist('elevator') }"
                   @click="selectedAmenities('elevator')"
                 >
-                  <img src="../../../../assets/images/Vollyball.svg" alt="" />
+                  <img src="../../../../assets/images/wifi.svg" alt="" />
                   <h6>Elevator</h6>
                 </div>
                 <div
@@ -315,7 +315,7 @@
                   :class="{ active: isExist('airConditioning') }"
                   @click="selectedAmenities('airConditioning')"
                 >
-                  <img src="../../../../assets/images/Vollyball.svg" alt="" />
+                  <img src="../../../../assets/images/air.svg" alt="" />
                   <h6>Air</h6>
                   <h6>Conditioning</h6>
                 </div>
@@ -323,14 +323,14 @@
                   :class="{ active: isExist('tv') }"
                   @click="selectedAmenities('tv')"
                 >
-                  <img src="../../../../assets/images/Vollyball.svg" alt="" />
+                  <img src="../../../../assets/images/tv.svg" alt="" />
                   <h6>tv</h6>
                 </div>
                 <div
                   :class="{ active: isExist('wifi') }"
                   @click="selectedAmenities('wifi')"
                 >
-                  <img src="../../../../assets/images/Vollyball.svg" alt="" />
+                  <img src="../../../../assets/images/wifi.svg" alt="" />
                   <h6>wifi</h6>
                 </div>
                 <!-- <div
