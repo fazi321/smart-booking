@@ -62,6 +62,7 @@
 
 <script>
 import OtpModel from "./OtpModel.vue";
+import Cookies from "js-cookie";
 export default {
   name: "SignUpModel",
   props: ["model"],
@@ -75,6 +76,7 @@ export default {
       otpModel: false,
       loading: false,
       isError: false,
+      userData: {},
     };
   },
   methods: {
@@ -82,10 +84,11 @@ export default {
       this.loading = true;
       try {
         const res = await this.$axios.post("user/signup", {
-          phone: `92${this.phoneNumber}`,
+          phone: `${this.phoneNumber}`,
         });
         if (res) {
           this.otpModel = true;
+          this.userData = res.data;
           this.loading = false;
           this.verifyOtp = res.data.otp;
         }
@@ -102,15 +105,45 @@ export default {
     },
     checkOTP(val) {
       if (this.verifyOtp == val) {
-        this.close();
-        this.$swal({
-          icon: "success",
-          title: "Success!",
-          showConfirmButton: false,
-          timer: 3000,
-        });
+        this.varify(this.verifyOtp);
+        // this.close();
+        // this.$swal({
+        //   icon: "success",
+        //   title: "Success!",
+        //   showConfirmButton: false,
+        //   timer: 3000,
+        // });
       } else {
         this.$refs.otp.error = true;
+      }
+    },
+    async varify(otp) {
+      this.$refs.otp.otploading = true;
+      try {
+        var phone = this.userData.phone;
+        const res = await this.$axios.post("user/verify", {
+          phone: `${phone}`,
+          otp: otp,
+        });
+        if (res) {
+          Cookies.set("Authorization", res.data.token, { expires: 7 });
+          this.$axios.defaults.headers.common[
+            "Authorization"
+          ] = `bearer ${res.data.token}`;
+          this.$store.dispatch("auth/login", res.data.update);
+          this.close();
+          this.$swal({
+            icon: "success",
+            title: "Success!",
+            showConfirmButton: false,
+            timer: 3000,
+          });
+          this.$refs.otp.otploading = false;
+          this.otpModel = false;
+        }
+      } catch (error) {
+        this.$refs.otp.otploading = false;
+        console.log(error);
       }
     },
     LoginModel() {
