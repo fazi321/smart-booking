@@ -124,7 +124,7 @@ export default {
     async filters() {
       if (!this.isLoad) return;
       var q = this.$route.query;
-      this.pageSelected = q.page;
+      this.pageSelected = parseInt(q.page);
       var check = { ...q };
       delete check.page;
       try {

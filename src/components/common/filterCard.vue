@@ -20,7 +20,7 @@
         />
       </svg>
     </div>
-    <router-link :to="`${$route.path}/${item._id}`" class="filter-card">
+    <router-link :to="$route.path == '/filters' ? `${ getSlug() }` : `${$route.path}/${item._id}`" class="filter-card">
       <div class="image">
         <img
           :src="item.description.images[0]"
@@ -61,6 +61,13 @@ export default {
     };
   },
   methods: {
+    getSlug () {
+      if(this.item.category && this.item.category.category){
+        var category = '';
+        category = this.item.category.category == 'Hotel' ? 'hotels' : '';
+        return `${category}/${this.item._id}`
+      }
+    },
     async favUnFav(id) {
       try {
         var res = await this.$axios.get(`user/fav-unfav/${id}`);

@@ -5,14 +5,14 @@
       <section class="location-filter">
         <h6>Location Filter</h6>
         <div class="form">
-          <div class="option">
+          <!-- <div class="option">
             <input
               type="text"
               placeholder="Name"
               v-model="filters.name"
               @blur="handleBlur"
             />
-          </div>
+          </div> -->
           <div class="option">
             <input
               type="text"
@@ -86,7 +86,13 @@
             <span class="checkmark"></span>
           </label>
           <div class="input">
-            <input type="text" placeholder="Search by property name" />
+            <input
+              type="text"
+              placeholder="Search by property name"
+              v-model="filters.name"
+              @blur="handleBlur"
+            />
+            <!-- <input type="text" placeholder="Search by property name" /> -->
           </div>
           <div class="input">
             <input
