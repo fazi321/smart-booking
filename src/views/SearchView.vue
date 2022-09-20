@@ -73,13 +73,24 @@ export default {
     this.getData();
   },
   methods: {
+    convertDate(val) {
+      var date = new Date(val);
+      return date.toLocaleDateString("en-US");
+    },
     async getData() {
       var q = this.$route.query;
       delete q.page;
+      var check = { ...q };
+      if (check.checkIn) {
+        check.checkIn = this.convertDate(check.checkIn);
+      }
+      if (check.checkOut) {
+        check.checkOut = this.convertDate(check.checkOut);
+      }
       try {
         this.loading = true;
         var res = await this.$axios.get("services/filter", {
-          params: q,
+          params: check,
         });
         this.favList = res.data;
         this.loading = false;
@@ -94,7 +105,7 @@ export default {
     },
   },
   watch: {
-    "$route": {
+    $route: {
       handler() {
         this.getData();
       },

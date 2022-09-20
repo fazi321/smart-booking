@@ -71,6 +71,10 @@ export default {
     this.pageSelected = parseInt(this.$route.query.page);
   },
   methods: {
+    convertDate(val) {
+      var date = new Date(val);
+      return date.toLocaleDateString("en-US");
+    },
     async getData() {
       var catType = this.$route.params.category;
       this.pageSelected = parseInt(this.$route.query.page);
@@ -122,10 +126,27 @@ export default {
       }, 500);
     },
     async filters() {
+      // for !query filter check
+      var size = Object.keys(this.$route.query).length;
+      if (
+        this.$route.path == "/filters" &&
+        this.$route.query.page &&
+        size == 1
+      ) {
+        var slug = localStorage.getItem("slug");
+        this.$router.push(`${slug}?page=1`);
+        return;
+      } // *)
       if (!this.isLoad) return;
       var q = this.$route.query;
       this.pageSelected = parseInt(q.page);
       var check = { ...q };
+      if (check.checkIn) {
+        check.checkIn = this.convertDate(check.checkIn);
+      }
+      if (check.checkOut) {
+        check.checkOut = this.convertDate(check.checkOut);
+      }
       delete check.page;
       try {
         this.loading = true;
