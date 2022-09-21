@@ -147,6 +147,14 @@
                   <h6>Running</h6>
                 </div>
                 <div
+                  :class="{ active: isExist('accessInHours') }"
+                  @click="selectedAmenities('accessInHours')"
+                >
+                  <img src="../../../../assets/images/24Hours.svg" alt="" />
+                  <h6>24 Hours</h6>
+                  <h6>Access</h6>
+                </div>
+                <div
                   :class="{ active: isExist('weelChaireAccess') }"
                   @click="selectedAmenities('weelChaireAccess')"
                 >
@@ -181,7 +189,7 @@
           <section class="price-container">
             <div class="container-price">
               <!-- block -->
-              <div class="price-inputs">
+              <!-- <div class="price-inputs">
                 <div class="price-checkbox">
                   <label class="container-input"
                     >24 Hours Access
@@ -192,7 +200,7 @@
                 <div class="input-price">
                   <input type="number" v-model="accessInHoursCheck" />
                 </div>
-              </div>
+              </div> -->
             </div>
           </section>
         </section>

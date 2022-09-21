@@ -346,7 +346,7 @@
           <section class="price-container">
             <div class="container-price">
               <!-- block -->
-              <div class="price-inputs">
+              <!-- <div class="price-inputs">
                 <div class="price-checkbox">
                   <label class="container-input"
                     >24 Hours Access
@@ -357,7 +357,7 @@
                 <div class="input-price">
                   <input type="number" v-model="accessInHoursCheck" />
                 </div>
-              </div>
+              </div> -->
             </div>
           </section>
         </section>
