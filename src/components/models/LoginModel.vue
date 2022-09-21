@@ -84,7 +84,7 @@ export default {
       this.loading = true;
       try {
         const res = await this.$axios.post("user/login", {
-          phone: `92${this.phoneNumber}`,
+          phone: `${this.phoneNumber}`,
         });
         if (res) {
           this.otpModel = true;
