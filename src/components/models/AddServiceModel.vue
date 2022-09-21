@@ -431,6 +431,13 @@ export default {
   },
   methods: {
     selectedCategory(opt) {
+      if (opt.category == "Wedding_Halls" || opt.category == "Stadium ") {
+        this.finalData.totalEntities = "1200";
+      } else {
+        if (this.finalData.totalEntities) {
+          delete this.finalData.totalEntities;
+        }
+      }
       this.serviceType = opt;
     },
     basicData(val) {
@@ -480,18 +487,18 @@ export default {
             showConfirmButton: false,
             timer: 3000,
           });
-          this.$store.dispatch('details/setLoading', false)
+          this.$store.dispatch("details/setLoading", false);
           setTimeout(() => {
             this.$router.push("/my-services");
           }, 3000);
         }
       } catch (error) {
-        this.$store.dispatch('details/setLoading', false)
+        this.$store.dispatch("details/setLoading", false);
         console.log(error);
       }
     },
     async uploadFiles() {
-      this.$store.dispatch('details/setLoading', true)
+      this.$store.dispatch("details/setLoading", true);
       try {
         const imagesData = await this.$axios.post(
           "http://13.229.167.135:5000/api/v1/user/upload-multiple",
@@ -504,7 +511,7 @@ export default {
         );
         return imagesData.data;
       } catch (error) {
-        this.$store.dispatch('details/setLoading', false)
+        this.$store.dispatch("details/setLoading", false);
         console.log(error);
       }
     },
@@ -727,19 +734,19 @@ img {
 }
 /* categories */
 @media (max-width: 479px) and (min-width: 320px) {
-  .container-vendor .primary-cards{
+  .container-vendor .primary-cards {
     width: 87%;
   }
-  .container-vendor .cards{
+  .container-vendor .cards {
     justify-content: center;
   }
-  .primary-login{
-    width:82%;
+  .primary-login {
+    width: 82%;
   }
-  .container-service .cards > div{
+  .container-service .cards > div {
     margin: 5px 5px 5px 5px;
     width: 79px;
-    font-size:18px;
+    font-size: 18px;
   }
 }
 </style>
