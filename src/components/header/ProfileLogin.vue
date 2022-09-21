@@ -19,7 +19,7 @@
       </button>
       <button
         class="btn btn-filled add-services"
-        v-if="$store.state.auth.user.verify && $store.state.auth.user.host || $store.state.auth.user.verify && $store.state.auth.user.company"
+        v-if="$store.state.auth.user.verify && $store.state.auth.user.host && $store.state.auth.user.role == 'Vender' || $store.state.auth.user.verify && $store.state.auth.user.company && $store.state.auth.user.role == 'Vender'"
         @click="serviceModelShow"
       >
         Add Service
