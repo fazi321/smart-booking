@@ -521,6 +521,7 @@ export default {
       // console.log(this.myImages)
     },
     changeSteps() {
+      if (!this.serviceType) return;
       this.isSubmitted = true;
     },
     selectedOptions(opt) {

@@ -25,6 +25,8 @@
               <div>
                 <input
                   type="test"
+                  :class="{ activeErr: errors.section }"
+                  @input="resolveErr('section')"
                   placeholder="Section"
                   v-model="roomsGuest.section"
                 />
@@ -32,6 +34,8 @@
               <div>
                 <input
                   type="number"
+                  :class="{ activeErr: errors.maxGuest }"
+                  @input="resolveErr('maxGuest')"
                   placeholder="max Guest"
                   v-model="roomsGuest.maxGuest"
                 />
@@ -39,6 +43,8 @@
               <div>
                 <input
                   type="number"
+                  :class="{ activeErr: errors.bathrooms }"
+                  @input="resolveErr('bathrooms')"
                   placeholder="bathrooms"
                   v-model="roomsGuest.bathrooms"
                 />
@@ -225,9 +231,14 @@ export default {
       leisure: {},
       accessCheck: false,
       accessInHoursCheck: null,
+      // errors
+      errors: {},
     };
   },
   methods: {
+    resolveErr(input) {
+      this.errors[input] = false;
+    },
     isExist(val) {
       return this.AmenitieSelected.indexOf(val) !== -1;
     },
@@ -243,7 +254,29 @@ export default {
       }
     },
     changeStep(step) {
-      this.step = step;
+      /* eslint-disable */
+      var verifyInputs = this.roomsGuest;
+      if (step == 2) {
+        if (!verifyInputs.hasOwnProperty("section") || !verifyInputs.section) {
+          this.errors.section = true;
+          return;
+        }
+        if (
+          !verifyInputs.hasOwnProperty("maxGuest") ||
+          !verifyInputs.maxGuest
+        ) {
+          this.errors.maxGuest = true;
+          return;
+        }
+        if (
+          !verifyInputs.hasOwnProperty("bathrooms") ||
+          !verifyInputs.bathrooms
+        ) {
+          this.errors.bathrooms = true;
+          return;
+        }
+        this.step = step;
+      }
       // this.isSubmitted = true;
     },
     close() {
@@ -251,15 +284,18 @@ export default {
     },
     lastStepClicked() {
       var basicInfo = {};
-      if (this.accessCheck) {
-        this.leisure.accessInHours = this.accessInHoursCheck;
-      } else {
-        delete this.leisure.accessInHours;
+      if (this.leisure.accessInHours) {
+        this.leisure.accessInHours = 12;
       }
+      // if (this.accessCheck) {
+      //   this.leisure.accessInHours = this.accessInHoursCheck;
+      // } else {
+      //   delete this.leisure.accessInHours;
+      // }
       basicInfo.roomsGuest = this.roomsGuest;
       basicInfo.leisure = this.leisure;
       this.$parent.accountOpt = "service";
-     
+
       this.$emit("basicInfo", basicInfo);
     },
   },
@@ -496,7 +532,7 @@ img {
   font-size: 12px;
   padding: 18px 20px;
   border-radius: 50px;
-  border: none;
+  border: 1px solid transparent;
   box-shadow: 0px 0px 8px 2px #e9e8e8;
   color: #c4c4c4;
   min-width: 230px;

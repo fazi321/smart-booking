@@ -12,7 +12,7 @@
     <section v-else class="dropdown-container">
       <button
         class="btn btn-transparent"
-        v-if="$store.state.auth.user.verify"
+        v-if="$store.state.auth.user.verify && $store.state.auth.user.role != 'Vender'"
         @click="vendorModelShow"
       >
         Become Vendor

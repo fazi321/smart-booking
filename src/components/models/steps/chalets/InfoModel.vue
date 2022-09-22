@@ -18,6 +18,8 @@
               <div>
                 <input
                   type="text"
+                  :class="{ activeErr: errors.numRooms }"
+                  @input="resolveErr('numRooms')"
                   placeholder="Number of Rooms"
                   v-model="roomsGuest.numRooms"
                 />
@@ -32,6 +34,8 @@
               <div>
                 <input
                   type="test"
+                  :class="{ activeErr: errors.section }"
+                  @input="resolveErr('section')"
                   placeholder="Section"
                   v-model="roomsGuest.section"
                 />
@@ -39,6 +43,8 @@
               <div>
                 <input
                   type="number"
+                  :class="{ activeErr: errors.bedrooms }"
+                  @input="resolveErr('bedrooms')"
                   placeholder="Bedrooms"
                   v-model="roomsGuest.bedrooms"
                 />
@@ -46,6 +52,8 @@
               <div>
                 <input
                   type="number"
+                  :class="{ activeErr: errors.doubleBed }"
+                  @input="resolveErr('doubleBed')"
                   placeholder="doubleBed"
                   v-model="roomsGuest.doubleBed"
                 />
@@ -53,6 +61,8 @@
               <div>
                 <input
                   type="number"
+                  :class="{ activeErr: errors.singleBed }"
+                  @input="resolveErr('singleBed')"
                   placeholder="singleBed"
                   v-model="roomsGuest.singleBed"
                 />
@@ -60,6 +70,8 @@
               <div>
                 <input
                   type="number"
+                  :class="{ activeErr: errors.maxGuest }"
+                  @input="resolveErr('maxGuest')"
                   placeholder="max Guest"
                   v-model="roomsGuest.maxGuest"
                 />
@@ -67,6 +79,8 @@
               <div>
                 <input
                   type="number"
+                  :class="{ activeErr: errors.bathrooms }"
+                  @input="resolveErr('bathrooms')"
                   placeholder="bathrooms"
                   v-model="roomsGuest.bathrooms"
                 />
@@ -390,9 +404,14 @@ export default {
       leisure: {},
       accessCheck: false,
       accessInHoursCheck: null,
+      // errors
+      errors: {},
     };
   },
   methods: {
+    resolveErr(input) {
+      this.errors[input] = false;
+    },
     isExist(val) {
       return this.AmenitieSelected.indexOf(val) !== -1;
     },
@@ -408,7 +427,57 @@ export default {
       }
     },
     changeStep(step) {
-      this.step = step;
+      /* eslint-disable */
+      var verifyInputs = this.roomsGuest;
+      if (step == 2) {
+        if (
+          !verifyInputs.hasOwnProperty("numRooms") ||
+          !verifyInputs.numRooms
+        ) {
+          this.errors.numRooms = true;
+          return;
+        }
+        if (!verifyInputs.hasOwnProperty("section") || !verifyInputs.section) {
+          this.errors.section = true;
+          return;
+        }
+        if (
+          !verifyInputs.hasOwnProperty("bedrooms") ||
+          !verifyInputs.bedrooms
+        ) {
+          this.errors.bedrooms = true;
+          return;
+        }
+        if (
+          !verifyInputs.hasOwnProperty("doubleBed") ||
+          !verifyInputs.doubleBed
+        ) {
+          this.errors.doubleBed = true;
+          return;
+        }
+        if (
+          !verifyInputs.hasOwnProperty("singleBed") ||
+          !verifyInputs.singleBed
+        ) {
+          this.errors.singleBed = true;
+          return;
+        }
+        if (
+          !verifyInputs.hasOwnProperty("maxGuest") ||
+          !verifyInputs.maxGuest
+        ) {
+          this.errors.maxGuest = true;
+          return;
+        }
+        if (
+          !verifyInputs.hasOwnProperty("bathrooms") ||
+          !verifyInputs.bathrooms
+        ) {
+          this.errors.bathrooms = true;
+          return;
+        }
+        this.step = step;
+      }
       // this.isSubmitted = true;
     },
     close() {
@@ -416,11 +485,15 @@ export default {
     },
     lastStepClicked() {
       var basicInfo = {};
-      if (this.accessCheck) {
-        this.leisure.accessInHours = this.accessInHoursCheck;
-      } else {
-        delete this.leisure.accessInHours;
+      if(this.leisure.accessInHours){
+        this.leisure.accessInHours = 12;
       }
+      // if (this.accessCheck) {
+      //   this.leisure.accessInHours = this.accessInHoursCheck;
+      // } else {
+      //   delete this.leisure.accessInHours;
+      // }
+      // console.log(basicInfo);
       basicInfo.roomsGuest = this.roomsGuest;
       basicInfo.leisure = this.leisure;
       this.$parent.accountOpt = "service";
@@ -657,10 +730,11 @@ img {
 }
 .inputs-container input {
   outline: none;
+  border: 1px solid transparent;
   font-size: 12px;
   padding: 18px 20px;
   border-radius: 50px;
-  border: none;
+  /* border: none; */
   box-shadow: 0px 0px 8px 2px #e9e8e8;
   color: #c4c4c4;
   min-width: 230px;

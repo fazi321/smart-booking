@@ -49,7 +49,9 @@ img {
   display: block;
   cursor: pointer;
 }
-
+.activeErr {
+  border: 1px solid #ff7a7a!important;
+}
 header.active .container .nav ul li a {
   color: #707070;
 }

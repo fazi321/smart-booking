@@ -18,8 +18,10 @@
             <div class="inputs-container">
               <div>
                 <input
+                  :class="{ activeErr: errors.dressingRooms }"
                   type="text"
                   placeholder="Dressing Rooms"
+                  @input="resolveErr('dressingRooms')"
                   v-model="roomsGuest.dressingRooms"
                 />
               </div>
@@ -32,22 +34,28 @@
               </div> -->
               <div>
                 <input
+                  :class="{ activeErr: errors.stands }"
                   type="test"
                   placeholder="Stands"
+                  @input="resolveErr('stands')"
                   v-model="roomsGuest.stands"
                 />
               </div>
               <div>
                 <input
+                  :class="{ activeErr: errors.maxGuest }"
                   type="number"
                   placeholder="Max Guest"
+                  @input="resolveErr('maxGuest')"
                   v-model="roomsGuest.maxGuest"
                 />
               </div>
               <div>
                 <input
+                  :class="{ activeErr: errors.bathrooms }"
                   type="number"
                   placeholder="bathrooms"
+                  @input="resolveErr('bathrooms')"
                   v-model="roomsGuest.bathrooms"
                 />
               </div>
@@ -233,9 +241,14 @@ export default {
       leisure: {},
       accessCheck: false,
       accessInHoursCheck: null,
+      // errors
+      errors: {},
     };
   },
   methods: {
+    resolveErr(input){
+      this.errors[input] = false;
+    },
     isExist(val) {
       return this.AmenitieSelected.indexOf(val) !== -1;
     },
@@ -251,7 +264,36 @@ export default {
       }
     },
     changeStep(step) {
-      this.step = step;
+      /* eslint-disable */
+      var verifyInputs = this.roomsGuest;
+      if (step == 2) {
+        if (
+          !verifyInputs.hasOwnProperty("dressingRooms") ||
+          !verifyInputs.dressingRooms
+        ) {
+          this.errors.dressingRooms = true;
+          return;
+        }
+        if (!verifyInputs.hasOwnProperty("stands") || !verifyInputs.stands) {
+          this.errors.stands = true;
+          return;
+        }
+        if (
+          !verifyInputs.hasOwnProperty("maxGuest") ||
+          !verifyInputs.maxGuest
+        ) {
+          this.errors.maxGuest = true;
+          return;
+        }
+        if (
+          !verifyInputs.hasOwnProperty("bathrooms") ||
+          !verifyInputs.bathrooms
+        ) {
+          this.errors.bathrooms = true;
+          return;
+        }
+        this.step = step;
+      }
       // this.isSubmitted = true;
     },
     close() {
@@ -259,11 +301,15 @@ export default {
     },
     lastStepClicked() {
       var basicInfo = {};
-      if (this.accessCheck) {
-        this.leisure.accessInHours = this.accessInHoursCheck;
-      } else {
-        delete this.leisure.accessInHours;
+      if(this.leisure.accessInHours){
+        this.leisure.accessInHours = 12;
       }
+      // if (this.accessCheck) {
+      //   this.leisure.accessInHours = this.accessInHoursCheck;
+      // } else {
+      //   delete this.leisure.accessInHours;
+      // }
+      // console.log(basicInfo)
       basicInfo.roomsGuest = this.roomsGuest;
       basicInfo.leisure = this.leisure;
       this.$parent.accountOpt = "service";
@@ -274,6 +320,7 @@ export default {
 </script>
 
 <style scoped>
+
 /* transition */
 .transitionBox {
   transition: 0.3s;
@@ -508,6 +555,7 @@ img {
   color: #c4c4c4;
   min-width: 230px;
   margin: 8px 0;
+  border: 1px solid transparent;
 }
 .inputs-container input::placeholder {
   color: #c4c4c4;
