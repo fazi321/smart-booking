@@ -434,7 +434,7 @@ export default {
       if (opt.category == "Wedding_Halls" || opt.category == "Stadium ") {
         this.finalData.totalEntities = "1200";
       } else {
-        if (this.finalData.totalEntities) {
+        if (this.finalData && this.finalData.totalEntities) {
           delete this.finalData.totalEntities;
         }
       }
