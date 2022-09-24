@@ -533,15 +533,16 @@ export default {
       // this.isSubmitted = true;
     },
     close() {
-      (this.accountOpt = null),
-        (this.isSubmitted = false),
-        (this.nextStep = null),
-        (this.serviceType = null),
-        (this.isSubmitted = false);
+      this.accountOpt = null;
+      this.isSubmitted = false;
+      this.nextStep = null;
       this.step = 1;
+      this.serviceType = {};
       this.basicD = {};
       this.dataDec = {};
       this.dataP = {};
+      this.finalData = {};
+      this.myImages = {};
       this.$parent.serviceModel = false;
     },
   },

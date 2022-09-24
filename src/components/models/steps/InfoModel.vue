@@ -419,54 +419,48 @@ export default {
         delete this.leisure[val];
       }
     },
+    focusInput() {
+      var input = document.getElementsByClassName("activeErr");
+      setTimeout(() => {
+        input[0].focus();
+      }, 100);
+    },
     changeStep(step) {
-      /* eslint-disable */
       var verifyInputs = this.roomsGuest;
       if (step == 2) {
-        if (
-          !verifyInputs.hasOwnProperty("numRooms") ||
-          !verifyInputs.numRooms
-        ) {
+        if (!verifyInputs.numRooms) {
           this.errors.numRooms = true;
+          this.focusInput();
           return;
         }
-        if (!verifyInputs.hasOwnProperty("section") || !verifyInputs.section) {
+        if (!verifyInputs.section) {
           this.errors.section = true;
+          this.focusInput();
           return;
         }
-        if (
-          !verifyInputs.hasOwnProperty("bedrooms") ||
-          !verifyInputs.bedrooms
-        ) {
+        if (!verifyInputs.bedrooms) {
           this.errors.bedrooms = true;
+          this.focusInput();
           return;
         }
-        if (
-          !verifyInputs.hasOwnProperty("doubleBed") ||
-          !verifyInputs.doubleBed
-        ) {
+        if (!verifyInputs.doubleBed) {
           this.errors.doubleBed = true;
+          this.focusInput();
           return;
         }
-        if (
-          !verifyInputs.hasOwnProperty("singleBed") ||
-          !verifyInputs.singleBed
-        ) {
+        if (!verifyInputs.singleBed) {
           this.errors.singleBed = true;
+          this.focusInput();
           return;
         }
-        if (
-          !verifyInputs.hasOwnProperty("maxGuest") ||
-          !verifyInputs.maxGuest
-        ) {
+        if (!verifyInputs.maxGuest) {
           this.errors.maxGuest = true;
+          this.focusInput();
           return;
         }
-        if (
-          !verifyInputs.hasOwnProperty("bathrooms") ||
-          !verifyInputs.bathrooms
-        ) {
+        if (!verifyInputs.bathrooms) {
           this.errors.bathrooms = true;
+          this.focusInput();
           return;
         }
         this.step = step;

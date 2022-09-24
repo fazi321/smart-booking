@@ -246,7 +246,7 @@ export default {
     };
   },
   methods: {
-    resolveErr(input){
+    resolveErr(input) {
       this.errors[input] = false;
     },
     isExist(val) {
@@ -263,33 +263,33 @@ export default {
         delete this.leisure[val];
       }
     },
+    focusInput() {
+      var input = document.getElementsByClassName("activeErr");
+      setTimeout(() => {
+        input[0].focus();
+      }, 100);
+    },
     changeStep(step) {
-      /* eslint-disable */
       var verifyInputs = this.roomsGuest;
       if (step == 2) {
-        if (
-          !verifyInputs.hasOwnProperty("dressingRooms") ||
-          !verifyInputs.dressingRooms
-        ) {
+        if (!verifyInputs.dressingRooms) {
           this.errors.dressingRooms = true;
+          this.focusInput();
           return;
         }
-        if (!verifyInputs.hasOwnProperty("stands") || !verifyInputs.stands) {
+        if (!verifyInputs.stands) {
           this.errors.stands = true;
+          this.focusInput();
           return;
         }
-        if (
-          !verifyInputs.hasOwnProperty("maxGuest") ||
-          !verifyInputs.maxGuest
-        ) {
+        if (!verifyInputs.maxGuest) {
           this.errors.maxGuest = true;
+          this.focusInput();
           return;
         }
-        if (
-          !verifyInputs.hasOwnProperty("bathrooms") ||
-          !verifyInputs.bathrooms
-        ) {
+        if (!verifyInputs.bathrooms) {
           this.errors.bathrooms = true;
+          this.focusInput();
           return;
         }
         this.step = step;
@@ -301,7 +301,7 @@ export default {
     },
     lastStepClicked() {
       var basicInfo = {};
-      if(this.leisure.accessInHours){
+      if (this.leisure.accessInHours) {
         this.leisure.accessInHours = 12;
       }
       // if (this.accessCheck) {
@@ -320,7 +320,6 @@ export default {
 </script>
 
 <style scoped>
-
 /* transition */
 .transitionBox {
   transition: 0.3s;

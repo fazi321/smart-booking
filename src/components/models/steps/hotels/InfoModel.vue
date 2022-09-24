@@ -438,47 +438,43 @@ export default {
         delete this.leisure[val];
       }
     },
+    focusInput() {
+      var input = document.getElementsByClassName("activeErr");
+      setTimeout(() => {
+        input[0].focus();
+      }, 100);
+    },
     changeStep(step) {
-      /* eslint-disable */
       var verifyInputs = this.unitsAndGuest;
       if (step == 2) {
-        if (
-          !verifyInputs.hasOwnProperty("numRooms") ||
-          !verifyInputs.numRooms
-        ) {
+        if (!verifyInputs.numRooms) {
           this.errors.numRooms = true;
+          this.focusInput();
           return;
         }
-        if (!verifyInputs.hasOwnProperty("roomType") || !verifyInputs.roomType) {
+        if (!verifyInputs.roomType) {
           this.errors.roomType = true;
+          this.focusInput();
           return;
         }
-        if (
-          !verifyInputs.hasOwnProperty("numberUnits") ||
-          !verifyInputs.numberUnits
-        ) {
+        if (!verifyInputs.numberUnits) {
           this.errors.numberUnits = true;
+          this.focusInput();
           return;
         }
-        if (
-          !verifyInputs.hasOwnProperty("numberChildren") ||
-          !verifyInputs.numberChildren
-        ) {
+        if (!verifyInputs.numberChildren) {
           this.errors.numberChildren = true;
+          this.focusInput();
           return;
         }
-        if (
-          !verifyInputs.hasOwnProperty("singleBeds") ||
-          !verifyInputs.singleBeds
-        ) {
+        if (!verifyInputs.singleBeds) {
           this.errors.singleBeds = true;
+          this.focusInput();
           return;
         }
-        if (
-          !verifyInputs.hasOwnProperty("bathrooms") ||
-          !verifyInputs.bathrooms
-        ) {
+        if (!verifyInputs.bathrooms) {
           this.errors.bathrooms = true;
+          this.focusInput();
           return;
         }
         this.step = step;

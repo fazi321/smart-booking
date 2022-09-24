@@ -83,6 +83,7 @@ export default {
         lat: position.coords.latitude,
         lng: position.coords.longitude,
       }),
+      // this.$emit("latlng", this.center);
       // mark
       this.markers[0].position.lat = position.coords.latitude;
       this.markers[0].position.lng = position.coords.longitude;
