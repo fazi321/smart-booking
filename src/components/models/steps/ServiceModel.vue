@@ -363,6 +363,8 @@
               <div>
                 <input
                   type="text"
+                  :class="{ activeErr: errors.nameInEnglish }"
+                  @input="resolveErr('nameInEnglish')"
                   placeholder="Service Name (English)"
                   v-model="description.nameInEnglish"
                 />
@@ -370,6 +372,8 @@
               <div>
                 <input
                   type="text"
+                  :class="{ activeErr: errors.nameInArabic }"
+                  @input="resolveErr('nameInArabic')"
                   placeholder="Service Name (Arabic)"
                   v-model="description.nameInArabic"
                 />
@@ -377,6 +381,8 @@
               <div>
                 <input
                   type="text"
+                  :class="{ activeErr: errors.secondryPhone }"
+                  @input="resolveErr('secondryPhone')"
                   placeholder="Secondary Phone Number"
                   v-model="description.secondryPhone"
                 />
@@ -384,6 +390,8 @@
               <div>
                 <input
                   type="number"
+                  :class="{ activeErr: errors.areaSqm }"
+                  @input="resolveErr('areaSqm')"
                   placeholder="Area"
                   v-model="description.areaSqm"
                 />
@@ -391,6 +399,8 @@
               <div>
                 <input
                   type="text"
+                  :class="{ activeErr: errors.descriptionInEnglish }"
+                  @input="resolveErr('descriptionInEnglish')"
                   placeholder="Property Description (English)"
                   v-model="description.descriptionInEnglish"
                 />
@@ -398,6 +408,8 @@
               <div>
                 <input
                   type="text"
+                  :class="{ activeErr: errors.descriptionInArabic }"
+                  @input="resolveErr('descriptionInArabic')"
                   placeholder="Property Description (Arabic)"
                   v-model="description.descriptionInArabic"
                 />
@@ -405,7 +417,7 @@
             </div>
           </div>
           <div class="upload-file">
-            <label for="inputTag">
+            <label for="inputTag" :class="{ activeErr: verifyImages > 5 }">
               Add service image
               <input
                 id="inputTag"
@@ -448,6 +460,8 @@
                 <div>
                   <input
                     type="text"
+                    :class="{ activeErr: errors.address }"
+                    @input="resolveErr('address')"
                     placeholder="Address"
                     v-model="address.address"
                   />
@@ -455,6 +469,8 @@
                 <div>
                   <input
                     type="text"
+                    :class="{ activeErr: errors.houseNumber }"
+                    @input="resolveErr('houseNumber')"
                     placeholder="Property Number"
                     v-model="address.houseNumber"
                   />
@@ -462,6 +478,8 @@
                 <div>
                   <input
                     type="text"
+                    :class="{ activeErr: errors.city }"
+                    @input="resolveErr('city')"
                     placeholder="City"
                     v-model="address.city"
                   />
@@ -469,6 +487,8 @@
                 <div>
                   <input
                     type="text"
+                    :class="{ activeErr: errors.area }"
+                    @input="resolveErr('area')"
                     placeholder="Area"
                     v-model="address.area"
                   />
@@ -476,6 +496,8 @@
                 <div>
                   <input
                     type="text"
+                    :class="{ activeErr: errors.landMark }"
+                    @input="resolveErr('landMark')"
                     placeholder="Landmark"
                     v-model="address.landMark"
                   />
@@ -522,20 +544,37 @@ export default {
       suitableFor: {},
       suitablePrice: {},
       step: 1,
+      // errors
+      errors: {},
+      verifyImages: 0,
     };
   },
   methods: {
+    resolveErr(input) {
+      this.errors[input] = false;
+    },
     latLng({ lat, lng }) {
       this.location = { location: { coordinates: [lat, lng] } };
     },
     handleChange(e) {
+      this.verifyImages = e.target.files.length;
+      if (this.verifyImages > 5) {
+        this.$swal({
+          icon: "error",
+          title: "only five images allowed!",
+          showConfirmButton: false,
+          timer: 3000,
+        });
+        return;
+      }
       let formData = new FormData();
       for (let i = 0; i < e.target.files.length; i++) {
         formData.append("images", e.target.files[i]);
       }
-      this.$emit('images', formData)
+      this.$emit("images", formData);
     },
     submited() {
+      if (!this.vInputsLocation()) return;
       // sutable childcheck
       const newObjC = {};
       for (const [key, value] of Object.entries(this.suitableFor)) {
@@ -572,7 +611,121 @@ export default {
     },
     changeStep(step) {
       // if (!this.serviceType) return;
-      this.step = step;
+      if (step == 3) {
+        if (this.vInputsDescription()) {
+          this.step = step;
+        }
+      } else {
+        this.step = step;
+      }
+      // this.step = step;
+    },
+    vInputsDescription() {
+      var verifyInputs = this.description;
+      if (!verifyInputs.nameInEnglish) {
+        this.errors.nameInEnglish = true;
+        this.focusInput();
+        return;
+      }
+      if (!verifyInputs.nameInArabic) {
+        this.errors.nameInArabic = true;
+        this.focusInput();
+        return;
+      }
+      if (!verifyInputs.secondryPhone) {
+        this.errors.secondryPhone = true;
+        this.focusInput();
+        return;
+      }
+      if (!verifyInputs.areaSqm) {
+        this.errors.areaSqm = true;
+        this.focusInput();
+        return;
+      }
+      if (!verifyInputs.descriptionInEnglish) {
+        this.errors.descriptionInEnglish = true;
+        this.focusInput();
+        return;
+      }
+      if (!verifyInputs.descriptionInArabic) {
+        this.errors.descriptionInArabic = true;
+        this.focusInput();
+        return;
+      }
+      if (!this.verifyImages) {
+        this.verifyImages = 6; // for button border temp
+        this.$swal({
+          icon: "error",
+          title: "images required!",
+          showConfirmButton: false,
+          timer: 3000,
+        });
+        return;
+      }
+      if (this.verifyImages > 5) {
+        this.$swal({
+          icon: "error",
+          title: "only five images allowed!",
+          showConfirmButton: false,
+          timer: 3000,
+        });
+        return;
+      }
+      return true;
+    },
+    vInputsLocation() {
+      var verifyInputs = this.address;
+      /* eslint-disable */
+      if (
+        !this.location.location &&
+        !this.location.hasOwnProperty("coordinates")
+      ) {
+        // this.errors.location = true;
+        this.$swal({
+          icon: "error",
+          title: "Add location from map!",
+          showConfirmButton: false,
+          timer: 3000,
+        });
+        return;
+      }
+      if (!verifyInputs.address) {
+        this.errors.address = true;
+        this.focusInput();
+        return;
+      }
+      if (!verifyInputs.houseNumber) {
+        this.errors.houseNumber = true;
+        this.focusInput();
+        return;
+      }
+      if (!verifyInputs.city) {
+        this.errors.city = true;
+        this.focusInput();
+        return;
+      }
+      if (!verifyInputs.area) {
+        this.errors.area = true;
+        this.focusInput();
+        return;
+      }
+      if (!verifyInputs.area) {
+        this.errors.area = true;
+        this.focusInput();
+        return;
+      }
+      if (!verifyInputs.landMark) {
+        this.errors.landMark = true;
+        this.focusInput();
+        return;
+      }
+      return true;
+    },
+    focusInput() {
+      var input = document.getElementsByClassName("activeErr");
+      setTimeout(() => {
+        input[0].focus();
+      }, 100);
     },
     close() {
       this.$emit("close");
@@ -777,7 +930,7 @@ img {
   font-size: 12px;
   padding: 18px 20px;
   border-radius: 50px;
-  border: none;
+  border: 1px solid transparent;
   box-shadow: 0px 0px 8px 2px #e9e8e8;
   color: #c4c4c4;
   min-width: 230px;

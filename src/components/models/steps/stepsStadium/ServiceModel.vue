@@ -525,7 +525,6 @@ export default {
       this.errors[input] = false;
     },
     latLng({ lat, lng }) {
-      console.log("called");
       this.location = { location: { coordinates: [lat, lng] } };
     },
     handleChange(e) {
