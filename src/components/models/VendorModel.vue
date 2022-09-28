@@ -61,6 +61,8 @@
                 <div>
                   <input
                     type="text"
+                    :class="{ activeErr: errors.firstName }"
+                    @input="resolveErr('firstName')"
                     placeholder="First Name"
                     v-model="vendor.firstName"
                   />
@@ -68,6 +70,8 @@
                 <div>
                   <input
                     type="text"
+                    :class="{ activeErr: errors.lastName }"
+                    @input="resolveErr('lastName')"
                     placeholder="Last Name"
                     v-model="vendor.lastName"
                   />
@@ -75,6 +79,8 @@
                 <div>
                   <input
                     type="number"
+                    :class="{ activeErr: errors.phone }"
+                    @input="resolveErr('phone')"
                     placeholder="Mobile Number"
                     v-model="vendor.phone"
                   />
@@ -90,6 +96,8 @@
                 <div>
                   <input
                     type="text"
+                    :class="{ activeErr: errors.address }"
+                    @input="resolveErr('address')"
                     placeholder="Address"
                     v-model="vendor.address"
                   />
@@ -97,6 +105,8 @@
                 <div v-if="accountOpt == 'host'">
                   <input
                     type="text"
+                    :class="{ activeErr: errors.nationality }"
+                    @input="resolveErr('nationality')"
                     placeholder="Nationality"
                     v-model="vendor.nationality"
                   />
@@ -104,6 +114,8 @@
                 <div>
                   <input
                     type="text"
+                    :class="{ activeErr: errors.commId }"
+                    @input="resolveErr('commId')"
                     placeholder="Commercial ID No"
                     v-model="vendor.commId"
                   />
@@ -112,13 +124,14 @@
               <div class="upload-file">
                 <label for="inputTag">
                   Upload File
-                  <input id="inputTag" type="file" />
+                  <input id="inputTag" type="file" @change="profileImage" />
                 </label>
               </div>
             </div>
             <div class="form-container">
               <div class="input-div">
-                <button type="submit">Next</button>
+                <button type="submit" v-if="!loading">Next</button>
+                <button v-else>Loading...</button>
               </div>
             </div>
           </form>
@@ -146,10 +159,23 @@ export default {
       nextStep: null,
       istransition: false,
       // model
+      formData: null,
       vendor: {},
+      loading: false,
+      // errers
+      errors: {},
     };
   },
   methods: {
+    resolveErr(input) {
+      this.errors[input] = false;
+    },
+    profileImage(event) {
+      // this.url = URL.createObjectURL(event.target.files[0]);
+      let formData = new FormData();
+      formData.append("image", event.target.files[0]);
+      this.formData = formData;
+    },
     selectedOptions(opt) {
       this.accountOpt = opt;
     },
@@ -163,8 +189,64 @@ export default {
     stepTwo() {
       this.nextStep = 1;
     },
+    async uploadFiles() {
+      try {
+        const imagesData = await this.$axios.post(
+          "user/upload",
+          this.formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+        return imagesData.data.url;
+      } catch (error) {
+        this.loading = false;
+        console.log(error);
+      }
+    },
+    validateInputs() {
+      // if (this.accountOpt == "host") {}
+      if (!this.vendor.firstName) {
+        this.errors.firstName = true;
+        return;
+      }
+      if (!this.vendor.lastName) {
+        this.errors.lastName = true;
+        return;
+      }
+      if (!this.vendor.phone) {
+        this.errors.phone = true;
+        return;
+      }
+      if (!this.vendor.address) {
+        this.errors.address = true;
+        return;
+      }
+      if (!this.vendor.nationality && this.accountOpt == "host") {
+        this.errors.nationality = true;
+        return;
+      }
+      if (!this.vendor.commId) {
+        this.errors.commId = true;
+        return;
+      }
+      return true;
+    },
     async onSubmit(e) {
       e.preventDefault();
+      if (!this.validateInputs()) return;
+      this.loading = true;
+      if (this.formData) {
+        var uploadedImages = await this.uploadFiles();
+        this.vendor.file = uploadedImages;
+        this.uploadData();
+      } else {
+        this.uploadData();
+      }
+    },
+    async uploadData() {
       try {
         var res = {};
         if (this.accountOpt == "host") {
@@ -177,13 +259,16 @@ export default {
         }
         if (res) {
           this.stepTwo();
+          this.loading = false;
         }
       } catch (error) {
+        this.loading = false;
         console.log(error);
       }
     },
     close() {
       this.vendor = {};
+      this.errors = {};
       this.$parent.vendorModel = false;
       this.accountOpt = null;
       this.isSubmitted = false;
@@ -411,7 +496,7 @@ h5 {
   font-size: 12px;
   padding: 18px 20px;
   border-radius: 50px;
-  border: none;
+  border: 1px solid transparent;
   box-shadow: 0px 0px 8px 2px #e9e8e8;
   color: #c4c4c4;
   min-width: 230px;

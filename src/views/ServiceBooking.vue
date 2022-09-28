@@ -49,7 +49,7 @@ export default {
   methods: {
     async getData() {
       try {
-        var res = await this.$axios.get(`booking`);
+        var res = await this.$axios.get(`vender/service-booking-count`);
         // console.log(res.data, "-->");
         this.dataCard = res.data;
       } catch (error) {
