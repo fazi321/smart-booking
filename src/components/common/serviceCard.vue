@@ -2,29 +2,30 @@
   <router-link to="/service-details">
     <section class="filter-card">
       <div class="image">
-        <img src="../../assets/images/hotel-img.svg" />
+        <img
+          :src="items.service.description.images[0]"
+          v-if="checkLink(items.service.description.images[0])"
+        />
+        <img src="../../assets/images/hotel-img.svg" v-else />
+        <!-- <img src="../../assets/images/hotel-img.svg" /> -->
       </div>
       <div class="card-detail">
         <div
           class="heading"
           v-if="
             items.service &&
-            items.service.name &&
-            items.service.name.description
+            items.service.description &&
+            items.service.description.nameInEnglish
           "
         >
-          <h5>{{ items.service.name.description.nameInEnglish }}</h5>
+          <h5>{{ items.service.description.nameInEnglish }}</h5>
         </div>
-        <p
-          v-if="
-            items.service && items.service.name && items.service.name.address
-          "
-        >
-          {{ items.service.name.address.city }}
+        <p v-if="items.service && items.service.address">
+          {{ items.service.address.city }}
         </p>
         <div class="sar">
           <h6>Bookings:</h6>
-          <p>3</p>
+          <p>{{ items.bookings }}</p>
         </div>
       </div>
     </section>
@@ -35,6 +36,19 @@
 export default {
   name: "ServiesCard",
   props: ["items"],
+  methods: {
+    checkLink(isLink) {
+      if (
+        new RegExp(
+          "([a-zA-Z0-9]+://)?([a-zA-Z0-9_]+:[a-zA-Z0-9_]+@)?([a-zA-Z0-9.-]+\\.[A-Za-z]{2,4})(:[0-9]+)?(/.*)?"
+        ).test(isLink)
+      ) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+  },
 };
 </script>
 
