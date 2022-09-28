@@ -137,7 +137,7 @@
                 </div>
                 <div class="input-price">
                   <input
-                    type="number"
+                    type="text"
                     v-model="suitablePrice.audditionailRules"
                   />
                 </div>

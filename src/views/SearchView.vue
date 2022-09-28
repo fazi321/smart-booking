@@ -39,7 +39,7 @@
           ></paginate>
         </div>
       </div>
-      <section>
+      <section v-else>
         <h1>not Found</h1>
       </section>
     </section>
@@ -92,7 +92,8 @@ export default {
         var res = await this.$axios.get("services/filter", {
           params: check,
         });
-        this.favList = res.data;
+        console.log(res)
+        this.favList = res.data.services;
         this.loading = false;
         // console.log(res.data);
       } catch (error) {
