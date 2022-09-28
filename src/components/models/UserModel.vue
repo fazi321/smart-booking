@@ -1,11 +1,5 @@
 <template>
   <section :class="['login-signup', { active: model }]">
-    <OtpModel
-      @submited="checkOTP"
-      :model="otpModel"
-      :otpC="verifyOtp"
-      ref="otp"
-    />
     <div class="primary-login">
       <div class="main-login">
         <div class="logo-close">
@@ -17,43 +11,51 @@
           </div>
         </div>
         <div class="headings">
-          <h1>SIGNUP</h1>
-          <h4>Please create your account</h4>
+          <h1>Enter Your Name</h1>
+          <h4>Please create your account Name</h4>
         </div>
         <div class="login-form">
           <div class="form-container">
-            <form autocomplete="off" @submit.prevent="signUp">
+            <form autocomplete="off" @submit.prevent="signUpWithName">
               <div class="input-div">
                 <div class="input-primary">
-                  <div class="flag">
+                  <!-- <div class="flag">
                     <div class="flag-img">
                       <img src="../../assets/images/flag.svg" alt="flag" />
                     </div>
                     <div>
                       <span>+966</span>
                     </div>
-                  </div>
+                  </div> -->
                   <div class="container-input">
                     <input
-                      type="number"
-                      placeholder="Mobile Number"
-                      v-model="phoneNumber"
+                      type="text"
+                      placeholder="First Name"
+                      v-model="firstName"
                       required
                     />
                   </div>
-                  <div class="error" v-if="isError">Mobile Number Error!</div>
+                </div>
+                <div class="input-primary">
+                  <div class="container-input">
+                    <input
+                      type="text"
+                      placeholder="Last Name"
+                      v-model="lastName"
+                    />
+                  </div>
                 </div>
               </div>
               <!-- <div class="error" v-if="!isExist">Password is Incorrect!</div> -->
               <div class="input-div">
-                <button v-if="!loading" type="submit">Signup</button>
+                <button v-if="!loading" type="submit">done</button>
                 <button v-else>Loading...</button>
               </div>
             </form>
           </div>
-          <div class="buttom-text">
+          <!-- <div class="buttom-text">
             Already Have an Account? <span @click="LoginModel">Login</span>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
@@ -61,37 +63,35 @@
 </template>
 
 <script>
-import OtpModel from "./OtpModel.vue";
-// import UserModel from "./UserModel.vue";
-import Cookies from "js-cookie";
 export default {
-  name: "SignUpModel",
+  name: "UserModel",
   props: ["model"],
-  components: {
-    OtpModel,
-  },
   data() {
     return {
-      phoneNumber: null,
-      verifyOtp: "",
-      otpModel: false,
+      firstName: "",
+      lastName: "",
       loading: false,
       isError: false,
-      userData: {},
     };
   },
   methods: {
-    async signUp() {
+    async signUpWithName() {
       this.loading = true;
       try {
-        const res = await this.$axios.post("user/signup", {
-          phone: `${this.phoneNumber}`,
+        const res = await this.$axios.put("user/names", {
+          firstName: `${this.firstName}`,
+          lastName: `${this.lastName}`,
         });
         if (res) {
-          this.otpModel = true;
-          this.userData = res.data;
           this.loading = false;
-          this.verifyOtp = res.data.otp;
+          this.$store.dispatch("auth/login", res.data);
+          this.$swal({
+            icon: "success",
+            title: "success!",
+            showConfirmButton: false,
+            timer: 3000,
+          });
+          this.$parent.userName = false;
         }
       } catch (error) {
         this.$swal({
@@ -104,62 +104,14 @@ export default {
         this.loading = false;
       }
     },
-    checkOTP(val) {
-      if (this.verifyOtp == val) {
-        this.varify(this.verifyOtp);
-        // this.close();
-        // this.$swal({
-        //   icon: "success",
-        //   title: "Success!",
-        //   showConfirmButton: false,
-        //   timer: 3000,
-        // });
-      } else {
-        this.$refs.otp.error = true;
-      }
-    },
-    async varify(otp) {
-      this.$refs.otp.otploading = true;
-      try {
-        var phone = this.userData.phone;
-        const res = await this.$axios.post("user/verify", {
-          phone: `${phone}`,
-          otp: otp,
-        });
-        if (res) {
-          Cookies.set("Authorization", res.data.token, { expires: 7 });
-          this.$axios.defaults.headers.common[
-            "Authorization"
-          ] = `bearer ${res.data.token}`;
-          this.$store.dispatch("auth/login", res.data.update);
-          this.close();
-          this.$swal({
-            icon: "success",
-            title: "Success!",
-            showConfirmButton: false,
-            timer: 3000,
-          });
-          this.$refs.otp.otploading = false;
-          this.$emit('getUserName')
-          this.otpModel = false;
-        }
-      } catch (error) {
-        this.$refs.otp.otploading = false;
-        console.log(error);
-      }
-    },
-    LoginModel() {
-      this.$parent.signUpModel = false;
-      this.$parent.loginModel = true;
-    },
+    // LoginModel() {
+    //   this.$parent.signUpModel = false;
+    //   this.$parent.loginModel = true;
+    // },
     close() {
       this.otpModel = false;
       this.$parent.signUpModel = false;
-    },
-  },
-  watch: {
-    phoneNumber: function () {
-      this.isError = false;
+      this.$parent.userName = false;
     },
   },
 };
@@ -242,13 +194,14 @@ img {
 .login-form .input-primary {
   display: flex;
   height: 42px;
-  padding: 6px 30px;
+  padding: 6px 30px 6px 15px;
   border-radius: 50px;
   box-shadow: 0px 0px 3px 1px #f1f1f1;
   margin-bottom: 35px;
   align-items: center;
   position: relative;
   width: 62%;
+  flex-direction: unset !important;
 }
 .container-input {
   width: 90%;
@@ -275,6 +228,7 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 .input-div button {
   padding: 15px 30px;

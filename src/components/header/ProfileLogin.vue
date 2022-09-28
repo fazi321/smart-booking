@@ -6,10 +6,11 @@
       </button>
       <button class="btn btn-filled" @click="loginModelShow">Login</button>
       <LoginModel :model="loginModel" />
-      <SignUpModel :model="signUpModel" />
+      <SignUpModel :model="signUpModel" @getUserName="userModel"/>
     </section>
     <!-- after login -->
     <section v-else class="dropdown-container">
+      <UserModel :model="userName"/>
       <button
         class="btn btn-transparent"
         v-if="$store.state.auth.user.verify && $store.state.auth.user.role != 'Vender'"
@@ -20,7 +21,7 @@
       <!-- v-if="$store.state.auth.user.verify && $store.state.auth.user.host && $store.state.auth.user.role == 'Vender' || $store.state.auth.user.verify && $store.state.auth.user.company && $store.state.auth.user.role == 'Vender'" -->
       <button
         class="btn btn-filled add-services"
-        
+        v-if="$store.state.auth.user.verify && $store.state.auth.user.host && $store.state.auth.user.role == 'Vender' || $store.state.auth.user.verify && $store.state.auth.user.company && $store.state.auth.user.role == 'Vender'"
         @click="serviceModelShow"
       >
         Add Service
@@ -46,6 +47,7 @@
 import LoginModel from "@/components/models/LoginModel.vue";
 import SignUpModel from "@/components/models/SignUpModel.vue";
 import VendorModel from "@/components/models/VendorModel.vue";
+import UserModel from "@/components/models/UserModel.vue";
 import AddServiceModel from "@/components/models/AddServiceModel.vue";
 import DropDownMenu from "../DropdownMenu.vue";
 import Cookies from "js-cookie";
@@ -58,6 +60,7 @@ export default {
     VendorModel,
     AddServiceModel,
     DropDownMenu,
+    UserModel,
   },
   data() {
     return {
@@ -67,6 +70,7 @@ export default {
       serviceModel: false,
       dropDown: false,
       user: false,
+      userName:false,
     };
   },
   mounted() {
@@ -84,6 +88,9 @@ export default {
     });
   },
   methods: {
+    userModel(){
+      this.userName = true;
+    },
     toggleDropdown() {
       this.dropDown = !this.dropDown;
     },

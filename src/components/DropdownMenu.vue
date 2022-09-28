@@ -14,7 +14,7 @@
       <li>
         <router-link to="#demo">
           <span>Balance</span>
-          <span>SAR 500</span>
+          <span>SAR {{$store.state.auth.user && $store.state.auth.user.balance}}</span>
         </router-link>
       </li>
       <li>
@@ -85,6 +85,7 @@ export default {
     logOut() {
       this.$store.dispatch("auth/logOut");
       this.$axios.defaults.headers.common["Authorization"] = "";
+      this.$parent.dropDown = false;
       this.$swal({
         icon: "success",
         title: "Success!",

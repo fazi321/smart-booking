@@ -17,7 +17,7 @@
             <div>
               <label class="container-input"
                 >Events & Parties allowed
-                <input type="checkbox" v-model="rules.EventsPartiesallowed" />
+                <input type="checkbox" v-model="rules.eventPartiesAllowed" />
                 <span class="checkmark"></span>
               </label>
             </div>
@@ -641,12 +641,11 @@ export default {
         outdoors,
         roomsbath: { ...this.roomsbath },
       };
-      console.log(finalDetail);
       this.$emit("decription", finalDetail);
       this.$parent.accountOpt = "price";
     },
     changeStep(step) {
-      if (step == 7) {
+      if (step == 6) {
         if (this.vInputsDescription()) {
           this.step = step;
         }
