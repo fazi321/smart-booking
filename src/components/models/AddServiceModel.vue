@@ -80,10 +80,10 @@
           <h1>Basic Information</h1>
           <h4>Service type</h4>
         </div>
-        <div class="buttons-top">
+        <!-- <div class="buttons-top">
           <button @click="accountSelected(1)">back</button>
           <button @click="saveData">Save</button>
-        </div>
+        </div> -->
         <div class="container-service">
           <div class="cards">
             <div
@@ -434,17 +434,17 @@ export default {
     };
   },
   methods: {
-    saveData() {
-      localStorage.setItem(
-        "savedData",
-        JSON.stringify({
-          type: "info",
-          step: this.step,
-          category: this.serviceType.category,
-        })
-      );
-      // category
-    },
+    // saveData() {
+    //   localStorage.setItem(
+    //     "savedData",
+    //     JSON.stringify({
+    //       type: "info",
+    //       step: this.step,
+    //       category: this.serviceType.category,
+    //     })
+    //   );
+    //   // category
+    // },
     selectedCategory(opt) {
       if (opt.category == "Wedding_Halls" || opt.category == "Stadium ") {
         this.finalData.totalEntities = "1200";

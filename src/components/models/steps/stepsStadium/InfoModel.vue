@@ -14,10 +14,10 @@
           <h4>Rooms & Guests</h4>
         </div>
         <div class="container-vendor">
-          <div class="buttons-top">
+          <!-- <div class="buttons-top">
             <button @click="back(2)">back</button>
             <button @click="saveData">Save</button>
-          </div>
+          </div> -->
           <div>
             <div class="inputs-container">
               <div>
@@ -328,7 +328,7 @@ export default {
     },
   },
   mounted() {
-    console.log(this.$parent.serviceType.category);
+    // console.log(this.$parent.serviceType.category);
     // var localData = localStorage.getItem("savedData");
     // if (localData) {
     //   var { category } = JSON.parse(localData);
