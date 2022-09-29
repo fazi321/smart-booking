@@ -6,7 +6,7 @@ import axios from "axios";
 /* eslint-disable */
 export default () =>
   axios.create({
-    baseURL: "http://13.229.167.135:5000/api/v1/",
+    baseURL: "https://www.testingserver.tech/api/v1/",
     withCredentials: false,
     // httpsAgent: new https.Agent({ rejectUnauthorized: false })
     // headers: authHeader(),

@@ -62,7 +62,7 @@
           </div>
           <div class="form-container">
             <div class="input-div step-btn">
-              <button type="submit" @click="accountSelected">Next</button>
+              <button type="submit" @click="accountSelected(2)">Next</button>
             </div>
           </div>
         </div>
@@ -79,6 +79,10 @@
         <div class="headings">
           <h1>Basic Information</h1>
           <h4>Service type</h4>
+        </div>
+        <div class="buttons-top">
+          <button @click="accountSelected(1)">back</button>
+          <button @click="saveData">Save</button>
         </div>
         <div class="container-service">
           <div class="cards">
@@ -430,6 +434,17 @@ export default {
     };
   },
   methods: {
+    saveData() {
+      localStorage.setItem(
+        "savedData",
+        JSON.stringify({
+          type: "info",
+          step: this.step,
+          category: this.serviceType.category,
+        })
+      );
+      // category
+    },
     selectedCategory(opt) {
       if (opt.category == "Wedding_Halls" || opt.category == "Stadium ") {
         this.finalData.totalEntities = "1200";
@@ -527,9 +542,9 @@ export default {
     selectedOptions(opt) {
       this.accountOpt = opt;
     },
-    accountSelected() {
+    accountSelected(step) {
       if (!this.accountOpt) return;
-      this.step = 2;
+      this.step = step;
       // this.isSubmitted = true;
     },
     close() {
@@ -546,10 +561,27 @@ export default {
       this.$parent.serviceModel = false;
     },
   },
+  watch: {
+    // whenever question changes, this function will run
+    model() {
+      var localData = localStorage.getItem("savedData");
+      if (localData) {
+        var { type, category, step } = JSON.parse(localData);
+        this.accountOpt = type;
+        this.step = step;
+        this.serviceType.category = category;
+        console.log(category);
+      }
+    },
+  },
 };
 </script>
 
 <style scoped>
+.buttons-top {
+  display: flex;
+  justify-content: space-between;
+}
 .main-section {
   display: flex;
   justify-content: center;
