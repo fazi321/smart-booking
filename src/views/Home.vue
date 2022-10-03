@@ -28,6 +28,29 @@ export default {
     WhatCanWeDo,
   },
   methods: {
+    notificationModel(arg) {
+      console.log(arg, "model");
+      const Toast = this.$swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener("mouseenter", this.$swal.stopTimer);
+          toast.addEventListener("mouseleave", this.$swal.resumeTimer);
+        },
+      });
+      Toast.fire({
+        icon: "success",
+        title: `${arg.data.title}`,
+        position: "top-end",
+        text: `${arg.data.body}`,
+        showConfirmButton: false,
+        toast: true,
+        timer: 3000,
+      });
+    },
     // send() {
     //   const Toast = this.$swal.mixin({
     //     toast: true,
@@ -61,27 +84,7 @@ export default {
           console.log("connected");
         });
         socket.on("notification", (arg) => {
-          const Toast = this.$swal.mixin({
-            toast: true,
-            position: "top-end",
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-              toast.addEventListener("mouseenter", this.$swal.stopTimer);
-              toast.addEventListener("mouseleave", this.$swal.resumeTimer);
-            },
-          });
-          Toast.fire({
-            icon: "success",
-            title: `${arg.data.title}`,
-            position: "top-end",
-            text: `${arg.data.body}`,
-            showConfirmButton: false,
-            toast: true,
-            timer: 3000,
-          });
-          console.log(arg, "=>");
+          this.notificationModel(arg);
         });
       }
     },
