@@ -334,7 +334,7 @@
               </div>
               <div>
                 <input
-                  :class="{ activeErr: errors.nameInArabic }"
+                  :class="['arabic',{ activeErr: errors.nameInArabic }]"
                   @input="resolveErr('nameInArabic')"
                   type="text"
                   placeholder="Service Name (Arabic)"
@@ -370,7 +370,7 @@
               </div>
               <div>
                 <input
-                  :class="{ activeErr: errors.descriptionInArabic }"
+                  :class="['arabic',{ activeErr: errors.descriptionInArabic }]"
                   @input="resolveErr('descriptionInArabic')"
                   type="text"
                   placeholder="Property Description (Arabic)"

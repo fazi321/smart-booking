@@ -49,6 +49,9 @@ img {
   display: block;
   cursor: pointer;
 }
+.arabic{
+  direction: rtl;
+}
 .activeErr {
   border: 1px solid #ff7a7a!important;
 }
