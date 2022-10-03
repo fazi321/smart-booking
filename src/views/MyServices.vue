@@ -55,18 +55,28 @@ export default {
         console.log(error);
       }
     },
-    async deleteCard(id) {
+    deleteCard(id) {
+      this.$swal({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.deleteItem(id);
+        }
+      });
+    },
+    async deleteItem(id) {
       try {
         var res = await this.$axios.delete(`services/delete-any/${id}`);
         if (res) {
           var updateCard = this.dataCard.filter((item) => item._id != id);
           this.dataCard = updateCard;
-          this.$swal({
-            icon: "success",
-            title: "Success!",
-            showConfirmButton: false,
-            timer: 3000,
-          });
+          this.$swal("Deleted!", "Your file has been deleted.", "success");
         }
       } catch (error) {
         this.$swal({
@@ -122,7 +132,7 @@ export default {
   .booking-cards .card {
     width: 100%;
   }
-   .service-container h3{
+  .service-container h3 {
     margin: 0 10px;
   }
 }

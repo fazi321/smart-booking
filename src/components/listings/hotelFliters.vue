@@ -114,9 +114,9 @@
               type="radio"
               id="test1"
               name="radio-group"
-              value="Hotels"
+              value="Hotel"
               @change="rentalVacation"
-              :checked="filters.rentalType == 'Hotels'"
+              :checked="filters.rentalType == 'Hotel'"
             />
             <label for="test1">Hotels</label>
           </div>

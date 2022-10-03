@@ -14,6 +14,10 @@
           <h4>Rooms & Guests</h4>
         </div>
         <div class="container-vendor">
+          <!-- <div class="buttons-top">
+            <button @click="back(2)">back</button>
+            <button @click="saveData">Save</button>
+          </div> -->
           <div>
             <div class="inputs-container">
               <div>
@@ -296,6 +300,13 @@ export default {
       }
       // this.isSubmitted = true;
     },
+    back(step){
+      console.log(step, 'back')
+      this.$parent.accountSelected(step);
+    },
+    saveData(){
+      console.log('saved')
+    },
     close() {
       this.$emit("close");
     },
@@ -315,6 +326,18 @@ export default {
       this.$parent.accountOpt = "service";
       this.$emit("basicInfo", basicInfo);
     },
+  },
+  mounted() {
+    // console.log(this.$parent.serviceType.category);
+    // var localData = localStorage.getItem("savedData");
+    // if (localData) {
+    //   var { category } = JSON.parse(localData);
+    //   console.log(category)
+    //   // this.accountOpt = type;
+    //   // this.step = step;
+    //   // this.serviceType.category = category;
+    //   // console.log(category);
+    // }
   },
 };
 </script>

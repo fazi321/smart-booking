@@ -14,7 +14,7 @@
         <div class="location" id="input">
           <input
             type="text"
-            :placeholder="'Riyadh'"
+            :placeholder="'City'"
             v-model="search.city"
             @focus="openDropdown"
           />
