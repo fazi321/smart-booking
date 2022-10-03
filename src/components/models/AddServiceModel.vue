@@ -436,7 +436,8 @@ export default {
     };
   },
   methods: {
-    saveData() {
+    saveData(from) {
+      console.log(from, '->')
       var store = {
         categoryId: this.serviceType._id,
         type: this.accountOpt,
@@ -444,9 +445,12 @@ export default {
         category: this.serviceType.category,
       };
       var info = this.$refs.info.infoData;
-      var service = this.$refs.service.serviceObj;
+      var service = this.$refs.service;
       console.log(service, '==>')
-      store = { ...store, ...info, ...service};
+      if(from == 'service'){
+        service.saveImage();
+      }
+      store = { ...store, ...info, ...service.serviceObj};
       console.log(store);
       localStorage.setItem("savedData", JSON.stringify(store));
     },

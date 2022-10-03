@@ -625,7 +625,7 @@ export default {
   },
   methods: {
     saveData() {
-      this.$parent.saveData();
+      this.$parent.saveData('service');
       var localData = localStorage.getItem("savedData");
       var serviceData = JSON.parse(localData) || {};
       // adding from step info

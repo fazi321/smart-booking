@@ -567,7 +567,7 @@ export default {
           var { safty } = description;
           this.safty = safty;
           for (const [key, value] of Object.entries(description)) {
-            if(key != 'safty'){
+            if (key != "safty") {
               this.description[key] = value;
             }
           }
@@ -860,6 +860,19 @@ export default {
     // inside previus component step
     goBack(step) {
       this.step = step;
+    },
+    saveImage() {
+      var localData = localStorage.getItem("savedData");
+        var serviceData = JSON.parse(localData) || {};
+      function myfunction(data) {
+        serviceData.savedImages = data;
+        localStorage.setItem("savedData", JSON.stringify(serviceData));
+      }
+      if (this.isUploadImage) {
+        this.uploadFiles(myfunction);
+      } else {
+        serviceData.savedImages = this.savedImages;
+      }
     },
     close() {
       this.$emit("close");
