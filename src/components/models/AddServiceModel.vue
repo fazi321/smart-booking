@@ -80,10 +80,10 @@
           <h1>Basic Information</h1>
           <h4>Service type</h4>
         </div>
-        <!-- <div class="buttons-top">
+        <div class="buttons-top">
           <button @click="accountSelected(1)">back</button>
           <button @click="saveData">Save</button>
-        </div> -->
+        </div>
         <div class="container-service">
           <div class="cards">
             <div
@@ -115,15 +115,14 @@
     <section v-if="serviceType && serviceType.category == 'Chalets'">
       <!-- basic information start -->
       <InfoModelChalets
-        v-if="isSubmitted && accountOpt == 'info'"
-        :model="true"
+        :model="isSubmitted && accountOpt == 'info'"
         @close="close"
         @basicInfo="basicData"
+        ref="info"
       />
       <!-- Description start -->
       <ServiceModelChalets
-        v-if="isSubmitted && accountOpt == 'service'"
-        :model="true"
+        :model="isSubmitted && accountOpt == 'service'"
         @close="close"
         @images="formData"
         @decription="decription"
@@ -165,18 +164,18 @@
     <section v-if="serviceType && serviceType.category == 'Stadium'">
       <!-- basic information start -->
       <InfoModelStadium
-        v-if="isSubmitted && accountOpt == 'info'"
-        :model="true"
+        :model="isSubmitted && accountOpt == 'info'"
         @close="close"
         @basicInfo="basicData"
+        ref="info"
       />
       <!-- Description start -->
       <ServiceModelStadium
-        v-if="isSubmitted && accountOpt == 'service'"
-        :model="true"
+        :model="isSubmitted && accountOpt == 'service'"
         @close="close"
         @images="formData"
         @decription="decription"
+        ref="service"
       />
       <!-- price start -->
       <PriceModelStadium
@@ -431,20 +430,26 @@ export default {
       dataP: {},
       finalData: {},
       myImages: {},
+      // calling from child without mounted call back n next Button
+      nextButton: false,
+      savedImages: [],
     };
   },
   methods: {
-    // saveData() {
-    //   localStorage.setItem(
-    //     "savedData",
-    //     JSON.stringify({
-    //       type: "info",
-    //       step: this.step,
-    //       category: this.serviceType.category,
-    //     })
-    //   );
-    //   // category
-    // },
+    saveData() {
+      var store = {
+        categoryId: this.serviceType._id,
+        type: this.accountOpt,
+        step: this.step,
+        category: this.serviceType.category,
+      };
+      var info = this.$refs.info.infoData;
+      var service = this.$refs.service.serviceObj;
+      console.log(service, '==>')
+      store = { ...store, ...info, ...service};
+      console.log(store);
+      localStorage.setItem("savedData", JSON.stringify(store));
+    },
     selectedCategory(opt) {
       if (opt.category == "Wedding_Halls" || opt.category == "Stadium ") {
         this.finalData.totalEntities = "1200";
@@ -474,10 +479,11 @@ export default {
       if (this.myImages) {
         if (uploadedImages) {
           var imagesArr = Object.values(uploadedImages);
-          dataPayload.description.images = imagesArr;
+          dataPayload.description.images = [...imagesArr, ...this.savedImages];
           this.submit(dataPayload);
         }
       } else {
+        dataPayload.description.images = this.savedImages;
         this.submit(dataPayload);
       }
     },
@@ -536,7 +542,7 @@ export default {
       // console.log(this.myImages)
     },
     changeSteps() {
-      if (!this.serviceType) return;
+      if (!this.serviceType.category) return;
       this.isSubmitted = true;
     },
     selectedOptions(opt) {
@@ -545,7 +551,13 @@ export default {
     accountSelected(step) {
       if (!this.accountOpt) return;
       this.step = step;
-      // this.isSubmitted = true;
+      this.isSubmitted = false;
+    },
+    backServiceModel(step, accountType) {
+      // info, service and pric
+      this.accountOpt = accountType;
+      this.isSubmitted = true;
+      this.step = step;
     },
     close() {
       this.accountOpt = null;
@@ -558,19 +570,34 @@ export default {
       this.dataP = {};
       this.finalData = {};
       this.myImages = {};
+      this.savedImages = [];
       this.$parent.serviceModel = false;
     },
   },
   watch: {
-    // whenever question changes, this function will run
-    model() {
-      var localData = localStorage.getItem("savedData");
-      if (localData) {
-        var { type, category, step } = JSON.parse(localData);
-        this.accountOpt = type;
-        this.step = step;
-        this.serviceType.category = category;
-        console.log(category);
+    // whenever model open, this function will run
+    model(newValue) {
+      if (newValue) {
+        var localData = localStorage.getItem("savedData");
+        if (localData) {
+          var { type, category, step, roomsGuest, categoryId } =
+            JSON.parse(localData);
+          if (type) {
+            this.accountOpt = type;
+            this.isSubmitted = true;
+          }
+          if (step) {
+            this.step = step;
+          }
+          if (category) {
+            this.serviceType._id = categoryId;
+            this.serviceType.category = category;
+          }
+          if (roomsGuest) {
+            // go for next step if saved
+            this.changeSteps();
+          }
+        }
       }
     },
   },

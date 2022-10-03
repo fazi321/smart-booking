@@ -12,6 +12,10 @@
           <h1>Price Details</h1>
           <h4>Pricing</h4>
         </div>
+        <div class="buttons-top">
+            <button @click="back(2)">back</button>
+            <button @click="saveData">Save</button>
+          </div>
         <section class="price-container">
           <div class="container-price">
             <div class="price-primary">
@@ -620,6 +624,17 @@ export default {
     };
   },
   methods: {
+    saveData() {
+      this.$parent.saveData();
+      var localData = localStorage.getItem("savedData");
+      var serviceData = JSON.parse(localData) || {};
+      // adding from step info
+      serviceData.infoStep = 2; // info last step
+      serviceData.serviceStep = 4; // service last step;
+      serviceData.priceStep = this.step;
+      // if(this.leisure){}
+      localStorage.setItem("savedData", JSON.stringify(serviceData));
+    },
     submitedData() {
       // price
       const newObj = {};
@@ -715,6 +730,15 @@ export default {
     },
     close() {
       this.$emit("close");
+    },
+    // from previus component step
+    back(step) {
+      // this.$parent.nextButton = true;
+      this.$parent.backServiceModel(step, 'service');
+    },
+    // inside previus component step
+    goBack(step) {
+      this.step = step;
     },
   },
 };

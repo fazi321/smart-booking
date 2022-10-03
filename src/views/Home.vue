@@ -30,17 +30,18 @@ export default {
   // methods: {
   //   send() {
   //     // eslint-disable-next-line
-  //     const socket = io("ws://localhost:3000/");
+  //     const socket = io("http://13.229.167.135:5000/api");
   //     socket.emit("howdy", "stranger");
   //   },
   // },
   // mounted() {
-  //   const socket = io("ws://13.229.167.135:4000");
+  //   const socket = io("http://13.229.167.135:5000");
   //   socket.on("connect", () => {
   //     console.log(socket && socket.id);
   //     console.log('connected')
   //   });
-  //   socket.on("hello", (arg) => {
+  //   // console.log('connected')
+  //   socket.on("notification", (arg) => {
   //     console.log(arg, "=>");
   //   });
   // },

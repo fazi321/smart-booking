@@ -1,7 +1,6 @@
 <template>
   <div class="location-set">
     <GMapMap
-      
       :center="center"
       :zoom="zoom"
       :onClick="clicked"
@@ -41,6 +40,7 @@
 </template>
 <script>
 export default {
+  props: ["savedLocation"],
   data() {
     return {
       map: null,
@@ -71,21 +71,33 @@ export default {
     };
   },
   mounted() {
+    if (
+      this.savedLocation &&
+      this.savedLocation.location &&
+      this.savedLocation.location.coordinates
+    ) {
+      var cords = this.savedLocation.location.coordinates;
+      this.center.lat = cords[0];
+      this.center.lng = cords[1];
+      //  marker
+      this.markers[0].position.lat = cords[0];
+      this.markers[0].position.lng = cords[1];
+    }
     this.getLocation();
   },
   methods: {
-    clicked(){
-       this.markers[0].position.lat = this.currentRepo.lat;
-       this.markers[0].position.lng = this.currentRepo.lng;
+    clicked() {
+      this.markers[0].position.lat = this.currentRepo.lat;
+      this.markers[0].position.lng = this.currentRepo.lng;
     },
     showPosition(position) {
       (this.center = {
         lat: position.coords.latitude,
         lng: position.coords.longitude,
       }),
-      // this.$emit("latlng", this.center);
-      // mark
-      this.markers[0].position.lat = position.coords.latitude;
+        // this.$emit("latlng", this.center);
+        // mark
+        (this.markers[0].position.lat = position.coords.latitude);
       this.markers[0].position.lng = position.coords.longitude;
     },
     getLocation() {

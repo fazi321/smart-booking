@@ -12,6 +12,10 @@
           <h1>Service Description</h1>
           <h4>Safty</h4>
         </div>
+        <div class="buttons-top">
+          <button @click="back(2)">back</button>
+          <button @click="saveData">Save</button>
+        </div>
         <div class="container-rules">
           <div class="rules">
             <!-- <div>
@@ -219,6 +223,10 @@
           <h1>Service Description</h1>
           <h4>Rooms Bath</h4>
         </div>
+        <div class="buttons-top">
+          <button @click="goBack(1)">back</button>
+          <button @click="saveData">Save</button>
+        </div>
         <div class="container-rules">
           <div class="rules">
             <!-- <div>
@@ -319,6 +327,10 @@
         <div class="headings">
           <h1>Service Description</h1>
           <h4>Description</h4>
+        </div>
+        <div class="buttons-top">
+          <button @click="goBack(2)">back</button>
+          <button @click="saveData">Save</button>
         </div>
         <div class="container-vendor">
           <div>
@@ -421,9 +433,13 @@
           <h1>Service Description</h1>
           <h4>Address & Location</h4>
         </div>
+        <div class="buttons-top">
+          <button @click="goBack(3)">back</button>
+          <button @click="saveData">Save</button>
+        </div>
         <div class="map-container">
           <div class="map">
-            <GoogleMap @latlng="latLng" />
+            <GoogleMap @latlng="latLng" :savedLocation="location" />
           </div>
           <div class="container-vendor">
             <div>
@@ -518,9 +534,135 @@ export default {
       // errors
       errors: {},
       verifyImages: 0,
+      isUploadImage: 0,
+      savedImages: [],
+      formData: {},
+      // service data
+      serviceObj: {},
     };
   },
+  mounted() {
+    var localData = localStorage.getItem("savedData");
+    if (localData) {
+      var {
+        // safty,
+        roomsbath,
+        description,
+        category,
+        serviceStep,
+        savedImages,
+        location,
+        address,
+      } = JSON.parse(localData);
+      if (category == "Stadium") {
+        // if (safty) {
+        //   this.safty = safty;
+        //   this.serviceObj.safty = safty;
+        // }
+        if (roomsbath) {
+          this.roomsbath = roomsbath;
+          this.serviceObj.roomsbath = roomsbath;
+        }
+        if (description) {
+          var { safty } = description;
+          this.safty = safty;
+          for (const [key, value] of Object.entries(description)) {
+            if(key != 'safty'){
+              this.description[key] = value;
+            }
+          }
+          this.serviceObj.description = description;
+        }
+        if (savedImages) {
+          this.savedImages = savedImages;
+          this.serviceObj.savedImages = savedImages;
+          this.verifyImages = this.savedImages.length;
+        }
+
+        if (location) {
+          this.location = { location };
+          this.serviceObj.location = location;
+        }
+        if (address) {
+          this.address = address;
+          this.serviceObj.address = address;
+        }
+        // for current step
+        if (serviceStep) {
+          this.step = serviceStep;
+        }
+        // this.$emit("decription", {
+        //   safty,
+        //   roomsbath,
+        //   description,
+        //   category,
+        //   serviceStep,
+        //   savedImages,
+        // });
+      }
+    }
+  },
   methods: {
+    async uploadFiles(callBack) {
+      this.$store.dispatch("details/setLoading", true);
+      try {
+        const imagesData = await this.$axios.post(
+          "https://www.testingserver.tech/api/v1/user/upload-multiple",
+          this.formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+        callBack(imagesData.data);
+      } catch (error) {
+        // this.$store.dispatch("details/setLoading", false);
+        console.log(error);
+      }
+    },
+    saveData() {
+      this.$parent.saveData();
+      var localData = localStorage.getItem("savedData");
+      var serviceData = JSON.parse(localData) || {};
+      var isEmptysafty = Object.keys(this.safty).length === 0;
+      var isEmptyroomsbath = Object.keys(this.roomsbath).length === 0;
+      var isEmptyDescription = Object.keys(this.description).length === 0;
+      var isEmptyLocation = Object.keys(this.location).length === 0;
+      var isEmptyaddresses = Object.keys(this.address).length === 0;
+
+      // if (!isEmptysafty) {
+      //   serviceData.safty = {  };
+      // }
+      if (!isEmptyroomsbath) {
+        serviceData.roomsbath = { ...this.roomsbath };
+      }
+      if (!isEmptyDescription || !isEmptysafty) {
+        serviceData.description = { ...this.description, ...this.safty };
+      }
+      function myfunction(data) {
+        serviceData.savedImages = data;
+        localStorage.setItem("savedData", JSON.stringify(serviceData));
+      }
+      if (this.isUploadImage) {
+        this.uploadFiles(myfunction);
+      } else {
+        serviceData.savedImages = this.savedImages;
+      }
+      if (!isEmptyLocation) {
+        var { location } = this.location;
+        serviceData.location = location;
+        //  this.location = { location: { coordinates: [lat, lng] } };
+      }
+      if (!isEmptyaddresses) {
+        serviceData.address = this.address;
+      }
+      // adding from step info
+      serviceData.infoStep = 2; // info last step
+      serviceData.serviceStep = this.step;
+      // if(this.leisure){}
+      localStorage.setItem("savedData", JSON.stringify(serviceData));
+    },
     resolveErr(input) {
       this.errors[input] = false;
     },
@@ -528,6 +670,7 @@ export default {
       this.location = { location: { coordinates: [lat, lng] } };
     },
     handleChange(e) {
+      this.isUploadImage = e.target.files.length;
       this.verifyImages = e.target.files.length;
       if (this.verifyImages > 5) {
         this.$swal({
@@ -538,11 +681,12 @@ export default {
         });
         return;
       }
+      this.savedImages = [];
       let formData = new FormData();
       for (let i = 0; i < e.target.files.length; i++) {
         formData.append("images", e.target.files[i]);
       }
-      this.$emit("images", formData);
+      this.formData = formData;
     },
     submited() {
       if (!this.vInputsLocation()) return;
@@ -564,6 +708,11 @@ export default {
       //     newObj[key] = value;
       //   }
       // }
+      if (this.savedImages.length) {
+        this.$parent.savedImages = this.savedImages;
+        console.log("saved", this.savedImages);
+      }
+      this.$emit("images", this.formData);
       var { location } = this.location;
       var finalDetail = {
         description: {
@@ -577,6 +726,7 @@ export default {
         roomsbath: { ...this.roomsbath },
       };
       console.log(finalDetail);
+      this.serviceObj = { ...finalDetail };
       this.$emit("decription", finalDetail);
       this.$parent.accountOpt = "price";
     },
@@ -701,6 +851,15 @@ export default {
       setTimeout(() => {
         input[0].focus();
       }, 100);
+    },
+    // from previus component step
+    back(step) {
+      // this.$parent.nextButton = true;
+      this.$parent.backServiceModel(step, "info");
+    },
+    // inside previus component step
+    goBack(step) {
+      this.step = step;
     },
     close() {
       this.$emit("close");

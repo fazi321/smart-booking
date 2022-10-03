@@ -14,10 +14,10 @@
           <h4>Rooms & Guests</h4>
         </div>
         <div class="container-vendor">
-          <!-- <div class="buttons-top">
+          <div class="buttons-top">
             <button @click="back(2)">back</button>
             <button @click="saveData">Save</button>
-          </div> -->
+          </div>
           <div>
             <div class="inputs-container">
               <div>
@@ -85,6 +85,10 @@
         <div class="headings">
           <h1>Basic Information</h1>
           <h4>Amenities</h4>
+        </div>
+        <div class="buttons-top">
+          <button @click="goBack(1)">back</button>
+          <button @click="saveData">Save</button>
         </div>
         <section class="over-follow">
           <div>
@@ -245,6 +249,7 @@ export default {
       leisure: {},
       accessCheck: false,
       accessInHoursCheck: null,
+      infoData: {},
       // errors
       errors: {},
     };
@@ -300,12 +305,29 @@ export default {
       }
       // this.isSubmitted = true;
     },
-    back(step){
-      console.log(step, 'back')
+    // from previus component step
+    back(step) {
+      this.$parent.nextButton = true;
       this.$parent.accountSelected(step);
     },
-    saveData(){
-      console.log('saved')
+    // inside previus component step
+    goBack(step) {
+      this.step = step;
+    },
+    saveData() {
+      this.$parent.saveData();
+      var localData = localStorage.getItem("savedData");
+      var serviceData = JSON.parse(localData) || {};
+      serviceData.roomsGuest = { ...this.roomsGuest };
+      // adding lesisure for storage
+      var isEmptyLeisure = Object.keys(this.leisure).length === 0;
+      if (!isEmptyLeisure) {
+        serviceData.leisure = { ...this.leisure };
+      }
+      // adding from step info
+      serviceData.infoStep = this.step;
+      // if(this.leisure){}
+      localStorage.setItem("savedData", JSON.stringify(serviceData));
     },
     close() {
       this.$emit("close");
@@ -324,20 +346,30 @@ export default {
       basicInfo.roomsGuest = this.roomsGuest;
       basicInfo.leisure = this.leisure;
       this.$parent.accountOpt = "service";
+      this.infoData = {...basicInfo}
       this.$emit("basicInfo", basicInfo);
     },
   },
   mounted() {
-    // console.log(this.$parent.serviceType.category);
-    // var localData = localStorage.getItem("savedData");
-    // if (localData) {
-    //   var { category } = JSON.parse(localData);
-    //   console.log(category)
-    //   // this.accountOpt = type;
-    //   // this.step = step;
-    //   // this.serviceType.category = category;
-    //   // console.log(category);
-    // }
+    var localData = localStorage.getItem("savedData");
+    if (localData) {
+      var { roomsGuest, infoStep, leisure, category } = JSON.parse(localData);
+      if (category == "Stadium") {
+        if (roomsGuest) {
+          this.roomsGuest = roomsGuest;
+          this.infoData.roomsGuest = roomsGuest
+        }
+        if (leisure) {
+          this.leisure = leisure;
+          this.infoData.leisure = leisure;
+          this.AmenitieSelected = Object.keys(leisure);
+        }
+        if (infoStep && !this.$parent.nextButton) {
+          this.step = infoStep;
+        }
+        // this.$emit("basicInfo", );
+      }
+    }
   },
 };
 </script>
