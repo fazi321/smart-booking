@@ -38,7 +38,7 @@ export default {
           console.log(socket && socket.id);
           console.log("connected");
         });
-        socket.on("hello", (arg) => {
+        socket.on("notification", (arg) => {
           console.log(arg, "=>");
         });
       }
