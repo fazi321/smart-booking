@@ -28,6 +28,31 @@ export default {
     WhatCanWeDo,
   },
   // methods: {
+  //   getProfile() {
+  //     var user = this.$store.state.auth.user;
+  //     if (user) {
+  //       const socket = io("ws://13.229.167.135:4000", {
+  //         query: `id=${user._id}`,
+  //       });
+  //       socket.on("connect", () => {
+  //         console.log(socket && socket.id);
+  //         console.log("connected");
+  //       });
+  //       socket.on("hello", (arg) => {
+  //         console.log(arg, "=>");
+  //       });
+  //     }
+  //   },
+  // },
+  // watch: {
+  //   "$store.state.auth.user": {
+  //     immediate: true,
+  //     handler() {
+  //       this.getProfile();
+  //     },
+  //   },
+  // },
+  // methods: {
   //   send() {
   //     // eslint-disable-next-line
   //     const socket = io("ws://localhost:3000/");
