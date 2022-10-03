@@ -506,12 +506,12 @@ export default {
         const res = await this.$axios.post(cate, payload);
         if (res) {
           // console.log(res);
-          this.$swal({
-            icon: "success",
-            title: "Success!",
-            showConfirmButton: false,
-            timer: 3000,
-          });
+          // this.$swal({
+          //   icon: "success",
+          //   title: "Success!",
+          //   showConfirmButton: false,
+          //   timer: 3000,
+          // });
           this.$store.dispatch("details/setLoading", false);
           setTimeout(() => {
             this.$router.push("/my-services");
