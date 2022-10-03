@@ -35,16 +35,21 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-color: rgba(34, 34, 34, 0.1); */
-  /* position: fixed; */
+  position: fixed;
+  z-index: 99;
+  background: #fff;
+  top: 0;
   width: 100%;
   /* border-bottom: 1px solid #eee; */
   min-height: 70px;
   transition: all 0.5s;
+  box-shadow: 0 -15px 15px 8px rgb(48 52 65 / 50%);
 }
+
 header.active {
   background: #fff;
 }
+
 .header .container {
   padding: 15px 0;
   display: flex;
@@ -52,14 +57,17 @@ header.active {
   align-items: center;
   flex-wrap: wrap;
 }
+
 .main-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
 }
-.main-container section:nth-child(2), .main-container section:nth-child(3){
-   position:relative;
-   top:8px;
+
+.main-container section:nth-child(2),
+.main-container section:nth-child(3) {
+  position: relative;
+  /* top:8px; */
 }
 </style>

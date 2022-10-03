@@ -8,5 +8,6 @@ export default () =>
     withCredentials: false,
     // httpsAgent: new https.Agent({ rejectUnauthorized: false })
     // headers: authHeader(),
+     // https://www.testingserver.tech/api/v1/
   });
 

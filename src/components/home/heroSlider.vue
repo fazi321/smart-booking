@@ -85,6 +85,7 @@ export default {
   position: relative;
   margin-bottom: 30px;
   margin-top: 10px;
+  /* top: 80px; */
 }
 .hero-slider .search {
   position: absolute;

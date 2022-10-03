@@ -27,6 +27,7 @@ export default {
 <style scoped>
 .desktop-header {
   display: block;
+  min-height: 80px;
 }
 .mobile-header {
   display: none;

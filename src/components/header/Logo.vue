@@ -15,6 +15,8 @@ export default {
 <style scoped>
 .logo {
   width: 180px;
+  position: relative;
+  top: -6px;
 }
 @media (max-width: 479px) and (min-width: 320px) {
   .logo {
