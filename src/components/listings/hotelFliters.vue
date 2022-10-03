@@ -867,8 +867,26 @@ export default {
   box-shadow: 0px 0px 7px 1px #0000001a;
   border-radius: 18px;
   opacity: 1;
-  height: 100%;
   width: 100%;
+  padding: 20px 0;
+  background-color: #fff;
+ 
+}
+.apartments-filters .inner{
+  height: 2150px;
+  overflow-y: scroll;
+  scrollbar-color: #d4aa70 #e4e4e4;
+}
+.apartments-filters .inner::-webkit-scrollbar {
+  width: 5px;
+}
+.apartments-filters .inner::-webkit-scrollbar-track {
+  background-color: #0e476348;
+  border-radius: 100px; 
+}
+.apartments-filters .inner::-webkit-scrollbar-thumb {
+  box-shadow: inset 0 0 18px #febb12;
+  border-radius: 100px;
 }
 .apartments-filters .inner h6 {
   color: #0e4763;

@@ -381,7 +381,7 @@
               <div>
                 <input
                   type="text"
-                  :class="{ activeErr: errors.nameInArabic }"
+                  :class="['arabic',{ activeErr: errors.nameInArabic }]"
                   @input="resolveErr('nameInArabic')"
                   placeholder="Service Name (Arabic)"
                   v-model="description.nameInArabic"
@@ -417,7 +417,7 @@
               <div>
                 <input
                   type="text"
-                  :class="{ activeErr: errors.descriptionInArabic }"
+                  :class="['arabic',{ activeErr: errors.descriptionInArabic }]"
                   @input="resolveErr('descriptionInArabic')"
                   placeholder="Property Description (Arabic)"
                   v-model="description.descriptionInArabic"

@@ -131,7 +131,7 @@ export default {
           this.$axios.defaults.headers.common[
             "Authorization"
           ] = `bearer ${res.data.token}`;
-          this.$store.dispatch("auth/login", res.data.update);
+          this.$store.dispatch("auth/login", res.data.user);
           this.close();
           this.$swal({
             icon: "success",

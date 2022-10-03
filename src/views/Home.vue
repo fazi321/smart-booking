@@ -16,7 +16,7 @@ import HotelSlider from "@/components/home/hotelSlider.vue";
 import SmartBooking from "@/components/home/smartBooking.vue";
 import ExploreCity from "@/components/home/exploreCity.vue";
 import WhatCanWeDo from "@/components/home/whatCanWeDo.vue";
-// import { io } from "socket.io-client";
+import { io } from "socket.io-client";
 export default {
   name: "HomeView",
   components: {
@@ -26,6 +26,31 @@ export default {
     SmartBooking,
     ExploreCity,
     WhatCanWeDo,
+  },
+  methods: {
+    getProfile() {
+      var user = this.$store.state.auth.user;
+      if (user) {
+        const socket = io("https://www.testingserver.tech", {
+          query: `id=${user._id}`,
+        });
+        socket.on("connect", () => {
+          console.log(socket && socket.id);
+          console.log("connected");
+        });
+        socket.on("notification", (arg) => {
+          console.log(arg, "=>");
+        });
+      }
+    },
+  },
+  watch: {
+    "$store.state.auth.user": {
+      immediate: true,
+      handler() {
+        this.getProfile();
+      },
+    },
   },
   // methods: {
   //   send() {
