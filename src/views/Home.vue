@@ -28,6 +28,28 @@ export default {
     WhatCanWeDo,
   },
   methods: {
+    // send() {
+    //   const Toast = this.$swal.mixin({
+    //     toast: true,
+    //     position: "top-end",
+    //     showConfirmButton: false,
+    //     timer: 3000,
+    //     timerProgressBar: true,
+    //     didOpen: (toast) => {
+    //       toast.addEventListener("mouseenter", this.$swal.stopTimer);
+    //       toast.addEventListener("mouseleave", this.$swal.resumeTimer);
+    //     },
+    //   });
+    //   Toast.fire({
+    //     icon: "success",
+    //     title: "Success!",
+    //     position: "top-end",
+    //     text: "Something went wrong!",
+    //     showConfirmButton: false,
+    //     toast: true,
+    //     timer: 3000,
+    //   });
+    // },
     getProfile() {
       var user = this.$store.state.auth.user;
       if (user) {
@@ -35,10 +57,30 @@ export default {
           query: `userId=${user._id}`,
         });
         socket.on("connect", () => {
-          console.log(socket && socket.id);
+          // console.log(socket && socket.id);
           console.log("connected");
         });
         socket.on("notification", (arg) => {
+          const Toast = this.$swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener("mouseenter", this.$swal.stopTimer);
+              toast.addEventListener("mouseleave", this.$swal.resumeTimer);
+            },
+          });
+          Toast.fire({
+            icon: "success",
+            title: `${arg.data.title}`,
+            position: "top-end",
+            text: `${arg.data.body}`,
+            showConfirmButton: false,
+            toast: true,
+            timer: 3000,
+          });
           console.log(arg, "=>");
         });
       }
