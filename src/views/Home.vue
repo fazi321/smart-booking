@@ -32,7 +32,7 @@ export default {
       var user = this.$store.state.auth.user;
       if (user) {
         const socket = io("https://www.testingserver.tech", {
-          query: `id=${user._id}`,
+          query: `userId=${user._id}`,
         });
         socket.on("connect", () => {
           console.log(socket && socket.id);
