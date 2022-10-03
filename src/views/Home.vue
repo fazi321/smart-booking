@@ -31,7 +31,7 @@ export default {
     getProfile() {
       var user = this.$store.state.auth.user;
       if (user) {
-        const socket = io("ws://13.229.167.135:4000", {
+        const socket = io("https://www.testingserver.tech", {
           query: `id=${user._id}`,
         });
         socket.on("connect", () => {
