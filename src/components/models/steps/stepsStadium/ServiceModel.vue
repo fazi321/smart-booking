@@ -684,6 +684,7 @@ export default {
         });
         return;
       }
+      // commit
       this.savedImages = [];
       let formData = new FormData();
       for (let i = 0; i < e.target.files.length; i++) {
