@@ -501,7 +501,7 @@
         </div>
         <div class="form-container">
           <div class="input-div step-btn">
-            <button type="submit" @click="submited">Next</button>
+            <button type="submit" @click="submited()">Next</button>
           </div>
         </div>
       </div>
@@ -651,6 +651,7 @@ export default {
         this.uploadFiles(myfunction);
       }else{
          serviceData.savedImages = this.savedImages;
+         this.serviceObj.savedImages = this.savedImages;
       }
       if (!isEmptyLocation) {
         var { location } = this.location;
@@ -684,6 +685,7 @@ export default {
         });
         return;
       }
+      this.$parent.savedImages = [];
       this.savedImages = [];
       let formData = new FormData();
       for (let i = 0; i < e.target.files.length; i++) {
@@ -691,8 +693,10 @@ export default {
       }
       this.formData = formData;
     },
-    submited() {
-      if (!this.vInputsLocation()) return;
+    submited(isSaveMode) {
+      if(!isSaveMode){
+        if (!this.vInputsLocation()) return;
+      }
       // sutable childcheck
       const newObjC = {};
       for (const [key, value] of Object.entries(this.suitableFor)) {
@@ -713,7 +717,6 @@ export default {
       // }
       if (this.savedImages.length) {
         this.$parent.savedImages = this.savedImages;
-        console.log("saved", this.savedImages);
       }
       this.$emit("images", this.formData);
       var { location } = this.location;
@@ -731,7 +734,9 @@ export default {
       console.log(finalDetail);
       this.serviceObj = { ...finalDetail };
       this.$emit("decription", finalDetail);
-      this.$parent.accountOpt = "price";
+      if(!isSaveMode){
+        this.$parent.accountOpt = "price";
+      }
     },
     changeStep(step) {
       // if (!this.serviceType) return;

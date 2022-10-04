@@ -13,9 +13,9 @@
           <h4>Pricing</h4>
         </div>
         <div class="buttons-top">
-            <button @click="back(2)">back</button>
-            <button @click="saveData">Save</button>
-          </div>
+          <button @click="back(2)">back</button>
+          <button @click="saveData">Save</button>
+        </div>
         <section class="price-container">
           <div class="container-price">
             <div class="price-primary">
@@ -34,7 +34,7 @@
                 </label>
               </div>
               <div class="input-price">
-                <input type="number" v-model="price.dayPrice" />
+                <input type="number" v-model="price.hourPrice" />
               </div>
             </div>
             <!-- block -->
@@ -225,6 +225,10 @@
           <h1>Price Details</h1>
           <h4>Booking Settings</h4>
         </div>
+        <div class="buttons-top">
+          <button @click="goBack(1)">back</button>
+          <button @click="saveData">Save</button>
+        </div>
         <section class="booking">
           <div>
             <div class="head">
@@ -272,13 +276,13 @@
             </div>
             <div class="container-service container-amenities card-other">
               <div class="cards">
-                <div>
+                <div :class="{ active: isExistValue('book') }">
                   <div class="content" @click="showBookPop('book')">
                     <h5>Booking Type</h5>
                     <h6>Booking Type name here</h6>
                   </div>
                 </div>
-                <div>
+                <div :class="{ active: isExistValue('cencel') }">
                   <div class="content" @click="showBookPop('cencel')">
                     <h5>Cancellation Policy</h5>
                     <h6>Cancellation Policy name here</h6>
@@ -501,6 +505,10 @@
           <h1>Price Details</h1>
           <h4>Add-Ons</h4>
         </div>
+        <div class="buttons-top">
+          <button @click="goBack(2)">back</button>
+          <button @click="saveData">Save</button>
+        </div>
         <section class="price-unset">
           <div class="container-price">
             <div class="price-primary">
@@ -581,7 +589,7 @@
           </div>
         </section>
         <div class="form-container">
-          <div class="input-div" v-if="!$store.state.details.btnLastLoading">
+          <div class="input-div" v-if="$store.state.details.lastLoading">
             <button type="submit" @click="submitedData">Next</button>
           </div>
           <div class="input-div" v-else>
@@ -621,13 +629,166 @@ export default {
       bookingSetting: {},
       addOnsCheck: {},
       addOnsPrice: {},
+      // price
+      priceData: {},
     };
   },
+  mounted() {
+    var localData = localStorage.getItem("savedData");
+    if (localData) {
+      var {
+        // safty,
+        price,
+        category,
+        check,
+        bookingFor,
+        securityDeposit,
+        lastMinuteDiscount,
+        bookingType,
+        canellationPolicy,
+        priceStep,
+        addOns,
+      } = JSON.parse(localData);
+      if (category == "Stadium") {
+        if (price) {
+          this.daySelected.hourPrice = true;
+          this.price.hourPrice = price.hourPrice;
+          var prices = { hourPrice: price.hourPrice };
+          // price Time
+          if (price.setTime) {
+            this.setTime = price.setTime;
+            prices.setTime = price.setTime;
+          }
+          if (price.setDate) {
+            this.setDate = price.setDate;
+            prices.setDate = price.setDate;
+          }
+          this.priceData.price = { ...price };
+        }
+        if (check) {
+          var checkInOut = {};
+          if (check.checkIn) {
+            this.checkIn = check.checkIn;
+            checkInOut.checkIn = check.checkIn;
+          }
+          if (check.checkOut) {
+            this.checkOut = check.checkOut;
+            checkInOut.checkOut = check.checkOut;
+          }
+          this.priceData.check = { ...checkInOut };
+        }
+        if (bookingFor) {
+          this.bookingSetting.bookingFor = bookingFor;
+          this.priceData.bookingFor = bookingFor;
+        }
+        if (securityDeposit) {
+          this.bookingSetting.securityDeposit = securityDeposit;
+          this.priceData.securityDeposit = securityDeposit;
+        }
+        if (lastMinuteDiscount) {
+          this.bookingSetting.lastMinuteDiscount = lastMinuteDiscount;
+          this.priceData.lastMinuteDiscount = lastMinuteDiscount;
+        }
+        if (bookingType) {
+          this.bookingSetting.bookingType = bookingType;
+          this.priceData.bookingType = bookingType;
+        }
+        if (canellationPolicy) {
+          this.bookingSetting.canellationPolicy = canellationPolicy;
+          this.priceData.canellationPolicy = canellationPolicy;
+        }
+        if (addOns) {
+          this.addOnsCheck.namePrice = true;
+          this.addOnsPrice.namePrice = addOns.namePrice;
+          this.priceData.addOns = { namePrice: addOns.namePrice };
+        }
+        // for current step
+        if (priceStep) {
+          this.step = priceStep;
+        }
+        // this.$emit("decription", {
+        //   safty,
+        //   roomsbath,
+        //   description,
+        //   category,
+        //   serviceStep,
+        //   savedImages,
+        // });
+      }
+    }
+  },
   methods: {
+    isExistValue(type) {
+      if (type == "book") {
+        if (this.bookingSetting.bookingType) {
+          return true;
+        }
+      } else if (type == "cencel") {
+        if (this.bookingSetting.canellationPolicy) {
+          return true;
+        }
+      }
+    },
     saveData() {
-      this.$parent.saveFromPricing('service');
+      this.$parent.saveFromPricing("service");
       var localData = localStorage.getItem("savedData");
       var serviceData = JSON.parse(localData) || {};
+      const newObj = {};
+      for (const [key, value] of Object.entries(this.daySelected)) {
+        if (value) {
+          for (const [pkey, pValue] of Object.entries(this.price)) {
+            if (key == pkey) {
+              newObj[key] = pValue;
+            }
+          }
+        }
+      }
+
+      if (this.setTime) {
+        newObj.setTime = this.setTime;
+      }
+      if (this.setDate) {
+        newObj.setDate = this.setDate;
+      }
+      serviceData.price = { ...newObj };
+      var check = {};
+      if (this.checkIn) {
+        check.checkIn = this.checkIn;
+      }
+      if (this.checkOut) {
+        check.checkOut = this.checkOut;
+      }
+      serviceData.check = check;
+
+      // step 3
+      if (this.bookingSetting.bookingFor) {
+        serviceData.bookingFor = this.bookingSetting.bookingFor;
+      }
+      if (this.bookingSetting.securityDeposit) {
+        serviceData.securityDeposit = this.bookingSetting.securityDeposit;
+      }
+      if (this.bookingSetting.lastMinuteDiscount) {
+        serviceData.lastMinuteDiscount = this.bookingSetting.lastMinuteDiscount;
+      }
+      if (this.bookingSetting.bookingType) {
+        serviceData.bookingType = this.bookingSetting.bookingType;
+      }
+      if (this.bookingSetting.canellationPolicy) {
+        serviceData.canellationPolicy = this.bookingSetting.canellationPolicy;
+      }
+      // addon's
+      const newAddon = {};
+      for (const [key, value] of Object.entries(this.addOnsCheck)) {
+        if (value) {
+          for (const [pkey, pValue] of Object.entries(this.addOnsPrice)) {
+            if (key == pkey) {
+              newAddon[key] = pValue;
+            }
+          }
+        }
+      }
+      serviceData.addOns = { ...newAddon };
+      console.log(serviceData, "==>");
       // adding from step info
       serviceData.infoStep = 2; // info last step
       serviceData.serviceStep = 4; // service last step;
@@ -677,7 +838,8 @@ export default {
         check: { ...check },
         bookingSetting: { ...this.bookingSetting },
       };
-      this.$emit("price", finalData);
+      this.$parent.allSubmit(finalData);
+      // this.$emit("price", finalData);
     },
     bookInstant(val) {
       this.bookingSetting.bookingType = val;
@@ -734,7 +896,7 @@ export default {
     // from previus component step
     back(step) {
       // this.$parent.nextButton = true;
-      this.$parent.backServiceModel(step, 'service');
+      this.$parent.backServiceModel(step, "service");
     },
     // inside previus component step
     goBack(step) {

@@ -222,7 +222,7 @@
         </section>
         <div class="form-container">
           <div class="input-div step-btn">
-            <button type="submit" @click="lastStepClicked">Next</button>
+            <button type="submit" @click="lastStepClicked()">Next</button>
           </div>
         </div>
       </div>
@@ -332,7 +332,7 @@ export default {
     close() {
       this.$emit("close");
     },
-    lastStepClicked() {
+    lastStepClicked(isSafeMode) {
       var basicInfo = {};
       if (this.leisure.accessInHours) {
         this.leisure.accessInHours = 12;
@@ -345,8 +345,11 @@ export default {
       // console.log(basicInfo)
       basicInfo.roomsGuest = this.roomsGuest;
       basicInfo.leisure = this.leisure;
-      this.$parent.accountOpt = "service";
+      if(!isSafeMode){
+        this.$parent.accountOpt = "service";
+      }
       this.infoData = {...basicInfo}
+      console.log(basicInfo)
       this.$emit("basicInfo", basicInfo);
     },
   },

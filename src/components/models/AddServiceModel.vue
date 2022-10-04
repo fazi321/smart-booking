@@ -179,10 +179,10 @@
       />
       <!-- price start -->
       <PriceModelStadium
-        v-if="isSubmitted && accountOpt == 'price'"
-        :model="true"
+        :model="isSubmitted && accountOpt == 'price'"
         @close="close"
         @price="pricing"
+        ref="price"
       />
     </section>
     <!-- Appartments -->
@@ -445,10 +445,11 @@ export default {
       };
       var info = this.$refs.info.infoData;
       var service = this.$refs.service;
-      store = { ...store, ...info, ...service.serviceObj};
+      var price = this.$refs.price.priceData;
+      store = { ...store, ...info, ...service.serviceObj, ...price };
       localStorage.setItem("savedData", JSON.stringify(store));
     },
-    saveFromPricing(){
+    saveFromPricing() {
       var service = this.$refs.service;
       service.saveData();
     },
@@ -560,6 +561,17 @@ export default {
       this.accountOpt = accountType;
       this.isSubmitted = true;
       this.step = step;
+    },
+    allSubmit(price) {
+      var info = this.$refs.info;
+      var service = this.$refs.service;
+      if (info) {
+        info.lastStepClicked("true"); // last step submit in info
+      }
+      if (service) {
+        service.submited("true"); // last step submit in service
+      }
+      this.pricing(price)
     },
     close() {
       this.accountOpt = null;

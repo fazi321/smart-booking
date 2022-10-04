@@ -6,6 +6,7 @@ export default {
     details: [],
     categories:[],
     btnLastLoading:false,
+    lastLoading:false,
   },
   mutations: {
     SET_DATA(state, data) {
@@ -17,10 +18,14 @@ export default {
     SET_LOADING(state, data) {
       state.btnLastLoading = data;
     },
+    LAST_LOADING(state, data){
+      state.lastLoading = data;
+    }
   },
   actions: {
     setLoading({commit}, payload){
        commit("SET_LOADING", payload)
+       commit("LAST_LOADING", payload)
     },
     async getCategories({commit}) {
       try {
