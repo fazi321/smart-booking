@@ -346,7 +346,7 @@
               </div>
               <div>
                 <input
-                  :class="['arabic',{ activeErr: errors.nameInArabic }]"
+                  :class="['arabic', { activeErr: errors.nameInArabic }]"
                   @input="resolveErr('nameInArabic')"
                   type="text"
                   placeholder="Service Name (Arabic)"
@@ -382,7 +382,7 @@
               </div>
               <div>
                 <input
-                  :class="['arabic',{ activeErr: errors.descriptionInArabic }]"
+                  :class="['arabic', { activeErr: errors.descriptionInArabic }]"
                   @input="resolveErr('descriptionInArabic')"
                   type="text"
                   placeholder="Property Description (Arabic)"
@@ -615,6 +615,8 @@ export default {
             },
           }
         );
+        this.isUploadImage = 0;
+        this.savedImages = imagesData.data;
         callBack(imagesData.data);
       } catch (error) {
         // this.$store.dispatch("details/setLoading", false);
@@ -638,7 +640,8 @@ export default {
         serviceData.roomsbath = { ...this.roomsbath };
       }
       if (!isEmptyDescription || !isEmptysafty) {
-        serviceData.description = { ...this.description, ...this.safty };
+        var safty = this.safty;
+        serviceData.description = { ...this.description, safty };
       }
       function myfunction(data) {
         serviceData.savedImages = data;
@@ -646,8 +649,8 @@ export default {
       }
       if (this.isUploadImage) {
         this.uploadFiles(myfunction);
-      } else {
-        serviceData.savedImages = this.savedImages;
+      }else{
+         serviceData.savedImages = this.savedImages;
       }
       if (!isEmptyLocation) {
         var { location } = this.location;
@@ -860,19 +863,6 @@ export default {
     // inside previus component step
     goBack(step) {
       this.step = step;
-    },
-    saveImage() {
-      var localData = localStorage.getItem("savedData");
-        var serviceData = JSON.parse(localData) || {};
-      function myfunction(data) {
-        serviceData.savedImages = data;
-        localStorage.setItem("savedData", JSON.stringify(serviceData));
-      }
-      if (this.isUploadImage) {
-        this.uploadFiles(myfunction);
-      } else {
-        serviceData.savedImages = this.savedImages;
-      }
     },
     close() {
       this.$emit("close");

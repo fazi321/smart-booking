@@ -436,8 +436,7 @@ export default {
     };
   },
   methods: {
-    saveData(from) {
-      console.log(from, '->')
+    saveData() {
       var store = {
         categoryId: this.serviceType._id,
         type: this.accountOpt,
@@ -446,13 +445,12 @@ export default {
       };
       var info = this.$refs.info.infoData;
       var service = this.$refs.service;
-      console.log(service, '==>')
-      if(from == 'service'){
-        service.saveImage();
-      }
       store = { ...store, ...info, ...service.serviceObj};
-      console.log(store);
       localStorage.setItem("savedData", JSON.stringify(store));
+    },
+    saveFromPricing(){
+      var service = this.$refs.service;
+      service.saveData();
     },
     selectedCategory(opt) {
       if (opt.category == "Wedding_Halls" || opt.category == "Stadium ") {
