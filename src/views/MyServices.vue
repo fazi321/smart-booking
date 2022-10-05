@@ -47,8 +47,8 @@ export default {
     async getData() {
       try {
         this.loading = true;
-        var res = await this.$axios.get(`services`);
-        this.dataCard = res.data;
+        var res = await this.$axios.get(`vender/services`);
+        this.dataCard = res.data.service;
         this.loading = false;
       } catch (error) {
         this.loading = false;
