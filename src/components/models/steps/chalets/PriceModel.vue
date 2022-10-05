@@ -218,7 +218,10 @@
                   }"
                   @click="bookSettings('Families_and_Singles')"
                 >
-                  <img src="../../../../assets/images/familiesSingle.svg" alt="" />
+                  <img
+                    src="../../../../assets/images/familiesSingle.svg"
+                    alt=""
+                  />
                   <h6>Families &</h6>
                   <h6>Singles</h6>
                 </div>
@@ -277,6 +280,13 @@
                 <span class="slider"></span>
               </label>
             </div>
+          </div>
+          <div v-if="bookingSetting.securityDeposit">
+            <input
+              type="number"
+              placeholder="security amount"
+              v-model="bookingSetting.securityAmount"
+            />
           </div>
           <div class="deposite-section deposite-set">
             <div class="head">
@@ -536,10 +546,7 @@
               <div class="price-checkbox">
                 <label class="container-input"
                   >Sleepover
-                  <input
-                    type="checkbox"
-                    v-model="addOnsCheck.sleepover"
-                  />
+                  <input type="checkbox" v-model="addOnsCheck.sleepover" />
                   <span class="checkmark"></span>
                 </label>
               </div>
@@ -664,6 +671,9 @@ export default {
             }
           }
         }
+      }
+      if (!this.bookingSetting.securityDeposit) {
+        delete this.bookingSetting.securityAmount;
       }
       var finalData = {
         addOns: { ...newAddon },

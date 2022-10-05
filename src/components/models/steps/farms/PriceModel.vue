@@ -281,6 +281,13 @@
               </label>
             </div>
           </div>
+          <div v-if="bookingSetting.securityDeposit">
+            <input
+              type="number"
+              placeholder="security amount"
+              v-model="bookingSetting.securityAmount"
+            />
+          </div>
           <div class="deposite-section deposite-set">
             <div class="head">
               <h5>Last Minute Discount</h5>
@@ -659,7 +666,7 @@ export default {
     };
   },
   methods: {
-   dateFormate(value){
+    dateFormate(value) {
       var date = new Date(value);
       return date.toLocaleDateString("en-GB");
     },
@@ -693,6 +700,9 @@ export default {
             }
           }
         }
+      }
+      if (!this.bookingSetting.securityDeposit) {
+        delete this.bookingSetting.securityAmount;
       }
       var finalData = {
         addOns: { ...newAddon },
