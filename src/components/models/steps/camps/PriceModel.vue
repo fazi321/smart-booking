@@ -266,7 +266,7 @@
               </label>
             </div>
           </div>
-          <div v-if="bookingSetting.securityDeposit">
+          <div v-if="bookingSetting.securityDeposit" class="security">
             <input
               type="number"
               placeholder="security amount"

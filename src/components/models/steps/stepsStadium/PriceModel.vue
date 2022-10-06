@@ -297,7 +297,7 @@
               </label>
             </div>
           </div>
-           <div v-if="bookingSetting.securityDeposit">
+           <div v-if="bookingSetting.securityDeposit" class="security">
               <input type="number" placeholder="security amount" v-model="bookingSetting.securityAmount">
             </div>
           <div class="deposite-section deposite-set">
