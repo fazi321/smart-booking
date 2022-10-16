@@ -6,7 +6,8 @@ import "./assets/styles/style.css";
 import VueGoogleMaps from "@fawmi/vue-google-maps";
 import axiosInstance from "@/services/axios";
 import VueSweetalert2 from "vue-sweetalert2";
-import 'sweetalert2/dist/sweetalert2.min.css';
+import "sweetalert2/dist/sweetalert2.min.css";
+import firebaseMessaging from "./firebase";
 
 const app = createApp(App);
 app.use(VueGoogleMaps, {
@@ -16,6 +17,7 @@ app.use(VueGoogleMaps, {
   },
 });
 
+app.config.globalProperties.$messaging = firebaseMessaging;
 app.use(store);
 app.use(router);
 app.use(VueSweetalert2);

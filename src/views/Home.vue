@@ -16,6 +16,8 @@ import HotelSlider from "@/components/home/hotelSlider.vue";
 import SmartBooking from "@/components/home/smartBooking.vue";
 import ExploreCity from "@/components/home/exploreCity.vue";
 import WhatCanWeDo from "@/components/home/whatCanWeDo.vue";
+import {getMessaging, onMessage ,getToken } from 'firebase/messaging'
+import messaging from "../firebase";
 import { io } from "socket.io-client";
 export default {
   name: "HomeView",
@@ -28,6 +30,14 @@ export default {
     WhatCanWeDo,
   },
   methods: {
+    async send(){
+      const token = await getToken(messaging, {
+        vapidKey:'BCXKus3soBsc-N9l6nzVoCMdiVGq8mg_KRh7wdCPjhenUT5vLzZIncitdEZEYOPlQiV58ZnUZkQGPuKQB3W041M'
+      })
+      if(token){
+        console.log('token:', token )
+      }
+    },  
     notificationModel(arg) {
       console.log(arg, "model");
       const Toast = this.$swal.mixin({
@@ -104,15 +114,21 @@ export default {
   //     socket.emit("howdy", "stranger");
   //   },
   // },
-  // mounted() {
-  //   const socket = io("ws://13.229.167.135:4000");
-  //   socket.on("connect", () => {
-  //     console.log(socket && socket.id);
-  //     console.log('connected')
-  //   });
-  //   socket.on("hello", (arg) => {
-  //     console.log(arg, "=>");
-  //   });
-  // },
+  mounted() {
+    const messaging = getMessaging()
+    onMessage(messaging, (payload) => {
+      console.log('Message from client', payload)
+    })
+    console.log('Firebase cloud messaging object', this.$messaging)
+    
+    // const socket = io("ws://13.229.167.135:4000");
+    // socket.on("connect", () => {
+    //   console.log(socket && socket.id);
+    //   console.log('connected')
+    // });
+    // socket.on("hello", (arg) => {
+    //   console.log(arg, "=>");
+    // });
+  },
 };
 </script>
