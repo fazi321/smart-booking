@@ -305,9 +305,13 @@
               </label>
             </div>
           </div>
-           <div v-if="bookingSetting.securityDeposit" class="security">
-              <input type="number" placeholder="security amount" v-model="bookingSetting.securityAmount">
-            </div>
+          <div v-if="bookingSetting.securityDeposit" class="security">
+            <input
+              type="number"
+              placeholder="security amount"
+              v-model="bookingSetting.securityAmount"
+            />
+          </div>
           <div class="deposite-section deposite-set">
             <div class="head">
               <h5>Last Minute Discount</h5>
@@ -592,12 +596,12 @@
           </div>
         </section>
         <div class="form-container">
-          <div class="input-div" v-if="$store.state.details.lastLoading">
+          <div class="input-div">
             <button type="submit" @click="submitedData">Next</button>
           </div>
-          <div class="input-div" v-else>
+          <!-- <div class="input-div" v-else>
             <button type="submit">Loading...</button>
-          </div>
+          </div> -->
         </div>
       </div>
     </section>
@@ -620,7 +624,7 @@ export default {
       //  data picker
       fromDate: null,
       toDate: null,
-      checkIn: null,
+      checkIn: "ek",
       checkOut: null,
       serviceType: null,
       showPopUp: null,
@@ -632,8 +636,6 @@ export default {
       bookingSetting: {},
       addOnsCheck: {},
       addOnsPrice: {},
-      // price
-      priceData: {},
     };
   },
   mounted() {
@@ -644,11 +646,7 @@ export default {
         price,
         category,
         check,
-        bookingFor,
-        securityDeposit,
-        lastMinuteDiscount,
-        bookingType,
-        canellationPolicy,
+        bookingSetting,
         priceStep,
         addOns,
       } = JSON.parse(localData);
@@ -666,44 +664,35 @@ export default {
             this.setDate = price.setDate;
             prices.setDate = price.setDate;
           }
-          this.priceData.price = { ...price };
         }
         if (check) {
-          var checkInOut = {};
-          if (check.checkIn) {
-            this.checkIn = check.checkIn;
-            checkInOut.checkIn = check.checkIn;
+          if (check.checkInTime) {
+            this.checkIn = check.checkInTime;
           }
-          if (check.checkOut) {
-            this.checkOut = check.checkOut;
-            checkInOut.checkOut = check.checkOut;
+          if (check.checkOutTime) {
+            this.checkOut = check.checkOutTime;
           }
-          this.priceData.check = { ...checkInOut };
         }
-        if (bookingFor) {
-          this.bookingSetting.bookingFor = bookingFor;
-          this.priceData.bookingFor = bookingFor;
+        if (bookingSetting.bookingFor) {
+          this.bookingSetting.bookingFor = bookingSetting.bookingFor;
         }
-        if (securityDeposit) {
-          this.bookingSetting.securityDeposit = securityDeposit;
-          this.priceData.securityDeposit = securityDeposit;
+        if (bookingSetting.securityDeposit) {
+          this.bookingSetting.securityDeposit = bookingSetting.securityDeposit;
         }
-        if (lastMinuteDiscount) {
-          this.bookingSetting.lastMinuteDiscount = lastMinuteDiscount;
-          this.priceData.lastMinuteDiscount = lastMinuteDiscount;
+        if (bookingSetting.lastMinuteDiscount) {
+          this.bookingSetting.lastMinuteDiscount =
+            bookingSetting.lastMinuteDiscount;
         }
-        if (bookingType) {
-          this.bookingSetting.bookingType = bookingType;
-          this.priceData.bookingType = bookingType;
+        if (bookingSetting.bookingType) {
+          this.bookingSetting.bookingType = bookingSetting.bookingType;
         }
-        if (canellationPolicy) {
-          this.bookingSetting.canellationPolicy = canellationPolicy;
-          this.priceData.canellationPolicy = canellationPolicy;
+        if (bookingSetting.canellationPolicy) {
+          this.bookingSetting.canellationPolicy =
+            bookingSetting.canellationPolicy;
         }
-        if (addOns) {
+        if (Object.keys(addOns).length > 0) {
           this.addOnsCheck.namePrice = true;
           this.addOnsPrice.namePrice = addOns.namePrice;
-          this.priceData.addOns = { namePrice: addOns.namePrice };
         }
         // for current step
         if (priceStep) {
@@ -733,65 +722,70 @@ export default {
       }
     },
     saveData() {
-      this.$parent.saveFromPricing("service");
+      this.submitedData();
+      this.$parent.saveData();
       var localData = localStorage.getItem("savedData");
       var serviceData = JSON.parse(localData) || {};
-      const newObj = {};
-      for (const [key, value] of Object.entries(this.daySelected)) {
-        if (value) {
-          for (const [pkey, pValue] of Object.entries(this.price)) {
-            if (key == pkey) {
-              newObj[key] = pValue;
-            }
-          }
-        }
-      }
+      // const newObj = {};
+      // for (const [key, value] of Object.entries(this.daySelected)) {
+      //   if (value) {
+      //     for (const [pkey, pValue] of Object.entries(this.price)) {
+      //       if (key == pkey) {
+      //         newObj[key] = pValue;
+      //       }
+      //     }
+      //   }
+      // }
 
-      if (this.setTime) {
-        newObj.setTime = this.setTime;
-      }
-      if (this.setDate) {
-        newObj.setDate = this.setDate;
-      }
-      serviceData.price = { ...newObj };
-      var check = {};
-      if (this.checkIn) {
-        check.checkIn = this.checkIn;
-      }
-      if (this.checkOut) {
-        check.checkOut = this.checkOut;
-      }
-      serviceData.check = check;
+      // if (this.setTime) {
+      //   newObj.setTime = this.setTime;
+      // }
+      // if (this.setDate) {
+      //   newObj.setDate = this.setDate;
+      // }
+      // if (Object.keys(newObj).length > 0) {
+      //   serviceData.price = { ...newObj };
+      // }
+      // var check = {};
+      // if (this.checkIn) {
+      //   check.checkIn = this.checkIn;
+      // }
+      // if (this.checkOut) {
+      //   check.checkOut = this.checkOut;
+      // }
+      // serviceData.check = check;
 
-      // step 3
-      if (this.bookingSetting.bookingFor) {
-        serviceData.bookingFor = this.bookingSetting.bookingFor;
-      }
-      if (this.bookingSetting.securityDeposit) {
-        serviceData.securityDeposit = this.bookingSetting.securityDeposit;
-      }
-      if (this.bookingSetting.lastMinuteDiscount) {
-        serviceData.lastMinuteDiscount = this.bookingSetting.lastMinuteDiscount;
-      }
-      if (this.bookingSetting.bookingType) {
-        serviceData.bookingType = this.bookingSetting.bookingType;
-      }
-      if (this.bookingSetting.canellationPolicy) {
-        serviceData.canellationPolicy = this.bookingSetting.canellationPolicy;
-      }
-      // addon's
-      const newAddon = {};
-      for (const [key, value] of Object.entries(this.addOnsCheck)) {
-        if (value) {
-          for (const [pkey, pValue] of Object.entries(this.addOnsPrice)) {
-            if (key == pkey) {
-              newAddon[key] = pValue;
-            }
-          }
-        }
-      }
-      serviceData.addOns = { ...newAddon };
-      console.log(serviceData, "==>");
+      // // step 3
+      // if (this.bookingSetting.bookingFor) {
+      //   serviceData.bookingFor = this.bookingSetting.bookingFor;
+      // }
+      // if (this.bookingSetting.securityDeposit) {
+      //   serviceData.securityDeposit = this.bookingSetting.securityDeposit;
+      // }
+      // if (this.bookingSetting.lastMinuteDiscount) {
+      //   serviceData.lastMinuteDiscount = this.bookingSetting.lastMinuteDiscount;
+      // }
+      // if (this.bookingSetting.bookingType) {
+      //   serviceData.bookingType = this.bookingSetting.bookingType;
+      // }
+      // if (this.bookingSetting.canellationPolicy) {
+      //   serviceData.canellationPolicy = this.bookingSetting.canellationPolicy;
+      // }
+      // // addon's
+      // const newAddon = {};
+      // for (const [key, value] of Object.entries(this.addOnsCheck)) {
+      //   if (value) {
+      //     for (const [pkey, pValue] of Object.entries(this.addOnsPrice)) {
+      //       if (key == pkey) {
+      //         newAddon[key] = pValue;
+      //       }
+      //     }
+      //   }
+      // }
+      // if (Object.keys(newAddon).length > 0) {
+      //   serviceData.addOns = { ...newAddon };
+      // }
+      // console.log(serviceData, "==>");
       // adding from step info
       serviceData.infoStep = 2; // info last step
       serviceData.serviceStep = 4; // service last step;
@@ -821,8 +815,10 @@ export default {
       //  time check in out
       var check = {};
       if (this.checkIn && this.checkOut) {
-        check.checkInTime = this.timeFormate(this.checkIn);
-        check.checkOutTime = this.timeFormate(this.checkOut);
+        check.checkInTime = this.checkIn;
+        check.checkOutTime = this.checkOut;
+        // check.checkInTime = this.timeFormate(this.checkIn);
+        // check.checkOutTime = this.timeFormate(this.checkOut);
       }
       // addon's
       const newAddon = {};
@@ -835,7 +831,7 @@ export default {
           }
         }
       }
-      if(!this.bookingSetting.securityDeposit){
+      if (!this.bookingSetting.securityDeposit) {
         delete this.bookingSetting.securityAmount;
       }
       var finalData = {
@@ -844,7 +840,9 @@ export default {
         check: { ...check },
         bookingSetting: { ...this.bookingSetting },
       };
-      this.$parent.allSubmit(finalData);
+      console.log(finalData);
+      this.$emit("price", finalData);
+      // this.$parent.allSubmit(finalData);
       // this.$emit("price", finalData);
     },
     bookInstant(val) {

@@ -437,21 +437,32 @@ export default {
   },
   methods: {
     saveData() {
+      this.allSubmit();
+      // clear first if data saved for other category
+      var localData = localStorage.getItem("savedData");
+      if (localData) {
+        var { category } = JSON.parse(localData);
+        if (category != this.serviceType.category) {
+          localStorage.clear();
+        }
+      }
+      //
       var store = {
         categoryId: this.serviceType._id,
         type: this.accountOpt,
         step: this.step,
         category: this.serviceType.category,
       };
-      var info = this.$refs.info.infoData;
-      var service = this.$refs.service;
-      var price = this.$refs.price.priceData;
-      store = { ...store, ...info, ...service.serviceObj, ...price };
+      // var info = this.$refs.info;
+      // var service = this.$refs.service;
+      // var price = this.$refs.price;
+      store = {
+        ...store,
+        ...this.basicD,
+        ...this.dataDec,
+        ...this.dataP,
+      };
       localStorage.setItem("savedData", JSON.stringify(store));
-    },
-    saveFromPricing() {
-      var service = this.$refs.service;
-      service.saveData();
     },
     selectedCategory(opt) {
       if (opt.category == "Wedding_Halls" || opt.category == "Stadium ") {
@@ -471,6 +482,8 @@ export default {
     },
     async pricing(val) {
       this.dataP = val;
+    },
+    async finalPayLoad() {
       var dataPayload = {
         ...this.basicD,
         ...this.dataDec,
@@ -491,35 +504,36 @@ export default {
       }
     },
     async submit(payload) {
-      var cate = this.serviceType.category.toLowerCase();
-      if (cate == "lounges") {
-        cate = "lounge";
-      }
-      if (cate == "wedding_halls") {
-        cate = "weddinghalls";
-      }
-      if (cate == "chalets") {
-        cate = "chalet";
-      }
-      try {
-        const res = await this.$axios.post(cate, payload);
-        if (res) {
-          // console.log(res);
-          // this.$swal({
-          //   icon: "success",
-          //   title: "Success!",
-          //   showConfirmButton: false,
-          //   timer: 3000,
-          // });
-          this.$store.dispatch("details/setLoading", false);
-          setTimeout(() => {
-            this.$router.push("/my-services");
-          }, 3000);
-        }
-      } catch (error) {
-        this.$store.dispatch("details/setLoading", false);
-        console.log(error);
-      }
+      console.log(payload, "->");
+      // var cate = this.serviceType.category.toLowerCase();
+      // if (cate == "lounges") {
+      //   cate = "lounge";
+      // }
+      // if (cate == "wedding_halls") {
+      //   cate = "weddinghalls";
+      // }
+      // if (cate == "chalets") {
+      //   cate = "chalet";
+      // }
+      // try {
+      //   const res = await this.$axios.post(cate, payload);
+      //   if (res) {
+      //     // console.log(res);
+      //     // this.$swal({
+      //     //   icon: "success",
+      //     //   title: "Success!",
+      //     //   showConfirmButton: false,
+      //     //   timer: 3000,
+      //     // });
+      //     this.$store.dispatch("details/setLoading", false);
+      //     setTimeout(() => {
+      //       this.$router.push("/my-services");
+      //     }, 3000);
+      //   }
+      // } catch (error) {
+      //   this.$store.dispatch("details/setLoading", false);
+      //   console.log(error);
+      // }
     },
     async uploadFiles() {
       this.$store.dispatch("details/setLoading", true);
@@ -562,16 +576,22 @@ export default {
       this.isSubmitted = true;
       this.step = step;
     },
-    allSubmit(price) {
+    allSubmit(price, mode) {
       var info = this.$refs.info;
       var service = this.$refs.service;
+      var pricing = this.$refs.price;
       if (info) {
         info.lastStepClicked("true"); // last step submit in info
       }
       if (service) {
         service.submited("true"); // last step submit in service
       }
-      this.pricing(price)
+      if (pricing) {
+        pricing.submitedData("true"); // last step submit in pricing
+      }
+      if (mode == "upload") {
+        this.finalPayLoad();
+      }
     },
     close() {
       this.accountOpt = null;

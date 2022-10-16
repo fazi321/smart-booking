@@ -538,7 +538,6 @@ export default {
       savedImages: [],
       formData: {},
       // service data
-      serviceObj: {},
     };
   },
   mounted() {
@@ -561,7 +560,6 @@ export default {
         // }
         if (roomsbath) {
           this.roomsbath = roomsbath;
-          this.serviceObj.roomsbath = roomsbath;
         }
         if (description) {
           var { safty } = description;
@@ -571,21 +569,21 @@ export default {
               this.description[key] = value;
             }
           }
-          this.serviceObj.description = description;
+          // this.serviceObj.description = description;
         }
         if (savedImages) {
           this.savedImages = savedImages;
-          this.serviceObj.savedImages = savedImages;
+          // this.serviceObj.savedImages = savedImages;
           this.verifyImages = this.savedImages.length;
         }
 
         if (location) {
           this.location = { location };
-          this.serviceObj.location = location;
+          // this.serviceObj.location = location;
         }
         if (address) {
           this.address = address;
-          this.serviceObj.address = address;
+          // this.serviceObj.address = address;
         }
         // for current step
         if (serviceStep) {
@@ -624,43 +622,44 @@ export default {
       }
     },
     saveData() {
+      this.submited("true");
       this.$parent.saveData();
       var localData = localStorage.getItem("savedData");
       var serviceData = JSON.parse(localData) || {};
-      var isEmptysafty = Object.keys(this.safty).length === 0;
-      var isEmptyroomsbath = Object.keys(this.roomsbath).length === 0;
-      var isEmptyDescription = Object.keys(this.description).length === 0;
-      var isEmptyLocation = Object.keys(this.location).length === 0;
-      var isEmptyaddresses = Object.keys(this.address).length === 0;
-
-      // if (!isEmptysafty) {
-      //   serviceData.safty = {  };
-      // }
-      if (!isEmptyroomsbath) {
-        serviceData.roomsbath = { ...this.roomsbath };
-      }
-      if (!isEmptyDescription || !isEmptysafty) {
-        var safty = this.safty;
-        serviceData.description = { ...this.description, safty };
-      }
       function myfunction(data) {
         serviceData.savedImages = data;
         localStorage.setItem("savedData", JSON.stringify(serviceData));
       }
       if (this.isUploadImage) {
         this.uploadFiles(myfunction);
-      }else{
-         serviceData.savedImages = this.savedImages;
-         this.serviceObj.savedImages = this.savedImages;
+      } else {
+        serviceData.savedImages = this.savedImages;
       }
-      if (!isEmptyLocation) {
-        var { location } = this.location;
-        serviceData.location = location;
-        //  this.location = { location: { coordinates: [lat, lng] } };
-      }
-      if (!isEmptyaddresses) {
-        serviceData.address = this.address;
-      }
+      // var isEmptysafty = Object.keys(this.safty).length === 0;
+      // var isEmptyroomsbath = Object.keys(this.roomsbath).length === 0;
+      // var isEmptyDescription = Object.keys(this.description).length === 0;
+      // var isEmptyLocation = Object.keys(this.location).length === 0;
+      // var isEmptyaddresses = Object.keys(this.address).length === 0;
+
+      // // if (!isEmptysafty) {
+      // //   serviceData.safty = {  };
+      // // }
+      // if (!isEmptyroomsbath) {
+      //   serviceData.roomsbath = { ...this.roomsbath };
+      // }
+      // if (!isEmptyDescription || !isEmptysafty) {
+      //   var safty = this.safty;
+      //   serviceData.description = { ...this.description, safty };
+      // }
+
+      // if (!isEmptyLocation) {
+      //   var { location } = this.location;
+      //   serviceData.location = location;
+      //   //  this.location = { location: { coordinates: [lat, lng] } };
+      // }
+      // if (!isEmptyaddresses) {
+      //   serviceData.address = this.address;
+      // }
       // adding from step info
       serviceData.infoStep = 2; // info last step
       serviceData.serviceStep = this.step;
@@ -694,7 +693,7 @@ export default {
       this.formData = formData;
     },
     submited(isSaveMode) {
-      if(!isSaveMode){
+      if (!isSaveMode) {
         if (!this.vInputsLocation()) return;
       }
       // sutable childcheck
@@ -731,10 +730,10 @@ export default {
         location,
         roomsbath: { ...this.roomsbath },
       };
+      finalDetail.savedImages = this.savedImages;
       console.log(finalDetail);
-      this.serviceObj = { ...finalDetail };
       this.$emit("decription", finalDetail);
-      if(!isSaveMode){
+      if (!isSaveMode) {
         this.$parent.accountOpt = "price";
       }
     },

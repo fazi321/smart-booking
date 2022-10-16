@@ -318,15 +318,14 @@ export default {
       this.$parent.saveData();
       var localData = localStorage.getItem("savedData");
       var serviceData = JSON.parse(localData) || {};
-      serviceData.roomsGuest = { ...this.roomsGuest };
-      // adding lesisure for storage
-      var isEmptyLeisure = Object.keys(this.leisure).length === 0;
-      if (!isEmptyLeisure) {
-        serviceData.leisure = { ...this.leisure };
-      }
+      // serviceData.roomsGuest = { ...this.roomsGuest };
+      // // adding lesisure for storage
+      // var isEmptyLeisure = Object.keys(this.leisure).length === 0;
+      // if (!isEmptyLeisure) {
+      //   serviceData.leisure = { ...this.leisure };
+      // }
       // adding from step info
       serviceData.infoStep = this.step;
-      // if(this.leisure){}
       localStorage.setItem("savedData", JSON.stringify(serviceData));
     },
     close() {
@@ -345,11 +344,11 @@ export default {
       // console.log(basicInfo)
       basicInfo.roomsGuest = this.roomsGuest;
       basicInfo.leisure = this.leisure;
-      if(!isSafeMode){
+      if (!isSafeMode) {
         this.$parent.accountOpt = "service";
       }
-      this.infoData = {...basicInfo}
-      console.log(basicInfo)
+      this.infoData = { ...basicInfo };
+      console.log(basicInfo);
       this.$emit("basicInfo", basicInfo);
     },
   },
@@ -360,7 +359,7 @@ export default {
       if (category == "Stadium") {
         if (roomsGuest) {
           this.roomsGuest = roomsGuest;
-          this.infoData.roomsGuest = roomsGuest
+          this.infoData.roomsGuest = roomsGuest;
         }
         if (leisure) {
           this.leisure = leisure;
@@ -370,6 +369,7 @@ export default {
         if (infoStep && !this.$parent.nextButton) {
           this.step = infoStep;
         }
+        this.lastStepClicked('true')
         // this.$emit("basicInfo", );
       }
     }
