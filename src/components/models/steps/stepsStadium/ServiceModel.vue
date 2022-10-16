@@ -14,7 +14,7 @@
         </div>
         <div class="buttons-top">
           <button @click="back(2)">back</button>
-          <button @click="saveData">Save</button>
+          <button @click="saveData()">Save</button>
         </div>
         <div class="container-rules">
           <div class="rules">
@@ -225,7 +225,7 @@
         </div>
         <div class="buttons-top">
           <button @click="goBack(1)">back</button>
-          <button @click="saveData">Save</button>
+          <button @click="saveData()">Save</button>
         </div>
         <div class="container-rules">
           <div class="rules">
@@ -330,7 +330,7 @@
         </div>
         <div class="buttons-top">
           <button @click="goBack(2)">back</button>
-          <button @click="saveData">Save</button>
+          <button @click="saveData()">Save</button>
         </div>
         <div class="container-vendor">
           <div>
@@ -435,7 +435,7 @@
         </div>
         <div class="buttons-top">
           <button @click="goBack(3)">back</button>
-          <button @click="saveData">Save</button>
+          <button @click="saveData()">Save</button>
         </div>
         <div class="map-container">
           <div class="map">
@@ -569,34 +569,23 @@ export default {
               this.description[key] = value;
             }
           }
-          // this.serviceObj.description = description;
         }
         if (savedImages) {
           this.savedImages = savedImages;
-          // this.serviceObj.savedImages = savedImages;
+          this.$parent.savedImages = savedImages;
           this.verifyImages = this.savedImages.length;
         }
 
         if (location) {
           this.location = { location };
-          // this.serviceObj.location = location;
         }
         if (address) {
           this.address = address;
-          // this.serviceObj.address = address;
         }
         // for current step
         if (serviceStep) {
           this.step = serviceStep;
         }
-        // this.$emit("decription", {
-        //   safty,
-        //   roomsbath,
-        //   description,
-        //   category,
-        //   serviceStep,
-        //   savedImages,
-        // });
       }
     }
   },
@@ -621,9 +610,11 @@ export default {
         console.log(error);
       }
     },
-    saveData() {
+    saveData(parentCall) {
       this.submited("true");
-      this.$parent.saveData();
+      if (!parentCall) {
+        this.$parent.saveData();
+      }
       var localData = localStorage.getItem("savedData");
       var serviceData = JSON.parse(localData) || {};
       function myfunction(data) {
@@ -635,34 +626,11 @@ export default {
       } else {
         serviceData.savedImages = this.savedImages;
       }
-      // var isEmptysafty = Object.keys(this.safty).length === 0;
-      // var isEmptyroomsbath = Object.keys(this.roomsbath).length === 0;
-      // var isEmptyDescription = Object.keys(this.description).length === 0;
-      // var isEmptyLocation = Object.keys(this.location).length === 0;
-      // var isEmptyaddresses = Object.keys(this.address).length === 0;
-
-      // // if (!isEmptysafty) {
-      // //   serviceData.safty = {  };
-      // // }
-      // if (!isEmptyroomsbath) {
-      //   serviceData.roomsbath = { ...this.roomsbath };
-      // }
-      // if (!isEmptyDescription || !isEmptysafty) {
-      //   var safty = this.safty;
-      //   serviceData.description = { ...this.description, safty };
-      // }
-
-      // if (!isEmptyLocation) {
-      //   var { location } = this.location;
-      //   serviceData.location = location;
-      //   //  this.location = { location: { coordinates: [lat, lng] } };
-      // }
-      // if (!isEmptyaddresses) {
-      //   serviceData.address = this.address;
-      // }
       // adding from step info
-      serviceData.infoStep = 2; // info last step
-      serviceData.serviceStep = this.step;
+      if (!parentCall) {
+        serviceData.infoStep = 2; // info last step
+        serviceData.serviceStep = this.step;
+      }
       // if(this.leisure){}
       localStorage.setItem("savedData", JSON.stringify(serviceData));
     },

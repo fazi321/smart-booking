@@ -597,7 +597,7 @@
         </section>
         <div class="form-container">
           <div class="input-div">
-            <button type="submit" @click="submitedData">Next</button>
+            <button type="submit" @click="lastStep">Next</button>
           </div>
           <!-- <div class="input-div" v-else>
             <button type="submit">Loading...</button>
@@ -651,7 +651,7 @@ export default {
         addOns,
       } = JSON.parse(localData);
       if (category == "Stadium") {
-        if (price) {
+        if (Object.keys(price).length > 0) {
           this.daySelected.hourPrice = true;
           this.price.hourPrice = price.hourPrice;
           var prices = { hourPrice: price.hourPrice };
@@ -840,10 +840,13 @@ export default {
         check: { ...check },
         bookingSetting: { ...this.bookingSetting },
       };
-      console.log(finalData);
+      console.log(finalData, "=>");
       this.$emit("price", finalData);
       // this.$parent.allSubmit(finalData);
       // this.$emit("price", finalData);
+    },
+    lastStep() {
+      this.$parent.allSubmit("upload");
     },
     bookInstant(val) {
       this.bookingSetting.bookingType = val;

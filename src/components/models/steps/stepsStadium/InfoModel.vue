@@ -307,6 +307,7 @@ export default {
     },
     // from previus component step
     back(step) {
+      // this.step = step;
       this.$parent.nextButton = true;
       this.$parent.accountSelected(step);
     },
@@ -318,12 +319,6 @@ export default {
       this.$parent.saveData();
       var localData = localStorage.getItem("savedData");
       var serviceData = JSON.parse(localData) || {};
-      // serviceData.roomsGuest = { ...this.roomsGuest };
-      // // adding lesisure for storage
-      // var isEmptyLeisure = Object.keys(this.leisure).length === 0;
-      // if (!isEmptyLeisure) {
-      //   serviceData.leisure = { ...this.leisure };
-      // }
       // adding from step info
       serviceData.infoStep = this.step;
       localStorage.setItem("savedData", JSON.stringify(serviceData));
@@ -348,7 +343,6 @@ export default {
         this.$parent.accountOpt = "service";
       }
       this.infoData = { ...basicInfo };
-      console.log(basicInfo);
       this.$emit("basicInfo", basicInfo);
     },
   },
@@ -369,6 +363,7 @@ export default {
         if (infoStep && !this.$parent.nextButton) {
           this.step = infoStep;
         }
+        console.log(this.step, 'abcd')
         this.lastStepClicked('true')
         // this.$emit("basicInfo", );
       }

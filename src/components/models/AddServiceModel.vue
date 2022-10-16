@@ -82,7 +82,7 @@
         </div>
         <div class="buttons-top">
           <button @click="accountSelected(1)">back</button>
-          <button @click="saveData">Save</button>
+          <button @click="saveData()">Save</button>
         </div>
         <div class="container-service">
           <div class="cards">
@@ -446,23 +446,23 @@ export default {
           localStorage.clear();
         }
       }
-      //
+      // on step
       var store = {
         categoryId: this.serviceType._id,
         type: this.accountOpt,
         step: this.step,
         category: this.serviceType.category,
-      };
-      // var info = this.$refs.info;
-      // var service = this.$refs.service;
-      // var price = this.$refs.price;
-      store = {
         ...store,
         ...this.basicD,
         ...this.dataDec,
         ...this.dataP,
       };
       localStorage.setItem("savedData", JSON.stringify(store));
+      // for image upload
+      var service = this.$refs.service;
+      if (service) {
+        service.saveData(true);
+      }
     },
     selectedCategory(opt) {
       if (opt.category == "Wedding_Halls" || opt.category == "Stadium ") {
@@ -491,11 +491,11 @@ export default {
         categoryId: this.serviceType._id,
       };
       this.finalData = this.dataPayload;
-      var uploadedImages = await this.uploadFiles();
-      if (this.myImages) {
+      if (Object.keys(this.savedImages).length === 0) {
+        var uploadedImages = await this.uploadFiles();
         if (uploadedImages) {
           var imagesArr = Object.values(uploadedImages);
-          dataPayload.description.images = [...imagesArr, ...this.savedImages];
+          dataPayload.description.images = [...imagesArr];
           this.submit(dataPayload);
         }
       } else {
@@ -576,7 +576,7 @@ export default {
       this.isSubmitted = true;
       this.step = step;
     },
-    allSubmit(price, mode) {
+    allSubmit(mode) {
       var info = this.$refs.info;
       var service = this.$refs.service;
       var pricing = this.$refs.price;
@@ -614,11 +614,10 @@ export default {
       if (newValue) {
         var localData = localStorage.getItem("savedData");
         if (localData) {
-          var { type, category, step, roomsGuest, categoryId } =
+          var { type, category, step, infoStep, categoryId } =
             JSON.parse(localData);
           if (type) {
-            this.accountOpt = type;
-            this.isSubmitted = true;
+              this.accountOpt = type;
           }
           if (step) {
             this.step = step;
@@ -627,7 +626,7 @@ export default {
             this.serviceType._id = categoryId;
             this.serviceType.category = category;
           }
-          if (roomsGuest) {
+          if (infoStep) {
             // go for next step if saved
             this.changeSteps();
           }
