@@ -1,408 +1,341 @@
 <template>
   <section :class="['login-signup', { active: model }]">
-    <div v-if="reviewModel">
-      <div class="primary-login">
-        <div class="main-login add-services">
-          <div class="logo-close">
-            <div class="close-icon" @click="close">
-              <img src="../../assets/images/close-icon.svg" alt="" />
-            </div>
-          </div>
-          <div class="headings">
-            <h1>Add Review</h1>
-            <!-- <h4>Please add Review</h4> -->
-          </div>
-          <div class="container-vendor">
-            <div class="rattings">
-              <div class="rate">
-                <span
-                  :class="['fa fa-star', { active: ratings >= 1 }]"
-                  @click="rattings(1)"
-                ></span>
-                <span
-                  :class="['fa fa-star', { active: ratings >= 2 }]"
-                  @click="rattings(2)"
-                ></span>
-                <span
-                  :class="['fa fa-star', { active: ratings >= 3 }]"
-                  @click="rattings(3)"
-                ></span>
-                <span
-                  :class="['fa fa-star', { active: ratings >= 4 }]"
-                  @click="rattings(4)"
-                ></span>
-                <span
-                  :class="['fa fa-star', { active: ratings >= 5 }]"
-                  @click="rattings(5)"
-                ></span>
-              </div>
-              <div class="current-rating">({{ ratings }})</div>
-            </div>
-
-            <div class="text-area">
-              <textarea
-                rows="8"
-                cols="50"
-                placeholder="write a review..."
-                v-model="comment"
-              ></textarea>
-            </div>
-            <div class="form-container">
-              <div class="input-div step-btn">
-                <button
-                  type="submit"
-                  @click="review()"
-                  :disabled="loadingReview"
-                >
-                  {{ !loadingReview ? "Submit" : "Loading..." }}
-                </button>
-              </div>
-            </div>
+    <!-- step one -->
+    <div class="primary-login" v-if="step == 1">
+      <div class="main-login add-services">
+        <div class="logo-close">
+          <div class="close-icon" @click="close">
+            <img src="../../assets/images/close-icon.svg" alt="" />
           </div>
         </div>
-      </div>
-    </div>
-    <div v-if="!reviewModel">
-      <!-- step one -->
-      <div class="primary-login" v-if="step == 1">
-        <div class="main-login add-services">
-          <div class="logo-close">
-            <div class="close-icon" @click="close">
-              <img src="../../assets/images/close-icon.svg" alt="" />
-            </div>
-          </div>
-          <div class="headings">
-            <h1>Add Service</h1>
-            <h4>Please add details for new service</h4>
-          </div>
-          <div class="container-vendor">
-            <div class="cards">
-              <div
-                :class="['primary-cards', { active: accountOpt == 'info' }]"
-                @click="selectedOptions('info')"
-              >
-                <div class="category-img">
-                  <img src="../../assets/images/basic.svg" alt="" />
-                </div>
-                <div class="content">
-                  <h5>Basic Information</h5>
-                  <h6>
-                    Lorem ipsum dolor sit amet, consectetur <br />
-                    adipiscing elit. Fusce ac odio at urna curs <br />us
-                    lacinia.
-                  </h6>
-                </div>
-              </div>
-              <div
-                :class="['primary-cards', { active: accountOpt == 'service' }]"
-                @click="selectedOptions('info')"
-              >
-                <div class="category-img">
-                  <img src="../../assets/images/servies.svg" alt="" />
-                </div>
-                <div class="content">
-                  <h5>Service Description</h5>
-                  <h6>
-                    Lorem ipsum dolor sit amet, consectetur <br />
-                    adipiscing elit. Fusce ac odio at urna curs <br />us
-                    lacinia.
-                  </h6>
-                </div>
-              </div>
-              <div
-                :class="['primary-cards', { active: accountOpt == 'price' }]"
-                @click="selectedOptions('info')"
-              >
-                <div class="category-img">
-                  <img src="../../assets/images/price.svg" alt="" />
-                </div>
-                <div class="content">
-                  <h5>Price Details</h5>
-                  <h6>
-                    Lorem ipsum dolor sit amet, consectetur <br />
-                    adipiscing elit. Fusce ac odio at urna curs <br />us
-                    lacinia.
-                  </h6>
-                </div>
-              </div>
-            </div>
-            <div class="form-container">
-              <div class="input-div step-btn">
-                <button type="submit" @click="accountSelected(2)">Next</button>
-              </div>
-            </div>
-          </div>
+        <div class="headings">
+          <h1>Add Service</h1>
+          <h4>Please add details for new service</h4>
         </div>
-      </div>
-      <!-- categories -->
-      <div class="primary-login" v-if="step == 2">
-        <div class="main-login add-services">
-          <div class="logo-close">
-            <div class="close-icon" @click="close">
-              <img src="../../assets/images/close-icon.svg" alt="" />
-            </div>
-          </div>
-          <div class="headings">
-            <h1>Basic Information</h1>
-            <h4>Service type</h4>
-          </div>
-          <!-- <div class="buttons-top">
-          <button @click="accountSelected(1)">back</button>
-          <button @click="saveData">Save</button>
-        </div> -->
-          <div class="container-service">
-            <div class="cards">
-              <div
-                v-for="(item, index) in $store.state.details.categories"
-                :key="index"
-                :class="{
-                  active: serviceType && serviceType.category == item.category,
-                }"
-                @click="selectedCategory(item)"
-              >
-                <h6 v-if="item.category != 'Wedding_Halls'">
-                  {{ item.category }}
+        <div class="container-vendor">
+          <div class="cards">
+            <div
+              :class="['primary-cards', { active: accountOpt == 'info' }]"
+              @click="selectedOptions('info')"
+            >
+              <div class="category-img">
+                <img src="../../assets/images/basic.svg" alt="" />
+              </div>
+              <div class="content">
+                <h5>Basic Information</h5>
+                <h6>
+                  Lorem ipsum dolor sit amet, consectetur <br />
+                  adipiscing elit. Fusce ac odio at urna curs <br />us lacinia.
                 </h6>
-                <div v-if="item.category == 'Wedding_Halls'">
-                  <h6>Wedding</h6>
-                  <h6>Halls</h6>
-                </div>
+              </div>
+            </div>
+            <div
+              :class="['primary-cards', { active: accountOpt == 'service' }]"
+              @click="selectedOptions('info')"
+            >
+              <div class="category-img">
+                <img src="../../assets/images/servies.svg" alt="" />
+              </div>
+              <div class="content">
+                <h5>Service Description</h5>
+                <h6>
+                  Lorem ipsum dolor sit amet, consectetur <br />
+                  adipiscing elit. Fusce ac odio at urna curs <br />us lacinia.
+                </h6>
+              </div>
+            </div>
+            <div
+              :class="['primary-cards', { active: accountOpt == 'price' }]"
+              @click="selectedOptions('info')"
+            >
+              <div class="category-img">
+                <img src="../../assets/images/price.svg" alt="" />
+              </div>
+              <div class="content">
+                <h5>Price Details</h5>
+                <h6>
+                  Lorem ipsum dolor sit amet, consectetur <br />
+                  adipiscing elit. Fusce ac odio at urna curs <br />us lacinia.
+                </h6>
               </div>
             </div>
           </div>
           <div class="form-container">
             <div class="input-div step-btn">
-              <button type="submit" @click="changeSteps">Next</button>
+              <button type="submit" @click="accountSelected(2)">Next</button>
             </div>
           </div>
         </div>
       </div>
-      <!-- Chalets -->
-      <section v-if="serviceType && serviceType.category == 'Chalets'">
-        <!-- basic information start -->
-        <InfoModelChalets
-          v-if="isSubmitted && accountOpt == 'info'"
-          :model="true"
-          @close="close"
-          @basicInfo="basicData"
-        />
-        <!-- Description start -->
-        <ServiceModelChalets
-          v-if="isSubmitted && accountOpt == 'service'"
-          :model="true"
-          @close="close"
-          @images="formData"
-          @decription="decription"
-        />
-        <!-- price start -->
-        <PriceModelChalets
-          v-if="isSubmitted && accountOpt == 'price'"
-          :model="true"
-          @close="close"
-          @price="pricing"
-        />
-      </section>
-      <!-- Resort -->
-      <section v-if="serviceType && serviceType.category == 'Resorts'">
-        <!-- basic information start -->
-        <InfoModel
-          v-if="isSubmitted && accountOpt == 'info'"
-          :model="true"
-          @close="close"
-          @basicInfo="basicData"
-        />
-        <!-- Description start -->
-        <ServiceModel
-          v-if="isSubmitted && accountOpt == 'service'"
-          :model="true"
-          @close="close"
-          @images="formData"
-          @decription="decription"
-        />
-        <!-- price start -->
-        <PriceModel
-          v-if="isSubmitted && accountOpt == 'price'"
-          :model="true"
-          @close="close"
-          @price="pricing"
-        />
-      </section>
-      <!-- stadium  -->
-      <section v-if="serviceType && serviceType.category == 'Stadium'">
-        <!-- basic information start -->
-        <InfoModelStadium
-          v-if="isSubmitted && accountOpt == 'info'"
-          :model="true"
-          @close="close"
-          @basicInfo="basicData"
-        />
-        <!-- Description start -->
-        <ServiceModelStadium
-          v-if="isSubmitted && accountOpt == 'service'"
-          :model="true"
-          @close="close"
-          @images="formData"
-          @decription="decription"
-        />
-        <!-- price start -->
-        <PriceModelStadium
-          v-if="isSubmitted && accountOpt == 'price'"
-          :model="true"
-          @close="close"
-          @price="pricing"
-        />
-      </section>
-      <!-- Appartments -->
-      <section v-if="serviceType && serviceType.category == 'Apartment'">
-        <!-- basic information start -->
-        <InfoModelAppartments
-          v-if="isSubmitted && accountOpt == 'info'"
-          :model="true"
-          @close="close"
-          @basicInfo="basicData"
-        />
-        <!-- Description start -->
-        <ServiceModelAppartments
-          v-if="isSubmitted && accountOpt == 'service'"
-          :model="true"
-          @close="close"
-          @images="formData"
-          @decription="decription"
-        />
-        <!-- price start -->
-        <PriceModelAppartments
-          v-if="isSubmitted && accountOpt == 'price'"
-          :model="true"
-          @close="close"
-          @price="pricing"
-        />
-      </section>
-      <!-- Lounges -->
-      <section v-if="serviceType && serviceType.category == 'Lounges'">
-        <!-- basic information start -->
-        <InfoModelLoungs
-          v-if="isSubmitted && accountOpt == 'info'"
-          :model="true"
-          @close="close"
-          @basicInfo="basicData"
-        />
-        <!-- Description start -->
-        <ServiceModelLoungs
-          v-if="isSubmitted && accountOpt == 'service'"
-          :model="true"
-          @close="close"
-          @images="formData"
-          @decription="decription"
-        />
-        <!-- price start -->
-        <PriceModelLoungs
-          v-if="isSubmitted && accountOpt == 'price'"
-          :model="true"
-          @close="close"
-          @price="pricing"
-        />
-      </section>
-      <!-- Camps -->
-      <section v-if="serviceType && serviceType.category == 'Camps'">
-        <!-- basic information start -->
-        <InfoModelCamps
-          v-if="isSubmitted && accountOpt == 'info'"
-          :model="true"
-          @close="close"
-          @basicInfo="basicData"
-        />
-        <!-- Description start -->
-        <ServiceModelCamps
-          v-if="isSubmitted && accountOpt == 'service'"
-          :model="true"
-          @close="close"
-          @images="formData"
-          @decription="decription"
-        />
-        <!-- price start -->
-        <PriceModelCamps
-          v-if="isSubmitted && accountOpt == 'price'"
-          :model="true"
-          @close="close"
-          @price="pricing"
-        />
-      </section>
-      <!-- Wedding -->
-      <section v-if="serviceType && serviceType.category == 'Wedding_Halls'">
-        <!-- basic information start -->
-        <InfoModelWeddings
-          v-if="isSubmitted && accountOpt == 'info'"
-          :model="true"
-          @close="close"
-          @basicInfo="basicData"
-        />
-        <!-- Description start -->
-        <ServiceModelWeddings
-          v-if="isSubmitted && accountOpt == 'service'"
-          :model="true"
-          @close="close"
-          @images="formData"
-          @decription="decription"
-        />
-        <!-- price start -->
-        <PriceModelWeddings
-          v-if="isSubmitted && accountOpt == 'price'"
-          :model="true"
-          @close="close"
-          @price="pricing"
-        />
-      </section>
-      <!-- Farms -->
-      <section v-if="serviceType && serviceType.category == 'Farms'">
-        <!-- basic information start -->
-        <InfoModelFarms
-          v-if="isSubmitted && accountOpt == 'info'"
-          :model="true"
-          @close="close"
-          @basicInfo="basicData"
-        />
-        <!-- Description start -->
-        <ServiceModelFarms
-          v-if="isSubmitted && accountOpt == 'service'"
-          :model="true"
-          @close="close"
-          @images="formData"
-          @decription="decription"
-        />
-        <!-- price start -->
-        <PriceModelFarms
-          v-if="isSubmitted && accountOpt == 'price'"
-          :model="true"
-          @close="close"
-          @price="pricing"
-        />
-      </section>
-      <!-- Hotels -->
-      <section v-if="serviceType && serviceType.category == 'Hotel'">
-        <!-- basic information start -->
-        <InfoModelHotels
-          v-if="isSubmitted && accountOpt == 'info'"
-          :model="true"
-          @close="close"
-          @basicInfo="basicData"
-        />
-        <!-- Description start -->
-        <ServiceModelHotels
-          v-if="isSubmitted && accountOpt == 'service'"
-          :model="true"
-          @close="close"
-          @images="formData"
-          @decription="decription"
-        />
-        <!-- price start -->
-        <PriceModelHotels
-          v-if="isSubmitted && accountOpt == 'price'"
-          :model="true"
-          @close="close"
-          @price="pricing"
-        />
-      </section>
     </div>
+    <!-- categories -->
+    <div class="primary-login" v-if="step == 2">
+      <div class="main-login add-services">
+        <div class="logo-close">
+          <div class="close-icon" @click="close">
+            <img src="../../assets/images/close-icon.svg" alt="" />
+          </div>
+        </div>
+        <div class="headings">
+          <h1>Basic Information</h1>
+          <h4>Service type</h4>
+        </div>
+        <!-- <div class="buttons-top">
+          <button @click="accountSelected(1)">back</button>
+          <button @click="saveData">Save</button>
+        </div> -->
+        <div class="container-service">
+          <div class="cards">
+            <div
+              v-for="(item, index) in $store.state.details.categories"
+              :key="index"
+              :class="{
+                active: serviceType && serviceType.category == item.category,
+              }"
+              @click="selectedCategory(item)"
+            >
+              <h6 v-if="item.category != 'Wedding_Halls'">
+                {{ item.category }}
+              </h6>
+              <div v-if="item.category == 'Wedding_Halls'">
+                <h6>Wedding</h6>
+                <h6>Halls</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-container">
+          <div class="input-div step-btn">
+            <button type="submit" @click="changeSteps">Next</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Chalets -->
+    <section v-if="serviceType && serviceType.category == 'Chalets'">
+      <!-- basic information start -->
+      <InfoModelChalets
+        v-if="isSubmitted && accountOpt == 'info'"
+        :model="true"
+        @close="close"
+        @basicInfo="basicData"
+      />
+      <!-- Description start -->
+      <ServiceModelChalets
+        v-if="isSubmitted && accountOpt == 'service'"
+        :model="true"
+        @close="close"
+        @images="formData"
+        @decription="decription"
+      />
+      <!-- price start -->
+      <PriceModelChalets
+        v-if="isSubmitted && accountOpt == 'price'"
+        :model="true"
+        @close="close"
+        @price="pricing"
+      />
+    </section>
+    <!-- Resort -->
+    <section v-if="serviceType && serviceType.category == 'Resorts'">
+      <!-- basic information start -->
+      <InfoModel
+        v-if="isSubmitted && accountOpt == 'info'"
+        :model="true"
+        @close="close"
+        @basicInfo="basicData"
+      />
+      <!-- Description start -->
+      <ServiceModel
+        v-if="isSubmitted && accountOpt == 'service'"
+        :model="true"
+        @close="close"
+        @images="formData"
+        @decription="decription"
+      />
+      <!-- price start -->
+      <PriceModel
+        v-if="isSubmitted && accountOpt == 'price'"
+        :model="true"
+        @close="close"
+        @price="pricing"
+      />
+    </section>
+    <!-- stadium  -->
+    <section v-if="serviceType && serviceType.category == 'Stadium'">
+      <!-- basic information start -->
+      <InfoModelStadium
+        v-if="isSubmitted && accountOpt == 'info'"
+        :model="true"
+        @close="close"
+        @basicInfo="basicData"
+      />
+      <!-- Description start -->
+      <ServiceModelStadium
+        v-if="isSubmitted && accountOpt == 'service'"
+        :model="true"
+        @close="close"
+        @images="formData"
+        @decription="decription"
+      />
+      <!-- price start -->
+      <PriceModelStadium
+        v-if="isSubmitted && accountOpt == 'price'"
+        :model="true"
+        @close="close"
+        @price="pricing"
+      />
+    </section>
+    <!-- Appartments -->
+    <section v-if="serviceType && serviceType.category == 'Apartment'">
+      <!-- basic information start -->
+      <InfoModelAppartments
+        v-if="isSubmitted && accountOpt == 'info'"
+        :model="true"
+        @close="close"
+        @basicInfo="basicData"
+      />
+      <!-- Description start -->
+      <ServiceModelAppartments
+        v-if="isSubmitted && accountOpt == 'service'"
+        :model="true"
+        @close="close"
+        @images="formData"
+        @decription="decription"
+      />
+      <!-- price start -->
+      <PriceModelAppartments
+        v-if="isSubmitted && accountOpt == 'price'"
+        :model="true"
+        @close="close"
+        @price="pricing"
+      />
+    </section>
+    <!-- Lounges -->
+    <section v-if="serviceType && serviceType.category == 'Lounges'">
+      <!-- basic information start -->
+      <InfoModelLoungs
+        v-if="isSubmitted && accountOpt == 'info'"
+        :model="true"
+        @close="close"
+        @basicInfo="basicData"
+      />
+      <!-- Description start -->
+      <ServiceModelLoungs
+        v-if="isSubmitted && accountOpt == 'service'"
+        :model="true"
+        @close="close"
+        @images="formData"
+        @decription="decription"
+      />
+      <!-- price start -->
+      <PriceModelLoungs
+        v-if="isSubmitted && accountOpt == 'price'"
+        :model="true"
+        @close="close"
+        @price="pricing"
+      />
+    </section>
+    <!-- Camps -->
+    <section v-if="serviceType && serviceType.category == 'Camps'">
+      <!-- basic information start -->
+      <InfoModelCamps
+        v-if="isSubmitted && accountOpt == 'info'"
+        :model="true"
+        @close="close"
+        @basicInfo="basicData"
+      />
+      <!-- Description start -->
+      <ServiceModelCamps
+        v-if="isSubmitted && accountOpt == 'service'"
+        :model="true"
+        @close="close"
+        @images="formData"
+        @decription="decription"
+      />
+      <!-- price start -->
+      <PriceModelCamps
+        v-if="isSubmitted && accountOpt == 'price'"
+        :model="true"
+        @close="close"
+        @price="pricing"
+      />
+    </section>
+    <!-- Wedding -->
+    <section v-if="serviceType && serviceType.category == 'Wedding_Halls'">
+      <!-- basic information start -->
+      <InfoModelWeddings
+        v-if="isSubmitted && accountOpt == 'info'"
+        :model="true"
+        @close="close"
+        @basicInfo="basicData"
+      />
+      <!-- Description start -->
+      <ServiceModelWeddings
+        v-if="isSubmitted && accountOpt == 'service'"
+        :model="true"
+        @close="close"
+        @images="formData"
+        @decription="decription"
+      />
+      <!-- price start -->
+      <PriceModelWeddings
+        v-if="isSubmitted && accountOpt == 'price'"
+        :model="true"
+        @close="close"
+        @price="pricing"
+      />
+    </section>
+    <!-- Farms -->
+    <section v-if="serviceType && serviceType.category == 'Farms'">
+      <!-- basic information start -->
+      <InfoModelFarms
+        v-if="isSubmitted && accountOpt == 'info'"
+        :model="true"
+        @close="close"
+        @basicInfo="basicData"
+      />
+      <!-- Description start -->
+      <ServiceModelFarms
+        v-if="isSubmitted && accountOpt == 'service'"
+        :model="true"
+        @close="close"
+        @images="formData"
+        @decription="decription"
+      />
+      <!-- price start -->
+      <PriceModelFarms
+        v-if="isSubmitted && accountOpt == 'price'"
+        :model="true"
+        @close="close"
+        @price="pricing"
+      />
+    </section>
+    <!-- Hotels -->
+    <section v-if="serviceType && serviceType.category == 'Hotel'">
+      <!-- basic information start -->
+      <InfoModelHotels
+        v-if="isSubmitted && accountOpt == 'info'"
+        :model="true"
+        @close="close"
+        @basicInfo="basicData"
+      />
+      <!-- Description start -->
+      <ServiceModelHotels
+        v-if="isSubmitted && accountOpt == 'service'"
+        :model="true"
+        @close="close"
+        @images="formData"
+        @decription="decription"
+      />
+      <!-- price start -->
+      <PriceModelHotels
+        v-if="isSubmitted && accountOpt == 'price'"
+        :model="true"
+        @close="close"
+        @price="pricing"
+      />
+    </section>
   </section>
 </template>
 
@@ -498,43 +431,9 @@ export default {
       dataP: {},
       finalData: {},
       myImages: {},
-      reviewModel: false,
-      //
-      ratings: 5,
-      comment: "",
-      loadingReview: false,
     };
   },
   methods: {
-    rattings(val) {
-      this.ratings = val;
-    },
-    async review() {
-      this.loadingReview = true;
-      try {
-        const res = await this.$axios.post(
-          `services/${this.serviceType._id}/review`,
-          {
-            rating: this.ratings,
-            comment: this.comment,
-          }
-        );
-        if (res) {
-          this.loadingReview = false;
-          this.$swal({
-            icon: "success",
-            title: "Success!",
-            showConfirmButton: false,
-            timer: 3000,
-          });
-          (this.reviewModel = false), this.close();
-          this.$router.push("/my-services");
-        }
-      } catch (error) {
-        this.loadingReview = false;
-        console.log(error);
-      }
-    },
     // saveData() {
     //   localStorage.setItem(
     //     "savedData",
@@ -597,14 +496,16 @@ export default {
         const res = await this.$axios.post(cate, payload);
         if (res) {
           // console.log(res);
-          this.$swal({
-            icon: "success",
-            title: "Success!",
-            showConfirmButton: false,
-            timer: 3000,
-          });
+          // this.$swal({
+          //   icon: "success",
+          //   title: "Success!",
+          //   showConfirmButton: false,
+          //   timer: 3000,
+          // });
           this.$store.dispatch("details/setLoading", false);
-          this.reviewMode = true;
+          setTimeout(() => {
+            this.$router.push("/my-services");
+          }, 3000);
         }
       } catch (error) {
         this.$store.dispatch("details/setLoading", false);
@@ -647,7 +548,6 @@ export default {
       // this.isSubmitted = true;
     },
     close() {
-      this.reviewModel = false;
       this.accountOpt = null;
       this.isSubmitted = false;
       this.nextStep = null;
@@ -865,41 +765,6 @@ img {
 }
 .container-service .cards .active {
   border: 1px solid #febb12;
-}
-.rattings {
-  position: relative;
-}
-.rate {
-  display: flex;
-  align-items: center;
-}
-.rate-app .rate span {
-  margin: 0 10px;
-  font-size: 24px;
-  cursor: pointer;
-}
-.rate .fa-star {
-  color: #000;
-  margin-right: 5px;
-  cursor: pointer;
-}
-.rate .active {
-  color: orange !important;
-}
-.rattings .current-rating {
-  position: absolute;
-  right: -14px;
-  /* bottom: 16px; */
-  top: 6px;
-  font-size: 12px;
-  color: gray;
-}
-.text-area {
-  margin-top: 10px;
-}
-.text-area textarea {
-  padding: 10px;
-  outline: none;
 }
 /* categories */
 @media (max-width: 479px) and (min-width: 320px) {

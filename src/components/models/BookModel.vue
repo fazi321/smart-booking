@@ -1,7 +1,74 @@
 <template>
   <section>
+    <!-- review model -->
+    <div class="login-signup" v-if="reviewModel">
+      <div class="primary-login review-model">
+        <div class="main-login add-services">
+          <div class="logo-close">
+            <div class="close-icon" @click="closeSlide">
+              <img src="../../assets/images/close-icon.svg" alt="" />
+            </div>
+          </div>
+          <div class="headings">
+            <h1>Add Review</h1>
+            <!-- <h4>Please add Review</h4> -->
+          </div>
+          <div class="container-vendor">
+            <div class="ratting-container">
+              <div class="rattings">
+                <div class="rate">
+                  <span
+                    :class="['fa fa-star', { active: ratings >= 1 }]"
+                    @click="rattings(1)"
+                  ></span>
+                  <span
+                    :class="['fa fa-star', { active: ratings >= 2 }]"
+                    @click="rattings(2)"
+                  ></span>
+                  <span
+                    :class="['fa fa-star', { active: ratings >= 3 }]"
+                    @click="rattings(3)"
+                  ></span>
+                  <span
+                    :class="['fa fa-star', { active: ratings >= 4 }]"
+                    @click="rattings(4)"
+                  ></span>
+                  <span
+                    :class="['fa fa-star', { active: ratings >= 5 }]"
+                    @click="rattings(5)"
+                  ></span>
+                </div>
+                <div class="current-rating">({{ ratings }})</div>
+              </div>
+            </div>
+            <div class="text-area">
+              <textarea
+                rows="8"
+                cols="50"
+                placeholder="write a review..."
+                v-model="comment"
+              ></textarea>
+            </div>
+            <div class="form-container">
+              <div class="book-btn">
+                <button
+                  type="submit"
+                  @click="review()"
+                  :disabled="loadingReview"
+                >
+                  {{ !loadingReview ? "Submit" : "Loading..." }}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- booking model -->
-    <section class="login-signup" v-if="bookingModel && !paymentModel">
+    <section
+      class="login-signup"
+      v-if="bookingModel && !paymentModel && !reviewModel"
+    >
       <div class="primary-login">
         <div class="close-icon" @click="closeSlide">
           <img src="../../assets/images/close-icon.svg" alt />
@@ -26,9 +93,15 @@
             <div>
               <p>Nights</p>
               <div class="count">
-                <img src="../../assets/images/sub.png" @click="executer('dec')" />
+                <img
+                  src="../../assets/images/sub.png"
+                  @click="executer('dec')"
+                />
                 <span>{{ rooms }}</span>
-                <img src="../../assets/images/plus.png" @click="executer('inc')" />
+                <img
+                  src="../../assets/images/plus.png"
+                  @click="executer('inc')"
+                />
               </div>
             </div>
             <div>
@@ -92,17 +165,29 @@
             <div>
               <h4>Terms & Conditions</h4>
               <ul>
-                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                <li>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </li>
+                <li>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </li>
+                <li>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </li>
               </ul>
             </div>
             <div>
               <h4>Cancellation Policy</h4>
               <ul>
-                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                <li>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </li>
+                <li>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </li>
+                <li>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </li>
               </ul>
             </div>
           </div>
@@ -110,16 +195,16 @@
         <div class="book-btn">
           <button @click="bookingForm" :disabled="loadingBook">
             {{
-            !loadingBook
-            ? `Pay (SAR ${storeState.price.dayPrice} )`
-            : "Loading..."
+              !loadingBook
+                ? `Pay (SAR ${storeState.price.dayPrice * rooms} )`
+                : "Loading..."
             }}
           </button>
         </div>
       </div>
     </section>
     <!-- payment model -->
-    <section v-if="paymentModel">
+    <section v-if="paymentModel && !reviewModel">
       <section class="login-signup">
         <div class="primary-login payment">
           <div class="close-icon" @click="closeSlide">
@@ -132,32 +217,52 @@
             <div class="inputs-payments">
               <div>
                 <div class="input-primary">
-                  <input :class="{ active: error.number && !payments.number }" type="number" :placeholder="'Number'"
-                    v-model="payments.number" />
+                  <input
+                    :class="{ active: error.number && !payments.number }"
+                    type="number"
+                    :placeholder="'Number'"
+                    v-model="payments.number"
+                  />
                 </div>
               </div>
               <div>
                 <div class="input-primary">
-                  <input :class="{ active: error.month && !payments.month }" type="number" :placeholder="'Month'"
-                    v-model="payments.month" />
+                  <input
+                    :class="{ active: error.month && !payments.month }"
+                    type="number"
+                    :placeholder="'Month'"
+                    v-model="payments.month"
+                  />
                 </div>
               </div>
               <div>
                 <div class="input-primary">
-                  <input :class="{ active: error.year && !payments.year }" type="number" :placeholder="'Year'"
-                    v-model="payments.year" />
+                  <input
+                    :class="{ active: error.year && !payments.year }"
+                    type="number"
+                    :placeholder="'Year'"
+                    v-model="payments.year"
+                  />
                 </div>
               </div>
               <div>
                 <div class="input-primary">
-                  <input :class="{ active: error.cvc && !payments.cvc }" type="number" :placeholder="'CVC'"
-                    v-model="payments.cvc" />
+                  <input
+                    :class="{ active: error.cvc && !payments.cvc }"
+                    type="number"
+                    :placeholder="'CVC'"
+                    v-model="payments.cvc"
+                  />
                 </div>
               </div>
               <div>
                 <div class="input-primary">
-                  <input type="text" :class="{ active: error.name && !payments.name }" :placeholder="'Name'"
-                    v-model="payments.name" />
+                  <input
+                    type="text"
+                    :class="{ active: error.name && !payments.name }"
+                    :placeholder="'Name'"
+                    v-model="payments.name"
+                  />
                 </div>
               </div>
             </div>
@@ -165,9 +270,9 @@
           <div class="book-btn">
             <button @click="paymentBooking" :disabled="loadingPay">
               {{
-              !loadingPay
-              ? `Pay (SAR ${storeState.price.dayPrice} )`
-              : "Loading..."
+                !loadingPay
+                  ? `Pay (SAR ${storeState.price.dayPrice * rooms} )`
+                  : "Loading..."
               }}
             </button>
           </div>
@@ -198,6 +303,11 @@ export default {
       payments: {},
       id: null,
       error: {},
+      // review
+      reviewModel: false,
+      ratings: 5,
+      comment: "",
+      loadingReview: false,
     };
   },
   computed: {
@@ -212,6 +322,35 @@ export default {
     },
   },
   methods: {
+    rattings(val) {
+      this.ratings = val;
+    },
+    async review() {
+      this.loadingReview = true;
+      try {
+        const res = await this.$axios.post(
+          `services/${this.$route.params.id}/review`,
+          {
+            rating: this.ratings,
+            comment: this.comment,
+          }
+        );
+        if (res) {
+          this.loadingReview = false;
+          this.$swal({
+            icon: "success",
+            title: "Success!",
+            showConfirmButton: false,
+            timer: 3000,
+          });
+          (this.reviewModel = false), this.closeSlide();
+        }
+      } catch (error) {
+        this.loadingReview = false;
+        console.log(error);
+      }
+    },
+    //
     async paymentBooking() {
       var { number, month, year, cvc, name } = this.payments;
       if (!number) {
@@ -243,7 +382,7 @@ export default {
             showConfirmButton: false,
             timer: 3000,
           });
-          this.closeSlide();
+          this.reviewModel = true;
         }
       } catch (error) {
         this.loadingPay = false;
@@ -336,10 +475,10 @@ export default {
 </script>
 
 <style scoped>
-  .main-wrapper{
-    height: 400px;
-    overflow-y: scroll;
-  }
+.main-wrapper {
+  height: 400px;
+  overflow-y: scroll;
+}
 .count img {
   width: 25px;
   cursor: pointer;
@@ -484,7 +623,7 @@ export default {
   opacity: 1;
 }
 
-.checkbox-container input:checked~.checkmark {
+.checkbox-container input:checked ~ .checkmark {
   background-color: #2196f3;
 }
 
@@ -494,7 +633,7 @@ export default {
   display: none;
 }
 
-.checkbox-container input:checked~.checkmark:after {
+.checkbox-container input:checked ~ .checkmark:after {
   display: block;
 }
 
@@ -549,16 +688,16 @@ export default {
   padding: 5px 0 10px 0;
 }
 
-.terms-container>div {
+.terms-container > div {
   width: 50%;
 }
 
-.terms-container>div ul {
+.terms-container > div ul {
   list-style: disc;
   padding-left: 15px;
 }
 
-.terms-container>div ul li {
+.terms-container > div ul li {
   text-align: left;
   letter-spacing: 0px;
   color: #000000;
@@ -620,7 +759,49 @@ export default {
 .payment {
   height: 300px;
 }
-
+.ratting-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+.rattings {
+  position: relative;
+}
+.rate {
+  display: flex;
+  align-items: center;
+}
+.rate-app .rate span {
+  margin: 0 10px;
+  font-size: 24px;
+  cursor: pointer;
+}
+.rate .fa-star {
+  color: #000;
+  margin-right: 5px;
+  cursor: pointer;
+}
+.rate .active {
+  color: orange !important;
+}
+.rattings .current-rating {
+  position: absolute;
+  right: -14px;
+  /* bottom: 16px; */
+  top: 6px;
+  font-size: 12px;
+  color: gray;
+}
+.text-area {
+  margin-top: 10px;
+}
+.text-area textarea {
+  padding: 10px;
+  outline: none;
+}
+.review-model {
+  height: auto;
+}
 /* responsive */
 @media (max-width: 479px) and (min-width: 320px) {
   .primary-login {
