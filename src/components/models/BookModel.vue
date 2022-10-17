@@ -206,7 +206,16 @@
     <!-- payment model -->
     <section v-if="paymentModel && !reviewModel">
       <section class="login-signup">
-        <div class="primary-login payment">
+        <CardForm
+          :form-data="formData"
+          @input-card-number="updateCardNumber"
+          @input-card-name="updateCardName"
+          @input-card-month="updateCardMonth"
+          @input-card-year="updateCardYear"
+          @input-card-cvv="updateCardCvv"
+          @submit="paymentBooking"
+        />
+        <!-- <div class="primary-login payment">
           <div class="close-icon" @click="closeSlide">
             <img src="../../assets/images/close-icon.svg" alt />
           </div>
@@ -276,19 +285,21 @@
               }}
             </button>
           </div>
-        </div>
+        </div> -->
       </section>
     </section>
   </section>
 </template>
 
 <script>
+import CardForm from "@/components/cardPay/CardForm";
 import BookCard from "@/components/hotelDetail/bookCard.vue";
 export default {
   name: "BookModel",
   props: ["checkIn"],
   components: {
     BookCard,
+    CardForm,
   },
   data() {
     return {
@@ -308,6 +319,14 @@ export default {
       ratings: 5,
       comment: "",
       loadingReview: false,
+      //
+      formData: {
+        cardName: "",
+        cardNumber: "",
+        cardMonth: "",
+        cardYear: "",
+        cardCvv: "",
+      },
     };
   },
   computed: {
@@ -322,6 +341,23 @@ export default {
     },
   },
   methods: {
+    updateCardNumber(val) {
+      this.formData.cardNumber = val;
+    },
+    updateCardName(val) {
+      this.formData.cardName = val;
+    },
+    updateCardMonth(val) {
+      this.formData.cardMonth = val;
+      console.log(val);
+    },
+    updateCardYear(val) {
+      this.formData.cardYear = val;
+      console.log(val);
+    },
+    updateCardCvv(val) {
+      this.formData.cardCvv = val;
+    },
     rattings(val) {
       this.ratings = val;
     },
@@ -352,28 +388,62 @@ export default {
     },
     //
     async paymentBooking() {
-      var { number, month, year, cvc, name } = this.payments;
-      if (!number) {
-        return (this.error.number = true);
+      var {
+        cardNumber,
+        cardMonth,
+        cardYear,
+        cardCvv,
+        cardName,
+        cardNumberNotMask,
+      } = this.formData;
+      if (!cardNumber) {
+        this.$swal({
+          icon: "error",
+          title: `Please Inter Card Number!`,
+          showConfirmButton: false,
+          timer: 3000,
+        });
+        return;
       }
-      if (!month) {
-        return (this.error.month = true);
+      if (!cardMonth) {
+        this.$swal({
+          icon: "error",
+          title: `Please inter Month!`,
+          showConfirmButton: false,
+          timer: 3000,
+        });
+        return;
       }
-      if (!year) {
-        return (this.error.year = true);
+      if (!cardYear) {
+        this.$swal({
+          icon: "error",
+          title: `Please inter Year!`,
+          showConfirmButton: false,
+          timer: 3000,
+        });
+        return;
       }
-      if (!cvc) {
-        return (this.error.cvc = true);
+      if (!cardCvv) {
+        this.$swal({
+          icon: "error",
+          title: `Please inter CardCvv!`,
+          showConfirmButton: false,
+          timer: 3000,
+        });
+        return;
       }
-      if (!name) {
+      if (!cardName) {
         return (this.error.name = true);
       }
+      var payload = {};
+      payload.cardNumber = cardNumberNotMask;
+      payload.cardMonth = cardMonth;
+      payload.cardYear = cardYear;
+      payload.cardCvv = cardCvv;
+      payload.cardName = cardName;
       try {
         this.loadingPay = true;
-        const res = await this.$axios.post(
-          `booking/pay/${this.id}`,
-          this.payments
-        );
+        const res = await this.$axios.post(`booking/pay/${this.id}`, payload);
         if (res) {
           this.loadingPay = false;
           this.$swal({

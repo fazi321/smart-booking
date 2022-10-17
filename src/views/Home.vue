@@ -27,7 +27,7 @@ export default {
     ExploreCity,
     WhatCanWeDo,
   },
-  methods: { 
+  methods: {
     notificationModel(arg) {
       const Toast = this.$swal.mixin({
         toast: true,
@@ -103,6 +103,5 @@ export default {
   //     socket.emit("howdy", "stranger");
   //   },
   // },
-  
 };
 </script>
