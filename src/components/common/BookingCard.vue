@@ -4,7 +4,7 @@
       <img :src="require(`../../assets/images/${dataItem.image}`)" />
     </div>
     <div class="detail">
-      <h5>{{dataItem.title}}</h5>
+      <h5>{{dataItem.category}}</h5>
       <p>{{dataItem.categoryCount}}</p>
     </div>
   </router-link>

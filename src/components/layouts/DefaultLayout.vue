@@ -7,6 +7,7 @@
       <MobHeader />
     </div>
     <slot />
+    <custom-notification/>
     <Footer />
   </div>
 </template>
@@ -15,6 +16,7 @@
 import Header from "../header/index.vue";
 import Footer from "../footer/AppFooter.vue";
 import MobHeader from "../mobHeader/index";
+import CustomNotification from '../Notification';
 
 export default {
   name: "DefaultLayout",
@@ -22,6 +24,7 @@ export default {
     Header,
     MobHeader,
     Footer,
+    CustomNotification,
   },
 };
 </script>

@@ -4,15 +4,9 @@
       <div class="privacy">
         <h1>TERMS OF USE</h1>
       </div>
-      <div class="content">
-        <h3>LOREM IPSUM</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tortor lacus, fermentum vitae sagittis ultrices, imperdiet ac eros. Morbi lobortis lectus nec neque laoreet tincidunt. Praesent iaculis congue laoreet. Quisque ornare vulputate metus, et mollis elit aliquet nec. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in blandit lorem. Nulla in est non metus faucibus ultricies id rhoncus dui. Nunc egestas aliquam erat, eu fringilla tortor gravida ac.</p>
-        <h3>LOREM IPSUM</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tortor lacus, fermentum vitae sagittis ultrices, imperdiet ac eros. Morbi lobortis lectus nec neque laoreet tincidunt. Praesent iaculis congue laoreet. Quisque ornare vulputate metus, et mollis elit aliquet nec. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in blandit lorem. Nulla in est non metus faucibus ultricies id rhoncus dui. Nunc egestas aliquam erat, eu fringilla tortor gravida ac.</p>
-        <h3>LOREM IPSUM</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tortor lacus, fermentum vitae sagittis ultrices, imperdiet ac eros. Morbi lobortis lectus nec neque laoreet tincidunt. Praesent iaculis congue laoreet. Quisque ornare vulputate metus, et mollis elit aliquet nec. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in blandit lorem. Nulla in est non metus faucibus ultricies id rhoncus dui. Nunc egestas aliquam erat, eu fringilla tortor gravida ac.</p>
-        <h3>LOREM IPSUM</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tortor lacus, fermentum vitae sagittis ultrices, imperdiet ac eros. Morbi lobortis lectus nec neque laoreet tincidunt. Praesent iaculis congue laoreet. Quisque ornare vulputate metus, et mollis elit aliquet nec. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in blandit lorem. Nulla in est non metus faucibus ultricies id rhoncus dui. Nunc egestas aliquam erat, eu fringilla tortor gravida ac.</p>
+      <div class="content" v-for="(f, index) in terms" :key="index">
+        <h3>{{f.title}}</h3>
+        <p>{{f.text}}</p>
       </div>
     </section>
   </default-layout>
@@ -25,6 +19,26 @@ export default {
   name: "HotelDetailView",
   components: {
     DefaultLayout
+  },
+  data(){
+    return{
+      terms:[],
+    }
+  },
+  mounted(){
+    this.getData()
+  },
+  methods:{
+   async getData(){
+      try {
+        var res = await this.$axios.get(`user/terms`);
+        if(res.data){
+          this.terms = res.data.termsOfUse;
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
   }
 };
 </script>
