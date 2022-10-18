@@ -1,5 +1,5 @@
 <template>
-  <div class="card-form">
+  <div class="card-form custom-card">
     <div class="card-list">
       <Card
         :fields="fields"
