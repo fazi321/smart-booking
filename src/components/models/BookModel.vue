@@ -6,7 +6,7 @@
         <div class="main-login add-services">
           <div class="logo-close">
             <div class="close-icon" @click="closeSlide">
-              <img src="../../assets/images/close-icon.svg" alt="" />
+              <img src="../../assets/images/close-icon.svg" alt />
             </div>
           </div>
           <div class="headings">
@@ -17,37 +17,17 @@
             <div class="ratting-container">
               <div class="rattings">
                 <div class="rate">
-                  <span
-                    :class="['fa fa-star', { active: ratings >= 1 }]"
-                    @click="rattings(1)"
-                  ></span>
-                  <span
-                    :class="['fa fa-star', { active: ratings >= 2 }]"
-                    @click="rattings(2)"
-                  ></span>
-                  <span
-                    :class="['fa fa-star', { active: ratings >= 3 }]"
-                    @click="rattings(3)"
-                  ></span>
-                  <span
-                    :class="['fa fa-star', { active: ratings >= 4 }]"
-                    @click="rattings(4)"
-                  ></span>
-                  <span
-                    :class="['fa fa-star', { active: ratings >= 5 }]"
-                    @click="rattings(5)"
-                  ></span>
+                  <span :class="['fa fa-star', { active: ratings >= 1 }]" @click="rattings(1)"></span>
+                  <span :class="['fa fa-star', { active: ratings >= 2 }]" @click="rattings(2)"></span>
+                  <span :class="['fa fa-star', { active: ratings >= 3 }]" @click="rattings(3)"></span>
+                  <span :class="['fa fa-star', { active: ratings >= 4 }]" @click="rattings(4)"></span>
+                  <span :class="['fa fa-star', { active: ratings >= 5 }]" @click="rattings(5)"></span>
                 </div>
                 <div class="current-rating">({{ ratings }})</div>
               </div>
             </div>
             <div class="text-area">
-              <textarea
-                rows="8"
-                cols="50"
-                placeholder="write a review..."
-                v-model="comment"
-              ></textarea>
+              <textarea rows="8" cols="50" placeholder="write a review..." v-model="comment"></textarea>
             </div>
             <div class="form-container">
               <div class="book-btn">
@@ -55,9 +35,7 @@
                   type="submit"
                   @click="review()"
                   :disabled="loadingReview"
-                >
-                  {{ !loadingReview ? "Submit" : "Loading..." }}
-                </button>
+                >{{ !loadingReview ? "Submit" : "Loading..." }}</button>
               </div>
             </div>
           </div>
@@ -65,10 +43,7 @@
       </div>
     </div>
     <!-- booking model -->
-    <section
-      class="login-signup"
-      v-if="bookingModel && !paymentModel && !reviewModel"
-    >
+    <section class="login-signup" v-if="bookingModel && !paymentModel && !reviewModel">
       <div class="primary-login">
         <div class="close-icon" @click="closeSlide">
           <img src="../../assets/images/close-icon.svg" alt />
@@ -93,15 +68,9 @@
             <div>
               <p>Nights</p>
               <div class="count">
-                <img
-                  src="../../assets/images/sub.png"
-                  @click="executer('dec')"
-                />
+                <img src="../../assets/images/sub.png" @click="executer('dec')" />
                 <span>{{ rooms }}</span>
-                <img
-                  src="../../assets/images/plus.png"
-                  @click="executer('inc')"
-                />
+                <img src="../../assets/images/plus.png" @click="executer('inc')" />
               </div>
             </div>
             <div>
@@ -165,29 +134,17 @@
             <div>
               <h4>Terms & Conditions</h4>
               <ul>
-                <li>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                </li>
-                <li>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                </li>
-                <li>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                </li>
+                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
               </ul>
             </div>
             <div>
               <h4>Cancellation Policy</h4>
               <ul>
-                <li>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                </li>
-                <li>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                </li>
-                <li>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                </li>
+                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
               </ul>
             </div>
           </div>
@@ -195,9 +152,9 @@
         <div class="book-btn">
           <button @click="bookingForm" :disabled="loadingBook">
             {{
-              !loadingBook
-                ? `Pay (SAR ${storeState.price.dayPrice * rooms} )`
-                : "Loading..."
+            !loadingBook
+            ? `Pay (SAR ${storeState.price.dayPrice * rooms} )`
+            : "Loading..."
             }}
           </button>
         </div>
@@ -206,15 +163,20 @@
     <!-- payment model -->
     <section v-if="paymentModel && !reviewModel">
       <section class="login-signup">
-        <CardForm
-          :form-data="formData"
-          @input-card-number="updateCardNumber"
-          @input-card-name="updateCardName"
-          @input-card-month="updateCardMonth"
-          @input-card-year="updateCardYear"
-          @input-card-cvv="updateCardCvv"
-          @submit="paymentBooking"
-        />
+        <div class="pay-model">
+          <div class="close-icon payment-close" @click="closeSlide">
+            <img src="../../assets/images/close-icon.svg" alt />
+          </div>
+          <CardForm
+            :form-data="formData"
+            @input-card-number="updateCardNumber"
+            @input-card-name="updateCardName"
+            @input-card-month="updateCardMonth"
+            @input-card-year="updateCardYear"
+            @input-card-cvv="updateCardCvv"
+            @submit="paymentBooking"
+          />
+        </div>
         <!-- <div class="primary-login payment">
           <div class="close-icon" @click="closeSlide">
             <img src="../../assets/images/close-icon.svg" alt />
@@ -285,7 +247,7 @@
               }}
             </button>
           </div>
-        </div> -->
+        </div>-->
       </section>
     </section>
   </section>
@@ -299,7 +261,7 @@ export default {
   props: ["checkIn"],
   components: {
     BookCard,
-    CardForm,
+    CardForm
   },
   data() {
     return {
@@ -325,20 +287,20 @@ export default {
         cardNumber: "",
         cardMonth: "",
         cardYear: "",
-        cardCvv: "",
-      },
+        cardCvv: ""
+      }
     };
   },
   computed: {
-    halfPrice: function () {
+    halfPrice: function() {
       var price = this.storeState.price.dayPrice;
       if (!price) return "";
       var half = Math.round(price / 2);
       return half;
     },
-    storeState: function () {
+    storeState: function() {
       return this.$store.state.details && this.$store.state.details.details;
-    },
+    }
   },
   methods: {
     updateCardNumber(val) {
@@ -368,7 +330,7 @@ export default {
           `services/${this.$route.params.id}/review`,
           {
             rating: this.ratings,
-            comment: this.comment,
+            comment: this.comment
           }
         );
         if (res) {
@@ -377,7 +339,7 @@ export default {
             icon: "success",
             title: "Success!",
             showConfirmButton: false,
-            timer: 3000,
+            timer: 3000
           });
           (this.reviewModel = false), this.closeSlide();
         }
@@ -394,14 +356,14 @@ export default {
         cardYear,
         cardCvv,
         cardName,
-        cardNumberNotMask,
+        cardNumberNotMask
       } = this.formData;
       if (!cardNumber) {
         this.$swal({
           icon: "error",
           title: `Please Inter Card Number!`,
           showConfirmButton: false,
-          timer: 3000,
+          timer: 3000
         });
         return;
       }
@@ -410,7 +372,7 @@ export default {
           icon: "error",
           title: `Please inter Month!`,
           showConfirmButton: false,
-          timer: 3000,
+          timer: 3000
         });
         return;
       }
@@ -419,7 +381,7 @@ export default {
           icon: "error",
           title: `Please inter Year!`,
           showConfirmButton: false,
-          timer: 3000,
+          timer: 3000
         });
         return;
       }
@@ -428,7 +390,7 @@ export default {
           icon: "error",
           title: `Please inter CardCvv!`,
           showConfirmButton: false,
-          timer: 3000,
+          timer: 3000
         });
         return;
       }
@@ -450,7 +412,7 @@ export default {
             icon: "success",
             title: `${res.data.msg}!`,
             showConfirmButton: false,
-            timer: 3000,
+            timer: 3000
           });
           this.reviewModel = true;
         }
@@ -460,7 +422,7 @@ export default {
           icon: "error",
           title: `${error.response.data.error}!`,
           showConfirmButton: false,
-          timer: 3000,
+          timer: 3000
         });
         console.log(error);
       }
@@ -477,7 +439,7 @@ export default {
         nights,
         paymentMethod,
         checkIn,
-        checkOut,
+        checkOut
       };
       try {
         this.loadingBook = true;
@@ -497,7 +459,7 @@ export default {
           icon: "error",
           title: `${error.response.data.error}!`,
           showConfirmButton: false,
-          timer: 3000,
+          timer: 3000
         });
         console.log(error);
       }
@@ -539,12 +501,19 @@ export default {
       this.id = null;
       this.error = {};
       this.$parent.bookingModel = false;
-    },
-  },
+    }
+  }
 };
 </script>
 
 <style scoped>
+.pay-model{
+  position: relative;
+}
+.payment-close{
+  left: 15px!important;
+  z-index: 999;
+}
 .main-wrapper {
   height: 400px;
   overflow-y: scroll;
