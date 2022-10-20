@@ -10,17 +10,14 @@
           <ul>
             <!-- <li>
               <router-link to="/">Home</router-link>
-            </li> -->
+            </li>-->
             <li
               :class="{ active: $route.params.category == 'apartments' }"
               @click="addRecent('apartments')"
             >
               <router-link to="/apartments?page=1">Apartments</router-link>
             </li>
-            <li
-              :class="{ active: $route.params.category == 'farms' }"
-              @click="addRecent('farms')"
-            >
+            <li :class="{ active: $route.params.category == 'farms' }" @click="addRecent('farms')">
               <router-link to="/farms?page=1">Farms</router-link>
             </li>
             <li
@@ -47,19 +44,14 @@
             >
               <router-link to="/stadiums?page=1">Stadium</router-link>
             </li>
-            <li
-              :class="{ active: $route.params.category == 'Camps' }"
-              @click="addRecent('Camps')"
-            >
+            <li :class="{ active: $route.params.category == 'Camps' }" @click="addRecent('Camps')">
               <router-link to="/Camps?page=1">Camps</router-link>
             </li>
             <li
               :class="{ active: $route.params.category == 'wedding-halls' }"
               @click="addRecent('wedding-halls')"
             >
-              <router-link to="/wedding-halls?page=1"
-                >Wedding Halls</router-link
-              >
+              <router-link to="/wedding-halls?page=1">Wedding Halls</router-link>
             </li>
             <li
               :class="{ active: $route.params.category == 'chalets' }"
@@ -70,16 +62,10 @@
           </ul>
         </div>
       </li>
-      <li
-        :class="{ active: $route.params.category == 'privacy' }"
-        @click="addRecent('privacy')"
-      >
+      <li :class="{ active: $route.params.category == 'privacy' }" @click="addRecent('privacy')">
         <router-link to="/privacy?page=1">Privacy Policy</router-link>
       </li>
-      <li
-        :class="{ active: $route.params.category == 'faqs' }"
-        @click="addRecent('faqs')"
-      >
+      <li :class="{ active: $route.params.category == 'faqs' }" @click="addRecent('faqs')">
         <router-link to="/faqs?page=1">FAQs</router-link>
       </li>
       <li
@@ -88,15 +74,12 @@
       >
         <router-link to="/term-conditions?page=1">Term of Use</router-link>
       </li>
-      <li
-        :class="{ active: $route.params.category == 'about' }"
-        @click="addRecent('about')"
-      >
+      <li :class="{ active: $route.params.category == 'about' }" @click="addRecent('about')">
         <router-link to="/about?page=1">About Us</router-link>
       </li>
       <!-- <li :class="{ active: $route.params.category == 'lounges' }" @click="addRecent('lounges')">
         <router-link to="/lounges?page=1">Lounges</router-link>
-      </li> -->
+      </li>-->
     </ul>
   </section>
 </template>
@@ -107,8 +90,8 @@ export default {
   methods: {
     addRecent(slug) {
       localStorage.setItem("slug", slug);
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -167,14 +150,30 @@ export default {
   color: #febb12 !important;
 }
 
+.category-menu:hover .category {
+  color: #febb12 !important;
+}
+.category-menu:hover .category::after {
+  color: #febb12 !important;
+  border-right: 2px solid #febb12 !important;
+  border-bottom: 2px solid #febb12 !important;
+}
+
 .category::after {
-  font-weight: 600;
-  font-style: normal;
-  font-family: FontAwesome;
-  border: none;
-  content: "\2304";
-  font-size: 12px;
-  top: -2px;
+  background-color: white;
+  border-right: 2px solid gray;
+  border-bottom: 2px solid gray;
+  width: 5px;
+  display: inline-block;
+  height: 5px;
+  transform: rotate(45deg);
+  -webkit-transform: scale(1) rotate(45deg) translate(0px, 0px);
+  -moz-transform: rotate(45deg) scale(1);
+  -o-transform: rotate(45deg) scale(1);
+  /* margin-top: 10px; */
+  content: "";
+  margin-left: 5px;
+  top: 5px;
   position: absolute;
   right: 8px;
 }
