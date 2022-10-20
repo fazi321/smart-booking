@@ -7,7 +7,7 @@
           <img src="../../assets/images/msg-profile.svg" />
         </div>
         <div class="msg-details">
-          <h6>{{conversation.senderId.firstName}}</h6>
+          <h6>{{conversation.receiverId.firstName}}</h6>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed
             convallis massa, at laoreet ligula. Etiam tempus lobortis pharetra.
