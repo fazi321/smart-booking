@@ -448,7 +448,8 @@ export default {
           payload
         );
         if (res) {
-          this.id = res.data._id;
+          this.id = res.data.booking._id;
+          console.log('=->',this.id)
           this.bookingModel = false;
           this.paymentModel = true;
           this.loadingBook = false;

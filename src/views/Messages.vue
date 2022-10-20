@@ -10,12 +10,13 @@
               <img src="../assets/images/msg-search.svg" />
               <input type="text" placeholder="Search Messages" />
             </div>
-            <MessageCard />
-            <MessageCard />
-            <MessageCard />
-            <MessageCard />
-            <MessageCard />
-            <MessageCard />
+            <div
+              v-for="(chat, index) in conversation"
+              :key="index"
+              @click="getAllMessages(chat)"
+            >
+              <MessageCard :conversation="chat" />
+            </div>
           </div>
           <div class="message-right">
             <div class="msg-top">
@@ -23,19 +24,30 @@
                 <img src="../assets/images/msg-profile.svg" />
               </div>
               <div class="msg-title">
-                <h6>Lorem Ipsum</h6>
+                <h6>{{ userName ? userName : "jhon Doe" }}</h6>
               </div>
             </div>
             <div class="chating-container">
-              <UserChat />
-              <MyChat />
-              <UserChat />
-              <MyChat />
-              <UserChat />
+              <div v-for="(chat, index) in messages" :key="index">
+                <div v-if="chat.message">
+                  <UserChat
+                    v-if="
+                      chat.sender &&
+                      chat.sender._id != $store.state.auth.user._id
+                    "
+                    :messages="chat"
+                  />
+                  <MyChat :messages="chat" v-else />
+                </div>
+              </div>
             </div>
             <div class="text-msg">
-              <input type="text" placeholder="Write Something" />
-              <img src="../assets/images/send.svg" />
+              <input
+                type="text"
+                placeholder="Write Something"
+                v-model="chatMessage"
+              />
+              <img src="../assets/images/send.svg" @click="send()" />
             </div>
           </div>
         </div>
@@ -56,8 +68,55 @@ export default {
     DefaultLayout,
     MessageCard,
     UserChat,
-    MyChat
-  }
+    MyChat,
+  },
+  data() {
+    return {
+      conversation: [],
+      messages: [],
+      //
+      userName: "",
+      //
+      chatMessage: "",
+    };
+  },
+  mounted() {
+    this.getAllConverstion();
+  },
+  methods: {
+    async getAllConverstion() {
+      try {
+        const conversation = await this.$axios.get("conversation");
+        this.conversation = conversation.data;
+        console.log("==> conversation", this.conversation);
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    async getAllMessages(chat) {
+      try {
+        this.userName = chat.senderId.firstName;
+        const messages = await this.$axios.get(`message/${chat._id}`);
+        this.messages = messages.data.messages;
+        console.log("==> Messages", this.messages);
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    async send() {
+      try {
+        const sent = await this.$axios.post(`message`, {
+          msg: this.chatMessage,
+          conversationId: this.messages[0].conversation._id,
+        });
+        if (sent) {
+          console.log("==> Sended Messages", sent);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    },
+  },
 };
 </script>
 <style scoped>
@@ -167,5 +226,9 @@ export default {
   box-shadow: 0px 0px 29px #00000012;
   border-radius: 36px;
   opacity: 1;
+}
+.chating-container {
+  height: 354px;
+  overflow-y: scroll;
 }
 </style>

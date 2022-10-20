@@ -1,6 +1,5 @@
 <template>
   <section class="message-card">
-   
     <!-- message card  -->
     <div class="msg-wrapper">
       <div>
@@ -8,8 +7,13 @@
           <img src="../../assets/images/msg-profile.svg" />
         </div>
         <div class="msg-details">
-          <h6>Lorem Ipsum</h6>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed convallis massa, at laoreet ligula. Etiam tempus lobortis pharetra. Praesent nec cursus quam, non blandit purus. Proin placerat purus nisl.</p>
+          <h6>{{conversation.senderId.firstName}}</h6>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed
+            convallis massa, at laoreet ligula. Etiam tempus lobortis pharetra.
+            Praesent nec cursus quam, non blandit purus. Proin placerat purus
+            nisl.
+          </p>
         </div>
       </div>
       <div class="time">
@@ -22,12 +26,12 @@
 
 <script>
 export default {
-      name: "MessageCard",
+  name: "MessageCard",
+  props:['conversation']
 };
 </script>
 
 <style scoped>
-
 .message-card .msg-wrapper {
   display: flex;
   justify-content: space-between;

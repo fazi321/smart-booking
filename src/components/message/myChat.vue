@@ -9,7 +9,7 @@
         <p>Me</p>
       </div>
       <div class="user-details">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed convallis massa, at laoreet ligula. Etiam tempus lobortis pharetra. Praesent nec cursus quam, non blandit purus. Proin placerat purus nisl.</p>
+         <p>{{ messages.message }}</p>
         <div class="time">
           <p>36 Min Ago</p>
         </div>
@@ -21,7 +21,8 @@
 
 <script>
 export default {
-  name: "MyChat"
+  name: "MyChat",
+  props:['messages']
 };
 </script>
 
