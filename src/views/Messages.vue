@@ -95,7 +95,11 @@ export default {
     },
     async getAllMessages(chat) {
       try {
-        this.userName = chat.receiverId.firstName;
+        if (chat.receiverId._id != this.$store.state.auth.user._id) {
+          this.userName = chat.receiverId.firstName;
+        } else {
+          this.userName = chat.senderId.firstName;
+        }
         const messages = await this.$axios.get(`message/${chat._id}`);
         this.messages = messages.data.messages;
         console.log("==> Messages", this.messages);
