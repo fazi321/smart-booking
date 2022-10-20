@@ -7,7 +7,8 @@
           <img src="../../assets/images/msg-profile.svg" />
         </div>
         <div class="msg-details">
-          <h6>{{conversation.receiverId.firstName}}</h6>
+          <h6 v-if="conversation.receiverId._id != $store.state.auth.user._id">{{conversation.receiverId.firstName}}</h6>
+          <h6 v-else>{{conversation.senderId.firstName}}</h6>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed
             convallis massa, at laoreet ligula. Etiam tempus lobortis pharetra.
