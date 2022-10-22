@@ -92,6 +92,8 @@ export default {
       //
       allUsers: [],
       socket: null,
+      //
+      selectedUser:{},
     };
   },
   computed: {
@@ -99,15 +101,15 @@ export default {
       return this.$store.state.auth.user;
     },
   },
+  created(){
+     this.socket = io("https://www.testingserver.tech");
+  },
   mounted() {
-    this.socket = io("https://www.testingserver.tech");
     this.socket.on("connect", () => {
-      // console.log(socket && socket.id);
       this.socket.emit("addUser", this.user._id);
       console.log("socket connected");
     });
     const newMessageCheck = (data) => {
-      console.log('emited:', data)
        let newMessage = {
         conversationId: this.messages[0].conversationId,
         sender: data.senderId,
@@ -147,6 +149,7 @@ export default {
       } else {
         this.userName = chat.senderId.firstName;
       }
+      this.selectedUser = chat;
       try {
         const messages = await this.$axios.get(
           `message/newMessage/${chat._id}`
@@ -158,15 +161,15 @@ export default {
       }
     },
     async send() {
-      const receiverId = this.messages.find((r) => r.sender != this.user._id);
+      // const receiverId = this.messages.find((r) => r.sender != this.user._id);
       this.socket.emit("sendMessage", {
         senderId: this.user._id,
-        receiverId: receiverId.sender,
+        receiverId: this.selectedUser.receiverId._id,
         text: this.chatMessage,
       });
       try {
         const sent = await this.$axios.post(`message/newMessage`, {
-          conversationId: this.messages[0].conversationId,
+          conversationId: this.selectedUser._id,
           sender: this.user._id,
           message: this.chatMessage,
         });
