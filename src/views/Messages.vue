@@ -116,6 +116,9 @@ export default {
     this.socket.on("getMessage", (arg) => {
       newMessageCheck(arg);
     });
+    if(this.user){
+      this.getAllConverstion(this.user._id);
+    }
     // this.getAllUsers();
   },
   methods: {
