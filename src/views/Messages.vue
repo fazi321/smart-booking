@@ -17,7 +17,7 @@
             >
               <MessageCard :conversation="chat" />
             </div>
-            <!-- <div>
+            <div>
               <h1>Users</h1>
             </div>
             <div
@@ -30,7 +30,7 @@
                 :usersCard="true"
                 v-if="chat.firstName"
               />
-            </div> -->
+            </div>
           </div>
           <div class="message-right">
             <div class="msg-top">
@@ -91,42 +91,26 @@ export default {
       chatMessage: "",
       //
       allUsers: [],
-      socket: null,
       //
-      selectedUser: {},
+      chatWith: {},
     };
-  },
-  computed: {
-    user: function () {
-      return this.$store.state.auth.user;
-    },
-  },
-  created() {
-    this.socket = io("https://www.testingserver.tech");
   },
   mounted() {
-    const newMessageCheck = (data) => {
-      let newMessage = {
-        conversationId: this.messages[0].conversationId,
-        sender: data.senderId,
-        message: data.text,
-      };
-      this.messages = [...this.messages, newMessage];
-    };
-    this.socket.on("getMessage", (arg) => {
-      newMessageCheck(arg);
+    const socket = io("https://www.testingserver.tech");
+    socket.on("connect", () => {
+      // console.log(socket && socket.id);
+      console.log("socket connected");
     });
-    if(this.user){
-      this.getAllConverstion(this.user._id);
-    }
+    socket.on("newMessage", (arg) => {
+      console.log("==> newMessage", arg);
+    });
+    this.getAllConverstion();
     // this.getAllUsers();
   },
   methods: {
-    async getAllConverstion(id) {
+    async getAllConverstion() {
       try {
-        const conversation = await this.$axios.get(
-          `conversation/newConversation/${id}`
-        );
+        const conversation = await this.$axios.get("conversation");
         this.conversation = conversation.data;
         console.log("==> conversation", this.conversation);
       } catch (error) {
@@ -148,32 +132,24 @@ export default {
       } else {
         this.userName = chat.senderId.firstName;
       }
-      this.selectedUser = chat;
+      this.chatWith = chat;
       try {
-        const messages = await this.$axios.get(
-          `message/newMessage/${chat._id}`
-        );
-        this.messages = messages.data;
+        const messages = await this.$axios.get(`message/${chat._id}`);
+        this.messages = messages.data.messages;
         console.log("==> Messages", this.messages);
       } catch (error) {
         console.log(error);
       }
     },
     async send() {
-      // const receiverId = this.messages.find((r) => r.sender != this.user._id);
-      this.socket.emit("sendMessage", {
-        senderId: this.user._id,
-        receiverId: this.selectedUser.receiverId._id,
-        text: this.chatMessage,
-      });
+      console.log(this.chatWith._id, "chat");
       try {
-        const sent = await this.$axios.post(`message/newMessage`, {
-          conversationId: this.selectedUser._id,
-          sender: this.user._id,
-          message: this.chatMessage,
+        const sent = await this.$axios.post(`message`, {
+          msg: this.chatMessage,
+          conversationId: this.chatWith._id,
         });
         if (sent) {
-          this.messages = [...this.messages, sent.data];
+          this.messages = [...this.messages, sent.data.message];
           this.chatMessage = "";
           console.log("==> Sended Messages", sent);
         }
@@ -183,13 +159,14 @@ export default {
     },
   },
   watch: {
-    user(user) {
-      this.socket.on("connect", () => {
-        this.socket.emit("addUser", user._id);
-        console.log("socket connected");
-      });
-      this.getAllConverstion(user._id);
-    },
+    // user(user) {
+    //   this.socket.on("connect", () => {
+    //     console.log(user._id)
+    //     this.socket.emit("addUser", user._id);
+    //     console.log("socket connected");
+    //   });
+    //   this.getAllConverstion(user._id);
+    // },
     messages() {
       setTimeout(() => {
         this.$refs.scrollFun.scrollTop = this.$refs.scrollFun.scrollHeight;
