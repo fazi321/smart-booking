@@ -7,8 +7,13 @@
           <img src="../../assets/images/msg-profile.svg" />
         </div>
         <div class="msg-details">
-          <h6 v-if="conversation.receiverId._id != $store.state.auth.user._id">{{conversation.receiverId.firstName}}</h6>
-          <h6 v-else>{{conversation.senderId.firstName}}</h6>
+         <div v-if="!usersCard">
+           <h6 v-if="conversation.receiverId._id != $store.state.auth.user._id">{{conversation.receiverId.firstName}}</h6>
+           <h6 v-else>{{conversation.senderId.firstName}}</h6>
+         </div>
+         <div v-else>
+           <h6>{{conversation.firstName}}</h6>
+         </div>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed
             convallis massa, at laoreet ligula. Etiam tempus lobortis pharetra.
@@ -28,7 +33,7 @@
 <script>
 export default {
   name: "MessageCard",
-  props:['conversation']
+  props:['conversation' , 'usersCard']
 };
 </script>
 

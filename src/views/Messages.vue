@@ -17,6 +17,20 @@
             >
               <MessageCard :conversation="chat" />
             </div>
+            <!-- <div>
+              <h1>Users</h1>
+            </div>
+            <div
+              v-for="(chat, index) in allUsers"
+              :key="index"
+              @click="getAllMessages(chat)"
+            >
+              <MessageCard
+                :conversation="chat"
+                :usersCard="true"
+                v-if="chat.firstName"
+              />
+            </div> -->
           </div>
           <div class="message-right">
             <div class="msg-top">
@@ -27,14 +41,11 @@
                 <h6>{{ userName ? userName : "jhon Doe" }}</h6>
               </div>
             </div>
-            <div class="chating-container">
+            <div class="chating-container" ref="scrollFun">
               <div v-for="(chat, index) in messages" :key="index">
                 <div v-if="chat.message">
                   <UserChat
-                    v-if="
-                      chat.sender &&
-                      chat.sender._id != $store.state.auth.user._id
-                    "
+                    v-if="chat.sender != $store.state.auth.user._id"
                     :messages="chat"
                   />
                   <MyChat :messages="chat" v-else />
@@ -61,7 +72,7 @@ import DefaultLayout from "@/components/layouts/DefaultLayout.vue";
 import MessageCard from "@/components/message/messageCard.vue";
 import UserChat from "@/components/message/userChat.vue";
 import MyChat from "@/components/message/myChat.vue";
-
+import { io } from "socket.io-client";
 export default {
   name: "HotelDetailView",
   components: {
@@ -78,47 +89,105 @@ export default {
       userName: "",
       //
       chatMessage: "",
+      //
+      allUsers: [],
+      socket: null,
     };
   },
+  computed: {
+    user: function () {
+      return this.$store.state.auth.user;
+    },
+  },
   mounted() {
-    this.getAllConverstion();
+    this.socket = io("https://www.testingserver.tech");
+    this.socket.on("connect", () => {
+      // console.log(socket && socket.id);
+      this.socket.emit("addUser", this.user._id);
+      console.log("socket connected");
+    });
+    const newMessageCheck = (data) => {
+      console.log('emited:', data)
+       let newMessage = {
+        conversationId: this.messages[0].conversationId,
+        sender: data.senderId,
+        message: data.text,
+      };
+      this.messages = [...this.messages, newMessage];
+    };
+    this.socket.on("getMessage", (arg) => {
+      newMessageCheck(arg)
+    });
+    // this.getAllUsers();
   },
   methods: {
-    async getAllConverstion() {
+    async getAllConverstion(id) {
       try {
-        const conversation = await this.$axios.get("conversation");
+        const conversation = await this.$axios.get(
+          `conversation/newConversation/${id}`
+        );
         this.conversation = conversation.data;
         console.log("==> conversation", this.conversation);
       } catch (error) {
         console.log(error);
       }
     },
-    async getAllMessages(chat) {
+    async getAllUsers() {
       try {
-        if (chat.receiverId._id != this.$store.state.auth.user._id) {
-          this.userName = chat.receiverId.firstName;
-        } else {
-          this.userName = chat.senderId.firstName;
-        }
-        const messages = await this.$axios.get(`message/${chat._id}`);
-        this.messages = messages.data.messages;
+        const allUsers = await this.$axios.get("conversation/users");
+        this.allUsers = allUsers.data;
+        console.log("==> usersAll", this.allUsers);
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    async getAllMessages(chat) {
+      if (chat.receiverId._id != this.$store.state.auth.user._id) {
+        this.userName = chat.receiverId.firstName;
+      } else {
+        this.userName = chat.senderId.firstName;
+      }
+      try {
+        const messages = await this.$axios.get(
+          `message/newMessage/${chat._id}`
+        );
+        this.messages = messages.data;
         console.log("==> Messages", this.messages);
       } catch (error) {
         console.log(error);
       }
     },
     async send() {
+      const receiverId = this.messages.find((r) => r.sender != this.user._id);
+      this.socket.emit("sendMessage", {
+        senderId: this.user._id,
+        receiverId: receiverId.sender,
+        text: this.chatMessage,
+      });
       try {
-        const sent = await this.$axios.post(`message`, {
-          msg: this.chatMessage,
-          conversationId: this.messages[0].conversation._id,
+        const sent = await this.$axios.post(`message/newMessage`, {
+          conversationId: this.messages[0].conversationId,
+          sender: this.user._id,
+          message: this.chatMessage,
         });
         if (sent) {
+          this.messages = [...this.messages, sent.data];
+          this.chatMessage = "";
           console.log("==> Sended Messages", sent);
         }
       } catch (error) {
         console.log(error);
       }
+    },
+  },
+  watch: {
+    user(user) {
+      this.getAllConverstion(user._id);
+    },
+    messages() {
+      setTimeout(() => {
+        this.$refs.scrollFun.scrollTop = this.$refs.scrollFun.scrollHeight;
+      }, 100);
     },
   },
 };
@@ -234,5 +303,6 @@ export default {
 .chating-container {
   height: 354px;
   overflow-y: scroll;
+  scroll-behavior: smooth;
 }
 </style>
