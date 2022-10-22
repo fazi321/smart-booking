@@ -93,7 +93,7 @@ export default {
       allUsers: [],
       socket: null,
       //
-      selectedUser:{},
+      selectedUser: {},
     };
   },
   computed: {
@@ -101,16 +101,12 @@ export default {
       return this.$store.state.auth.user;
     },
   },
-  created(){
-     this.socket = io("https://www.testingserver.tech");
+  created() {
+    this.socket = io("https://www.testingserver.tech");
   },
   mounted() {
-    this.socket.on("connect", () => {
-      this.socket.emit("addUser", this.user._id);
-      console.log("socket connected");
-    });
     const newMessageCheck = (data) => {
-       let newMessage = {
+      let newMessage = {
         conversationId: this.messages[0].conversationId,
         sender: data.senderId,
         message: data.text,
@@ -118,7 +114,7 @@ export default {
       this.messages = [...this.messages, newMessage];
     };
     this.socket.on("getMessage", (arg) => {
-      newMessageCheck(arg)
+      newMessageCheck(arg);
     });
     // this.getAllUsers();
   },
@@ -185,6 +181,10 @@ export default {
   },
   watch: {
     user(user) {
+      this.socket.on("connect", () => {
+        this.socket.emit("addUser", user._id);
+        console.log("socket connected");
+      });
       this.getAllConverstion(user._id);
     },
     messages() {
