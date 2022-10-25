@@ -17,7 +17,7 @@
             >
               <MessageCard :conversation="chat" />
             </div>
-            <div>
+            <div >
               <h1>Users</h1>
             </div>
             <div
@@ -93,21 +93,28 @@ export default {
       allUsers: [],
       //
       chatWith: {},
+      //
+      socket: null,
     };
   },
   mounted() {
-    const socket = io("https://www.testingserver.tech");
-    socket.on("connect", () => {
-      // console.log(socket && socket.id);
-      console.log("socket connected");
-    });
-    socket.on("newMessage", (arg) => {
-      console.log("==> newMessage", arg);
-    });
     this.getAllConverstion();
     // this.getAllUsers();
   },
   methods: {
+    // sendSocketMessage() {
+    //   let sendOrReceiverId =
+    //     this.$store.state.auth.user._id === this.chatWith.receiverId._id
+    //       ? this.chatWith.senderId._id
+    //       : this.chatWith.receiverId._id;
+    //   // emit on server
+    //   this.socket.emit("newMessage", {
+    //     receiverId: sendOrReceiverId,
+    //     name: this.userName,
+    //     txt: this.chatMessage,
+    //   });
+    //   console.log("emited");
+    // },
     async getAllConverstion() {
       try {
         const conversation = await this.$axios.get("conversation");
@@ -142,7 +149,10 @@ export default {
       }
     },
     async send() {
-      console.log(this.chatWith._id, "chat");
+      // // console.log(this.chatWith._id, "chat");
+      // this.socket.emit("newMessage", (data) => {
+      //   console.log("=> Emit:", data);
+      // });
       try {
         const sent = await this.$axios.post(`message`, {
           msg: this.chatMessage,
@@ -151,22 +161,39 @@ export default {
         if (sent) {
           this.messages = [...this.messages, sent.data.message];
           this.chatMessage = "";
-          console.log("==> Sended Messages", sent);
+          // console.log("==> Sended Messages", sent);
         }
       } catch (error) {
         console.log(error);
       }
     },
+    getProfile() {
+      const newMessageCheck = (data) => {
+        console.log('newMessage', data)
+        this.messages = [...this.messages, data.message];
+      };
+      this.socket = io("https://www.testingserver.tech", {
+        query: {
+          userId: `${this.$store.state.auth.user._id}`,
+        },
+      });
+      this.socket.on("connect", () => {
+        console.log("socket connected");
+      });
+      this.socket.on("newMessage", (arg) => {
+        newMessageCheck(arg);
+      });
+    },
   },
   watch: {
-    // user(user) {
-    //   this.socket.on("connect", () => {
-    //     console.log(user._id)
-    //     this.socket.emit("addUser", user._id);
-    //     console.log("socket connected");
-    //   });
-    //   this.getAllConverstion(user._id);
-    // },
+    "$store.state.auth.user": {
+      // immediate: true,
+      handler(user) {
+        if (user) {
+          this.getProfile();
+        }
+      },
+    },
     messages() {
       setTimeout(() => {
         this.$refs.scrollFun.scrollTop = this.$refs.scrollFun.scrollHeight;
