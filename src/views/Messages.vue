@@ -11,13 +11,14 @@
               <input type="text" placeholder="Search Messages" />
             </div>
             <div
+              class="user"
               v-for="(chat, index) in conversation"
               :key="index"
               @click="getAllMessages(chat)"
             >
               <MessageCard :conversation="chat" />
             </div>
-            <div >
+            <div>
               <h1>Users</h1>
             </div>
             <div
@@ -32,7 +33,8 @@
               />
             </div>
           </div>
-          <div class="message-right">
+          <!-- / -->
+          <div class="message-right" v-if="chatWith">
             <div class="msg-top">
               <div class="msg-image">
                 <img src="../assets/images/msg-profile.svg" />
@@ -60,6 +62,10 @@
               />
               <img src="../assets/images/send.svg" @click="send()" />
             </div>
+          </div>
+          <!-- / placeholder -->
+          <div class="message-right placeholder-image" v-else>
+            <img src="../assets/chat-placeholder.svg" />
           </div>
         </div>
       </div>
@@ -92,34 +98,50 @@ export default {
       //
       allUsers: [],
       //
-      chatWith: {},
+      chatWith: null,
       //
       socket: null,
     };
   },
   mounted() {
     this.getAllConverstion();
+    // console.log(this.timeSince(1666727737165))
+    // var check = new Date(1666727737165)
+    // console.log(check.toString())
     // this.getAllUsers();
   },
   methods: {
-    // sendSocketMessage() {
-    //   let sendOrReceiverId =
-    //     this.$store.state.auth.user._id === this.chatWith.receiverId._id
-    //       ? this.chatWith.senderId._id
-    //       : this.chatWith.receiverId._id;
-    //   // emit on server
-    //   this.socket.emit("newMessage", {
-    //     receiverId: sendOrReceiverId,
-    //     name: this.userName,
-    //     txt: this.chatMessage,
-    //   });
-    //   console.log("emited");
-    // },
+    timeSince(date) {
+      var seconds = Math.floor((new Date() - date) / 1000);
+
+      var interval = seconds / 31536000;
+
+      if (interval > 1) {
+        return Math.floor(interval) + " years";
+      }
+      interval = seconds / 2592000;
+      if (interval > 1) {
+        return Math.floor(interval) + " months";
+      }
+      interval = seconds / 86400;
+      if (interval > 1) {
+        return Math.floor(interval) + " days";
+      }
+      interval = seconds / 3600;
+      if (interval > 1) {
+        return Math.floor(interval) + " hours";
+      }
+      interval = seconds / 60;
+      if (interval > 1) {
+        return Math.floor(interval) + " minutes";
+      }
+      return Math.floor(seconds) + " seconds";
+    },
     async getAllConverstion() {
       try {
         const conversation = await this.$axios.get("conversation");
         this.conversation = conversation.data;
-        console.log("==> conversation", this.conversation);
+        // console.log("==> conversation", this.conversation);
       } catch (error) {
         console.log(error);
       }
@@ -143,16 +165,11 @@ export default {
       try {
         const messages = await this.$axios.get(`message/${chat._id}`);
         this.messages = messages.data.messages;
-        console.log("==> Messages", this.messages);
       } catch (error) {
         console.log(error);
       }
     },
     async send() {
-      // // console.log(this.chatWith._id, "chat");
-      // this.socket.emit("newMessage", (data) => {
-      //   console.log("=> Emit:", data);
-      // });
       try {
         const sent = await this.$axios.post(`message`, {
           msg: this.chatMessage,
@@ -161,7 +178,6 @@ export default {
         if (sent) {
           this.messages = [...this.messages, sent.data.message];
           this.chatMessage = "";
-          // console.log("==> Sended Messages", sent);
         }
       } catch (error) {
         console.log(error);
@@ -169,7 +185,7 @@ export default {
     },
     getProfile() {
       const newMessageCheck = (data) => {
-        console.log('newMessage', data)
+        console.log("newMessage", data);
         this.messages = [...this.messages, data.message];
       };
       this.socket = io("https://www.testingserver.tech", {
@@ -314,5 +330,12 @@ export default {
   height: 354px;
   overflow-y: scroll;
   scroll-behavior: smooth;
+}
+.placeholder-image img {
+  width: 290px;
+  opacity: 0.5;
+}
+.user {
+  cursor: pointer;
 }
 </style>
