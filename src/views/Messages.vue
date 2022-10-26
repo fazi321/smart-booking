@@ -10,7 +10,8 @@
               <img src="../assets/images/msg-search.svg" />
               <input type="text" placeholder="Search Messages" />
             </div>
-            <div
+            <div class="primary-users">
+              <div
               class="user"
               v-for="(chat, index) in conversation"
               :key="index"
@@ -24,13 +25,14 @@
             <div
               v-for="(chat, index) in allUsers"
               :key="index"
-              @click="getAllMessages(chat)"
+              @click="createConversation(chat)"
             >
               <MessageCard
                 :conversation="chat"
                 :usersCard="true"
                 v-if="chat.firstName"
               />
+            </div>
             </div>
           </div>
           <!-- / -->
@@ -108,9 +110,24 @@ export default {
     // console.log(this.timeSince(1666727737165))
     // var check = new Date(1666727737165)
     // console.log(check.toString())
-    // this.getAllUsers();
+    this.getAllUsers();
   },
   methods: {
+    async createConversation(chat) {
+      console.log(chat)
+      try {
+        const createNow = await this.$axios.post(`conversation`, {
+          msg: "",
+          receiverId: chat._id,
+        });
+        if (createNow) {
+          this.userName = chat.firstName;
+          this.getAllMessages(createNow.data.conversation);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    },
     timeSince(date) {
       var seconds = Math.floor((new Date() - Date.parse(date)) / 1000);
       var interval = seconds / 31536000;
@@ -139,7 +156,6 @@ export default {
       try {
         const conversation = await this.$axios.get("conversation");
         this.conversation = conversation.data;
-        // console.log("==> conversation", this.conversation);
       } catch (error) {
         console.log(error);
       }
@@ -148,7 +164,6 @@ export default {
       try {
         const allUsers = await this.$axios.get("conversation/users");
         this.allUsers = allUsers.data;
-        console.log("==> usersAll", this.allUsers);
       } catch (error) {
         console.log(error);
       }
@@ -184,7 +199,6 @@ export default {
     },
     getProfile() {
       const newMessageCheck = (data) => {
-        console.log("newMessage", data);
         this.messages = [...this.messages, data.message];
       };
       this.socket = io("https://www.testingserver.tech", {
@@ -336,5 +350,9 @@ export default {
 }
 .user {
   cursor: pointer;
+}
+.primary-users{
+ height: 400px;
+  overflow-y: scroll;
 }
 </style>
