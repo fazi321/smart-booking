@@ -4,8 +4,8 @@ export default {
   namespaced: true,
   state: {
     details: [],
-    categories:[],
-    btnLastLoading:false,
+    categories: [],
+    btnLastLoading: false,
   },
   mutations: {
     SET_DATA(state, data) {
@@ -19,10 +19,10 @@ export default {
     },
   },
   actions: {
-    setLoading({commit}, payload){
-       commit("SET_LOADING", payload)
+    setLoading({ commit }, payload) {
+      commit("SET_LOADING", payload);
     },
-    async getCategories({commit}) {
+    async getCategories({ commit }) {
       try {
         var res = await axios().get("services/categories");
         commit("SET_CAT", res.data);
@@ -36,9 +36,9 @@ export default {
         const dataDetail = await axios().get(`${payload.cate}/${payload.id}`);
         // services
         // console.log(dataDetail)
-        if(payload.cate == 'services'){
+        if (payload.cate == "services") {
           commit("SET_DATA", dataDetail.data);
-        }else{
+        } else {
           commit("SET_DATA", dataDetail.data[0]);
         }
       } catch (error) {

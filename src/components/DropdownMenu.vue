@@ -14,17 +14,52 @@
       <li>
         <router-link to="#demo">
           <span>Balance</span>
-          <span>SAR {{$store.state.auth.user && $store.state.auth.user.balance}}</span>
+          <span
+            >SAR
+            {{ $store.state.auth.user && $store.state.auth.user.balance }}</span
+          >
         </router-link>
       </li>
       <li>
-        <router-link to="/my-services">
+        <router-link
+          to="/my-services"
+          v-if="
+            ($store.state.auth.user.verify &&
+              $store.state.auth.user.host &&
+              $store.state.auth.user.role == 'Vender') ||
+            ($store.state.auth.user.verify &&
+              $store.state.auth.user.company &&
+              $store.state.auth.user.role == 'Vender')
+          "
+        >
           <span>My Services</span>
         </router-link>
+        <router-link
+          to="/my-bookings"
+          v-else
+        >
+          <span>My Bookings</span>
+        </router-link>
       </li>
       <li>
-        <router-link to="/service-booking">
+        <router-link
+          to="/service-booking"
+          v-if="
+            ($store.state.auth.user.verify &&
+              $store.state.auth.user.host &&
+              $store.state.auth.user.role == 'Vender') ||
+            ($store.state.auth.user.verify &&
+              $store.state.auth.user.company &&
+              $store.state.auth.user.role == 'Vender')
+          "
+        >
           <span>Service Bookings</span>
+        </router-link>
+        <router-link
+          to="/service-booking"
+          v-else
+        >
+          <span class="active-color">Become Vendor</span>
         </router-link>
       </li>
       <li>
@@ -101,6 +136,9 @@ export default {
 </script>
 
 <style scoped>
+.active-color{
+  color:#FEBB12;
+}
 .dropdown {
   position: absolute;
   background: #fff;

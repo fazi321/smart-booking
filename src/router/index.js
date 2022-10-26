@@ -6,6 +6,9 @@ import Profile from "../views/Profile.vue";
 import Messages from "../views/Messages.vue";
 import ServiceBooking from "../views/ServiceBooking.vue";
 import ServiceDetail from "../views/ServiceDetail.vue";
+// vendor
+import myBookings from "../views/MyBooking.vue";
+import MyBookingDetail from "../views/BookingDetail.vue";
 import Privacy from "../views/Privacy.vue";
 import Faqs from "../views/Faqs.vue";
 import Terms from "../views/Terms.vue";
@@ -30,6 +33,11 @@ const routes = [
     component: Detail,
   },
   {
+    path: "/booking/:id",
+    name: "MyBookingDetail",
+    component: MyBookingDetail,
+  },
+  {
     path: "/my-profile",
     name: "profile",
     component: Profile,
@@ -38,6 +46,11 @@ const routes = [
     path: "/my-services",
     name: "myservices",
     component: MyServices,
+  },
+  {
+    path: "/my-bookings",
+    name: "mybookings",
+    component: myBookings,
   },
   {
     path: "/messages",

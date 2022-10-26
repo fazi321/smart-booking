@@ -87,9 +87,14 @@
           @input="timeChange($event, 'cot')"
         />
       </div>
-      <div class="book-btn" @click="BookingModelShow">
-        <button>Book</button>
-      </div>
+      <section class="book-btn-section">
+        <router-link to="/messages" class="image-container">
+          <img src="../../assets/images/chaticon.svg" />
+        </router-link>
+        <div class="book-btn" @click="BookingModelShow">
+          <button>Book</button>
+        </div>
+      </section>
     </div>
     <BookModel v-if="bookingModel" :checkIn="inputDetail" />
   </section>
@@ -114,7 +119,7 @@ export default {
     },
     user: function () {
       return this.$store.state.auth.user;
-    }
+    },
   },
   methods: {
     dateChange(e, val) {
@@ -165,8 +170,8 @@ export default {
       return timeIs;
     },
     BookingModelShow() {
-      if(!this.user){
-        this.$store.commit('auth/MODEL_OPEN', true)
+      if (!this.user) {
+        this.$store.commit("auth/MODEL_OPEN", true);
         return;
       }
       var { checkInDate, checkOutDate, checkInTime, checkOutTime } =
@@ -198,6 +203,22 @@ export default {
 </script>
 
 <style scoped>
+.book-btn-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.book-btn-section .image-container {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #febb12;
+  overflow: hidden;
+  cursor: pointer;
+}
+.book-btn-section .image-container img {
+  width: 50%;
+}
 #date {
   visibility: hidden;
 }
@@ -265,7 +286,7 @@ export default {
   padding: 16px 0;
 }
 .book-btn {
-  margin: 30px;
+  margin: 30px 15px;
 }
 .book-btn button {
   border: none;
@@ -283,6 +304,5 @@ export default {
   cursor: pointer;
 }
 @media (max-width: 479px) and (min-width: 320px) {
-  
 }
 </style>
