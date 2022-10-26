@@ -139,6 +139,7 @@ export default {
       this.$parent.signUpModel = true;
     },
     close() {
+      this.$store.commit("auth/MODEL_OPEN", false);
       this.$parent.loginModel = false;
     },
   },

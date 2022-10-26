@@ -5,7 +5,7 @@
         Become Vendor
       </button>
       <button class="btn btn-filled" @click="loginModelShow">Login</button>
-      <LoginModel :model="loginModel" />
+      <LoginModel :model="loginModel || $store.state.auth.loginModel" />
       <SignUpModel :model="signUpModel" @getUserName="userModel"/>
     </section>
     <!-- after login -->

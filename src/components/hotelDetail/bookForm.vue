@@ -112,6 +112,9 @@ export default {
     storeState: function () {
       return this.$store.state.details.details;
     },
+    user: function () {
+      return this.$store.state.auth.user;
+    }
   },
   methods: {
     dateChange(e, val) {
@@ -162,6 +165,10 @@ export default {
       return timeIs;
     },
     BookingModelShow() {
+      if(!this.user){
+        this.$store.commit('auth/MODEL_OPEN', true)
+        return;
+      }
       var { checkInDate, checkOutDate, checkInTime, checkOutTime } =
         this.inputDetail;
       if (!checkInDate) {

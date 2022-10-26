@@ -112,10 +112,8 @@ export default {
   },
   methods: {
     timeSince(date) {
-      var seconds = Math.floor((new Date() - date) / 1000);
-
+      var seconds = Math.floor((new Date() - Date.parse(date)) / 1000);
       var interval = seconds / 31536000;
-
       if (interval > 1) {
         return Math.floor(interval) + " years";
       }
@@ -164,6 +162,7 @@ export default {
       this.chatWith = chat;
       try {
         const messages = await this.$axios.get(`message/${chat._id}`);
+        console.log("messages ==>", messages);
         this.messages = messages.data.messages;
       } catch (error) {
         console.log(error);
