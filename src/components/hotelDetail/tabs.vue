@@ -18,7 +18,7 @@
       </div>
     </div>
     <Facilities v-if="tab == 'Facilities'" />
-    <Facilities v-if="tab == 'Reviews'" />
+    <ReviewsDetail v-if="tab == 'Reviews'" />
     <section v-if="tab == 'Terms'" class="terms">
       <p v-if="storeState.terms">{{ storeState.terms }}</p>
       <p v-else>NOT FOUND</p>
@@ -31,12 +31,14 @@
 
 <script>
 import Facilities from "@/components/hotelDetail/facilities.vue";
+import ReviewsDetail from "../ReviewsDetail.vue";
 import MapDetail from "@/components/common/mapDetail.vue"
 export default {
   name: "DetailTabs",
   components: {
     Facilities,
-    MapDetail
+    MapDetail,
+    ReviewsDetail,
   },
   computed: {
     storeState: function () {
