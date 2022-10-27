@@ -201,7 +201,7 @@ export default {
       const newMessageCheck = (data) => {
         this.messages = [...this.messages, data.message];
       };
-      this.socket = io("https://luxury-cheesecake-13042c.netlify.app/", {
+      this.socket = io("https://www.testingserver.tech", {
         query: {
           userId: `${this.$store.state.auth.user._id}`,
         },

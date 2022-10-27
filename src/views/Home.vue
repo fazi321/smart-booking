@@ -75,7 +75,7 @@ export default {
     getProfile() {
       var user = this.$store.state.auth.user;
       if (user) {
-        const socket = io("https://luxury-cheesecake-13042c.netlify.app/", {
+        const socket = io("https://www.testingserver.tech", {
           query: `userId=${user._id}`,
         });
         socket.on("connect", () => {
