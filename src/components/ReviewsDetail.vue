@@ -41,7 +41,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .main-container-div {
   /* background: red; */
   display:flex;
@@ -55,6 +55,7 @@ export default {
   box-shadow: 0px 0px 10px #0000001a;
   border-radius: 11px;
   margin-bottom:15px;
+  border-bottom: 1px solid darkgray;
 }
 .primary-container>div{
   margin:10px;

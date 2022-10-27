@@ -37,6 +37,7 @@
         </div>
         <DropDownMenu v-if="dropDown" />
       </div>
+      <NotificationsHeader />
       <AddServiceModel :model="serviceModel" />
       <VendorModel :model="vendorModel" />
     </section>
@@ -49,6 +50,7 @@ import SignUpModel from "@/components/models/SignUpModel.vue";
 import VendorModel from "@/components/models/VendorModel.vue";
 import UserModel from "@/components/models/UserModel.vue";
 import AddServiceModel from "@/components/models/AddServiceModel.vue";
+import NotificationsHeader from "../NotificationsHeader.vue";
 import DropDownMenu from "../DropdownMenu.vue";
 import Cookies from "js-cookie";
 
@@ -61,6 +63,7 @@ export default {
     AddServiceModel,
     DropDownMenu,
     UserModel,
+    NotificationsHeader,
   },
   data() {
     return {
@@ -158,6 +161,7 @@ export default {
 }
 .btns > section {
   display: flex;
+  align-items: center;
 }
 .btn {
   border-radius: 50px;
