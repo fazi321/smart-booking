@@ -209,7 +209,6 @@ export default {
       this.socket.on("connect", () => {
         console.log("socket connected");
       });
-      console.log('==> test')
       this.socket.on("newMessage", (arg) => {
         newMessageCheck(arg);
       });
