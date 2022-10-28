@@ -114,7 +114,6 @@ export default {
   },
   methods: {
     async createConversation(chat) {
-      console.log(chat)
       try {
         const createNow = await this.$axios.post(`conversation`, {
           msg: "",
