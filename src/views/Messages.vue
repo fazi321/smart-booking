@@ -217,7 +217,7 @@ export default {
   },
   watch: {
     "$store.state.auth.user": {
-      // immediate: true,
+      immediate: true,
       handler(user) {
         if (user) {
           this.getProfile();
