@@ -446,17 +446,18 @@ export default {
       payload.cardYear = cardYear;
       payload.cardCvv = cardCvv;
       payload.cardName = cardName;
+      
       const data = JSON.stringify({
         amount: 2000,
         currency: "SAR",
         description: "test",
         source: {
           type: "creditcard",
+          name: cardName,
           number: cardNumberNotMask,
+          cvc: cardCvv,
           month: cardMonth,
           year: cardYear,
-          cvc: cardCvv,
-          name: cardName,
         },
         callback_url: `booking/success/634402c8f0bb2b56b978b61b`,
         // webhook_url: 'webhook',
@@ -465,24 +466,20 @@ export default {
       //     url: 'https://api.moyasar.com/v1/payments',
       //     data,
       // };
-      fetch(
-        "https://api.moyasar.com/v1/payments”^“ -u pk_test_vSJsKzkEcdTsRj8W8CK4vUgJZtEPi2ngEeuEACS2:-d amount=60000”^“-d currency=SAR”^“-d description=Kindle Paperwhite”^“-d callback_url=http://localhost:8080/thanks",
-        {
-          method: "POST",
-          headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzQzZmEzYWYwYmIyYjU2Yjk3OGI1YmUiLCJwaG9uZSI6MzMzODg4ODg4OCwiYmFsYW5jZSI6MCwiZW1haWwiOiJqb2huZG9lQHNtYXJ0Ym9va2luZ3MuY29tIiwiaG9zdCI6dHJ1ZSwiY29tcGFueSI6ZmFsc2UsInJvbGUiOiJWZW5kZXIiLCJvdHAiOjg3NzksInZlcmlmeSI6dHJ1ZSwic3RhdHVzIjoiQWNjZXB0IiwiYmxvY2siOmZhbHNlLCJudW1iZXJPZnNlcnZpY2VzIjowLCJfX3YiOjAsImFkZHJlc3MiOiIxMzNzdCwgZG93bnRvd24gbG9uZG9uIiwiY29tbUlkIjoiMjIzMjM0a2xqc2xmanNsIiwiZmlyc3ROYW1lIjoiRmVyb3oiLCJsYXN0TmFtZSI6IlNoYWgiLCJuYXRpb25hbGl0eSI6IkVuZ2xpc2giLCJyZXF1ZXN0ZWRBdCI6IjIwMjItMTAtMTBUMTA6NTc6MjIuOTc2WiIsImlhdCI6MTY2NzgyMzAzOH0.3akx6V0OluNjyg_gtCEw8bN60-v_6Mq6VcegBz7b2Yg",
-          },
-          data,
-        }
-      )
+      fetch("https://api.moyasar.com/v1/payments", {
+        method: "POST",
+        headers: {
+          Authorization: 'Basic pk_test_vSJsKzkEcdTsRj8W8CK4vUgJZtEPi2ngEeuEACS2'
+          // Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzQzZmEzYWYwYmIyYjU2Yjk3OGI1YmUiLCJwaG9uZSI6MzMzODg4ODg4OCwiYmFsYW5jZSI6MCwiZW1haWwiOiJqb2huZG9lQHNtYXJ0Ym9va2luZ3MuY29tIiwiaG9zdCI6dHJ1ZSwiY29tcGFueSI6ZmFsc2UsInJvbGUiOiJWZW5kZXIiLCJvdHAiOjg3NzksInZlcmlmeSI6dHJ1ZSwic3RhdHVzIjoiQWNjZXB0IiwiYmxvY2siOmZhbHNlLCJudW1iZXJPZnNlcnZpY2VzIjowLCJfX3YiOjAsImFkZHJlc3MiOiIxMzNzdCwgZG93bnRvd24gbG9uZG9uIiwiY29tbUlkIjoiMjIzMjM0a2xqc2xmanNsIiwiZmlyc3ROYW1lIjoiRmVyb3oiLCJsYXN0TmFtZSI6IlNoYWgiLCJuYXRpb25hbGl0eSI6IkVuZ2xpc2giLCJyZXF1ZXN0ZWRBdCI6IjIwMjItMTAtMTBUMTA6NTc6MjIuOTc2WiIsImlhdCI6MTY2NzgyMzAzOH0.3akx6V0OluNjyg_gtCEw8bN60-v_6Mq6VcegBz7b2Yg",
+        },
+        data
+      })
         .then((res) => res.json())
         .then((response) => {
           console.log(response);
-        })
-        .catch((e) => {
-          console.log(e);
-        });
+        }).catch((e)=>
+        {console.log(e)}
+        );
       // try {
       //   var test = await this.$axios.post('https://api.moyasar.com/v1/payments', data);
       //   console.log(test, '=>')
