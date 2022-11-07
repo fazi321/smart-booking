@@ -17,17 +17,37 @@
             <div class="ratting-container">
               <div class="rattings">
                 <div class="rate">
-                  <span :class="['fa fa-star', { active: ratings >= 1 }]" @click="rattings(1)"></span>
-                  <span :class="['fa fa-star', { active: ratings >= 2 }]" @click="rattings(2)"></span>
-                  <span :class="['fa fa-star', { active: ratings >= 3 }]" @click="rattings(3)"></span>
-                  <span :class="['fa fa-star', { active: ratings >= 4 }]" @click="rattings(4)"></span>
-                  <span :class="['fa fa-star', { active: ratings >= 5 }]" @click="rattings(5)"></span>
+                  <span
+                    :class="['fa fa-star', { active: ratings >= 1 }]"
+                    @click="rattings(1)"
+                  ></span>
+                  <span
+                    :class="['fa fa-star', { active: ratings >= 2 }]"
+                    @click="rattings(2)"
+                  ></span>
+                  <span
+                    :class="['fa fa-star', { active: ratings >= 3 }]"
+                    @click="rattings(3)"
+                  ></span>
+                  <span
+                    :class="['fa fa-star', { active: ratings >= 4 }]"
+                    @click="rattings(4)"
+                  ></span>
+                  <span
+                    :class="['fa fa-star', { active: ratings >= 5 }]"
+                    @click="rattings(5)"
+                  ></span>
                 </div>
                 <div class="current-rating">({{ ratings }})</div>
               </div>
             </div>
             <div class="text-area">
-              <textarea rows="8" cols="50" placeholder="write a review..." v-model="comment"></textarea>
+              <textarea
+                rows="8"
+                cols="50"
+                placeholder="write a review..."
+                v-model="comment"
+              ></textarea>
             </div>
             <div class="form-container">
               <div class="book-btn">
@@ -35,7 +55,9 @@
                   type="submit"
                   @click="review()"
                   :disabled="loadingReview"
-                >{{ !loadingReview ? "Submit" : "Loading..." }}</button>
+                >
+                  {{ !loadingReview ? "Submit" : "Loading..." }}
+                </button>
               </div>
             </div>
           </div>
@@ -43,7 +65,10 @@
       </div>
     </div>
     <!-- booking model -->
-    <section class="login-signup" v-if="bookingModel && !paymentModel && !reviewModel">
+    <section
+      class="login-signup"
+      v-if="bookingModel && !paymentModel && !reviewModel"
+    >
       <div class="primary-login">
         <div class="close-icon" @click="closeSlide">
           <img src="../../assets/images/close-icon.svg" alt />
@@ -68,9 +93,15 @@
             <div>
               <p>Nights</p>
               <div class="count">
-                <img src="../../assets/images/sub.png" @click="executer('dec')" />
+                <img
+                  src="../../assets/images/sub.png"
+                  @click="executer('dec')"
+                />
                 <span>{{ rooms }}</span>
-                <img src="../../assets/images/plus.png" @click="executer('inc')" />
+                <img
+                  src="../../assets/images/plus.png"
+                  @click="executer('inc')"
+                />
               </div>
             </div>
             <div>
@@ -134,17 +165,29 @@
             <div>
               <h4>Terms & Conditions</h4>
               <ul>
-                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                <li>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </li>
+                <li>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </li>
+                <li>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </li>
               </ul>
             </div>
             <div>
               <h4>Cancellation Policy</h4>
               <ul>
-                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                <li>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </li>
+                <li>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </li>
+                <li>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </li>
               </ul>
             </div>
           </div>
@@ -152,9 +195,9 @@
         <div class="book-btn">
           <button @click="bookingForm" :disabled="loadingBook">
             {{
-            !loadingBook
-            ? `Pay (SAR ${storeState.price.dayPrice * rooms} )`
-            : "Loading..."
+              !loadingBook
+                ? `Pay (SAR ${storeState.price.dayPrice * rooms} )`
+                : "Loading..."
             }}
           </button>
         </div>
@@ -261,7 +304,7 @@ export default {
   props: ["checkIn"],
   components: {
     BookCard,
-    CardForm
+    CardForm,
   },
   data() {
     return {
@@ -287,20 +330,20 @@ export default {
         cardNumber: "",
         cardMonth: "",
         cardYear: "",
-        cardCvv: ""
-      }
+        cardCvv: "",
+      },
     };
   },
   computed: {
-    halfPrice: function() {
+    halfPrice: function () {
       var price = this.storeState.price.dayPrice;
       if (!price) return "";
       var half = Math.round(price / 2);
       return half;
     },
-    storeState: function() {
+    storeState: function () {
       return this.$store.state.details && this.$store.state.details.details;
-    }
+    },
   },
   methods: {
     updateCardNumber(val) {
@@ -330,7 +373,7 @@ export default {
           `services/${this.$route.params.id}/review`,
           {
             rating: this.ratings,
-            comment: this.comment
+            comment: this.comment,
           }
         );
         if (res) {
@@ -339,7 +382,7 @@ export default {
             icon: "success",
             title: "Success!",
             showConfirmButton: false,
-            timer: 3000
+            timer: 3000,
           });
           (this.reviewModel = false), this.closeSlide();
         }
@@ -356,14 +399,14 @@ export default {
         cardYear,
         cardCvv,
         cardName,
-        cardNumberNotMask
+        cardNumberNotMask,
       } = this.formData;
       if (!cardNumber) {
         this.$swal({
           icon: "error",
           title: `Please Inter Card Number!`,
           showConfirmButton: false,
-          timer: 3000
+          timer: 3000,
         });
         return;
       }
@@ -372,7 +415,7 @@ export default {
           icon: "error",
           title: `Please inter Month!`,
           showConfirmButton: false,
-          timer: 3000
+          timer: 3000,
         });
         return;
       }
@@ -381,7 +424,7 @@ export default {
           icon: "error",
           title: `Please inter Year!`,
           showConfirmButton: false,
-          timer: 3000
+          timer: 3000,
         });
         return;
       }
@@ -390,7 +433,7 @@ export default {
           icon: "error",
           title: `Please inter CardCvv!`,
           showConfirmButton: false,
-          timer: 3000
+          timer: 3000,
         });
         return;
       }
@@ -404,38 +447,56 @@ export default {
       payload.cardCvv = cardCvv;
       payload.cardName = cardName;
       const data = JSON.stringify({
-                amount: 2000,
-                currency: 'SAR',
-                description: 'test',
-                publishable_api_key: 'pk_test_vSJsKzkEcdTsRj8W8CK4vUgJZtEPi2ngEeuEACS2',
-                source: {
-                    type: 'creditcard',
-                    number: cardNumberNotMask,
-                    month: cardMonth,
-                    year: cardYear,
-                    cvc: cardCvv,
-                    name: cardName,
-                },
-                callback_url: `booking/success/634402c8f0bb2b56b978b61b`,
-                // webhook_url: 'webhook',
-            });
-            // const config = {
-            //     url: 'https://api.moyasar.com/v1/payments',
-            //     data,
-            // };
-            try {
-              var test = await this.$axios.post('https://api.moyasar.com/v1/payments', data);
-              console.log(test, '=>') 
-            } catch (error) {
-              console.log(error)
-            }
-            // this.$axios.post(config)
-            //     .then(() => {
-            //         console.log('sucess')
-            //     })
-            //     .catch((error) => {
-            //         console.log(error)
-            //     });
+        amount: 2000,
+        currency: "SAR",
+        description: "test",
+        source: {
+          type: "creditcard",
+          number: cardNumberNotMask,
+          month: cardMonth,
+          year: cardYear,
+          cvc: cardCvv,
+          name: cardName,
+        },
+        callback_url: `booking/success/634402c8f0bb2b56b978b61b`,
+        // webhook_url: 'webhook',
+      });
+      // const config = {
+      //     url: 'https://api.moyasar.com/v1/payments',
+      //     data,
+      // };
+      fetch(
+        "https://api.moyasar.com/v1/payments \
+  -u pk_test_vSJsKzkEcdTsRj8W8CK4vUgJZtEPi2ngEeuEACS2",
+        {
+          method: "POST",
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzQzZmEzYWYwYmIyYjU2Yjk3OGI1YmUiLCJwaG9uZSI6MzMzODg4ODg4OCwiYmFsYW5jZSI6MCwiZW1haWwiOiJqb2huZG9lQHNtYXJ0Ym9va2luZ3MuY29tIiwiaG9zdCI6dHJ1ZSwiY29tcGFueSI6ZmFsc2UsInJvbGUiOiJWZW5kZXIiLCJvdHAiOjg3NzksInZlcmlmeSI6dHJ1ZSwic3RhdHVzIjoiQWNjZXB0IiwiYmxvY2siOmZhbHNlLCJudW1iZXJPZnNlcnZpY2VzIjowLCJfX3YiOjAsImFkZHJlc3MiOiIxMzNzdCwgZG93bnRvd24gbG9uZG9uIiwiY29tbUlkIjoiMjIzMjM0a2xqc2xmanNsIiwiZmlyc3ROYW1lIjoiRmVyb3oiLCJsYXN0TmFtZSI6IlNoYWgiLCJuYXRpb25hbGl0eSI6IkVuZ2xpc2giLCJyZXF1ZXN0ZWRBdCI6IjIwMjItMTAtMTBUMTA6NTc6MjIuOTc2WiIsImlhdCI6MTY2NzgyMzAzOH0.3akx6V0OluNjyg_gtCEw8bN60-v_6Mq6VcegBz7b2Yg",
+          },
+          data,
+        }
+      )
+        .then((res) => res.json())
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+      // try {
+      //   var test = await this.$axios.post('https://api.moyasar.com/v1/payments', data);
+      //   console.log(test, '=>')
+      // } catch (error) {
+      //   console.log(error)
+      // }
+      // this.$axios.post(config)
+      //     .then(() => {
+      //         console.log('sucess')
+      //     })
+      //     .catch((error) => {
+      //         console.log(error)
+      //     });
       // try {
       //   this.loadingPay = true;
       //   const res = await this.$axios.post(`booking/pay/${this.id}`, payload);
@@ -472,7 +533,7 @@ export default {
         nights,
         paymentMethod,
         checkIn,
-        checkOut
+        checkOut,
       };
       try {
         this.loadingBook = true;
@@ -482,7 +543,7 @@ export default {
         );
         if (res) {
           this.id = res.data.booking._id;
-          console.log('=->',this.id)
+          console.log("=->", this.id);
           this.bookingModel = false;
           this.paymentModel = true;
           this.loadingBook = false;
@@ -493,7 +554,7 @@ export default {
           icon: "error",
           title: `${error.response.data.error}!`,
           showConfirmButton: false,
-          timer: 3000
+          timer: 3000,
         });
         console.log(error);
       }
@@ -535,17 +596,17 @@ export default {
       this.id = null;
       this.error = {};
       this.$parent.bookingModel = false;
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style scoped>
-.pay-model{
+.pay-model {
   position: relative;
 }
-.payment-close{
-  left: 15px!important;
+.payment-close {
+  left: 15px !important;
   z-index: 999;
 }
 .main-wrapper {
