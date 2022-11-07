@@ -467,7 +467,7 @@ export default {
       // };
       fetch(
         "https://api.moyasar.com/v1/payments \
-  -u pk_test_vSJsKzkEcdTsRj8W8CK4vUgJZtEPi2ngEeuEACS2",
+  -u pk_test_vSJsKzkEcdTsRj8W8CK4vUgJZtEPi2ngEeuEACS2:",
         {
           method: "POST",
           headers: {
