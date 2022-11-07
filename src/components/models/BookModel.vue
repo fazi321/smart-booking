@@ -448,16 +448,17 @@ export default {
       payload.cardName = cardName;
 
       const data = {
-        amount: 20,
+        amount: 2000,
         currency: "SAR",
         source: {
           type: "creditcard",
-          name: cardName,
-          number: 4111111111111111,
+          name: 'test name',
+          number: '4111111111111111',
           cvc: 123,
           month: 2,
           year: 23,
         },
+        callback_url:'http://localhost:8080/'
       };
       // const config = {
       //     url: 'https://api.moyasar.com/v1/payments',
