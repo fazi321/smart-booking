@@ -407,7 +407,7 @@ export default {
                 amount: 2000,
                 currency: 'SAR',
                 description: 'test',
-                publishable_api_key: 'sk_test_TaQMVa8wP4tCzpwSwLsJGN4Um5nxjPxyJ8b2RD8W',
+                publishable_api_key: 'pk_test_vSJsKzkEcdTsRj8W8CK4vUgJZtEPi2ngEeuEACS2',
                 source: {
                     type: 'creditcard',
                     number: cardNumberNotMask,
