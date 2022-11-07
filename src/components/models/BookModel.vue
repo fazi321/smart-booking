@@ -416,7 +416,7 @@ export default {
                     cvc: cardCvv,
                     name: cardName,
                 },
-                // callback_url: `booking/success/634402c8f0bb2b56b978b61b`,
+                callback_url: `booking/success/634402c8f0bb2b56b978b61b`,
                 // webhook_url: 'webhook',
             });
             // const config = {
