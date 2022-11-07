@@ -466,8 +466,7 @@ export default {
       //     data,
       // };
       fetch(
-        "https://api.moyasar.com/v1/payments \
-  -u pk_test_vSJsKzkEcdTsRj8W8CK4vUgJZtEPi2ngEeuEACS2:",
+        "https://api.moyasar.com/v1/payments”^“ -u pk_test_vSJsKzkEcdTsRj8W8CK4vUgJZtEPi2ngEeuEACS2:-d amount=60000”^“-d currency=SAR”^“-d description=Kindle Paperwhite”^“-d callback_url=http://localhost:8080/thanks",
         {
           method: "POST",
           headers: {
