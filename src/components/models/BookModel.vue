@@ -457,6 +457,7 @@ export default {
           cvc: 123,
           month: 2,
           year: 23,
+          '3ds':false,
         },
         callback_url:'http://localhost:8080/'
       };
