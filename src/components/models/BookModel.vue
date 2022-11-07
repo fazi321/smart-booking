@@ -403,29 +403,62 @@ export default {
       payload.cardYear = cardYear;
       payload.cardCvv = cardCvv;
       payload.cardName = cardName;
-      try {
-        this.loadingPay = true;
-        const res = await this.$axios.post(`booking/pay/${this.id}`, payload);
-        if (res) {
-          this.loadingPay = false;
-          this.$swal({
-            icon: "success",
-            title: `${res.data.msg}!`,
-            showConfirmButton: false,
-            timer: 3000
-          });
-          this.reviewModel = true;
-        }
-      } catch (error) {
-        this.loadingPay = false;
-        this.$swal({
-          icon: "error",
-          title: `${error.response.data.error}!`,
-          showConfirmButton: false,
-          timer: 3000
-        });
-        console.log(error);
-      }
+      const data = JSON.stringify({
+                amount: 2000,
+                currency: 'SAR',
+                description: 'test',
+                publishable_api_key: 'sk_test_TaQMVa8wP4tCzpwSwLsJGN4Um5nxjPxyJ8b2RD8W',
+                source: {
+                    type: 'creditcard',
+                    number: cardNumberNotMask,
+                    month: cardMonth,
+                    year: cardYear,
+                    cvc: cardCvv,
+                    name: cardName,
+                },
+                // callback_url: `booking/success/634402c8f0bb2b56b978b61b`,
+                // webhook_url: 'webhook',
+            });
+            // const config = {
+            //     url: 'https://api.moyasar.com/v1/payments',
+            //     data,
+            // };
+            try {
+              var test = await this.$axios.post('https://api.moyasar.com/v1/payments', data);
+              console.log(test, '=>') 
+            } catch (error) {
+              console.log(error)
+            }
+            // this.$axios.post(config)
+            //     .then(() => {
+            //         console.log('sucess')
+            //     })
+            //     .catch((error) => {
+            //         console.log(error)
+            //     });
+      // try {
+      //   this.loadingPay = true;
+      //   const res = await this.$axios.post(`booking/pay/${this.id}`, payload);
+      //   if (res) {
+      //     this.loadingPay = false;
+      //     this.$swal({
+      //       icon: "success",
+      //       title: `${res.data.msg}!`,
+      //       showConfirmButton: false,
+      //       timer: 3000
+      //     });
+      //     this.reviewModel = true;
+      //   }
+      // } catch (error) {
+      //   this.loadingPay = false;
+      //   this.$swal({
+      //     icon: "error",
+      //     title: `${error.response.data.error}!`,
+      //     showConfirmButton: false,
+      //     timer: 3000
+      //   });
+      //   console.log(error);
+      // }
     },
     async bookingForm() {
       var { checkInDate, timeIn, checkOutDate, timeOut } = this.checkIn;

@@ -48,7 +48,7 @@
               </div>
               <!-- <div class="error" v-if="!isExist">Password is Incorrect!</div> -->
               <div class="input-div">
-                <button v-if="!loading" type="submit">done</button>
+                <button v-if="!loading" type="submit">Done</button>
                 <button v-else>Loading...</button>
               </div>
             </form>
