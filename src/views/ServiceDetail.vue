@@ -279,10 +279,10 @@ export default {
       const { booking } = this.$route.query;
       console.log(booking);
       try {
-        var res = await this.$axios.get(
-          `http://13.229.167.135:5000/api/v1/vender/service-booking-list/${booking}`
-        );
-        console.log(res.data, "-->");
+        // var res = await this.$axios.get(
+        //   `http://13.229.167.135:5000/api/v1/vender/service-booking-list/${booking}`
+        // );
+        // console.log(res.data, "-->");
         // this.dataCard = res.data;
         this.dataCard = {
           totalBookings: 5,
