@@ -1,5 +1,5 @@
 <template>
-  <router-link to="/service-details">
+  <router-link :to="`/service-details?booking=${items.service._id}`">
     <section class="filter-card">
       <div class="image">
         <img

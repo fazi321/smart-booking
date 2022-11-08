@@ -75,7 +75,7 @@ export default {
   data() {
     return {
       dataCard: [],
-      filteredData:[],
+      filteredData: [],
       loading: false,
       skeleton: 8,
       tab: "Upcoming",
@@ -88,18 +88,29 @@ export default {
     clickCallback(num) {
       var copyFrom = num * 6 - 6;
       var copyTo = num * 6;
-      this.filteredData = this.dataCard.slice(copyFrom, copyTo);
+      var filtereByTabs = this.dataCard.filter((e) => {
+        var val =
+          this.tab.toLowerCase() != "upcoming" ? this.tab.toLowerCase() : "pending";
+          return e.status == val;
+      });
+      this.pageCount = Math.ceil(filtereByTabs.length / 6);
+      this.filteredData = filtereByTabs.slice(copyFrom, copyTo);
     },
     selected(val) {
       this.tab = val;
+      this.pageSelected = 1;
+      this.clickCallback(1);
     },
     async getData() {
       try {
         this.loading = true;
         var res = await this.$axios.get(`/booking`);
         this.dataCard = res.data;
-        this.pageCount = Math.ceil(res.data.length / 6);
-        this.filteredData = this.dataCard.slice(0,6)
+        this.pageSelected = 1;
+        this.clickCallback(1);
+        // console.log(this.dataCard, '==>')
+        // this.pageCount = Math.ceil(res.data.length / 6);
+        // this.filteredData = this.dataCard.slice(0, 6);
         // console.log("==>", this.dataCard);
         this.loading = false;
       } catch (error) {

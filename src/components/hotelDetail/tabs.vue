@@ -18,7 +18,7 @@
       </div>
     </div>
     <Facilities v-if="tab == 'Facilities'" />
-    <ReviewsDetail v-if="tab == 'Reviews'" />
+    <ReviewsDetail v-if="tab == 'Reviews'" :reviews="storeState.reviews"/>
     <section v-if="tab == 'Terms'" class="terms">
       <p v-if="storeState.terms">{{ storeState.terms }}</p>
       <p v-else>NOT FOUND</p>

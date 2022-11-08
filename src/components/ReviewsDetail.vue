@@ -1,16 +1,16 @@
 <template>
   <section class="main-container-div">
     <!-- / -->
-    <div class="primary-container">
+    <div class="primary-container" v-for="(review, index) in reviews" :key="index">
       <div class="secondry-container">
         <img src="../assets/images/imageProfile.jpeg" />
       </div>
       <div>
         <div>
-          <h4>this is test description in english</h4>
+          <h4>{{review.name}}</h4>
         </div>
         <div>
-          <StarReviews />
+          <StarReviews :review="review.rating" />
         </div>
       </div>
     </div>
@@ -35,6 +35,7 @@
 import StarReviews from "@/components/reviews/StarReviews.vue";
 export default {
   name: "ReviewsDetail",
+  props:['reviews'],
   components: {
     StarReviews,
   },
@@ -56,6 +57,9 @@ export default {
   border-radius: 11px;
   margin-bottom:15px;
   border-bottom: 1px solid darkgray;
+}
+.primary-container h4{
+  text-align: left;
 }
 .primary-container>div{
   margin:10px;

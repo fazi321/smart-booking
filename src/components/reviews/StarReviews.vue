@@ -1,11 +1,12 @@
 <template>
   <section>
     <div class="rating">
-      <span class="star">&starf;</span>
-      <span class="star">&starf;</span>
-      <span class="star">&starf;</span>
-      <span class="star">&starf;</span>
-      <span class="star gray">&starf;</span>
+      <span
+        :class="['star', { gray: star > review }]"
+        v-for="(star, index) in 5"
+        :key="index"
+        >&starf;</span
+      >
       <span class="rating-counter">(381)</span>
     </div>
   </section>
@@ -13,7 +14,8 @@
 
 <script>
 export default {
-  name:'StarReviews'
+  name: "StarReviews",
+  props: ["review"],
 };
 </script>
 
