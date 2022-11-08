@@ -452,14 +452,13 @@ export default {
         currency: "SAR",
         source: {
           type: "creditcard",
-          name: 'test name',
-          number: '4111111111111111',
+          name: "test name",
+          number: "4111111111111111",
           cvc: 123,
           month: 2,
           year: 23,
-          '3ds':false,
         },
-        callback_url:'http://localhost:8080/'
+        callback_url: "http://localhost:8080/",
       };
       // const config = {
       //     url: 'https://api.moyasar.com/v1/payments',
@@ -480,15 +479,23 @@ export default {
       //   {console.log(e)}
       //   );
       var config = {
-        headers: {Authorization: 'Basic cGtfdGVzdF92U0pzS3prRWNkVHNSajhXOENLNHZVZ0padEVQaTJuZ0VldUVBQ1My'  },
+        headers: {
+          Authorization:
+            "Basic cGtfdGVzdF92U0pzS3prRWNkVHNSajhXOENLNHZVZ0padEVQaTJuZ0VldUVBQ1My",
+        },
       };
       try {
-        var test = await this.$axios.post(
+        var result = await this.$axios.post(
           "https://api.moyasar.com/v1/payments",
           data,
           config
         );
-        console.log(test, "=>");
+        if (result) {
+          var { transaction_url } = result.data.source;
+          // this.$router.push(transaction_url);
+          window.location.href = transaction_url
+          console.log(result, "=>");
+        }
       } catch (error) {
         console.log(error);
       }
