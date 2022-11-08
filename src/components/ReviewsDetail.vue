@@ -14,20 +14,6 @@
         </div>
       </div>
     </div>
-    <!-- / -->
-    <div class="primary-container">
-      <div class="secondry-container">
-        <img src="../assets/images/imageProfile.jpeg" />
-      </div>
-      <div>
-        <div>
-          <h4>this is test description in english</h4>
-        </div>
-        <div>
-          <StarReviews />
-        </div>
-      </div>
-    </div>
   </section>
 </template>
 
