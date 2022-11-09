@@ -4,6 +4,40 @@
       <div class="service-booking">
         <h1>SERVICE BOOKINGS</h1>
       </div>
+      <div class="detail-tabs">
+        <div class="tabs">
+          <p
+            :class="{ active: tab == 'Upcoming' }"
+            @click="selected('Upcoming')"
+          >
+            Upcoming
+          </p>
+          <p :class="{ active: tab == 'current' }" @click="selected('current')">
+            Current
+          </p>
+          <p
+            :class="{ active: tab == 'Completed' }"
+            @click="selected('Completed')"
+          >
+            Completed
+          </p>
+          <p
+            :class="{ active: tab == 'Cancelled' }"
+            @click="selected('Cancelled')"
+          >
+            Cancelled
+          </p>
+        </div>
+        <!-- inputs -->
+        <section class="booking-search">
+          <div class="primary">
+            <div><input type="text" placeholder="Search here..." /></div>
+            <div>
+              <img src="../assets/images/searchI.svg" />
+            </div>
+          </div>
+        </section>
+      </div>
       <div class="service-container">
         <h3>You can the service booking details here</h3>
         <div class="service-detail">
@@ -19,228 +53,46 @@
               <th>Mobile Number</th>
               <th>Action</th>
             </tr>
-            <tr v-for="(item , index) in dataCard.result" :key="index">
+            <!-- {{filteredData && filteredData[0] && filteredData[0].booking}} -->
+            <tr v-for="(item, index) in filteredData" :key="index">
               <td>
                 <div class="profile-image">
                   <img src="../assets/images/user-icon.svg" />
                 </div>
               </td>
-              <td>{{item.booking[0].user && item.booking[0].user.firstName}}</td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
               <td>
-                <div class="view-btn" @click="ServiceModelShow">
+                {{ item.user && item.user.firstName }}
+              </td>
+              <td>Lorem Ipsum</td>
+              <td>{{ getDate(item.checkIn) }}</td>
+              <td>{{ item.bookingTime }}</td>
+              <td>{{ item.nights }}</td>
+              <td>{{ item.totalPrice }}</td>
+              <td>{{ item.user && item.user.phone }}</td>
+              <td>
+                <div class="view-btn" @click="ServiceModelShow(item)">
                   <button>View</button>
                 </div>
               </td>
             </tr>
-            <!-- <tr>
-              <td>
-                <div class="profile-image">
-                  <img src="../assets/images/user-icon.svg" />
-                </div>
-              </td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>
-                <div class="view-btn" @click="ServiceModelShow">
-                  <button>View</button>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="profile-image">
-                  <img src="../assets/images/user-icon.svg" />
-                </div>
-              </td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>
-                <div class="view-btn" @click="ServiceModelShow">
-                  <button>View</button>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="profile-image">
-                  <img src="../assets/images/user-icon.svg" />
-                </div>
-              </td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>
-                <div class="view-btn" @click="ServiceModelShow">
-                  <button>View</button>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="profile-image">
-                  <img src="../assets/images/user-icon.svg" />
-                </div>
-              </td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>
-                <div class="view-btn" @click="ServiceModelShow">
-                  <button>View</button>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="profile-image">
-                  <img src="../assets/images/user-icon.svg" />
-                </div>
-              </td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>
-                <div class="view-btn">
-                  <button>View</button>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="profile-image">
-                  <img src="../assets/images/user-icon.svg" />
-                </div>
-              </td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>
-                <div class="view-btn" @click="ServiceModelShow">
-                  <button>View</button>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="profile-image">
-                  <img src="../assets/images/user-icon.svg" />
-                </div>
-              </td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>
-                <div class="view-btn" @click="ServiceModelShow">
-                  <button>View</button>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="profile-image">
-                  <img src="../assets/images/user-icon.svg" />
-                </div>
-              </td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>
-                <div class="view-btn" @click="ServiceModelShow">
-                  <button>View</button>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="profile-image">
-                  <img src="../assets/images/user-icon.svg" />
-                </div>
-              </td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>
-                <div class="view-btn" @click="ServiceModelShow">
-                  <button>View</button>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="profile-image">
-                  <img src="../assets/images/user-icon.svg" />
-                </div>
-              </td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>Lorem Ipsum</td>
-              <td>
-                <div class="view-btn" @click="ServiceModelShow">
-                  <button>View</button>
-                </div>
-              </td>
-            </tr> -->
           </table>
           <div class="bottom-container">
             <div>
-              <p>Showing 1 to 10 of 30 entries</p>
+              <p>
+                Showing
+                {{ pageSelected > 1 ? (pageSelected - 1) * 10 : pageSelected }}
+                to {{ pageSelected * 10 }} of {{ total }} entries
+              </p>
             </div>
             <div class="service-pagination">
               <paginate
+                v-model="pageSelected"
                 :page-range="3"
                 :margin-pages="2"
-                :page-count="3"
+                :page-count="pageCount"
                 :click-handler="clickCallback"
-                :prev-text="'Previous'"
-                :next-text="''"
+                :prev-text="'<'"
+                :next-text="'>'"
                 :container-class="'pagination'"
                 :page-class="'page-item'"
               ></paginate>
@@ -248,7 +100,7 @@
           </div>
         </div>
       </div>
-      <ServiceDetailModel v-if="serviceModel" />
+      <ServiceDetailModel v-if="serviceModel" :modelData="modelData" />
     </section>
   </default-layout>
 </template>
@@ -268,13 +120,24 @@ export default {
   data() {
     return {
       serviceModel: false,
-      dataCard: {},
+      dataCard: [],
+      filteredData: [],
+      tab: "Upcoming",
+      //
+      total: 0,
+      pageSelected: 1,
+      pageCount: 6,
+      modelData: {},
     };
   },
   mounted() {
     this.getData();
   },
   methods: {
+    getDate(val) {
+      var d = new Date(val);
+      return d.toLocaleDateString("en-GB");
+    },
     async getData() {
       const { booking } = this.$route.query;
       console.log(booking);
@@ -283,8 +146,8 @@ export default {
         //   `http://13.229.167.135:5000/api/v1/vender/service-booking-list/${booking}`
         // );
         // console.log(res.data, "-->");
-        // this.dataCard = res.data;
-        this.dataCard = {
+        // this.dataCard = res.data.result;
+        var res = {
           totalBookings: 5,
           result: [
             {
@@ -308,7 +171,7 @@ export default {
                   paidAt: "2022-11-01T13:19:47.727Z",
                   vender: "63314b0d55462303bafc7cdf",
                   bookingDates: [],
-                  checkIn: "2022-10-31T19:00:00.000Z",
+                  checkIn: "2022-10-31T20:00:00.000Z",
                   checkOut: "2022-11-10T19:00:00.000Z",
                   bookingTime: "6:19 PM",
                   createdAt: "2022-11-01T13:18:05.191Z",
@@ -324,6 +187,156 @@ export default {
               status: "cancelled",
               total: 2,
               booking: [
+                {
+                  service: {
+                    name: "63496ee6b82c79927ea7d80a",
+                    image: "test image1",
+                    vender: "63314b0d55462303bafc7cdf",
+                  },
+                  _id: "6361202ef7e0eff0c793d188",
+                  moyasarPaymentId: "fadade05-bb16-4719-aee1-55ee9f8009f8",
+                  user: {
+                    _id: "63314c0055462303bafc7ceb",
+                    phone: 3338888888,
+                    email: "johndoe3ewer@smartbookings.com",
+                    host: true,
+                    company: false,
+                    role: "Vender",
+                    otp: 6746,
+                    verify: true,
+                    status: "Accept",
+                    block: false,
+                    numberOfservices: 0,
+                    __v: 0,
+                    address: "133st, downtown london",
+                    commId: "'22asdfadf3234kljslfjsl'",
+                    firstName: "John Doeee",
+                    lastName: "Jeneeee",
+                    nationality: "Pakistanidd",
+                    balance: 453077,
+                    dob: "1996-08-21T07:00:00.000Z",
+                    file: "hi",
+                    deviceToken: null,
+                    requestedAt: "2022-09-30T10:21:46.381Z",
+                  },
+                  amount: 45232,
+                  paymentMethod: "Online",
+                  isPaid: true,
+                  nights: 0,
+                  totalPrice: 452320,
+                  paidAt: "2022-11-01T13:33:34.511Z",
+                  vender: "63314b0d55462303bafc7cdf",
+                  bookingDates: [],
+                  checkIn: "2022-10-31T19:00:00.000Z",
+                  checkOut: "2022-11-10T19:00:00.000Z",
+                  bookingTime: "6:33 PM",
+                  createdAt: "2022-11-01T13:31:00.532Z",
+                  status: "cancelled",
+                  updatedAt: "2022-11-01T13:34:31.927Z",
+                  __v: 1,
+                  cancelRequest: true,
+                  refundType: "User cccount calance",
+                },
+                {
+                  service: {
+                    name: "63496ee6b82c79927ea7d80a",
+                    image: "test image1",
+                    vender: "63314b0d55462303bafc7cdf",
+                  },
+                  _id: "6361202ef7e0eff0c793d188",
+                  moyasarPaymentId: "fadade05-bb16-4719-aee1-55ee9f8009f8",
+                  user: {
+                    _id: "63314c0055462303bafc7ceb",
+                    phone: 3338888888,
+                    email: "johndoe3ewer@smartbookings.com",
+                    host: true,
+                    company: false,
+                    role: "Vender",
+                    otp: 6746,
+                    verify: true,
+                    status: "Accept",
+                    block: false,
+                    numberOfservices: 0,
+                    __v: 0,
+                    address: "133st, downtown london",
+                    commId: "'22asdfadf3234kljslfjsl'",
+                    firstName: "John Doeee",
+                    lastName: "Jeneeee",
+                    nationality: "Pakistanidd",
+                    balance: 453077,
+                    dob: "1996-08-21T07:00:00.000Z",
+                    file: "hi",
+                    deviceToken: null,
+                    requestedAt: "2022-09-30T10:21:46.381Z",
+                  },
+                  amount: 45232,
+                  paymentMethod: "Online",
+                  isPaid: true,
+                  nights: 0,
+                  totalPrice: 452320,
+                  paidAt: "2022-11-01T13:33:34.511Z",
+                  vender: "63314b0d55462303bafc7cdf",
+                  bookingDates: [],
+                  checkIn: "2022-10-31T19:00:00.000Z",
+                  checkOut: "2022-11-10T19:00:00.000Z",
+                  bookingTime: "6:33 PM",
+                  createdAt: "2022-11-01T13:31:00.532Z",
+                  status: "cancelled",
+                  updatedAt: "2022-11-01T13:34:31.927Z",
+                  __v: 1,
+                  cancelRequest: true,
+                  refundType: "User cccount calance",
+                },
+                {
+                  service: {
+                    name: "63496ee6b82c79927ea7d80a",
+                    image: "test image1",
+                    vender: "63314b0d55462303bafc7cdf",
+                  },
+                  _id: "6361202ef7e0eff0c793d188",
+                  moyasarPaymentId: "fadade05-bb16-4719-aee1-55ee9f8009f8",
+                  user: {
+                    _id: "63314c0055462303bafc7ceb",
+                    phone: 3338888888,
+                    email: "johndoe3ewer@smartbookings.com",
+                    host: true,
+                    company: false,
+                    role: "Vender",
+                    otp: 6746,
+                    verify: true,
+                    status: "Accept",
+                    block: false,
+                    numberOfservices: 0,
+                    __v: 0,
+                    address: "133st, downtown london",
+                    commId: "'22asdfadf3234kljslfjsl'",
+                    firstName: "test Doeee",
+                    lastName: "Jeneeee",
+                    nationality: "Pakistanidd",
+                    balance: 453077,
+                    dob: "1996-08-21T07:00:00.000Z",
+                    file: "hi",
+                    deviceToken: null,
+                    requestedAt: "2022-09-30T10:21:46.381Z",
+                  },
+                  amount: 45232,
+                  paymentMethod: "Online",
+                  isPaid: true,
+                  nights: 0,
+                  totalPrice: 452320,
+                  paidAt: "2022-11-01T13:33:34.511Z",
+                  vender: "63314b0d55462303bafc7cdf",
+                  bookingDates: [],
+                  checkIn: "2022-10-31T19:00:00.000Z",
+                  checkOut: "2022-11-10T19:00:00.000Z",
+                  bookingTime: "6:33 PM",
+                  createdAt: "2022-11-01T13:31:00.532Z",
+                  status: "cancelled",
+                  updatedAt: "2022-11-01T13:34:31.927Z",
+                  __v: 1,
+                  cancelRequest: true,
+                  refundType: "User cccount calance",
+                },
                 {
                   service: {
                     name: "63496ee6b82c79927ea7d80a",
@@ -397,7 +410,557 @@ export default {
                     __v: 0,
                     address: "133st, downtown london",
                     commId: "'22asdfadf3234kljslfjsl'",
-                    firstName: "John Doeee",
+                    firstName: "tes Doeee",
+                    lastName: "Jeneeee",
+                    nationality: "Pakistanidd",
+                    balance: 453077,
+                    dob: "1996-08-21T07:00:00.000Z",
+                    file: "hi",
+                    deviceToken: null,
+                    requestedAt: "2022-09-30T10:21:46.381Z",
+                  },
+                  amount: 45232,
+                  paymentMethod: "Online",
+                  isPaid: true,
+                  nights: 0,
+                  totalPrice: 452320,
+                  paidAt: "2022-11-01T13:40:31.575Z",
+                  vender: "63314b0d55462303bafc7cdf",
+                  bookingDates: [],
+                  checkIn: "2022-10-31T19:00:00.000Z",
+                  checkOut: "2022-11-10T19:00:00.000Z",
+                  bookingTime: "6:37 PM",
+                  createdAt: "2022-11-01T13:39:26.917Z",
+                  status: "cancelled",
+                  updatedAt: "2022-11-01T13:41:14.515Z",
+                  __v: 1,
+                  cancelRequest: true,
+                  refundType: "Direct bank transfer",
+                },
+                {
+                  service: {
+                    name: "63496ee6b82c79927ea7d80a",
+                    image: "test image1",
+                    vender: "63314b0d55462303bafc7cdf",
+                  },
+                  _id: "636121cfd9637489471513f0",
+                  moyasarPaymentId: "a7c9620f-839b-490f-a3c5-481a09123d8a",
+                  user: {
+                    _id: "63314c0055462303bafc7ceb",
+                    phone: 3338888888,
+                    email: "johndoe3ewer@smartbookings.com",
+                    host: true,
+                    company: false,
+                    role: "Vender",
+                    otp: 6746,
+                    verify: true,
+                    status: "Accept",
+                    block: false,
+                    numberOfservices: 0,
+                    __v: 0,
+                    address: "133st, downtown london",
+                    commId: "'22asdfadf3234kljslfjsl'",
+                    firstName: "tes Doeee",
+                    lastName: "Jeneeee",
+                    nationality: "Pakistanidd",
+                    balance: 453077,
+                    dob: "1996-08-21T07:00:00.000Z",
+                    file: "hi",
+                    deviceToken: null,
+                    requestedAt: "2022-09-30T10:21:46.381Z",
+                  },
+                  amount: 45232,
+                  paymentMethod: "Online",
+                  isPaid: true,
+                  nights: 0,
+                  totalPrice: 452320,
+                  paidAt: "2022-11-01T13:40:31.575Z",
+                  vender: "63314b0d55462303bafc7cdf",
+                  bookingDates: [],
+                  checkIn: "2022-10-31T19:00:00.000Z",
+                  checkOut: "2022-11-10T19:00:00.000Z",
+                  bookingTime: "6:37 PM",
+                  createdAt: "2022-11-01T13:39:26.917Z",
+                  status: "cancelled",
+                  updatedAt: "2022-11-01T13:41:14.515Z",
+                  __v: 1,
+                  cancelRequest: true,
+                  refundType: "Direct bank transfer",
+                },
+                {
+                  service: {
+                    name: "63496ee6b82c79927ea7d80a",
+                    image: "test image1",
+                    vender: "63314b0d55462303bafc7cdf",
+                  },
+                  _id: "636121cfd9637489471513f0",
+                  moyasarPaymentId: "a7c9620f-839b-490f-a3c5-481a09123d8a",
+                  user: {
+                    _id: "63314c0055462303bafc7ceb",
+                    phone: 3338888888,
+                    email: "johndoe3ewer@smartbookings.com",
+                    host: true,
+                    company: false,
+                    role: "Vender",
+                    otp: 6746,
+                    verify: true,
+                    status: "Accept",
+                    block: false,
+                    numberOfservices: 0,
+                    __v: 0,
+                    address: "133st, downtown london",
+                    commId: "'22asdfadf3234kljslfjsl'",
+                    firstName: "tes Doeee",
+                    lastName: "Jeneeee",
+                    nationality: "Pakistanidd",
+                    balance: 453077,
+                    dob: "1996-08-21T07:00:00.000Z",
+                    file: "hi",
+                    deviceToken: null,
+                    requestedAt: "2022-09-30T10:21:46.381Z",
+                  },
+                  amount: 45232,
+                  paymentMethod: "Online",
+                  isPaid: true,
+                  nights: 0,
+                  totalPrice: 452320,
+                  paidAt: "2022-11-01T13:40:31.575Z",
+                  vender: "63314b0d55462303bafc7cdf",
+                  bookingDates: [],
+                  checkIn: "2022-10-31T19:00:00.000Z",
+                  checkOut: "2022-11-10T19:00:00.000Z",
+                  bookingTime: "6:37 PM",
+                  createdAt: "2022-11-01T13:39:26.917Z",
+                  status: "cancelled",
+                  updatedAt: "2022-11-01T13:41:14.515Z",
+                  __v: 1,
+                  cancelRequest: true,
+                  refundType: "Direct bank transfer",
+                },
+                {
+                  service: {
+                    name: "63496ee6b82c79927ea7d80a",
+                    image: "test image1",
+                    vender: "63314b0d55462303bafc7cdf",
+                  },
+                  _id: "636121cfd9637489471513f0",
+                  moyasarPaymentId: "a7c9620f-839b-490f-a3c5-481a09123d8a",
+                  user: {
+                    _id: "63314c0055462303bafc7ceb",
+                    phone: 3338888888,
+                    email: "johndoe3ewer@smartbookings.com",
+                    host: true,
+                    company: false,
+                    role: "Vender",
+                    otp: 6746,
+                    verify: true,
+                    status: "Accept",
+                    block: false,
+                    numberOfservices: 0,
+                    __v: 0,
+                    address: "133st, downtown london",
+                    commId: "'22asdfadf3234kljslfjsl'",
+                    firstName: "tes Doeee",
+                    lastName: "Jeneeee",
+                    nationality: "Pakistanidd",
+                    balance: 453077,
+                    dob: "1996-08-21T07:00:00.000Z",
+                    file: "hi",
+                    deviceToken: null,
+                    requestedAt: "2022-09-30T10:21:46.381Z",
+                  },
+                  amount: 45232,
+                  paymentMethod: "Online",
+                  isPaid: true,
+                  nights: 0,
+                  totalPrice: 452320,
+                  paidAt: "2022-11-01T13:40:31.575Z",
+                  vender: "63314b0d55462303bafc7cdf",
+                  bookingDates: [],
+                  checkIn: "2022-10-31T19:00:00.000Z",
+                  checkOut: "2022-11-10T19:00:00.000Z",
+                  bookingTime: "6:37 PM",
+                  createdAt: "2022-11-01T13:39:26.917Z",
+                  status: "cancelled",
+                  updatedAt: "2022-11-01T13:41:14.515Z",
+                  __v: 1,
+                  cancelRequest: true,
+                  refundType: "Direct bank transfer",
+                },
+                {
+                  service: {
+                    name: "63496ee6b82c79927ea7d80a",
+                    image: "test image1",
+                    vender: "63314b0d55462303bafc7cdf",
+                  },
+                  _id: "636121cfd9637489471513f0",
+                  moyasarPaymentId: "a7c9620f-839b-490f-a3c5-481a09123d8a",
+                  user: {
+                    _id: "63314c0055462303bafc7ceb",
+                    phone: 3338888888,
+                    email: "johndoe3ewer@smartbookings.com",
+                    host: true,
+                    company: false,
+                    role: "Vender",
+                    otp: 6746,
+                    verify: true,
+                    status: "Accept",
+                    block: false,
+                    numberOfservices: 0,
+                    __v: 0,
+                    address: "133st, downtown london",
+                    commId: "'22asdfadf3234kljslfjsl'",
+                    firstName: "tes Doeee",
+                    lastName: "Jeneeee",
+                    nationality: "Pakistanidd",
+                    balance: 453077,
+                    dob: "1996-08-21T07:00:00.000Z",
+                    file: "hi",
+                    deviceToken: null,
+                    requestedAt: "2022-09-30T10:21:46.381Z",
+                  },
+                  amount: 45232,
+                  paymentMethod: "Online",
+                  isPaid: true,
+                  nights: 0,
+                  totalPrice: 452320,
+                  paidAt: "2022-11-01T13:40:31.575Z",
+                  vender: "63314b0d55462303bafc7cdf",
+                  bookingDates: [],
+                  checkIn: "2022-10-31T19:00:00.000Z",
+                  checkOut: "2022-11-10T19:00:00.000Z",
+                  bookingTime: "6:37 PM",
+                  createdAt: "2022-11-01T13:39:26.917Z",
+                  status: "cancelled",
+                  updatedAt: "2022-11-01T13:41:14.515Z",
+                  __v: 1,
+                  cancelRequest: true,
+                  refundType: "Direct bank transfer",
+                },
+                {
+                  service: {
+                    name: "63496ee6b82c79927ea7d80a",
+                    image: "test image1",
+                    vender: "63314b0d55462303bafc7cdf",
+                  },
+                  _id: "636121cfd9637489471513f0",
+                  moyasarPaymentId: "a7c9620f-839b-490f-a3c5-481a09123d8a",
+                  user: {
+                    _id: "63314c0055462303bafc7ceb",
+                    phone: 3338888888,
+                    email: "johndoe3ewer@smartbookings.com",
+                    host: true,
+                    company: false,
+                    role: "Vender",
+                    otp: 6746,
+                    verify: true,
+                    status: "Accept",
+                    block: false,
+                    numberOfservices: 0,
+                    __v: 0,
+                    address: "133st, downtown london",
+                    commId: "'22asdfadf3234kljslfjsl'",
+                    firstName: "tes Doeee",
+                    lastName: "Jeneeee",
+                    nationality: "Pakistanidd",
+                    balance: 453077,
+                    dob: "1996-08-21T07:00:00.000Z",
+                    file: "hi",
+                    deviceToken: null,
+                    requestedAt: "2022-09-30T10:21:46.381Z",
+                  },
+                  amount: 45232,
+                  paymentMethod: "Online",
+                  isPaid: true,
+                  nights: 0,
+                  totalPrice: 452320,
+                  paidAt: "2022-11-01T13:40:31.575Z",
+                  vender: "63314b0d55462303bafc7cdf",
+                  bookingDates: [],
+                  checkIn: "2022-10-31T19:00:00.000Z",
+                  checkOut: "2022-11-10T19:00:00.000Z",
+                  bookingTime: "6:37 PM",
+                  createdAt: "2022-11-01T13:39:26.917Z",
+                  status: "cancelled",
+                  updatedAt: "2022-11-01T13:41:14.515Z",
+                  __v: 1,
+                  cancelRequest: true,
+                  refundType: "Direct bank transfer",
+                },
+                {
+                  service: {
+                    name: "63496ee6b82c79927ea7d80a",
+                    image: "test image1",
+                    vender: "63314b0d55462303bafc7cdf",
+                  },
+                  _id: "636121cfd9637489471513f0",
+                  moyasarPaymentId: "a7c9620f-839b-490f-a3c5-481a09123d8a",
+                  user: {
+                    _id: "63314c0055462303bafc7ceb",
+                    phone: 3338888888,
+                    email: "johndoe3ewer@smartbookings.com",
+                    host: true,
+                    company: false,
+                    role: "Vender",
+                    otp: 6746,
+                    verify: true,
+                    status: "Accept",
+                    block: false,
+                    numberOfservices: 0,
+                    __v: 0,
+                    address: "133st, downtown london",
+                    commId: "'22asdfadf3234kljslfjsl'",
+                    firstName: "tes Doeee",
+                    lastName: "Jeneeee",
+                    nationality: "Pakistanidd",
+                    balance: 453077,
+                    dob: "1996-08-21T07:00:00.000Z",
+                    file: "hi",
+                    deviceToken: null,
+                    requestedAt: "2022-09-30T10:21:46.381Z",
+                  },
+                  amount: 45232,
+                  paymentMethod: "Online",
+                  isPaid: true,
+                  nights: 0,
+                  totalPrice: 452320,
+                  paidAt: "2022-11-01T13:40:31.575Z",
+                  vender: "63314b0d55462303bafc7cdf",
+                  bookingDates: [],
+                  checkIn: "2022-10-31T19:00:00.000Z",
+                  checkOut: "2022-11-10T19:00:00.000Z",
+                  bookingTime: "6:37 PM",
+                  createdAt: "2022-11-01T13:39:26.917Z",
+                  status: "cancelled",
+                  updatedAt: "2022-11-01T13:41:14.515Z",
+                  __v: 1,
+                  cancelRequest: true,
+                  refundType: "Direct bank transfer",
+                },
+                {
+                  service: {
+                    name: "63496ee6b82c79927ea7d80a",
+                    image: "test image1",
+                    vender: "63314b0d55462303bafc7cdf",
+                  },
+                  _id: "636121cfd9637489471513f0",
+                  moyasarPaymentId: "a7c9620f-839b-490f-a3c5-481a09123d8a",
+                  user: {
+                    _id: "63314c0055462303bafc7ceb",
+                    phone: 3338888888,
+                    email: "johndoe3ewer@smartbookings.com",
+                    host: true,
+                    company: false,
+                    role: "Vender",
+                    otp: 6746,
+                    verify: true,
+                    status: "Accept",
+                    block: false,
+                    numberOfservices: 0,
+                    __v: 0,
+                    address: "133st, downtown london",
+                    commId: "'22asdfadf3234kljslfjsl'",
+                    firstName: "tes Doeee",
+                    lastName: "Jeneeee",
+                    nationality: "Pakistanidd",
+                    balance: 453077,
+                    dob: "1996-08-21T07:00:00.000Z",
+                    file: "hi",
+                    deviceToken: null,
+                    requestedAt: "2022-09-30T10:21:46.381Z",
+                  },
+                  amount: 45232,
+                  paymentMethod: "Online",
+                  isPaid: true,
+                  nights: 0,
+                  totalPrice: 452320,
+                  paidAt: "2022-11-01T13:40:31.575Z",
+                  vender: "63314b0d55462303bafc7cdf",
+                  bookingDates: [],
+                  checkIn: "2022-10-31T19:00:00.000Z",
+                  checkOut: "2022-11-10T19:00:00.000Z",
+                  bookingTime: "6:37 PM",
+                  createdAt: "2022-11-01T13:39:26.917Z",
+                  status: "cancelled",
+                  updatedAt: "2022-11-01T13:41:14.515Z",
+                  __v: 1,
+                  cancelRequest: true,
+                  refundType: "Direct bank transfer",
+                },
+                {
+                  service: {
+                    name: "63496ee6b82c79927ea7d80a",
+                    image: "test image1",
+                    vender: "63314b0d55462303bafc7cdf",
+                  },
+                  _id: "636121cfd9637489471513f0",
+                  moyasarPaymentId: "a7c9620f-839b-490f-a3c5-481a09123d8a",
+                  user: {
+                    _id: "63314c0055462303bafc7ceb",
+                    phone: 3338888888,
+                    email: "johndoe3ewer@smartbookings.com",
+                    host: true,
+                    company: false,
+                    role: "Vender",
+                    otp: 6746,
+                    verify: true,
+                    status: "Accept",
+                    block: false,
+                    numberOfservices: 0,
+                    __v: 0,
+                    address: "133st, downtown london",
+                    commId: "'22asdfadf3234kljslfjsl'",
+                    firstName: "tes Doeee",
+                    lastName: "Jeneeee",
+                    nationality: "Pakistanidd",
+                    balance: 453077,
+                    dob: "1996-08-21T07:00:00.000Z",
+                    file: "hi",
+                    deviceToken: null,
+                    requestedAt: "2022-09-30T10:21:46.381Z",
+                  },
+                  amount: 45232,
+                  paymentMethod: "Online",
+                  isPaid: true,
+                  nights: 0,
+                  totalPrice: 452320,
+                  paidAt: "2022-11-01T13:40:31.575Z",
+                  vender: "63314b0d55462303bafc7cdf",
+                  bookingDates: [],
+                  checkIn: "2022-10-31T19:00:00.000Z",
+                  checkOut: "2022-11-10T19:00:00.000Z",
+                  bookingTime: "6:37 PM",
+                  createdAt: "2022-11-01T13:39:26.917Z",
+                  status: "cancelled",
+                  updatedAt: "2022-11-01T13:41:14.515Z",
+                  __v: 1,
+                  cancelRequest: true,
+                  refundType: "Direct bank transfer",
+                },
+                {
+                  service: {
+                    name: "63496ee6b82c79927ea7d80a",
+                    image: "test image1",
+                    vender: "63314b0d55462303bafc7cdf",
+                  },
+                  _id: "636121cfd9637489471513f0",
+                  moyasarPaymentId: "a7c9620f-839b-490f-a3c5-481a09123d8a",
+                  user: {
+                    _id: "63314c0055462303bafc7ceb",
+                    phone: 3338888888,
+                    email: "johndoe3ewer@smartbookings.com",
+                    host: true,
+                    company: false,
+                    role: "Vender",
+                    otp: 6746,
+                    verify: true,
+                    status: "Accept",
+                    block: false,
+                    numberOfservices: 0,
+                    __v: 0,
+                    address: "133st, downtown london",
+                    commId: "'22asdfadf3234kljslfjsl'",
+                    firstName: "tes Doeee",
+                    lastName: "Jeneeee",
+                    nationality: "Pakistanidd",
+                    balance: 453077,
+                    dob: "1996-08-21T07:00:00.000Z",
+                    file: "hi",
+                    deviceToken: null,
+                    requestedAt: "2022-09-30T10:21:46.381Z",
+                  },
+                  amount: 45232,
+                  paymentMethod: "Online",
+                  isPaid: true,
+                  nights: 0,
+                  totalPrice: 452320,
+                  paidAt: "2022-11-01T13:40:31.575Z",
+                  vender: "63314b0d55462303bafc7cdf",
+                  bookingDates: [],
+                  checkIn: "2022-10-31T19:00:00.000Z",
+                  checkOut: "2022-11-10T19:00:00.000Z",
+                  bookingTime: "6:37 PM",
+                  createdAt: "2022-11-01T13:39:26.917Z",
+                  status: "cancelled",
+                  updatedAt: "2022-11-01T13:41:14.515Z",
+                  __v: 1,
+                  cancelRequest: true,
+                  refundType: "Direct bank transfer",
+                },
+                {
+                  service: {
+                    name: "63496ee6b82c79927ea7d80a",
+                    image: "test image1",
+                    vender: "63314b0d55462303bafc7cdf",
+                  },
+                  _id: "636121cfd9637489471513f0",
+                  moyasarPaymentId: "a7c9620f-839b-490f-a3c5-481a09123d8a",
+                  user: {
+                    _id: "63314c0055462303bafc7ceb",
+                    phone: 3338888888,
+                    email: "johndoe3ewer@smartbookings.com",
+                    host: true,
+                    company: false,
+                    role: "Vender",
+                    otp: 6746,
+                    verify: true,
+                    status: "Accept",
+                    block: false,
+                    numberOfservices: 0,
+                    __v: 0,
+                    address: "133st, downtown london",
+                    commId: "'22asdfadf3234kljslfjsl'",
+                    firstName: "tes Doeee",
+                    lastName: "Jeneeee",
+                    nationality: "Pakistanidd",
+                    balance: 453077,
+                    dob: "1996-08-21T07:00:00.000Z",
+                    file: "hi",
+                    deviceToken: null,
+                    requestedAt: "2022-09-30T10:21:46.381Z",
+                  },
+                  amount: 45232,
+                  paymentMethod: "Online",
+                  isPaid: true,
+                  nights: 0,
+                  totalPrice: 452320,
+                  paidAt: "2022-11-01T13:40:31.575Z",
+                  vender: "63314b0d55462303bafc7cdf",
+                  bookingDates: [],
+                  checkIn: "2022-10-31T19:00:00.000Z",
+                  checkOut: "2022-11-10T19:00:00.000Z",
+                  bookingTime: "6:37 PM",
+                  createdAt: "2022-11-01T13:39:26.917Z",
+                  status: "cancelled",
+                  updatedAt: "2022-11-01T13:41:14.515Z",
+                  __v: 1,
+                  cancelRequest: true,
+                  refundType: "Direct bank transfer",
+                },
+                {
+                  service: {
+                    name: "63496ee6b82c79927ea7d80a",
+                    image: "test image1",
+                    vender: "63314b0d55462303bafc7cdf",
+                  },
+                  _id: "636121cfd9637489471513f0",
+                  moyasarPaymentId: "a7c9620f-839b-490f-a3c5-481a09123d8a",
+                  user: {
+                    _id: "63314c0055462303bafc7ceb",
+                    phone: 3338888888,
+                    email: "johndoe3ewer@smartbookings.com",
+                    host: true,
+                    company: false,
+                    role: "Vender",
+                    otp: 6746,
+                    verify: true,
+                    status: "Accept",
+                    block: false,
+                    numberOfservices: 0,
+                    __v: 0,
+                    address: "133st, downtown london",
+                    commId: "'22asdfadf3234kljslfjsl'",
+                    firstName: "tes Doeee",
                     lastName: "Jeneeee",
                     nationality: "Pakistanidd",
                     balance: 453077,
@@ -481,7 +1044,7 @@ export default {
                     "2022-11-08T19:00:00.000Z",
                     "2022-11-09T19:00:00.000Z",
                   ],
-                  checkIn: "2022-10-31T19:00:00.000Z",
+                  checkIn: "2022-10-31T20:00:00.000Z",
                   checkOut: "2022-11-10T19:00:00.000Z",
                   bookingTime: "11:52 AM",
                   createdAt: "2022-11-02T06:45:22.982Z",
@@ -552,24 +1115,43 @@ export default {
             },
           ],
         };
-        this.total = this.dataCard.totalBookings;
-        console.log(this.dataCard, "-==>");
+        this.total = res.totalBookings;
+        this.dataCard = res.result;
+        this.pageSelected = 1;
+        this.clickCallback(1);
       } catch (error) {
         console.log(error);
       }
     },
-    ServiceModelShow() {
-      this.serviceModel = !this.serviceModel;
+    selected(val) {
+      this.tab = val;
+      this.pageSelected = 1;
+      this.clickCallback(1);
     },
     clickCallback(num) {
-      this.$refs.slider.slideTo(num);
+      var copyFrom = num * 10 - 10;
+      var copyTo = num * 10;
+      var filtereByTabs = this.dataCard.filter((e) => {
+        var val =
+          this.tab.toLowerCase() != "upcoming"
+            ? this.tab.toLowerCase()
+            : "pending";
+        return e.status == val;
+      });
+      this.pageCount = Math.ceil(filtereByTabs[0].booking.length / 10);
+      this.total = filtereByTabs[0].booking.length;
+      this.filteredData = filtereByTabs[0].booking.slice(copyFrom, copyTo);
+    },
+    ServiceModelShow(data) {
+      this.modelData = data;
+      this.serviceModel = !this.serviceModel;
     },
   },
 };
 </script>
 <style scoped>
 .service-booking {
-  padding: 30px 0;
+  padding: 30px 0 15px 0;
 }
 .service-booking h1 {
   font-size: 20px;
@@ -649,6 +1231,70 @@ export default {
   color: #000000;
   opacity: 0.7;
   font-size: 12px;
+}
+/* // tabs */
+.detail-tabs {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px 0;
+}
+.detail-tabs .tabs {
+  box-shadow: 0px 0px 10px #0000001a;
+  border-radius: 11px;
+  opacity: 1;
+  width: 35%;
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.detail-tabs .tabs p {
+  letter-spacing: 0px;
+  color: #000000;
+  opacity: 0.4;
+  font-size: 12px;
+  padding: 15px 25px;
+  cursor: pointer;
+}
+.detail-tabs .tabs .active {
+  color: #000000;
+  background-color: #febb12;
+  border-radius: 12px;
+  opacity: 1;
+}
+.detail-tabs .tabs p:hover,
+.detail-tabs .tabs p:active {
+  color: #000000;
+  background-color: #febb12;
+  border-radius: 12px;
+  opacity: 1;
+}
+.booking-search {
+  display: flex;
+  align-items: center;
+  box-shadow: 0px 0px 10px #0000001a;
+  border-radius: 11px;
+  padding:10px 15px;
+  margin: 0 20px;
+  width: 28%;
+}
+.booking-search .primary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.booking-search .primary input {
+  border: none;
+  color: #a9a9a9;
+  outline: none;
+}
+.booking-search .primary input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #a9a9a9;
+}
+.booking-search .primary img {
+  width: 20px;
+  cursor:pointer;
 }
 @media (max-width: 479px) and (min-width: 320px) {
   .service-detail {

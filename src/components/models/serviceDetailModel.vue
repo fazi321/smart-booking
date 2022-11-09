@@ -10,7 +10,7 @@
       <div class="service-details">
         <div>
           <p>Customer Name</p>
-          <p>Lorem Ipsum</p>
+          <p>{{modelData.user && modelData.user.firstName}}</p>
         </div>
         <div>
           <p>Booking ID</p>
@@ -26,23 +26,23 @@
         </div>
         <div>
           <p>Booking Date</p>
-          <p>24/05/2022</p>
+          <p>{{ getDate(modelData.checkIn) }}</p>
         </div>
         <div>
           <p>Booking Time</p>
-          <p>11:00 PM</p>
+          <p>{{modelData.bookingTime}}</p>
         </div>
         <div>
           <p>Email</p>
-          <p>loremipsum@gmail.com</p>
+          <p>{{modelData.user && modelData.user.email}}</p>
         </div>
         <div>
           <p>Mobile Number</p>
-          <p>+966 12145678</p>
+          <p>{{modelData.user && modelData.user.phone}}</p>
         </div>
         <div>
           <p>Service Name</p>
-          <p>Lorem Ipsum Hotel</p>
+          <p>{{modelData.service && modelData.service.name}}</p>
         </div>
         <div>
           <p>Location</p>
@@ -50,27 +50,29 @@
         </div>
         <div>
           <p>Nights</p>
-          <p>Lorem Ipsum</p>
+          <p>{{modelData.nights}}</p>
         </div>
         <div>
           <p>Check-in Date</p>
-          <p>22/05/2022</p>
+          <p>{{ getDate(modelData.checkIn) }}</p>
         </div>
         <div>
           <p>Check-out Date</p>
-          <p>24/05/2022</p>
+          <p>{{ getDate(modelData.checkOut) }}</p>
         </div>
         <div>
           <p>Check-in Time</p>
           <p>11:00 AM</p>
+          <p>{{ getTime(modelData.checkIn) }}</p>
         </div>
         <div>
           <p>Check-out Time</p>
           <p>12:00 PM</p>
+          <p>{{ getTime(modelData.checkOut) }}</p>
         </div>
         <div>
           <p>Total Price</p>
-          <p>SAR 500</p>
+          <p>SAR {{modelData.totalPrice}}</p>
         </div>
       </div>
     </div>
@@ -80,10 +82,20 @@
 <script>
 export default {
   name: "ServiceDetailModel",
+  props:['modelData'],
   data() {
     return {};
   },
   methods: {
+    getDate(val) {
+      var d = new Date(val);
+      return d.toLocaleDateString("en-GB");
+    },
+    getTime(val) {
+      console.log(val, '=>')
+      var d = new Date(val);
+      return d.toLocaleTimeString("en-GB");
+    },
     closeSlide() {
       this.$parent.$parent.serviceModel = false;
     },

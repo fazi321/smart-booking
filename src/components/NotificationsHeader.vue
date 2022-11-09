@@ -7,33 +7,29 @@
       <div class="head-title">
         <h1>Notifications</h1>
       </div>
-      <div>
-        <div class="primary-container">
-          <div class="secondry-container">
-            <img src="../assets/images/imageProfile.jpeg" />
-          </div>
-          <div>
-            <div>
-              <h4>Jhon Doe</h4>
-              <p>this is test description in english</p>
+      <section class="message-section" v-if="!loading">
+        <div v-if="notifications && notifications.length">
+          <div v-for="(message, index) in notifications" :key="index">
+            <div class="primary-container">
+              <div class="secondry-container">
+                <img src="../assets/images/imageProfile.jpeg" />
+              </div>
+              <div>
+                <div>
+                  <h4>{{ message.title }}</h4>
+                  <p>{{ message.descripton }}</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <!-- / -->
-      <div>
-        <div class="primary-container">
-          <div class="secondry-container">
-            <img src="../assets/images/imageProfile.jpeg" />
-          </div>
-          <div>
-            <div>
-              <h4>Jhon Doe</h4>
-              <p>this is test description in english</p>
-            </div>
-          </div>
+        <div v-else class="not-found">
+          <h1>Not Found</h1>
         </div>
-      </div>
+      </section>
+      <section v-else class="loading">
+        <h1>Loading...</h1>
+      </section>
     </div>
   </section>
 </template>
@@ -45,14 +41,30 @@ export default {
     return {
       notifications: [],
       dropDown: false,
+      //
+      loading: false,
     };
   },
   methods: {
     opendropDown() {
       this.dropDown = !this.dropDown;
     },
+    async getNotifications() {
+      this.loading = true;
+      try {
+        var response = await this.$axios.get("vender/notification");
+        if (response) {
+          this.notifications = response.data;
+          this.loading = false;
+        }
+      } catch (error) {
+        this.loading = false;
+        console.log(error);
+      }
+    },
   },
   mounted() {
+    this.getNotifications();
     var close = () => {
       this.dropDown = false;
     };
@@ -86,7 +98,7 @@ export default {
   min-width: 288px;
   left: -61%;
   right: 0;
-  top: 43px;
+  top: 51px;
   height: max-content;
   padding-bottom: 15px;
   overflow: hidden;
@@ -122,5 +134,13 @@ export default {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+}
+.message-section {
+  height: 300px;
+  overflow-y: scroll;
+}
+.loading,
+.not-found {
+  padding: 10px;
 }
 </style>

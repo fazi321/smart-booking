@@ -89,8 +89,10 @@ export default {
         }
       }
     });
+    
   },
   methods: {
+    
     userModel(){
       this.userName = true;
     },

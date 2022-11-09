@@ -48,7 +48,7 @@ export default {
       try {
         this.loading = true;
         var res = await this.$axios.get(`vender/services`);
-        this.dataCard = res.data.service;
+        this.dataCard = res.data;
         this.loading = false;
       } catch (error) {
         this.loading = false;
