@@ -104,7 +104,7 @@
           </div>
         </div>
       </div>
-      <button class="card-form__button" v-on:click="invaildCard">Submit</button>
+      <button class="card-form__button" v-on:click="invaildCard" :disabled="loading">{{!loading?'Submit': 'Loading...'}}</button>
     </div>
   </div>
 </template>
@@ -154,6 +154,7 @@ export default {
         };
       },
     },
+    loading:[Boolean],
     backgroundImage: [String, Object],
     randomBackgrounds: {
       type: Boolean,

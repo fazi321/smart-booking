@@ -15,6 +15,7 @@ import Terms from "../views/Terms.vue";
 import MyServices from "../views/MyServices.vue";
 import Favourites from "../views/Favourites.vue";
 import Search from "../views/SearchView.vue";
+import SuccessPage from "../views/successPage.vue";
 
 const routes = [
   {
@@ -91,6 +92,11 @@ const routes = [
     path: "/search",
     name: "search",
     component: Search,
+  },
+  {
+    path: "/success",
+    name: "successPage",
+    component: SuccessPage,
   },
   {
     path: "/about",

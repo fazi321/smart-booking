@@ -137,7 +137,12 @@
                 <label class="checkbox-container">
                   <img src="../../assets/images/master.png" />
                   <img src="../../assets/images/visa.svg" />
-                  <input type="radio" name="payments" v-model="paymentMethod" />
+                  <input
+                    type="radio"
+                    name="payments"
+                    value="Visa or MasterCard"
+                    @change="paymentMethods"
+                  />
                   <span class="checkmark"></span>
                 </label>
                 <p>You can pay with Visa or MasterCard</p>
@@ -145,7 +150,12 @@
               <div class="payment-option">
                 <label class="checkbox-container">
                   <img src="../../assets/images/pay.svg" />
-                  <input type="radio" name="payments" v-model="paymentMethod" />
+                  <input
+                    type="radio"
+                    name="payments"
+                    value="applepay"
+                    @change="paymentMethods"
+                  />
                   <span class="checkmark"></span>
                 </label>
                 <p>You can pay with ApplePay</p>
@@ -212,6 +222,7 @@
           </div>
           <CardForm
             :form-data="formData"
+            :loading="payBtnLoad"
             @input-card-number="updateCardNumber"
             @input-card-name="updateCardName"
             @input-card-month="updateCardMonth"
@@ -309,7 +320,7 @@ export default {
   data() {
     return {
       rooms: 1,
-      paymentMethod: false,
+      paymentMethod: "",
       bookingModel: true,
       paymentModel: false,
       // loading
@@ -332,6 +343,8 @@ export default {
         cardYear: "",
         cardCvv: "",
       },
+      //
+      payBtnLoad: false,
     };
   },
   computed: {
@@ -346,6 +359,9 @@ export default {
     },
   },
   methods: {
+    paymentMethods(event) {
+      this.paymentMethod = event.target.value;
+    },
     updateCardNumber(val) {
       this.formData.cardNumber = val;
     },
@@ -354,7 +370,6 @@ export default {
     },
     updateCardMonth(val) {
       this.formData.cardMonth = val;
-      console.log(val);
     },
     updateCardYear(val) {
       this.formData.cardYear = val;
@@ -440,37 +455,43 @@ export default {
       if (!cardName) {
         return (this.error.name = true);
       }
-      var payload = {};
-      payload.cardNumber = cardNumberNotMask;
-      payload.cardMonth = cardMonth;
-      payload.cardYear = cardYear;
-      payload.cardCvv = cardCvv;
-      payload.cardName = cardName;
-
+      // var payload = {};
+      // payload.cardNumber = cardNumberNotMask;
+      // payload.cardMonth = cardMonth;
+      // payload.cardYear = cardYear;
+      // payload.cardCvv = cardCvv;
+      // payload.cardName = cardName;
       const data = {
-        amount: 2000,
+        amount: this.storeState.price.dayPrice * this.rooms,
         currency: "SAR",
-        source: {
-          type: "creditcard",
-          name: "test name",
-          number: "4111111111111111",
-          cvc: 123,
-          month: 2,
-          year: 23,
-        },
-        callback_url: "http://localhost:8080/",
+        callback_url: `https://luxury-cheesecake-13042c.netlify.app/success?bookid=${this.$route.params.id}`,
       };
-      // const config = {
-      //     url: 'https://api.moyasar.com/v1/payments',
-      //     data,
-      // };
+      if (this.paymentMethod != "applepay") {
+        data.source = {
+          type: "creditcard",
+          name: cardName,
+          number: cardNumberNotMask.replace(/\s/g, ""),
+          cvc: parseInt(cardCvv),
+          month: parseInt(cardMonth),
+          year: parseInt(cardYear),
+        };
+      } else {
+        console.log("apple");
+      }
+      var config = {
+        headers: {
+          Authorization:
+            "Basic cGtfdGVzdF92U0pzS3prRWNkVHNSajhXOENLNHZVZ0padEVQaTJuZ0VldUVBQ1My",
+        },
+      };
       // fetch("https://api.moyasar.com/v1/payments", {
       //   method: "POST",
       //   headers: {
       //     Authorization: 'Basic cGtfdGVzdF92U0pzS3prRWNkVHNSajhXOENLNHZVZ0padEVQaTJuZ0VldUVBQ1My'
       //     // Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzQzZmEzYWYwYmIyYjU2Yjk3OGI1YmUiLCJwaG9uZSI6MzMzODg4ODg4OCwiYmFsYW5jZSI6MCwiZW1haWwiOiJqb2huZG9lQHNtYXJ0Ym9va2luZ3MuY29tIiwiaG9zdCI6dHJ1ZSwiY29tcGFueSI6ZmFsc2UsInJvbGUiOiJWZW5kZXIiLCJvdHAiOjg3NzksInZlcmlmeSI6dHJ1ZSwic3RhdHVzIjoiQWNjZXB0IiwiYmxvY2siOmZhbHNlLCJudW1iZXJPZnNlcnZpY2VzIjowLCJfX3YiOjAsImFkZHJlc3MiOiIxMzNzdCwgZG93bnRvd24gbG9uZG9uIiwiY29tbUlkIjoiMjIzMjM0a2xqc2xmanNsIiwiZmlyc3ROYW1lIjoiRmVyb3oiLCJsYXN0TmFtZSI6IlNoYWgiLCJuYXRpb25hbGl0eSI6IkVuZ2xpc2giLCJyZXF1ZXN0ZWRBdCI6IjIwMjItMTAtMTBUMTA6NTc6MjIuOTc2WiIsImlhdCI6MTY2NzgyMzAzOH0.3akx6V0OluNjyg_gtCEw8bN60-v_6Mq6VcegBz7b2Yg",
       //   },
-      //   data
+      //    data,
+      //  config
       // })
       //   .then((res) => res.json())
       //   .then((response) => {
@@ -478,13 +499,9 @@ export default {
       //   }).catch((e)=>
       //   {console.log(e)}
       //   );
-      var config = {
-        headers: {
-          Authorization:
-            "Basic cGtfdGVzdF92U0pzS3prRWNkVHNSajhXOENLNHZVZ0padEVQaTJuZ0VldUVBQ1My",
-        },
-      };
+
       try {
+        this.payBtnLoad = true;
         var result = await this.$axios.post(
           "https://api.moyasar.com/v1/payments",
           data,
@@ -493,10 +510,11 @@ export default {
         if (result) {
           var { transaction_url } = result.data.source;
           // this.$router.push(transaction_url);
-          window.location.href = transaction_url
-          console.log(result, "=>");
+          window.location.href = transaction_url;
+          this.payBtnLoad = false;
         }
       } catch (error) {
+        this.payBtnLoad = false;
         console.log(error);
       }
       // this.$axios.post(config)
@@ -536,7 +554,16 @@ export default {
       var checkOut = this.formateDate(checkOutDate, timeOut);
       var amount = this.storeState.price.dayPrice;
       var nights = this.rooms;
-      var paymentMethod = this.paymentMethod ? "online" : "";
+      if (!this.paymentMethod) {
+        this.$swal({
+          icon: "error",
+          title: `Please Select Payment Method!`,
+          showConfirmButton: false,
+          timer: 3000,
+        });
+        return;
+      }
+      var paymentMethod = this.paymentMethod;
       var payload = {
         amount,
         nights,
@@ -552,7 +579,6 @@ export default {
         );
         if (res) {
           this.id = res.data.booking._id;
-          console.log("=->", this.id);
           this.bookingModel = false;
           this.paymentModel = true;
           this.loadingBook = false;
