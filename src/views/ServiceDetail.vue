@@ -288,7 +288,7 @@ export default {
   outline: none;
   border-radius: 7px;
   opacity: 1;
-  background: #fc9501;
+  background: #febb12;
   text-align: center;
   letter-spacing: 0px;
   color: #ffffff;
