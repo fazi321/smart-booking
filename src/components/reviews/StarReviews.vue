@@ -1,13 +1,13 @@
 <template>
   <section>
-    <div class="rating">
+    <div :class="['rating',{'vendor-profile': vendor}]">
       <span
         :class="['star', { gray: star > review }]"
         v-for="(star, index) in 5"
         :key="index"
         >&starf;</span
       >
-      <span class="rating-counter">(381)</span>
+      <span class="rating-counter" v-if="!vendor">(381)</span>
     </div>
   </section>
 </template>
@@ -15,7 +15,7 @@
 <script>
 export default {
   name: "StarReviews",
-  props: ["review"],
+  props: ["review","vendor"],
 };
 </script>
 
@@ -41,5 +41,9 @@ export default {
   color: #000000;
   opacity: 0.6;
   font-size: 14px;
+}
+.vendor-profile .star{
+  font-size:24px!important;
+  margin-right: 1px;
 }
 </style>
