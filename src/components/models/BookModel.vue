@@ -464,7 +464,7 @@ export default {
       const data = {
         amount: this.storeState.price.dayPrice * this.rooms,
         currency: "SAR",
-        callback_url: `http://localhost:8080/success?bookid=${this.$route.params.id}`,
+        callback_url: `https://luxury-cheesecake-13042c.netlify.app/success?bookid=${this.$route.params.id}`,
       };
       if (this.paymentMethod != "applepay") {
         data.source = {
