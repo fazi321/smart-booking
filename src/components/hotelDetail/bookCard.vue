@@ -1,11 +1,10 @@
 <template>
   <router-link to="/hotel-detail" class="filter-card">
-    <div class="image">
+    <div class="image" v-if="dataApi">
       <img
-        :src="storeState.description.images[0]"
-        v-if="checkLink(storeState.description.images[0])"
+        :src="dataApi.booking.service.image"
       />
-      <img src="../../assets/images/hotel-img.svg" v-else />
+      <!-- <img src="../../assets/images/hotel-img.svg" /> -->
     </div>
     <div class="card-detail">
       <div class="heading" v-if="storeState && storeState.description">
@@ -41,6 +40,7 @@
 <script>
 export default {
   name: "BookCard",
+  props:["dataApi"],
   computed: {
     storeState: function () {
       return this.$store.state.details && this.$store.state.details.details;

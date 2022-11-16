@@ -1,19 +1,33 @@
 <template>
-  <router-link :to="`${dataItem.link}`" class="smart-card" v-if="dataItem">
-    <div class="image">
-      <img :src="require(`../../assets/images/${dataItem.image}`)" />
+  <section class="smart-card" v-if="!city">
+    <router-link :to="`${dataItem.link}`" v-if="dataItem">
+      <div class="image">
+        <img :src="require(`../../assets/images/${dataItem.image}`)" />
+      </div>
+      <div class="detail">
+        <h5>{{ dataItem.category }}</h5>
+        <p>{{ dataItem.categoryCount }}</p>
+      </div>
+    </router-link>
+  </section>
+  <!-- // for city  -->
+  <section class="smart-card" v-else>
+    <div v-if="dataItem">
+      <div class="image">
+        <img :src="require(`../../assets/images/${dataItem.image}`)" />
+      </div>
+      <div class="detail">
+        <h5>{{ dataItem.category }}</h5>
+        <p>{{ dataItem.categoryCount }}</p>
+      </div>
     </div>
-    <div class="detail">
-      <h5>{{dataItem.category}}</h5>
-      <p>{{dataItem.categoryCount}}</p>
-    </div>
-  </router-link>
+  </section>
 </template>
 
 <script>
 export default {
-    name: "BookingCard",
-    props:['dataItem'],
+  name: "BookingCard",
+  props: ["dataItem", "city"],
 };
 </script>
 
@@ -24,6 +38,7 @@ export default {
   box-shadow: 0px 0px 10px #0000001a;
   border-radius: 17px;
   opacity: 1;
+  cursor: pointer;
 }
 .smart-card .image img {
   width: 100%;

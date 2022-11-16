@@ -61,7 +61,20 @@ export default {
   data() {
     return {};
   },
+  mounted(){
+    this.getReviews()
+  },
   methods: {
+    async getReviews(){
+      try {
+        var res = await this.$axios.get(`services/${this.$route.params.id}/review`);
+        if(res){
+          console.log(res, '==>')
+        } 
+      } catch (error) {
+        console.log('error')
+      }
+    },
     showModel(){
       this.$emit('openReview')
     },

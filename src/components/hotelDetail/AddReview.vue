@@ -11,21 +11,22 @@
           <h1>Add Review</h1>
         </div>
         <section class="profile-container">
-          <form>
+          <form @submit="send">
             <div class="heading-name">
               <h1>You can add your review here</h1>
             </div>
             <div class="text-area">
               <textarea
-                name=""
-                id=""
+                v-model="text"
                 cols="30"
                 rows="8"
                 placeholder="Write Review..."
               ></textarea>
             </div>
             <div class="btn-container">
-              <button class="btn">Submit</button>
+              <button :disabled="loading" type="submit" class="btn">
+                {{ !loading ? "Submit" : "Loading..." }}
+              </button>
             </div>
           </form>
         </section>
@@ -39,11 +40,39 @@ export default {
   name: "vendorProfileModle",
   props: ["model"],
   data() {
-    return {};
+    return {
+      text: "",
+      laoding: false,
+    };
   },
   methods: {
+    async send(event) {
+      event.preventDefault();
+      this.loading = true;
+      try {
+        var res = this.$axios.post(`booking/${this.$route.params.id}`, {
+          // rating: 2,
+          comment: "wow so fast",
+        });
+        if (res.data) {
+          if (res.data.message) {
+            this.$swal({
+              icon: "success",
+              title: res.data.message,
+              showConfirmButton: false,
+              timer: 3000,
+            });
+            this.loading = false;
+            this.close();
+          }
+        }
+      } catch (error) {
+        this.loading = false;
+        console.log(error);
+      }
+    },
     close() {
-      this.$emit('close')
+      this.$emit("close");
     },
   },
 };
@@ -140,18 +169,18 @@ img {
 .btn-container {
   display: flex;
   justify-content: center;
-  width:100%;
+  width: 100%;
 }
 .btn-container .btn {
   border-radius: 50px;
-    background: #febb12;
-    color: #000;
-    box-shadow: 0 10px 10px -5px #00000038;
-    border: none;
-    font-size: 18px;
-    min-width: 200px;
-    margin-top:20px;
-    padding:10px;
+  background: #febb12;
+  color: #000;
+  box-shadow: 0 10px 10px -5px #00000038;
+  border: none;
+  font-size: 18px;
+  min-width: 200px;
+  margin-top: 20px;
+  padding: 10px;
 }
 /* responsive */
 @media (max-width: 479px) and (min-width: 320px) {

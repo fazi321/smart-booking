@@ -78,7 +78,7 @@
           </div>
         </div>
         <div>
-          <input type="number" :placeholder="'1'" v-model="search.rooms" />
+          <input type="number" :placeholder="'1'" v-model="search.rooms" min='1'/>
         </div>
       </div>
       <!-- block -->

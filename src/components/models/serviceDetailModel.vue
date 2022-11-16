@@ -14,7 +14,7 @@
         </div>
         <div>
           <p>Booking ID</p>
-          <p>Lorem Ipsum</p>
+          <p>{{modelData.bookingId}}</p>
         </div>
         <div>
           <p>Customer ID</p>
@@ -22,7 +22,7 @@
         </div>
         <div>
           <p>Vendor ID</p>
-          <p>Lorem Ipsum</p>
+          <p>{{modelData.user && modelData.user.userId}}</p>
         </div>
         <div>
           <p>Booking Date</p>
@@ -46,7 +46,7 @@
         </div>
         <div>
           <p>Location</p>
-          <p>Riyadh</p>
+          <p>{{modelData.user && modelData.user.address}}</p>
         </div>
         <div>
           <p>Nights</p>
@@ -180,7 +180,6 @@ export default {
       return d.toLocaleDateString("en-GB");
     },
     getTime(val) {
-      console.log(val, "=>");
       var d = new Date(val);
       return d.toLocaleTimeString("en-GB");
     },

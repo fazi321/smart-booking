@@ -75,7 +75,7 @@
               <td>
                 {{ item.user && item.user.firstName }}
               </td>
-              <td>Lorem Ipsum</td>
+              <td>{{item.bookingId}}</td>
               <td>{{ getDate(item.checkIn) }}</td>
               <td>{{ item.bookingTime }}</td>
               <td>{{ item.nights }}</td>

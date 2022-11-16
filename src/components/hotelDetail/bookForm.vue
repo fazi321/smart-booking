@@ -17,10 +17,10 @@
           type="text"
           v-model="inputDetail.checkInDate"
           placeholder="Check-in date"
+          readonly
         />
         <input
           type="date"
-          v-model="inputDetail.checkInDate"
           id="date"
           ref="cn"
           @change="dateChange($event, 'cn')"
@@ -37,11 +37,11 @@
         <input
           type="text"
           v-model="inputDetail.checkOutDate"
-          placeholder="Check-in date"
+          placeholder="Check-out date"
+          readonly
         />
         <input
           type="date"
-          v-model="inputDetail.checkOutDate"
           id="date"
           ref="co"
           @change="dateChange($event, 'co')"
@@ -91,12 +91,14 @@
         <router-link to="/messages" class="image-container">
           <img src="../../assets/images/chaticon.svg" />
         </router-link>
-        <div class="book-btn" @click="BookingModelShow">
-          <button>Book</button>
+        <div class="book-btn">
+          <button :disabled="loading" @click="BookingModelShow">
+            {{ !loading ? "Book" : "Loading..." }}
+          </button>
         </div>
       </section>
     </div>
-    <BookModel v-if="bookingModel" :checkIn="inputDetail" />
+    <BookModel v-if="bookingModel" :dataApi="dataBookingApi" />
   </section>
 </template>
 
@@ -110,6 +112,8 @@ export default {
     return {
       bookingModel: false,
       inputDetail: {},
+      dataBookingApi: null,
+      loading: false,
       error: {},
     };
   },
@@ -132,9 +136,17 @@ export default {
         );
       }
       if (val == "cn") {
+        if (!e.target.value) {
+          this.inputDetail.checkInDate = null;
+          return;
+        }
         this.inputDetail.checkInDate = getDate.toLocaleDateString("en-GB");
       }
       if (val == "co") {
+        if (!e.target.value) {
+          this.inputDetail.checkOutDate = null;
+          return;
+        }
         this.inputDetail.checkOutDate = getDate.toLocaleDateString("en-GB");
       }
     },
@@ -169,13 +181,43 @@ export default {
       var timeIs = hours + ":" + minutes + ":" + meridian;
       return timeIs;
     },
-    BookingModelShow() {
+    isoString(val) {
+      const dateStr = val;
+      const [dateComponents, timeComponents] = dateStr.split(" ");
+      const [year, month, day] = dateComponents.split("-");
+      const [hours, minutes, seconds] = timeComponents.split(":");
+      const date = new Date(
+        +year,
+        +month - 1,
+        +day,
+        +hours,
+        +minutes,
+        +seconds
+      );
+      return date.toISOString();
+      // console.log(date.toLocaleString());
+      // console.log(date.getDate());
+    },
+    formateDate(date, time) {
+      const [day, month, year] = date.split("/");
+      const result = [day, month, year].reverse().join("-");
+      var dateString = result.toString() + " " + time + ":00";
+      //  converting date to iso string
+      return this.isoString(dateString);
+    },
+    async BookingModelShow() {
       if (!this.user) {
         this.$store.commit("auth/MODEL_OPEN", true);
         return;
       }
-      var { checkInDate, checkOutDate, checkInTime, checkOutTime } =
-        this.inputDetail;
+      var {
+        checkInDate,
+        checkOutDate,
+        checkInTime,
+        checkOutTime,
+        timeIn,
+        timeOut,
+      } = this.inputDetail;
       if (!checkInDate) {
         return (this.error.checkInDate = true);
       }
@@ -188,7 +230,40 @@ export default {
       if (!checkOutTime) {
         return (this.error.checkOutTime = true);
       }
-      this.bookingModel = !this.bookingModel;
+      var checkIn = this.formateDate(checkInDate, timeIn);
+      var checkOut = this.formateDate(checkOutDate, timeOut);
+      var amount = 2000;
+      var payload = {
+        amount,
+        // nights,
+        paymentMethod: "online",
+        checkIn,
+        checkOut,
+      };
+      try {
+        this.loading = true;
+        const res = await this.$axios.post(
+          `booking/${this.$route.params.id}`,
+          payload
+        );
+        if (res) {
+          // this.id = res.data.booking._id;
+          // this.bookingModel = false;
+          // this.paymentModel = true;
+          this.loading = false;
+          this.dataBookingApi = res.data;
+          this.bookingModel = true;
+        }
+      } catch (error) {
+        this.loading = false;
+        this.$swal({
+          icon: "error",
+          title: `${error.response.data.error}!`,
+          showConfirmButton: false,
+          timer: 3000,
+        });
+        console.log(error);
+      }
     },
     showModelDate(val) {
       var isShow = this.$refs[val];
@@ -291,7 +366,7 @@ export default {
 .book-btn button {
   border: none;
   outline: none;
-  padding: 15px 50px;
+  padding: 15px 0;
   text-align: center;
   letter-spacing: 0px;
   color: #04304b;
@@ -302,6 +377,7 @@ export default {
   opacity: 1;
   background: #febb12;
   cursor: pointer;
+  width: 135px;
 }
 @media (max-width: 479px) and (min-width: 320px) {
 }

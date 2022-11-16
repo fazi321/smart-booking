@@ -78,43 +78,43 @@
         </div>
 
         <div class="main-wrapper">
-          <div class="booking-card">
-            <BookCard />
+          <div class="booking-card" v-if="dataApi">
+            <BookCard :dataApi="dataApi"/>
           </div>
           <div class="service-details">
             <div>
-              <p>Check-in Date</p>
-              <p>{{ checkIn.checkInDate }}</p>
+              <p>Check-in Date </p>
+              <p v-if="dataApi">{{showLocalDate(dataApi.booking.checkIn)}}</p>
             </div>
             <div>
               <p>Check-out Date</p>
-              <p>{{ checkIn.checkOutDate }}</p>
+              <p v-if="dataApi">{{showLocalDate(dataApi.booking.checkOut)}}</p>
             </div>
             <div>
               <p>Nights</p>
               <div class="count">
-                <img
+                <!-- <img
                   src="../../assets/images/sub.png"
                   @click="executer('dec')"
-                />
-                <span>{{ rooms }}</span>
-                <img
+                /> -->
+                <span>{{ dataApi.booking.nights }}</span>
+                <!-- <img
                   src="../../assets/images/plus.png"
                   @click="executer('inc')"
-                />
+                /> -->
               </div>
             </div>
             <div>
               <p>Vendor ID</p>
-              <p>{{ storeState.vender }}</p>
+              <p>{{ dataApi.booking.vender }}</p>
             </div>
           </div>
           <!-- Payment Options  -->
           <section class="Payment">
             <h6>Payment Options</h6>
             <form class="form">
-              <label class="checkbox-container">
-                Full Payment (SAR {{ storeState.price.dayPrice }})
+              <label class="checkbox-container" v-if="dataApi">
+                Full Payment (SAR {{ dataApi.booking.totalPrice }})
                 <input type="checkbox" />
                 <span class="checkmark"></span>
               </label>
@@ -202,11 +202,11 @@
             </div>
           </div>
         </div>
-        <div class="book-btn">
+        <div class="book-btn" v-if="dataApi">
           <button @click="bookingForm" :disabled="loadingBook">
             {{
               !loadingBook
-                ? `Pay (SAR ${storeState.price.dayPrice * rooms} )`
+                ? `Pay (SAR ${dataApi.booking.totalPrice} )`
                 : "Loading..."
             }}
           </button>
@@ -312,7 +312,7 @@ import CardForm from "@/components/cardPay/CardForm";
 import BookCard from "@/components/hotelDetail/bookCard.vue";
 export default {
   name: "BookModel",
-  props: ["checkIn"],
+  props: ["dataApi"],
   components: {
     BookCard,
     CardForm,
@@ -348,17 +348,24 @@ export default {
     };
   },
   computed: {
+    // eslint-disable-next-line vue/return-in-computed-property
     halfPrice: function () {
-      var price = this.storeState.price.dayPrice;
-      if (!price) return "";
-      var half = Math.round(price / 2);
-      return half;
+      if(this.dataApi){
+        var price =  this.dataApi.booking.totalPrice;
+        if (!price) return "";
+        var half = Math.round(price / 2);
+        return half;
+      }
     },
     storeState: function () {
       return this.$store.state.details && this.$store.state.details.details;
     },
   },
   methods: {
+    showLocalDate(val){
+      const event = new Date(val);
+      return event.toLocaleDateString('en-GB')
+    },
     paymentMethods(event) {
       this.paymentMethod = event.target.value;
     },
@@ -373,7 +380,6 @@ export default {
     },
     updateCardYear(val) {
       this.formData.cardYear = val;
-      console.log(val);
     },
     updateCardCvv(val) {
       this.formData.cardCvv = val;
@@ -462,9 +468,9 @@ export default {
       // payload.cardCvv = cardCvv;
       // payload.cardName = cardName;
       const data = {
-        amount: this.storeState.price.dayPrice * this.rooms,
+        amount: this.dataApi.booking.totalPrice,
         currency: "SAR",
-        callback_url: `https://luxury-cheesecake-13042c.netlify.app/success?bookid=${this.$route.params.id}`,
+        callback_url: `http://localhost:8080/success?bookid=${this.$route.params.id}`,
       };
       if (this.paymentMethod != "applepay") {
         data.source = {
@@ -549,11 +555,11 @@ export default {
       // }
     },
     async bookingForm() {
-      var { checkInDate, timeIn, checkOutDate, timeOut } = this.checkIn;
-      var checkIn = this.formateDate(checkInDate, timeIn);
-      var checkOut = this.formateDate(checkOutDate, timeOut);
-      var amount = this.storeState.price.dayPrice;
-      var nights = this.rooms;
+      // var { checkInDate, timeIn, checkOutDate, timeOut } = this.checkIn;
+      // var checkIn = this.formateDate(checkInDate, timeIn);
+      // var checkOut = this.formateDate(checkOutDate, timeOut);
+      // var amount = this.storeState.price.dayPrice;
+      // var nights = this.rooms;
       if (!this.paymentMethod) {
         this.$swal({
           icon: "error",
@@ -563,36 +569,38 @@ export default {
         });
         return;
       }
-      var paymentMethod = this.paymentMethod;
-      var payload = {
-        amount,
-        nights,
-        paymentMethod,
-        checkIn,
-        checkOut,
-      };
-      try {
-        this.loadingBook = true;
-        const res = await this.$axios.post(
-          `booking/${this.$route.params.id}`,
-          payload
-        );
-        if (res) {
-          this.id = res.data.booking._id;
-          this.bookingModel = false;
-          this.paymentModel = true;
-          this.loadingBook = false;
-        }
-      } catch (error) {
-        this.loadingBook = false;
-        this.$swal({
-          icon: "error",
-          title: `${error.response.data.error}!`,
-          showConfirmButton: false,
-          timer: 3000,
-        });
-        console.log(error);
-      }
+      this.bookingModel = false;
+      this.paymentModel = true;
+      // var paymentMethod = this.paymentMethod;
+      // var payload = {
+      //   amount,
+      //   nights,
+      //   paymentMethod,
+      //   checkIn,
+      //   checkOut,
+      // };
+      // try {
+      //   this.loadingBook = true;
+      //   const res = await this.$axios.post(
+      //     `booking/${this.$route.params.id}`,
+      //     payload
+      //   );
+      //   if (res) {
+      //     this.id = res.data.booking._id;
+      //     this.bookingModel = false;
+      //     this.paymentModel = true;
+      //     this.loadingBook = false;
+      //   }
+      // } catch (error) {
+      //   this.loadingBook = false;
+      //   this.$swal({
+      //     icon: "error",
+      //     title: `${error.response.data.error}!`,
+      //     showConfirmButton: false,
+      //     timer: 3000,
+      //   });
+      //   console.log(error);
+      // }
     },
     executer(val) {
       if (val == "inc") {

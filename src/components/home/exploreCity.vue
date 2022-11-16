@@ -8,6 +8,14 @@
         v-for="(item, index) in smartBooking"
         :dataItem="item"
         :key="index"
+        @click="goToUrl(item)"
+        :city="true"
+      />
+      <CategoryModel
+        :model="categoryModel"
+        :city="selectedCity"
+        @search="searchNow"
+        @close="close"
       />
     </div>
   </div>
@@ -15,20 +23,37 @@
 
 <script>
 import SmartBookingCard from "@/components/common/BookingCard.vue";
+import CategoryModel from "@/components/home/categoryModel.vue";
 export default {
   name: "ExploreCity",
   components: {
     SmartBookingCard,
+    CategoryModel,
   },
   data() {
     return {
+      categoryModel: false,
       smartBooking: [
         { title: "Jeddah", image: "jeddah.png", categoryCount: "681" },
         { title: "Medina", image: "medina.png", categoryCount: "681" },
         { title: "Riyadh", image: "riyadh.png", categoryCount: "681" },
         { title: "Mecca", image: "mecca.png", categoryCount: "681" },
       ],
+      //
+      selectedCity: {},
     };
+  },
+  methods: {
+    searchNow(val){
+      this.$router.push(`search?city=${this.selectedCity.title}&categoryId=${val._id}&page=1`)
+    },
+    goToUrl(val) {
+      this.selectedCity = val;
+      this.categoryModel = true;
+    },
+    close() {
+      this.categoryModel = false;
+    },
   },
 };
 </script>
