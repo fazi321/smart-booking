@@ -34,10 +34,7 @@
         >
           <span>My Services</span>
         </router-link>
-        <router-link
-          to="/my-bookings"
-          v-else
-        >
+        <router-link to="/my-bookings">
           <span>My Bookings</span>
         </router-link>
       </li>
@@ -55,12 +52,9 @@
         >
           <span>Service Bookings</span>
         </router-link>
-        <router-link
-          to="/service-booking"
-          v-else
-        >
+        <div @click="becomeVendor" v-else>
           <span class="active-color">Become Vendor</span>
-        </router-link>
+        </div>
       </li>
       <li>
         <router-link to="/favourites">
@@ -117,6 +111,9 @@
 <script>
 export default {
   methods: {
+    becomeVendor() {
+      this.$store.commit("details/SET_V_MODEL", true);
+    },
     logOut() {
       this.$store.dispatch("auth/logOut");
       this.$axios.defaults.headers.common["Authorization"] = "";
@@ -136,8 +133,8 @@ export default {
 </script>
 
 <style scoped>
-.active-color{
-  color:#FEBB12;
+.active-color {
+  color: #febb12;
 }
 .dropdown {
   position: absolute;

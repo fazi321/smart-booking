@@ -39,7 +39,7 @@
       </div>
       <NotificationsHeader />
       <AddServiceModel :model="serviceModel" />
-      <VendorModel :model="vendorModel" />
+      <VendorModel :model="vendorModel || $store.state.details.vendor" />
     </section>
   </section>
 </template>

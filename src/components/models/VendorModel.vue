@@ -274,6 +274,7 @@ export default {
       this.isSubmitted = false;
       this.nextStep = null;
       this.istransition = false;
+      this.$store.commit('details/SET_V_MODEL' ,false)
     },
   },
 };

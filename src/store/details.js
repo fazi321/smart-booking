@@ -6,10 +6,14 @@ export default {
     details: [],
     categories: [],
     btnLastLoading: false,
+    vendor:false,
   },
   mutations: {
     SET_DATA(state, data) {
       state.details = data;
+    },
+    SET_V_MODEL(state, data) {
+      state.vendor = data;
     },
     SET_CAT(state, data) {
       state.categories = data;
