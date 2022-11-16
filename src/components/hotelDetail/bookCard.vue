@@ -74,6 +74,7 @@ export default {
 }
 .filter-card .image {
   width: 30%;
+  height: 169px;
 }
 .filter-card .image img {
   width: 100%;
