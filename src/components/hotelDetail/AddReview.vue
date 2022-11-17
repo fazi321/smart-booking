@@ -42,7 +42,7 @@
                   @click="rattingFun(5)"
                   >&starf;</span
                 >
-                <span class="rating-counter">(381)</span>
+                <span class="rating-counter">({{rating}})</span>
               </div>
             </div>
             <div class="text-area">

@@ -18,7 +18,7 @@
               </div>
             </div>
             <div class="profile-name">
-              <h4>Jhon Phillips</h4>
+              <h4>{{vendorInfo.firstName}} {{vendorInfo.lastName}}</h4>
             </div>
             <div class="detail-profile-bottom">
               <div>
@@ -30,14 +30,14 @@
                 <h1>3</h1>
               </div>
             </div>
-            <div class="rating-main">
+            <div class="rating-main" v-if="storeState && storeState.numReviews">
               <div class="rating">
-                <span class="star">&starf;</span>
-                <span class="star">&starf;</span>
-                <span class="star">&starf;</span>
-                <span class="star">&starf;</span>
-                <span class="star gray">&starf;</span>
-                <span class="rating-counter">(381)</span>
+                <span :class="['star',{'yellow':storeState.rating >=1}]">&starf;</span>
+                <span :class="['star',{'yellow':storeState.rating >=2}]">&starf;</span>
+                <span :class="['star',{'yellow':storeState.rating >=3}]">&starf;</span>
+                <span :class="['star',{'yellow':storeState.rating >=4}]">&starf;</span>
+                <span :class="['star',{'yellow':storeState.rating >=5}]">&starf;</span>
+                <span class="rating-counter">({{storeState.rating}})</span>
               </div>
             </div>
           </div>
@@ -58,21 +58,29 @@ export default {
   components: {
     ReviewsVendor,
   },
-  data() {
-    return {};
+  computed: {
+    storeState: function () {
+      return this.$store.state.details.details;
+    },
+    user: function () {
+      return this.$store.state.auth.user;
+    },
   },
-  mounted(){
-    this.getReviews()
+  data() {
+    return {
+      vendorInfo:{},
+    };
   },
   methods: {
     async getReviews(){
+      if(!this.user) return
       try {
-        var res = await this.$axios.get(`vender/profile/6343fa3af0bb2b56b978b5be`);
-        if(res){
-          console.log(res, '==>')
+        var res = await this.$axios.get(`vender/profile/${this.user._id}`);
+        if(res.data){
+          this.vendorInfo = res.data;
         } 
       } catch (error) {
-        console.log('error')
+        console.log(error)
       }
     },
     showModel(){
@@ -80,6 +88,14 @@ export default {
     },
     close() {
       this.$emit('close')
+    },
+  },
+  watch: {
+    "$store.state.auth.user": {
+      immediate: true,
+      handler() {
+        this.getReviews()
+      },
     },
   },
 };
@@ -191,13 +207,14 @@ img {
 }
 .rating .star {
   font-size: 24px;
-  color: #fdc350;
+  color: #efefef;
   margin-right: 5px;
   cursor: pointer;
   line-height: 1;
 }
-.rating .gray {
-  color: #efefef !important;
+.rating .yellow {
+  color: #fdc350!important;
+  
 }
 .rating .rating-counter {
   letter-spacing: 0px;

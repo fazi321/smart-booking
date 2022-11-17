@@ -2,7 +2,7 @@
   <section>
     <div class="top-section">
       <div class="top-head">
-        <h1>Reviews <span>(24)</span></h1>
+        <h1>Reviews <span>({{storeState && storeState.numReviews}})</span></h1>
       </div>
       <div>
         <h1 class="add-riveiw" @click="addModel">+ Add Review</h1>
@@ -10,36 +10,19 @@
     </div>
     <section class="reviews-section">
       <!-- block -->
-      <div class="primary-container">
+      <div class="primary-container" v-for="(review, index) in storeState.reviews" :key="index">
         <div class="secondry-container">
           <img src="../assets/images/imageProfile.jpeg" />
         </div>
         <div>
           <div>
-            <h4>Lorem Ipsum color sit amet, consectetur</h4>
+            <h4>{{review.name}}</h4>
           </div>
           <div>
-            <StarReviews :review="2" :vendor="true" />
+            <StarReviews :review="review.rating" :vendor="true" />
           </div>
           <div class="date-container">
-            <p>03:44 PM 27/04/2022</p>
-          </div>
-        </div>
-      </div>
-      <!-- block -->
-      <div class="primary-container">
-        <div class="secondry-container">
-          <img src="../assets/images/imageProfile.jpeg" />
-        </div>
-        <div>
-          <div>
-            <h4>Lorem Ipsum color sit amet, consectetur</h4>
-          </div>
-          <div>
-            <StarReviews :review="4" :vendor="true" />
-          </div>
-          <div class="date-container">
-            <p>03:44 PM 27/04/2022</p>
+            <p>{{reviewDate(review.createdAt)}}</p>
           </div>
         </div>
       </div>
@@ -53,9 +36,20 @@ export default {
   components: {
     StarReviews,
   },
+  computed: {
+    storeState: function () {
+      return this.$store.state.details.details;
+    },
+  },
   methods: {
     addModel() {
       this.$emit("openReview");
+    },
+    reviewDate(val){
+      const date = new Date(val);
+      var time = date.toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit'});
+      var getDate =date.toLocaleDateString('en-GB');
+      return time + ' ' + getDate
     },
   },
 };

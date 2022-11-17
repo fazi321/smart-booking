@@ -62,6 +62,7 @@ export default {
   justify-content: space-between;
 }
 .btn-review .btn {
+  width:140px;
   background: #febb12;
   color: #000;
   box-shadow: 0 10px 10px -5px #00000038;
