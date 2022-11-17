@@ -15,6 +15,36 @@
             <div class="heading-name">
               <h1>You can add your review here</h1>
             </div>
+            <div class="rating-main">
+              <div class="rating">
+                <span
+                  :class="['star', { yellow: rating >= 1 }]"
+                  @click="rattingFun(1)"
+                  >&starf;</span
+                >
+                <span
+                  :class="['star', { yellow: rating >= 2 }]"
+                  @click="rattingFun(2)"
+                  >&starf;</span
+                >
+                <span
+                  :class="['star', { yellow: rating >= 3 }]"
+                  @click="rattingFun(3)"
+                  >&starf;</span
+                >
+                <span
+                  :class="['star', { yellow: rating >= 4 }]"
+                  @click="rattingFun(4)"
+                  >&starf;</span
+                >
+                <span
+                  :class="['star', { yellow: rating >= 5 }]"
+                  @click="rattingFun(5)"
+                  >&starf;</span
+                >
+                <span class="rating-counter">(381)</span>
+              </div>
+            </div>
             <div class="text-area">
               <textarea
                 v-model="text"
@@ -37,23 +67,31 @@
 
 <script>
 export default {
-  name: "vendorProfileModle",
+  name: "vendorProfileModel",
   props: ["model"],
   data() {
     return {
       text: "",
-      laoding: false,
+      rating: 5,
+      loading: false,
     };
   },
   methods: {
+    rattingFun(val) {
+      this.rating = val;
+    },
     async send(event) {
       event.preventDefault();
       this.loading = true;
+      if (!this.text) false;
       try {
-        var res = this.$axios.post(`booking/${this.$route.params.id}`, {
-          // rating: 2,
-          comment: "wow so fast",
-        });
+        var res = await this.$axios.post(
+          `services/${this.$route.params.id}/review`,
+          {
+            rating: this.rating,
+            comment: this.text,
+          }
+        );
         if (res.data) {
           if (res.data.message) {
             this.$swal({
@@ -67,6 +105,12 @@ export default {
           }
         }
       } catch (error) {
+        this.$swal({
+          icon: "error",
+          title: error.response.data.error,
+          showConfirmButton: false,
+          timer: 3000,
+        });
         this.loading = false;
         console.log(error);
       }
@@ -181,6 +225,35 @@ img {
   min-width: 200px;
   margin-top: 20px;
   padding: 10px;
+}
+.rating-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.rating {
+  text-align: left;
+  padding: 15px 0;
+  display: flex;
+  align-items: center;
+}
+.rating .star {
+  font-size: 24px;
+  color: #efefef;
+  margin-right: 5px;
+  cursor: pointer;
+  line-height: 1;
+}
+.rating .yellow {
+  color: #fdc350 !important;
+}
+.rating .rating-counter {
+  letter-spacing: 0px;
+  color: #000000;
+  opacity: 0.6;
+  font-size: 10px;
+  top: -2px;
+  position: relative;
 }
 /* responsive */
 @media (max-width: 479px) and (min-width: 320px) {

@@ -53,7 +53,7 @@
 <script>
 import ReviewsVendor from "@/components/ReviewsVendor";
 export default {
-  name: "vendorProfileModle",
+  name: "vendorProfileModel",
   props: ["model"],
   components: {
     ReviewsVendor,
@@ -67,7 +67,7 @@ export default {
   methods: {
     async getReviews(){
       try {
-        var res = await this.$axios.get(`services/${this.$route.params.id}/review`);
+        var res = await this.$axios.get(`vender/profile/6343fa3af0bb2b56b978b5be`);
         if(res){
           console.log(res, '==>')
         } 
