@@ -10,7 +10,7 @@
         </div>
         <div class="headings">
           <h1>Service Description</h1>
-          <h4>Rules & Safty</h4>
+          <h4><button @click="back(2)">back</button>Rules & Safty</h4>
         </div>
         <div class="container-rules">
           <div class="rules">
@@ -181,7 +181,7 @@
         </div>
         <div class="headings">
           <h1>Service Description</h1>
-          <h4>kitchen</h4>
+          <h4><button @click="goBack(1)">back</button>kitchen</h4>
         </div>
         <div class="container-rules">
           <div class="rules">
@@ -275,7 +275,7 @@
         </div>
         <div class="headings">
           <h1>Service Description</h1>
-          <h4>Rooms Bath</h4>
+          <h4><button @click="goBack(2)">back</button>Rooms Bath</h4>
         </div>
         <div class="container-rules">
           <div class="rules">
@@ -369,7 +369,7 @@
         </div>
         <div class="headings">
           <h1>Service Description</h1>
-          <h4>Out door</h4>
+          <h4><button @click="goBack(3)">back</button>Out door</h4>
         </div>
         <div class="container-rules">
           <div class="rules">
@@ -413,7 +413,7 @@
         </div>
         <div class="headings">
           <h1>Service Description</h1>
-          <h4>Description</h4>
+          <h4><button @click="goBack(5)">back</button>Description</h4>
         </div>
         <div class="container-vendor">
           <div>
@@ -430,7 +430,7 @@
               <div>
                 <input
                   type="text "
-                  :class="['arabic',{ activeErr: errors.nameInArabic }]"
+                  :class="['arabic', { activeErr: errors.nameInArabic }]"
                   @input="resolveErr('nameInArabic')"
                   placeholder="Service Name (Arabic)"
                   v-model="description.nameInArabic"
@@ -466,7 +466,7 @@
               <div>
                 <input
                   type="text"
-                  :class="['arabic',{ activeErr: errors.descriptionInArabic }]"
+                  :class="['arabic', { activeErr: errors.descriptionInArabic }]"
                   @input="resolveErr('descriptionInArabic')"
                   placeholder="Property Description (Arabic)"
                   v-model="description.descriptionInArabic"
@@ -505,7 +505,7 @@
         </div>
         <div class="headings">
           <h1>Service Description</h1>
-          <h4>Address & Location</h4>
+          <h4><button @click="goBack(6)">back</button>Address & Location</h4>
         </div>
         <div class="map-container">
           <div class="map">
@@ -608,6 +608,12 @@ export default {
     };
   },
   methods: {
+    back(step) {
+      this.$parent.backServiceModel(step, "info");
+    },
+    goBack(step) {
+      this.step = step;
+    },
     latLng({ lat, lng }) {
       this.location = { location: { coordinates: [lat, lng] } };
     },

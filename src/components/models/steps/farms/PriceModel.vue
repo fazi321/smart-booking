@@ -10,7 +10,7 @@
         </div>
         <div class="headings">
           <h1>Price Details</h1>
-          <h4>Pricing</h4>
+          <h4><button @click="back(2)">back</button>Pricing</h4>
         </div>
         <section class="price-container">
           <div class="container-price">
@@ -203,7 +203,7 @@
         </div>
         <div class="headings">
           <h1>Price Details</h1>
-          <h4>Booking Settings</h4>
+          <h4><button @click="goBack(1)">back</button>Booking Settings</h4>
         </div>
         <section class="booking">
           <div>
@@ -486,7 +486,7 @@
         </div>
         <div class="headings">
           <h1>Price Details</h1>
-          <h4>Add-Ons</h4>
+          <h4><button @click="goBack(2)">back</button>Add-Ons</h4>
         </div>
         <section class="price-unset">
           <div class="container-price">
@@ -666,6 +666,12 @@ export default {
     };
   },
   methods: {
+    back(step) {
+      this.$parent.backServiceModel(step, "service");
+    },
+    goBack(step) {
+      this.step = step;
+    },
     dateFormate(value) {
       var date = new Date(value);
       return date.toLocaleDateString("en-GB");

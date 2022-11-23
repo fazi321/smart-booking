@@ -35,6 +35,23 @@ img {
 /* global css */
 
 /* common css */
+.headings h4{
+  position: relative;
+}
+.headings button{
+  position: absolute;
+  left:0;
+  border-radius: 4px;
+  padding: 4px 14px;
+  background: #febb12;
+  color: #000;
+  box-shadow: 0px 2px 4px 1px #c9c9c9a6;
+  outline: none;
+  text-transform: capitalize;
+  border: none;
+  font-size: 10px;
+  cursor: pointer;
+}
 .container {
   width: 90%;
   max-width: 1266px;

@@ -11,7 +11,7 @@
         <div class="headings">
           <h1>Basic Information</h1>
           <h1>Stadium</h1>
-          <h4>Rooms & Guests</h4>
+          <h4><button @click="back(2)">back</button>Rooms & Guests</h4>
         </div>
         <div class="container-vendor">
           <!-- <div class="buttons-top">
@@ -84,7 +84,7 @@
         </div>
         <div class="headings">
           <h1>Basic Information</h1>
-          <h4>Amenities</h4>
+          <h4><button @click="goBack(1)">back</button>Amenities</h4>
         </div>
         <section class="over-follow">
           <div>
@@ -245,11 +245,18 @@ export default {
       leisure: {},
       accessCheck: false,
       accessInHoursCheck: null,
+      
       // errors
       errors: {},
     };
   },
   methods: {
+    back(step){
+      this.$parent.accountSelected(step);
+    },
+    goBack(step) {
+      this.step = step;
+    },
     resolveErr(input) {
       this.errors[input] = false;
     },
@@ -300,10 +307,7 @@ export default {
       }
       // this.isSubmitted = true;
     },
-    back(step){
-      console.log(step, 'back')
-      this.$parent.accountSelected(step);
-    },
+    
     saveData(){
       console.log('saved')
     },
@@ -420,6 +424,11 @@ img {
 .headings h4 {
   font-weight: 500;
   font-size: 16px;
+  position:relative;
+}
+.headings button{
+  position:absolute;
+  left:0;
 }
 .headings h4 span {
   color: #febb12;

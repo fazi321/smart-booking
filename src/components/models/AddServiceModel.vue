@@ -115,23 +115,20 @@
     <section v-if="serviceType && serviceType.category == 'Chalets'">
       <!-- basic information start -->
       <InfoModelChalets
-        v-if="isSubmitted && accountOpt == 'info'"
-        :model="true"
+        :model="isSubmitted && accountOpt == 'info'"
         @close="close"
         @basicInfo="basicData"
       />
       <!-- Description start -->
       <ServiceModelChalets
-        v-if="isSubmitted && accountOpt == 'service'"
-        :model="true"
+        :model="isSubmitted && accountOpt == 'service'"
         @close="close"
         @images="formData"
         @decription="decription"
       />
       <!-- price start -->
       <PriceModelChalets
-        v-if="isSubmitted && accountOpt == 'price'"
-        :model="true"
+        :model="isSubmitted && accountOpt == 'price'"
         @close="close"
         @price="pricing"
       />
@@ -140,23 +137,20 @@
     <section v-if="serviceType && serviceType.category == 'Resorts'">
       <!-- basic information start -->
       <InfoModel
-        v-if="isSubmitted && accountOpt == 'info'"
-        :model="true"
+        :model="isSubmitted && accountOpt == 'info'"
         @close="close"
         @basicInfo="basicData"
       />
       <!-- Description start -->
       <ServiceModel
-        v-if="isSubmitted && accountOpt == 'service'"
-        :model="true"
+        :model="isSubmitted && accountOpt == 'service'"
         @close="close"
         @images="formData"
         @decription="decription"
       />
       <!-- price start -->
       <PriceModel
-        v-if="isSubmitted && accountOpt == 'price'"
-        :model="true"
+        :model="isSubmitted && accountOpt == 'price'"
         @close="close"
         @price="pricing"
       />
@@ -165,23 +159,20 @@
     <section v-if="serviceType && serviceType.category == 'Stadium'">
       <!-- basic information start -->
       <InfoModelStadium
-        v-if="isSubmitted && accountOpt == 'info'"
-        :model="true"
+        :model="isSubmitted && accountOpt == 'info'"
         @close="close"
         @basicInfo="basicData"
       />
       <!-- Description start -->
       <ServiceModelStadium
-        v-if="isSubmitted && accountOpt == 'service'"
-        :model="true"
+        :model="isSubmitted && accountOpt == 'service'"
         @close="close"
         @images="formData"
         @decription="decription"
       />
       <!-- price start -->
       <PriceModelStadium
-        v-if="isSubmitted && accountOpt == 'price'"
-        :model="true"
+        :model="isSubmitted && accountOpt == 'price'"
         @close="close"
         @price="pricing"
       />
@@ -190,23 +181,20 @@
     <section v-if="serviceType && serviceType.category == 'Apartment'">
       <!-- basic information start -->
       <InfoModelAppartments
-        v-if="isSubmitted && accountOpt == 'info'"
-        :model="true"
+        :model="isSubmitted && accountOpt == 'info'"
         @close="close"
         @basicInfo="basicData"
       />
       <!-- Description start -->
       <ServiceModelAppartments
-        v-if="isSubmitted && accountOpt == 'service'"
-        :model="true"
+        :model="isSubmitted && accountOpt == 'service'"
         @close="close"
         @images="formData"
         @decription="decription"
       />
       <!-- price start -->
       <PriceModelAppartments
-        v-if="isSubmitted && accountOpt == 'price'"
-        :model="true"
+        :model="isSubmitted && accountOpt == 'price'"
         @close="close"
         @price="pricing"
       />
@@ -215,23 +203,20 @@
     <section v-if="serviceType && serviceType.category == 'Lounges'">
       <!-- basic information start -->
       <InfoModelLoungs
-        v-if="isSubmitted && accountOpt == 'info'"
-        :model="true"
+        :model="isSubmitted && accountOpt == 'info'"
         @close="close"
         @basicInfo="basicData"
       />
       <!-- Description start -->
       <ServiceModelLoungs
-        v-if="isSubmitted && accountOpt == 'service'"
-        :model="true"
+        :model="isSubmitted && accountOpt == 'service'"
         @close="close"
         @images="formData"
         @decription="decription"
       />
       <!-- price start -->
       <PriceModelLoungs
-        v-if="isSubmitted && accountOpt == 'price'"
-        :model="true"
+        :model="isSubmitted && accountOpt == 'price'"
         @close="close"
         @price="pricing"
       />
@@ -240,23 +225,20 @@
     <section v-if="serviceType && serviceType.category == 'Camps'">
       <!-- basic information start -->
       <InfoModelCamps
-        v-if="isSubmitted && accountOpt == 'info'"
-        :model="true"
+        :model="isSubmitted && accountOpt == 'info'"
         @close="close"
         @basicInfo="basicData"
       />
       <!-- Description start -->
       <ServiceModelCamps
-        v-if="isSubmitted && accountOpt == 'service'"
-        :model="true"
+        :model="isSubmitted && accountOpt == 'service'"
         @close="close"
         @images="formData"
         @decription="decription"
       />
       <!-- price start -->
       <PriceModelCamps
-        v-if="isSubmitted && accountOpt == 'price'"
-        :model="true"
+        :model="isSubmitted && accountOpt == 'price'"
         @close="close"
         @price="pricing"
       />
@@ -265,23 +247,20 @@
     <section v-if="serviceType && serviceType.category == 'Wedding_Halls'">
       <!-- basic information start -->
       <InfoModelWeddings
-        v-if="isSubmitted && accountOpt == 'info'"
-        :model="true"
+        :model="isSubmitted && accountOpt == 'info'"
         @close="close"
         @basicInfo="basicData"
       />
       <!-- Description start -->
       <ServiceModelWeddings
-        v-if="isSubmitted && accountOpt == 'service'"
-        :model="true"
+        :model="isSubmitted && accountOpt == 'service'"
         @close="close"
         @images="formData"
         @decription="decription"
       />
       <!-- price start -->
       <PriceModelWeddings
-        v-if="isSubmitted && accountOpt == 'price'"
-        :model="true"
+        :model="isSubmitted && accountOpt == 'price'"
         @close="close"
         @price="pricing"
       />
@@ -290,23 +269,20 @@
     <section v-if="serviceType && serviceType.category == 'Farms'">
       <!-- basic information start -->
       <InfoModelFarms
-        v-if="isSubmitted && accountOpt == 'info'"
-        :model="true"
+        :model="isSubmitted && accountOpt == 'info'"
         @close="close"
         @basicInfo="basicData"
       />
       <!-- Description start -->
       <ServiceModelFarms
-        v-if="isSubmitted && accountOpt == 'service'"
-        :model="true"
+        :model="isSubmitted && accountOpt == 'service'"
         @close="close"
         @images="formData"
         @decription="decription"
       />
       <!-- price start -->
       <PriceModelFarms
-        v-if="isSubmitted && accountOpt == 'price'"
-        :model="true"
+        :model="isSubmitted && accountOpt == 'price'"
         @close="close"
         @price="pricing"
       />
@@ -315,23 +291,20 @@
     <section v-if="serviceType && serviceType.category == 'Hotel'">
       <!-- basic information start -->
       <InfoModelHotels
-        v-if="isSubmitted && accountOpt == 'info'"
-        :model="true"
+        :model="isSubmitted && accountOpt == 'info'"
         @close="close"
         @basicInfo="basicData"
       />
       <!-- Description start -->
       <ServiceModelHotels
-        v-if="isSubmitted && accountOpt == 'service'"
-        :model="true"
+        :model="isSubmitted && accountOpt == 'service'"
         @close="close"
         @images="formData"
         @decription="decription"
       />
       <!-- price start -->
       <PriceModelHotels
-        v-if="isSubmitted && accountOpt == 'price'"
-        :model="true"
+        :model="isSubmitted && accountOpt == 'price'"
         @close="close"
         @price="pricing"
       />
@@ -434,6 +407,12 @@ export default {
     };
   },
   methods: {
+    backServiceModel(step, accountType) {
+      // info, service and pric
+      this.accountOpt = accountType;
+      this.isSubmitted = true;
+      this.step = step;
+    },
     // saveData() {
     //   localStorage.setItem(
     //     "savedData",
@@ -453,6 +432,7 @@ export default {
           delete this.finalData.totalEntities;
         }
       }
+      this.myImages ={};
       this.serviceType = opt;
     },
     basicData(val) {
@@ -545,7 +525,7 @@ export default {
     accountSelected(step) {
       if (!this.accountOpt) return;
       this.step = step;
-      // this.isSubmitted = true;
+      this.isSubmitted = false;
     },
     close() {
       this.accountOpt = null;
@@ -561,19 +541,19 @@ export default {
       this.$parent.serviceModel = false;
     },
   },
-  watch: {
-    // whenever question changes, this function will run
-    model() {
-      var localData = localStorage.getItem("savedData");
-      if (localData) {
-        var { type, category, step } = JSON.parse(localData);
-        this.accountOpt = type;
-        this.step = step;
-        this.serviceType.category = category;
-        console.log(category);
-      }
-    },
-  },
+  // watch: {
+  //   // whenever question changes, this function will run
+  //   model() {
+  //     var localData = localStorage.getItem("savedData");
+  //     if (localData) {
+  //       var { type, category, step } = JSON.parse(localData);
+  //       this.accountOpt = type;
+  //       this.step = step;
+  //       this.serviceType.category = category;
+  //       console.log(category);
+  //     }
+  //   },
+  // },
 };
 </script>
 

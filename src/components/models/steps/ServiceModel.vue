@@ -10,7 +10,7 @@
         </div>
         <div class="headings">
           <h1>Service Description</h1>
-          <h4>Rules & Safty</h4>
+          <h4><button @click="back(2)">back</button>Rules & Safty</h4>
         </div>
         <div class="container-rules">
           <div class="rules">
@@ -355,7 +355,7 @@
         </div>
         <div class="headings">
           <h1>Service Description</h1>
-          <h4>Description</h4>
+          <h4><button @click="goBack(1)">back</button>Description</h4>
         </div>
         <div class="container-vendor">
           <div>
@@ -448,7 +448,7 @@
         </div>
         <div class="headings">
           <h1>Service Description</h1>
-          <h4>Address & Location</h4>
+          <h4><button @click="goBack(2)">back</button>Address & Location</h4>
         </div>
         <div class="map-container">
           <div class="map">
@@ -550,6 +550,12 @@ export default {
     };
   },
   methods: {
+    back(step) {
+      this.$parent.backServiceModel(step, "info");
+    },
+    goBack(step) {
+      this.step = step;
+    },
     resolveErr(input) {
       this.errors[input] = false;
     },

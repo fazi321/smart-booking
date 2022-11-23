@@ -10,7 +10,7 @@
         </div>
         <div class="headings">
           <h1>Basic Information</h1>
-          <h4>Rooms & Guests</h4>
+          <h4><button @click="back(2)">back</button>Rooms & Guests</h4>
         </div>
         <div class="container-vendor">
           <div>
@@ -127,7 +127,7 @@
         </div>
         <div class="headings">
           <h1>Basic Information</h1>
-          <h4>Amenities</h4>
+          <h4><button @click="goBack(1)">back</button>Amenities</h4>
         </div>
         <section class="over-follow">
           <div>
@@ -316,6 +316,12 @@ export default {
     };
   },
   methods: {
+    back(step){
+      this.$parent.accountSelected(step);
+    },
+    goBack(step) {
+      this.step = step;
+    },
     resolveErr(input) {
       this.errors[input] = false;
     },
