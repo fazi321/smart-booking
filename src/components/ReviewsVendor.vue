@@ -2,7 +2,9 @@
   <section>
     <div class="top-section">
       <div class="top-head">
-        <h1>Reviews <span>({{storeState && storeState.numReviews}})</span></h1>
+        <h1>
+          Reviews <span>({{ storeState && storeState.numReviews }})</span>
+        </h1>
       </div>
       <div>
         <h1 class="add-riveiw" @click="addModel">+ Add Review</h1>
@@ -10,19 +12,24 @@
     </div>
     <section class="reviews-section">
       <!-- block -->
-      <div class="primary-container" v-for="(review, index) in storeState.reviews" :key="index">
+      <div
+        class="primary-container"
+        v-for="(review, index) in storeState.reviews"
+        :key="index"
+      >
         <div class="secondry-container">
           <img src="../assets/images/imageProfile.jpeg" />
         </div>
         <div>
           <div>
-            <h4>{{review.name}}</h4>
+            <h4>{{ review.name }}</h4>
+            <p>{{ review.comment }}</p>
           </div>
           <div>
             <StarReviews :review="review.rating" :vendor="true" />
           </div>
           <div class="date-container">
-            <p>{{reviewDate(review.createdAt)}}</p>
+            <p>{{ reviewDate(review.createdAt) }}</p>
           </div>
         </div>
       </div>
@@ -40,16 +47,26 @@ export default {
     storeState: function () {
       return this.$store.state.details.details;
     },
+    user: function () {
+      return this.$store.state.auth.user;
+    },
   },
   methods: {
     addModel() {
+      if (!this.user) {
+        this.$store.commit("auth/MODEL_OPEN", true);
+        return;
+      }
       this.$emit("openReview");
     },
-    reviewDate(val){
+    reviewDate(val) {
       const date = new Date(val);
-      var time = date.toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit'});
-      var getDate =date.toLocaleDateString('en-GB');
-      return time + ' ' + getDate
+      var time = date.toLocaleTimeString("en-US", {
+        hour: "2-digit",
+        minute: "2-digit",
+      });
+      var getDate = date.toLocaleDateString("en-GB");
+      return time + " " + getDate;
     },
   },
 };
@@ -96,6 +113,13 @@ export default {
   font-size: 14px;
   color: #c9c9c9;
   font-weight: normal;
+}
+.primary-container p {
+  text-align: left;
+  font-size: 14px;
+  color: #8b8686;
+  font-weight: normal;
+  margin-top: 2px;
 }
 .primary-container > div {
   margin: 0 10px;

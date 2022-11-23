@@ -2,7 +2,7 @@
   <section class="card-set">
     <div
       class="wish image-wish"
-      v-if="(item.fav && item.fav[0]) || fav"
+      v-if="favorites(item) || fav"
       @click="favUnFav(item._id)"
     >
       <img src="../../assets/images/YellowFavoriteicon.png" />
@@ -15,7 +15,14 @@
         />
       </svg>
     </div>
-    <router-link :to="$route.path == '/filters' ? `${ getSlug() }` : `${$route.path}/${item._id}`" class="filter-card">
+    <router-link
+      :to="
+        $route.path == '/filters'
+          ? `${getSlug()}`
+          : `${$route.path}/${item._id}`
+      "
+      class="filter-card"
+    >
       <div class="image">
         <img
           :src="item.description.images[0]"
@@ -30,12 +37,12 @@
         <!-- <p>Riyadh, KSA</p> -->
         <p>{{ item.address && item.address.address }}</p>
         <div class="rating">
-          <span class="star">&starf;</span>
-          <span class="star">&starf;</span>
-          <span class="star">&starf;</span>
-          <span class="star">&starf;</span>
-          <span class="star gray">&starf;</span>
-          <span class="rating-counter">(381)</span>
+          <span :class="['star', { yellow: item.rating >= 1 }]">&starf;</span>
+          <span :class="['star', { yellow: item.rating >= 2 }]">&starf;</span>
+          <span :class="['star', { yellow: item.rating >= 3 }]">&starf;</span>
+          <span :class="['star', { yellow: item.rating >= 4 }]">&starf;</span>
+          <span :class="['star', { yellow: item.rating >= 5 }]">&starf;</span>
+          <span class="rating-counter">({{ item.rating }})</span>
         </div>
         <div class="sar">
           <h6>SAR {{ item.price && item.price.dayPrice }}</h6>
@@ -55,21 +62,35 @@ export default {
       fav: false,
     };
   },
+  computed: {
+    user: function () {
+      return this.$store.state.auth.user;
+    },
+  },
   methods: {
-    getSlug () {
-      if(this.item.category && this.item.category.category){
-        var category = '';
-        category = this.item.category.category == 'Hotel' ? 'hotels' : '';
-        return `${category}/${this.item._id}`
+    favorites(item) {
+      if (this.user && item.fav) {
+        return item.fav.includes(this.user._id);
+      }
+    },
+    getSlug() {
+      if (this.item.category ) {
+        // var category = "";
+        // category = this.item.category.category == "Hotel" ? "hotels" : "";
+        return `${'category'}/${this.item._id}`;
       }
     },
     async favUnFav(id) {
+      if (!this.user) {
+        this.$store.commit("auth/MODEL_OPEN", true);
+        return;
+      }
       try {
         var res = await this.$axios.get(`user/fav-unfav/${id}`);
         if (res.data) {
-          if (res.data.msg == 'Added to favorite') {
+          if (res.data.msg == "Added to favorite") {
             this.fav = true;
-          } else if(res.data.msg == 'Removed from favorite') {
+          } else if (res.data.msg == "Removed from favorite") {
             this.fav = false;
             this.$emit("removedWish");
           }
@@ -151,10 +172,10 @@ export default {
   top: 15px;
   cursor: pointer;
 }
-.image-wish{
-  box-shadow:unset!important;
-   width: 60px!important;
-  height: 60px!important;
+.image-wish {
+  box-shadow: unset !important;
+  width: 60px !important;
+  height: 60px !important;
 }
 .filter-card .card-detail .heading svg {
   width: 30px;
@@ -197,13 +218,13 @@ export default {
 }
 .rating .star {
   font-size: 28px;
-  color: #fdc350;
+  color: #efefef;
   margin-right: 5px;
   cursor: pointer;
   line-height: 1;
 }
-.rating .gray {
-  color: #efefef !important;
+.rating .yellow {
+  color: #fdc350 !important;
 }
 .rating .rating-counter {
   letter-spacing: 0px;

@@ -173,7 +173,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 99;
+  z-index: 999;
   visibility: hidden;
 }
 .login-signup.active {

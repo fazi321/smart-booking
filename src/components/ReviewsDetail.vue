@@ -8,6 +8,7 @@
       <div>
         <div>
           <h4>{{review.name}}</h4>
+          <p>{{review.comment}}</p>
         </div>
         <div>
           <StarReviews :review="review.rating" />
@@ -44,8 +45,11 @@ export default {
   margin-bottom:15px;
   border-bottom: 1px solid darkgray;
 }
-.primary-container h4{
+.primary-container h4, .primary-container p{
   text-align: left;
+}
+.primary-container p{
+  font-size:14px;
 }
 .primary-container>div{
   margin:10px;

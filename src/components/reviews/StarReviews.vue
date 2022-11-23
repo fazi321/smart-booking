@@ -7,7 +7,7 @@
         :key="index"
         >&starf;</span
       >
-      <span class="rating-counter" v-if="!vendor">(381)</span>
+      <span class="rating-counter" v-if="!vendor">({{review}})</span>
     </div>
   </section>
 </template>
