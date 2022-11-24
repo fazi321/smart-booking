@@ -7,7 +7,7 @@
       <div class="service-booking">
         <h1>SEARCH</h1>
       </div>
-      <div class="service-container" v-if="favList && favList.length">
+      <div class="service-container" v-if="searchList && searchList.length">
         <!-- <section class="filters-container">
           <div class="filter-buttons">
             <div class="filter-option">
@@ -22,15 +22,16 @@
           </div>
         </section> -->
         <div class="booking-cards favourite">
-          <div class="card" v-for="(item, key) in favList" :key="key">
+          <div class="card" v-for="(item, key) in filteredData" :key="key">
             <MyServicesCard :item="item" @removedWish="getFav" />
           </div>
         </div>
         <div class="pagination-container">
           <paginate
+            v-model="pageSelected"
             :page-range="3"
             :margin-pages="2"
-            :page-count="10"
+            :page-count="pageCount"
             :click-handler="clickCallback"
             :prev-text="'<'"
             :next-text="'>'"
@@ -39,12 +40,12 @@
           ></paginate>
         </div>
       </div>
-      <section v-else>
+      <section class="set-content" v-else>
         <h1>not Found</h1>
       </section>
     </section>
-    <section v-else>
-      <h1>loading...</h1>
+    <section class="set-content" v-else>
+      <h1>Loading...</h1>
     </section>
   </default-layout>
 </template>
@@ -59,7 +60,12 @@ export default {
   name: "FavouritesView",
   data() {
     return {
-      favList: [],
+      searchList: [],
+      filteredData:[],
+      // pagination
+      pageSelected:1,
+      pageCount: 1,
+      showItem: 15,
       loading: false,
     };
   },
@@ -92,7 +98,9 @@ export default {
         var res = await this.$axios.get("services/filter", {
           params: check,
         });
-        this.favList = res.data.services;
+        this.searchList = res.data.services;
+        this.pageCount = Math.ceil(res.data.total / this.showItem);
+        this.clickCallback(1);
         this.loading = false;
         // console.log(res.data);
       } catch (error) {
@@ -100,8 +108,10 @@ export default {
         console.log(error);
       }
     },
-    clickCallback(num) {
-      this.$refs.slider.slideTo(num);
+    clickCallback(page) {
+      var copyFrom = page * this.showItem - this.showItem;
+      var copyTo = page * this.showItem;
+      this.filteredData = this.searchList.slice(copyFrom, copyTo);
     },
   },
   watch: {
@@ -114,6 +124,13 @@ export default {
 };
 </script>
 <style scoped>
+.set-content {
+  margin: 50px;
+}
+.set-content h1 {
+  color: #e3e3e3;
+  font-size: 28px;
+}
 .service-booking {
   padding: 30px 0;
 }

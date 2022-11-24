@@ -77,7 +77,6 @@ export default {
     },
     async getData() {
       var catType = this.$route.params.category;
-      console.log(catType, '-->')
       this.pageSelected = parseInt(this.$route.query.page);
       if (catType) {
         var cat =
@@ -154,7 +153,6 @@ export default {
         var res = await this.$axios.get(`services/deepfilter`, {
           params: check,
         });
-        console.log(res, 'filters')
         if (res) {
           this.dataCard = res.data.service;
           this.pageCount = Math.ceil(res.data.total / 15);
