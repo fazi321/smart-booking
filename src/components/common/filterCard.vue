@@ -17,8 +17,8 @@
     </div>
     <router-link
       :to="
-        $route.path == '/filters'
-          ? `${getSlug()}`
+        $route.path == '/filters'|| $route.path == '/search'
+          ? `${getSlug(item)}`
           : `${$route.path}/${item._id}`
       "
       class="filter-card"
@@ -73,11 +73,20 @@ export default {
         return item.fav.includes(this.user._id);
       }
     },
-    getSlug() {
-      if (this.item.category ) {
-        // var category = "";
-        // category = this.item.category.category == "Hotel" ? "hotels" : "";
-        return `${'category'}/${this.item._id}`;
+    getSlug(item) {
+      if (item.category) {
+        var category = "";
+        category =
+          item.category.category == "Hotel"
+            ? "hotels"
+            : item.category.category.toLowerCase() == "wedding_halls"
+            ? "wedding-halls"
+            : item.category.category.toLowerCase() == "apartment"
+            ? "apartments"
+            : item.category.category.toLowerCase() == "stadium"
+            ? "stadiums"
+            : item.category.category;
+        return `${category.toLowerCase()}/${this.item._id}`;
       }
     },
     async favUnFav(id) {

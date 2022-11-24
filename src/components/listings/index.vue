@@ -77,12 +77,13 @@ export default {
     },
     async getData() {
       var catType = this.$route.params.category;
+      console.log(catType, '-->')
       this.pageSelected = parseInt(this.$route.query.page);
       if (catType) {
         var cat =
-          catType != "farms" && catType != "resorts"
+          catType != "farms" && catType != "resorts" && catType != "wedding-halls" 
             ? catType.slice(0, -1)
-            : catType;
+            : catType == "wedding-halls" ? 'weddinghalls' : catType;
         try {
           this.loading = true;
           var res = await this.$axios.get(`${cat}`);

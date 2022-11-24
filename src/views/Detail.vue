@@ -64,9 +64,8 @@ export default {
     async getDetail() {
       var { cat, id } = this.$route.params;
       var cate =
-        cat != "farms" && cat != "resorts" && cat != "services"
-          ? cat.slice(0, -1)
-          : cat;
+        cat != "farms" && cat != "resorts" && cat != "services" && cat != 'wedding-halls'
+          ? cat.slice(0, -1) :cat == 'wedding-halls'? cat = 'weddinghalls' :cat;
       var q = { cate, id };
       this.$store.dispatch("details/getDetail", q);
     },

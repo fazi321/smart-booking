@@ -92,7 +92,6 @@ export default {
         var res = await this.$axios.get("services/filter", {
           params: check,
         });
-        console.log(res)
         this.favList = res.data.services;
         this.loading = false;
         // console.log(res.data);
