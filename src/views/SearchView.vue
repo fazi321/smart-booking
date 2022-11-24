@@ -40,8 +40,8 @@
           ></paginate>
         </div>
       </div>
-      <section class="set-content" v-else>
-        <h1>not Found</h1>
+      <section class="set-content nofound" v-else>
+        <h1>Not Found</h1>
       </section>
     </section>
     <section class="set-content" v-else>
@@ -125,7 +125,10 @@ export default {
 </script>
 <style scoped>
 .set-content {
-  margin: 50px;
+  margin: 50px 50px 50px 50px;
+}
+.nofound{
+  margin: 0px 50px 50px 50px!important;
 }
 .set-content h1 {
   color: #e3e3e3;

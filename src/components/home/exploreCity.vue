@@ -43,7 +43,25 @@ export default {
       selectedCity: {},
     };
   },
+  created(){
+    this.getData();
+  },
   methods: {
+    async getData() {
+      try {
+        this.loading = true;
+        // services/explore-cities
+        var res = await this.$axios.get(`services/explore-cities`);
+        if (res) {
+          // smartBooking
+          console.log(res);
+          this.loading = false;
+        }
+      } catch (error) {
+        this.loading = false;
+        console.log(error);
+      }
+    },
     searchNow(val){
       this.$router.push(`search?city=${this.selectedCity.title}&categoryId=${val._id}&page=1`)
     },

@@ -6,7 +6,7 @@
       </div>
       <div class="detail">
         <h5>{{ dataItem.category }}</h5>
-        <p>{{ dataItem.categoryCount }}</p>
+        <p>{{ dataItem.title }}</p>
       </div>
     </router-link>
   </section>
@@ -18,7 +18,7 @@
       </div>
       <div class="detail">
         <h5>{{ dataItem.category }}</h5>
-        <p>{{ dataItem.categoryCount }}</p>
+        <p>{{ dataItem.title }}</p>
       </div>
     </div>
   </section>
