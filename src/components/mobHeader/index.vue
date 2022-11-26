@@ -2,7 +2,7 @@
   <header>
     <div class="container">
       <div :class="['mobile-header header disktop']">
-        <Logo/>
+        <Logo />
         <section class="navigation-profile">
           <div class="nav">
             <div class="login-container">
@@ -17,34 +17,163 @@
                   />
                 </svg>
               </div>
+              <section class="btns">
+                <section v-if="!$store.state.auth.user">
+                  <button class="btn btn-transparent" @click="vendorModelShow">
+                    Become Vendor
+                  </button>
+                  <button class="btn btn-filled" @click="loginModelShow">
+                    Login
+                  </button>
+                  <LoginModel
+                    :model="loginModel || $store.state.auth.loginModel"
+                  />
+                  <SignUpModel :model="signUpModel" @getUserName="userModel" />
+                </section>
+                <!-- after login -->
+                <section v-else class="dropdown-container">
+                  <UserModel :model="userName" />
+                  <button
+                    class="btn btn-transparent"
+                    v-if="
+                      $store.state.auth.user.verify &&
+                      $store.state.auth.user.role != 'Vender'
+                    "
+                    @click="vendorModelShow"
+                  >
+                    Become Vendor
+                  </button>
+                  <!-- v-if="$store.state.auth.user.verify && $store.state.auth.user.host && $store.state.auth.user.role == 'Vender' || $store.state.auth.user.verify && $store.state.auth.user.company && $store.state.auth.user.role == 'Vender'" -->
+                  <button
+                    class="btn btn-filled add-services"
+                    v-if="
+                      ($store.state.auth.user.verify &&
+                        $store.state.auth.user.host &&
+                        $store.state.auth.user.role == 'Vender') ||
+                      ($store.state.auth.user.verify &&
+                        $store.state.auth.user.company &&
+                        $store.state.auth.user.role == 'Vender')
+                    "
+                    @click="serviceModelShow"
+                  >
+                    Add Service
+                  </button>
+                  <div id="demo">
+                    <div class="avatar" @click="toggleDropdown">
+                      <img
+                        src="../../assets/images/profile.svg"
+                        alt="avatar"
+                        v-if="
+                          !$store.state.auth.user ||
+                          !$store.state.auth.user.file
+                        "
+                      />
+                      <img
+                        :src="$store.state.auth.user.file"
+                        alt="avatar"
+                        v-else
+                      />
+                    </div>
+                    <DropDownMenu v-if="dropDown" />
+                  </div>
+                  <NotificationsHeader :RemOutClick="true"/>
+                  <AddServiceModel :model="serviceModel" />
+                  <VendorModel
+                    :model="vendorModel || $store.state.details.vendor"
+                  />
+                </section>
+              </section>
               <MobMenu v-if="openSidebar" />
             </div>
           </div>
         </section>
       </div>
     </div>
-
   </header>
 </template>
 <script>
 import Logo from "../header/Logo.vue";
 import MobMenu from "./mobMenu.vue";
+import LoginModel from "@/components/models/LoginModel.vue";
+import SignUpModel from "@/components/models/SignUpModel.vue";
+import VendorModel from "@/components/models/VendorModel.vue";
+import UserModel from "@/components/models/UserModel.vue";
+import AddServiceModel from "@/components/models/AddServiceModel.vue";
+import NotificationsHeader from "../NotificationsHeader.vue";
+import DropDownMenu from "../DropdownMenu.vue";
+import Cookies from "js-cookie";
 
 export default {
   name: "MobileIndex",
   components: {
     Logo,
     MobMenu,
+    LoginModel,
+    SignUpModel,
+    VendorModel,
+    AddServiceModel,
+    DropDownMenu,
+    UserModel,
+    NotificationsHeader,
   },
   data() {
     return {
       openSidebar: false,
+      loginModel: false,
+      signUpModel: false,
+      vendorModel: false,
+      serviceModel: false,
+      dropDown: false,
+      user: false,
+      userName: false,
     };
   },
+  mounted() {
+    // var close = () => {
+    //   this.dropDown = false;
+    // };
+    // window.addEventListener("click", function (e) {
+    //   var doc = document.getElementById("demo");
+    //   if (doc) {
+    //     var ele = doc.contains(e.target);
+    //     if (!ele) {
+    //       close();
+    //     }
+    //   }
+    // });
+  },
   methods: {
+    userModel() {
+      this.userName = true;
+    },
+    toggleDropdown() {
+      this.dropDown = !this.dropDown;
+    },
+    loginModelShow() {
+      this.loginModel = !this.loginModel;
+    },
+    vendorModelShow() {
+      let auth = Cookies.get("Authorization");
+      if (!auth) {
+        this.loginModelShow();
+        return;
+      }
+      this.vendorModel = !this.vendorModel;
+    },
+    serviceModelShow() {
+      this.serviceModel = !this.serviceModel;
+    },
     menuModelShow() {
       this.openSidebar = !this.openSidebar;
     },
+  },
+  created() {
+    let auth = Cookies.get("Authorization");
+    if (!auth) {
+      this.user = false;
+    } else {
+      this.user = true;
+    }
   },
 };
 </script>

@@ -37,6 +37,7 @@
 <script>
 export default {
   name: "NotificationsHeader",
+  props:['RemOutClick'],
   data() {
     return {
       notifications: [],
@@ -65,18 +66,21 @@ export default {
   },
   mounted() {
     this.getNotifications();
-    var close = () => {
-      this.dropDown = false;
-    };
-    window.addEventListener("click", function (e) {
-      var doc = document.getElementById("demo2");
-      if (doc) {
-        var ele = doc.contains(e.target);
-        if (!ele) {
-          close();
+    if(!this.RemOutClick){
+      var close = () => {
+        this.dropDown = false;
+      };
+      window.addEventListener("click", function (e) {
+        var doc = document.getElementById("demo2");
+        if (doc) {
+          var ele = doc.contains(e.target);
+          console.log(ele, 'target')
+          if (!ele) {
+            close();
+          }
         }
-      }
-    });
+      });
+    }
   },
 };
 </script>
