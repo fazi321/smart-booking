@@ -6,32 +6,20 @@
         <section class="navigation-profile">
           <div class="nav">
             <div class="login-container">
-              <div class="profile-pic shadowActive" @click="menuModelShow">
-                <svg class="svg-icon" viewBox="0 0 20 20">
-                  <path
-                    fill="#000"
-                    d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314
-								c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743
-								s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314
-								c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z"
-                  />
-                </svg>
-              </div>
               <section class="btns">
-                <section v-if="!$store.state.auth.user">
+                <section class="login-inner" v-if="!$store.state.auth.user">
                   <button class="btn btn-transparent" @click="vendorModelShow">
-                    Become Vendor
+                    <img src="../../assets/images/management.png" />
                   </button>
                   <button class="btn btn-filled" @click="loginModelShow">
-                    Login
+                    <img src="../../assets/images/user.png" alt="avatar" />
                   </button>
-                  <LoginModel
-                    :model="loginModel || $store.state.auth.loginModel"
-                  />
+                  <LoginModel :model="loginModel || $store.state.auth.loginModel" />
                   <SignUpModel :model="signUpModel" @getUserName="userModel" />
                 </section>
                 <!-- after login -->
-                <section v-else class="dropdown-container">
+                <section v-else class="dropdown-container mobile-dropdown">
+                  <NotificationsHeader :RemOutClick="true" />
                   <UserModel :model="userName" />
                   <button
                     class="btn btn-transparent"
@@ -41,7 +29,7 @@
                     "
                     @click="vendorModelShow"
                   >
-                    Become Vendor
+                    <img src="../../assets/images/management.png" />
                   </button>
                   <!-- v-if="$store.state.auth.user.verify && $store.state.auth.user.host && $store.state.auth.user.role == 'Vender' || $store.state.auth.user.verify && $store.state.auth.user.company && $store.state.auth.user.role == 'Vender'" -->
                   <button
@@ -55,34 +43,38 @@
                         $store.state.auth.user.role == 'Vender')
                     "
                     @click="serviceModelShow"
-                  >
-                    Add Service
-                  </button>
+                  ><img src="../../assets/images/add-new.png" /></button>
                   <div id="demo">
                     <div class="avatar" @click="toggleDropdown">
                       <img
-                        src="../../assets/images/profile.svg"
+                        src="../../assets/images/user.png"
                         alt="avatar"
                         v-if="
                           !$store.state.auth.user ||
                           !$store.state.auth.user.file
                         "
                       />
-                      <img
-                        :src="$store.state.auth.user.file"
-                        alt="avatar"
-                        v-else
-                      />
+                      <img :src="$store.state.auth.user.file" alt="avatar" v-else />
                     </div>
                     <DropDownMenu v-if="dropDown" />
                   </div>
-                  <NotificationsHeader :RemOutClick="true"/>
+
                   <AddServiceModel :model="serviceModel" />
-                  <VendorModel
-                    :model="vendorModel || $store.state.details.vendor"
-                  />
+                  <VendorModel :model="vendorModel || $store.state.details.vendor" />
                 </section>
+                <div class="profile-pic shadowActive" @click="menuModelShow">
+                  <svg class="svg-icon" viewBox="0 0 20 20">
+                    <path
+                      fill="#000"
+                      d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314
+								c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743
+								s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314
+								c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z"
+                    />
+                  </svg>
+                </div>
               </section>
+
               <MobMenu v-if="openSidebar" />
             </div>
           </div>
@@ -114,7 +106,7 @@ export default {
     AddServiceModel,
     DropDownMenu,
     UserModel,
-    NotificationsHeader,
+    NotificationsHeader
   },
   data() {
     return {
@@ -125,7 +117,7 @@ export default {
       serviceModel: false,
       dropDown: false,
       user: false,
-      userName: false,
+      userName: false
     };
   },
   mounted() {
@@ -165,7 +157,7 @@ export default {
     },
     menuModelShow() {
       this.openSidebar = !this.openSidebar;
-    },
+    }
   },
   created() {
     let auth = Cookies.get("Authorization");
@@ -174,11 +166,14 @@ export default {
     } else {
       this.user = true;
     }
-  },
+  }
 };
 </script>
 
 <style scoped>
+.svg-icon{
+  width: 22px;
+}
 header {
   z-index: 3;
   position: relative;
@@ -249,10 +244,29 @@ header {
   align-items: center;
   position: relative;
 }
+.login-container .btns .login-inner {
+  display: flex;
+  align-items: center;
+  position: relative;
+  gap: 8px;
+}
+.login-container .btns .login-inner img{
+  width: 22px;
+}
+.login-container .btns {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.login-container .btns .login-inner .btn {
+  padding: 0 !important;
+  border: none !important;
+  background: transparent !important;
+}
 .profile-pic {
   overflow: hidden;
   width: 30px;
-  height: 30px;
+  /* height: 30px; */
   cursor: pointer;
 }
 .logout-container {
@@ -305,5 +319,22 @@ header {
 .profile-pic img {
   width: 100%;
   height: 100%;
+}
+.mobile-dropdown {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.mobile-dropdown .btn {
+  padding: 0 !important;
+  border: none !important;
+  background: transparent !important;
+}
+.mobile-dropdown img {
+  margin-left: 5px;
+  width: 22px;
+}
+
+@media (max-width: 479px) and (min-width: 320px) {
 }
 </style>
