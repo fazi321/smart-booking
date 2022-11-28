@@ -5,16 +5,102 @@
         <img src="../../assets/images/close-icon.svg" alt="" />
       </div>
       <ul>
-        <li><router-link to="/">HOME</router-link></li>
-        <li><router-link to="/hotel">Apartments</router-link></li>
-        <li><router-link to="/hotel">Farms</router-link></li>
-        <li><router-link to="/hotel">Hotels</router-link></li>
-        <li><router-link to="/hotel">Resorts</router-link></li>
-        <li><router-link to="#">Lounges</router-link></li>
-      </ul>
-      <ul>
-        <li>Login</li>
-        <li>Become Vendor</li>
+        <li :class="{ active: $route.path == '/' }">
+          <router-link to="/">Home</router-link>
+        </li>
+        <li
+          :class="{ active: $route.path == '/category' }"
+          class="category-menu"
+        >
+          <div class="category" @click="openDropdown">Categories</div>
+          <div class="sub-menu" v-if="dropDown">
+            <ul>
+              <!-- <li>
+              <router-link to="/">Home</router-link>
+            </li>-->
+              <li
+                :class="{ active: $route.params.category == 'apartments' }"
+                @click="addRecent('apartments')"
+              >
+                <router-link to="/apartments?page=1">Apartments</router-link>
+              </li>
+              <li
+                :class="{ active: $route.params.category == 'farms' }"
+                @click="addRecent('farms')"
+              >
+                <router-link to="/farms?page=1">Farms</router-link>
+              </li>
+              <li
+                :class="{ active: $route.params.category == 'hotels' }"
+                @click="addRecent('hotels')"
+              >
+                <router-link to="/hotels?page=1">Hotels</router-link>
+              </li>
+              <li
+                :class="{ active: $route.params.category == 'resorts' }"
+                @click="addRecent('resorts')"
+              >
+                <router-link to="/resorts?page=1">Resorts</router-link>
+              </li>
+              <li
+                :class="{ active: $route.params.category == 'lounges' }"
+                @click="addRecent('lounges')"
+              >
+                <router-link to="/lounges?page=1">Lounges</router-link>
+              </li>
+              <li
+                :class="{ active: $route.params.category == 'stadiums' }"
+                @click="addRecent('stadiums')"
+              >
+                <router-link to="/stadiums?page=1">Stadium</router-link>
+              </li>
+              <li
+                :class="{ active: $route.params.category == 'Camps' }"
+                @click="addRecent('Camps')"
+              >
+                <router-link to="/Camps?page=1">Camps</router-link>
+              </li>
+              <li
+                :class="{ active: $route.params.category == 'wedding-halls' }"
+                @click="addRecent('wedding-halls')"
+              >
+                <router-link to="/wedding-halls?page=1"
+                  >Wedding Halls</router-link
+                >
+              </li>
+              <li
+                :class="{ active: $route.params.category == 'chalets' }"
+                @click="addRecent('chalets')"
+              >
+                <router-link to="/chalets?page=1">Chalets</router-link>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li
+          :class="{ active: $route.params.category == 'privacy' }"
+          @click="addRecent('privacy')"
+        >
+          <router-link to="/privacy?page=1">Privacy Policy</router-link>
+        </li>
+        <li
+          :class="{ active: $route.params.category == 'faqs' }"
+          @click="addRecent('faqs')"
+        >
+          <router-link to="/faqs?page=1">FAQs</router-link>
+        </li>
+        <li
+          :class="{ active: $route.params.category == 'term-conditions' }"
+          @click="addRecent('term-conditions')"
+        >
+          <router-link to="/term-conditions?page=1">Term of Use</router-link>
+        </li>
+        <li
+          :class="{ active: $route.params.category == 'about' }"
+          @click="addRecent('about')"
+        >
+          <router-link to="/about?page=1">About Us</router-link>
+        </li>
       </ul>
     </div>
   </div>
@@ -25,9 +111,17 @@ export default {
   name: "MobileMenu",
   components: {},
   data() {
-    return {};
+    return {
+      dropDown:false,
+    };
   },
   methods: {
+    openDropdown(){
+      this.dropDown = !this.dropDown
+    },
+    addRecent(slug) {
+      localStorage.setItem("slug", slug);
+    },
     closeSlide() {
       this.$parent.openSidebar = false;
     },
@@ -88,6 +182,9 @@ export default {
     right: 0;
   }
 }
+.category{
+  text-align:left;
+}
 .logout-container ul {
   display: flex;
   flex-direction: column;
@@ -103,8 +200,6 @@ export default {
   margin: 0 !important;
   cursor: pointer;
   width: 85%;
-  display: flex;
-  align-items: center;
 }
 .logout-container ul li a {
   text-decoration: none;
