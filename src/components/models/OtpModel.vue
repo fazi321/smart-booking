@@ -12,8 +12,8 @@
           </div>
         </div>
         <div class="headings">
-          <h1>Enter the code?</h1>
-          <h4>Enter the code that you received through SMS</h4>
+          <h1>{{$t("otp.title")}}</h1>
+          <h4>{{$t("otp.subTitle")}}</h4>
         </div>
         <div class="login-form">
           <div class="form-container">
@@ -32,9 +32,9 @@
           <div >
             <div class="input-div" v-if="!otploading">
               <button type="submit" v-if="otp.length == 4" @click="submitOtp">
-                Verify
+                {{$t("otp.verify")}}
               </button>
-              <button class="submit-div" v-else>Verify</button>
+              <button class="submit-div" v-else>{{$t("otp.verify")}}</button>
             </div>
             <div class="input-div" v-else>
               <button class="submit-div">Loading...</button>

@@ -2,29 +2,41 @@
   <section class="btns">
     <section v-if="!$store.state.auth.user">
       <button class="btn btn-transparent" @click="vendorModelShow">
-        {{$t('header.becomeVendor')}}
+        {{ $t("header.becomeVendor") }}
       </button>
-      <button class="btn btn-filled" @click="loginModelShow">{{$t('header.login')}}</button>
+      <button class="btn btn-filled" @click="loginModelShow">
+        {{ $t("header.login") }}
+      </button>
       <LoginModel :model="loginModel || $store.state.auth.loginModel" />
-      <SignUpModel :model="signUpModel" @getUserName="userModel"/>
+      <SignUpModel :model="signUpModel" @getUserName="userModel" />
     </section>
     <!-- after login -->
     <section v-else class="dropdown-container">
-      <UserModel :model="userName"/>
+      <UserModel :model="userName" />
       <button
         class="btn btn-transparent"
-        v-if="$store.state.auth.user.verify && $store.state.auth.user.role != 'Vender'"
+        v-if="
+          $store.state.auth.user.verify &&
+          $store.state.auth.user.role != 'Vender'
+        "
         @click="vendorModelShow"
       >
-        {{$t('header.becomeVendor')}}
+        {{ $t("header.becomeVendor") }}
       </button>
       <!-- v-if="$store.state.auth.user.verify && $store.state.auth.user.host && $store.state.auth.user.role == 'Vender' || $store.state.auth.user.verify && $store.state.auth.user.company && $store.state.auth.user.role == 'Vender'" -->
       <button
         class="btn btn-filled add-services"
-        v-if="$store.state.auth.user.verify && $store.state.auth.user.host && $store.state.auth.user.role == 'Vender' || $store.state.auth.user.verify && $store.state.auth.user.company && $store.state.auth.user.role == 'Vender'"
+        v-if="
+          ($store.state.auth.user.verify &&
+            $store.state.auth.user.host &&
+            $store.state.auth.user.role == 'Vender') ||
+          ($store.state.auth.user.verify &&
+            $store.state.auth.user.company &&
+            $store.state.auth.user.role == 'Vender')
+        "
         @click="serviceModelShow"
       >
-        Add Service
+        {{ $t("header.addService") }}
       </button>
       <div id="demo">
         <div class="avatar" @click="toggleDropdown">
@@ -73,7 +85,7 @@ export default {
       serviceModel: false,
       dropDown: false,
       user: false,
-      userName:false,
+      userName: false,
     };
   },
   mounted() {
@@ -89,10 +101,9 @@ export default {
         }
       }
     });
-    
   },
   methods: {
-    userModel(){
+    userModel() {
       this.userName = true;
     },
     toggleDropdown() {
@@ -125,7 +136,7 @@ export default {
 </script>
 
 <style scoped>
-#demo{
+#demo {
   display: flex;
   align-items: center;
 }
@@ -141,7 +152,7 @@ export default {
   align-items: center;
   justify-content: center;
   position: relative;
-  top:1px;
+  top: 1px;
 }
 .add-services {
   padding: 12px 20px !important;

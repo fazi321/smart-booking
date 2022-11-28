@@ -11,8 +11,8 @@
           </div>
         </div>
         <div class="headings">
-          <h1>Enter Your Name</h1>
-          <h4>Please create your account Name</h4>
+          <h1>{{$t('verify.title')}}</h1>
+          <h4>{{$t('verify.subTitle')}}</h4>
         </div>
         <div class="login-form">
           <div class="form-container">
@@ -30,7 +30,7 @@
                   <div class="container-input">
                     <input
                       type="text"
-                      placeholder="First Name"
+                      :placeholder="$t('verify.firstName')"
                       v-model="firstName"
                       required
                     />
@@ -40,7 +40,7 @@
                   <div class="container-input">
                     <input
                       type="text"
-                      placeholder="Last Name"
+                      :placeholder="$t('verify.lastName')"
                       v-model="lastName"
                     />
                   </div>
@@ -48,7 +48,7 @@
               </div>
               <!-- <div class="error" v-if="!isExist">Password is Incorrect!</div> -->
               <div class="input-div">
-                <button v-if="!loading" type="submit">Done</button>
+                <button v-if="!loading" type="submit">{{$t('verify.done')}}</button>
                 <button v-else>Loading...</button>
               </div>
             </form>

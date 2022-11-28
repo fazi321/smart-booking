@@ -1,7 +1,7 @@
 <template>
   <div class="container smart-booking">
     <div class="smart-title">
-      <h1>WHAT CAN WE DO FOR YOU?</h1>
+      <h1>{{$t('homePage.whatWeDo')}}</h1>
     </div>
     <div class="card-container">
       <WhatWeDo v-for="(item, index) in WhatWeDo" :dataItem="item" :key="index" />

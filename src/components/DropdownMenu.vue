@@ -3,19 +3,19 @@
     <ul>
       <li>
         <router-link to="/my-profile">
-          <span>My Profile</span>
+          <span>{{ $t("menuDropdown.myProfile") }}</span>
         </router-link>
       </li>
       <li>
         <router-link to="/messages">
-          <span>Messages</span>
+          <span>{{ $t("menuDropdown.messages") }}</span>
         </router-link>
       </li>
       <li>
         <router-link to="#demo">
-          <span>Balance</span>
+          <span>{{ $t("menuDropdown.balance") }}</span>
           <span
-            >SAR
+            >{{ $t("menuDropdown.priceSymbol") }}
             {{ $store.state.auth.user && $store.state.auth.user.balance }}</span
           >
         </router-link>
@@ -32,10 +32,10 @@
               $store.state.auth.user.role == 'Vender')
           "
         >
-          <span>My Services</span>
+          <span>{{ $t("menuDropdown.myServices") }}</span>
         </router-link>
         <router-link to="/my-bookings">
-          <span>My Bookings</span>
+          <span>{{ $t("menuDropdown.myBookings") }}</span>
         </router-link>
       </li>
       <li>
@@ -50,58 +50,60 @@
               $store.state.auth.user.role == 'Vender')
           "
         >
-          <span>Service Bookings</span>
+          <span>{{ $t("menuDropdown.serviceBookings") }}</span>
         </router-link>
         <div @click="becomeVendor" v-else>
-          <span class="active-color">Become Vendor</span>
+          <span class="active-color">{{
+            $t("menuDropdown.becomeVendor")
+          }}</span>
         </div>
       </li>
       <li>
         <router-link to="/favourites">
-          <span>Favourites</span>
+          <span>{{ $t("menuDropdown.favourites") }}</span>
         </router-link>
       </li>
       <li>
         <div @click="language">
-          <span>Language</span>
-          <span>{{lang ? 'Eng': 'Arb'}}</span>
+          <span>{{ $t("menuDropdown.language") }}</span>
+          <span>{{ lang ? "Eng" : "عربى" }}</span>
         </div>
       </li>
       <li>
         <router-link to="#demo">
-          <span>Price Display</span>
-          <span>SAR</span>
+          <span>{{ $t("menuDropdown.priceDisplay") }}</span>
+          <span>{{ $t("menuDropdown.priceSymbol") }}</span>
         </router-link>
       </li>
       <li>
         <router-link to="#demo">
-          <span>Distance</span>
-          <span>km</span>
+          <span>{{ $t("menuDropdown.distance") }}</span>
+          <span>{{ $t("menuDropdown.km") }}</span>
         </router-link>
       </li>
       <li>
         <router-link to="/privacy">
-          <span>Privacy Policy</span>
+          <span>{{ $t("header.privacy") }}</span>
         </router-link>
       </li>
       <li>
         <router-link to="/faqs">
-          <span>FAQs</span>
+          <span>{{ $t("header.faqs") }}</span>
         </router-link>
       </li>
       <li>
         <router-link to="/term-conditions">
-          <span>Term of Use</span>
+          <span>{{ $t("header.termOfUse") }}</span>
         </router-link>
       </li>
       <li>
         <router-link to="/about">
-          <span>About Us</span>
+          <span>{{ $t("header.aboutUs") }}</span>
         </router-link>
       </li>
       <li>
         <p @click="logOut">
-          <span>Logout</span>
+          <span>{{ $t("menuDropdown.logout") }}</span>
         </p>
       </li>
     </ul>
@@ -110,15 +112,15 @@
 
 <script>
 export default {
-  data(){
-    return{
-      lang : false
-    }
+  data() {
+    return {
+      lang: false,
+    };
   },
   methods: {
-    language(){
-      this.lang = !this.lang
-      this.$i18n.locale = this.lang ? 'en': 'ar'
+    language() {
+      this.lang = !this.lang;
+      this.$i18n.locale = this.lang ? "en" : "ar";
     },
     becomeVendor() {
       this.$store.commit("details/SET_V_MODEL", true);
@@ -158,7 +160,7 @@ export default {
   top: 50px;
   min-height: 503px;
 }
-.dropdown ul li>div,
+.dropdown ul li > div,
 .dropdown ul li a,
 .dropdown ul li p {
   color: #828282;
@@ -171,7 +173,7 @@ export default {
 .dropdown ul li a span:nth-child(2) {
   color: #febb12;
 }
-.dropdown ul li >div span:nth-child(2) {
+.dropdown ul li > div span:nth-child(2) {
   color: #febb12;
 }
 </style>

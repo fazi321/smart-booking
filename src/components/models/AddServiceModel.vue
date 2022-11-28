@@ -9,8 +9,8 @@
           </div>
         </div>
         <div class="headings">
-          <h1>Add Service</h1>
-          <h4>Please add details for new service</h4>
+          <h1>{{ $t("AddService.addService") }}</h1>
+          <h4>{{ $t("AddService.subAddService") }}</h4>
         </div>
         <div class="container-vendor">
           <div class="cards">
@@ -22,7 +22,7 @@
                 <img src="../../assets/images/basic.svg" alt="" />
               </div>
               <div class="content">
-                <h5>Basic Information</h5>
+                <h5>{{ $t("AddService.basicInformation") }}</h5>
                 <h6>
                   Lorem ipsum dolor sit amet, consectetur <br />
                   adipiscing elit. Fusce ac odio at urna curs <br />us lacinia.
@@ -37,7 +37,7 @@
                 <img src="../../assets/images/servies.svg" alt="" />
               </div>
               <div class="content">
-                <h5>Service Description</h5>
+                <h5>{{ $t("AddService.serviceDescription") }}</h5>
                 <h6>
                   Lorem ipsum dolor sit amet, consectetur <br />
                   adipiscing elit. Fusce ac odio at urna curs <br />us lacinia.
@@ -52,7 +52,7 @@
                 <img src="../../assets/images/price.svg" alt="" />
               </div>
               <div class="content">
-                <h5>Price Details</h5>
+                <h5>{{ $t("AddService.priceDetails") }}</h5>
                 <h6>
                   Lorem ipsum dolor sit amet, consectetur <br />
                   adipiscing elit. Fusce ac odio at urna curs <br />us lacinia.
@@ -62,7 +62,7 @@
           </div>
           <div class="form-container">
             <div class="input-div step-btn">
-              <button type="submit" @click="accountSelected(2)">Next</button>
+              <button type="submit" @click="accountSelected(2)">{{ $t("AddService.next") }}</button>
             </div>
           </div>
         </div>
@@ -77,8 +77,8 @@
           </div>
         </div>
         <div class="headings">
-          <h1>Basic Information</h1>
-          <h4>Service type</h4>
+          <h1>{{ $t("AddService.basicInformation") }}</h1>
+          <h4>{{ $t("AddService.serviceType") }}</h4>
         </div>
         <!-- <div class="buttons-top">
           <button @click="accountSelected(1)">back</button>
@@ -106,7 +106,7 @@
         </div>
         <div class="form-container">
           <div class="input-div step-btn">
-            <button type="submit" @click="changeSteps">Next</button>
+            <button type="submit" @click="changeSteps">{{ $t("AddService.next") }}</button>
           </div>
         </div>
       </div>
@@ -432,7 +432,7 @@ export default {
           delete this.finalData.totalEntities;
         }
       }
-      this.myImages ={};
+      this.myImages = {};
       this.serviceType = opt;
     },
     basicData(val) {
