@@ -2,9 +2,9 @@
   <section class="btns">
     <section v-if="!$store.state.auth.user">
       <button class="btn btn-transparent" @click="vendorModelShow">
-        Become Vendor
+        {{$t('header.becomeVendor')}}
       </button>
-      <button class="btn btn-filled" @click="loginModelShow">Login</button>
+      <button class="btn btn-filled" @click="loginModelShow">{{$t('header.login')}}</button>
       <LoginModel :model="loginModel || $store.state.auth.loginModel" />
       <SignUpModel :model="signUpModel" @getUserName="userModel"/>
     </section>
@@ -16,7 +16,7 @@
         v-if="$store.state.auth.user.verify && $store.state.auth.user.role != 'Vender'"
         @click="vendorModelShow"
       >
-        Become Vendor
+        {{$t('header.becomeVendor')}}
       </button>
       <!-- v-if="$store.state.auth.user.verify && $store.state.auth.user.host && $store.state.auth.user.role == 'Vender' || $store.state.auth.user.verify && $store.state.auth.user.company && $store.state.auth.user.role == 'Vender'" -->
       <button

@@ -2,10 +2,10 @@
   <section class="nav">
     <ul>
       <li :class="{ active: $route.path == '/' }">
-        <router-link to="/">Home</router-link>
+        <router-link to="/">{{$t("header.home")}}</router-link>
       </li>
       <li :class="{ active: $route.path == '/category' }" class="category-menu">
-        <router-link class="category" to="/">Categories</router-link>
+        <router-link class="category" to="/">{{$t("header.categories")}}</router-link>
         <div class="sub-menu">
           <ul>
             <!-- <li>
@@ -63,19 +63,19 @@
         </div>
       </li>
       <li :class="{ active: $route.params.category == 'privacy' }" @click="addRecent('privacy')">
-        <router-link to="/privacy?page=1">Privacy Policy</router-link>
+        <router-link to="/privacy?page=1">{{$t("header.privacy")}}</router-link>
       </li>
       <li :class="{ active: $route.params.category == 'faqs' }" @click="addRecent('faqs')">
-        <router-link to="/faqs?page=1">FAQs</router-link>
+        <router-link to="/faqs?page=1">{{$t("header.faqs")}}</router-link>
       </li>
       <li
         :class="{ active: $route.params.category == 'term-conditions' }"
         @click="addRecent('term-conditions')"
       >
-        <router-link to="/term-conditions?page=1">Term of Use</router-link>
+        <router-link to="/term-conditions?page=1">{{$t("header.termOfUse")}}</router-link>
       </li>
       <li :class="{ active: $route.params.category == 'about' }" @click="addRecent('about')">
-        <router-link to="/about?page=1">About Us</router-link>
+        <router-link to="/about?page=1">{{$t("header.aboutUs")}}</router-link>
       </li>
       <!-- <li :class="{ active: $route.params.category == 'lounges' }" @click="addRecent('lounges')">
         <router-link to="/lounges?page=1">Lounges</router-link>

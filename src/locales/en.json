@@ -1,4 +1,14 @@
 {
+  "header":{
+    "login":"Login",
+    "becomeVendor":"Become Vendor",
+    "home":"Home",
+    "categories":"Categories",
+    "privacy": "Privacy Policy",
+    "faqs":"FAQs",
+    "termOfUse":"Term of Use",
+    "aboutUs":"About Us"
+  },
   "signUp": {
     "createAccount": "Please create your account",
     "signUp": "SIGNUP",

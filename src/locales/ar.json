@@ -1,4 +1,14 @@
 {
+    "header": {
+        "login": "تسجيل الدخول",
+        "becomeVendor": "اشترك لإضافة عقارك",
+        "home": "الرئيسية",
+        "categories":"فئات",
+        "privacy": "سياسة الخصوصية",
+        "faqs":"لأسئلة المتكررة",
+        "termOfUse":"شروط الاستخدام",
+        "aboutUs":"من نحن"
+    },
     "signUp": {
         "createAccount": "الرجاء إنشاء حسابك",
         "signUp": "تسجيل جديد",
@@ -9,11 +19,11 @@
     "login": {
         "loginAccount": "من فضلك سجل دخولك للمتابعة",
         "signUp": "تسجيل جديد",
-        "signUpCapital":"تسجيل جديد",
+        "signUpCapital": "تسجيل جديد",
         "mobileNumber": "رقم الجوال",
         "login": "تسجيل الدخول",
         "already": "لدي حساب بالفعل؟ ",
-        "dontAccount":"ليس لديك حساب؟"
+        "dontAccount": "ليس لديك حساب؟"
     },
     "error": {
         "numberError": "رقم الجوال خطأ!"
