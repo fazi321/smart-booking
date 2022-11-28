@@ -1,7 +1,7 @@
 <template>
   <div class="container smart-booking">
     <div class="smart-title">
-      <h1>EXPLORE CITIES</h1>
+      <h1>{{$t('homePage.exploreCities')}}</h1>
     </div>
     <div class="card-container">
       <SmartBookingCard

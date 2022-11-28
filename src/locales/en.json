@@ -1,19 +1,40 @@
 {
-  "header":{
-    "login":"Login",
-    "becomeVendor":"Become Vendor",
-    "home":"Home",
-    "categories":"Categories",
+  "header": {
+    "login": "Login",
+    "becomeVendor": "Become Vendor",
+    "home": "Home",
+    "categories": "Categories",
     "privacy": "Privacy Policy",
-    "faqs":"FAQs",
-    "termOfUse":"Term of Use",
-    "aboutUs":"About Us"
+    "faqs": "FAQs",
+    "termOfUse": "Term of Use",
+    "aboutUs": "About Us",
+    "apartments": "Apartments",
+    "farms": "Farms",
+    "hotels": "Hotels",
+    "resorts": "Resorts",
+    "lounges": "Lounges",
+    "stadium": "Stadium",
+    "camps": "Camps",
+    "weddingHalls": "Wedding Halls",
+    "chalets": "Chalets"
+  },
+  "homePage": {
+    "exploreMore": "EXPLORE MORE ON SMART BOOKINGS",
+    "exploreCities": "EXPLORE CITIES"
+  },
+  "searchHeader": {
+    "location": "Location",
+    "rooms": "Rooms",
+    "checkIn": "Check-in",
+    "checkOut": "Check-out",
+    "city": "City",
+    "search": "Search"
   },
   "signUp": {
     "createAccount": "Please create your account",
     "signUp": "SIGNUP",
     "mobileNumber": "Mobile Number",
-    "login":"Login",
+    "login": "Login",
     "already": "Already have an account?"
   },
   "login": {
@@ -21,8 +42,8 @@
     "signUp": "SIGNUP",
     "signUpCapital": "Sign Up",
     "mobileNumber": "Mobile Number",
-    "login":"Login",
-    "dontAccount":"Don't have an Account?"
+    "login": "Login",
+    "dontAccount": "Don't have an Account?"
   },
   "error": {
     "numberError": "Mobile Number Error!"

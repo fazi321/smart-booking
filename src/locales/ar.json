@@ -3,12 +3,33 @@
         "login": "تسجيل الدخول",
         "becomeVendor": "اشترك لإضافة عقارك",
         "home": "الرئيسية",
-        "categories":"فئات",
+        "categories": "فئات",
         "privacy": "سياسة الخصوصية",
-        "faqs":"لأسئلة المتكررة",
-        "termOfUse":"شروط الاستخدام",
-        "aboutUs":"من نحن"
+        "faqs": "لأسئلة المتكررة",
+        "termOfUse": "شروط الاستخدام",
+        "aboutUs": "من نحن",
+        "apartments": "شقق",
+        "farms": "مزارع",
+        "hotels": "فنادق",
+        "resorts": "استراحات",
+        "lounges": "منتجعات",
+        "stadium": "ملاعب",
+        "camps": "مخيمات",
+        "weddingHalls": "قاعات الأفراح",
+        "chalets": "شاليهات",
     },
+    "homePage": {
+        "exploreMore": "اكتشف المزيد عن الحجوزات الذكية",
+        "exploreCities": "اكتشف المدن"
+    },
+    "searchHeader": {
+        "location": "لموقع",
+        "rooms": "الغرف",
+        "checkIn": "تحقق في",
+        "checkOut": "الدفع",
+        "city": "المدينة",
+        "search": "بحث"
+      },
     "signUp": {
         "createAccount": "الرجاء إنشاء حسابك",
         "signUp": "تسجيل جديد",

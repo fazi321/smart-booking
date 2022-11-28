@@ -8,13 +8,13 @@
             <img src="./../assets/images/locationsearch.svg" alt="search" />
           </div>
           <div>
-            <span>Location</span>
+            <span>{{$t('searchHeader.location')}}</span>
           </div>
         </div>
         <div class="location" id="input">
           <input
             type="text"
-            :placeholder="'City'"
+            :placeholder="$t('searchHeader.city')"
             v-model="search.city"
             @focus="openDropdown"
           />
@@ -74,7 +74,7 @@
             <img src="./../assets/images/bed.svg" alt="search" />
           </div>
           <div>
-            <span>Rooms</span>
+            <span>{{$t('searchHeader.city')}}</span>
           </div>
         </div>
         <div>
@@ -88,7 +88,7 @@
             <img src="./../assets/images/checkin.svg" alt="search" />
           </div>
           <div>
-            <span>Check-in</span>
+            <span>{{$t('searchHeader.checkIn')}}</span>
           </div>
         </div>
         <div>
@@ -105,7 +105,7 @@
             <img src="./../assets/images/checkin.svg" alt="search" />
           </div>
           <div>
-            <span>Check-out</span>
+            <span>{{$t('searchHeader.checkOut')}}</span>
           </div>
         </div>
         <div>
@@ -123,7 +123,7 @@
             <img src="./../assets/images/icon-search.svg" alt="search" />
           </div>
           <div>
-            <span>Search</span>
+            <span>{{$t('searchHeader.search')}}</span>
           </div>
         </div>
       </div>

@@ -15,49 +15,49 @@
               :class="{ active: $route.params.category == 'apartments' }"
               @click="addRecent('apartments')"
             >
-              <router-link to="/apartments?page=1">Apartments</router-link>
+              <router-link to="/apartments?page=1">{{$t('header.apartments')}}</router-link>
             </li>
             <li :class="{ active: $route.params.category == 'farms' }" @click="addRecent('farms')">
-              <router-link to="/farms?page=1">Farms</router-link>
+              <router-link to="/farms?page=1">{{$t('header.farms')}}</router-link>
             </li>
             <li
               :class="{ active: $route.params.category == 'hotels' }"
               @click="addRecent('hotels')"
             >
-              <router-link to="/hotels?page=1">Hotels</router-link>
+              <router-link to="/hotels?page=1">{{$t('header.hotels')}}</router-link>
             </li>
             <li
               :class="{ active: $route.params.category == 'resorts' }"
               @click="addRecent('resorts')"
             >
-              <router-link to="/resorts?page=1">Resorts</router-link>
+              <router-link to="/resorts?page=1">{{$t('header.resorts')}}</router-link>
             </li>
             <li
               :class="{ active: $route.params.category == 'lounges' }"
               @click="addRecent('lounges')"
             >
-              <router-link to="/lounges?page=1">Lounges</router-link>
+              <router-link to="/lounges?page=1">{{$t('header.lounges')}}</router-link>
             </li>
             <li
               :class="{ active: $route.params.category == 'stadiums' }"
               @click="addRecent('stadiums')"
             >
-              <router-link to="/stadiums?page=1">Stadium</router-link>
+              <router-link to="/stadiums?page=1">{{$t('header.stadium')}}</router-link>
             </li>
             <li :class="{ active: $route.params.category == 'Camps' }" @click="addRecent('Camps')">
-              <router-link to="/Camps?page=1">Camps</router-link>
+              <router-link to="/Camps?page=1">{{$t('header.camps')}}</router-link>
             </li>
             <li
               :class="{ active: $route.params.category == 'wedding-halls' }"
               @click="addRecent('wedding-halls')"
             >
-              <router-link to="/wedding-halls?page=1">Wedding Halls</router-link>
+              <router-link to="/wedding-halls?page=1">{{$t('header.weddingHalls')}}</router-link>
             </li>
             <li
               :class="{ active: $route.params.category == 'chalets' }"
               @click="addRecent('chalets')"
             >
-              <router-link to="/chalets?page=1">Chalets</router-link>
+              <router-link to="/chalets?page=1">{{$t('header.chalets')}}</router-link>
             </li>
           </ul>
         </div>
