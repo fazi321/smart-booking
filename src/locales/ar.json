@@ -1,0 +1,21 @@
+{
+    "signUp": {
+        "createAccount": "الرجاء إنشاء حسابك",
+        "signUp": "تسجيل جديد",
+        "mobileNumber": "رقم الجوال",
+        "login": "تسجيل الدخول",
+        "already": "لدي حساب بالفعل؟ "
+    },
+    "login": {
+        "loginAccount": "من فضلك سجل دخولك للمتابعة",
+        "signUp": "تسجيل جديد",
+        "signUpCapital":"تسجيل جديد",
+        "mobileNumber": "رقم الجوال",
+        "login": "تسجيل الدخول",
+        "already": "لدي حساب بالفعل؟ ",
+        "dontAccount":"ليس لديك حساب؟"
+    },
+    "error": {
+        "numberError": "رقم الجوال خطأ!"
+    }
+}

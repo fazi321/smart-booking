@@ -17,6 +17,7 @@ import SmartBooking from "@/components/home/smartBooking.vue";
 import ExploreCity from "@/components/home/exploreCity.vue";
 import WhatCanWeDo from "@/components/home/whatCanWeDo.vue";
 import { io } from "socket.io-client";
+// import  i18n  from "../i18n";
 export default {
   name: "HomeView",
   components: {

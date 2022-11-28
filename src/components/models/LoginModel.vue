@@ -17,8 +17,8 @@
           </div>
         </div>
         <div class="headings">
-          <h1>login</h1>
-          <h4>Please Sign In to continue</h4>
+          <h1>{{ $t("login.login") }}</h1>
+          <h4>{{ $t("login.loginAccount") }}</h4>
         </div>
         <div class="login-form">
           <div class="form-container">
@@ -36,22 +36,22 @@
                   <div class="container-input">
                     <input
                       type="number"
-                      placeholder="Mobile Number"
+                      :placeholder="$t('login.mobileNumber')"
                       v-model="phoneNumber"
                       required
                     />
                   </div>
-                  <div class="error" v-if="isError">Mobile Number Error!</div>
+                  <div class="error" v-if="isError">{{$t('error.numberError')}}</div>
                 </div>
               </div>
               <div class="input-div">
-                <button v-if="!loading" type="submit">Login</button>
+                <button v-if="!loading" type="submit">{{$t('login.login')}}</button>
                 <button v-else>Loading...</button>
               </div>
             </form>
           </div>
           <div class="buttom-text">
-            Don’t Have an Account? <span @click="SignUpModel">Sign Up </span>
+            {{$t('login.dontAccount')}} <span @click="SignUpModel">{{$t('login.signUpCapital')}} </span>
           </div>
         </div>
       </div>

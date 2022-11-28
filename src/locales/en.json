@@ -1,0 +1,20 @@
+{
+  "signUp": {
+    "createAccount": "Please create your account",
+    "signUp": "SIGNUP",
+    "mobileNumber": "Mobile Number",
+    "login":"Login",
+    "already": "Already have an account?"
+  },
+  "login": {
+    "loginAccount": "Please Sign In to continue",
+    "signUp": "SIGNUP",
+    "signUpCapital": "Sign Up",
+    "mobileNumber": "Mobile Number",
+    "login":"Login",
+    "dontAccount":"Don't have an Account?"
+  },
+  "error": {
+    "numberError": "Mobile Number Error!"
+  }
+}

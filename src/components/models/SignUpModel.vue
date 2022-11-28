@@ -17,8 +17,8 @@
           </div>
         </div>
         <div class="headings">
-          <h1>SIGNUP</h1>
-          <h4>Please create your account</h4>
+          <h1>{{ $t("signUp.signUp") }}</h1>
+          <h4>{{ $t("signUp.createAccount") }}</h4>
         </div>
         <div class="login-form">
           <div class="form-container">
@@ -36,23 +36,27 @@
                   <div class="container-input">
                     <input
                       type="number"
-                      placeholder="Mobile Number"
+                      :placeholder="$t('signUp.mobileNumber')"
                       v-model="phoneNumber"
                       required
                     />
                   </div>
-                  <div class="error" v-if="isError">Mobile Number Error!</div>
+                  <div class="error" v-if="isError">
+                    {{ $t("error.numberError") }}
+                  </div>
                 </div>
               </div>
               <!-- <div class="error" v-if="!isExist">Password is Incorrect!</div> -->
               <div class="input-div">
-                <button v-if="!loading" type="submit">Signup</button>
+                <button v-if="!loading" type="submit">
+                  {{ $t("signUp.signUp") }}
+                </button>
                 <button v-else>Loading...</button>
               </div>
             </form>
           </div>
           <div class="buttom-text">
-            Already Have an Account? <span @click="LoginModel">Login</span>
+            {{$t('signUp.already')}} <span @click="LoginModel">{{$t('signUp.login')}}</span>
           </div>
         </div>
       </div>
@@ -140,7 +144,7 @@ export default {
             timer: 3000,
           });
           this.$refs.otp.otploading = false;
-          this.$emit('getUserName')
+          this.$emit("getUserName");
           this.otpModel = false;
         }
       } catch (error) {

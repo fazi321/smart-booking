@@ -62,10 +62,10 @@
         </router-link>
       </li>
       <li>
-        <router-link to="#demo">
+        <div @click="language">
           <span>Language</span>
-          <span>Eng</span>
-        </router-link>
+          <span>{{lang ? 'Eng': 'Arb'}}</span>
+        </div>
       </li>
       <li>
         <router-link to="#demo">
@@ -110,7 +110,16 @@
 
 <script>
 export default {
+  data(){
+    return{
+      lang : false
+    }
+  },
   methods: {
+    language(){
+      this.lang = !this.lang
+      this.$i18n.locale = this.lang ? 'en': 'ar'
+    },
     becomeVendor() {
       this.$store.commit("details/SET_V_MODEL", true);
     },
@@ -149,7 +158,7 @@ export default {
   top: 50px;
   min-height: 503px;
 }
-
+.dropdown ul li>div,
 .dropdown ul li a,
 .dropdown ul li p {
   color: #828282;
@@ -160,6 +169,9 @@ export default {
   cursor: pointer;
 }
 .dropdown ul li a span:nth-child(2) {
+  color: #febb12;
+}
+.dropdown ul li >div span:nth-child(2) {
   color: #febb12;
 }
 </style>
