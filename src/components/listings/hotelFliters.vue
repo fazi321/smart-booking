@@ -668,9 +668,9 @@
             {{ $t("listingPage.kitchenUtensils") }}
             <input
               type="checkbox"
-              value="kichenUtensils"
+              value="kitchenUtensils"
               @change="toggleFacilities"
-              :checked="filters.kichenUtensils"
+              :checked="filters.kitchenUtensils"
             />
             <span class="checkmark"></span>
           </label>
