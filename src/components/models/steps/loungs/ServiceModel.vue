@@ -634,7 +634,7 @@ export default {
       };
       console.log(finalDetail);
       this.$emit("decription", finalDetail);
-      this.$parent.accountOpt = "price";
+      // this.$parent.accountOpt = "price";;
     },
     changeStep(step) {
       // if (!this.serviceType) return;

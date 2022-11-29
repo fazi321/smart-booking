@@ -1,5 +1,6 @@
 {
     "header": {
+        "notifications":"الإشعارات",
         "login": "تسجيل الدخول",
         "becomeVendor": "اشترك لإضافة عقارك",
         "addService": "أضف خدمة",

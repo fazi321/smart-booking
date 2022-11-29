@@ -1,5 +1,6 @@
 {
   "header": {
+    "notifications":"Notifications",
     "login": "Login",
     "becomeVendor": "Become Vendor",
     "addService": "Add Service",

@@ -22,7 +22,10 @@
                 <img src="../../assets/images/basic.svg" alt="" />
               </div>
               <div class="content">
-                <h5>{{ $t("AddService.basicInformation") }}</h5>
+                <h5>
+                  {{ $t("AddService.basicInformation") }}
+                  <img src="../../assets/tick.png" v-if="isSubmittedInfo" />
+                </h5>
                 <h6>
                   Lorem ipsum dolor sit amet, consectetur <br />
                   adipiscing elit. Fusce ac odio at urna curs <br />us lacinia.
@@ -31,13 +34,16 @@
             </div>
             <div
               :class="['primary-cards', { active: accountOpt == 'service' }]"
-              @click="selectedOptions('info')"
+              @click="selectedOptions('service')"
             >
               <div class="category-img">
                 <img src="../../assets/images/servies.svg" alt="" />
               </div>
               <div class="content">
-                <h5>{{ $t("AddService.serviceDescription") }}</h5>
+                <h5>
+                  {{ $t("AddService.serviceDescription") }}
+                  <img src="../../assets/tick.png" v-if="isSubmittedDes" />
+                </h5>
                 <h6>
                   Lorem ipsum dolor sit amet, consectetur <br />
                   adipiscing elit. Fusce ac odio at urna curs <br />us lacinia.
@@ -46,7 +52,7 @@
             </div>
             <div
               :class="['primary-cards', { active: accountOpt == 'price' }]"
-              @click="selectedOptions('info')"
+              @click="selectedOptions('price')"
             >
               <div class="category-img">
                 <img src="../../assets/images/price.svg" alt="" />
@@ -62,7 +68,9 @@
           </div>
           <div class="form-container">
             <div class="input-div step-btn">
-              <button type="submit" @click="accountSelected(2)">{{ $t("AddService.next") }}</button>
+              <button type="submit" @click="accountSelected(2)">
+                {{ $t("AddService.next") }}
+              </button>
             </div>
           </div>
         </div>
@@ -106,7 +114,9 @@
         </div>
         <div class="form-container">
           <div class="input-div step-btn">
-            <button type="submit" @click="changeSteps">{{ $t("AddService.next") }}</button>
+            <button type="submit" @click="changeSteps">
+              {{ $t("AddService.next") }}
+            </button>
           </div>
         </div>
       </div>
@@ -404,6 +414,9 @@ export default {
       dataP: {},
       finalData: {},
       myImages: {},
+      //show popUp
+      isSubmittedInfo: false,
+      isSubmittedDes: false,
     };
   },
   methods: {
@@ -434,12 +447,19 @@ export default {
       }
       this.myImages = {};
       this.serviceType = opt;
+      this.isSubmitted = false;
     },
     basicData(val) {
       this.basicD = val;
+      this.isSubmittedInfo = true;
+      this.step = 1;
+      (this.accountOpt = "service"), (this.isSubmitted = false);
     },
     decription(val) {
       this.dataDec = val;
+      this.isSubmittedDes = true;
+      this.step = 1;
+      (this.accountOpt = "price"), (this.isSubmitted = false);
     },
     async pricing(val) {
       this.dataP = val;
@@ -516,16 +536,38 @@ export default {
       // console.log(this.myImages)
     },
     changeSteps() {
-      if (!this.serviceType) return;
-      this.isSubmitted = true;
+      if (this.serviceType) {
+        this.isSubmitted = true;
+      }
     },
     selectedOptions(opt) {
-      this.accountOpt = opt;
+      if (!this.isSubmittedInfo) {
+        if (opt == "info") {
+          this.accountOpt = opt;
+        }
+        return;
+      }
+      if (this.isSubmittedInfo && !this.isSubmittedDes) {
+        if (opt == "service") {
+          this.accountOpt = opt;
+        }
+        return;
+      }
+      if (this.isSubmittedInfo && this.isSubmittedDes) {
+        if (opt == "price") {
+          this.accountOpt = opt;
+        }
+        return;
+      }
     },
     accountSelected(step) {
       if (!this.accountOpt) return;
-      this.step = step;
-      this.isSubmitted = false;
+      if (!this.isSubmittedInfo && !this.isSubmittedDes) {
+        this.step = step;
+        this.isSubmitted = false;
+      } else {
+        this.isSubmitted = true;
+      }
     },
     close() {
       this.accountOpt = null;
@@ -705,6 +747,13 @@ img {
 .container-vendor .primary-cards .content {
   text-align: left;
   line-height: 1.5;
+  position: relative;
+}
+.container-vendor .primary-cards .content h5 img {
+  width: 20px;
+  height: 20px;
+  right: 0;
+  position: absolute;
 }
 .container-vendor .primary-cards.active {
   border: 1px solid #febb12;

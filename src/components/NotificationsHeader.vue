@@ -5,7 +5,7 @@
     </div>
     <div class="drop" v-if="dropDown">
       <div class="head-title">
-        <h1>Notifications</h1>
+        <h1>{{$t("header.notifications")}}</h1>
       </div>
       <section class="message-section" v-if="!loading">
         <div v-if="notifications && notifications.length">
@@ -74,7 +74,7 @@ export default {
         var doc = document.getElementById("demo2");
         if (doc) {
           var ele = doc.contains(e.target);
-          console.log(ele, 'target')
+          // console.log(ele, 'target')
           if (!ele) {
             close();
           }

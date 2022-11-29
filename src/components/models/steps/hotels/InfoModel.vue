@@ -514,7 +514,7 @@ export default {
       // }
       basicInfo.unitsAndGuest = this.unitsAndGuest;
       basicInfo.leisure = this.leisure;
-      this.$parent.accountOpt = "service";
+       // this.$parent.accountOpt = "service";
       this.$emit("basicInfo", basicInfo);
     },
   },

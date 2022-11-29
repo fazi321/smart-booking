@@ -417,7 +417,7 @@ export default {
       // console.log(basicInfo);
       basicInfo.roomsGuest = this.roomsGuest;
       basicInfo.leisure = this.leisure;
-      this.$parent.accountOpt = "service";
+       // this.$parent.accountOpt = "service";
       this.$emit("basicInfo", basicInfo);
     },
   },

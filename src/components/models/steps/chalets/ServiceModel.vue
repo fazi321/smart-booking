@@ -676,7 +676,7 @@ export default {
         roomsbath: { ...this.roomsbath },
       };
       this.$emit("decription", finalDetail);
-      this.$parent.accountOpt = "price";
+      // // this.$parent.accountOpt = "price";;
     },
     changeStep(step) {
       if (step == 6) {
