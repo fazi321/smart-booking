@@ -1,7 +1,7 @@
 <template>
   <section class="filters-container">
     <div>
-      <h6>Filters</h6>
+      <h6>{{$t("listingPage.filters")}}</h6>
     </div>
     <div class="filter-buttons">
       <div class="filter-option">

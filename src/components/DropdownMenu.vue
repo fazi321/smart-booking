@@ -66,7 +66,7 @@
       <li>
         <div @click="language">
           <span>{{ $t("menuDropdown.language") }}</span>
-          <span>{{ lang ? "Eng" : "عربى" }}</span>
+          <span>{{ langLoading ? "---" : lang ? "Eng" : "عربى" }}</span>
         </div>
       </li>
       <li>
@@ -114,13 +114,18 @@
 export default {
   data() {
     return {
-      lang: false,
+      lang: true,
+      langLoading: false,
     };
   },
   methods: {
     language() {
-      this.lang = !this.lang;
-      this.$i18n.locale = this.lang ? "en" : "ar";
+      this.langLoading = true;
+      setTimeout(() => {
+        this.lang = !this.lang;
+        this.$i18n.locale = this.lang ? "en" : "ar";
+        this.langLoading = false;
+      }, 1000);
     },
     becomeVendor() {
       this.$store.commit("details/SET_V_MODEL", true);

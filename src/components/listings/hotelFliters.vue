@@ -3,7 +3,7 @@
     <div class="inner">
       <!-- location section  -->
       <section class="location-filter">
-        <h6>Location Filter</h6>
+        <h6>{{ $t("listingPage.locationFilters") }}</h6>
         <div class="form">
           <!-- <div class="option">
             <input
@@ -16,7 +16,7 @@
           <div class="option">
             <input
               type="text"
-              placeholder="City"
+              :placeholder="$t('listingPage.city')"
               v-model="filters.city"
               @blur="handleBlur"
             />
@@ -24,7 +24,7 @@
           <div class="option">
             <input
               type="text"
-              placeholder="Destination"
+              :placeholder="$t('listingPage.destination')"
               v-model="filters.destination"
               @blur="handleBlur"
             />
@@ -32,7 +32,7 @@
           <div class="option">
             <input
               type="text"
-              placeholder="District"
+              :placeholder="$t('listingPage.district')"
               v-model="filters.district"
               @blur="handleBlur"
             />
@@ -46,7 +46,7 @@
           <div class="option">
             <input
               type="text"
-              placeholder="Direction"
+              :placeholder="$t('listingPage.direction')"
               v-model="filters.direction"
               @blur="handleBlur"
             />
@@ -62,10 +62,10 @@
       <!-- location section  -->
       <!-- other filter section  -->
       <section class="location-filter">
-        <h6>Other Filter</h6>
+        <h6>{{ $t("listingPage.otherFilter") }}</h6>
         <form class="form">
           <label class="checkbox-container">
-            Available Only
+            {{ $t("listingPage.availableOnly") }}
             <!-- <input type="checkbox" checked="" /> -->
             <input
               type="checkbox"
@@ -76,7 +76,7 @@
             <span class="checkmark"></span>
           </label>
           <label class="checkbox-container">
-            Offers Only
+            {{ $t("listingPage.offersOnly") }}
             <input
               type="checkbox"
               value="offersOnly"
@@ -88,7 +88,7 @@
           <div class="input">
             <input
               type="text"
-              placeholder="Search by property name"
+              :placeholder="$t('listingPage.searchByPropertyName')"
               v-model="filters.name"
               @blur="handleBlur"
             />
@@ -97,7 +97,7 @@
           <div class="input">
             <input
               type="text"
-              placeholder="Search by unit name"
+              :placeholder="$t('listingPage.searchByUintName')"
               v-model="filters.unitName"
               @blur="handleBlur"
             />
@@ -107,7 +107,7 @@
       <!-- other filter section  -->
       <!-- Vacation Rental section  -->
       <section class="location-filter">
-        <h6>Vacation Rental types</h6>
+        <h6>{{ $t("listingPage.vacationRentalTypes") }}</h6>
         <form class="form radio">
           <div class="radio-input">
             <input
@@ -118,7 +118,7 @@
               @change="rentalVacation"
               :checked="filters.rentalType == 'Hotel'"
             />
-            <label for="test1">Hotels</label>
+            <label for="test1">{{ $t("listingPage.hotels") }}</label>
           </div>
           <div class="radio-input">
             <input
@@ -129,7 +129,7 @@
               @change="rentalVacation"
               :checked="filters.rentalType == 'Rooms'"
             />
-            <label for="test2">Room</label>
+            <label for="test2">{{ $t("listingPage.room") }}</label>
           </div>
           <div class="radio-input">
             <input
@@ -140,7 +140,7 @@
               @change="rentalVacation"
               :checked="filters.rentalType == 'House'"
             />
-            <label for="test3">House</label>
+            <label for="test3">{{ $t("listingPage.house") }}</label>
           </div>
           <div class="radio-input">
             <input
@@ -151,7 +151,7 @@
               @change="rentalVacation"
               :checked="filters.rentalType == 'Farm'"
             />
-            <label for="test4">Farm</label>
+            <label for="test4">{{ $t("listingPage.farm") }}</label>
           </div>
           <div class="radio-input">
             <input
@@ -162,7 +162,7 @@
               @change="rentalVacation"
               :checked="filters.rentalType == 'Resort'"
             />
-            <label for="test5">Resort</label>
+            <label for="test5">{{ $t("listingPage.resort") }}</label>
           </div>
           <div class="radio-input">
             <input
@@ -173,23 +173,23 @@
               @change="rentalVacation"
               :checked="filters.rentalType == 'Chalet'"
             />
-            <label for="test6">Chalet</label>
+            <label for="test6">{{ $t("listingPage.chalet") }}</label>
           </div>
         </form>
       </section>
       <!-- Vacation Rental section  -->
       <!-- Gathern Choices Filters section  -->
       <section class="location-filter">
-        <h6>Gathern Choices Filters</h6>
+        <h6>{{ $t("listingPage.gathernChoicesFilters") }}</h6>
         <div class="form">
           <div class="gathern">
-            <h5>Unique</h5>
+            <h5>{{ $t("listingPage.unique") }}</h5>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
             <p>Donec aliquot dolor a vulputate dapibus, sem velit tempus</p>
             <p>mi, sit amet blandit lorem elit vel ligula.</p>
           </div>
           <div class="gathern">
-            <h5>Stable</h5>
+            <h5>{{ $t("listingPage.stable") }}</h5>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
             <p>Donec aliquot dolor a vulputate dapibus, sem velit tempus</p>
             <p>mi, sit amet blandit lorem elit vel ligula.</p>
@@ -199,7 +199,7 @@
       <!-- Gathern Choices Filters section  -->
       <!-- Price Filters section  -->
       <section class="location-filter">
-        <h6>Price Filters</h6>
+        <h6>{{ $t("listingPage.priceFilters") }}</h6>
         <form class="form">
           <PriceSlider @values="dataRange" />
         </form>
@@ -207,7 +207,7 @@
       <!-- Price Filters section  -->
       <!-- Space Filters section  -->
       <section class="location-filter">
-        <h6>Space Filters</h6>
+        <h6>{{ $t("listingPage.spaceFilters") }}</h6>
         <form class="form">
           <AreaSlider @values="areaRange" />
         </form>
@@ -215,10 +215,10 @@
       <!-- Space Filters section  -->
       <!-- Review Filters section  -->
       <section class="location-filter">
-        <h6>Review Filters</h6>
+        <h6>{{ $t("listingPage.reviewFilters") }}</h6>
         <form class="form">
           <label class="checkbox-container">
-            All
+            {{ $t("listingPage.all") }}
             <!-- <input type="checkbox" checked="" /> -->
             <input
               type="checkbox"
@@ -229,7 +229,7 @@
             <span class="checkmark"></span>
           </label>
           <label class="checkbox-container">
-            +5 Excellent
+            +5 {{ $t("listingPage.excellent") }}
             <input
               type="checkbox"
               @change="reviewsValues('excellent', '5')"
@@ -238,7 +238,7 @@
             <span class="checkmark"></span>
           </label>
           <label class="checkbox-container">
-            +4 Very Good
+            +4 {{ $t("listingPage.veryGood") }}
             <!-- <input type="checkbox" checked="" /> -->
             <input
               type="checkbox"
@@ -248,7 +248,7 @@
             <span class="checkmark"></span>
           </label>
           <label class="checkbox-container">
-            +3 Good
+            +3 {{ $t("listingPage.good") }}
             <input
               type="checkbox"
               @change="reviewsValues('good', '3')"
@@ -257,7 +257,7 @@
             <span class="checkmark"></span>
           </label>
           <label class="checkbox-container">
-            +2 Fair
+            +2 {{ $t("listingPage.fair") }}
             <!-- <input type="checkbox" checked="" /> -->
             <input
               type="checkbox"
@@ -271,10 +271,10 @@
       <!-- Review Filters section  -->
       <!-- Bedroom Filters section  -->
       <section class="location-filter">
-        <h6>Bedroom Filters</h6>
+        <h6>{{ $t("listingPage.bedroomFilters") }}</h6>
         <form class="form">
           <div class="bedrooms">
-            <span>bedroom</span>
+            <span>{{ $t("listingPage.bedroom") }}</span>
             <div class="count">
               <img
                 src="../../assets/images/sub.png"
@@ -288,7 +288,7 @@
             </div>
           </div>
           <div class="bedrooms">
-            <span>Single Beds</span>
+            <span>{{ $t("listingPage.singleBeds") }}</span>
             <div class="count">
               <img
                 src="../../assets/images/sub.png"
@@ -302,7 +302,7 @@
             </div>
           </div>
           <div class="bedrooms">
-            <span>Double Bed</span>
+            <span>{{ $t("listingPage.doubleBed") }}</span>
             <div class="count">
               <img
                 src="../../assets/images/sub.png"
@@ -320,10 +320,10 @@
       <!-- Bedroom Filters section  -->
       <!-- Bathroom Filters section  -->
       <section class="location-filter">
-        <h6>Bathroom Filters</h6>
+        <h6>{{ $t("listingPage.bathroomFilters") }}</h6>
         <form class="form">
           <div class="bedrooms">
-            <span>Bathrooms</span>
+            <span>{{ $t("listingPage.bathrooms") }}</span>
             <div class="count">
               <img
                 src="../../assets/images/sub.png"
@@ -337,7 +337,7 @@
             </div>
           </div>
           <label class="checkbox-container">
-            Soap & Tissues
+            {{ $t("listingPage.soap&Tissues") }}
             <input
               type="checkbox"
               value="soapTissue"
@@ -347,7 +347,7 @@
             <span class="checkmark"></span>
           </label>
           <label class="checkbox-container">
-            Shampoo
+            {{ $t("listingPage.shampoo") }}
             <input
               type="checkbox"
               value="shampoo"
@@ -357,7 +357,7 @@
             <span class="checkmark"></span>
           </label>
           <label class="checkbox-container">
-            Tissue
+            {{ $t("listingPage.tissue") }}
             <input
               type="checkbox"
               value="tissue"
@@ -367,7 +367,7 @@
             <span class="checkmark"></span>
           </label>
           <label class="checkbox-container">
-            Soap
+            {{ $t("listingPage.soap") }}
             <input
               type="checkbox"
               value="soap"
@@ -377,7 +377,7 @@
             <span class="checkmark"></span>
           </label>
           <label class="checkbox-container">
-            Bathtub
+            {{ $t("listingPage.bathTub") }}
             <input
               type="checkbox"
               value="bathtub"
@@ -396,10 +396,10 @@
       <!-- Bathroom Filters section  -->
       <!-- Capacity Filters section  -->
       <section class="location-filter">
-        <h6>Capacity Filters</h6>
+        <h6>{{ $t("listingPage.capacityFilters") }}</h6>
         <form class="form">
           <div class="bedrooms">
-            <span>Guests</span>
+            <span>{{ $t("listingPage.guests") }}</span>
             <div class="count">
               <img
                 src="../../assets/images/sub.png"
@@ -440,7 +440,7 @@
       <!-- Check-in & Check-out Filters section  -->
       <!-- Pool Type Filters section  -->
       <section class="location-filter">
-        <h6>Pool Type Filters</h6>
+        <h6>{{ $t("listingPage.poolTypeFilters") }}</h6>
         <form class="form">
           <!-- <div class="bedrooms">
             <span>Swimming Pool With Heat</span>
@@ -457,7 +457,7 @@
             </div>
           </div> -->
           <label class="checkbox-container">
-            All
+            {{ $t("listingPage.all") }}
             <input
               type="checkbox"
               value="poolAll"
@@ -467,7 +467,7 @@
             <span class="checkmark"></span>
           </label>
           <label class="checkbox-container">
-            Swimming Pool WithHeat
+            {{ $t("listingPage.swimmingPoolWithHeat") }}
             <input
               type="checkbox"
               value="swimmingPoolWithHeat"
@@ -477,7 +477,7 @@
             <span class="checkmark"></span>
           </label>
           <label class="checkbox-container">
-            No Pool
+            {{ $t("listingPage.noPool") }}
             <input
               type="checkbox"
               value="noPool"
@@ -491,10 +491,10 @@
       <!-- Pool Type Filters section  -->
       <!-- Facilities Filters section  -->
       <section class="location-filter">
-        <h6>Facilities</h6>
+        <h6>{{ $t("listingPage.facilities") }}</h6>
         <form class="form">
           <label class="checkbox-container">
-            Wifi
+            {{ $t("listingPage.wifi") }}
             <input
               type="checkbox"
               value="wifi"
@@ -504,7 +504,7 @@
             <span class="checkmark"></span>
           </label>
           <label class="checkbox-container">
-            Speakers
+            {{ $t("listingPage.speakers") }}
             <!-- <input type="checkbox" checked="" /> -->
             <input
               type="checkbox"
@@ -515,7 +515,7 @@
             <span class="checkmark"></span>
           </label>
           <label class="checkbox-container">
-            Playground
+            {{ $t("listingPage.playground") }}
             <input
               type="checkbox"
               value="playground"
@@ -525,7 +525,7 @@
             <span class="checkmark"></span>
           </label>
           <label class="checkbox-container">
-            Football Court
+            {{ $t("listingPage.footballCourt") }}
             <input
               type="checkbox"
               value="footballCourt"
@@ -535,7 +535,7 @@
             <span class="checkmark"></span>
           </label>
           <label class="checkbox-container">
-            Volleyball Court
+            {{ $t("listingPage.volleyballCourt") }}
             <input
               type="checkbox"
               value="volleyballcourt"
@@ -564,10 +564,10 @@
       <!-- Facilities Filters section  -->
       <!-- Categories Filters section  -->
       <section class="location-filter">
-        <h6>Categories Filters</h6>
+        <h6>{{ $t("listingPage.categoriesFilters") }}</h6>
         <form class="form">
           <label class="checkbox-container">
-            Couples
+            {{ $t("listingPage.couples") }}
             <input
               type="checkbox"
               value="couples"
@@ -577,7 +577,7 @@
             <span class="checkmark"></span>
           </label>
           <label class="checkbox-container">
-            Families only
+            {{ $t("listingPage.familiesOnly") }}
             <input
               type="checkbox"
               value="familiesOnly"
@@ -587,7 +587,7 @@
             <span class="checkmark"></span>
           </label>
           <label class="checkbox-container">
-            Singles Only
+            {{ $t("listingPage.singlesOnly") }}
             <input
               type="checkbox"
               value="singlesOnly"
@@ -597,7 +597,7 @@
             <span class="checkmark"></span>
           </label>
           <label class="checkbox-container">
-            Travelers
+            {{ $t("listingPage.travelers") }}
             <input
               type="checkbox"
               value="travelers"
@@ -611,10 +611,10 @@
       <!-- Categories Filters section  -->
       <!-- Kitchen Facilities Filters section  -->
       <section class="location-filter">
-        <h6>Kitchen Facilities Filters</h6>
+        <h6>{{ $t("listingPage.kitchenFacilitiesFilters") }}</h6>
         <form class="form">
           <label class="checkbox-container">
-            Oven
+            {{ $t("listingPage.oven") }}
             <input
               type="checkbox"
               value="oven"
@@ -624,7 +624,7 @@
             <span class="checkmark"></span>
           </label>
           <label class="checkbox-container">
-            Refrigerator
+            {{ $t("listingPage.Refrigerator") }}
             <!-- <input type="checkbox" checked="" /> -->
             <input
               type="checkbox"
@@ -635,7 +635,7 @@
             <span class="checkmark"></span>
           </label>
           <label class="checkbox-container">
-            Microwave
+            {{ $t("listingPage.microwave") }}
             <input
               type="checkbox"
               value="microwave"
@@ -645,7 +645,7 @@
             <span class="checkmark"></span>
           </label>
           <label class="checkbox-container">
-            Barbeque Corner
+            {{ $t("listingPage.barbequeCorner") }}
             <input
               type="checkbox"
               value="barbequeCorne"
@@ -655,7 +655,7 @@
             <span class="checkmark"></span>
           </label>
           <label class="checkbox-container">
-            Coffe Machine
+            {{ $t("listingPage.coffeMachine") }}
             <input
               type="checkbox"
               value="coffeMachine"
@@ -665,7 +665,7 @@
             <span class="checkmark"></span>
           </label>
           <label class="checkbox-container">
-            Kichen Utensils
+            {{ $t("listingPage.kichenUtensils") }}
             <input
               type="checkbox"
               value="kichenUtensils"
@@ -675,7 +675,7 @@
             <span class="checkmark"></span>
           </label>
           <label class="checkbox-container">
-            Wood Stove
+            {{ $t("listingPage.woodStove") }}
             <input
               type="checkbox"
               value="woodStove"
@@ -689,10 +689,10 @@
       <!-- Kitchen Facilities Filters section  -->
       <!-- add Facilities Filters section  -->
       <section class="location-filter">
-        <h6>Other</h6>
+        <h6>{{ $t("listingPage.other") }}</h6>
         <form class="form last-block">
           <label class="checkbox-container">
-            Indoor With Barrier
+            {{ $t("listingPage.indoorWithBarrier") }}
             <input
               type="checkbox"
               value="indoorWithBarrier"
@@ -702,7 +702,7 @@
             <span class="checkmark"></span>
           </label>
           <label class="checkbox-container">
-            Indoor Without Barrier
+            {{ $t("listingPage.indoorWithoutBarrier") }}
             <input
               type="checkbox"
               value="indoorWithoutBarrier"
@@ -712,7 +712,7 @@
             <span class="checkmark"></span>
           </label>
           <label class="checkbox-container">
-            Outdoor With Barrier
+            {{ $t("listingPage.outdoorWithBarrier") }}
             <input
               type="checkbox"
               value="outdoorWithBarrier"
@@ -722,7 +722,7 @@
             <span class="checkmark"></span>
           </label>
           <label class="checkbox-container">
-            Outdoor Without Barrier
+            {{ $t("listingPage.outdoorWithoutBarrier") }}
             <input
               type="checkbox"
               value="outdoorWithoutBarrier"
@@ -732,7 +732,7 @@
             <span class="checkmark"></span>
           </label>
           <label class="checkbox-container">
-            Swimming With Water Games
+            {{ $t("listingPage.swimmingWithWaterGames") }}
             <input
               type="checkbox"
               value="swimmingWithWaterGames"
@@ -870,9 +870,8 @@ export default {
   width: 100%;
   padding: 20px 0;
   background-color: #fff;
- 
 }
-.apartments-filters .inner{
+.apartments-filters .inner {
   height: 2150px;
   overflow-y: scroll;
   scrollbar-color: #d4aa70 #e4e4e4;
@@ -882,7 +881,7 @@ export default {
 }
 .apartments-filters .inner::-webkit-scrollbar-track {
   background-color: #0e476348;
-  border-radius: 100px; 
+  border-radius: 100px;
 }
 .apartments-filters .inner::-webkit-scrollbar-thumb {
   box-shadow: inset 0 0 18px #febb12;

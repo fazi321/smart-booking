@@ -1,41 +1,41 @@
 <template>
-    <section class="success">
-      <div class="main-login">
-        <div class="logo-close">
-          <div class="close-icon" @click="close">
-            <img src="../../assets/images/close-icon.svg" alt="" />
-          </div>
-        </div>
-        <div class="headings">
-          <h1>Become Vendor</h1>
-        </div>
-        <div class="container-content">
-          <div class="success-img">
-            <img src="../../assets/images/success.svg" alt="" />
-          </div>
-          <div class="success-content">
-            <h5>Request Submitted Successfully!</h5>
-            <p>
-              Your request for become Vendor have been sent <br />
-              successfully. Once it approved you will get the <br />
-              notification.
-            </p>
-          </div>
-          <div class="input-div">
-            <button type="submit">Next</button>
-          </div>
+  <section class="success">
+    <div class="main-login">
+      <div class="logo-close">
+        <div class="close-icon" @click="close">
+          <img src="../../assets/images/close-icon.svg" alt="" />
         </div>
       </div>
-    </section>
+      <div class="headings">
+        <h1>{{ $t("becomeVendor.becomeVendor") }}</h1>
+      </div>
+      <div class="container-content">
+        <div class="success-img">
+          <img src="../../assets/images/success.svg" alt="" />
+        </div>
+        <div class="success-content">
+          <h5>{{ $t("success.requestSubmit") }}</h5>
+          <p>
+            Your request for become Vendor have been sent <br />
+            successfully. Once it approved you will get the <br />
+            notification.
+          </p>
+        </div>
+        <div class="input-div">
+          <button type="submit">{{ $t("AddService.next") }}</button>
+        </div>
+      </div>
+    </div>
+  </section>
 </template>
 
 <script>
 export default {
-  methods:{
-    close(){
-      this.$emit('close')
-    }
-  }
+  methods: {
+    close() {
+      this.$emit("close");
+    },
+  },
 };
 </script>
 
@@ -138,8 +138,8 @@ img {
 /* step success end */
 /* responsive */
 @media (max-width: 479px) and (min-width: 320px) {
-  .success{
-    width:300px;
+  .success {
+    width: 300px;
   }
 }
 </style>

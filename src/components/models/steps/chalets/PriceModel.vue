@@ -9,22 +9,25 @@
           </div>
         </div>
         <div class="headings">
-          <h1>Price Details</h1>
-          <h4><button @click="back(2)">back</button> Pricing</h4>
+          <h1>{{ $t("pricing.priceDetails") }}</h1>
+          <h4>
+            <button @click="back(2)">{{ $t("AddService.back") }}</button>
+            {{ $t("pricing.pricing") }}
+          </h4>
         </div>
         <section class="price-container">
           <div class="container-price">
             <div class="price-primary">
               <div class="head-price">
-                <h5>Name</h5>
-                <h5>Price</h5>
+                <h5>{{ $t("pricing.name") }}</h5>
+                <h5>{{ $t("pricing.price") }}</h5>
               </div>
             </div>
             <!-- block -->
             <div class="price-inputs">
               <div class="price-checkbox">
                 <label class="container-input"
-                  >Days Price
+                  >{{ $t("pricing.daysPrice") }}
                   <input type="checkbox" v-model="daySelected.dayPrice" />
                   <span class="checkmark"></span>
                 </label>
@@ -37,8 +40,8 @@
             <div class="price-inputs">
               <div class="price-checkbox">
                 <label class="container-input"
-                  >Weekdays
-                  <p>(Sun-Wed)</p>
+                  >{{ $t("pricing.weekdays") }}
+                  <p>({{ $t("pricing.sunWed") }})</p>
                   <input type="checkbox" v-model="daySelected.weekendPrice" />
                   <span class="checkmark"></span>
                 </label>
@@ -51,7 +54,7 @@
             <div class="price-inputs">
               <div class="price-checkbox">
                 <label class="container-input"
-                  >Sunday
+                  >{{ $t("pricing.sunday") }}
                   <input type="checkbox" v-model="daySelected.sundayPrice" />
                   <span class="checkmark"></span>
                 </label>
@@ -64,7 +67,7 @@
             <div class="price-inputs">
               <div class="price-checkbox">
                 <label class="container-input"
-                  >Monday
+                  >{{ $t("pricing.monday") }}
                   <input type="checkbox" v-model="daySelected.mondayPrice" />
                   <span class="checkmark"></span>
                 </label>
@@ -77,7 +80,7 @@
             <div class="price-inputs">
               <div class="price-checkbox">
                 <label class="container-input"
-                  >Tuesday
+                  >{{ $t("pricing.tuesday") }}
                   <input type="checkbox" v-model="daySelected.tuesdayPrice" />
                   <span class="checkmark"></span>
                 </label>
@@ -90,7 +93,7 @@
             <div class="price-inputs">
               <div class="price-checkbox">
                 <label class="container-input"
-                  >Wednesday
+                  >{{ $t("pricing.wednesday") }}
                   <input type="checkbox" v-model="daySelected.wednesdayPrice" />
                   <span class="checkmark"></span>
                 </label>
@@ -103,7 +106,7 @@
             <div class="price-inputs">
               <div class="price-checkbox">
                 <label class="container-input"
-                  >Thursday
+                  >{{ $t("pricing.thursday") }}
                   <input type="checkbox" v-model="daySelected.thrusdayPrice" />
                   <span class="checkmark"></span>
                 </label>
@@ -116,7 +119,7 @@
             <div class="price-inputs">
               <div class="price-checkbox">
                 <label class="container-input"
-                  >Friday
+                  >{{ $t("pricing.friday") }}
                   <input type="checkbox" v-model="daySelected.fridayPrice" />
                   <span class="checkmark"></span>
                 </label>
@@ -129,7 +132,7 @@
             <div class="price-inputs">
               <div class="price-checkbox">
                 <label class="container-input"
-                  >Saturday
+                  >{{ $t("pricing.saturday") }}
                   <input type="checkbox" v-model="daySelected.saturdayPrice" />
                   <span class="checkmark"></span>
                 </label>
@@ -172,7 +175,7 @@
           <!-- block -->
           <div class="booking-date">
             <div class="head-booking">
-              <h5>Select Check-in & Check-out times</h5>
+              <h5>{{ $t("pricing.checkIn&CheckOut") }}</h5>
             </div>
             <div class="date-input">
               <div @click="showModelDate('cn')">
@@ -188,7 +191,9 @@
         </section>
         <div class="form-container">
           <div class="input-div">
-            <button type="submit" @click="changeStep(2)">Next</button>
+            <button type="submit" @click="changeStep(2)">
+              {{ $t("AddService.next") }}
+            </button>
           </div>
         </div>
       </div>
@@ -202,13 +207,16 @@
           </div>
         </div>
         <div class="headings">
-          <h1>Price Details</h1>
-          <h4><button @click="goBack(1)">back</button>Booking Settings</h4>
+          <h1>{{ $t("pricing.priceDetails") }}</h1>
+          <h4>
+            <button @click="goBack(1)">{{ $t("AddService.back") }}</button
+            >{{ $t("pricing.bookingSettings") }}
+          </h4>
         </div>
         <section class="booking">
           <div>
             <div class="head">
-              <h1>Category</h1>
+              <h1>{{ $t("pricing.category") }}</h1>
             </div>
             <div class="container-service container-amenities">
               <div class="cards">
@@ -222,8 +230,8 @@
                     src="../../../../assets/images/familiesSingle.svg"
                     alt=""
                   />
-                  <h6>Families &</h6>
-                  <h6>Singles</h6>
+                  <h6>{{ $t("pricing.families&") }}</h6>
+                  <h6>{{ $t("pricing.singles") }}</h6>
                 </div>
                 <div
                   :class="{
@@ -232,7 +240,7 @@
                   @click="bookSettings('families_only')"
                 >
                   <img src="../../../../assets/images/families.svg" alt="" />
-                  <h6>Families Only</h6>
+                  <h6>{{ $t("pricing.familiesOnly") }}</h6>
                 </div>
                 <div
                   :class="{
@@ -241,27 +249,27 @@
                   @click="bookSettings('ladies_only')"
                 >
                   <img src="../../../../assets/images/ladies.svg" alt="" />
-                  <h6>Ladies Only</h6>
+                  <h6>{{ $t("pricing.ladiesOnly") }}</h6>
                 </div>
               </div>
             </div>
           </div>
           <div>
             <div class="head">
-              <h1>Other</h1>
+              <h1>{{ $t("pricing.other") }}</h1>
             </div>
             <div class="container-service container-amenities card-other">
               <div class="cards">
                 <div>
                   <div class="content" @click="showBookPop('book')">
-                    <h5>Booking Type</h5>
-                    <h6>Booking Type name here</h6>
+                    <h5>{{ $t("pricing.bookingType") }}</h5>
+                    <h6>{{ $t("pricing.bookingTypeNameHere") }}</h6>
                   </div>
                 </div>
                 <div>
                   <div class="content" @click="showBookPop('cencel')">
-                    <h5>Cancellation Policy</h5>
-                    <h6>Cancellation Policy name here</h6>
+                    <h5>{{ $t("pricing.cancellationPolicy") }}</h5>
+                    <h6>{{ $t("pricing.cancellationPolicyNameHere") }}</h6>
                   </div>
                 </div>
               </div>
@@ -269,7 +277,7 @@
           </div>
           <div class="deposite-section">
             <div class="head">
-              <h5>Security Deposit</h5>
+              <h5>{{ $t("pricing.securityDeposit") }}</h5>
             </div>
             <div class="toggle-btn">
               <label class="switch">
@@ -290,7 +298,7 @@
           </div>
           <div class="deposite-section deposite-set">
             <div class="head">
-              <h5>Last Minute Discount</h5>
+              <h5>{{ $t("pricing.lastMinuteDiscount") }}</h5>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipis<br />cing elit.
                 Integer consectetur nulla at enim aliqu<br />et, lobortis ipsum
@@ -310,7 +318,9 @@
         </section>
         <div class="form-container">
           <div class="input-div">
-            <button type="submit" @click="changeStep(5)">Next</button>
+            <button type="submit" @click="changeStep(5)">
+              {{ $t("AddService.next") }}
+            </button>
           </div>
         </div>
       </div>
@@ -324,8 +334,8 @@
           </div>
         </div>
         <div class="headings">
-          <h1>Price Details</h1>
-          <h4>Booking Type</h4>
+          <h1>{{ $t("pricing.priceDetails") }}</h1>
+          <h4>{{ $t("pricing.bookingType") }}</h4>
         </div>
         <section class="booking-type">
           <div class="booking-card book-instant">
@@ -344,7 +354,7 @@
                   </div>
                 </div>
                 <div :class="['content']">
-                  <h5>Instant Booking</h5>
+                  <h5>{{ $t("pricing.instantBooking") }}</h5>
                   <h6>
                     Lorem ipsum dolor sit amet, consectetur <br />
                     adipiscing elit. Fusce ac odio at urna curs <br />us
@@ -366,7 +376,7 @@
                   </div>
                 </div>
                 <div :class="['content']">
-                  <h5>24-Hour Request</h5>
+                  <h5>{{ $t("pricing.24-HourRequest") }}</h5>
                   <h6>
                     Lorem ipsum dolor sit amet, consectetur <br />
                     adipiscing elit. Fusce ac odio at urna curs <br />us
@@ -379,7 +389,9 @@
         </section>
         <div class="form-container">
           <div class="input-div">
-            <button type="submit" @click="changeStep(2)">Next</button>
+            <button type="submit" @click="changeStep(2)">
+              {{ $t("AddService.next") }}
+            </button>
           </div>
         </div>
       </div>
@@ -393,8 +405,8 @@
           </div>
         </div>
         <div class="headings">
-          <h1>Price Details</h1>
-          <h4>Cancellation Policy</h4>
+          <h1>{{ $t("pricing.priceDetails") }}</h1>
+          <h4>{{ $t("pricing.cancellationPolicy") }}</h4>
         </div>
         <section class="booking-type">
           <div class="booking-card">
@@ -408,7 +420,7 @@
               >
                 <div class="rounded-btn"></div>
                 <div class="content">
-                  <h5>Flexible</h5>
+                  <h5>{{ $t("pricing.flexible") }}</h5>
                   <h6>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Fusce ac odio at urna curs us lacinia.
@@ -424,7 +436,7 @@
               >
                 <div class="rounded-btn"></div>
                 <div class="content">
-                  <h5>Moderate</h5>
+                  <h5>{{ $t("pricing.moderate") }}</h5>
                   <h6>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Fusce ac odio at urna curs us lacinia.
@@ -440,7 +452,7 @@
               >
                 <div class="rounded-btn"></div>
                 <div class="content">
-                  <h5>Strict</h5>
+                  <h5>{{ $t("pricing.strict") }}</h5>
                   <h6>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Fusce ac odio at urna curs us lacinia.
@@ -459,7 +471,7 @@
               >
                 <div class="rounded-btn"></div>
                 <div class="content">
-                  <h5>Non-Refundable</h5>
+                  <h5>{{ $t("pricing.nonRefundable") }}</h5>
                   <h6>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Fusce ac odio at urna curs us lacinia.
@@ -471,7 +483,9 @@
         </section>
         <div class="form-container">
           <div class="input-div">
-            <button type="submit" @click="changeStep(2)">Next</button>
+            <button type="submit" @click="changeStep(2)">
+              {{ $t("AddService.next") }}
+            </button>
           </div>
         </div>
       </div>
@@ -485,22 +499,25 @@
           </div>
         </div>
         <div class="headings">
-          <h1>Price Details</h1>
-          <h4><button @click="goBack(2)">back</button>Add-Ons</h4>
+          <h1>{{ $t("pricing.priceDetails") }}</h1>
+          <h4>
+            <button @click="goBack(2)">{{ $t("AddService.back") }}</button
+            >{{ $t("pricing.addOns") }}
+          </h4>
         </div>
         <section class="price-unset">
           <div class="container-price">
             <div class="price-primary">
               <div class="head-price">
-                <h5>Name</h5>
-                <h5>Price</h5>
+                <h5>{{ $t("pricing.name") }}</h5>
+                <h5>{{ $t("pricing.price") }}</h5>
               </div>
             </div>
             <!-- block -->
             <div class="price-inputs">
               <div class="price-checkbox">
                 <label class="container-input"
-                  >Name Price
+                  >{{ $t("pricing.namePrice") }}
                   <input type="checkbox" v-model="addOnsCheck.namePrice" />
                   <span class="checkmark"></span>
                 </label>
@@ -513,7 +530,7 @@
             <div class="price-inputs">
               <div class="price-checkbox">
                 <label class="container-input"
-                  >Birthday Arrangements
+                  >{{ $t("pricing.birthdayArrangements") }}
                   <input
                     type="checkbox"
                     v-model="addOnsCheck.BirthdayArrangements"
@@ -529,7 +546,7 @@
             <div class="price-inputs">
               <div class="price-checkbox">
                 <label class="container-input"
-                  >Wedding Arrangements
+                  >{{ $t("pricing.weddingArrangements") }}
                   <input
                     type="checkbox"
                     v-model="addOnsCheck.weddingArrangements"
@@ -545,7 +562,7 @@
             <div class="price-inputs">
               <div class="price-checkbox">
                 <label class="container-input"
-                  >Sleepover
+                  >{{ $t("pricing.sleepover") }}
                   <input type="checkbox" v-model="addOnsCheck.sleepover" />
                   <span class="checkmark"></span>
                 </label>
@@ -557,7 +574,7 @@
             <!-- <div class="price-inputs">
               <div class="price-checkbox">
                 <label class="container-input"
-                  >buffet
+                  >{{ $t("pricing.buffet") }}
                   <input type="checkbox" v-model="addOnsCheck.buffet" />
                   <span class="checkmark"></span>
                 </label>
@@ -568,14 +585,14 @@
             </div>
             <div class="rules">
               <label class="container-input"
-                >Photographer
+                >{{ $t("pricing.photographer") }}
                 <input type="checkbox" v-model="addOnsPrice.Photographer" />
                 <span class="checkmark"></span>
               </label>
             </div>
             <div class="rules">
               <label class="container-input"
-                >wedding Cake
+                >{{ $t("pricing.weddingCake") }}
                 <input type="checkbox" v-model="addOnsPrice.weddingCake" />
                 <span class="checkmark"></span>
               </label>
@@ -597,7 +614,9 @@
         </section>
         <div class="form-container">
           <div class="input-div" v-if="!$store.state.details.btnLastLoading">
-            <button type="submit" @click="submitedData">Next</button>
+            <button type="submit" @click="submitedData">
+              {{ $t("AddService.next") }}
+            </button>
           </div>
           <div class="input-div" v-else>
             <button type="submit">Loading...</button>

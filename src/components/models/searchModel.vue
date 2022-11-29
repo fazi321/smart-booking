@@ -164,7 +164,7 @@
           </div>
           <div class="form-container">
             <div class="input-div">
-              <button type="submit" @click="accountSelected">Next</button>
+              <button type="submit" @click="accountSelected">{{ $t("AddService.next") }}</button>
             </div>
           </div>
         </div>

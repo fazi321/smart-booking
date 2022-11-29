@@ -9,8 +9,8 @@
           </div>
         </div>
         <div class="headings vendor-text">
-          <h1>Become Vendor</h1>
-          <h4>Please select an option</h4>
+          <h1>{{ $t("becomeVendor.becomeVendor") }}</h1>
+          <h4>{{ $t("becomeVendor.subTitle") }}</h4>
         </div>
         <div class="container-vendor">
           <div class="cards">
@@ -18,20 +18,22 @@
               :class="['primary-cards', { active: accountOpt == 'comp' }]"
               @click="selectedOptions('comp')"
             >
-              <h5>I represent the</h5>
-              <h6>Company</h6>
+              <h5>{{ $t("becomeVendor.irep") }}</h5>
+              <h6>{{ $t("becomeVendor.company") }}</h6>
             </div>
             <div
               :class="['primary-cards', { active: accountOpt == 'host' }]"
               @click="selectedOptions('host')"
             >
-              <h5>I am a personal</h5>
-              <h6>Host</h6>
+              <h5>{{ $t("becomeVendor.mpersonal") }}</h5>
+              <h6>{{ $t("becomeVendor.host") }}</h6>
             </div>
           </div>
           <div class="form-container">
             <div class="input-div">
-              <button type="submit" @click="accountSelected">Next</button>
+              <button type="submit" @click="accountSelected">
+                {{ $t("AddService.next") }}
+              </button>
             </div>
           </div>
         </div>
@@ -47,12 +49,14 @@
             </div>
           </div>
           <div class="headings">
-            <h1>Become Vendor</h1>
+            <h1>{{ $t("becomeVendor.becomeVendor") }}</h1>
             <h4 v-if="accountOpt == 'comp'">
-              I Represent the <span>Company</span>
+              {{ $t("becomeVendor.irep") }}
+              <span>{{ $t("becomeVendor.company") }}</span>
             </h4>
             <h4 v-if="accountOpt == 'host'">
-              I am a personal <span>Host</span>
+              {{ $t("becomeVendor.mpersonal") }}
+              <span>{{ $t("becomeVendor.host") }}</span>
             </h4>
           </div>
           <form class="container-vendor" @submit="onSubmit">
@@ -130,7 +134,7 @@
             </div>
             <div class="form-container">
               <div class="input-div">
-                <button type="submit" v-if="!loading">Next</button>
+                <button type="submit" v-if="!loading">{{$t("AddService.next")}}</button>
                 <button v-else>Loading...</button>
               </div>
             </div>
@@ -274,7 +278,7 @@ export default {
       this.isSubmitted = false;
       this.nextStep = null;
       this.istransition = false;
-      this.$store.commit('details/SET_V_MODEL' ,false)
+      this.$store.commit("details/SET_V_MODEL", false);
     },
   },
 };

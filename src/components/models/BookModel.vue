@@ -187,7 +187,7 @@
               </ul>
             </div>
             <div>
-              <h4>Cancellation Policy</h4>
+              <h4>{{ $t("pricing.cancellationPolicy") }}</h4>
               <ul>
                 <li>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.

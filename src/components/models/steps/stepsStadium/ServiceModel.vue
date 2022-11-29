@@ -9,8 +9,11 @@
           </div>
         </div>
         <div class="headings">
-          <h1>Service Description</h1>
-          <h4><button @click="back(2)">back</button>Safty</h4>
+          <h1>{{ $t("serviceDescription.serviceDescription") }}</h1>
+          <h4>
+            <button @click="back(2)">{{ $t("AddService.back") }}</button
+            >{{ $t("serviceDescription.safty") }}
+          </h4>
         </div>
         <div class="container-rules">
           <div class="rules">
@@ -23,49 +26,49 @@
             </div> -->
             <!-- <div>
               <label class="container-input"
-                >Pets Allowed
+                >{{ $t("serviceDescription.pets") }}
                 <input type="checkbox" v-model="rules.petsAllowed" />
                 <span class="checkmark"></span>
               </label>
             </div> -->
             <div>
               <label class="container-input"
-                >Carbon Monoxide Alarams
+                >{{ $t("serviceDescription.carbonMonoxideAlarams") }}
                 <input type="checkbox" v-model="safty.carbonMonoxideAlarams" />
                 <span class="checkmark"></span>
               </label>
             </div>
             <div>
               <label class="container-input"
-                >fire Extinguisher
+                >{{ $t("serviceDescription.fireExtinguisher") }}
                 <input type="checkbox" v-model="safty.fireExtinguisher" />
                 <span class="checkmark"></span>
               </label>
             </div>
             <div>
               <label class="container-input"
-                >first Aid Kit
+                >{{ $t("serviceDescription.firstAidKit") }}
                 <input type="checkbox" v-model="safty.firstAidKit" />
                 <span class="checkmark"></span>
               </label>
             </div>
             <!-- <div>
               <label class="container-input"
-                >Suitable for Childrens (2-14)
+                >{{ $t("serviceDescription.suitableForChildrens") }} (2-14)
                 <input type="checkbox" v-model="rules.suitableForChildrens" />
                 <span class="checkmark"></span>
               </label>
             </div> -->
             <!-- <div>
               <label class="container-input"
-                >Suitable for grooms
+                >{{ $t("serviceDescription.suitableGrooms") }}
                 <input type="checkbox" v-model="rules.suitableForGrooms" />
                 <span class="checkmark"></span>
               </label>
             </div> -->
             <!-- <div>
               <label class="container-input"
-                >Suitable for Infants (Under 2)
+                >{{ $t("serviceDescription.suitableForInfants") }} (Under 2)
                 <input type="checkbox" v-model="rules.suitableForInfants" />
                 <span class="checkmark"></span>
               </label>
@@ -77,7 +80,7 @@
               <div class="price-inputs">
                 <div class="price-checkbox">
                   <label class="container-input"
-                    >Suitable For Childrens
+                    >{{ $t("serviceDescription.suitableForChildrens") }}
                     <input
                       type="checkbox"
                       v-model="suitableFor.suitableForChildrens"
@@ -95,7 +98,7 @@
               <div class="price-inputs">
                 <div class="price-checkbox">
                   <label class="container-input"
-                    >Suitable For Infants
+                    >{{ $t("serviceDescription.suitableForInfants") }}
                     <input
                       type="checkbox"
                       v-model="suitableFor.suitableForInfants"
@@ -115,7 +118,9 @@
         </div>
         <div class="form-container">
           <div class="input-div">
-            <button type="submit" @click="changeStep(2)">Next</button>
+            <button type="submit" @click="changeStep(2)">
+              {{ $t("AddService.next") }}
+            </button>
           </div>
         </div>
       </div>
@@ -129,70 +134,70 @@
           </div>
         </div>
         <div class="headings">
-          <h1>Service Description</h1>
+          <h1>{{ $t("serviceDescription.serviceDescription") }}</h1>
           <h4>kitchen</h4>
         </div>
         <div class="container-rules">
           <div class="rules">
             <div>
               <label class="container-input"
-                >Kitchen Utensils
+                >{{ $t("serviceDescription.kitchenUtensils") }}
                 <input type="checkbox" v-model="kitchen.kitchenUtensils" />
                 <span class="checkmark"></span>
               </label>
             </div>
             <div>
               <label class="container-input"
-                >Dining Table
+                >{{ $t("serviceDescription.diningTable") }}
                 <input type="checkbox" v-model="kitchen.diningTable" />
                 <span class="checkmark"></span>
               </label>
             </div>
             <div>
               <label class="container-input"
-                >Microwave
+                >{{ $t("serviceDescription.microwave") }}
                 <input type="checkbox" v-model="kitchen.microwave" />
                 <span class="checkmark"></span>
               </label>
             </div>
-            <div>
+           <div>
               <label class="container-input"
-                >CoffeeMachine
+                >{{ $t("serviceDescription.coffeeMachine") }}
                 <input type="checkbox" v-model="kitchen.coffeeMachine" />
                 <span class="checkmark"></span>
               </label>
             </div>
-            <div>
+             <div>
               <label class="container-input"
-                >Kettle
+                >{{ $t("serviceDescription.kettle") }}
                 <input type="checkbox" v-model="kitchen.kettle" />
                 <span class="checkmark"></span>
               </label>
             </div>
             <div>
               <label class="container-input"
-                >HotBeverage
+                >{{ $t("serviceDescription.hotBeverage") }}
                 <input type="checkbox" v-model="kitchen.hotBeverage" />
                 <span class="checkmark"></span>
               </label>
             </div>
             <div>
               <label class="container-input"
-                >Oven
+                >{{ $t("serviceDescription.oven") }}
                 <input type="checkbox" v-model="kitchen.oven" />
                 <span class="checkmark"></span>
               </label>
             </div>
             <div>
               <label class="container-input"
-                >Stove
+                >{{ $t("serviceDescription.stove") }}
                 <input type="checkbox" v-model="kitchen.stove" />
                 <span class="checkmark"></span>
               </label>
             </div>
             <div>
               <label class="container-input"
-                >Refrigerator
+                >{{ $t("serviceDescription.refrigerator") }}
                 <input type="checkbox" v-model="kitchen.refrigerator" />
                 <span class="checkmark"></span>
               </label>
@@ -201,7 +206,7 @@
         </div>
         <div class="form-container">
           <div class="input-div">
-            <button type="submit" @click="changeStep(3)">Next</button>
+            <button type="submit" @click="changeStep(3)">{{$t('AddService.next')}}</button>
           </div>
         </div>
       </div>
@@ -216,84 +221,87 @@
           </div>
         </div>
         <div class="headings">
-          <h1>Service Description</h1>
-          <h4><button @click="goBack(1)">back</button> Rooms Bath</h4>
+          <h1>{{ $t("serviceDescription.serviceDescription") }}</h1>
+          <h4>
+            <button @click="goBack(1)">{{ $t("AddService.back") }}</button
+            >{{ $t("serviceDescription.roomsBath") }}
+          </h4>
         </div>
         <div class="container-rules">
           <div class="rules">
             <!-- <div>
               <label class="container-input"
-                >hanger
+                >{{ $t("serviceDescription.hanger") }}
                 <input type="checkbox" v-model="roomsbath.hanger" />
                 <span class="checkmark"></span>
               </label>
             </div> -->
             <div>
               <label class="container-input"
-                >SoapTissue
+                >{{ $t("serviceDescription.soapTissue") }}
                 <input type="checkbox" v-model="roomsbath.soapTissue" />
                 <span class="checkmark"></span>
               </label>
             </div>
             <div>
               <label class="container-input"
-                >Shampoo
+                >{{ $t("serviceDescription.shampoo") }}
                 <input type="checkbox" v-model="roomsbath.shampoo" />
                 <span class="checkmark"></span>
               </label>
             </div>
             <div>
               <label class="container-input"
-                >Towels
+                >{{ $t("serviceDescription.towels") }}
                 <input type="checkbox" v-model="roomsbath.towels" />
                 <span class="checkmark"></span>
               </label>
             </div>
             <!-- <div>
               <label class="container-input"
-                >MassageChair
+                >{{ $t("serviceDescription.massageChair") }}
                 <input type="checkbox" v-model="roomsbath.massageChair" />
                 <span class="checkmark"></span>
               </label>
             </div> -->
             <div>
               <label class="container-input"
-                >Hair Dryer
+                >{{ $t("serviceDescription.hairDryer") }}
                 <input type="checkbox" v-model="roomsbath.hairDryer" />
                 <span class="checkmark"></span>
               </label>
             </div>
             <div>
               <label class="container-input"
-                >closet
+                >{{ $t("serviceDescription.closet") }}
                 <input type="checkbox" v-model="roomsbath.closet" />
                 <span class="checkmark"></span>
               </label>
             </div>
             <!-- <div>
               <label class="container-input"
-                >Extra Pillow
+                >{{ $t("serviceDescription.extraPillow") }}
                 <input type="checkbox" v-model="roomsbath.extraPillow" />
                 <span class="checkmark"></span>
               </label>
             </div>
             <div>
               <label class="container-input"
-                >Bed Sheet
+                >{{ $t("serviceDescription.bedSheet") }}
                 <input type="checkbox" v-model="roomsbath.bedSheet" />
                 <span class="checkmark"></span>
               </label>
             </div>
             <div>
               <label class="container-input"
-                >Washer
+                >{{ $t("serviceDescription.washer") }}
                 <input type="checkbox" v-model="roomsbath.washer" />
                 <span class="checkmark"></span>
               </label>
             </div>
             <div>
               <label class="container-input"
-                >Iron
+                >{{ $t("serviceDescription.iron") }}
                 <input type="checkbox" v-model="roomsbath.iron" />
                 <span class="checkmark"></span>
               </label>
@@ -302,7 +310,9 @@
         </div>
         <div class="form-container">
           <div class="input-div">
-            <button type="submit" @click="changeStep(3)">Next</button>
+            <button type="submit" @click="changeStep(3)">
+              {{ $t("AddService.next") }}
+            </button>
           </div>
         </div>
       </div>
@@ -317,8 +327,11 @@
           </div>
         </div>
         <div class="headings">
-          <h1>Service Description</h1>
-          <h4><button @click="goBack(2)">back</button>Description</h4>
+          <h1>{{ $t("serviceDescription.serviceDescription") }}</h1>
+          <h4>
+            <button @click="goBack(2)">{{ $t("AddService.back") }}</button
+            >{{ $t("serviceDescription.description") }}
+          </h4>
         </div>
         <div class="container-vendor">
           <div>
@@ -334,7 +347,7 @@
               </div>
               <div>
                 <input
-                  :class="['arabic',{ activeErr: errors.nameInArabic }]"
+                  :class="['arabic', { activeErr: errors.nameInArabic }]"
                   @input="resolveErr('nameInArabic')"
                   type="text"
                   placeholder="Service Name (Arabic)"
@@ -370,7 +383,7 @@
               </div>
               <div>
                 <input
-                  :class="['arabic',{ activeErr: errors.descriptionInArabic }]"
+                  :class="['arabic', { activeErr: errors.descriptionInArabic }]"
                   @input="resolveErr('descriptionInArabic')"
                   type="text"
                   placeholder="Property Description (Arabic)"
@@ -403,7 +416,9 @@
         </div>
         <div class="form-container">
           <div class="input-div">
-            <button type="submit" @click="changeStep(4)">Next</button>
+            <button type="submit" @click="changeStep(4)">
+              {{ $t("AddService.next") }}
+            </button>
           </div>
         </div>
       </div>
@@ -418,8 +433,11 @@
           </div>
         </div>
         <div class="headings">
-          <h1>Service Description</h1>
-          <h4><button @click="goBack(3)">back</button>Address & Location</h4>
+          <h1>{{ $t("serviceDescription.serviceDescription") }}</h1>
+          <h4>
+            <button @click="goBack(3)">{{ $t("AddService.back") }}</button
+            >{{ $t("serviceDescription.address&Location") }}
+          </h4>
         </div>
         <div class="map-container">
           <div class="map">
@@ -485,7 +503,9 @@
         </div>
         <div class="form-container">
           <div class="input-div step-btn">
-            <button type="submit" @click="submited">Next</button>
+            <button type="submit" @click="submited">
+              {{ $t("AddService.next") }}
+            </button>
           </div>
         </div>
       </div>
