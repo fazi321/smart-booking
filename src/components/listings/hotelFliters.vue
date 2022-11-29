@@ -535,7 +535,7 @@
             <span class="checkmark"></span>
           </label>
           <label class="checkbox-container">
-            {{ $t("listingPage.volleyballCourt") }}
+            {{ $t("listingPage.volleyBallCourt") }}
             <input
               type="checkbox"
               value="volleyballcourt"
@@ -624,7 +624,7 @@
             <span class="checkmark"></span>
           </label>
           <label class="checkbox-container">
-            {{ $t("listingPage.Refrigerator") }}
+            {{ $t("listingPage.refrigerator") }}
             <!-- <input type="checkbox" checked="" /> -->
             <input
               type="checkbox"
@@ -665,7 +665,7 @@
             <span class="checkmark"></span>
           </label>
           <label class="checkbox-container">
-            {{ $t("listingPage.kichenUtensils") }}
+            {{ $t("listingPage.kitchenUtensils") }}
             <input
               type="checkbox"
               value="kichenUtensils"
