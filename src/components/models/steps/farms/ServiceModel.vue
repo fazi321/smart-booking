@@ -375,7 +375,7 @@
         </div>
         <div class="headings">
           <h1>{{ $t("serviceDescription.serviceDescription") }}</h1>
-          <h4><button @click="goBack(3)">{{$t('addService.back')}}</button>{{ $t("serviceDescription.outdoor") }}</h4>
+          <h4><button @click="goBack(3)">{{$t('AddService.back')}}</button>{{ $t("serviceDescription.outdoor") }}</h4>
         </div>
         <div class="container-rules">
           <div class="rules">
@@ -582,17 +582,28 @@
         </div>
       </div>
     </div>
+    <!-- // -->
+    <section v-if="step == 8">
+      <AddService
+        @close="close"
+        :cached="'price'"
+        :backTo="7"
+        @lastStep="lastStep"
+      />
+    </section>
     <!-- step three End -->
   </section>
 </template>
 
 <script>
+import AddService from "../../AddService.vue";
 import GoogleMap from "../../../GoogleMap.vue";
 export default {
   name: "AddServiceModel",
   props: ["model"],
   components: {
     GoogleMap,
+    AddService
   },
   data() {
     return {
@@ -640,6 +651,9 @@ export default {
       }
       this.$emit("images", formData);
     },
+    lastStep() {
+      this.$parent.accountOpt = "price";
+    },
     submited() {
       if (!this.vInputsLocation()) return;
       // sutable childcheck
@@ -676,7 +690,8 @@ export default {
       };
       console.log(finalDetail);
       this.$emit("decription", finalDetail);
-      // this.$parent.accountOpt = "price";;
+      // this.$parent.accountOpt = "price";
+      this.step = 8;
     },
     changeStep(step) {
       // if (!this.serviceType) return;

@@ -303,13 +303,25 @@
         </div>
       </div>
     </div>
-    <!-- step three end -->
+    <!-- // -->
+    <section v-if="step == 3">
+      <AddService
+        @close="close"
+        :cached="'service'"
+        :backTo="2"
+        @lastStep="lastStep"
+      />
+    </section>
   </section>
 </template>
 
 <script>
+import AddService from "../../AddService.vue";
 export default {
   name: "AddServiceModel",
+  components: {
+    AddService,
+  },
   props: ["model"],
   data() {
     return {
@@ -404,6 +416,9 @@ export default {
     close() {
       this.$emit("close");
     },
+    lastStep() {
+      this.$parent.accountOpt = "service";
+    },
     lastStepClicked() {
       var basicInfo = {};
       if (this.leisure.accessInHours) {
@@ -417,7 +432,8 @@ export default {
       // console.log(basicInfo);
       basicInfo.roomsGuest = this.roomsGuest;
       basicInfo.leisure = this.leisure;
-       // this.$parent.accountOpt = "service";
+      this.step = 3
+      //  this.$parent.accountOpt = "service";
       this.$emit("basicInfo", basicInfo);
     },
   },

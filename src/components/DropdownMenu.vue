@@ -39,6 +39,11 @@
         </router-link>
       </li>
       <li>
+        <router-link to="/booking-request" v-if="$store.state.auth.user">
+          <span>{{ $t("menuDropdown.bookingRequest") }}</span>
+        </router-link>
+      </li>
+      <li>
         <router-link
           to="/service-booking"
           v-if="

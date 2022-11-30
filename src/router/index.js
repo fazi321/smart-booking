@@ -6,6 +6,8 @@ import Profile from "../views/Profile.vue";
 import Messages from "../views/Messages.vue";
 import ServiceBooking from "../views/ServiceBooking.vue";
 import ServiceDetail from "../views/ServiceDetail.vue";
+import BookingRequest from "../views/BookingRequest.vue";
+import RequestDetail from "../views/RequestDetail.vue";
 // vendor
 import myBookings from "../views/MyBooking.vue";
 import MyBookingDetail from "../views/BookingDetail.vue";
@@ -89,6 +91,16 @@ const routes = [
     component: ServiceDetail,
   },
   {
+    path: "/booking-request",
+    name: "BookingRequest",
+    component: BookingRequest,
+  },
+  {
+    path: "/request-details",
+    name: "RequestDetail",
+    component: RequestDetail,
+  },
+  {
     path: "/search",
     name: "search",
     component: Search,
@@ -116,9 +128,9 @@ const router = createRouter({
     // if (to.path === '/search' || to.path === '/blog') return
     return new Promise((resolve) => {
       setTimeout(() => {
-        resolve({ behavior: 'smooth', left: 0, top: 0 })
-      }, 100)
-    })
+        resolve({ behavior: "smooth", left: 0, top: 0 });
+      }, 100);
+    });
   },
 });
 

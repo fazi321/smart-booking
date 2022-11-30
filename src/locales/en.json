@@ -36,7 +36,8 @@
     "priceSymbol": "SAR",
     "km": "km",
     "arbic": "arabic ",
-    "english": "english"
+    "english": "english",
+    "bookingRequest":"Booking Requests"
   },
   "homePage": {
     "whatWeDo": "WHAT CAN WE DO FOR YOU?",
@@ -222,7 +223,8 @@
     "sleepover": "Sleepover",
     "buffet": "buffet",
     "photographer": "Photographer",
-    "weddingCake": "weddingCake"
+    "weddingCake": "weddingCake",
+    "howLongServiceOpen":"How long the service will be open for booking?"
   },
   "becomeVendor": {
     "becomeVendor": "Become Vendor",

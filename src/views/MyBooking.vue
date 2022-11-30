@@ -8,10 +8,22 @@
         <div class="detail-tabs">
           <div class="tabs">
             <p
+              :class="{ active: tab == 'bookingRequests' }"
+              @click="selected('bookingRequests')"
+            >
+              Booking Requests
+            </p>
+            <p
               :class="{ active: tab == 'Upcoming' }"
               @click="selected('Upcoming')"
             >
               Upcoming
+            </p>
+            <p
+              :class="{ active: tab == 'current' }"
+              @click="selected('current')"
+            >
+              Current
             </p>
             <p
               :class="{ active: tab == 'Completed' }"
@@ -90,8 +102,10 @@ export default {
       var copyTo = num * 6;
       var filtereByTabs = this.dataCard.filter((e) => {
         var val =
-          this.tab.toLowerCase() != "upcoming" ? this.tab.toLowerCase() : "pending";
-          return e.status == val;
+          this.tab.toLowerCase() != "upcoming"
+            ? this.tab.toLowerCase()
+            : "pending";
+        return e.status == val;
       });
       this.pageCount = Math.ceil(filtereByTabs.length / 6);
       this.filteredData = filtereByTabs.slice(copyFrom, copyTo);
@@ -162,7 +176,7 @@ export default {
   box-shadow: 0px 0px 10px #0000001a;
   border-radius: 11px;
   opacity: 1;
-  width: 35%;
+  width: 50%;
   padding: 5px;
   display: flex;
   justify-content: space-between;

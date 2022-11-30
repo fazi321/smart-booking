@@ -1,81 +1,9 @@
 <template>
   <section :class="['login-signup', { active: model }]">
     <!-- step one -->
-    <div class="primary-login" v-if="step == 1">
-      <div class="main-login add-services">
-        <div class="logo-close">
-          <div class="close-icon" @click="close">
-            <img src="../../assets/images/close-icon.svg" alt="" />
-          </div>
-        </div>
-        <div class="headings">
-          <h1>{{ $t("AddService.addService") }}</h1>
-          <h4>{{ $t("AddService.subAddService") }}</h4>
-        </div>
-        <div class="container-vendor">
-          <div class="cards">
-            <div
-              :class="['primary-cards', { active: accountOpt == 'info' }]"
-              @click="selectedOptions('info')"
-            >
-              <div class="category-img">
-                <img src="../../assets/images/basic.svg" alt="" />
-              </div>
-              <div class="content">
-                <h5>
-                  {{ $t("AddService.basicInformation") }}
-                  <img src="../../assets/tick.png" v-if="isSubmittedInfo" />
-                </h5>
-                <h6>
-                  Lorem ipsum dolor sit amet, consectetur <br />
-                  adipiscing elit. Fusce ac odio at urna curs <br />us lacinia.
-                </h6>
-              </div>
-            </div>
-            <div
-              :class="['primary-cards', { active: accountOpt == 'service' }]"
-              @click="selectedOptions('service')"
-            >
-              <div class="category-img">
-                <img src="../../assets/images/servies.svg" alt="" />
-              </div>
-              <div class="content">
-                <h5>
-                  {{ $t("AddService.serviceDescription") }}
-                  <img src="../../assets/tick.png" v-if="isSubmittedDes" />
-                </h5>
-                <h6>
-                  Lorem ipsum dolor sit amet, consectetur <br />
-                  adipiscing elit. Fusce ac odio at urna curs <br />us lacinia.
-                </h6>
-              </div>
-            </div>
-            <div
-              :class="['primary-cards', { active: accountOpt == 'price' }]"
-              @click="selectedOptions('price')"
-            >
-              <div class="category-img">
-                <img src="../../assets/images/price.svg" alt="" />
-              </div>
-              <div class="content">
-                <h5>{{ $t("AddService.priceDetails") }}</h5>
-                <h6>
-                  Lorem ipsum dolor sit amet, consectetur <br />
-                  adipiscing elit. Fusce ac odio at urna curs <br />us lacinia.
-                </h6>
-              </div>
-            </div>
-          </div>
-          <div class="form-container">
-            <div class="input-div step-btn">
-              <button type="submit" @click="accountSelected(2)">
-                {{ $t("AddService.next") }}
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <section v-if="step == 1">
+      <AddService :cached="accountOpt" :firstStep="true"/>
+    </section>
     <!-- categories -->
     <div class="primary-login" v-if="step == 2">
       <div class="main-login add-services">
@@ -86,7 +14,10 @@
         </div>
         <div class="headings">
           <h1>{{ $t("AddService.basicInformation") }}</h1>
-          <h4>{{ $t("AddService.serviceType") }}</h4>
+          <h4>
+            <button @click="back(1)">{{ $t("AddService.back") }}</button
+            >{{ $t("AddService.serviceType") }}
+          </h4>
         </div>
         <!-- <div class="buttons-top">
           <button @click="accountSelected(1)">back</button>
@@ -323,6 +254,7 @@
 </template>
 
 <script>
+import AddService from "./AddService.vue";
 // CHALETS
 import InfoModelChalets from "./steps/chalets/InfoModel.vue";
 import ServiceModelChalets from "./steps/chalets/ServiceModel.vue";
@@ -363,6 +295,7 @@ export default {
   name: "AddServiceModel",
   props: ["model"],
   components: {
+    AddService,
     // chalets
     InfoModelChalets,
     ServiceModelChalets,
@@ -420,6 +353,9 @@ export default {
     };
   },
   methods: {
+    back(step) {
+      this.step = step;
+    },
     backServiceModel(step, accountType) {
       // info, service and pric
       this.accountOpt = accountType;
@@ -451,15 +387,15 @@ export default {
     },
     basicData(val) {
       this.basicD = val;
-      this.isSubmittedInfo = true;
-      this.step = 1;
-      (this.accountOpt = "service"), (this.isSubmitted = false);
+      // this.isSubmittedInfo = true;
+      // this.step = 1;
+      // (this.accountOpt = "service"), (this.isSubmitted = false);
     },
     decription(val) {
       this.dataDec = val;
-      this.isSubmittedDes = true;
-      this.step = 1;
-      (this.accountOpt = "price"), (this.isSubmitted = false);
+      // this.isSubmittedDes = true;
+      // this.step = 1;
+      // (this.accountOpt = "price"), (this.isSubmitted = false);
     },
     async pricing(val) {
       this.dataP = val;
@@ -541,33 +477,12 @@ export default {
       }
     },
     selectedOptions(opt) {
-      if (!this.isSubmittedInfo) {
-        if (opt == "info") {
-          this.accountOpt = opt;
-        }
-        return;
-      }
-      if (this.isSubmittedInfo && !this.isSubmittedDes) {
-        if (opt == "service") {
-          this.accountOpt = opt;
-        }
-        return;
-      }
-      if (this.isSubmittedInfo && this.isSubmittedDes) {
-        if (opt == "price") {
-          this.accountOpt = opt;
-        }
-        return;
-      }
+      this.accountOpt = opt;
     },
     accountSelected(step) {
       if (!this.accountOpt) return;
-      if (!this.isSubmittedInfo && !this.isSubmittedDes) {
-        this.step = step;
-        this.isSubmitted = false;
-      } else {
-        this.isSubmitted = true;
-      }
+      this.step = step;
+      this.isSubmitted = false;
     },
     close() {
       this.accountOpt = null;

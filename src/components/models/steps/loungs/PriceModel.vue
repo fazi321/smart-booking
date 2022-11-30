@@ -140,10 +140,10 @@
             </div>
             <!-- block -->
           </div>
-          <!-- <div class="booking-date">
+          <div class="booking-date">
             <div class="head-booking">
-              <h5 @click="submitedData">
-                How long the service will be open for booking?
+             <h5 @click="submitedData">
+                {{$t('pricing.howLongServiceOpen')}}
               </h5>
             </div>
             <div class="date-input">
@@ -152,7 +152,7 @@
                 <input
                   type="date"
                   @change="checkDate"
-                  id="date"
+                  id="date-set"
                   ref="fd"
                   v-model="fromDate"
                 />
@@ -162,13 +162,13 @@
                 <input
                   type="date"
                   @change="checkDate"
-                  id="date"
+                  id="date-set"
                   ref="td"
                   v-model="toDate"
                 />
               </div>
             </div>
-          </div> -->
+          </div>
           <!-- block -->
           <div class="booking-date">
            <div class="head-booking">
@@ -734,12 +734,12 @@ export default {
 </script>
 
 <style scoped>
-/* #date {
+#date-set {
   visibility: hidden;
   position: absolute;
   top: 0;
   left: 0;
-} */
+}
 /* transition */
 .transitionBox {
   transition: 0.3s;

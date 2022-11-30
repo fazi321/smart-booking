@@ -111,7 +111,8 @@
         "sleepover": "النوم",
         "buffet": "بوفيه",
         "photographer": "مصور فوتوغرافي",
-        "weddingCake": "كعكة العرس"
+        "weddingCake": "كعكة العرس",
+        "howLongServiceOpen":"ما هي مدة فتح الخدمة للحجز؟"
     },
     "menuDropdown": {
         "myProfile": "الملف الشخصي",
@@ -129,7 +130,8 @@
         "priceSymbol": "ريال",
         "km": "كلم",
         "arabic": "عربى",
-        "english": "اللغة "
+        "english": "اللغة ",
+        "bookingRequest":"طلبات الحجز"
     },
     "homePage": {
         "whatWeDo": "ماذا يمكننا أن نفعل لك؟",

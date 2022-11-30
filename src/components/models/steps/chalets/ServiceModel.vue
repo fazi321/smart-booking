@@ -345,7 +345,9 @@
         </div>
         <div class="form-container">
           <div class="input-div">
-            <button type="submit" @click="changeStep(4)">{{ $t("AddService.next") }}</button>
+            <button type="submit" @click="changeStep(4)">
+              {{ $t("AddService.next") }}
+            </button>
           </div>
         </div>
       </div>
@@ -583,17 +585,28 @@
         </div>
       </div>
     </div>
+    <!-- // -->
+    <section v-if="step == 7">
+      <AddService
+        @close="close"
+        :cached="'price'"
+        :backTo="6"
+        @lastStep="lastStep"
+      />
+    </section>
     <!-- step three End -->
   </section>
 </template>
 
 <script>
+import AddService from "../../AddService.vue";
 import GoogleMap from "../../../GoogleMap.vue";
 export default {
   name: "AddServiceModel",
   props: ["model"],
   components: {
     GoogleMap,
+    AddService,
   },
   data() {
     return {
@@ -641,6 +654,9 @@ export default {
       }
       this.$emit("images", formData);
     },
+    lastStep() {
+      this.$parent.accountOpt = "price";
+    },
     submited() {
       if (!this.vInputsLocation()) return;
       // sutable childcheck
@@ -676,7 +692,8 @@ export default {
         roomsbath: { ...this.roomsbath },
       };
       this.$emit("decription", finalDetail);
-      // // this.$parent.accountOpt = "price";;
+      this.step = 7;
+      // this.$parent.accountOpt = "price";
     },
     changeStep(step) {
       if (step == 6) {

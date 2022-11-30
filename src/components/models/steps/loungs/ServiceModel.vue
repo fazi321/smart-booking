@@ -540,17 +540,28 @@
         </div>
       </div>
     </div>
+    <!-- // -->
+    <section v-if="step == 4">
+      <AddService
+        @close="close"
+        :cached="'price'"
+        :backTo="3"
+        @lastStep="lastStep"
+      />
+    </section>
     <!-- step three End -->
   </section>
 </template>
 
 <script>
+import AddService from "../../AddService.vue";
 import GoogleMap from "../../../GoogleMap.vue";
 export default {
   name: "AddServiceModel",
   props: ["model"],
   components: {
     GoogleMap,
+    AddService,
   },
   data() {
     return {
@@ -600,6 +611,9 @@ export default {
       }
       this.$emit("images", formData);
     },
+    lastStep() {
+      this.$parent.accountOpt = "price";
+    },
     submited() {
       if (!this.vInputsLocation()) return;
       // sutable childcheck
@@ -634,7 +648,8 @@ export default {
       };
       console.log(finalDetail);
       this.$emit("decription", finalDetail);
-      // this.$parent.accountOpt = "price";;
+      this.step = 4;
+      // this.$parent.accountOpt = "price";
     },
     changeStep(step) {
       // if (!this.serviceType) return;
