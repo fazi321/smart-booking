@@ -119,7 +119,7 @@
 export default {
   data() {
     return {
-      lang: true,
+      lang: false,
       langLoading: false,
     };
   },
