@@ -290,6 +290,11 @@ header.active .container .nav ul li a {
   }
   .hero-slider .carousel__slide {
     height: unset !important;
+    border-radius: unset;
+  }
+  .layout{
+    border-radius: unset!important;
+    bottom: 4px!important;
   }
 
   .hero-slider .carousel__pagination {
@@ -299,7 +304,17 @@ header.active .container .nav ul li a {
   }
 
   .smart-title h1 {
-    font-size: 18px;
+    font-size: 14px;
+  }
+  .hero-slider{
+    margin: 0!important;
+    padding-top: 0!important;
+  }
+  .search-wrapper{
+    margin: 0!important;
+  }
+  .apartment-main{
+    padding: 0!important;
   }
 }
 

@@ -183,7 +183,10 @@ export default {
 .dropdown ul li a span:nth-child(2) {
   color: #febb12;
 }
-.dropdown ul li > div span:nth-child(2) {
-  color: #febb12;
+@media (max-width: 479px) and (min-width: 320px) {
+  .dropdown{
+    right: 10px;
+    top: 40px;
+  }
 }
 </style>

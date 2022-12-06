@@ -147,4 +147,13 @@ export default {
 .not-found {
   padding: 10px;
 }
+@media (max-width: 479px) and (min-width: 320px) {
+  .ghanti{
+    width: 19px;
+    margin-top: -4px;
+  }
+  .drop{
+    min-width: 220px;
+  }
+}
 </style>

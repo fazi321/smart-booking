@@ -14,7 +14,7 @@
         >
           <div class="category" @click="openDropdown">Categories</div>
           <div class="sub-menu" v-if="dropDown">
-            <ul>
+            <ul class="sub-list">
               <!-- <li>
               <router-link to="/">Home</router-link>
             </li>-->
@@ -130,6 +130,9 @@ export default {
 </script>
 
 <style scoped>
+.sub-list{
+  border: unset!important;
+}
 .hi p {
   width: 30px !important;
   height: 30px !important;
