@@ -1,7 +1,7 @@
 <template>
   <div class="location-set">
     <GMapMap
-      
+      ref="myMap"
       :center="center"
       :zoom="zoom"
       :onClick="clicked"
@@ -43,6 +43,7 @@
 export default {
   data() {
     return {
+      address: {},
       map: null,
       zoom: 7,
       center: { lat: 24.9582, lng: 46.7008 },
@@ -63,8 +64,8 @@ export default {
       markers: [
         {
           position: {
-            lat: 38.093048,
-            lng: 73.84212,
+            lat: 24.7135517,
+            lng: 46.6752957,
           },
         },
       ],
@@ -74,19 +75,23 @@ export default {
     this.getLocation();
   },
   methods: {
-    clicked(){
-       this.markers[0].position.lat = this.currentRepo.lat;
-       this.markers[0].position.lng = this.currentRepo.lng;
+    clicked() {
+      this.markers[0].position.lat = this.currentRepo.lat;
+      this.markers[0].position.lng = this.currentRepo.lng;
     },
     showPosition(position) {
       (this.center = {
         lat: position.coords.latitude,
         lng: position.coords.longitude,
       }),
-      // this.$emit("latlng", this.center);
-      // mark
-      this.markers[0].position.lat = position.coords.latitude;
+        // this.$emit("latlng", this.center);
+        // mark
+        (this.markers[0].position.lat = position.coords.latitude);
       this.markers[0].position.lng = position.coords.longitude;
+      this.getStreetAddressFrom(
+        position.coords.latitude,
+        position.coords.longitude
+      );
     },
     getLocation() {
       if (navigator.geolocation) {
@@ -95,11 +100,34 @@ export default {
         console.log("Geolocation is not supported by this browser.");
       }
     },
+    async getStreetAddressFrom(lat, lng) {
+      try {
+        const response = await fetch(
+          `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=AIzaSyB0BScCFIxNxzp_Ao7b4iwhaRx5ZnKvGCE`
+        );
+        const data = await response.json();
+        const address = data.results[4];
+        this.address.address = address.formatted_address;
+        this.address.city = address.address_components[2].long_name;
+        this.currentRepo = {
+          lat: lat,
+          lng: lng,
+        };
+        this.currentRepo.address = this.address;
+        this.markers[0].position.lat = lat;
+        this.markers[0].position.lng = lng;
+        this.$emit("latlng", this.currentRepo);
+      } catch (error) {
+        console.log(error.message);
+      }
+    },
     updateCenter(latLng) {
       this.currentRepo = {
         lat: latLng.lat(),
         lng: latLng.lng(),
       };
+      this.getStreetAddressFrom(latLng.lat(), latLng.lng());
+      this.currentRepo.address = this.address;
       this.markers[0].position.lat = latLng.lat();
       this.markers[0].position.lng = latLng.lng();
       this.$emit("latlng", this.currentRepo);

@@ -30,7 +30,7 @@
                 </label>
               </div>
               <div class="input-price">
-                <input type="number" v-model="price.dayPrice" />
+                <input type="number" v-model="price.dayPrice"  :disabled="!daySelected.hourPrice"/>
               </div>
             </div>
             <!-- block -->
@@ -349,7 +349,7 @@
                 ]"
                 @click="bookInstant('instant')"
               >
-                <div class="rounded-btn"></div>
+                <!-- <div class="rounded-btn"></div> -->
                 <div class="card-container">
                   <div class="category-img">
                     <img src="../../../../assets/images/instant.svg" alt="" />
@@ -371,7 +371,7 @@
                 ]"
                 @click="bookInstant('24-Hour request')"
               >
-                <div class="rounded-btn"></div>
+                <!-- <div class="rounded-btn"></div> -->
                 <div class="card-container">
                   <div class="category-img">
                     <img src="../../../../assets/images/request.svg" alt="" />
@@ -418,7 +418,7 @@
                 ]"
                 @click="cancelation('Flexible')"
               >
-                <div class="rounded-btn"></div>
+                <!-- <div class="rounded-btn"></div> -->
                 <div class="content">
                   <h5>{{ $t("pricing.flexible") }}</h5>
                   <h6>
@@ -434,7 +434,7 @@
                 ]"
                 @click="cancelation('Moderate')"
               >
-                <div class="rounded-btn"></div>
+                <!-- <div class="rounded-btn"></div> -->
                 <div class="content">
                   <h5> {{ $t("pricing.moderate") }}</h5>
                   <h6>
@@ -450,7 +450,7 @@
                 ]"
                 @click="cancelation('Strict')"
               >
-                <div class="rounded-btn"></div>
+                <!-- <div class="rounded-btn"></div> -->
                 <div class="content">
                   <h5> {{ $t("pricing.strict") }}</h5>
                   <h6>
@@ -469,7 +469,7 @@
                 ]"
                 @click="cancelation('Non-Refundable')"
               >
-                <div class="rounded-btn"></div>
+                <!-- <div class="rounded-btn"></div> -->
                 <div class="content">
                   <h5> {{ $t("pricing.nonRefundable") }}</h5>
                   <h6>
@@ -518,7 +518,7 @@
                 </label>
               </div>
               <div class="input-price">
-                <input type="text" v-model="addOnsPrice.namePrice" />
+                <input type="text" v-model="addOnsPrice.namePrice" :disabled="!addOnsCheck.namePrice"/>
               </div>
             </div>
             <!-- block -->
@@ -534,7 +534,7 @@
                 </label>
               </div>
               <div class="input-price">
-                <input type="text" v-model="addOnsPrice.BirthdayArrangements" />
+                <input type="text" v-model="addOnsPrice.BirthdayArrangements" :disabled="!addOnsCheck.BirthdayArrangements"/>
               </div>
             </div> -->
             <!-- block -->
@@ -547,7 +547,7 @@
                 </label>
               </div>
               <div class="input-price">
-                <input type="text" v-model="addOnsPrice.buffet" />
+                <input type="text" v-model="addOnsPrice.buffet" :disabled="!addOnsCheck.buffet" />
               </div>
             </div>
             <div class="rules">
@@ -574,7 +574,7 @@
                 </label>
               </div>
               <div class="input-price">
-                <input type="text" v-model="addOnsPrice.Buffets" />
+                <input type="text" v-model="addOnsPrice.Buffets" :disabled="!addOnsCheck.Buffets"/>
               </div>
             </div> -->
           </div>

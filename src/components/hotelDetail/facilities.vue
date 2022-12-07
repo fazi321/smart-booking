@@ -344,7 +344,7 @@
           <div>
             <div class="icon-img">
               <div>
-                <img src="../../assets/images/doorman.svg" alt />
+                <img src="../../assets/images/doorman.png" alt />
               </div>
             </div>
             <p>Doorman</p>
@@ -357,7 +357,7 @@
           <div>
             <div class="icon-img">
               <div>
-                <img src="../../assets/images/doorman.svg" alt />
+                <img src="../../assets/images/doorman.png" alt />
               </div>
             </div>
             <p>Parking</p>
@@ -370,7 +370,7 @@
           <div>
             <div class="icon-img">
               <div>
-                <img src="../../assets/images/doorman.svg" alt />
+                <img src="../../assets/images/doorman.png" alt />
               </div>
             </div>
             <p>Elevator</p>
@@ -383,7 +383,7 @@
           <div>
             <div class="icon-img">
               <div>
-                <img src="../../assets/images/doorman.svg" alt />
+                <img src="../../assets/images/doorman.png" alt />
               </div>
             </div>
             <p>Safty Box</p>
@@ -400,7 +400,7 @@
           <div>
             <div class="icon-img">
               <div>
-                <img src="../../assets/images/doorman.svg" alt />
+                <img src="../../assets/images/air.svg" alt />
               </div>
             </div>
             <p>Air Conditioning</p>
@@ -413,7 +413,7 @@
           <div>
             <div class="icon-img">
               <div>
-                <img src="../../assets/images/doorman.svg" alt />
+                <img src="../../assets/images/tv.svg" alt />
               </div>
             </div>
             <p>tv</p>
@@ -426,7 +426,7 @@
           <div>
             <div class="icon-img">
               <div>
-                <img src="../../assets/images/doorman.svg" alt />
+                <img src="../../assets/images/wifi.svg" alt />
               </div>
             </div>
             <p>Wifi</p>
@@ -439,7 +439,7 @@
           <div>
             <div class="icon-img">
               <div>
-                <img src="../../assets/images/doorman.svg" alt />
+                <img src="../../assets/images/doorman.png" alt />
               </div>
             </div>
             <p>Speakers</p>
@@ -452,7 +452,7 @@
           <div>
             <div class="icon-img">
               <div>
-                <img src="../../assets/images/doorman.svg" alt />
+                <img src="../../assets/images/doorman.png" alt />
               </div>
             </div>
             <p>Stage</p>
@@ -467,7 +467,7 @@
           <div>
             <div class="icon-img">
               <div>
-                <img src="../../assets/images/doorman.svg" alt />
+                <img src="../../assets/images/doorman.png" alt />
               </div>
             </div>
             <p>Laser Lights</p>

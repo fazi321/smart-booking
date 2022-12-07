@@ -18,32 +18,42 @@
               </div>
             </div>
             <div class="profile-name">
-              <h4>{{vendorInfo.firstName}} {{vendorInfo.lastName}}</h4>
+              <h4>{{ vendorInfo.firstName }} {{ vendorInfo.lastName }}</h4>
             </div>
             <div class="detail-profile-bottom">
               <div>
                 <p>Joined</p>
-                <h1>08, Aug, 2022</h1>
+                <h1>{{ formateDate(vendorInfo.requestedAt) }}</h1>
               </div>
               <div>
                 <p>Services</p>
-                <h1>3</h1>
+                <h1>{{ vendorInfo.numberOfservices }}</h1>
               </div>
             </div>
             <div class="rating-main" v-if="storeState && storeState.numReviews">
               <div class="rating">
-                <span :class="['star',{'yellow':storeState.rating >=1}]">&starf;</span>
-                <span :class="['star',{'yellow':storeState.rating >=2}]">&starf;</span>
-                <span :class="['star',{'yellow':storeState.rating >=3}]">&starf;</span>
-                <span :class="['star',{'yellow':storeState.rating >=4}]">&starf;</span>
-                <span :class="['star',{'yellow':storeState.rating >=5}]">&starf;</span>
-                <span class="rating-counter">({{storeState.rating}})</span>
+                <span :class="['star', { yellow: storeState.rating >= 1 }]"
+                  >&starf;</span
+                >
+                <span :class="['star', { yellow: storeState.rating >= 2 }]"
+                  >&starf;</span
+                >
+                <span :class="['star', { yellow: storeState.rating >= 3 }]"
+                  >&starf;</span
+                >
+                <span :class="['star', { yellow: storeState.rating >= 4 }]"
+                  >&starf;</span
+                >
+                <span :class="['star', { yellow: storeState.rating >= 5 }]"
+                  >&starf;</span
+                >
+                <span class="rating-counter">({{ storeState.rating }})</span>
               </div>
             </div>
           </div>
         </section>
         <div class="login-form">
-          <ReviewsVendor @openReview="showModel"/>
+          <ReviewsVendor @openReview="showModel" />
         </div>
       </div>
     </div>
@@ -68,33 +78,47 @@ export default {
   },
   data() {
     return {
-      vendorInfo:{},
+      vendorInfo: {},
     };
   },
   methods: {
-    async getReviews(){
-      if(!this.user) return
+    formateDate(dateString) {
+      if (!dateString) return;
+      function join(t, a, s) {
+        function format(m) {
+          let f = new Intl.DateTimeFormat("en", m);
+          return f.format(t);
+        }
+        return a.map(format).join(s);
+      }
+      let a = [{ day: "numeric" }, { month: "short" }, { year: "numeric" }];
+      let s = join(new Date(dateString), a, ",");
+      return s;
+    },
+    async getReviews() {
       try {
-        var res = await this.$axios.get(`vender/profile/${this.user._id}`);
-        if(res.data){
+        var res = await this.$axios.get(
+          `vender/profile/${this.storeState.vender}`
+        );
+        if (res.data) {
           this.vendorInfo = res.data;
-        } 
+        }
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
     },
-    showModel(){
-      this.$emit('openReview')
+    showModel() {
+      this.$emit("openReview");
     },
     close() {
-      this.$emit('close')
+      this.$emit("close");
     },
   },
   watch: {
-    "$store.state.auth.user": {
+    model: {
       immediate: true,
       handler() {
-        this.getReviews()
+        this.getReviews();
       },
     },
   },
@@ -213,8 +237,7 @@ img {
   line-height: 1;
 }
 .rating .yellow {
-  color: #fdc350!important;
-  
+  color: #fdc350 !important;
 }
 .rating .rating-counter {
   letter-spacing: 0px;

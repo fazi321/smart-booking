@@ -179,7 +179,8 @@
     "freeMeal": "Free Meal",
     "breakFast": "Break Fast",
     "lunch": "Lunch",
-    "dinner": "Dinner"
+    "dinner": "Dinner",
+    "audditionailRules":"AudditionailRules"
   },
   "pricing": {
     "priceDetails": "Price Details",

@@ -10,7 +10,7 @@
         </div>
         <div class="headings">
           <h1>{{ $t("serviceDescription.serviceDescription") }}</h1>
-           <h4>
+          <h4>
             <button @click="back(2)">{{ $t("AddService.back") }}</button
             >{{ $t("serviceDescription.rules&Safty") }}
           </h4>
@@ -130,7 +130,7 @@
               <div class="price-inputs">
                 <div class="price-checkbox">
                   <label class="container-input"
-                    >Audditionail Rules
+                    >{{ $t("serviceDescription.audditionailRules") }}
                     <input
                       type="checkbox"
                       v-model="suitableFor.audditionailRules"
@@ -142,6 +142,7 @@
                   <input
                     type="text"
                     v-model="suitablePrice.audditionailRules"
+                    :disabled="!suitableFor.audditionailRules"
                   />
                 </div>
               </div>
@@ -158,9 +159,10 @@
                   </label>
                 </div>
                 <div class="input-price">
-                  <input
+                   <input
                     type="number"
                     v-model="suitablePrice.suitableForInfants"
+                    :disabled="!suitableFor.suitableForInfants"
                   />
                 </div>
               </div> -->
@@ -169,7 +171,9 @@
         </div>
         <div class="form-container">
           <div class="input-div">
-            <button type="submit" @click="changeStep(2)">{{$t('AddService.next')}}</button>
+            <button type="submit" @click="changeStep(2)">
+              {{ $t("AddService.next") }}
+            </button>
           </div>
         </div>
       </div>
@@ -212,7 +216,7 @@
                 <span class="checkmark"></span>
               </label>
             </div>
-           <div>
+            <div>
               <label class="container-input"
                 >{{ $t("serviceDescription.coffeeMachine") }}
                 <input type="checkbox" v-model="kitchen.coffeeMachine" />
@@ -226,7 +230,7 @@
                 <span class="checkmark"></span>
               </label>
             </div> -->
-             <div>
+            <div>
               <label class="container-input"
                 >{{ $t("serviceDescription.kettle") }}
                 <input type="checkbox" v-model="kitchen.kettle" />
@@ -265,7 +269,9 @@
         </div>
         <div class="form-container">
           <div class="input-div">
-            <button type="submit" @click="changeStep(3)">{{$t('AddService.next')}}</button>
+            <button type="submit" @click="changeStep(3)">
+              {{ $t("AddService.next") }}
+            </button>
           </div>
         </div>
       </div>
@@ -281,7 +287,10 @@
         </div>
         <div class="headings">
           <h1>{{ $t("serviceDescription.serviceDescription") }}</h1>
-          <h4><button @click="goBack(2)">{{ $t("AddService.back") }}</button>{{ $t("serviceDescription.roomsBath") }}</h4>
+          <h4>
+            <button @click="goBack(2)">{{ $t("AddService.back") }}</button
+            >{{ $t("serviceDescription.roomsBath") }}
+          </h4>
         </div>
         <div class="container-rules">
           <div class="rules">
@@ -366,7 +375,9 @@
         </div>
         <div class="form-container">
           <div class="input-div">
-            <button type="submit" @click="changeStep(5)">{{$t('AddService.next')}}</button>
+            <button type="submit" @click="changeStep(5)">
+              {{ $t("AddService.next") }}
+            </button>
           </div>
         </div>
       </div>
@@ -382,7 +393,10 @@
         </div>
         <div class="headings">
           <h1>{{ $t("serviceDescription.serviceDescription") }}</h1>
-          <h4><button @click="goBack(3)">{{ $t("AddService.back") }}</button>{{ $t("serviceDescription.freeMeal") }}</h4>
+          <h4>
+            <button @click="goBack(3)">{{ $t("AddService.back") }}</button
+            >{{ $t("serviceDescription.freeMeal") }}
+          </h4>
         </div>
         <div class="container-rules">
           <div class="rules">
@@ -411,7 +425,9 @@
         </div>
         <div class="form-container">
           <div class="input-div">
-            <button type="submit" @click="changeStep(6)">{{$t('AddService.next')}}</button>
+            <button type="submit" @click="changeStep(6)">
+              {{ $t("AddService.next") }}
+            </button>
           </div>
         </div>
       </div>
@@ -426,7 +442,10 @@
         </div>
         <div class="headings">
           <h1>{{ $t("serviceDescription.serviceDescription") }}</h1>
-          <h4><button @click="goBack(5)">{{$t('AddService.back')}}</button>{{ $t("serviceDescription.description") }}</h4>
+          <h4>
+            <button @click="goBack(5)">{{ $t("AddService.back") }}</button
+            >{{ $t("serviceDescription.description") }}
+          </h4>
         </div>
         <div class="container-vendor">
           <div>
@@ -487,6 +506,16 @@
               </div>
             </div>
           </div>
+          <div class="media-img">
+            <div
+              class="primary-img"
+              v-for="(img, key) in previewImage"
+              :key="key"
+            >
+              <img class="img-pre" :src="img" />
+              <button v-show="previewImage" @click="removeImage(key)">X</button>
+            </div>
+          </div>
           <div class="upload-file">
             <label for="inputTag" :class="{ activeErr: verifyImages > 5 }">
               Add service image
@@ -502,7 +531,9 @@
         </div>
         <div class="form-container">
           <div class="input-div">
-            <button type="submit" @click="changeStep(7)">{{$t('AddService.next')}}</button>
+            <button type="submit" @click="changeStep(7)">
+              {{ $t("AddService.next") }}
+            </button>
           </div>
         </div>
       </div>
@@ -518,7 +549,10 @@
         </div>
         <div class="headings">
           <h1>{{ $t("serviceDescription.serviceDescription") }}</h1>
-          <h4><button @click="goBack(6)">{{$t('AddService.back')}}</button>{{ $t("serviceDescription.address&Location") }}</h4>
+          <h4>
+            <button @click="goBack(6)">{{ $t("AddService.back") }}</button
+            >{{ $t("serviceDescription.address&Location") }}
+          </h4>
         </div>
         <div class="map-container">
           <div class="map">
@@ -584,7 +618,9 @@
         </div>
         <div class="form-container">
           <div class="input-div step-btn">
-            <button type="submit" @click="submited">{{$t('AddService.next')}}</button>
+            <button type="submit" @click="submited">
+              {{ $t("AddService.next") }}
+            </button>
           </div>
         </div>
       </div>
@@ -610,10 +646,12 @@ export default {
   props: ["model"],
   components: {
     GoogleMap,
-    AddService
+    AddService,
   },
   data() {
     return {
+      previewImage: [],
+      forRemove: [],
       nextStep: null,
       rules: {},
       safty: {},
@@ -639,10 +677,22 @@ export default {
     goBack(step) {
       this.step = step;
     },
-    latLng({ lat, lng }) {
+    latLng({ lat, lng, address }) {
+      this.address.address = address.address;
+      this.address.city = address.city;
       this.location = { location: { coordinates: [lat, lng] } };
     },
+    removeImage(key) {
+      this.previewImage.splice(key, 1);
+      this.forRemove.splice(key, 1);
+      let formData = new FormData();
+      for (let i = 0; i < this.forRemove.length; i++) {
+        formData.append("images", this.forRemove[i]);
+      }
+      this.$emit("images", formData);
+    },
     handleChange(e) {
+      this.previewImage = [];
       this.verifyImages = e.target.files.length;
       if (this.verifyImages > 5) {
         this.$swal({
@@ -655,9 +705,16 @@ export default {
       }
       let formData = new FormData();
       for (let i = 0; i < e.target.files.length; i++) {
+        this.forRemove.push(e.target.files[i]);
         formData.append("images", e.target.files[i]);
+        var reader = new FileReader();
+        reader.onload = (e) => {
+          this.previewImage.push(e.target.result);
+        };
+        reader.readAsDataURL(e.target.files[i]);
       }
       this.$emit("images", formData);
+      e.target.value = ''
     },
     lastStep() {
       this.$parent.accountOpt = "price";
@@ -698,7 +755,7 @@ export default {
       };
       console.log(finalDetail);
       this.$emit("decription", finalDetail);
-      this.step = 8
+      this.step = 8;
       // this.$parent.accountOpt = "price"
     },
     changeStep(step) {

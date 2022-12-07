@@ -311,7 +311,7 @@
                   :class="{ active: isExist('doorman') }"
                   @click="selectedAmenities('doorman')"
                 >
-                  <img src="../../../../assets/images/doorman.svg" alt="" />
+                  <img src="../../../../assets/images/doorman.png" alt="" />
                   <h6>{{ $t("AddService.doorman") }}</h6>
                 </div>
                 <div

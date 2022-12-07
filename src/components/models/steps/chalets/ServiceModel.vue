@@ -121,6 +121,7 @@
                   <input
                     type="number"
                     v-model="suitablePrice.suitableForChildrens"
+                    :disabled="!suitableFor.suitableForChildrens"
                   />
                 </div>
               </div>
@@ -140,6 +141,7 @@
                   <input
                     type="number"
                     v-model="suitablePrice.suitableForInfants"
+                    :disabled="!suitableFor.suitableForInfants"
                   />
                 </div>
               </div>
@@ -476,13 +478,23 @@
               </div>
             </div>
           </div>
+          <div class="media-img">
+            <div
+              class="primary-img"
+              v-for="(img, key) in previewImage"
+              :key="key"
+            >
+              <img class="img-pre" :src="img" />
+              <button v-show="previewImage" @click="removeImage(key)">X</button>
+            </div>
+          </div>
           <div class="upload-file">
             <label for="inputTag" :class="{ activeErr: verifyImages > 5 }">
               Add service image
               <input
                 id="inputTag"
                 type="file"
-                @change="handleChange"
+                @input="handleChange"
                 accept="image/png, image/gif, image/jpeg"
                 multiple
               />
@@ -610,6 +622,8 @@ export default {
   },
   data() {
     return {
+      previewImage: [],
+      forRemove: [],
       nextStep: null,
       rules: {},
       safty: {},
@@ -622,6 +636,7 @@ export default {
       suitableFor: {},
       suitablePrice: {},
       step: 1,
+      
       // errors
       errors: {},
       verifyImages: 0,
@@ -634,10 +649,22 @@ export default {
     goBack(step) {
       this.step = step;
     },
-    latLng({ lat, lng }) {
+    latLng({ lat, lng, address }) {
+      this.address.address = address.address;
+      this.address.city = address.city;
       this.location = { location: { coordinates: [lat, lng] } };
     },
+    removeImage(key) {
+      this.previewImage.splice(key, 1);
+      this.forRemove.splice(key, 1);
+      let formData = new FormData();
+      for (let i = 0; i < this.forRemove.length; i++) {
+        formData.append("images", this.forRemove[i]);
+      }
+      this.$emit("images", formData);
+    },
     handleChange(e) {
+      this.previewImage = [];
       this.verifyImages = e.target.files.length;
       if (this.verifyImages > 5) {
         this.$swal({
@@ -650,9 +677,16 @@ export default {
       }
       let formData = new FormData();
       for (let i = 0; i < e.target.files.length; i++) {
+        this.forRemove.push(e.target.files[i]);
         formData.append("images", e.target.files[i]);
+        var reader = new FileReader();
+        reader.onload = (e) => {
+          this.previewImage.push(e.target.result);
+        };
+        reader.readAsDataURL(e.target.files[i]);
       }
       this.$emit("images", formData);
+      e.target.value = ''
     },
     lastStep() {
       this.$parent.accountOpt = "price";
