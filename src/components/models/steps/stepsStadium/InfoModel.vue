@@ -146,7 +146,7 @@
                   :class="{ active: isExist('trambolin') }"
                   @click="selectedAmenities('trambolin')"
                 >
-                  <img src="../../../../assets/images/Trampoline.svg" alt="" />
+                  <img src="../../../../assets/images/trampoline.png" alt="" />
                   <h6>{{ $t("AddService.trampoline") }}</h6>
                 </div>
               </div>

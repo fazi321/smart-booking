@@ -154,7 +154,7 @@
           <div>
             <div class="icon-img">
               <div>
-                <img src="../../assets/images/hot-bath.png" alt />
+                <img src="../../assets/images/sandGames.png" alt />
               </div>
             </div>
             <p>Sand Games</p>
@@ -169,7 +169,7 @@
           <div>
             <div class="icon-img">
               <div>
-                <img src="../../assets/images/hot-bath.png" alt />
+                <img src="../../assets/images/waterGames.png" alt />
               </div>
             </div>
             <p>Water Games</p>

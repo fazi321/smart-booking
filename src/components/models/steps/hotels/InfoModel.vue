@@ -202,28 +202,28 @@
                   :class="{ active: isExist('airSlider') }"
                   @click="selectedAmenities('airSlider')"
                 >
-                  <img src="../../../../assets/images/HotTub.svg" alt="" />
+                  <img src="../../../../assets/images/hotTub.png" alt="" />
                   <h6>Air Slider</h6>
                 </div> -->
                 <!-- <div
                   :class="{ active: isExist('sandGames') }"
                   @click="selectedAmenities('sandGames')"
                 >
-                  <img src="../../../../assets/images/HotTub.svg" alt="" />
+                  <img src="../../../../assets/images/hotTub.png" alt="" />
                   <h6>Sand Games</h6>
                 </div>
                 <div
                   :class="{ active: isExist('waterGames') }"
                   @click="selectedAmenities('waterGames')"
                 >
-                  <img src="../../../../assets/images/HotTub.svg" alt="" />
+                  <img src="../../../../assets/images/hotTub.png" alt="" />
                   <h6>Water Games</h6>
                 </div> -->
                 <div
                   :class="{ active: isExist('hotTub') }"
                   @click="selectedAmenities('hotTub')"
                 >
-                  <img src="../../../../assets/images/HotTub.svg" alt="" />
+                  <img src="../../../../assets/images/hotTub.png" alt="" />
                   <h6>{{ $t("AddService.hotTub") }}</h6>
                 </div>
                 <div
