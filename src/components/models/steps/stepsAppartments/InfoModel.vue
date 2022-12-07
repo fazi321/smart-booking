@@ -263,7 +263,7 @@
                   :class="{ active: isExist('playground') }"
                   @click="selectedAmenities('playground')"
                 >
-                  <img src="../../../../assets/images/playground.svg" alt="" />
+                  <img src="../../../../assets/images/playground.png" alt="" />
                   <h6>{{ $t("AddService.playground") }}</h6>
                 </div>
                 <div

@@ -162,7 +162,7 @@
                   :class="{ active: isExist('running') }"
                   @click="selectedAmenities('running')"
                 >
-                  <img src="../../../../assets/images/beach-volleyball.png" alt="" />
+                  <img src="../../../../assets/images/run.png" alt="" />
                   <h6>{{ $t("AddService.running") }}</h6>
                 </div>
                 <div
