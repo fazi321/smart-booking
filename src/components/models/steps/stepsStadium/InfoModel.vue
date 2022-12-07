@@ -104,42 +104,42 @@
                   :class="{ active: isExist('gym') }"
                   @click="selectedAmenities('gym')"
                 >
-                  <img src="../../../../assets/images/gym.svg" alt="" />
+                  <img src="../../../../assets/images/fitness.png" alt="" />
                   <h6>{{ $t("AddService.gym") }}</h6>
                 </div>
                 <div
                   :class="{ active: isExist('billard') }"
                   @click="selectedAmenities('billard')"
                 >
-                  <img src="../../../../assets/images/Billiard.svg" alt="" />
+                  <img src="../../../../assets/images/billiards.png" alt="" />
                   <h6>{{ $t("AddService.billiard") }}</h6>
                 </div>
                 <div
                   :class="{ active: isExist('tennisCourt') }"
                   @click="selectedAmenities('tennisCourt')"
                 >
-                  <img src="../../../../assets/images/Tennis.svg" alt="" />
+                  <img src="../../../../assets/images/court.png" alt="" />
                   <h6>{{ $t("AddService.tennisCourt") }}</h6>
                 </div>
                 <div
                   :class="{ active: isExist('airHockeyTable') }"
                   @click="selectedAmenities('airHockeyTable')"
                 >
-                  <img src="../../../../assets/images/hockey.svg" alt="" />
+                  <img src="../../../../assets/images/hockey.png" alt="" />
                   <h6>{{ $t("AddService.airHockey") }}</h6>
                 </div>
                 <div
                   :class="{ active: isExist('soccerField') }"
                   @click="selectedAmenities('soccerField')"
                 >
-                  <img src="../../../../assets/images/soccer.svg" alt="" />
+                  <img src="../../../../assets/images/football-field.png" alt="" />
                   <h6>{{ $t("AddService.soccerField") }}</h6>
                 </div>
                 <div
                   :class="{ active: isExist('volleyBall') }"
                   @click="selectedAmenities('volleyBall')"
                 >
-                  <img src="../../../../assets/images/Vollyball.svg" alt="" />
+                  <img src="../../../../assets/images/beach-volleyball.png" alt="" />
                   <h6>{{ $t("AddService.volleyBall") }}</h6>
                 </div>
                 <div
@@ -162,14 +162,14 @@
                   :class="{ active: isExist('running') }"
                   @click="selectedAmenities('running')"
                 >
-                  <img src="../../../../assets/images/Vollyball.svg" alt="" />
+                  <img src="../../../../assets/images/beach-volleyball.png" alt="" />
                   <h6>{{ $t("AddService.running") }}</h6>
                 </div>
                 <div
                   :class="{ active: isExist('accessInHours') }"
                   @click="selectedAmenities('accessInHours')"
                 >
-                  <img src="../../../../assets/images/24Hours.svg" alt="" />
+                  <img src="../../../../assets/images/24-hours.png" alt="" />
                   <h6>{{ $t("AddService.24hours") }}</h6>
                   <h6>{{ $t("AddService.access") }}</h6>
                 </div>
@@ -177,7 +177,7 @@
                   :class="{ active: isExist('weelChaireAccess') }"
                   @click="selectedAmenities('weelChaireAccess')"
                 >
-                  <img src="../../../../assets/images/wheelchair.svg" alt="" />
+                  <img src="../../../../assets/images/wheelchair.png" alt="" />
                   <h6>{{ $t("AddService.wheelChair") }}</h6>
                   <h6>{{ $t("AddService.access") }}</h6>
                 </div>
@@ -192,14 +192,14 @@
                   :class="{ active: isExist('parking') }"
                   @click="selectedAmenities('parking')"
                 >
-                  <img src="../../../../assets/images/P.svg" alt="" />
+                  <img src="../../../../assets/images/parking.png" alt="" />
                   <h6>{{ $t("AddService.parking") }}</h6>
                 </div>
                 <div
                   :class="{ active: isExist('lampPost') }"
                   @click="selectedAmenities('lampPost')"
                 >
-                  <img src="../../../../assets/images/doorman.png" alt="" />
+                  <img src="../../../../assets/images/street-lamp.png" alt="" />
                   <h6>{{ $t("AddService.lampPost") }}</h6>
                 </div>
               </div>
@@ -638,8 +638,8 @@ img {
 }
 .container-service .cards img {
   width: 40px;
-  height: 25px;
-  margin: 0px 0 15px 0;
+  height: 42px;
+  /* margin: 0px 0 15px 0; */
 }
 .container-amenities .cards {
   width: 92%;

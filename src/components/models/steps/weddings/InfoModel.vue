@@ -119,7 +119,7 @@
                   :class="{ active: isExist('accessInHours') }"
                   @click="selectedAmenities('accessInHours')"
                 >
-                  <img src="../../../../assets/images/24Hours.svg" alt="" />
+                  <img src="../../../../assets/images/24-hours.png" alt="" />
                   <h6>{{ $t("AddService.24hours") }}</h6>
                   <h6>{{ $t("AddService.access") }}</h6>
                 </div>
@@ -127,7 +127,7 @@
                   :class="{ active: isExist('weelChaireAccess') }"
                   @click="selectedAmenities('weelChaireAccess')"
                 >
-                  <img src="../../../../assets/images/wheelchair.svg" alt="" />
+                  <img src="../../../../assets/images/wheelchair.png" alt="" />
                   <h6>{{ $t("AddService.wheelChair") }}</h6>
                   <h6>{{ $t("AddService.access") }}</h6>
                 </div>
@@ -135,7 +135,7 @@
                   :class="{ active: isExist('privateEntrance') }"
                   @click="selectedAmenities('privateEntrance')"
                 >
-                  <img src="../../../../assets/images/Private.svg" alt="" />
+                  <img src="../../../../assets/images/entrance.png" alt="" />
                   <h6>{{ $t("AddService.private") }}</h6>
                   <h6>{{ $t("AddService.entrance") }}</h6>
                 </div>
@@ -150,7 +150,7 @@
                   :class="{ active: isExist('airConditioning') }"
                   @click="selectedAmenities('airConditioning')"
                 >
-                  <img src="../../../../assets/images/air.svg" alt="" />
+                  <img src="../../../../assets/images/air-conditioner.png" alt="" />
                   <h6 v-if="$t('AddService.conditioning') == 'Conditioning'">
                     Air
                   </h6>
@@ -160,35 +160,35 @@
                   :class="{ active: isExist('tv') }"
                   @click="selectedAmenities('tv')"
                 >
-                  <img src="../../../../assets/images/tv.svg" alt="" />
+                  <img src="../../../../assets/images/tv.png" alt="" />
                   <h6>{{ $t("AddService.tv") }}</h6>
                 </div>
                 <div
                   :class="{ active: isExist('wifi') }"
                   @click="selectedAmenities('wifi')"
                 >
-                  <img src="../../../../assets/images/wifi.svg" alt="" />
+                  <img src="../../../../assets/images/wifi.png" alt="" />
                   <h6>{{ $t("AddService.wifi") }}</h6>
                 </div>
                 <!-- <div
                   :class="{ active: isExist('stage') }"
                   @click="selectedAmenities('stage')"
                 >
-                  <img src="../../../../assets/images/Vollyball.svg" alt="" />
+                  <img src="../../../../assets/images/beach-volleyball.png" alt="" />
                   <h6>stage</h6>
                 </div> -->
                 <div
                   :class="{ active: isExist('speakers') }"
                   @click="selectedAmenities('speakers')"
                 >
-                  <img src="../../../../assets/images/Vollyball.svg" alt="" />
+                  <img src="../../../../assets/images/beach-volleyball.png" alt="" />
                   <h6>{{ $t("AddService.speakers") }}</h6>
                 </div>
                 <div
                   :class="{ active: isExist('laserLights') }"
                   @click="selectedAmenities('laserLights')"
                 >
-                  <img src="../../../../assets/images/Vollyball.svg" alt="" />
+                  <img src="../../../../assets/images/laser.png" alt="" />
                   <h6>{{ $t("AddService.laserLights") }}</h6>
                 </div>
               </div>
@@ -600,8 +600,8 @@ img {
 }
 .container-service .cards img {
   width: 40px;
-  height: 25px;
-  margin: 0px 0 15px 0;
+  height: 42px;
+  /* margin: 0px 0 15px 0; */
 }
 .container-amenities .cards {
   width: 92%;

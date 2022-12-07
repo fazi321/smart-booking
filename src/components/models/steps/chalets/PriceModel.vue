@@ -1048,8 +1048,8 @@ img {
 }
 .container-service .cards img {
   width: 40px;
-  height: 25px;
-  margin: 0px 0 15px 0;
+  height: 42px;
+  /* margin: 0px 0 15px 0; */
 }
 .container-amenities .cards > div {
   height: 90px;

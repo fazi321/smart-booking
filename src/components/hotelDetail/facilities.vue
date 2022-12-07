@@ -12,7 +12,7 @@
           <div>
             <div class="icon-img">
               <div>
-                <img src="../../assets/images/gym.svg" alt />
+                <img src="../../assets/images/fitness.png" alt />
               </div>
             </div>
             <p>Gym</p>
@@ -25,7 +25,7 @@
           <div>
             <div class="icon-img">
               <div>
-                <img src="../../assets/images/bill.svg" alt />
+                <img src="../../assets/images/billiards.png" alt />
               </div>
             </div>
             <p>Billiard</p>
@@ -40,7 +40,7 @@
           <div>
             <div class="icon-img">
               <div>
-                <img src="../../assets/images/tenis.svg" alt />
+                <img src="../../assets/images/court.png" alt />
               </div>
             </div>
             <p>Tennis Court</p>
@@ -57,7 +57,7 @@
           <div>
             <div class="icon-img">
               <div>
-                <img src="../../assets/images/air.svg" alt />
+                <img src="../../assets/images/hockey.png" alt />
               </div>
             </div>
             <p>Air Hockey</p>
@@ -72,7 +72,7 @@
           <div>
             <div class="icon-img">
               <div>
-                <img src="../../assets/images/soccer.svg" alt />
+                <img src="../../assets/images/football-field.png" alt />
               </div>
             </div>
             <p>Soccer Field</p>
@@ -124,7 +124,7 @@
           <div>
             <div class="icon-img">
               <div>
-                <img src="../../assets/images/steam.svg" alt />
+                <img src="../../assets/images/hot-bath.png" alt />
               </div>
             </div>
             <p>Steam Bath</p>
@@ -139,7 +139,7 @@
           <div>
             <div class="icon-img">
               <div>
-                <img src="../../assets/images/steam.svg" alt />
+                <img src="../../assets/images/hot-bath.png" alt />
               </div>
             </div>
             <p>Air Slider</p>
@@ -154,7 +154,7 @@
           <div>
             <div class="icon-img">
               <div>
-                <img src="../../assets/images/steam.svg" alt />
+                <img src="../../assets/images/hot-bath.png" alt />
               </div>
             </div>
             <p>Sand Games</p>
@@ -169,7 +169,7 @@
           <div>
             <div class="icon-img">
               <div>
-                <img src="../../assets/images/steam.svg" alt />
+                <img src="../../assets/images/hot-bath.png" alt />
               </div>
             </div>
             <p>Water Games</p>
@@ -186,7 +186,7 @@
           <div>
             <div class="icon-img">
               <div>
-                <img src="../../assets/images/indoor.svg" alt />
+                <img src="../../assets/images/swimming-pool.png" alt />
               </div>
             </div>
             <p>Indoor Swimming Pool</p>
@@ -203,7 +203,7 @@
           <div>
             <div class="icon-img">
               <div>
-                <img src="../../assets/images/outdoor.svg" alt />
+                <img src="../../assets/images/swimming-pool.png" alt />
               </div>
             </div>
             <p>Outdoor Swimming Pool</p>
@@ -235,7 +235,7 @@
           <div>
             <div class="icon-img">
               <div>
-                <img src="../../assets/images/steam.svg" alt />
+                <img src="../../assets/images/hot-bath.png" alt />
               </div>
             </div>
             <p>Hair Stylist</p>
@@ -250,7 +250,7 @@
           <div>
             <div class="icon-img">
               <div>
-                <img src="../../assets/images/playground.svg" alt />
+                <img src="../../assets/images/playground.png" alt />
               </div>
             </div>
             <p>Playground</p>
@@ -263,7 +263,7 @@
           <div>
             <div class="icon-img">
               <div>
-                <img src="../../assets/images/steam.svg" alt />
+                <img src="../../assets/images/hot-bath.png" alt />
               </div>
             </div>
             <p>Spa</p>
@@ -297,7 +297,7 @@
           <div>
             <div class="icon-img">
               <div>
-                <img src="../../assets/images/hour.svg" alt />
+                <img src="../../assets/images/24-hours.png" alt />
               </div>
             </div>
             <p>24 Hours Access</p>
@@ -314,7 +314,7 @@
           <div>
             <div class="icon-img">
               <div>
-                <img src="../../assets/images/wheelchair.svg" alt />
+                <img src="../../assets/images/wheelchair.png" alt />
               </div>
             </div>
             <p>Wheelchair Access</p>
@@ -331,7 +331,7 @@
           <div>
             <div class="icon-img">
               <div>
-                <img src="../../assets/images/entrance.svg" alt />
+                <img src="../../assets/images/entrance.png" alt />
               </div>
             </div>
             <p>Private Entrance</p>
@@ -357,7 +357,7 @@
           <div>
             <div class="icon-img">
               <div>
-                <img src="../../assets/images/doorman.png" alt />
+                <img src="../../assets/images/parking.png" alt />
               </div>
             </div>
             <p>Parking</p>
@@ -370,7 +370,7 @@
           <div>
             <div class="icon-img">
               <div>
-                <img src="../../assets/images/doorman.png" alt />
+                <img src="../../assets/images/elevator.png" alt />
               </div>
             </div>
             <p>Elevator</p>
@@ -400,7 +400,7 @@
           <div>
             <div class="icon-img">
               <div>
-                <img src="../../assets/images/air.svg" alt />
+                <img src="../../assets/images/air-conditioner.png" alt />
               </div>
             </div>
             <p>Air Conditioning</p>
@@ -413,7 +413,7 @@
           <div>
             <div class="icon-img">
               <div>
-                <img src="../../assets/images/tv.svg" alt />
+                <img src="../../assets/images/tv.png" alt />
               </div>
             </div>
             <p>tv</p>
@@ -426,7 +426,7 @@
           <div>
             <div class="icon-img">
               <div>
-                <img src="../../assets/images/wifi.svg" alt />
+                <img src="../../assets/images/wifi.png" alt />
               </div>
             </div>
             <p>Wifi</p>
@@ -467,7 +467,7 @@
           <div>
             <div class="icon-img">
               <div>
-                <img src="../../assets/images/doorman.png" alt />
+                <img src="../../assets/images/laser.png" alt />
               </div>
             </div>
             <p>Laser Lights</p>
