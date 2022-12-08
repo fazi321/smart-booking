@@ -1,9 +1,9 @@
 <template>
   <section class="facilities-container">
-    <h5>Amenities</h5>
+    <h5>{{$t('detailPage.amenities')}}</h5>
     <!-- Sports -->
     <div class="facility-icons" v-if="sportsCheck">
-      <h6>Sports</h6>
+      <h6>{{$t('AddService.sports')}}</h6>
       <div class="facility-card">
         <div
           class="icon-card"
@@ -15,7 +15,7 @@
                 <img src="../../assets/images/fitness.png" alt />
               </div>
             </div>
-            <p>Gym</p>
+            <p>{{$t('AddService.gym')}}</p>
           </div>
         </div>
         <div
@@ -28,7 +28,7 @@
                 <img src="../../assets/images/billiards.png" alt />
               </div>
             </div>
-            <p>Billiard</p>
+            <p>{{$t('AddService.billiard')}}</p>
           </div>
         </div>
         <div
@@ -43,7 +43,7 @@
                 <img src="../../assets/images/court.png" alt />
               </div>
             </div>
-            <p>Tennis Court</p>
+            <p>{{$t('AddService.tennisCourt')}}</p>
           </div>
         </div>
         <div
@@ -60,7 +60,7 @@
                 <img src="../../assets/images/hockey.png" alt />
               </div>
             </div>
-            <p>Air Hockey</p>
+            <p>{{$t('AddService.airHockey')}}</p>
           </div>
         </div>
         <div
@@ -75,7 +75,7 @@
                 <img src="../../assets/images/football-field.png" alt />
               </div>
             </div>
-            <p>Soccer Field</p>
+            <p>{{$t('AddService.soccerField')}}</p>
           </div>
         </div>
         <div
@@ -87,10 +87,10 @@
           <div>
             <div class="icon-img">
               <div>
-                <img src="../../assets/images/vollybal.svg" alt />
+                <img src="../../assets/images/trampoline.png" alt />
               </div>
             </div>
-            <p>Trambolin</p>
+            <p>{{$t('AddService.trampoline')}}</p>
           </div>
         </div>
         <div
@@ -105,7 +105,7 @@
                 <img src="../../assets/images/vollybal.svg" alt />
               </div>
             </div>
-            <p>Vollyball</p>
+            <p>{{$t('AddService.volleyBall')}}</p>
           </div>
         </div>
       </div>
@@ -113,7 +113,7 @@
     <!-- Sports -->
     <!-- Leisure -->
     <div class="facility-icons" v-if="Leisure">
-      <h6>Leisure</h6>
+      <h6>{{$t('AddService.leisure')}}</h6>
       <div class="facility-card">
         <div
           class="icon-card"
@@ -127,7 +127,7 @@
                 <img src="../../assets/images/hot-bath.png" alt />
               </div>
             </div>
-            <p>Steam Bath</p>
+            <p>{{$t('AddService.steamBath')}}</p>
           </div>
         </div>
         <div
@@ -142,7 +142,7 @@
                 <img src="../../assets/images/airSlider.png" alt />
               </div>
             </div>
-            <p>Air Slider</p>
+            <p>{{$t('AddService.airSlider')}}</p>
           </div>
         </div>
         <div
@@ -172,7 +172,7 @@
                 <img src="../../assets/images/waterGames.png" alt />
               </div>
             </div>
-            <p>Water Games</p>
+            <p>{{$t('AddService.waterGames')}}</p>
           </div>
         </div>
         <div
@@ -189,7 +189,7 @@
                 <img src="../../assets/images/swimming-pool.png" alt />
               </div>
             </div>
-            <p>Indoor Swimming Pool</p>
+            <p>{{$t('AddService.inDoorSwimmingPool')}} </p>
           </div>
         </div>
         <div
@@ -206,7 +206,7 @@
                 <img src="../../assets/images/swimming-pool.png" alt />
               </div>
             </div>
-            <p>Outdoor Swimming Pool</p>
+            <p>{{$t('AddService.outDoorSwimmingPool')}} </p>
           </div>
         </div>
         <div
@@ -223,7 +223,7 @@
                 <img src="../../assets/images/heater.svg" alt />
               </div>
             </div>
-            <p>Swimming Pool Heater</p>
+            <p>{{$t('AddService.swimmingPoolHeater')}}</p>
           </div>
         </div>
         <div
@@ -235,10 +235,10 @@
           <div>
             <div class="icon-img">
               <div>
-                <img src="../../assets/images/hot-bath.png" alt />
+                <img src="../../assets/images/hairstylist.png" alt />
               </div>
             </div>
-            <p>Hair Stylist</p>
+            <p>{{$t('AddService.hairStylist')}}</p>
           </div>
         </div>
         <div
@@ -253,7 +253,7 @@
                 <img src="../../assets/images/playground.png" alt />
               </div>
             </div>
-            <p>Playground</p>
+            <p>{{$t('AddService.playground')}}</p>
           </div>
         </div>
         <div
@@ -266,7 +266,7 @@
                 <img src="../../assets/images/hot-bath.png" alt />
               </div>
             </div>
-            <p>Spa</p>
+            <p>{{$t('AddService.spa')}}</p>
           </div>
         </div>
         <div
@@ -276,17 +276,17 @@
           <div>
             <div class="icon-img">
               <div>
-                <img src="../../assets/images/tub.svg" alt />
+                <img src="../../assets/images/hotTub.png" alt />
               </div>
             </div>
-            <p>Hot Tub</p>
+            <p>{{$t('AddService.hotTub')}}</p>
           </div>
         </div>
       </div>
     </div>
     <!-- Home Amenities -->
     <div class="facility-icons" v-if="Amenities">
-      <h6>Home Amenities</h6>
+      <h6>{{$t('AddService.homeAmenities')}}</h6>
       <div class="facility-card">
         <div
           class="icon-card"
@@ -300,7 +300,7 @@
                 <img src="../../assets/images/24-hours.png" alt />
               </div>
             </div>
-            <p>24 Hours Access</p>
+            <p>{{$t('AddService.24-HourRequest')}}</p>
           </div>
         </div>
         <div
@@ -317,7 +317,7 @@
                 <img src="../../assets/images/wheelchair.png" alt />
               </div>
             </div>
-            <p>Wheelchair Access</p>
+            <p>{{$t('AddService.wheelChair')}}</p>
           </div>
         </div>
         <div
@@ -334,7 +334,7 @@
                 <img src="../../assets/images/entrance.png" alt />
               </div>
             </div>
-            <p>Private Entrance</p>
+            <p>{{$t('AddService.privateEntrance')}}</p>
           </div>
         </div>
         <div
@@ -347,7 +347,7 @@
                 <img src="../../assets/images/doorman.png" alt />
               </div>
             </div>
-            <p>Doorman</p>
+            <p>{{$t('AddService.doorman')}}</p>
           </div>
         </div>
         <div
@@ -360,7 +360,7 @@
                 <img src="../../assets/images/parking.png" alt />
               </div>
             </div>
-            <p>Parking</p>
+            <p>{{$t('AddService.parking')}}</p>
           </div>
         </div>
         <div
@@ -373,7 +373,7 @@
                 <img src="../../assets/images/elevator.png" alt />
               </div>
             </div>
-            <p>Elevator</p>
+            <p>{{$t('AddService.elevator')}}</p>
           </div>
         </div>
         <div
@@ -386,7 +386,7 @@
                 <img src="../../assets/images/saftyBox.png" alt />
               </div>
             </div>
-            <p>Safty Box</p>
+            <p>{{$t('AddService.saftyBox')}}</p>
           </div>
         </div>
         <div
@@ -403,7 +403,7 @@
                 <img src="../../assets/images/air-conditioner.png" alt />
               </div>
             </div>
-            <p>Air Conditioning</p>
+            <p>{{$t('AddService.conditioning')}}</p>
           </div>
         </div>
         <div
@@ -416,7 +416,7 @@
                 <img src="../../assets/images/tv.png" alt />
               </div>
             </div>
-            <p>tv</p>
+            <p>{{$t('AddService.tv')}}</p>
           </div>
         </div>
         <div
@@ -429,7 +429,7 @@
                 <img src="../../assets/images/wifi.png" alt />
               </div>
             </div>
-            <p>Wifi</p>
+            <p>{{$t('AddService.wifi')}}</p>
           </div>
         </div>
         <div
@@ -442,7 +442,7 @@
                 <img src="../../assets/images/speakers.png" alt />
               </div>
             </div>
-            <p>Speakers</p>
+            <p>{{$t('AddService.speakers')}}</p>
           </div>
         </div>
         <div
@@ -455,7 +455,7 @@
                 <img src="../../assets/images/stage.png" alt />
               </div>
             </div>
-            <p>Stage</p>
+            <p>{{$t('AddService.stage')}}</p>
           </div>
         </div>
         <div
@@ -470,7 +470,7 @@
                 <img src="../../assets/images/laser.png" alt />
               </div>
             </div>
-            <p>Laser Lights</p>
+            <p>{{$t('AddService.laserLights')}}</p>
           </div>
         </div>
       </div>

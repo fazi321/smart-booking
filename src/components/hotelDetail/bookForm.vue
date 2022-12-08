@@ -93,7 +93,7 @@
         </router-link>
         <div class="book-btn">
           <button :disabled="loading" @click="BookingModelShow">
-            {{ !loading ? "Book" : "Loading..." }}
+            {{ !loading ? $t('detailPage.book') : "Loading..." }}
           </button>
         </div>
       </section>

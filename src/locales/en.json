@@ -130,7 +130,12 @@
     "running": "Running",
     "parking": "Parking",
     "lampPost": "lampPost",
-    "hairStylist": "Hair Stylist"
+    "hairStylist": "Hair Stylist",
+    "spa":"spa",
+    "outDoorSwimmingPool": "outdoor SwimmingPool",
+    "inDoorSwimmingPool": "indoor SwimmingPool",
+    "24-HourRequest": "24-Hour Request",
+    "privateEntrance": "Private Entrance"
   },
   "serviceDescription": {
     "serviceDescription": "Service Description",
@@ -306,6 +311,18 @@
     "outdoorWithBarrier": "Outdoor With Barrier",
     "outdoorWithoutBarrier": "Outdoor Without Barrier",
     "swimmingWithWaterGames": "Swimming With Water Games"
+  },
+  "detailPage":{
+    "vendorProfile":"Vendor Profile",
+    "description":"Description",
+    "facilities":"Facilities",
+    "reviews":"Reviews",
+    "terms":"Terms",
+    "map":"Map",
+    "book":"Book",
+    "amenities":"Amenities",
+    "leisure":"Leisure",
+    "homeAmenities":"Home Amenities"
   },
   "success": {
     "requestSubmit": "Request Submitted Successfully!"

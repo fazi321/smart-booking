@@ -1,7 +1,7 @@
 <template>
   <section class="primary-contianer-des">
     <section class="description">
-      <h3>Description</h3>
+      <h3>{{$t('detailPage.description')}}</h3>
       <p v-if="storeState && storeState.description">
         {{ storeState.description.descriptionInEnglish }}
       </p>
@@ -16,7 +16,7 @@
       </p>
     </section>
     <section class="btn-review">
-      <button class="btn" @click="openVendor">Vendor Profile</button>
+      <button class="btn" @click="openVendor">{{$t('detailPage.vendorProfile')}}</button>
     </section>
   </section>
 </template>

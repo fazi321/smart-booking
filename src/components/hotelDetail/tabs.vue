@@ -6,15 +6,15 @@
           :class="{ active: tab == 'Facilities' }"
           @click="selected('Facilities')"
         >
-          Facilities
+          {{$t('detailPage.facilities')}}
         </p>
         <p :class="{ active: tab == 'Reviews' }" @click="selected('Reviews')">
-          Reviews
+          {{$t('detailPage.reviews')}}
         </p>
         <p :class="{ active: tab == 'Terms' }" @click="selected('Terms')">
-          Terms & Conditions
+          {{$t('detailPage.terms')}}
         </p>
-        <p :class="{ active: tab == 'Map' }" @click="selected('Map')">Map</p>
+        <p :class="{ active: tab == 'Map' }" @click="selected('Map')">{{$t('detailPage.map')}}</p>
       </div>
     </div>
     <Facilities v-if="tab == 'Facilities'" />

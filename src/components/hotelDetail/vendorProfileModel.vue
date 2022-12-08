@@ -8,7 +8,7 @@
           </div>
         </div>
         <div class="headings">
-          <h1>Vendor Profile</h1>
+          <h1>{{$t('detailPage.vendorProfile')}}</h1>
         </div>
         <section class="profile-container">
           <div class="profile-details">

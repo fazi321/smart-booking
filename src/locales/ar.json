@@ -1,6 +1,6 @@
 {
     "header": {
-        "notifications":"الإشعارات",
+        "notifications": "الإشعارات",
         "login": "تسجيل الدخول",
         "becomeVendor": "اشترك لإضافة عقارك",
         "addService": "أضف خدمة",
@@ -112,7 +112,7 @@
         "buffet": "بوفيه",
         "photographer": "مصور فوتوغرافي",
         "weddingCake": "كعكة العرس",
-        "howLongServiceOpen":"ما هي مدة فتح الخدمة للحجز؟"
+        "howLongServiceOpen": "ما هي مدة فتح الخدمة للحجز؟"
     },
     "menuDropdown": {
         "myProfile": "الملف الشخصي",
@@ -131,7 +131,7 @@
         "km": "كلم",
         "arabic": "عربى",
         "english": "اللغة ",
-        "bookingRequest":"طلبات الحجز"
+        "bookingRequest": "طلبات الحجز"
     },
     "homePage": {
         "whatWeDo": "ماذا يمكننا أن نفعل لك؟",
@@ -224,7 +224,12 @@
         "running": "ادارة",
         "parking": "موقف سيارات",
         "lampPost": "عمود اضاءة",
-        "hairStylist": "مصفف الشعر"
+        "hairStylist": "مصفف الشعر",
+        "spa": "spa",
+        "outDoorSwimmingPool": "مسبح خارجي",
+        "inDoorSwimmingPool": "مسبح داخلي",
+        "24-HourRequest": "طلب 24 ساعة",
+        "privateEntrance": "مدخل خاص"
     },
     "becomeVendor": {
         "becomeVendor": "اشترك لإضافة عقارك",
@@ -304,7 +309,19 @@
         "indoorWithoutBarrier": "داخلي بدون حاجز",
         "outdoorWithBarrier": "في الهواء الطلق مع حاجز",
         "outdoorWithoutBarrier": "في الهواء الطلق بدون حاجز",
-        "swimmingWithWaterGames": "السباحة مع الألعاب المائية"
+        "swimmingWithWaterGames": "السباحة مع الألعاب المائية",
+    },
+    "detailPage": {
+        "vendorProfile": "ملف المالك",
+        "description": "التفاصيل",
+        "facilities": "مرافق",
+        "reviews": "التقييمات",
+        "terms": "الشروط",
+        "map": "الخريطة",
+        "book": "حجز",
+        "amenities": "وسائل الراحة",
+        "leisure": "الراحة",
+        "homeAmenities": "وسائل الراحة منزلية"
     },
     "success": {
         "RequestSubmit": "تم إرسال الطلب بنجاح"
