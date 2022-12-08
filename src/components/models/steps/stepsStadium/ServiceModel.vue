@@ -547,6 +547,8 @@ export default {
   },
   data() {
     return {
+      previewImage: [],
+      forRemove: [],
       nextStep: null,
       // rules: {},
       safty: {},

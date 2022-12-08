@@ -170,6 +170,22 @@
             </div>
           </div>
           <!-- block -->
+          <div class="booking-date">
+           <div class="head-booking">
+              <h5>{{ $t("pricing.checkIn&CheckOut") }}</h5>
+            </div>
+            <div class="date-input">
+              <div @click="showModelDate('cn')">
+                <!-- <input type="text" placeholder="Check in" v-model="checkIn" /> -->
+                <input type="time" v-model="checkIn" id="date" ref="cn" />
+              </div>
+              <div @click="showModelDate('co')">
+                <!-- <input type="text" placeholder="Check out" v-model="checkOut" /> -->
+                <input type="time" v-model="checkOut" id="date" ref="co" />
+              </div>
+            </div>
+          </div>
+          <!-- block -->
         </section>
         <div class="form-container">
           <div class="input-div">
@@ -644,8 +660,8 @@ export default {
       //  data picker
       fromDate: null,
       toDate: null,
-      // checkIn: null,
-      // checkOut: null,
+      checkIn: null,
+      checkOut: null,
       serviceType: null,
       showPopUp: null,
       // date picker
@@ -688,11 +704,11 @@ export default {
         newObj.openTo = this.formatedDate(this.toDate)
       }
       //  time check in out
-      // var check = {};
-      // if (this.checkIn && this.checkOut) {
-      //   check.checkInTime = this.timeFormate(this.checkIn);
-      //   check.checkOutTime = this.timeFormate(this.checkOut);
-      // }
+      var check = {};
+      if (this.checkIn && this.checkOut) {
+        check.checkInTime = this.timeFormate(this.checkIn);
+        check.checkOutTime = this.timeFormate(this.checkOut);
+      }
       // addon's
       const newAddon = {};
       for (const [key, value] of Object.entries(this.addOnsCheck)) {

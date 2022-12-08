@@ -4,7 +4,6 @@
       ref="myMap"
       :center="center"
       :zoom="zoom"
-      :onClick="clicked"
       :disableDefaultUI="true"
       :options="mapOptions"
       @center_changed="updateCenter"
@@ -115,11 +114,11 @@ export default {
           lng: lng,
         };
         this.currentRepo.address = this.address;
-        this.markers[0].position.lat = lat;
-        this.markers[0].position.lng = lng;
+        // this.markers[0].position.lat = lat;
+        // this.markers[0].position.lng = lng;
         this.$emit("latlng", this.currentRepo);
       } catch (error) {
-        console.log(error.message);
+        // console.log(error.message);
       }
     },
     updateCenter(latLng) {

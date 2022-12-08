@@ -190,7 +190,7 @@
                   :class="{ active: isExist('volleyBall') }"
                   @click="selectedAmenities('volleyBall')"
                 >
-                  <img src="../../../assets/images/vollybal.svg" alt="" />
+                  <img src="../../../assets/images/beach-volleyball.png" alt="" />
                   <h6>{{ $t("AddService.volleyBall") }}</h6>
                 </div>
                 <div

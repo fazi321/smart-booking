@@ -102,7 +102,7 @@
           <div>
             <div class="icon-img">
               <div>
-                <img src="../../assets/images/vollybal.svg" alt />
+                <img src="../../assets/images/beach-volleyball.png" alt />
               </div>
             </div>
             <p>{{$t('AddService.volleyBall')}}</p>
@@ -157,7 +157,7 @@
                 <img src="../../assets/images/sandGames.png" alt />
               </div>
             </div>
-            <p>Sand Games</p>
+            <p>{{$t('AddService.sandGames')}}</p>
           </div>
         </div>
         <div
