@@ -438,11 +438,22 @@ header.active .container .nav ul li a {
   width: 82px;
 }
 .booking .security input{
+  outline: none;
   padding: 15px;
   width: 40%;
   justify-content: flex-start;
   display: flex;
   margin-left: 25px;
+  text-transform: capitalize;
+  box-shadow: 0px 1px 12px -2px #00000040;
+  border: 1px solid transparent;
+  border-radius: 5px;
+}
+.inputLastMinute input{
+  outline: none;
+  padding: 10px 15px;
+  display: block;
+  margin: 8px 0;
   text-transform: capitalize;
   box-shadow: 0px 1px 12px -2px #00000040;
   border: 1px solid transparent;

@@ -39,12 +39,12 @@
                 <label class="container-input"
                   >{{ $t("pricing.weekdays") }}
                   <p>({{$t("pricing.sunWed")}})</p>
-                  <input type="checkbox" v-model="daySelected.weekendPrice" />
+                  <input type="checkbox" v-model="daySelected.weekDaysPrice" />
                   <span class="checkmark"></span>
                 </label>
               </div>
               <div class="input-price">
-                <input type="number" v-model="price.weekendPrice" />
+                <input type="number" v-model="price.weekDaysPrice" />
               </div>
             </div> -->
             <!-- block -->
@@ -302,12 +302,18 @@
             </div>
           <div class="deposite-section deposite-set">
             <div class="head">
-              <h5>{{$t("pricing.lastMinuteDiscount")}}</h5>
-              <p>
+              <h5>{{ $t("pricing.lastMinuteDiscount") }}</h5>
+              <div class="inputLastMinute" v-if="bookingSetting.lastMinuteDiscount">
+                <div>
+                  <input type="number" min="1" v-model="bookingSetting.days" placeholder="Days"/>
+                  <input type="number" min="1" v-model="bookingSetting.discountPercentage" placeholder="Discount Percentage"/>
+                </div>
+              </div>
+              <!-- <p>
                 Lorem ipsum dolor sit amet, consectetur adipis<br />cing elit.
                 Integer consectetur nulla at enim aliqu<br />et, lobortis ipsum
                 molestie.
-              </p>
+              </p> -->
             </div>
             <div class="toggle-btn">
               <label class="switch">
@@ -528,13 +534,13 @@
                   >{{ $t("pricing.birthdayArrangements") }}
                   <input
                     type="checkbox"
-                    v-model="addOnsCheck.BirthdayArrangements"
+                    v-model="addOnsCheck.birthdayArrangements"
                   />
                   <span class="checkmark"></span>
                 </label>
               </div>
               <div class="input-price">
-                <input type="text" v-model="addOnsPrice.BirthdayArrangements" :disabled="!addOnsCheck.BirthdayArrangements"/>
+                <input type="text" v-model="addOnsPrice.birthdayArrangements" :disabled="!addOnsCheck.birthdayArrangements"/>
               </div>
             </div> -->
             <!-- block -->
@@ -623,6 +629,12 @@ export default {
     };
   },
   methods: {
+    formatedDate(val){
+      var arr = val.split("-")
+      var s = `${arr[2]}-${arr[1]}-${arr[0]}` 
+      console.log(s)
+      return s
+    },
     back(step) {
       this.$parent.backServiceModel(step, "service");
     },
@@ -640,6 +652,12 @@ export default {
             }
           }
         }
+      }
+      if(this.fromDate){
+        newObj.openFrom = this.formatedDate(this.fromDate)
+      }
+      if(this.toDate){
+        newObj.openTo = this.formatedDate(this.toDate)
       }
       // set time and price in price
       if (this.setTime) {
@@ -665,8 +683,12 @@ export default {
           }
         }
       }
-      if(!this.bookingSetting.securityDeposit){
+      if (!this.bookingSetting.securityDeposit) {
         delete this.bookingSetting.securityAmount;
+      }
+      if(!this.bookingSetting.lastMinuteDiscount){
+        delete this.bookingSetting.days;
+        delete this.bookingSetting.discountPercentage;
       }
       var finalData = {
         addOns: { ...newAddon },
@@ -729,6 +751,7 @@ export default {
       this.$emit("close");
     },
   },
+  
 };
 </script>
 
