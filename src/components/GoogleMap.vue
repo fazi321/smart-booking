@@ -107,8 +107,9 @@ export default {
         );
         const data = await response.json();
         const address = data.results[4];
+        const addressCity = data.results[0];
         this.address.address = address.formatted_address;
-        this.address.city = address.address_components[2].long_name;
+        this.address.city = addressCity.address_components[3].long_name;
         this.currentRepo = {
           lat: lat,
           lng: lng,

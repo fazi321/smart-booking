@@ -139,7 +139,7 @@
           <div>
             <div class="icon-img">
               <div>
-                <img src="../../assets/images/hot-bath.png" alt />
+                <img src="../../assets/images/airSlider.png" alt />
               </div>
             </div>
             <p>Air Slider</p>
@@ -383,7 +383,7 @@
           <div>
             <div class="icon-img">
               <div>
-                <img src="../../assets/images/doorman.png" alt />
+                <img src="../../assets/images/saftyBox.png" alt />
               </div>
             </div>
             <p>Safty Box</p>
@@ -439,7 +439,7 @@
           <div>
             <div class="icon-img">
               <div>
-                <img src="../../assets/images/doorman.png" alt />
+                <img src="../../assets/images/speakers.png" alt />
               </div>
             </div>
             <p>Speakers</p>
@@ -452,7 +452,7 @@
           <div>
             <div class="icon-img">
               <div>
-                <img src="../../assets/images/doorman.png" alt />
+                <img src="../../assets/images/stage.png" alt />
               </div>
             </div>
             <p>Stage</p>

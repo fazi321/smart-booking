@@ -363,7 +363,7 @@
                   :class="{ active: isExist('speakers') }"
                   @click="selectedAmenities('speakers')"
                 >
-                  <img src="../../../../assets/images/beach-volleyball.png" alt="" />
+                  <img src="../../../../assets/images/speakers.png" alt="" />
                   <h6>{{ $t("AddService.speakers") }}</h6>
                 </div>
                 <div
