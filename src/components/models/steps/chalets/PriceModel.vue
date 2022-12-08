@@ -145,7 +145,7 @@
           </div>
           <div class="booking-date">
             <div class="head-booking">
-             <h5 @click="submitedData">
+             <h5>
                 {{$t('pricing.howLongServiceOpen')}}
               </h5>
             </div>
