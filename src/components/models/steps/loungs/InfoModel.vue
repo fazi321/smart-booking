@@ -233,7 +233,7 @@
                   @click="selectedAmenities('hotTub')"
                 >
                   <img src="../../../../assets/images/hotTub.png" alt="" />
-                  <h6>{{ $t("AddService.steamBath") }}</h6>
+                  <h6>{{ $t("AddService.hotTub") }}</h6>
                 </div>
                 <div
                   :class="{ active: isExist('steamBath') }"
@@ -279,7 +279,7 @@
                   @click="selectedAmenities('accessInHours')"
                 >
                   <img src="../../../../assets/images/24-hours.png" alt="" />
-                  <h6>{{ $t("AddService.wheelChair") }}</h6>
+                  <h6>{{ $t("AddService.24hours") }}</h6>
                   <h6>{{ $t("AddService.access") }}</h6>
                 </div>
                 <div

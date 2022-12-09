@@ -557,6 +557,19 @@
                 <input type="text" v-model="addOnsPrice.weddingArrangements" :disabled="!addOnsCheck.weddingArrangements"/>
               </div>
             </div>
+            <!-- block -->
+            <div class="price-inputs">
+              <div class="price-checkbox">
+                <label class="container-input"
+                  >{{ $t("pricing.sleepover") }}
+                  <input type="checkbox" v-model="addOnsCheck.sleepover" />
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+              <div class="input-price">
+                <input type="text" v-model="addOnsPrice.sleepover" :disabled="!addOnsCheck.sleepover"/>
+              </div>
+            </div>
             <div class="price-inputs">
               <div class="price-checkbox">
                 <label class="container-input"
@@ -643,7 +656,7 @@ export default {
     formatedDate(val){
       var arr = val.split("-")
       var s = `${arr[2]}-${arr[1]}-${arr[0]}` 
-      console.log(s)
+      
       return s
     },
     back(step) {

@@ -223,13 +223,13 @@
                 <span class="checkmark"></span>
               </label>
             </div>
-            <div>
+            <!-- <div>
               <label class="container-input"
                 >{{ $t("serviceDescription.firePlace") }}
                 <input type="checkbox" v-model="kitchen.firePlace" />
                 <span class="checkmark"></span>
               </label>
-            </div>
+            </div> -->
             <div>
               <label class="container-input"
                 >{{ $t("serviceDescription.kettle") }}
@@ -289,7 +289,7 @@
           <h1>{{ $t("serviceDescription.serviceDescription") }}</h1>
           <h4>
             <button @click="goBack(2)">{{ $t("AddService.back") }}</button
-            >{{ $t("serviceDescription.rules&Safty") }}
+            >{{ $t("serviceDescription.roomsBath") }}
           </h4>
         </div>
         <div class="container-rules">

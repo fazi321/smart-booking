@@ -165,14 +165,14 @@
                   <img src="../../../../assets/images/run.png" alt="" />
                   <h6>{{ $t("AddService.running") }}</h6>
                 </div>
-                <div
+                <!-- <div
                   :class="{ active: isExist('accessInHours') }"
                   @click="selectedAmenities('accessInHours')"
                 >
                   <img src="../../../../assets/images/24-hours.png" alt="" />
                   <h6>{{ $t("AddService.24hours") }}</h6>
                   <h6>{{ $t("AddService.access") }}</h6>
-                </div>
+                </div> -->
                 <div
                   :class="{ active: isExist('weelChaireAccess') }"
                   @click="selectedAmenities('weelChaireAccess')"

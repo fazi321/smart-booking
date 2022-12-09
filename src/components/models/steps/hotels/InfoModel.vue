@@ -269,7 +269,7 @@
                   :class="{ active: isExist('hairStylist') }"
                   @click="selectedAmenities('hairStylist')"
                 >
-                  <img src="../../../../assets/images/beach-volleyball.png" alt="" />
+                  <img src="../../../../assets/images/hairstylist.png" alt="" />
                   <h6>{{ $t("AddService.hairStylist") }}</h6>
                 </div>
                 <div

@@ -513,23 +513,23 @@
               </div>
             </div>
             <!-- block -->
-            <!-- <div class="price-inputs">
+            <div class="price-inputs">
               <div class="price-checkbox">
                 <label class="container-input"
-                  >{{ $t("pricing.birthdayArrangements") }}
+                  >{{ $t("pricing.weddingArrangements") }}
                   <input
                     type="checkbox"
-                    v-model="addOnsCheck.birthdayArrangements"
+                    v-model="addOnsCheck.weddingArrangements"
                   />
                   <span class="checkmark"></span>
                 </label>
               </div>
               <div class="input-price">
-                <input type="text" v-model="addOnsPrice.birthdayArrangements" :disabled="!addOnsCheck.birthdayArrangements"/>
+                <input type="text" v-model="addOnsPrice.weddingArrangements" :disabled="!addOnsCheck.weddingArrangements"/>
               </div>
-            </div> -->
+            </div>
             <!-- block -->
-            <div class="price-inputs">
+            <!-- <div class="price-inputs">
               <div class="price-checkbox">
                 <label class="container-input"
                   >{{ $t("pricing.buffet") }}
@@ -554,7 +554,7 @@
                 <input type="checkbox" v-model="addOnsPrice.weddingCake" />
                 <span class="checkmark"></span>
               </label>
-            </div>
+            </div> -->
             <!-- block -->
             <!-- <div class="price-inputs">
               <div class="price-checkbox">
@@ -615,7 +615,7 @@ export default {
     formatedDate(val){
       var arr = val.split("-")
       var s = `${arr[2]}-${arr[1]}-${arr[0]}` 
-      console.log(s)
+      
       return s
     },
     back(step) {

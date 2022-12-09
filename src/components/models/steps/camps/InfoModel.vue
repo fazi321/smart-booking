@@ -18,7 +18,7 @@
         <div class="container-vendor">
           <div>
             <div class="inputs-container">
-              <div>
+              <!-- <div>
                 <input
                   type="text"
                   :class="{ activeErr: errors.numRooms }"
@@ -26,15 +26,17 @@
                   placeholder="Number of Rooms"
                   v-model="roomsGuest.numRooms"
                 />
-              </div>
-              <!-- <div>
-                <input
-                  type="text"
-                  placeholder="Bedrooms"
-                  v-model="unitsAndGuest.bedrooms"
-                />
               </div> -->
               <div>
+                <input
+                  type="number"
+                  :class="{ activeErr: errors.bathrooms }"
+                  @input="resolveErr('bathrooms')"
+                  placeholder="Number of Rooms"
+                  v-model="unitsAndGuest.bathrooms"
+                />
+              </div>
+              <!-- <div>
                 <input
                   type="test"
                   :class="{ activeErr: errors.section }"
@@ -96,7 +98,7 @@
                   placeholder="bathrooms"
                   v-model="roomsGuest.bathrooms"
                 />
-              </div>
+              </div> -->
               <!-- <div>
                 <input
                   type="number"
@@ -111,7 +113,7 @@
                   v-model="unitsAndGuest.livingRoom"
                 />
               </div> -->
-              <div class="rules">
+              <!-- <div class="rules">
                 <label class="container-input"
                   >Indoor Seating
                   <input type="checkbox" v-model="roomsGuest.indoorSeating" />
@@ -124,7 +126,7 @@
                   <input type="checkbox" v-model="roomsGuest.outdoorSeating" />
                   <span class="checkmark"></span>
                 </label>
-              </div>
+              </div> -->
               <!-- <div class="rules">
                 <label class="container-input"
                   >Addition Seating
@@ -199,14 +201,20 @@
                   :class="{ active: isExist('soccerField') }"
                   @click="selectedAmenities('soccerField')"
                 >
-                  <img src="../../../../assets/images/football-field.png" alt="" />
+                  <img
+                    src="../../../../assets/images/football-field.png"
+                    alt=""
+                  />
                   <h6>{{ $t("AddService.soccerField") }}</h6>
                 </div>
                 <div
                   :class="{ active: isExist('volleyBall') }"
                   @click="selectedAmenities('volleyBall')"
                 >
-                  <img src="../../../../assets/images/beach-volleyball.png" alt="" />
+                  <img
+                    src="../../../../assets/images/beach-volleyball.png"
+                    alt=""
+                  />
                   <h6>{{ $t("AddService.volleyBall") }}</h6>
                 </div>
                 <div
@@ -332,7 +340,10 @@
                   :class="{ active: isExist('airConditioning') }"
                   @click="selectedAmenities('airConditioning')"
                 >
-                  <img src="../../../../assets/images/beach-volleyball.png" alt="" />
+                  <img
+                    src="../../../../assets/images/beach-volleyball.png"
+                    alt=""
+                  />
                   <h6 v-if="$t('AddService.conditioning') == 'Conditioning'">
                     Air
                   </h6>
@@ -473,48 +484,38 @@ export default {
       }, 100);
     },
     changeStep(step) {
-      var verifyInputs = this.roomsGuest;
+      var verifyInputs = this.unitsAndGuest;
       if (step == 2) {
-        if (!verifyInputs.numRooms) {
-          this.errors.numRooms = true;
-          this.focusInput();
-          return;
-        }
-        if (!verifyInputs.section) {
-          this.errors.section = true;
-          this.focusInput();
-          return;
-        }
-        if (!verifyInputs.numOfTents) {
-          this.errors.numOfTents = true;
-          this.focusInput();
-          return;
-        }
-        if (!verifyInputs.numOfMajlesTents) {
-          this.errors.numOfMajlesTents = true;
-          this.focusInput();
-          return;
-        }
-        if (!verifyInputs.doubleBed) {
-          this.errors.doubleBed = true;
-          this.focusInput();
-          return;
-        }
-        if (!verifyInputs.singleBed) {
-          this.errors.singleBed = true;
-          this.focusInput();
-          return;
-        }
-        if (!verifyInputs.maxGuest) {
-          this.errors.maxGuest = true;
-          this.focusInput();
-          return;
-        }
         if (!verifyInputs.bathrooms) {
           this.errors.bathrooms = true;
           this.focusInput();
           return;
         }
+        // if (!verifyInputs.roomType) {
+        //   this.errors.roomType = true;
+        //   this.focusInput();
+        //   return;
+        // }
+        // if (!verifyInputs.numberUnits) {
+        //   this.errors.numberUnits = true;
+        //   this.focusInput();
+        //   return;
+        // }
+        // if (!verifyInputs.numberChildren) {
+        //   this.errors.numberChildren = true;
+        //   this.focusInput();
+        //   return;
+        // }
+        // if (!verifyInputs.singleBeds) {
+        //   this.errors.singleBeds = true;
+        //   this.focusInput();
+        //   return;
+        // }
+        // if (!verifyInputs.bathrooms) {
+        //   this.errors.bathrooms = true;
+        //   this.focusInput();
+        //   return;
+        // }
         this.step = step;
       }
       // this.isSubmitted = true;
@@ -535,7 +536,7 @@ export default {
       // } else {
       //   delete this.leisure.accessInHours;
       // }
-      basicInfo.roomsGuest = this.roomsGuest;
+      basicInfo.unitsAndGuest = this.unitsAndGuest;
       basicInfo.leisure = this.leisure;
       this.step = 3;
       //  this.$parent.accountOpt = "service";

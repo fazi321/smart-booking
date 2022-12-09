@@ -419,6 +419,7 @@ export default {
     },
     async submit(payload) {
       var cate = this.serviceType.category.toLowerCase();
+
       if (cate == "lounges") {
         cate = "lounge";
       }
@@ -427,6 +428,9 @@ export default {
       }
       if (cate == "chalets") {
         cate = "chalet";
+      }
+      if (cate == "camps") {
+        cate = "camp";
       }
       try {
         const res = await this.$axios.post(cate, payload);

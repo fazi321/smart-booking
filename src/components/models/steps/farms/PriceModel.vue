@@ -675,7 +675,7 @@ export default {
     formatedDate(val){
       var arr = val.split("-")
       var s = `${arr[2]}-${arr[1]}-${arr[0]}` 
-      console.log(s)
+      
       return s
     },
     back(step) {
