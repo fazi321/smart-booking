@@ -67,6 +67,7 @@
           :page-class="'page-item'"
         ></paginate>
       </div>
+      <BookModel v-if="bookingModel" :dataApi="dataBookingApi" />
     </section>
   </default-layout>
 </template>
@@ -76,6 +77,7 @@ import DefaultLayout from "@/components/layouts/DefaultLayout.vue";
 import MyCard from "@/components/common/myCard.vue";
 import CardSkeleton from "@/components/common/cardSkeleton.vue";
 import Paginate from "vuejs-paginate-next";
+import BookModel from "@/components/models/BookModel.vue";
 export default {
   name: "MyServices",
   components: {
@@ -83,6 +85,7 @@ export default {
     MyCard,
     CardSkeleton,
     Paginate,
+    BookModel
   },
   data() {
     return {
@@ -94,6 +97,9 @@ export default {
       //
       pageSelected: 1,
       pageCount: 15,
+      //
+      bookingModel:false,
+      bookingRequests:[],
     };
   },
   methods: {
@@ -111,9 +117,29 @@ export default {
       this.filteredData = filtereByTabs.slice(copyFrom, copyTo);
     },
     selected(val) {
+      if(val == 'bookingRequests'){
+        this.getRequests()
+      }
       this.tab = val;
       this.pageSelected = 1;
       this.clickCallback(1);
+    },
+    async getRequests() {
+      try {
+        this.loading = true;
+        var res = await this.$axios.get(`/booking/booking-requests`);
+        this.bookingRequests = res.data;
+        this.pageSelected = 1;
+        this.clickCallback(1);
+        // console.log(this.dataCard, '==>')
+        // this.pageCount = Math.ceil(res.data.length / 6);
+        // this.filteredData = this.dataCard.slice(0, 6);
+        // console.log("==>", this.dataCard);
+        this.loading = false;
+      } catch (error) {
+        this.loading = false;
+        console.log(error);
+      }
     },
     async getData() {
       try {

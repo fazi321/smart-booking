@@ -54,8 +54,20 @@
         </div>
       </div>
       <div class="btn-container">
-        <button class="btn transparent-btn">Reject</button>
-        <button class="btn yellow-btn">Approve</button>
+        <button
+          class="btn transparent-btn"
+          @click="approveModel('reject')"
+          :disabled="loadingR"
+        >
+          {{ !loadingR ? "Reject" : "loading..." }}
+        </button>
+        <button
+          class="btn yellow-btn"
+          @click="approveModel('approve')"
+          :disabled="loading"
+        >
+          {{ !loading ? "Approve" : "loading..." }}
+        </button>
       </div>
     </div>
   </section>
@@ -68,17 +80,19 @@ export default {
   data() {
     return {
       loading: false,
+      loadingR: false,
     };
   },
   methods: {
-    modelOpen(model) {
+    approveModel(model) {
       const imagePath = require("../../assets/images/cancelicon.png");
+      const imageTick = require("../../assets/images/icontick.png");
       this.$swal({
-        title: `${model == "checkin" ? "Check In?" : "Check Out?"}`,
+        title: `${model == "approve" ? "Approve?" : "Reject?"}`,
         text: `Are you sure you want to ${
-          model == "checkin" ? "Check in" : "Check out"
-        } the user?`,
-        imageUrl: imagePath,
+          model == "approve" ? "Approve?" : "Reject?"
+        }`,
+        imageUrl: model == "approve" ? imageTick : imagePath,
         imageWidth: 100,
         imageHeight: 100,
         showCancelButton: true,
@@ -89,19 +103,20 @@ export default {
         reverseButtons: true,
       }).then((res) => {
         if (res.isConfirmed) {
-          if (model == "checkin") {
-            this.confirmedCheckIn();
-          } else if (model == "checkout") {
-            this.confirmedCheckOut();
+          if (model == "approve") {
+            this.confirmedApproved();
+          } else if (model == "reject") {
+            this.confirmedReject();
           }
         }
       });
     },
-    async confirmedCheckIn() {
+    async confirmedApproved() {
+      var id = this.$route.query.booking;
       this.loading = true;
       try {
         var result = await this.$axios.get(
-          `booking/checkin/${this.modelData._id}`
+          `vender/service-booking-request/${id}?type=Approve`
         );
         if (result) {
           this.$swal({
@@ -118,11 +133,12 @@ export default {
         console.log(error);
       }
     },
-    async confirmedCheckOut() {
-      this.loading = true;
+    async confirmedReject() {
+      this.loadingR = true;
+      var id = this.$route.query.booking;
       try {
         var result = await this.$axios.get(
-          `booking/checkout/${this.modelData._id}`
+          `vender/service-booking-request/${id}?type=reject`
         );
         if (result) {
           this.$swal({
@@ -132,10 +148,10 @@ export default {
             timer: 1500,
           });
           this.$emit("check");
-          this.loading = false;
+          this.loadingR = false;
         }
       } catch (error) {
-        this.loading = false;
+        this.loadingR = false;
         console.log(error);
       }
     },
@@ -235,15 +251,15 @@ export default {
 }
 .transparent-btn {
   background: #fff;
-  color: #04304B;
+  color: #04304b;
   box-shadow: 0px 2px 4px 1px #c9c9c9a6;
-  border:1px solid #04304b1f;
+  border: 1px solid #04304b1f;
 }
 .yellow-btn {
-  border:1px solid #febb12;
+  border: 1px solid #febb12;
   background: #febb12;
   box-shadow: 0px 2px 4px 1px #c9c9c9a6;
-  color: #04304B;
+  color: #04304b;
 }
 .gray-btn {
   background: #d4d4d4;
