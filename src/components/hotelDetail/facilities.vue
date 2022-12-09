@@ -81,7 +81,7 @@
         <div
           class="icon-card"
           v-if="
-            storeState && storeState.leisure && storeState.leisure.trambolin
+            storeState && storeState.leisure && storeState.leisure.trampoline
           "
         >
           <div>
@@ -492,7 +492,7 @@ export default {
         (this.storeState.leisure && this.storeState.leisure.billard) ||
         (this.storeState.leisure && this.storeState.leisure.tennisCourt) ||
         (this.storeState.leisure && this.storeState.leisure.soccerField) ||
-        (this.storeState.leisure && this.storeState.leisure.trambolin) ||
+        (this.storeState.leisure && this.storeState.leisure.trampoline) ||
         (this.storeState.leisure && this.storeState.leisure.volleyBall) ||
         (this.storeState.leisure && this.storeState.leisure.airHockeyTable)
       ) {

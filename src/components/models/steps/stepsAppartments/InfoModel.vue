@@ -173,8 +173,8 @@
                   <h6>{{ $t("AddService.volleyBall") }}</h6>
                 </div>
                 <div
-                  :class="{ active: isExist('trambolin') }"
-                  @click="selectedAmenities('trambolin')"
+                  :class="{ active: isExist('trampoline') }"
+                  @click="selectedAmenities('trampoline')"
                 >
                   <img src="../../../../assets/images/trampoline.png" alt="" />
                   <h6>{{ $t("AddService.trampoline") }}</h6>

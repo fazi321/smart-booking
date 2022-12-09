@@ -10,7 +10,7 @@
         </div>
         <div class="headings">
           <h1>{{ $t("serviceDescription.serviceDescription") }}</h1>
-           <h4>
+          <h4>
             <button @click="back(2)">{{ $t("AddService.back") }}</button
             >{{ $t("serviceDescription.rules&Safty") }}
           </h4>
@@ -33,7 +33,7 @@
             </div> -->
             <div>
               <label class="container-input"
-                >{{ $t("serviceDescription.pets") }}
+                >{{ $t("serviceDescription.parties") }}
                 <input type="checkbox" v-model="rules.eventPartiesAllowed" />
                 <span class="checkmark"></span>
               </label>
@@ -52,13 +52,6 @@
                 <span class="checkmark"></span>
               </label>
             </div>
-            <!-- <div>
-              <label class="container-input"
-                >{{ $t("serviceDescription.suitableForChildrens") }}
-                <input type="checkbox" v-model="rules.suitableForChildrens" />
-                <span class="checkmark"></span>
-              </label>
-            </div> -->
             <div>
               <label class="container-input"
                 >{{ $t("serviceDescription.suitableGrooms") }}
@@ -66,24 +59,17 @@
                 <span class="checkmark"></span>
               </label>
             </div>
-            <!-- <div>
-              <label class="container-input"
-                >{{ $t("serviceDescription.suitableForInfants") }}
-                <input type="checkbox" v-model="rules.suitableForInfants" />
-                <span class="checkmark"></span>
-              </label>
-            </div> -->
             <div>
               <label class="container-input"
-                >{{ $t("serviceDescription.fireAlaram") }}
-                <input type="checkbox" v-model="safty.fireAlaram" />
+                >{{ $t("serviceDescription.carbonMonoxideAlarams") }}
+                <input type="checkbox" v-model="safty.carbonMonoxideAlarams" />
                 <span class="checkmark"></span>
               </label>
             </div>
             <div>
               <label class="container-input"
-                >{{ $t("serviceDescription.carbonMonoxideAlarams") }}
-                <input type="checkbox" v-model="safty.carbonMonoxideAlarams" />
+                >{{ $t("serviceDescription.fireAlaram") }}
+                <input type="checkbox" v-model="safty.fireAlaram" />
                 <span class="checkmark"></span>
               </label>
             </div>
@@ -159,7 +145,7 @@
                   </label>
                 </div>
                 <div class="input-price">
-                   <input
+                  <input
                     type="number"
                     v-model="suitablePrice.suitableForInfants"
                     :disabled="!suitableFor.suitableForInfants"
@@ -171,7 +157,9 @@
         </div>
         <div class="form-container">
           <div class="input-div">
-            <button type="submit" @click="changeStep(2)">{{$t('AddService.next')}}</button>
+            <button type="submit" @click="changeStep(2)">
+              {{ $t("AddService.next") }}
+            </button>
           </div>
         </div>
       </div>
@@ -214,21 +202,21 @@
                 <span class="checkmark"></span>
               </label>
             </div>
-           <div>
+            <div>
+              <label class="container-input"
+                >{{ $t("serviceDescription.firePlace") }}
+                <input type="checkbox" v-model="kitchen.firePlace" />
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div>
               <label class="container-input"
                 >{{ $t("serviceDescription.coffeeMachine") }}
                 <input type="checkbox" v-model="kitchen.coffeeMachine" />
                 <span class="checkmark"></span>
               </label>
             </div>
-            <!-- <div>
-              <label class="container-input"
-                >Fire Place
-                <input type="checkbox" v-model="kitchen.firePlace" />
-                <span class="checkmark"></span>
-              </label>
-            </div> -->
-             <div>
+            <div>
               <label class="container-input"
                 >{{ $t("serviceDescription.kettle") }}
                 <input type="checkbox" v-model="kitchen.kettle" />
@@ -267,13 +255,15 @@
         </div>
         <div class="form-container">
           <div class="input-div">
-            <button type="submit" @click="changeStep(3)">{{$t('AddService.next')}}</button>
+            <button type="submit" @click="changeStep(3)">
+              {{ $t("AddService.next") }}
+            </button>
           </div>
         </div>
       </div>
     </div>
     <!-- step one End -->
-    <!-- bath Rooms -->
+    <!-- outDoors -->
     <div class="primary-login" v-if="step == 3">
       <div class="main-login add-services">
         <div class="logo-close">
@@ -283,7 +273,59 @@
         </div>
         <div class="headings">
           <h1>{{ $t("serviceDescription.serviceDescription") }}</h1>
-          <h4><button @click="goBack(2)">{{ $t("AddService.back") }}</button>{{ $t("serviceDescription.roomsBath") }}</h4>
+          <h4>
+            <button @click="goBack(2)">{{ $t("AddService.back") }}</button
+            >{{ $t("serviceDescription.outdoor") }}
+          </h4>
+        </div>
+        <div class="container-rules">
+          <div class="rules">
+            <div>
+              <label class="container-input"
+                >{{ $t("serviceDescription.grill") }}
+                <input type="checkbox" v-model="outdoors.grill" />
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div>
+              <label class="container-input"
+                >{{ $t("serviceDescription.greenYard") }}
+                <input type="checkbox" v-model="outdoors.greenYard" />
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <!-- <div>
+              <label class="container-input"
+                >{{ $t("serviceDescription.mandiPit") }}
+                <input type="checkbox" v-model="outdoors.mandiPit" />
+                <span class="checkmark"></span>
+              </label>
+            </div> -->
+          </div>
+        </div>
+        <div class="form-container">
+          <div class="input-div">
+            <button type="submit" @click="changeStep(4)">
+              {{ $t("AddService.next") }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- bath Rooms -->
+    <div class="primary-login" v-if="step == 4">
+      <div class="main-login add-services">
+        <div class="logo-close">
+          <div class="close-icon" @click="close">
+            <img src="../../../../assets/images/close-icon.svg" alt="" />
+          </div>
+        </div>
+        <div class="headings">
+          <h1>{{ $t("serviceDescription.serviceDescription") }}</h1>
+          <h4>
+            <button @click="goBack(3)">{{ $t("AddService.back") }}</button
+            >{{ $t("serviceDescription.roomsBath") }}
+          </h4>
         </div>
         <div class="container-rules">
           <div class="rules">
@@ -361,13 +403,15 @@
         </div>
         <div class="form-container">
           <div class="input-div">
-            <button type="submit" @click="changeStep(5)">{{$t('AddService.next')}}</button>
+            <button type="submit" @click="changeStep(5)">
+              {{ $t("AddService.next") }}
+            </button>
           </div>
         </div>
       </div>
     </div>
     <!-- step one End -->
-    <!-- out door -->
+    <!-- step three -->
     <div class="primary-login" v-if="step == 5">
       <div class="main-login add-services">
         <div class="logo-close">
@@ -377,51 +421,10 @@
         </div>
         <div class="headings">
           <h1>{{ $t("serviceDescription.serviceDescription") }}</h1>
-          <h4><button @click="goBack(3)">{{$t('AddService.back')}}</button>{{ $t("serviceDescription.outdoor") }}</h4>
-        </div>
-        <div class="container-rules">
-          <div class="rules">
-            <div>
-              <label class="container-input"
-                >{{ $t("serviceDescription.grill") }}
-                <input type="checkbox" v-model="outdoors.grill" />
-                <span class="checkmark"></span>
-              </label>
-            </div>
-            <div>
-              <label class="container-input"
-                >{{ $t("serviceDescription.greenYard") }}
-                <input type="checkbox" v-model="outdoors.greenYard" />
-                <span class="checkmark"></span>
-              </label>
-            </div>
-            <!-- <div>
-              <label class="container-input"
-                >MandiPit
-                <input type="checkbox" v-model="outdoors.mandiPit" />
-                <span class="checkmark"></span>
-              </label>
-            </div> -->
-          </div>
-        </div>
-        <div class="form-container">
-          <div class="input-div">
-            <button type="submit" @click="changeStep(6)">{{$t('AddService.next')}}</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- step three -->
-    <div class="primary-login" v-if="step == 6">
-      <div class="main-login add-services">
-        <div class="logo-close">
-          <div class="close-icon" @click="close">
-            <img src="../../../../assets/images/close-icon.svg" alt="" />
-          </div>
-        </div>
-        <div class="headings">
-          <h1>{{ $t("serviceDescription.serviceDescription") }}</h1>
-          <h4><button @click="goBack(5)">{{$t('AddService.back')}}</button>{{ $t("serviceDescription.description") }}</h4>
+          <h4>
+            <button @click="goBack(4)">{{ $t("AddService.back") }}</button
+            >{{ $t("serviceDescription.description") }}
+          </h4>
         </div>
         <div class="container-vendor">
           <div>
@@ -437,7 +440,7 @@
               </div>
               <div>
                 <input
-                  type="text"
+                  type="text "
                   :class="['arabic', { activeErr: errors.nameInArabic }]"
                   @input="resolveErr('nameInArabic')"
                   placeholder="Service Name (Arabic)"
@@ -507,14 +510,16 @@
         </div>
         <div class="form-container">
           <div class="input-div">
-            <button type="submit" @click="changeStep(7)">{{$t('AddService.next')}}</button>
+            <button type="submit" @click="changeStep(6)">
+              {{ $t("AddService.next") }}
+            </button>
           </div>
         </div>
       </div>
     </div>
     <!-- step two End -->
     <!-- step three -->
-    <div class="primary-login" v-if="step == 7">
+    <div class="primary-login" v-if="step == 6">
       <div class="main-login add-services">
         <div class="logo-close">
           <div class="close-icon" @click="close">
@@ -523,7 +528,10 @@
         </div>
         <div class="headings">
           <h1>{{ $t("serviceDescription.serviceDescription") }}</h1>
-          <h4><button @click="goBack(6)">{{$t('AddService.back')}}</button>{{ $t("serviceDescription.address&Location") }}</h4>
+          <h4>
+            <button @click="goBack(5)">{{ $t("AddService.back") }}</button
+            >{{ $t("serviceDescription.serviceDescription") }}
+          </h4>
         </div>
         <div class="map-container">
           <div class="map">
@@ -589,17 +597,17 @@
         </div>
         <div class="form-container">
           <div class="input-div step-btn">
-            <button type="submit" @click="submited">{{$t('AddService.next')}}</button>
+            <button type="submit" @click="submited">{{ $t("AddService.next") }}</button>
           </div>
         </div>
       </div>
     </div>
     <!-- // -->
-    <section v-if="step == 8">
+    <section v-if="step == 7">
       <AddService
         @close="close"
         :cached="'price'"
-        :backTo="7"
+        :backTo="6"
         @lastStep="lastStep"
       />
     </section>
@@ -614,8 +622,8 @@ export default {
   name: "AddServiceModel",
   props: ["model"],
   components: {
+    AddService,
     GoogleMap,
-    AddService
   },
   data() {
     return {
@@ -629,9 +637,9 @@ export default {
       description: {},
       address: {},
       location: {},
+      outdoors: {},
       suitableFor: {},
       suitablePrice: {},
-      outdoors: {},
       step: 1,
       // errors
       errors: {},
@@ -644,6 +652,9 @@ export default {
     },
     goBack(step) {
       this.step = step;
+    },
+    resolveErr(input) {
+      this.errors[input] = false;
     },
     latLng({ lat, lng, address }) {
       this.address.address = address.address;
@@ -684,7 +695,7 @@ export default {
       this.$emit("images", formData);
       e.target.value = ''
     },
-    lastStep() {
+     lastStep() {
       this.$parent.accountOpt = "price";
     },
     submited() {
@@ -723,12 +734,12 @@ export default {
       };
       console.log(finalDetail);
       this.$emit("decription", finalDetail);
+      this.step = 7
       // this.$parent.accountOpt = "price";
-      this.step = 8;
     },
     changeStep(step) {
       // if (!this.serviceType) return;
-      if (step == 7) {
+      if (step == 6) {
         if (this.vInputsDescription()) {
           this.step = step;
         }
@@ -788,9 +799,6 @@ export default {
         return;
       }
       return true;
-    },
-    resolveErr(input) {
-      this.errors[input] = false;
     },
     vInputsLocation() {
       var verifyInputs = this.address;

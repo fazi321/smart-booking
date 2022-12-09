@@ -192,8 +192,8 @@
                   <h6>Volley Ball</h6>
                 </div> -->
                 <!-- <div
-                  :class="{ active: isExist('trambolin') }"
-                  @click="selectedAmenities('trambolin')"
+                  :class="{ active: isExist('trampoline') }"
+                  @click="selectedAmenities('trampoline')"
                 >
                   <img src="../../../../assets/images/air-conditioner.png" alt="" />
                   <h6>Trambolin</h6>
