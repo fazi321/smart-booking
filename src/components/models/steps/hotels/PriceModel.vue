@@ -177,11 +177,11 @@
             <div class="date-input">
               <div @click="showModelDate('cn')">
                 <!-- <input type="text" placeholder="Check in" v-model="checkIn" /> -->
-                <input type="date" v-model="checkIn" id="date" ref="cn" />
+                <input type="time" v-model="checkIn" id="date" ref="cn" />
               </div>
               <div @click="showModelDate('co')">
                 <!-- <input type="text" placeholder="Check out" v-model="checkOut" /> -->
-                <input type="date" v-model="checkOut" id="date" ref="co" />
+                <input type="time" v-model="checkOut" id="date" ref="co" />
               </div>
             </div>
           </div>
@@ -361,9 +361,9 @@
               <div
                 :class="[
                   'primary-cards',
-                  { active: bookingSetting.bookingType == '24-Hour request' },
+                  { active: bookingSetting.bookingType == '24-Hour' },
                 ]"
-                @click="bookInstant('24-Hour request')"
+                @click="bookInstant('24-Hour')"
               >
                 <!-- <div class="rounded-btn"></div> -->
                 <div class="card-container">
@@ -708,11 +708,9 @@ export default {
       }
       //  time check in out
       var check = {};
-      if (this.checkIn) {
-        check.checkInTime = this.dateFormate(this.checkIn);
-      }
-      if (this.checkOut) {
-        check.checkOutTime = this.dateFormate(this.checkOut);
+      if (this.checkIn && this.checkOut) {
+        check.checkInTime = this.timeFormate(this.checkIn);
+        check.checkOutTime = this.timeFormate(this.checkOut);
       }
       // addon's
       const newAddon = {};
@@ -757,27 +755,27 @@ export default {
     showBookPop(val) {
       (this.step = ""), (this.showPopUp = val);
     },
-    // timeFormate(time) {
-    //   var timeSplit = time.split(":"),
-    //     hours,
-    //     minutes,
-    //     meridian;
-    //   hours = timeSplit[0];
-    //   minutes = timeSplit[1];
-    //   if (hours > 12) {
-    //     meridian = "PM";
-    //     hours -= 12;
-    //   } else if (hours < 12) {
-    //     meridian = "AM";
-    //     if (hours == 0) {
-    //       hours = 12;
-    //     }
-    //   } else {
-    //     meridian = "PM";
-    //   }
-    //   var timeIs = hours + ":" + minutes + ":" + meridian;
-    //   return timeIs;
-    // },
+    timeFormate(time) {
+      var timeSplit = time.split(":"),
+        hours,
+        minutes,
+        meridian;
+      hours = timeSplit[0];
+      minutes = timeSplit[1];
+      if (hours > 12) {
+        meridian = "PM";
+        hours -= 12;
+      } else if (hours < 12) {
+        meridian = "AM";
+        if (hours == 0) {
+          hours = 12;
+        }
+      } else {
+        meridian = "PM";
+      }
+      var timeIs = hours + ":" + minutes + ":" + meridian;
+      return timeIs;
+    },
     changeStep(step) {
       // if (!this.serviceType) return;
       this.step = step;

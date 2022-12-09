@@ -358,9 +358,9 @@
               <div
                 :class="[
                   'primary-cards',
-                  { active: bookingSetting.bookingType == '24-Hour request' },
+                  { active: bookingSetting.bookingType == '24-Hour' },
                 ]"
-                @click="bookInstant('24-Hour request')"
+                @click="bookInstant('24-Hour')"
               >
                 <!-- <div class="rounded-btn"></div> -->
                 <div class="card-container">
