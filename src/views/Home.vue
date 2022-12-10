@@ -43,9 +43,9 @@ export default {
       });
       Toast.fire({
         icon: "success",
-        title: `hello'${arg.data.title}`,
+        title: `${arg.data?.notification?.title}`,
         position: "top-end",
-        text: `${arg.data.body}`,
+        text: `${arg.data?.notification?.body}`,
         showConfirmButton: false,
         toast: true,
         timer: 3000,
@@ -84,7 +84,7 @@ export default {
           console.log("connected");
         });
         socket.on("notification", (arg) => {
-          console.log('homePage', arg)
+          // console.log('homePage', arg)
           this.notificationModel(arg);
         });
       }
