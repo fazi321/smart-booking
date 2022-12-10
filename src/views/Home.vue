@@ -43,7 +43,7 @@ export default {
       });
       Toast.fire({
         icon: "success",
-        title: `${arg.data.title}`,
+        title: `hello'${arg.data.title}`,
         position: "top-end",
         text: `${arg.data.body}`,
         showConfirmButton: false,
@@ -84,6 +84,7 @@ export default {
           console.log("connected");
         });
         socket.on("notification", (arg) => {
+          console.log('homePage', arg)
           this.notificationModel(arg);
         });
       }
