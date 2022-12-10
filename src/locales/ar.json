@@ -1,4 +1,5 @@
 {
+    "lang":"ar",
     "header": {
         "notifications": "الإشعارات",
         "login": "تسجيل الدخول",
@@ -309,7 +310,7 @@
         "indoorWithoutBarrier": "داخلي بدون حاجز",
         "outdoorWithBarrier": "في الهواء الطلق مع حاجز",
         "outdoorWithoutBarrier": "في الهواء الطلق بدون حاجز",
-        "swimmingWithWaterGames": "السباحة مع الألعاب المائية",
+        "swimmingWithWaterGames": "السباحة مع الألعاب المائية"
     },
     "detailPage": {
         "vendorProfile": "ملف المالك",
@@ -326,6 +327,32 @@
     "success": {
         "RequestSubmit": "تم إرسال الطلب بنجاح"
     },
+    "footer": {
+        "contact": "تواصل معنا",
+        "location":"برج الصفا بالزا - حي الصفا - طريق األمير ماجد – جدة – المملكة العربية السعودية",
+        "phone":"500555002",
+        "phone2":"504378399",
+        "quickLinks":"روابط سريعة",
+        "aboutUs":"من نحن",
+        "termsOfUse":"شروط االستخدام",
+        "privacyPolicy":"سياسة الخصوصية",
+        "FAQs":"األسئلة ا لمتكررة",
+        "cities":"المدن",
+        "makkah":"مكة",
+        "jeddah":"جدة",
+        "riyadh":"الرياض ",
+        "taif":"الطائف",
+        "madinah":"المدينة",
+        "abha":"أبها",
+        "dammam":"الدمام",
+        "buraidah":"بريدة",
+        "tabuk":"تبوك",
+        "followUs": "تابعنا",
+        "twitter": "Twitter",
+        "instagram": "Instagram",
+        "facebook": "Facebook",
+        "youTube": "YouTube"
+      },
     "error": {
         "numberError": "رقم الجوال خطأ!"
     }

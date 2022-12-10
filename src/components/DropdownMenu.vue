@@ -1,5 +1,5 @@
 <template>
-  <section class="dropdown">
+  <section :class="['dropdown', {'set-langauge': $t('lang') == 'ar'}]">
     <ul>
       <li>
         <router-link to="/my-profile">

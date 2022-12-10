@@ -34,6 +34,15 @@ img {
 
 /* global css */
 
+/* language change */
+.set-langauge a{
+  flex-direction: row-reverse;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* language change End */
 .media-img {
   display: flex;
   flex-wrap: wrap;

@@ -1,9 +1,9 @@
 <template>
-  <footer class="footer">
+  <footer :class="['footer', { 'set-footer': $t('lang') == 'ar' }]">
     <div class="footer-container container">
       <section class="footer-row">
         <div class="col">
-          <h3 class="contact">CONTACT US</h3>
+          <h3 class="contact">{{ $t("footer.contact") }}</h3>
           <ul class="contact-list">
             <li class="fist-list">
               <div>
@@ -11,8 +11,7 @@
               </div>
               <div>
                 <router-link to="#">
-                  Imperial MEA General Trading L.L.C Office No. 516, The Binary
-                  Tower Al Abraj Street.
+                  {{ $t("footer.location") }}
                 </router-link>
               </div>
             </li>
@@ -21,9 +20,13 @@
                 <img src="../../assets/images/phone.svg" />
               </div>
               <div>
-                <router-link to="#">(+92) 4512145789</router-link>
+                <router-link to="#"
+                  >(+966) {{ $t("footer.phone") }}</router-link
+                >
                 <br />
-                <router-link to="#">(+92) 4512145789</router-link>
+                <router-link to="#"
+                  >(+966) {{ $t("footer.phone2") }}</router-link
+                >
               </div>
             </li>
             <li>
@@ -31,54 +34,51 @@
                 <img src="../../assets/images/email.svg" />
               </div>
               <div>
-                <router-link to="#">loremipsum@gmailcom</router-link>
-                <br />
-                <router-link to="#">loremipsum@gmailcom</router-link>
+                <router-link to="#">info@smartbookings.co</router-link>
+                <!-- <br />
+                <router-link to="#">loremipsum@gmailcom</router-link> -->
               </div>
             </li>
           </ul>
         </div>
         <div class="col">
-          <h3>QUICK LINKS</h3>
+          <h3>{{ $t("footer.quickLinks") }}</h3>
           <ul class="contact-list">
             <li class="fist-list">
-              <router-link to="/">Farms</router-link>
+              <router-link to="/">{{ $t("footer.aboutUs") }}</router-link>
             </li>
             <li class="fist-list">
-              <router-link to="#">Resorts</router-link>
+              <router-link to="#">{{ $t("footer.termsOfUse") }}</router-link>
             </li>
             <li class="fist-list">
-              <router-link to="/">Stadium</router-link>
+              <router-link to="/">{{ $t("footer.privacyPolicy") }}</router-link>
             </li>
             <li class="fist-list">
-              <router-link to="#">Apartments</router-link>
+              <router-link to="#">{{ $t("footer.FAQs") }}</router-link>
             </li>
-            <li class="fist-list">
+            <!-- <li class="fist-list">
               <router-link to="/">Chalets</router-link>
-            </li>
+            </li> -->
           </ul>
         </div>
         <div class="col">
-          <h3>CITIES</h3>
+          <h3>{{ $t("footer.cities") }}</h3>
           <div class="contact-list">
             <div class="city-list">
-              <router-link to="#">Karachi</router-link>
-              <router-link to="#">Lahore</router-link>
-              <router-link to="#">Multan</router-link>
-              <router-link to="#">Islamabad</router-link>
-              <router-link to="#">Mainwali</router-link>
-              <router-link to="#">Sibi</router-link>
-              <router-link to="#">Skardu</router-link>
-              <router-link to="#">Gilgit</router-link>
-              <router-link to="#">Quetta</router-link>
-              <router-link to="#">Rawalpindi</router-link>
-              <router-link to="#">RYK</router-link>
-              <router-link to="#">D-I-Khan</router-link>
+              <router-link to="#">{{ $t("footer.makkah") }}</router-link>
+              <router-link to="#">{{ $t("footer.jeddah") }}</router-link>
+              <router-link to="#">{{ $t("footer.riyadh") }}</router-link>
+              <router-link to="#">{{ $t("footer.taif") }}</router-link>
+              <router-link to="#">{{ $t("footer.madinah") }}</router-link>
+              <router-link to="#">{{ $t("footer.abha") }}</router-link>
+              <router-link to="#">{{ $t("footer.dammam") }}</router-link>
+              <router-link to="#">{{ $t("footer.buraidah") }}</router-link>
+              <router-link to="#">{{ $t("footer.tabuk") }}</router-link>
             </div>
           </div>
         </div>
         <div class="col">
-          <h3>FOLLOW US</h3>
+          <h3>{{ $t("footer.followUs") }}</h3>
           <div class="contact-list">
             <div class="follow-list">
               <router-link to="#">
@@ -95,7 +95,7 @@
         </div>
       </section>
       <div class="reserved">
-        <p>@2021 All rights reserved. Created by Lorem Ipsum</p>
+        <p>All Rights Reserved © 2022 Smart Booking</p>
       </div>
     </div>
   </footer>
@@ -103,7 +103,7 @@
 
 <script>
 export default {
-  name: "AppFooter"
+  name: "AppFooter",
 };
 </script>
 
@@ -213,6 +213,22 @@ export default {
   font-size: 14px;
   text-align: left;
 }
+/* rtl */
+.set-footer .footer-row {
+  flex-direction: row-reverse;
+}
+.set-footer .footer-row .col h3,
+.set-footer .footer-row .col .contact-list li a {
+  text-align: right;
+}
+.set-footer .footer-row .col .contact-list li div{
+  text-align:right!important;
+  margin-left: 15px;
+}
+.set-footer .footer-row .col .contact-list li{
+  flex-direction: row-reverse;
+}
+
 /* reponsive start */
 @media (max-width: 479px) and (min-width: 320px) {
   .footer .footer-row .col {

@@ -160,6 +160,7 @@ export default {
     },
   },
   mounted() {
+    this.getRequests()
     this.getData();
   },
 };

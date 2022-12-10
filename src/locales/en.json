@@ -1,6 +1,7 @@
 {
+  "lang": "en",
   "header": {
-    "notifications":"Notifications",
+    "notifications": "Notifications",
     "login": "Login",
     "becomeVendor": "Become Vendor",
     "addService": "Add Service",
@@ -37,7 +38,7 @@
     "km": "km",
     "arbic": "arabic ",
     "english": "english",
-    "bookingRequest":"Booking Requests"
+    "bookingRequest": "Booking Requests"
   },
   "homePage": {
     "whatWeDo": "WHAT CAN WE DO FOR YOU?",
@@ -131,7 +132,7 @@
     "parking": "Parking",
     "lampPost": "lampPost",
     "hairStylist": "Hair Stylist",
-    "spa":"spa",
+    "spa": "spa",
     "outDoorSwimmingPool": "outdoor SwimmingPool",
     "inDoorSwimmingPool": "indoor SwimmingPool",
     "24-HourRequest": "24-Hour Request",
@@ -185,7 +186,7 @@
     "breakFast": "Break Fast",
     "lunch": "Lunch",
     "dinner": "Dinner",
-    "audditionailRules":"AudditionailRules"
+    "audditionailRules": "AudditionailRules"
   },
   "pricing": {
     "priceDetails": "Price Details",
@@ -230,7 +231,7 @@
     "buffet": "buffet",
     "photographer": "Photographer",
     "weddingCake": "weddingCake",
-    "howLongServiceOpen":"How long the service will be open for booking?"
+    "howLongServiceOpen": "How long the service will be open for booking?"
   },
   "becomeVendor": {
     "becomeVendor": "Become Vendor",
@@ -312,20 +313,47 @@
     "outdoorWithoutBarrier": "Outdoor Without Barrier",
     "swimmingWithWaterGames": "Swimming With Water Games"
   },
-  "detailPage":{
-    "vendorProfile":"Vendor Profile",
-    "description":"Description",
-    "facilities":"Facilities",
-    "reviews":"Reviews",
-    "terms":"Terms",
-    "map":"Map",
-    "book":"Book",
-    "amenities":"Amenities",
-    "leisure":"Leisure",
-    "homeAmenities":"Home Amenities"
+  "detailPage": {
+    "vendorProfile": "Vendor Profile",
+    "description": "Description",
+    "facilities": "Facilities",
+    "reviews": "Reviews",
+    "terms": "Terms",
+    "map": "Map",
+    "book": "Book",
+    "amenities": "Amenities",
+    "leisure": "Leisure",
+    "homeAmenities": "Home Amenities"
   },
   "success": {
     "requestSubmit": "Request Submitted Successfully!"
+  },
+  "footer": {
+    "contact": "CONTACT US",
+    "location": "Al Safa Tower , Al Safa District, Prince Majid Road Jeddah - KSA",
+    "phone": "500555002",
+    "phone2": "504378399",
+    "quickLinks": "QUICK LINKS",
+    "aboutUs": "About Us",
+    "termsOfUse": "Terms Of Use",
+    "privacyPolicy": "Privacy Policy",
+    "FAQs": "FAQs",
+    "cities": "CITIES",
+    "makkah": "Makkah",
+    "jeddah": "Jeddah",
+    "riyadh": "Riyadh",
+    "taif": "Taif",
+    "madinah": "Madinah",
+    "abha": "Abha",
+    "dammam": "Dammam",
+    "buraidah": "Buraidah",
+    "tabuk": "Tabuk",
+    "followUs": "FOLLOW US",
+    "twitter": "Twitter",
+    "instagram": "Instagram",
+    "facebook": "Facebook",
+    "youTube": "YouTube"
+
   },
   "error": {
     "numberError": "Mobile Number Error!"
