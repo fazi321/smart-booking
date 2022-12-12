@@ -17,7 +17,7 @@
         <div class="login-form">
           <div class="form-container">
             <form autocomplete="off" @submit.prevent="signUpWithName">
-              <div class="input-div">
+              <div :class="['input-div',{'set-lang' : $t('lang') == 'ar'}]">
                 <div class="input-primary">
                   <!-- <div class="flag">
                     <div class="flag-img">
@@ -118,6 +118,10 @@ export default {
 </script>
 
 <style scoped>
+.set-lang input{
+  text-align: right!important;
+  direction: rtl!important;
+}
 .error {
   padding: 10px 0;
   text-align: center;

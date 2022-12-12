@@ -67,7 +67,7 @@
                     type="text"
                     :class="{ activeErr: errors.firstName }"
                     @input="resolveErr('firstName')"
-                    placeholder="First Name"
+                    :placeholder="$t('inputs.firstName')"
                     v-model="vendor.firstName"
                   />
                 </div>
@@ -76,7 +76,7 @@
                     type="text"
                     :class="{ activeErr: errors.lastName }"
                     @input="resolveErr('lastName')"
-                    placeholder="Last Name"
+                    :placeholder="$t('inputs.lastName')"
                     v-model="vendor.lastName"
                   />
                 </div>
@@ -85,7 +85,7 @@
                     type="number"
                     :class="{ activeErr: errors.phone }"
                     @input="resolveErr('phone')"
-                    placeholder="Mobile Number"
+                    :placeholder="$t('inputs.mobileNumber')"
                     min='1'
                     v-model="vendor.phone"
                   />
@@ -93,7 +93,7 @@
                 <div>
                   <input
                     type="Email"
-                    placeholder="Email"
+                    :placeholder="$t('inputs.email')"
                     required
                     v-model="vendor.email"
                   />
@@ -103,7 +103,7 @@
                     type="text"
                     :class="{ activeErr: errors.address }"
                     @input="resolveErr('address')"
-                    placeholder="Address"
+                    :placeholder="$t('placeholders.address')"
                     v-model="vendor.address"
                   />
                 </div>
@@ -112,7 +112,7 @@
                     type="text"
                     :class="{ activeErr: errors.nationality }"
                     @input="resolveErr('nationality')"
-                    placeholder="Nationality"
+                    :placeholder="$t('inputs.nationality')"
                     v-model="vendor.nationality"
                   />
                 </div>

@@ -80,6 +80,18 @@
     "lastName": "Last name",
     "done": "Done"
   },
+  "inputs":{
+    "update":"Update",
+    "personalInformation":"Personal Information",
+    "MY PROFILE":"MY PROFILE",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "mobileNumber": "Mobile Number",
+    "email":"Email",
+    "nationality":"Nationality",
+    "IDNumber":"ID Number",
+    "dateOfBirth":"Date Of Birth"
+  },
   "AddService": {
     "addService": "Add Service",
     "subAddService": "Please add details for new service",
@@ -338,7 +350,12 @@
     "area":"Area",
     "PropertyDescriptionEn":"Property Description (English)",
     "PropertyDescriptionAr":"Property Description (Arabic)",
-    "addserviceimage":"Add service image"
+    "addserviceimage":"Add service image",
+    "address":"Address",
+    "propertyNumber":"Property Number",
+    "city":"City",
+    "landMark":"Landmark",
+    "pitchGrassType":"Pitch Grass Type"
   },
   "detailPage": {
     "vendorProfile": "Vendor Profile",

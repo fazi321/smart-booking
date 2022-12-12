@@ -12,12 +12,12 @@
         <AddReview :model="addReview" @close="closeAddModel" />
         <DetailTabs />
       </section>
-      <section class="detail-right" v-if="$route.params.cat != 'services' && storeState?.bookingSetting?.bookingType != '24-Hour'">
+      <section class="detail-right" v-if="$route.params.cat != 'services'">
         <FormBook />
       </section>
-      <section class="detail-right" v-if="$route.params.cat != 'services' && storeState?.bookingSetting?.bookingType == '24-Hour'">
+      <!-- <section class="detail-right" v-if="$route.params.cat != 'services' && storeState?.bookingSetting?.bookingType == '24-Hour'">
         <RequestBooking  />
-      </section>
+      </section> -->
     </div>
   </default-layout>
 </template>
@@ -30,7 +30,7 @@ import DetailTabs from "@/components/hotelDetail/tabs.vue";
 import FormBook from "@/components/hotelDetail/bookForm.vue";
 import VendorModel from "@/components/hotelDetail/vendorProfileModel.vue";
 import AddReview from "@/components/hotelDetail/AddReview.vue";
-import RequestBooking from "@/components/RequestBooking.vue";
+// import RequestBooking from "@/components/RequestBooking.vue";
 
 export default {
   name: "HotelDetailView",
@@ -42,7 +42,7 @@ export default {
     FormBook,
     VendorModel,
     AddReview,
-    RequestBooking
+    // RequestBooking
   },
   data() {
     return {

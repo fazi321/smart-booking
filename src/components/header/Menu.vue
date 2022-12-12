@@ -4,9 +4,9 @@
       <li :class="{ active: $route.path == '/' }">
         <router-link to="/">{{$t("header.home")}}</router-link>
       </li>
-      <li :class="{ active: $route.path == '/category' }" class="category-menu">
+      <li :class="{ active: $route.path == '/category', }" class="category-menu">
         <router-link class="category" to="/">{{$t("header.categories")}}</router-link>
-        <div class="sub-menu">
+        <div :class="['sub-menu', {'set-language' : $t('lang') == 'ar'}]">
           <ul>
             <!-- <li>
               <router-link to="/">Home</router-link>
@@ -96,6 +96,9 @@ export default {
 </script>
 
 <style scoped>
+.set-language li{
+  text-align:right!important;
+}
 .category-menu {
   position: relative;
 }

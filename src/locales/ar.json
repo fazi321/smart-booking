@@ -176,6 +176,18 @@
         "subTitle": "ادخل رمز التحقق المرسل إلى جوالك",
         "verify": "المتابعة"
     },
+    "inputs":{
+        "update":"تحديث",
+        "personalInformation":"المعلومات الشخصية",
+        "myProfile":"الملف الشخصي",
+        "firstName": "الاسم الأول",
+        "lastName": "الاسم الأخير",
+        "mobileNumber": "رقم الجوال",
+        "email":"البريد الإلكتروني",
+        "nationality":"الجنسية",
+        "IDNumber":"رقم الهوية",
+        "dateOfBirth":"تاريخ الميلاد"
+    },
     "AddService": {
         "addService": "أضف خدمة",
         "subAddService": "الرجاء إضافة تفاصيل الخدمة الجديدة",
@@ -338,7 +350,12 @@
         "area":"المنطقة",
         "PropertyDescriptionEn":"وصف العقار (انجليزي)",
         "PropertyDescriptionAr":"وصف العقار (عربي)",
-        "addserviceimage":"إضافة صورة الخدمة"
+        "addserviceimage":"إضافة صورة الخدمة",
+        "address":"العنوان",
+        "propertyNumber":"رقم العقار",
+        "city":"المدينة",
+        "landMark":"معلم معروف",
+        "pitchGrassType":"نوع العشب الملعب"
       },
     "detailPage": {
         "vendorProfile": "ملف المالك",

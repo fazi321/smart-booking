@@ -548,7 +548,7 @@
                     type="text"
                     :class="{ activeErr: errors.address }"
                     @input="resolveErr('address')"
-                    placeholder="Address"
+                    :placeholder="$t('placeholders.address')"
                     v-model="address.address"
                   />
                 </div>
@@ -557,7 +557,7 @@
                     type="text"
                     :class="{ activeErr: errors.houseNumber }"
                     @input="resolveErr('houseNumber')"
-                    placeholder="Property Number"
+                    :placeholder="$t('placeholders.propertyNumber')"
                     v-model="address.houseNumber"
                   />
                 </div>
@@ -566,7 +566,7 @@
                     type="text"
                     :class="{ activeErr: errors.city }"
                     @input="resolveErr('city')"
-                    placeholder="City"
+                    :placeholder="$t('placeholders.city')"
                     v-model="address.city"
                   />
                 </div>
@@ -584,7 +584,7 @@
                     type="text"
                     :class="{ activeErr: errors.landMark }"
                     @input="resolveErr('landMark')"
-                    placeholder="Landmark"
+                    :placeholder="$t('placeholders.landMark')"
                     v-model="address.landMark"
                   />
                 </div>

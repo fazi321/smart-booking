@@ -2,7 +2,7 @@
   <default-layout>
     <section class="container">
       <div class="my-profile">
-        <h1>MY PROFILE</h1>
+        <h1>{{$t('inputs.myProfile')}}</h1>
         <div class="profile-container">
           <div class="profile-image">
             <img :src="url" alt="avatar" v-if="url" />
@@ -23,49 +23,49 @@
           </div>
         </div>
         <div class="profile-form">
-          <h6>Personal Information</h6>
+          <h6>{{$t('inputs.personalInformation')}}</h6>
           <form class="form" @submit="onSubmit">
-            <div>
+            <div :class="{'set-language': $t('lang') == 'ar'}">
               <input
                 type="text"
-                placeholder="First Name"
+                :placeholder="$t('inputs.firstName')"
                 v-model="userProfile.firstName"
               />
               <input
                 type="text"
-                placeholder="Last Name"
+                :placeholder="$t('inputs.lastName')"
                 v-model="userProfile.lastName"
               />
               <input
                 type="number"
                 min="1"
-                placeholder="Mobile Number"
+                :placeholder="$t('inputs.mobileNumber')"
                 v-model="userProfile.phone"
               />
               <input
                 type="email"
-                placeholder="Email"
+                :placeholder="$t('inputs.email')"
                 v-model="userProfile.email"
               />
               <input
                 type="text"
-                placeholder="Nationality"
+                :placeholder="$t('inputs.nationality')"
                 v-model="userProfile.nationality"
               />
               <input
                 type="number"
                 min="1"
-                placeholder="ID Number"
+                :placeholder="$t('inputs.IDNumber')"
                 v-model="userProfile.commId"
               />
               <input
                 type="text"
-                placeholder="Address"
+                :placeholder="$t('placeholders.address')"
                 v-model="userProfile.address"
               />
               <input
                 type="text"
-                placeholder="Date of Birth"
+                :placeholder="$t('inputs.dateOfBirth')"
                 v-model="userProfile.dob"
               />
               <input
@@ -78,7 +78,7 @@
               :disabled="loading"
               class="submit"
               type="submit"
-              :value="!loading ? 'Update' : 'loading'"
+              :value="!loading ? $t('inputs.update') : 'loading'"
             />
           </form>
         </div>
@@ -225,6 +225,10 @@ export default {
 };
 </script>
 <style scoped>
+.set-language input{
+  text-align: right!important;
+  direction: rtl!important;
+}
 .my-profile {
   padding: 30px 0;
 }
