@@ -21,7 +21,7 @@
               <!-- <div>
                 <input
                   type="text"
-                  placeholder="Bedrooms"
+                  :placeholder="$t('placeholders.bedrooms')"
                   v-model="unitsAndGuest.bedrooms"
                 />
               </div> -->
@@ -30,32 +30,34 @@
                   type="test"
                   :class="{ activeErr: errors.section }"
                   @input="resolveErr('section')"
-                  placeholder="Section"
+                  :placeholder="$t('placeholders.section')"
                   v-model="roomsGuest.section"
                 />
               </div>
               <div>
                 <input
                   type="number"
+                  min="1"
                   :class="{ activeErr: errors.maxGuest }"
                   @input="resolveErr('maxGuest')"
-                  placeholder="max Guest"
+                  :placeholder="$t('placeholders.maxGuest')"
                   v-model="roomsGuest.maxGuest"
                 />
               </div>
               <div>
                 <input
                   type="number"
+                  min="1"
                   :class="{ activeErr: errors.bathrooms }"
                   @input="resolveErr('bathrooms')"
-                  placeholder="bathrooms"
+                  :placeholder="$t('placeholders.bathrooms')"
                   v-model="roomsGuest.bathrooms"
                 />
               </div>
               <!-- <div>
                 <input
                   type="number"
-                  placeholder="NumOf Majles Tents"
+                  :placeholder="$t('placeholders.NumOfMajlesTents')"
                   v-model="roomsGuest.numOfMajlesTents"
                 />
               </div> -->
@@ -68,7 +70,7 @@
               </div> -->
               <!-- <div class="rules">
                 <label class="container-input"
-                  >Addition Seating
+                  >{{$t('AddService.additionSeating')}}
                   <input type="checkbox" v-model="roomsGuest.additionSeating" />
                   <span class="checkmark"></span>
                 </label>

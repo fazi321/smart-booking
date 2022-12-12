@@ -86,6 +86,7 @@
                     :class="{ activeErr: errors.phone }"
                     @input="resolveErr('phone')"
                     placeholder="Mobile Number"
+                    min='1'
                     v-model="vendor.phone"
                   />
                 </div>

@@ -136,7 +136,11 @@
     "outDoorSwimmingPool": "outdoor SwimmingPool",
     "inDoorSwimmingPool": "indoor SwimmingPool",
     "24-HourRequest": "24-Hour Request",
-    "privateEntrance": "Private Entrance"
+    "privateEntrance": "Private Entrance",
+    "indoorSeating":"Indoor Seating",
+    "outdoorSeating":"Outdoor Seating",
+    "additionSeating":"Addition Seating",
+    "livingRoom":"Living Room"
   },
   "serviceDescription": {
     "serviceDescription": "Service Description",
@@ -312,6 +316,23 @@
     "outdoorWithBarrier": "Outdoor With Barrier",
     "outdoorWithoutBarrier": "Outdoor Without Barrier",
     "swimmingWithWaterGames": "Swimming With Water Games"
+  },
+  "placeholders":{
+    "numberOfRooms":"Number of Rooms",
+    "section":"Section",
+    "bedrooms":"Bedrooms",
+    "doubleBed":"doubleBed",
+    "singleBed":"singleBed",
+    "singleBeds":"SingleBeds",
+    "maxGuest":"max Guest",
+    "bathrooms":"bathrooms",
+    "dressingRooms":"Dressing Rooms",
+    "stands":"Stands",
+    "NumOfMajlesTents":"NumOf Majles Tents",
+    "roomType":"Room Type",
+    "numberUnits":"Number Units",
+    "numberChildren":"Number Children",
+    
   },
   "detailPage": {
     "vendorProfile": "Vendor Profile",

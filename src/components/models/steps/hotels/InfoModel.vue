@@ -21,16 +21,17 @@
               <div>
                 <input
                   type="number"
+                  min="1"
                   :class="{ activeErr: errors.numRooms }"
                   @input="resolveErr('numRooms')"
-                  placeholder="Number of Rooms"
+                  :placeholder="$t('placeholders.numberOfRooms')"
                   v-model="unitsAndGuest.numRooms"
                 />
               </div>
               <!-- <div>
                 <input
                   type="text"
-                  placeholder="Bedrooms"
+                  :placeholder="$t('placeholders.bedrooms')"
                   v-model="unitsAndGuest.bedrooms"
                 />
               </div> -->
@@ -39,50 +40,54 @@
                   type="test"
                   :class="{ activeErr: errors.roomType }"
                   @input="resolveErr('roomType')"
-                  placeholder="Room Type"
+                  :placeholder="$t('placeholders.roomType')"
                   v-model="unitsAndGuest.roomType"
                 />
               </div>
               <div>
                 <input
                   type="number"
+                  min="1"
                   :class="{ activeErr: errors.numberUnits }"
                   @input="resolveErr('numberUnits')"
-                  placeholder="Number Units"
+                  :placeholder="$t('placeholders.numberUnits')"
                   v-model="unitsAndGuest.numberUnits"
                 />
               </div>
               <div>
                 <input
                   type="number"
+                  min="1"
                   :class="{ activeErr: errors.numberChildren }"
                   @input="resolveErr('numberChildren')"
-                  placeholder="Number Children"
+                  :placeholder="$t('placeholders.numberChildren')"
                   v-model="unitsAndGuest.numberChildren"
                 />
               </div>
               <div>
                 <input
                   type="number"
+                  min="1"
                   :class="{ activeErr: errors.singleBeds }"
                   @input="resolveErr('singleBeds')"
-                  placeholder="SingleBeds"
+                  :placeholder="$t('placeholders.singleBeds')"
                   v-model="unitsAndGuest.singleBeds"
                 />
               </div>
               <div>
                 <input
                   type="number"
+                  min="1"
                   :class="{ activeErr: errors.bathrooms }"
                   @input="resolveErr('bathrooms')"
-                  placeholder="bathrooms"
+                  :placeholder="$t('placeholders.bathrooms')"
                   v-model="unitsAndGuest.bathrooms"
                 />
               </div>
               <!-- <div>
                 <input
                   type="number"
-                  placeholder="NumOf Majles Tents"
+                  :placeholder="$t('placeholders.NumOfMajlesTents')"
                   v-model="roomsGuest.numOfMajlesTents"
                 />
               </div> -->
@@ -95,7 +100,7 @@
               </div> -->
               <div class="rules">
                 <label class="container-input"
-                  >Living Room
+                  >{{$t('AddService.livingRoom')}}
                   <input type="checkbox" v-model="unitsAndGuest.livingRoom" />
                   <span class="checkmark"></span>
                 </label>
@@ -109,7 +114,7 @@
               </div> -->
               <!-- <div class="rules">
                 <label class="container-input"
-                  >Addition Seating
+                  >{{$t('AddService.additionSeating')}}
                   <input type="checkbox" v-model="roomsGuest.additionSeating" />
                   <span class="checkmark"></span>
                 </label>

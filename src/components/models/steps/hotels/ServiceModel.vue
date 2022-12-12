@@ -480,6 +480,7 @@
               <div>
                 <input
                   type="number"
+                  min="1"
                   :class="{ activeErr: errors.areaSqm }"
                   @input="resolveErr('areaSqm')"
                   placeholder="Area"

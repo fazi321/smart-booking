@@ -127,6 +127,7 @@
                 <div class="input-price">
                   <input
                     type="number"
+                    min="1"
                     v-model="suitablePrice.suitableForChildrens"
                     :disabled="!suitableFor.suitableForChildrens"
                   />
@@ -147,6 +148,7 @@
                 <div class="input-price">
                   <input
                     type="number"
+                    min="1"
                     v-model="suitablePrice.suitableForInfants"
                     :disabled="!suitableFor.suitableForInfants"
                   />
@@ -209,13 +211,13 @@
                 <span class="checkmark"></span>
               </label>
             </div> -->
-            <div>
+            <!-- <div>
               <label class="container-input"
                 >{{ $t("serviceDescription.coffeeMachine") }}
                 <input type="checkbox" v-model="kitchen.coffeeMachine" />
                 <span class="checkmark"></span>
               </label>
-            </div>
+            </div> -->
             <div>
               <label class="container-input"
                 >{{ $t("serviceDescription.kettle") }}
@@ -459,6 +461,7 @@
               <div>
                 <input
                   type="number"
+                  min="1"
                   :class="{ activeErr: errors.areaSqm }"
                   @input="resolveErr('areaSqm')"
                   placeholder="Area"

@@ -68,7 +68,8 @@
         "freeMeal": "وجبة مجانية",
         "breakFast": "وجبة افطار",
         "lunch": "غداء",
-        "dinner": "وجبة عشاء"
+        "dinner": "وجبة عشاء",
+        "audditionailRules": "الاختبار القواعد"
     },
     "pricing": {
         "priceDetails": "تفاصيل السعر",
@@ -230,7 +231,11 @@
         "outDoorSwimmingPool": "مسبح خارجي",
         "inDoorSwimmingPool": "مسبح داخلي",
         "24-HourRequest": "طلب 24 ساعة",
-        "privateEntrance": "مدخل خاص"
+        "privateEntrance": "مدخل خاص",
+        "indoorSeating":"مجلس داخلي",
+        "outdoorSeating":"مجلس خارجي",
+        "additionSeating":"مجلس إضافي",
+        "livingRoom":"غرفة المعيشة"
     },
     "becomeVendor": {
         "becomeVendor": "اشترك لإضافة عقارك",
@@ -312,6 +317,22 @@
         "outdoorWithoutBarrier": "في الهواء الطلق بدون حاجز",
         "swimmingWithWaterGames": "السباحة مع الألعاب المائية"
     },
+    "placeholders":{
+        "numberOfRooms":"عدد الغرف",
+        "section":"القسم",
+        "bedrooms":"غرف النوم",
+        "doubleBed":"سرر مزدوجة",
+        "singleBed":"سرر مفردة",
+        "singleBeds":"سرر مفردة",
+        "maxGuest":"العدد الأقصى للضيوف",
+        "bathrooms":"حمامات",
+        "dressingRooms":"غرف الملابس",
+        "stands":"مواقف",
+        "NumOfMajlesTents":"عدد خيام المجلس",
+        "roomType":"نوع الغرفة",
+        "numberUnits":"عدد الوحدات",
+        "numberChildren":"عدد الأطفال"
+      },
     "detailPage": {
         "vendorProfile": "ملف المالك",
         "description": "التفاصيل",

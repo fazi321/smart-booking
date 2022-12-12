@@ -32,6 +32,7 @@
               <div class="input-price">
                 <input
                   type="number"
+                  min="1"
                   v-model="price.dayPrice"
                   :disabled="!daySelected.dayPrice"
                 />
@@ -50,6 +51,7 @@
               <div class="input-price">
                 <input
                   type="number"
+                  min="1"
                   v-model="price.weekDaysPrice"
                   :disabled="!daySelected.weekDaysPrice"
                 />
@@ -71,6 +73,7 @@
               <div class="input-price">
                 <input
                   type="number"
+                  min="1"
                   v-model="price.sundayPrice"
                   :disabled="
                     !daySelected.sundayPrice || daySelected.weekDaysPrice
@@ -94,6 +97,7 @@
               <div class="input-price">
                 <input
                   type="number"
+                  min="1"
                   v-model="price.mondayPrice"
                   :disabled="
                     !daySelected.mondayPrice || daySelected.weekDaysPrice
@@ -117,6 +121,7 @@
               <div class="input-price">
                 <input
                   type="number"
+                  min="1"
                   v-model="price.tuesdayPrice"
                   :disabled="
                     !daySelected.tuesdayPrice || daySelected.weekDaysPrice
@@ -140,6 +145,7 @@
               <div class="input-price">
                 <input
                   type="number"
+                  min="1"
                   v-model="price.wednesdayPrice"
                   :disabled="
                     !daySelected.wednesdayPrice || daySelected.weekDaysPrice
@@ -159,6 +165,7 @@
               <div class="input-price">
                 <input
                   type="number"
+                  min="1"
                   v-model="price.thrusdayPrice"
                   :disabled="!daySelected.thrusdayPrice"
                 />
@@ -176,6 +183,7 @@
               <div class="input-price">
                 <input
                   type="number"
+                  min="1"
                   v-model="price.fridayPrice"
                   :disabled="!daySelected.fridayPrice"
                 />
@@ -193,6 +201,7 @@
               <div class="input-price">
                 <input
                   type="number"
+                  min="1"
                   v-model="price.saturdayPrice"
                   :disabled="!daySelected.saturdayPrice"
                 />
@@ -349,6 +358,7 @@
           <div v-if="bookingSetting.securityDeposit" class="security">
             <input
               type="number"
+              min="1"
               placeholder="security amount"
               v-model="bookingSetting.securityAmount"
             />

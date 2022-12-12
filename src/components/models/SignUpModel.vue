@@ -38,6 +38,7 @@
                       type="number"
                       :placeholder="$t('signUp.mobileNumber')"
                       v-model="phoneNumber"
+                      min='1'
                       required
                     />
                   </div>

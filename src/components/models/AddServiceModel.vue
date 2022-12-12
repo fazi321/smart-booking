@@ -1,5 +1,5 @@
 <template>
-  <section :class="['login-signup', { active: model }]">
+  <section :class="['login-signup', { active: model }, { 'set-langauge': $t('lang') == 'ar' }]">
     <!-- step one -->
     <section v-if="step == 1">
       <AddService :cached="accountOpt" :firstStep="true"/>

@@ -26,7 +26,7 @@
                 <input
                   :class="{ activeErr: errors.dressingRooms }"
                   type="text"
-                  placeholder="Dressing Rooms"
+                  :placeholder="$t('placeholders.dressingRooms')"
                   @input="resolveErr('dressingRooms')"
                   v-model="roomsGuest.dressingRooms"
                 />
@@ -34,7 +34,7 @@
               <!-- <div>
                 <input
                   type="text"
-                  placeholder="Bedrooms"
+                  :placeholder="$t('placeholders.bedrooms')"
                   v-model="unitsAndGuest.bedrooms"
                 />
               </div> -->
@@ -42,7 +42,7 @@
                 <input
                   :class="{ activeErr: errors.stands }"
                   type="test"
-                  placeholder="Stands"
+                  :placeholder="$t('placeholders.stands')"
                   @input="resolveErr('stands')"
                   v-model="roomsGuest.stands"
                 />
@@ -51,7 +51,8 @@
                 <input
                   :class="{ activeErr: errors.maxGuest }"
                   type="number"
-                  placeholder="Max Guest"
+                  min="1"
+                  :placeholder="$t('placeholders.maxGuest')"
                   @input="resolveErr('maxGuest')"
                   v-model="roomsGuest.maxGuest"
                 />
@@ -60,7 +61,8 @@
                 <input
                   :class="{ activeErr: errors.bathrooms }"
                   type="number"
-                  placeholder="bathrooms"
+                  min="1"
+                  :placeholder="$t('placeholders.bathrooms')"
                   @input="resolveErr('bathrooms')"
                   v-model="roomsGuest.bathrooms"
                 />

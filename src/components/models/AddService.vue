@@ -14,7 +14,7 @@
         </h4>
       </div>
       <div class="container-vendor">
-        <div class="cards">
+        <div :class="['cards', { 'set-langauge': $t('lang') == 'ar' }]">
           <div
             :class="['primary-cards', { active: cached == 'info' }]"
             @click="selectedOptions('info')"
@@ -106,6 +106,7 @@ export default {
 </script>
 
 <style scoped>
+
 .buttons-top {
   display: flex;
   justify-content: space-between;
@@ -255,6 +256,19 @@ img {
 }
 .container-vendor .primary-cards h5 {
   font-size: 14px;
+}
+.set-langauge .content{
+  text-align: right!important;
+}
+.set-langauge .primary-cards{
+  flex-direction: row-reverse!important;
+}
+.set-langauge .category-img{
+  left: 0 !important;
+}
+.set-langauge .primary-cards .content h5 img{
+  right:unset!important;
+  left:0!important;
 }
 @media (max-width: 479px) and (min-width: 320px) {
   .container-vendor .primary-cards {

@@ -38,6 +38,7 @@
               />
               <input
                 type="number"
+                min="1"
                 placeholder="Mobile Number"
                 v-model="userProfile.phone"
               />
@@ -53,6 +54,7 @@
               />
               <input
                 type="number"
+                min="1"
                 placeholder="ID Number"
                 v-model="userProfile.commId"
               />

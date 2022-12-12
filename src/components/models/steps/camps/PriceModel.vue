@@ -30,7 +30,7 @@
                 </label>
               </div>
               <div class="input-price">
-                <input type="number" v-model="price.dayPrice" :disabled="!daySelected.dayPrice"/>
+                <input type="number" min='1' v-model="price.dayPrice" :disabled="!daySelected.dayPrice"/>
               </div>
             </div>
             <!-- block -->
@@ -44,7 +44,7 @@
                 </label>
               </div>
               <div class="input-price">
-                <input type="number" v-model="price.weekDaysPrice" :disabled="!daySelected.weekDaysPrice"/>
+                <input type="number" min="1" v-model="price.weekDaysPrice" :disabled="!daySelected.weekDaysPrice"/>
               </div>
             </div>
             <!-- block -->
@@ -57,7 +57,7 @@
                 </label>
               </div>
               <div class="input-price">
-                <input type="number" v-model="price.sundayPrice" :disabled="!daySelected.sundayPrice || daySelected.weekDaysPrice" />
+                <input type="number" min="1" v-model="price.sundayPrice" :disabled="!daySelected.sundayPrice || daySelected.weekDaysPrice" />
               </div>
             </div>
             <!-- block -->
@@ -70,7 +70,7 @@
                 </label>
               </div>
               <div class="input-price">
-                <input type="number" v-model="price.mondayPrice" :disabled="!daySelected.mondayPrice || daySelected.weekDaysPrice"/>
+                <input type="number" min="1" v-model="price.mondayPrice" :disabled="!daySelected.mondayPrice || daySelected.weekDaysPrice"/>
               </div>
             </div>
             <!-- block -->
@@ -83,7 +83,7 @@
                 </label>
               </div>
               <div class="input-price">
-                <input type="number" v-model="price.tuesdayPrice" :disabled="!daySelected.tuesdayPrice || daySelected.weekDaysPrice" />
+                <input type="number" min="1" v-model="price.tuesdayPrice" :disabled="!daySelected.tuesdayPrice || daySelected.weekDaysPrice" />
               </div>
             </div>
             <!-- block -->
@@ -96,7 +96,7 @@
                 </label>
               </div>
               <div class="input-price">
-                <input type="number" v-model="price.wednesdayPrice" :disabled="!daySelected.wednesdayPrice || daySelected.weekDaysPrice"/>
+                <input type="number" min="1" v-model="price.wednesdayPrice" :disabled="!daySelected.wednesdayPrice || daySelected.weekDaysPrice"/>
               </div>
             </div>
             <!-- block -->
@@ -109,7 +109,7 @@
                 </label>
               </div>
               <div class="input-price">
-                <input type="number" v-model="price.thrusdayPrice" :disabled="!daySelected.thrusdayPrice"/>
+                <input type="number" min="1" v-model="price.thrusdayPrice" :disabled="!daySelected.thrusdayPrice"/>
               </div>
             </div>
             <!-- block -->
@@ -122,7 +122,7 @@
                 </label>
               </div>
               <div class="input-price">
-                <input type="number" v-model="price.fridayPrice" :disabled="!daySelected.fridayPrice"/>
+                <input type="number" min="1" v-model="price.fridayPrice" :disabled="!daySelected.fridayPrice"/>
               </div>
             </div>
             <!-- block -->
@@ -135,7 +135,7 @@
                 </label>
               </div>
               <div class="input-price">
-                <input type="number" v-model="price.saturdayPrice" :disabled="!daySelected.saturdayPrice"/>
+                <input type="number" min="1" v-model="price.saturdayPrice" :disabled="!daySelected.saturdayPrice"/>
               </div>
             </div>
             <!-- block -->
@@ -285,6 +285,7 @@
           <div v-if="bookingSetting.securityDeposit" class="security">
             <input
               type="number"
+              min="1"
               placeholder="security amount"
               v-model="bookingSetting.securityAmount"
             />

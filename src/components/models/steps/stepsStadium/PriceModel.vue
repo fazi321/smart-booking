@@ -30,7 +30,7 @@
                 </label>
               </div>
               <div class="input-price">
-                <input type="number" v-model="price.dayPrice"  :disabled="!daySelected.hourPrice"/>
+                <input type="number" min="1" v-model="price.dayPrice"  :disabled="!daySelected.hourPrice"/>
               </div>
             </div>
             <!-- block -->
@@ -298,7 +298,7 @@
             </div>
           </div>
            <div v-if="bookingSetting.securityDeposit" class="security">
-              <input type="number" placeholder="security amount" v-model="bookingSetting.securityAmount">
+              <input type="number" min="1" placeholder="security amount" v-model="bookingSetting.securityAmount">
             </div>
           <div class="deposite-section deposite-set">
             <div class="head">

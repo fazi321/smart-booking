@@ -41,7 +41,14 @@ img {
   justify-content: space-between;
   width: 100%;
 }
-
+.set-langauge input{
+  text-align: right!important;
+  direction: rtl!important;
+}
+.set-langauge input[type="number"]{
+  text-align: right!important;
+  direction: rtl!important;
+}
 /* language change End */
 .media-img {
   display: flex;
