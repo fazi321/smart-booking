@@ -331,8 +331,14 @@
     "NumOfMajlesTents":"NumOf Majles Tents",
     "roomType":"Room Type",
     "numberUnits":"Number Units",
-    "numberChildren":"Number Children"
-    
+    "numberChildren":"Number Children",
+    "serviceNameEn":"Service Name (English)",
+    "serviceNameAr":"Service Name (Arabic)",
+    "secondaryPhone":"Secondary Phone",
+    "area":"Area",
+    "PropertyDescriptionEn":"Property Description (English)",
+    "PropertyDescriptionAr":"Property Description (Arabic)",
+    "addserviceimage":"Add service image"
   },
   "detailPage": {
     "vendorProfile": "Vendor Profile",

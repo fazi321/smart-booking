@@ -450,7 +450,7 @@
                   type="text"
                   :class="{ activeErr: errors.nameInEnglish }"
                   @input="resolveErr('nameInEnglish')"
-                  placeholder="Service Name (English)"
+                  :placeholder="$t('placeholders.serviceNameEn')"
                   v-model="description.nameInEnglish"
                 />
               </div>
@@ -459,7 +459,7 @@
                   type="text "
                   :class="['arabic', { activeErr: errors.nameInArabic }]"
                   @input="resolveErr('nameInArabic')"
-                  placeholder="Service Name (Arabic)"
+                  :placeholder="$t('placeholders.serviceNameAr')"
                   v-model="description.nameInArabic"
                 />
               </div>
@@ -468,7 +468,7 @@
                   type="text"
                   :class="{ activeErr: errors.secondryPhone }"
                   @input="resolveErr('secondryPhone')"
-                  placeholder="Secondary Phone Number"
+                  :placeholder="$t('placeholders.secondaryPhone')"
                   v-model="description.secondryPhone"
                 />
               </div>
@@ -478,7 +478,7 @@
                   min="1"
                   :class="{ activeErr: errors.areaSqm }"
                   @input="resolveErr('areaSqm')"
-                  placeholder="Area"
+                  :placeholder="$t('placeholders.area')"
                   v-model="description.areaSqm"
                 />
               </div>
@@ -487,7 +487,7 @@
                   type="text"
                   :class="{ activeErr: errors.descriptionInEnglish }"
                   @input="resolveErr('descriptionInEnglish')"
-                  placeholder="Property Description (English)"
+                  :placeholder="$t('placeholders.PropertyDescriptionEn')"
                   v-model="description.descriptionInEnglish"
                 />
               </div>
@@ -496,7 +496,7 @@
                   type="text"
                   :class="['arabic', { activeErr: errors.descriptionInArabic }]"
                   @input="resolveErr('descriptionInArabic')"
-                  placeholder="Property Description (Arabic)"
+                  :placeholder="$t('placeholders.PropertyDescriptionAr')"
                   v-model="description.descriptionInArabic"
                 />
               </div>
@@ -514,7 +514,7 @@
           </div>
           <div class="upload-file">
             <label for="inputTag" :class="{ activeErr: verifyImages > 5 }">
-              Add service image
+               {{$t('placeholders.addserviceimage')}}
               <input
                 id="inputTag"
                 type="file"
@@ -589,7 +589,7 @@
                     type="text"
                     :class="{ activeErr: errors.area }"
                     @input="resolveErr('area')"
-                    placeholder="Area"
+                    :placeholder="$t('placeholders.area')"
                     v-model="address.area"
                   />
                 </div>
@@ -605,7 +605,7 @@
                 <!-- <div>
                   <input
                     type="text"
-                    placeholder="Property Description (Arabic)"
+                    :placeholder="$t('placeholders.PropertyDescriptionAr')"
                   />
                 </div> -->
               </div>

@@ -331,7 +331,14 @@
         "NumOfMajlesTents":"عدد خيام المجلس",
         "roomType":"نوع الغرفة",
         "numberUnits":"عدد الوحدات",
-        "numberChildren":"عدد الأطفال"
+        "numberChildren":"عدد الأطفال",
+        "serviceNameEn": "اسم الخدمة (انجليزي)",
+        "serviceNameAr":"اسم الخدمة (عربي)",
+        "secondaryPhone":"رقم جوال إضافي",
+        "area":"المنطقة",
+        "PropertyDescriptionEn":"وصف العقار (انجليزي)",
+        "PropertyDescriptionAr":"وصف العقار (عربي)",
+        "addserviceimage":"إضافة صورة الخدمة"
       },
     "detailPage": {
         "vendorProfile": "ملف المالك",
