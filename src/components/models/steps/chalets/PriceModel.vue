@@ -372,9 +372,9 @@
               <div
                 :class="[
                   'primary-cards',
-                  { active: bookingSetting.bookingType == '24-Hour request' },
+                  { active: bookingSetting.bookingType == '24-Hour' },
                 ]"
-                @click="bookInstant('24-Hour request')"
+                @click="bookInstant('24-Hour')"
               >
                 <!-- <div class="rounded-btn"></div> -->
                 <div class="card-container">
@@ -665,7 +665,7 @@ export default {
   methods: {
     formatedDate(val){
       var arr = val.split("-")
-      var s = `${arr[2]}-${arr[1]}-${arr[0]}` 
+      var s = `${arr[1]}-${arr[2]}-${arr[0]}` 
       
       return s
     },

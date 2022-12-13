@@ -365,6 +365,7 @@
     "terms": "Terms",
     "map": "Map",
     "book": "Book",
+    "request":"Request",
     "amenities": "Amenities",
     "leisure": "Leisure",
     "homeAmenities": "Home Amenities"

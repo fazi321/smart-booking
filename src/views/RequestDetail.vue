@@ -57,11 +57,11 @@
             <tr>
               <th></th>
               <th>Customer name</th>
-              <th>Booking ID</th>
+              <th>Service name</th>
               <th>Booking Date</th>
               <th>Booking Time</th>
-              <th>Nights</th>
-              <th>Total Price</th>
+              <!-- <th>Nights</th> -->
+              <th>Price</th>
               <th>Mobile Number</th>
               <th>Action</th>
             </tr>
@@ -73,14 +73,14 @@
                 </div>
               </td>
               <td>
-                {{ item.user && item.user.firstName }}
+                {{ item[0]?.user?.firstName }}
               </td>
-              <td>{{item.bookingId}}</td>
-              <td>{{ getDate(item.checkIn) }}</td>
-              <td>{{ item.bookingTime }}</td>
-              <td>{{ item.nights }}</td>
-              <td>{{ item.totalPrice }}</td>
-              <td>{{ item.user && item.user.phone }}</td>
+              <td>{{ item[0]?.service?.name?.description?.nameInEnglish }}</td>
+              <td>{{ getDate(item[0].checkIn) }}</td>
+              <td>{{ item[0].bookingTime }}</td>
+              <!-- <td>{{ item.nights }}</td> -->
+              <td>{{ item[0]?.totalPrice }}</td>
+              <td>{{ item[0]?.user && item[0]?.user?.phone }}</td>
               <td>
                 <div class="view-btn" @click="ServiceModelShow(item)">
                   <button>View</button>
@@ -88,7 +88,10 @@
               </td>
             </tr>
           </table>
-          <div class="bottom-container" v-if="filteredData && filteredData.length">
+          <div
+            class="bottom-container"
+            v-if="filteredData && filteredData.length"
+          >
             <div>
               <p>
                 Showing
@@ -114,7 +117,7 @@
       </div>
       <RequestBookingModel
         v-if="serviceModel"
-        :modelData="modelData"
+        :modelData="modelData[0]"
         @check="checked"
       />
     </section>
@@ -165,10 +168,9 @@ export default {
       const { booking } = this.$route.query;
       try {
         var res = await this.$axios.get(
-          `vender/service-booking-list/${booking}`
+          `vender/service-booking-requests-list/${booking}`
         );
-        this.total = res.data.totalBookings;
-        this.dataCard = res.data.result;
+        this.dataCard = res.data;
         this.pageSelected = 1;
         this.clickCallback(1);
       } catch (error) {
@@ -183,18 +185,18 @@ export default {
     clickCallback(num) {
       var copyFrom = num * 10 - 10;
       var copyTo = num * 10;
-      var filtereByTabs = this.dataCard.filter((e) => {
-        var val =
-          this.tab.toLowerCase() != "upcoming"
-            ? this.tab.toLowerCase()
-            : "pending";
-        return e.status == val;
-      });
-      if (filtereByTabs && filtereByTabs.length) {
+      var filtereByTabs = this.dataCard;
+      if (filtereByTabs) {
         if (!this.search) {
-          this.pageCount = Math.ceil(filtereByTabs[0].booking.length / 10);
-          this.total = filtereByTabs[0].booking.length;
-          this.filteredData = filtereByTabs[0].booking.slice(copyFrom, copyTo);
+          var dataNew = [];
+          filtereByTabs.filter((e) => {
+            if (e.status == "waiting") {
+              dataNew.push(e.booking);
+            }
+          });
+          this.pageCount = Math.ceil(dataNew.length / 10);
+          this.total = dataNew.length;
+          this.filteredData = dataNew.slice(copyFrom, copyTo);
         } else {
           var search = filtereByTabs[0].booking.filter((e) => {
             return (
@@ -206,6 +208,7 @@ export default {
           });
           this.pageCount = Math.ceil(search.length / 10);
           this.total = search.length;
+
           this.filteredData = search.slice(copyFrom, copyTo);
         }
       } else {

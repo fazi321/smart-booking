@@ -43,6 +43,9 @@
           <div class="card" v-for="(data, index) in filteredData" :key="index">
             <MyCard :items="data" />
           </div>
+          <div class="card" v-for="(data, index) in bookingRequests" :key="index">
+            <MyRequestCard :items="data" />
+          </div>
         </div>
       </div>
       <div class="booking-cards service-skeleton" v-else>
@@ -75,6 +78,7 @@
 <script>
 import DefaultLayout from "@/components/layouts/DefaultLayout.vue";
 import MyCard from "@/components/common/myCard.vue";
+import MyRequestCard from "@/components/common/myRequestCard.vue";
 import CardSkeleton from "@/components/common/cardSkeleton.vue";
 import Paginate from "vuejs-paginate-next";
 import BookModel from "@/components/models/BookModel.vue";
@@ -83,6 +87,7 @@ export default {
   components: {
     DefaultLayout,
     MyCard,
+    MyRequestCard,
     CardSkeleton,
     Paginate,
     BookModel
@@ -127,7 +132,7 @@ export default {
     async getRequests() {
       try {
         this.loading = true;
-        var res = await this.$axios.get(`/booking/booking-requests`);
+        var res = await this.$axios.get(`/vender/service-booking-requests`);
         this.bookingRequests = res.data;
         this.pageSelected = 1;
         this.clickCallback(1);
@@ -160,7 +165,6 @@ export default {
     },
   },
   mounted() {
-    this.getRequests()
     this.getData();
   },
 };

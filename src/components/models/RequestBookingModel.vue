@@ -11,11 +11,11 @@
         <div class="head">Service Information</div>
         <div>
           <p>Service Name</p>
-          <p>{{ modelData.service && modelData.service.name }}</p>
+          <p>{{ modelData?.service?.vender?.firstName }} {{ modelData?.service?.vender?.lastName }}</p>
         </div>
         <div>
           <p>Service ID</p>
-          <p>{{ modelData.bookingId }}</p>
+          <p>{{modelData._id}}</p>
         </div>
         <div>
           <p>Check in Date</p>
@@ -42,11 +42,11 @@
         <div class="head">Customer Information</div>
         <div>
           <p>Service Name</p>
-          <p>{{ modelData.service && modelData.service.name }}</p>
+          <p>{{modelData?.service?.name?.description?.nameInEnglish}}</p>
         </div>
         <div>
           <p>Service ID</p>
-          <p>{{ modelData.bookingId }}</p>
+          <p>{{modelData._id}}</p>
         </div>
         <div>
           <p>Check in Date</p>
@@ -112,7 +112,7 @@ export default {
       });
     },
     async confirmedApproved() {
-      var id = this.$route.query.booking;
+      var id = this.modelData?._id
       this.loading = true;
       try {
         var result = await this.$axios.get(
@@ -135,7 +135,7 @@ export default {
     },
     async confirmedReject() {
       this.loadingR = true;
-      var id = this.$route.query.booking;
+      var id = this.modelData?._id
       try {
         var result = await this.$axios.get(
           `vender/service-booking-request/${id}?type=reject`

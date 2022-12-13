@@ -1,35 +1,35 @@
 <template>
-  <router-link :to="`/request-details?booking=${items.service._id}`">
+  <div>
     <section class="filter-card">
       <div class="image">
-        <img
-          :src="items.service.description.images[0]"
-          v-if="checkLink(items.service.description.images[0])"
-        />
+        <img :src="items.service.image" v-if="checkLink(items.service.image)" />
         <img src="../../assets/images/hotel-img.svg" v-else />
         <!-- <img src="../../assets/images/hotel-img.svg" /> -->
       </div>
       <div class="card-detail">
-        <div
-          class="heading"
-          v-if="
-            items.service &&
-            items.service.description &&
-            items.service.description.nameInEnglish
-          "
-        >
-          <h5>{{ items.service.description.nameInEnglish }}</h5>
+        <div class="heading">
+          <h5>{{ items.service.name.description.nameInEnglish }}</h5>
         </div>
-        <p v-if="items.service && items.service.address">
-          {{ items.service.address.city }}
+        <p>
+          <span>{{ items.service.name.address.address }}</span>
         </p>
-        <div class="sar">
-          <h6>Bookings:</h6>
-          <p>{{ items.bookings }}</p>
-        </div>
+        <p><span>Booking ID:</span><span> 1234567</span></p>
+        <p>
+          <span v-if="items.nights">Night: {{ items.nights }}</span
+          ><span> Room: 1</span>
+        </p>
+        <p>
+          <span v-if="items.nights">Remarks: <span>Waiting</span></span>
+        </p>
+        <!-- <p>
+          <span>Check-in: </span><span>{{ fromateData(items.checkIn) }}</span>
+        </p>
+        <p>
+          <span>Check-out: </span><span>{{ fromateData(items.checkOut) }}</span>
+        </p> -->
       </div>
     </section>
-  </router-link>
+  </div>
 </template>
 
 <script>
@@ -37,6 +37,10 @@ export default {
   name: "ServiesCard",
   props: ["items"],
   methods: {
+    fromateData(val) {
+      const date = new Date(val);
+      return date.toLocaleDateString("en-GB");
+    },
     checkLink(isLink) {
       if (
         new RegExp(
@@ -60,16 +64,15 @@ export default {
   opacity: 1;
   margin-bottom: 20px;
   cursor: pointer;
+  height: 174px;
 }
 .filter-card .image {
   width: 30%;
   display: flex;
   height: 156px;
-  padding:10px;
 }
 .filter-card .image img {
   width: 100%;
-  border-radius: 16px;
 }
 .filter-card .card-detail {
   padding: 20px 25px;
@@ -111,7 +114,7 @@ export default {
   color: #000000;
   opacity: 0.5;
   font-size: 12px;
-  padding: 15px 0;
+  padding: 5px 0;
 }
 .filter-card .card-detail .sar {
   display: flex;

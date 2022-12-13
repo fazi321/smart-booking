@@ -93,7 +93,7 @@
         </router-link>
         <div class="book-btn">
           <button :disabled="loading" @click="BookingModelShow">
-            {{ !loading ? $t('detailPage.book') : "Loading..." }}
+            {{ !loading ? storeState?.bookingSetting?.bookingType == '24-Hour' ? $t('detailPage.request') : $t('detailPage.book') : "Loading..." }}
           </button>
         </div>
       </section>
@@ -232,7 +232,7 @@ export default {
       }
       var checkIn = this.formateDate(checkInDate, timeIn);
       var checkOut = this.formateDate(checkOutDate, timeOut);
-      var amount = 2000;
+      var amount = 15000;
       var payload = {
         amount,
         // nights,
