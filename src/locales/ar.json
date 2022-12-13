@@ -176,6 +176,28 @@
         "subTitle": "ادخل رمز التحقق المرسل إلى جوالك",
         "verify": "المتابعة"
     },
+    "favourites":{
+        "favourites" :"المفضلة"
+       },
+    "serviceBookings":{
+        "serviceBookings":"حجوزات الخدمة",
+        "title":"يمكنك حجز خدمتك هنا"
+      },
+    "myBookingPage":{
+        "bookingRequests":"طلبات الحجز",
+        "upcoming":"القادمة",
+        "current":"تيار",
+        "completed":"مكتمل",
+        "cancelled":"ألغيت"
+    },
+    "myServicePage":{
+        "myServices":"خدماتي"
+       },
+    "chatPage":{
+        "messages":"الرسائل",
+        "allMessages":"جميع الرسائل",
+        "searchMessages":"رسائل البحث"
+      },
     "inputs":{
         "update":"تحديث",
         "personalInformation":"المعلومات الشخصية",

@@ -2,10 +2,10 @@
   <default-layout>
     <section class="container">
       <div class="service-booking">
-        <h1>SERVICE BOOKINGS</h1>
+        <h1>{{$t('serviceBookings.serviceBookings')}}</h1>
       </div>
       <div class="service-container">
-        <h3>You can your service booking here</h3>
+        <h3>{{$t('serviceBookings.title')}}</h3>
         <div class="booking-cards">
           <div class="card" v-for="(item, index) in dataCard" :key="index">
             <ServiesCard :items="item"/>

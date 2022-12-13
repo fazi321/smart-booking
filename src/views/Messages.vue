@@ -2,13 +2,13 @@
   <default-layout>
     <section class="container">
       <div class="messages-main">
-        <h1>MESSAGES</h1>
+        <h1>{{$t('chatPage.messages')}}</h1>
         <div class="message-container">
           <div class="message-left">
-            <h3>ALL MESSAGES</h3>
-            <div class="search">
+            <h3>{{$t('chatPage.allMessages')}}</h3>
+            <div :class="['search', {'set-lang': $t('lang') == 'ar'}]">
               <img src="../assets/images/msg-search.svg" />
-              <input type="text" placeholder="Search Messages" />
+              <input type="text" :placeholder="$t('chatPage.searchMessages')" />
             </div>
             <div class="primary-users">
               <div
@@ -231,6 +231,10 @@ export default {
 };
 </script>
 <style scoped>
+.set-lang input{
+  text-align: right!important;
+  direction: rtl!important;
+}
 .messages-main {
   padding: 30px 0;
 }
@@ -275,6 +279,7 @@ export default {
   outline: none;
   padding: 20px 0px;
   font-size: 14px;
+  width: 100%;
 }
 .message-container .message-right {
   width: 69%;

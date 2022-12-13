@@ -2,7 +2,7 @@
   <default-layout>
     <section class="container">
       <div class="service-booking">
-        <h1>Booking Requests</h1>
+        <h1>{{$t('myBookingPage.bookingRequests')}}</h1>
       </div>
       <div class="detail-tabs">
         <!-- <div class="tabs">

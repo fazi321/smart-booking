@@ -2,7 +2,7 @@
   <default-layout>
     <section class="container">
       <div class="service-booking">
-        <h1>MY SERVICES</h1>
+        <h1>{{$t('myServicePage.myServices')}}</h1>
       </div>
       <div class="service-container" v-if="!loading">
         <div class="booking-cards">

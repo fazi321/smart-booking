@@ -2,7 +2,7 @@
   <default-layout>
     <section class="container">
       <div class="service-booking">
-        <h1>FAVOURITES</h1>
+        <h1>{{$t('favourites.favourites')}}</h1>
       </div>
       <div class="service-container">
         <section class="filters-container">

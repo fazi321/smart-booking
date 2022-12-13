@@ -8,7 +8,7 @@
         </div>
         <div class="msg-details">
          <div v-if="!usersCard">
-           <h6 v-if="conversation.receiverId._id != $store.state.auth.user._id">{{conversation.receiverId.firstName}}</h6>
+           <h6 v-if="conversation.receiverId?._id != $store.state.auth.user?._id">{{conversation?.receiverId?.firstName}}</h6>
            <h6 v-else>{{conversation.senderId.firstName}}</h6>
          </div>
          <div v-else>

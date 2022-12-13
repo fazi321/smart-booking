@@ -7,7 +7,7 @@
         </div>
       </div>
       <div class="headings">
-        <h1>Booking Requests</h1>
+        <h1>{{$t('myBookingPage.bookingRequests')}}</h1>
       </div>
       <div class="container-content">
         <div class="success-img">

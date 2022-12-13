@@ -80,6 +80,28 @@
     "lastName": "Last name",
     "done": "Done"
   },
+  "favourites":{
+   "favourites" :"FAVOURITES"
+  },
+  "serviceBookings":{
+    "serviceBookings":"SERVICE BOOKINGS",
+    "title":"You can your service booking here"
+  },
+  "myBookingPage":{
+    "bookingRequests":"Booking Requests",
+    "upcoming":"Upcoming",
+    "current":"Current",
+    "completed":"Completed",
+    "cancelled":"Cancelled"
+  },
+  "myServicePage":{
+   "myServices":"MY SERVICES"
+  },
+  "chatPage":{
+    "messages":"MESSAGES",
+    "allMessages":"ALL MESSAGES",
+    "searchMessages":"Search Messages"
+  },
   "inputs":{
     "update":"Update",
     "personalInformation":"Personal Information",

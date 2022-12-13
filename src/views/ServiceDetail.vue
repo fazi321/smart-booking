@@ -2,7 +2,7 @@
   <default-layout>
     <section class="container">
       <div class="service-booking">
-        <h1>SERVICE BOOKINGS</h1>
+        <h1>{{$t('serviceBookings.serviceBookings')}}</h1>
       </div>
       <div class="detail-tabs">
         <div class="tabs">
@@ -10,22 +10,22 @@
             :class="{ active: tab == 'Upcoming' }"
             @click="selected('Upcoming')"
           >
-            Upcoming
+            {{$t('myBookingPage.upcoming')}}
           </p>
           <p :class="{ active: tab == 'current' }" @click="selected('current')">
-            Current
+            {{$t('myBookingPage.current')}}
           </p>
           <p
             :class="{ active: tab == 'Completed' }"
             @click="selected('Completed')"
           >
-            Completed
+            {{$t('myBookingPage.completed')}}
           </p>
           <p
             :class="{ active: tab == 'Cancelled' }"
             @click="selected('Cancelled')"
           >
-            Cancelled
+            {{$t('myBookingPage.cancelled')}}
           </p>
         </div>
         <!-- inputs -->

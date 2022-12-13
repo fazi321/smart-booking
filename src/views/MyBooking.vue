@@ -11,31 +11,31 @@
               :class="{ active: tab == 'bookingRequests' }"
               @click="selected('bookingRequests')"
             >
-              Booking Requests
+              {{$t('myBookingPage.bookingRequests')}}
             </p>
             <p
               :class="{ active: tab == 'Upcoming' }"
               @click="selected('Upcoming')"
             >
-              Upcoming
+              {{$t('myBookingPage.upcoming')}}
             </p>
             <p
               :class="{ active: tab == 'current' }"
               @click="selected('current')"
             >
-              Current
+              {{$t('myBookingPage.current')}}
             </p>
             <p
               :class="{ active: tab == 'Completed' }"
               @click="selected('Completed')"
             >
-              Completed
+              {{$t('myBookingPage.completed')}}
             </p>
             <p
               :class="{ active: tab == 'Cancelled' }"
               @click="selected('Cancelled')"
             >
-              Cancelled
+              {{$t('myBookingPage.cancelled')}}
             </p>
           </div>
         </div>
