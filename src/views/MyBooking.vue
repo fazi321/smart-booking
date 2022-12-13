@@ -40,10 +40,10 @@
           </div>
         </div>
         <div class="booking-cards">
-          <div class="card" v-for="(data, index) in filteredData" :key="index">
+          <div class="card" v-for="(data, index) in filteredData" :key="index" >
             <MyCard :items="data" />
           </div>
-          <div class="card" v-for="(data, index) in bookingRequests" :key="index">
+          <div class="card" v-for="(data, index) in bookingRequests" :key="index" @click="payModel(data)">
             <MyRequestCard :items="data" />
           </div>
         </div>
@@ -108,6 +108,12 @@ export default {
     };
   },
   methods: {
+    payModel(val){
+      this.dataBookingApi = val;
+      this.bookingModel = true;
+
+     console.log(val, '==>')
+    },
     clickCallback(num) {
       var copyFrom = num * 6 - 6;
       var copyTo = num * 6;
@@ -132,7 +138,7 @@ export default {
     async getRequests() {
       try {
         this.loading = true;
-        var res = await this.$axios.get(`/vender/service-booking-requests`);
+        var res = await this.$axios.get(`/booking/booking-requests`);
         this.bookingRequests = res.data;
         this.pageSelected = 1;
         this.clickCallback(1);

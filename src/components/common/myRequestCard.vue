@@ -2,24 +2,24 @@
   <div>
     <section class="filter-card">
       <div class="image">
-        <img :src="items.service.image" v-if="checkLink(items.service.image)" />
+        <img :src="items?.bookngRequest[0]?.service?.image" v-if="checkLink(items?.bookngRequest[0]?.service?.image)" />
         <img src="../../assets/images/hotel-img.svg" v-else />
         <!-- <img src="../../assets/images/hotel-img.svg" /> -->
       </div>
       <div class="card-detail">
         <div class="heading">
-          <h5>{{ items.service.name.description.nameInEnglish }}</h5>
+          <h5>{{ items?.bookngRequest[0]?.service?.name.description.nameInEnglish }}</h5>
         </div>
         <p>
-          <span>{{ items.service.name.address.address }}</span>
+          <span>{{ items?.bookngRequest[0]?.service?.name.address.address }}</span>
         </p>
         <p><span>Booking ID:</span><span> 1234567</span></p>
         <p>
-          <span v-if="items.nights">Night: {{ items.nights }}</span
+          <span v-if="items?.bookngRequest[0]?.nights">Night: {{ items?.bookngRequest[0]?.nights }}</span
           ><span> Room: 1</span>
         </p>
         <p>
-          <span v-if="items.nights">Remarks: <span>Waiting</span></span>
+          <span v-if="items?.bookngRequest[0]?.status">Remarks: <span :class="{'waiting': items?.bookngRequest[0]?.status == 'waiting', 'approved': items?.bookngRequest[0]?.status == 'approved'}">{{items?.bookngRequest[0]?.status}}</span></span>
         </p>
         <!-- <p>
           <span>Check-in: </span><span>{{ fromateData(items.checkIn) }}</span>
@@ -57,6 +57,12 @@ export default {
 </script>
 
 <style scoped>
+.waiting{
+  color:#FEBB12;
+}
+.approved{
+  color:#05D921;
+}
 .filter-card {
   display: flex;
   box-shadow: 0px 0px 10px #0000001a;
@@ -70,9 +76,11 @@ export default {
   width: 30%;
   display: flex;
   height: 156px;
+  padding: 10px;
 }
 .filter-card .image img {
   width: 100%;
+  border-radius: 18px;
 }
 .filter-card .card-detail {
   padding: 20px 25px;

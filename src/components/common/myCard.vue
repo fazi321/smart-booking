@@ -67,9 +67,11 @@ export default {
   width: 30%;
   display: flex;
   height: 156px;
+  padding: 10px;
 }
 .filter-card .image img {
   width: 100%;
+  border-radius: 18px;
 }
 .filter-card .card-detail {
   padding: 20px 25px;
