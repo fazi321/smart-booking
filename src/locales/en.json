@@ -83,7 +83,7 @@
   "inputs":{
     "update":"Update",
     "personalInformation":"Personal Information",
-    "MY PROFILE":"MY PROFILE",
+    "myProfile":"MY PROFILE",
     "firstName": "First name",
     "lastName": "Last name",
     "mobileNumber": "Mobile Number",
