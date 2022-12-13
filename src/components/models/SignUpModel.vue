@@ -24,7 +24,7 @@
           <div class="form-container">
             <form autocomplete="off" @submit.prevent="signUp">
               <div class="input-div">
-                <div class="input-primary">
+                <div :class="['input-primary', {'set-lang': $t('lang') == 'ar'}]">
                   <div class="flag">
                     <div class="flag-img">
                       <img src="../../assets/images/flag.svg" alt="flag" />
@@ -38,7 +38,6 @@
                       type="number"
                       :placeholder="$t('signUp.mobileNumber')"
                       v-model="phoneNumber"
-                      min='1'
                       required
                     />
                   </div>
@@ -171,6 +170,10 @@ export default {
 </script>
 
 <style scoped>
+.set-lang input{
+  text-align: right!important;
+  direction: rtl!important;
+}
 .error {
   padding: 10px 0;
   text-align: center;
