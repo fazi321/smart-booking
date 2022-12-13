@@ -1,5 +1,5 @@
 <template>
-  <section :class="['dropdown', {'set-langauge': $t('lang') == 'ar'}]">
+  <section :class="['dropdown', { 'set-langauge': $t('lang') == 'ar' }]">
     <ul>
       <li>
         <router-link to="/my-profile">
@@ -39,7 +39,17 @@
         </router-link>
       </li>
       <li>
-        <router-link to="/booking-request" v-if="$store.state.auth.user">
+        <router-link
+          to="/booking-request"
+          v-if="
+            ($store.state.auth.user.verify &&
+              $store.state.auth.user.host &&
+              $store.state.auth.user.role == 'Vender') ||
+            ($store.state.auth.user.verify &&
+              $store.state.auth.user.company &&
+              $store.state.auth.user.role == 'Vender')
+          "
+        >
           <span>{{ $t("menuDropdown.bookingRequest") }}</span>
         </router-link>
       </li>
@@ -184,7 +194,7 @@ export default {
   color: #febb12;
 }
 @media (max-width: 479px) and (min-width: 320px) {
-  .dropdown{
+  .dropdown {
     right: 10px;
     top: 40px;
   }

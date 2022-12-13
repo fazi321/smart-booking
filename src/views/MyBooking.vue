@@ -2,7 +2,7 @@
   <default-layout>
     <section class="container">
       <div class="service-booking">
-        <h1>MY BOOKINGS</h1>
+        <h1>{{ $t("menuDropdown.bookingRequest") }}</h1>
       </div>
       <div class="service-container" v-if="!loading">
         <div class="detail-tabs">
@@ -40,10 +40,15 @@
           </div>
         </div>
         <div class="booking-cards">
-          <div class="card" v-for="(data, index) in filteredData" :key="index" >
+          <div class="card" v-for="(data, index) in filteredData" :key="index">
             <MyCard :items="data" />
           </div>
-          <div class="card" v-for="(data, index) in bookingRequests" :key="index" @click="payModel(data)">
+          <div
+            class="card"
+            v-for="(data, index) in bookingRequests"
+            :key="index"
+            @click="payModel(data)"
+          >
             <MyRequestCard :items="data" />
           </div>
         </div>
@@ -70,7 +75,11 @@
           :page-class="'page-item'"
         ></paginate>
       </div>
-      <BookModel v-if="bookingModel" :dataApi="dataBookingApi" />
+      <PayModelRequest
+        v-if="bookingModel"
+        :dataApi="dataBookingApi"
+        @close="close"
+      />
     </section>
   </default-layout>
 </template>
@@ -81,7 +90,7 @@ import MyCard from "@/components/common/myCard.vue";
 import MyRequestCard from "@/components/common/myRequestCard.vue";
 import CardSkeleton from "@/components/common/cardSkeleton.vue";
 import Paginate from "vuejs-paginate-next";
-import BookModel from "@/components/models/BookModel.vue";
+import PayModelRequest from "@/components/models/payModel.vue";
 export default {
   name: "MyServices",
   components: {
@@ -90,7 +99,7 @@ export default {
     MyRequestCard,
     CardSkeleton,
     Paginate,
-    BookModel
+    PayModelRequest,
   },
   data() {
     return {
@@ -103,16 +112,17 @@ export default {
       pageSelected: 1,
       pageCount: 15,
       //
-      bookingModel:false,
-      bookingRequests:[],
+      bookingModel: false,
+      bookingRequests: [],
     };
   },
   methods: {
-    payModel(val){
-      this.dataBookingApi = val;
+    close() {
+      this.bookingModel = false;
+    },
+    payModel(val) {
+      this.dataBookingApi = val?.bookngRequest[0];
       this.bookingModel = true;
-
-     console.log(val, '==>')
     },
     clickCallback(num) {
       var copyFrom = num * 6 - 6;
@@ -128,8 +138,8 @@ export default {
       this.filteredData = filtereByTabs.slice(copyFrom, copyTo);
     },
     selected(val) {
-      if(val == 'bookingRequests'){
-        this.getRequests()
+      if (val == "bookingRequests") {
+        this.getRequests();
       }
       this.tab = val;
       this.pageSelected = 1;
