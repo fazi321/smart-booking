@@ -4,15 +4,15 @@
       <div class="close-icon" @click="closeSlide">
         <img src="../../assets/images/close-icon.svg" alt="" />
       </div>
-      <ul>
+      <ul :class="{'set-lang': $t('lang') == 'ar'}">
         <li :class="{ active: $route.path == '/' }">
-          <router-link to="/">Home</router-link>
+          <router-link to="/">{{$t('header.home')}}</router-link>
         </li>
         <li
           :class="{ active: $route.path == '/category' }"
           class="category-menu"
         >
-          <div class="category" @click="openDropdown">Categories</div>
+          <div class="category" @click="openDropdown">{{$t('header.categories')}}</div>
           <div class="sub-menu" v-if="dropDown">
             <ul class="sub-list">
               <!-- <li>
@@ -22,57 +22,57 @@
                 :class="{ active: $route.params.category == 'apartments' }"
                 @click="addRecent('apartments')"
               >
-                <router-link to="/apartments?page=1">Apartments</router-link>
+                <router-link to="/apartments?page=1">{{$t('header.apartments')}}</router-link>
               </li>
               <li
                 :class="{ active: $route.params.category == 'farms' }"
                 @click="addRecent('farms')"
               >
-                <router-link to="/farms?page=1">Farms</router-link>
+                <router-link to="/farms?page=1">{{$t('header.farms')}}</router-link>
               </li>
               <li
                 :class="{ active: $route.params.category == 'hotels' }"
                 @click="addRecent('hotels')"
               >
-                <router-link to="/hotels?page=1">Hotels</router-link>
+                <router-link to="/hotels?page=1">{{$t('header.hotels')}}</router-link>
               </li>
               <li
                 :class="{ active: $route.params.category == 'resorts' }"
                 @click="addRecent('resorts')"
               >
-                <router-link to="/resorts?page=1">Resorts</router-link>
+                <router-link to="/resorts?page=1">{{$t('header.resorts')}}</router-link>
               </li>
               <li
                 :class="{ active: $route.params.category == 'lounges' }"
                 @click="addRecent('lounges')"
               >
-                <router-link to="/lounges?page=1">Lounges</router-link>
+                <router-link to="/lounges?page=1">{{$t('header.lounges')}}</router-link>
               </li>
               <li
                 :class="{ active: $route.params.category == 'stadiums' }"
                 @click="addRecent('stadiums')"
               >
-                <router-link to="/stadiums?page=1">Stadium</router-link>
+                <router-link to="/stadiums?page=1">{{$t('header.stadium')}}</router-link>
               </li>
               <li
                 :class="{ active: $route.params.category == 'Camps' }"
                 @click="addRecent('Camps')"
               >
-                <router-link to="/Camps?page=1">Camps</router-link>
+                <router-link to="/Camps?page=1">{{$t('header.camps')}}</router-link>
               </li>
               <li
                 :class="{ active: $route.params.category == 'wedding-halls' }"
                 @click="addRecent('wedding-halls')"
               >
                 <router-link to="/wedding-halls?page=1"
-                  >Wedding Halls</router-link
+                  >{{$t('header.weddingHalls')}}</router-link
                 >
               </li>
               <li
                 :class="{ active: $route.params.category == 'chalets' }"
                 @click="addRecent('chalets')"
               >
-                <router-link to="/chalets?page=1">Chalets</router-link>
+                <router-link to="/chalets?page=1">{{$t('header.chalets')}}</router-link>
               </li>
             </ul>
           </div>
@@ -81,25 +81,25 @@
           :class="{ active: $route.params.category == 'privacy' }"
           @click="addRecent('privacy')"
         >
-          <router-link to="/privacy?page=1">Privacy Policy</router-link>
+          <router-link to="/privacy?page=1">{{$t('header.privacy')}}</router-link>
         </li>
         <li
           :class="{ active: $route.params.category == 'faqs' }"
           @click="addRecent('faqs')"
         >
-          <router-link to="/faqs?page=1">FAQs</router-link>
+          <router-link to="/faqs?page=1">{{$t('header.faqs')}}</router-link>
         </li>
         <li
           :class="{ active: $route.params.category == 'term-conditions' }"
           @click="addRecent('term-conditions')"
         >
-          <router-link to="/term-conditions?page=1">Term of Use</router-link>
+          <router-link to="/term-conditions?page=1">{{$t('header.termOfUse')}}</router-link>
         </li>
         <li
           :class="{ active: $route.params.category == 'about' }"
           @click="addRecent('about')"
         >
-          <router-link to="/about?page=1">About Us</router-link>
+          <router-link to="/about?page=1">{{$t('header.aboutUs')}}</router-link>
         </li>
       </ul>
     </div>
@@ -191,9 +191,15 @@ export default {
 .logout-container ul {
   display: flex;
   flex-direction: column;
-  align-items: flex-start !important;
+  align-items: flex-start;
   border-top: 2px solid #eee;
   padding: 10px;
+}
+.set-lang{
+  align-items: flex-end !important;
+}
+.set-lang .category{
+  text-align:right!important;
 }
 .logout-container ul li {
   padding: 15px 10px;
@@ -202,7 +208,7 @@ export default {
   font-weight: 600;
   margin: 0 !important;
   cursor: pointer;
-  width: 85%;
+  /* width: 85%; */
 }
 .logout-container ul li a {
   text-decoration: none;
