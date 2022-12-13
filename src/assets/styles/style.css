@@ -79,6 +79,9 @@ img {
   border-radius: 50px;
 }
 /* common css */
+input:disabled {
+  background: #f1f1f1!important;
+}
 .headings h4{
   position: relative;
 }
