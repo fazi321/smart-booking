@@ -1,9 +1,7 @@
 <template>
   <router-link to="/hotel-detail" class="filter-card">
     <div class="image" v-if="dataApi">
-      <img
-        :src="dataApi.booking.service.image"
-      />
+      <img :src="dataApi.booking.service.image" />
       <!-- <img src="../../assets/images/hotel-img.svg" /> -->
     </div>
     <div class="card-detail">
@@ -22,12 +20,19 @@
         {{ storeState.address.city }}
       </p>
       <div class="rating">
-        <span class="star">&starf;</span>
+        <span
+          :class="['star', { gray: star > storeState.rating }]"
+          v-for="(star, index) in 5"
+          :key="index"
+          >&starf;</span
+        >
+        <span class="rating-counter">({{ storeState.rating }})</span>
+        <!-- <span class="star">&starf;</span>
         <span class="star">&starf;</span>
         <span class="star">&starf;</span>
         <span class="star">&starf;</span>
         <span class="star gray">&starf;</span>
-        <span class="rating-counter">(381)</span>
+        <span class="rating-counter">(381)</span> -->
       </div>
       <div class="sar">
         <h6>SAR {{ storeState.price.dayPrice }}</h6>
@@ -40,7 +45,7 @@
 <script>
 export default {
   name: "BookCard",
-  props:["dataApi"],
+  props: ["dataApi"],
   computed: {
     storeState: function () {
       return this.$store.state.details && this.$store.state.details.details;
@@ -166,6 +171,5 @@ export default {
   font-size: 14px;
 }
 @media (max-width: 479px) and (min-width: 320px) {
-  
 }
 </style>
