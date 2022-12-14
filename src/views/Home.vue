@@ -107,9 +107,3 @@ export default {
   // },
 };
 </script>
-<style>
-#move{
-   position: absolute;
-   z-index: 9;
-}
-</style>

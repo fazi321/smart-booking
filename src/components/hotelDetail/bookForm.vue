@@ -232,9 +232,9 @@ export default {
       }
       var checkIn = this.formateDate(checkInDate, timeIn);
       var checkOut = this.formateDate(checkOutDate, timeOut);
-      var amount = this.storeState?.price?.dayPrice;
+      // var amount = this.storeState?.price?.dayPrice;
       var payload = {
-        amount,
+        // amount,
         // nights,
         paymentMethod: "online",
         checkIn,
