@@ -31,7 +31,7 @@
       </div>
       <div class="sar">
         <h6>SAR {{ dataApi?.service?.name?.price?.dayPrice }}</h6>
-        <p>Per Night</p>
+        <p>{{$t('detailPage.perNight')}}</p>
       </div>
     </div>
   </router-link>

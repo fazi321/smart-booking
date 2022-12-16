@@ -1,6 +1,6 @@
 <template>
   <section class="apartments-filters">
-    <div class="inner">
+    <div :class="['inner',{'set-langauge':$t('lang') == 'ar'}]">
       <!-- location section  -->
       <section class="location-filter">
         <h6>{{ $t("listingPage.locationFilters") }}</h6>
@@ -430,7 +430,7 @@
           <div class="input">
             <input
               type="date"
-              placeholder="Check-out time"
+              :placeholder="$t('detailPage.checkOutTime')"
               @change="getCheckOut"
               :value="filters.checkOut"
             />
@@ -525,12 +525,12 @@
             <span class="checkmark"></span>
           </label>
           <label class="checkbox-container">
-            {{ $t("listingPage.footballCourt") }}
+            {{ $t("listingPage.footBallCourt") }}
             <input
               type="checkbox"
               value="footballCourt"
               @change="toggleFacilities"
-              :checked="filters.footballCourt"
+              :checked="filters.footBallCourt"
             />
             <span class="checkmark"></span>
           </label>
@@ -1085,4 +1085,28 @@ export default {
   -webkit-transform: scale(1);
   transform: scale(1);
 }
+/* for side filter */
+.set-langauge .location-filter .checkmark{
+  left: unset;
+  right:0!important;
+}
+.set-langauge .checkbox-container,.set-langauge label{
+  justify-content: flex-end;
+  padding-right: 30px;
+}
+.set-langauge .location-filter .form{
+  text-align: right!important;
+}
+.set-langauge h6{
+  text-align: right!important;
+}
+.set-langauge .radio [type="radio"]:checked + label:before,
+.set-langauge  [type="radio"]:not(:checked) + label:before {
+  left:unset!important;
+  right: 0;
+}
+.set-langauge .bedrooms{
+ flex-direction: row-reverse;
+}
+/* side end */
 </style>

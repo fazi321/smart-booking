@@ -36,7 +36,7 @@
       </div>
       <div class="sar">
         <h6>SAR {{ storeState.price.dayPrice }}</h6>
-        <p>Per Night</p>
+        <p>{{$t('detailPage.perNight')}}</p>
       </div>
     </div>
   </router-link>

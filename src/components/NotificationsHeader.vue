@@ -24,7 +24,7 @@
           </div>
         </div>
         <div v-else class="not-found">
-          <h1>Not Found</h1>
+          <h1>{{$t('error.notFound')}}</h1>
         </div>
       </section>
       <section v-else class="loading">

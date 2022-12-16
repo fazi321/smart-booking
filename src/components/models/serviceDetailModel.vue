@@ -53,20 +53,20 @@
           <p>{{ modelData.nights }}</p>
         </div>
         <div>
-          <p>Check-in Date</p>
+          <p>{{$t('detailPage.checkInDate')}}</p>
           <p>{{ getDate(modelData.checkIn) }}</p>
         </div>
         <div>
-          <p>Check-out Date</p>
+          <p>{{$t('detailPage.checkOutDate')}}</p>
           <p>{{ getDate(modelData.checkOut) }}</p>
         </div>
         <div>
-          <p>Check-in Time</p>
+          <p>{{$t('detailPage.checkInTime')}}</p>
           <!-- <p>11:00 AM</p> -->
           <p>{{ getTime(modelData.checkIn) }}</p>
         </div>
         <div>
-          <p>Check-out Time</p>
+          <p>{{$t('detailPage.checkOutTime')}}</p>
           <!-- <p>12:00 PM</p> -->
           <p>{{ getTime(modelData.checkOut) }}</p>
         </div>

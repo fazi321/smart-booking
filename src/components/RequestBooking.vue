@@ -33,7 +33,7 @@
       </section>
       <div class="heading" v-if="storeState?.price">
         <h6>SAR {{ storeState?.price?.dayPrice }}</h6>
-        <p>Per Night</p>
+        <p>{{$t('detailPage.perNight')}}</p>
       </div>
       <section class="book-btn-section">
         <router-link to="/messages" class="image-container">

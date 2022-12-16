@@ -41,7 +41,7 @@
         </div>
       </div>
       <section class="set-content nofound" v-else>
-        <h1>Not Found</h1>
+        <h1>{{$t('error.notFound')}}</h1>
       </section>
     </section>
     <section class="set-content" v-else>

@@ -269,7 +269,22 @@
         "indoorSeating":"مجلس داخلي",
         "outdoorSeating":"مجلس خارجي",
         "additionSeating":"مجلس إضافي",
-        "livingRoom":"غرفة المعيشة"
+        "livingRoom":"غرفة المعيشة",
+        "fromDate":"من تاريخ",
+        "toDate":"إلى تاريخ",
+        "securityAmount":"مبلغ التأمين",
+        "days":"أيام",
+        "discountPercentage":"نسبة الخصم",
+        "chalets":"شاليهات",
+        "resorts":"استراحات",
+        "stadium":"ملاعب",
+        "apartment":"شقق",
+        "lounges":"منتجعات",
+        "camps":"مخيمات",
+        "hotel":"فنادق",
+        "wedding":"الأفراح",
+        "halls":"قاعات",
+        "farms":"مزارع"
     },
     "becomeVendor": {
         "becomeVendor": "اشترك لإضافة عقارك",
@@ -277,7 +292,9 @@
         "irep": "أنا أمثل",
         "company": "شركة",
         "mpersonal": "أنا شخصية",
-        "host": "مضيف"
+        "host": "مضيف",
+        "CommercialIDNo":"رقم السجل التجاري",
+        "Uploadfile":"رفع الملف"
     },
     "listingPage": {
         "filters": "المرشحات",
@@ -330,7 +347,7 @@
         "speakers": "مكبرات صوت",
         "playground": "ملعب",
         "footBallCourt": "ملعب كرة قدم",
-        "volleyBallCourt ": " ملعب كرة طائرة ",
+        "volleyBallCourt": " ملعب كرة طائرة ",
         "categoriesFilters": "تصفية حسب التصنيف",
         "couples": "أزواج",
         "familiesOnly": "عائلات فقط",
@@ -390,7 +407,12 @@
         "request":"طلب",
         "amenities": "وسائل الراحة",
         "leisure": "الراحة",
-        "homeAmenities": "وسائل الراحة منزلية"
+        "homeAmenities": "وسائل الراحة منزلية",
+        "checkInDate":"تاريخ الدخول",
+        "checkOutDate":"تاريخ الخروج",
+        "checkInTime":"وقت الدخول",
+        "checkOutTime":"وقت الخروج",
+        "perNight":"لليلة"
     },
     "success": {
         "RequestSubmit": "تم إرسال الطلب بنجاح"
@@ -422,6 +444,7 @@
         "youTube": "YouTube"
       },
     "error": {
-        "numberError": "رقم الجوال خطأ!"
+        "numberError": "رقم الجوال خطأ!",
+        "notFound":"غير معثور عليه"
     }
 }

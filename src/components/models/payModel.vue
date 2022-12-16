@@ -83,11 +83,11 @@
           </div>
           <div class="service-details">
             <div>
-              <p>Check-in Date</p>
+              <p>{{$t('detailPage.checkInDate')}}</p>
               <p v-if="dataApi">{{ showLocalDate(dataApi.checkIn) }}</p>
             </div>
             <div>
-              <p>Check-out Date</p>
+              <p>{{$t('detailPage.checkOutDate')}}</p>
               <p v-if="dataApi">
                 {{ showLocalDate(dataApi.checkOut) }}
               </p>

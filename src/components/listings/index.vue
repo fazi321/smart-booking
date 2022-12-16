@@ -29,7 +29,7 @@
             ></paginate>
           </div>
         </div>
-        <div class="text-container" v-else>NOT FOUND SOME THING WENT WRONG</div>
+        <div class="text-container" v-else>{{$t('error.notFound')}}</div>
       </div>
       <div class="apartment-right" v-else>
         <SkeletonCard v-for="(skeleton, loading) in skeleton" :key="loading" />

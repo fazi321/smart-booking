@@ -217,7 +217,7 @@
             </div>
             <div class="date-input">
               <div @click="showModelDate('fd')">
-                <input type="text" placeholder="From Date" v-model="fromDate" />
+                <input type="text" :placeholder="$t('AddService.fromDate')" v-model="fromDate" />
                 <input
                   type="date"
                   @change="checkDate"
@@ -227,7 +227,7 @@
                 />
               </div>
               <div @click="showModelDate('td')">
-                <input type="text" placeholder="To Date" v-model="toDate" />
+                <input type="text" :placeholder="$t('AddService.toDate')" v-model="toDate" />
                 <input
                   type="date"
                   @change="checkDate"
@@ -359,7 +359,7 @@
             <input
               type="number"
               min="1"
-              placeholder="security amount"
+              :placeholder="$t('AddService.securityAmount')"
               v-model="bookingSetting.securityAmount"
             />
           </div>
@@ -368,8 +368,8 @@
               <h5>{{ $t("pricing.lastMinuteDiscount") }}</h5>
               <div class="inputLastMinute" v-if="bookingSetting.lastMinuteDiscount">
                 <div>
-                  <input type="number" min="1" v-model="bookingSetting.days" placeholder="Days"/>
-                  <input type="number" min="1" v-model="bookingSetting.discountPercentage" placeholder="Discount Percentage"/>
+                  <input type="number" min="1" v-model="bookingSetting.days" :placeholder="$t('AddService.days')"/>
+                  <input type="number" min="1" v-model="bookingSetting.discountPercentage" :placeholder="$t('AddService.discountPercentage')"/>
                 </div>
               </div>
               <!-- <p>

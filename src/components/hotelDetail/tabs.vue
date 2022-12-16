@@ -21,7 +21,7 @@
     <ReviewsDetail v-if="tab == 'Reviews'" :reviews="storeState.reviews"/>
     <section v-if="tab == 'Terms'" class="terms">
       <p v-if="storeState.terms">{{ storeState.terms }}</p>
-      <p v-else>NOT FOUND</p>
+      <p v-else>{{$t('error.notFound')}}</p>
     </section>
     <section v-if="tab == 'Map'" class="terms">
       <MapDetail />

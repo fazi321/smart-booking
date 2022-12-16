@@ -112,7 +112,10 @@
     "email":"Email",
     "nationality":"Nationality",
     "IDNumber":"ID Number",
-    "dateOfBirth":"Date Of Birth"
+    "dateOfBirth":"Date Of Birth",
+    "securityAmount":"security amount",
+    "days":"days",
+    "discountPercentage":"Discount Percentage"
   },
   "AddService": {
     "addService": "Add Service",
@@ -174,7 +177,19 @@
     "indoorSeating":"Indoor Seating",
     "outdoorSeating":"Outdoor Seating",
     "additionSeating":"Addition Seating",
-    "livingRoom":"Living Room"
+    "livingRoom":"Living Room",
+    "fromDate":"From Date",
+    "toDate":"To Date",
+    "chalets":"Chalets",
+    "resorts":"Resorts",
+    "stadium":"Stadium",
+    "apartment":"Apartments",
+    "lounges":"Lounges",
+    "camps":"Camps",
+    "hotel":"Hotel",
+    "wedding":"Wedding",
+    "halls":"Halls",
+    "farms":"Farms"
   },
   "serviceDescription": {
     "serviceDescription": "Service Description",
@@ -277,7 +292,9 @@
     "irep": "I represent the",
     "company": "Company",
     "mpersonal": "I am a personal",
-    "host": "Host"
+    "host": "Host",
+    "CommercialIDNo":"Commercial ID No",
+    "Uploadfile":"Upload File"
   },
   "listingPage": {
     "filters": "Filters",
@@ -329,8 +346,8 @@
     "wifi": "Wifi",
     "speakers": "Speakers",
     "playground": "Playground",
-    "footballCourt": "Football Court",
-    "volleyBallCourt ": " Volleyball Court ",
+    "footBallCourt": "Football Court",
+    "volleyBallCourt": "Volleyball Court ",
     "categoriesFilters": "Categories Filters",
     "couples": "Couples",
     "familiesOnly": "Families only",
@@ -390,7 +407,12 @@
     "request":"Request",
     "amenities": "Amenities",
     "leisure": "Leisure",
-    "homeAmenities": "Home Amenities"
+    "homeAmenities": "Home Amenities",
+    "checkInDate":"Check-in date",
+    "checkOutDate":"Check-out date",
+    "checkInTime":"Check-in time",
+    "checkOutTime":"Check-out time",
+    "perNight":"Per Night"
   },
   "success": {
     "requestSubmit": "Request Submitted Successfully!"
@@ -423,6 +445,7 @@
 
   },
   "error": {
-    "numberError": "Mobile Number Error!"
+    "numberError": "Mobile Number Error!",
+    "notFound":"NOT FOUND"
   }
 }

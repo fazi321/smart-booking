@@ -61,7 +61,7 @@
           </div>
           <form class="container-vendor" @submit="onSubmit">
             <div :class="['transitionBox', { transitionActive: istransition }]">
-              <div class="inputs-container">
+              <div :class="['inputs-container', {'set-langauge':$t('lang') == 'ar'}]" >
                 <div>
                   <input
                     type="text"
@@ -121,14 +121,14 @@
                     type="text"
                     :class="{ activeErr: errors.commId }"
                     @input="resolveErr('commId')"
-                    placeholder="Commercial ID No"
+                    :placeholder="$t('becomeVendor.CommercialIDNo')"
                     v-model="vendor.commId"
                   />
                 </div>
               </div>
               <div class="upload-file">
                 <label for="inputTag">
-                  Upload File
+                  {{$t('becomeVendor.Uploadfile')}}
                   <input id="inputTag" type="file" @change="profileImage" />
                 </label>
               </div>

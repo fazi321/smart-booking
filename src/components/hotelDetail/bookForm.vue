@@ -3,12 +3,13 @@
     <div class="book-container">
       <div class="heading" v-if="storeState && storeState.price">
         <h6>SAR {{ storeState && storeState.price.dayPrice }}</h6>
-        <p>Per Night</p>
+        <p>{{$t('detailPage.perNight')}}</p>
       </div>
       <div
         :class="[
           'filter-option',
           { active: error.checkInDate && !inputDetail.checkInDate },
+          {'set-langauge':$t('lang') == 'ar'}
         ]"
         @click="showModelDate('cn')"
       >
@@ -16,7 +17,7 @@
         <input
           type="text"
           v-model="inputDetail.checkInDate"
-          placeholder="Check-in date"
+          :placeholder="$t('detailPage.checkInDate')"
           readonly
         />
         <input
@@ -30,6 +31,7 @@
         :class="[
           'filter-option',
           { active: error.checkOutDate && !inputDetail.checkOutDate },
+          {'set-langauge':$t('lang') == 'ar'}
         ]"
         @click="showModelDate('co')"
       >
@@ -37,7 +39,7 @@
         <input
           type="text"
           v-model="inputDetail.checkOutDate"
-          placeholder="Check-out date"
+          :placeholder="$t('detailPage.checkOutDate')"
           readonly
         />
         <input
@@ -51,6 +53,7 @@
         :class="[
           'filter-option',
           { active: error.checkInTime && !inputDetail.checkInTime },
+          {'set-time':$t('lang') == 'ar'}
         ]"
         @click="showModelDate('cit')"
       >
@@ -58,7 +61,7 @@
         <input
           type="text"
           v-model="inputDetail.checkInTime"
-          placeholder="Check-in time"
+          :placeholder="$t('detailPage.checkInTime')"
         />
         <input
           type="time"
@@ -71,6 +74,7 @@
         :class="[
           'filter-option',
           { active: error.checkOutTime && !inputDetail.checkOutTime },
+          {'set-time':$t('lang') == 'ar'}
         ]"
         @click="showModelDate('cot')"
       >
@@ -78,7 +82,7 @@
         <input
           type="text"
           v-model="inputDetail.checkOutTime"
-          placeholder="Check-out time"
+          :placeholder="$t('detailPage.checkOutTime')"
         />
         <input
           type="time"
@@ -378,6 +382,9 @@ export default {
   background: #febb12;
   cursor: pointer;
   width: 135px;
+}
+.set-time input{
+  text-align: right;
 }
 @media (max-width: 479px) and (min-width: 320px) {
 }

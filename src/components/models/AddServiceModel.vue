@@ -1,8 +1,14 @@
 <template>
-  <section :class="['login-signup', { active: model }, { 'set-langauge': $t('lang') == 'ar' }]">
+  <section
+    :class="[
+      'login-signup',
+      { active: model },
+      { 'set-langauge': $t('lang') == 'ar' },
+    ]"
+  >
     <!-- step one -->
     <section v-if="step == 1">
-      <AddService :cached="accountOpt" :firstStep="true"/>
+      <AddService :cached="accountOpt" :firstStep="true" />
     </section>
     <!-- categories -->
     <div class="primary-login" v-if="step == 2">
@@ -33,12 +39,38 @@
               }"
               @click="selectedCategory(item)"
             >
-              <h6 v-if="item.category != 'Wedding_Halls'">
-                {{ item.category }}
-              </h6>
-              <div v-if="item.category == 'Wedding_Halls'">
-                <h6>Wedding</h6>
-                <h6>Halls</h6>
+              <div v-if="item.category == 'Chalets'">
+                <h6>{{ $t("AddService.chalets") }}</h6>
+              </div>
+              <div v-else-if="item.category == 'Resorts'">
+                <h6>{{ $t("AddService.resorts") }}</h6>
+              </div>
+              <div v-else-if="item.category == 'Stadium'">
+                <h6>{{ $t("AddService.stadium") }}</h6>
+              </div>
+              <div v-else-if="item.category == 'Apartment'">
+                <h6>{{ $t("AddService.apartment") }}</h6>
+              </div>
+              <div v-else-if="item.category == 'Lounges'">
+                <h6>{{ $t("AddService.lounges") }}</h6>
+              </div>
+              <div v-else-if="item.category == 'Camps'">
+                <h6>{{ $t("AddService.camps") }}</h6>
+              </div>
+              <div v-else-if="item.category == 'Hotel'">
+                <h6>{{ $t("AddService.hotel") }}</h6>
+              </div>
+              <div v-else-if="item.category == 'Wedding_Halls'">
+                <h6>{{ $t("AddService.wedding") }}</h6>
+                <h6>{{ $t("AddService.halls") }}</h6>
+              </div>
+              <div v-else-if="item.category == 'Farms'">
+                <h6>{{ $t("AddService.farms") }}</h6>
+              </div>
+              <div v-else>
+                <h6>
+                  {{ item.category }}
+                </h6>
               </div>
             </div>
           </div>
