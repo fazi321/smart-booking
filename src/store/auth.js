@@ -8,10 +8,15 @@ export default {
     user: null,
     loading: false,
     loginModel: false,
+    // create chat
+    chatFromDetail: false,
   },
   mutations: {
     SET_USER(state, data) {
       state.user = data;
+    },
+    createChat(state, data) {
+      state.chatFromDetail = data;
     },
     SET_LOADING(state, data) {
       state.loading = data;

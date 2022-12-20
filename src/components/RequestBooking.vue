@@ -36,9 +36,9 @@
         <p>{{$t('detailPage.perNight')}}</p>
       </div>
       <section class="book-btn-section">
-        <router-link to="/messages" class="image-container">
+        <div @click="chatWith" class="image-container">
           <img src="../assets/images/chaticon.svg" />
-        </router-link>
+        </div>
         <div class="book-btn" @click="bookingRequest">
           <button>Request</button>
         </div>
@@ -71,6 +71,21 @@ export default {
     }
   },
   methods: {
+    async chatWith() {
+      if(!this.storeState.vender) return
+      try {
+        var res = await this.$axios.get(
+          `vender/profile/${this.storeState.vender}`
+        );
+        if (res.data) {
+          // this.vendorInfo = res.data;
+          this.$store.commit('auth/createChat', res.data);
+          this.$router.push('/messages')
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    },
     bookingRequest() {
       this.model = true
       // const imagePath = require("../assets/images/icontick.png");

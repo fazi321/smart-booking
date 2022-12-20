@@ -197,7 +197,8 @@
         "upcoming":"القادمة",
         "current":"تيار",
         "completed":"مكتمل",
-        "cancelled":"ألغيت"
+        "cancelled":"ألغيت",
+        "myBookings":"حجوزاتي"
     },
     "myServicePage":{
         "myServices":"خدماتي"

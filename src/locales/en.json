@@ -97,6 +97,7 @@
     "title":"You can your service booking here"
   },
   "myBookingPage":{
+    "myBookings":"MY BOOKINGS",
     "bookingRequests":"Booking Requests",
     "upcoming":"Upcoming",
     "current":"Current",

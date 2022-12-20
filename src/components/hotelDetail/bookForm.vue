@@ -3,13 +3,13 @@
     <div class="book-container">
       <div class="heading" v-if="storeState && storeState.price">
         <h6>SAR {{ storeState && storeState.price.dayPrice }}</h6>
-        <p>{{$t('detailPage.perNight')}}</p>
+        <p>{{ $t("detailPage.perNight") }}</p>
       </div>
       <div
         :class="[
           'filter-option',
           { active: error.checkInDate && !inputDetail.checkInDate },
-          {'set-langauge':$t('lang') == 'ar'}
+          { 'set-langauge': $t('lang') == 'ar' },
         ]"
         @click="showModelDate('cn')"
       >
@@ -31,7 +31,7 @@
         :class="[
           'filter-option',
           { active: error.checkOutDate && !inputDetail.checkOutDate },
-          {'set-langauge':$t('lang') == 'ar'}
+          { 'set-langauge': $t('lang') == 'ar' },
         ]"
         @click="showModelDate('co')"
       >
@@ -53,7 +53,7 @@
         :class="[
           'filter-option',
           { active: error.checkInTime && !inputDetail.checkInTime },
-          {'set-time':$t('lang') == 'ar'}
+          { 'set-time': $t('lang') == 'ar' },
         ]"
         @click="showModelDate('cit')"
       >
@@ -74,7 +74,7 @@
         :class="[
           'filter-option',
           { active: error.checkOutTime && !inputDetail.checkOutTime },
-          {'set-time':$t('lang') == 'ar'}
+          { 'set-time': $t('lang') == 'ar' },
         ]"
         @click="showModelDate('cot')"
       >
@@ -92,12 +92,18 @@
         />
       </div>
       <section class="book-btn-section">
-        <router-link to="/messages" class="image-container">
+        <div @click="chatWith" class="image-container">
           <img src="../../assets/images/chaticon.svg" />
-        </router-link>
+        </div>
         <div class="book-btn">
           <button :disabled="loading" @click="BookingModelShow">
-            {{ !loading ? storeState?.bookingSetting?.bookingType == '24-Hour' ? $t('detailPage.request') : $t('detailPage.book') : "Loading..." }}
+            {{
+              !loading
+                ? storeState?.bookingSetting?.bookingType == "24-Hour"
+                  ? $t("detailPage.request")
+                  : $t("detailPage.book")
+                : "Loading..."
+            }}
           </button>
         </div>
       </section>
@@ -130,6 +136,21 @@ export default {
     },
   },
   methods: {
+    async chatWith() {
+      if(!this.storeState.vender) return
+      try {
+        var res = await this.$axios.get(
+          `vender/profile/${this.storeState.vender}`
+        );
+        if (res.data) {
+          // this.vendorInfo = res.data;
+          this.$store.commit('auth/createChat', res.data);
+          this.$router.push('/messages')
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    },
     dateChange(e, val) {
       var getDate = convertDateToUTC(new Date(e.target.value));
       function convertDateToUTC(date) {
@@ -383,7 +404,7 @@ export default {
   cursor: pointer;
   width: 135px;
 }
-.set-time input{
+.set-time input {
   text-align: right;
 }
 @media (max-width: 479px) and (min-width: 320px) {

@@ -2,7 +2,7 @@
   <default-layout>
     <section class="container">
       <div class="service-booking">
-        <h1>{{ $t("menuDropdown.bookingRequest") }}</h1>
+        <h1>{{ $t("myBookingPage.myBookings") }}</h1>
       </div>
       <div class="service-container" v-if="!loading">
         <div class="detail-tabs">

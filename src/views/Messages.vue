@@ -17,7 +17,7 @@
               :key="index"
               @click="getAllMessages(chat)"
             >
-              <MessageCard :conversation="chat" />
+              <MessageCard :conversation="chat"  @click="setName(chat?.receiverId.firstName)"/>
             </div>
             <div>
               <h1>Users</h1>
@@ -28,6 +28,7 @@
               @click="createConversation(chat)"
             >
               <MessageCard
+                @click="setName(chat.firstName)"
                 :conversation="chat"
                 :usersCard="true"
                 v-if="chat.firstName"
@@ -42,7 +43,7 @@
                 <img src="../assets/images/msg-profile.svg" />
               </div>
               <div class="msg-title">
-                <h6>{{ userName ? userName : "jhon Doe" }}</h6>
+                <h6>{{ chatUserName ? chatUserName : "jhon Doe" }}</h6>
               </div>
             </div>
             <div class="chating-container" ref="scrollFun">
@@ -95,6 +96,7 @@ export default {
       messages: [],
       //
       userName: "",
+       chatUserName:"",
       //
       chatMessage: "",
       //
@@ -120,7 +122,7 @@ export default {
           receiverId: chat._id,
         });
         if (createNow) {
-          this.userName = chat.firstName;
+
           this.getAllMessages(createNow.data.conversation);
         }
       } catch (error) {
@@ -167,6 +169,9 @@ export default {
         console.log(error);
       }
     },
+    setName(name){
+      this.chatUserName = name;
+    },
     async getAllMessages(chat) {
       if (chat.receiverId._id != this.$store.state.auth.user._id) {
         this.userName = chat.receiverId.firstName;
@@ -176,7 +181,6 @@ export default {
       this.chatWith = chat;
       try {
         const messages = await this.$axios.get(`message/${chat._id}`);
-        console.log("messages ==>", messages);
         this.messages = messages.data.messages;
       } catch (error) {
         console.log(error);
@@ -219,6 +223,15 @@ export default {
       handler(user) {
         if (user) {
           this.getProfile();
+        }
+      },
+    },
+    "$store.state.auth.chatFromDetail": {
+      immediate: true,
+      handler(user) {
+        if (user) {
+          this.createConversation(user)
+          this.setName(user.firstName)
         }
       },
     },
