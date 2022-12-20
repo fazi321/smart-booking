@@ -18,25 +18,164 @@
         <div class="container-vendor">
           <div>
             <div class="inputs-container">
-              <!-- <div>
-                <input
-                  type="text"
-                  :class="{ activeErr: errors.numRooms }"
-                  @input="resolveErr('numRooms')"
-                  :placeholder="$t('placeholders.numberOfRooms')"
-                  v-model="roomsGuest.numRooms"
-                />
-              </div> -->
               <div>
                 <input
                   type="number"
-                  min='1'
+                  min="1"
+                  :class="{ activeErr: errors.numRooms }"
+                  @input="resolveErr('numRooms')"
+                  :placeholder="$t('placeholders.numberOfRooms')"
+                  v-model="unitsAndGuest.numRooms"
+                />
+              </div>
+              <div>
+                <input
+                  type="number"
+                  min="1"
+                  :class="{ activeErr: errors.numberAdults }"
+                  @input="resolveErr('numberAdults')"
+                  :placeholder="$t('placeholders.numberAdults')"
+                  v-model="unitsAndGuest.numberAdults"
+                />
+              </div>
+              <div>
+                <input
+                  type="number"
+                  min="1"
+                  :class="{ activeErr: errors.section }"
+                  @input="resolveErr('section')"
+                  :placeholder="$t('placeholders.section')"
+                  v-model="unitsAndGuest.section"
+                />
+              </div>
+              <div>
+                <input
+                  type="number"
+                  min="1"
+                  :class="{ activeErr: errors.numOfTents }"
+                  @input="resolveErr('numOfTents')"
+                  :placeholder="$t('placeholders.numOfTents')"
+                  v-model="unitsAndGuest.numOfTents"
+                />
+              </div>
+              <div>
+                <input
+                  type="number"
+                  min="1"
+                  :class="{ activeErr: errors.numOfMajlesTents }"
+                  @input="resolveErr('numOfMajlesTents')"
+                  :placeholder="$t('placeholders.NumOfMajlesTents')"
+                  v-model="unitsAndGuest.numOfMajlesTents"
+                />
+              </div>
+              <div>
+                <input
+                  type="number"
+                  min="1"
+                  :class="{ activeErr: errors.doubleBed }"
+                  @input="resolveErr('doubleBed')"
+                  :placeholder="$t('placeholders.doubleBed')"
+                  v-model="unitsAndGuest.doubleBed"
+                />
+              </div>
+              <div>
+                <input
+                  type="number"
+                  min="1"
+                  :class="{ activeErr: errors.singleBed }"
+                  @input="resolveErr('singleBed')"
+                  :placeholder="$t('placeholders.singleBed')"
+                  v-model="unitsAndGuest.singleBed"
+                />
+              </div>
+              <div>
+                <input
+                  type="number"
+                  min="1"
+                  :class="{ activeErr: errors.indoorSeating }"
+                  @input="resolveErr('indoorSeating')"
+                  :placeholder="$t('placeholders.indoorSeating')"
+                  v-model="unitsAndGuest.indoorSeating"
+                />
+              </div>
+              <div>
+                <input
+                  type="number"
+                  min="1"
+                  :class="{ activeErr: errors.outdoorSeating }"
+                  @input="resolveErr('outdoorSeating')"
+                  :placeholder="$t('placeholders.outdoorSeating')"
+                  v-model="unitsAndGuest.outdoorSeating"
+                />
+              </div>
+              <div>
+                <input
+                  type="number"
+                  min="1"
+                  :class="{ activeErr: errors.maxGuest }"
+                  @input="resolveErr('maxGuest')"
+                  :placeholder="$t('placeholders.maxGuest')"
+                  v-model="unitsAndGuest.maxGuest"
+                />
+              </div>
+              <div>
+                <input
+                  type="number"
+                  min="1"
                   :class="{ activeErr: errors.bathrooms }"
                   @input="resolveErr('bathrooms')"
-                  :placeholder="$t('placeholders.numberOfRooms')"
+                  :placeholder="$t('placeholders.bathrooms')"
                   v-model="unitsAndGuest.bathrooms"
                 />
               </div>
+              <div>
+                <input
+                  type="number"
+                  min="1"
+                  :class="{ activeErr: errors.outdoorWithoutBarrier }"
+                  @input="resolveErr('outdoorWithoutBarrier')"
+                  :placeholder="$t('placeholders.outdoorWithoutBarrier')"
+                  v-model="unitsAndGuest.outdoorWithoutBarrier"
+                />
+              </div>
+              <div>
+                <input
+                  type="number"
+                  min="1"
+                  :class="{ activeErr: errors.outdoorWithBarrier }"
+                  @input="resolveErr('outdoorWithBarrier')"
+                  :placeholder="$t('placeholders.outdoorWithBarrier')"
+                  v-model="unitsAndGuest.outdoorWithBarrier"
+                />
+              </div>
+              <div>
+                <input
+                  type="number"
+                  min="1"
+                  :class="{ activeErr: errors.indoorWithoutBarrier }"
+                  @input="resolveErr('indoorWithoutBarrier')"
+                  :placeholder="$t('placeholders.indoorWithoutBarrier')"
+                  v-model="unitsAndGuest.indoorWithoutBarrier"
+                />
+              </div>
+              <div>
+                <input
+                  type="number"
+                  min="1"
+                  :class="{ activeErr: errors.indoorWithBarrier }"
+                  @input="resolveErr('indoorWithBarrier')"
+                  :placeholder="$t('placeholders.indoorWithBarrier')"
+                  v-model="unitsAndGuest.indoorWithBarrier"
+                />
+              </div>
+              <div class="rules">
+                <label class="container-input"
+                  >{{ $t("placeholders.travelers") }}
+                  <input type="checkbox" v-model="unitsAndGuest.travelers" />
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+
               <!-- <div>
                 <input
                   type="test"
@@ -487,16 +626,82 @@ export default {
     changeStep(step) {
       var verifyInputs = this.unitsAndGuest;
       if (step == 2) {
+        if (!verifyInputs.numRooms) {
+          this.errors.numRooms = true;
+          this.focusInput();
+          return;
+        }
+        if (!verifyInputs.numberAdults) {
+          this.errors.numberAdults = true;
+          this.focusInput();
+          return;
+        }
+        if (!verifyInputs.section) {
+          this.errors.section = true;
+          this.focusInput();
+          return;
+        }
+        if (!verifyInputs.numOfTents) {
+          this.errors.numOfTents = true;
+          this.focusInput();
+          return;
+        }
+        if (!verifyInputs.numOfMajlesTents) {
+          this.errors.numOfMajlesTents = true;
+          this.focusInput();
+          return;
+        }
+        if (!verifyInputs.doubleBed) {
+          this.errors.doubleBed = true;
+          this.focusInput();
+          return;
+        }
+        if (!verifyInputs.singleBed) {
+          this.errors.singleBed = true;
+          this.focusInput();
+          return;
+        }
+        if (!verifyInputs.indoorSeating) {
+          this.errors.indoorSeating = true;
+          this.focusInput();
+          return;
+        }
+        if (!verifyInputs.outdoorSeating) {
+          this.errors.outdoorSeating = true;
+          this.focusInput();
+          return;
+        }
+        if (!verifyInputs.maxGuest) {
+          this.errors.maxGuest = true;
+          this.focusInput();
+          return;
+        }
         if (!verifyInputs.bathrooms) {
           this.errors.bathrooms = true;
           this.focusInput();
           return;
         }
-        // if (!verifyInputs.roomType) {
-        //   this.errors.roomType = true;
-        //   this.focusInput();
-        //   return;
-        // }
+        if (!verifyInputs.outdoorWithoutBarrier) {
+          this.errors.outdoorWithoutBarrier = true;
+          this.focusInput();
+          return;
+        }
+        if (!verifyInputs.outdoorWithBarrier) {
+          this.errors.outdoorWithBarrier = true;
+          this.focusInput();
+          return;
+        }
+        if (!verifyInputs.indoorWithoutBarrier) {
+          this.errors.indoorWithoutBarrier = true;
+          this.focusInput();
+          return;
+        }
+        if (!verifyInputs.indoorWithBarrier) {
+          this.errors.indoorWithBarrier = true;
+          this.focusInput();
+          return;
+        }
+
         // if (!verifyInputs.numberUnits) {
         //   this.errors.numberUnits = true;
         //   this.focusInput();

@@ -11,7 +11,10 @@
       <SignUpModel :model="signUpModel" @getUserName="userModel" />
     </section>
     <!-- after login -->
-    <section v-else class="dropdown-container">
+    <section
+      v-else
+      :class="['dropdown-container', { 'set-lang': $t('lang') == 'ar' }]"
+    >
       <UserModel :model="userName" />
       <button
         class="btn btn-transparent"
@@ -50,6 +53,7 @@
         <DropDownMenu v-if="dropDown" />
       </div>
       <NotificationsHeader />
+      <LanguageDrop />
       <AddServiceModel :model="serviceModel" />
       <VendorModel :model="vendorModel || $store.state.details.vendor" />
     </section>
@@ -62,6 +66,7 @@ import SignUpModel from "@/components/models/SignUpModel.vue";
 import VendorModel from "@/components/models/VendorModel.vue";
 import UserModel from "@/components/models/UserModel.vue";
 import AddServiceModel from "@/components/models/AddServiceModel.vue";
+import LanguageDrop from "@/components/common/Langdrop.vue";
 import NotificationsHeader from "../NotificationsHeader.vue";
 import DropDownMenu from "../DropdownMenu.vue";
 import Cookies from "js-cookie";
@@ -76,6 +81,7 @@ export default {
     DropDownMenu,
     UserModel,
     NotificationsHeader,
+    LanguageDrop,
   },
   data() {
     return {
@@ -189,5 +195,11 @@ export default {
   background: #febb12;
   color: #000;
   box-shadow: 0 10px 10px -5px #00000038;
+}
+.set-lang {
+  flex-direction: row-reverse;
+}
+.set-lang #demo {
+  margin: 0px 10px;
 }
 </style>

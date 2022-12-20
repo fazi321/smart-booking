@@ -74,7 +74,6 @@
                   </svg>
                 </div>
               </section>
-
               <MobMenu v-if="openSidebar" />
             </div>
           </div>

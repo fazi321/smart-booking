@@ -33,7 +33,13 @@ img {
 }
 
 /* global css */
-
+.inputs-container {
+  height: 400px;
+  overflow-y: scroll;
+}
+.inputs-container input{
+  min-width:222px!important;
+}
 /* language change */
 .set-langauge a{
   flex-direction: row-reverse;
@@ -491,6 +497,10 @@ header.active .container .nav ul li a {
   }
   .primary-login {
     width: 83% !important;
+  }
+  .container-vendor .primary-cards {
+    width: 50px!important;
+    height: 64px!important;
   }
   .container-amenities .cards > div {
     height: 80px !important;

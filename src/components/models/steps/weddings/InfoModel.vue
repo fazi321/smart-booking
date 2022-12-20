@@ -46,6 +46,15 @@
               </div>
               <div>
                 <input
+                  type="text"
+                  :class="{ activeErr: errors.roomType }"
+                  @input="resolveErr('roomType')"
+                  :placeholder="$t('placeholders.roomType')"
+                  v-model="roomsGuest.roomType"
+                />
+              </div>
+              <div>
+                <input
                   type="number"
                   min="1"
                   :class="{ activeErr: errors.bathrooms }"
@@ -302,6 +311,11 @@ export default {
         }
         if (!verifyInputs.maxGuest) {
           this.errors.maxGuest = true;
+          this.focusInput();
+          return;
+        }
+        if (!verifyInputs.roomType) {
+          this.errors.roomType = true;
           this.focusInput();
           return;
         }

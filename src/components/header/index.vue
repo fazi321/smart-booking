@@ -1,7 +1,7 @@
 <template>
   <header :class="['header', { active: active }]">
     <div class="container">
-      <div class="main-container">
+      <div :class="['main-container',{'set-lang': $t('lang') == 'ar'}]">
         <Logo />
         <Menu />
         <Profile />
@@ -64,7 +64,9 @@ header.active {
   align-items: center;
   width: 100%;
 }
-
+.set-lang{
+  flex-direction:row-reverse!important;
+}
 .main-container section:nth-child(2),
 .main-container section:nth-child(3) {
   position: relative;

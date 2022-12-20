@@ -26,54 +26,59 @@
                 { active: accountOpt == item.category },
               ]"
               @click="selectedOptions(item.category, item._id)"
-              v-show="item.category != 'Wedding_Halls'"
             >
+              <div v-if="item.category == 'Wedding_Halls'">
+                <h5>{{ $t('searchHeader.weddingHalls')}}</h5>
+                <div class="card-image">
+                  <img :src="item.image" alt="" />
+                </div>
+              </div>
               <div v-if="item.category == 'Hotel'">
                 <h5>{{ $t('searchHeader.hotel')}}</h5>
                 <div class="card-image">
-                  <img src="../../assets/images/hotels.png" alt="" />
+                  <img :src="item.image" alt="" />
                 </div>
               </div>
               <div v-if="item.category == 'Apartment'">
                 <h5>{{ $t('searchHeader.apartment')}}</h5>
                 <div class="card-image">
-                  <img src="../../assets/images/apart.png" alt="" />
+                  <img :src="item.image" alt="" />
                 </div>
               </div>
               <div v-if="item.category == 'Resorts'">
                 <h5>{{ $t('searchHeader.resorts')}}</h5>
                 <div class="card-image">
-                  <img src="../../assets/images/res.png" alt="" />
+                  <img :src="item.image" alt="" />
                 </div>
               </div>
               <div v-if="item.category == 'Farms'">
                 <h5>{{ $t('searchHeader.farms')}}</h5>
                 <div class="card-image">
-                  <img src="../../assets/images/farms.png" alt="" />
+                  <img :src="item.image" alt="" />
                 </div>
               </div>
               <div v-if="item.category == 'Lounges'">
                 <h5>{{ $t('searchHeader.lounges')}}</h5>
                 <div class="card-image">
-                  <img src="../../assets/images/Lounges.png" alt="" />
+                  <img :src="item.image" alt="" />
                 </div>
               </div>
               <div v-if="item.category == 'Stadium'">
                 <h5>{{ $t('searchHeader.stadium')}}</h5>
                 <div class="card-image">
-                  <img src="../../assets/images/Stadium.png" alt="" />
+                  <img :src="item.image" alt="" />
                 </div>
               </div>
               <div v-if="item.category == 'Chalets'">
                 <h5>{{ $t('searchHeader.chalets')}}</h5>
                 <div class="card-image">
-                  <img src="../../assets/images/Chalets.png" alt="" />
+                  <img :src="item.image" alt="" />
                 </div>
               </div>
               <div v-if="item.category == 'Camps'">
                 <h5>{{ $t('searchHeader.camps')}}</h5>
                 <div class="card-image">
-                  <img src="../../assets/images/Campsi.png" alt="" />
+                  <img :src="item.image" alt="" />
                 </div>
               </div>
             </div>

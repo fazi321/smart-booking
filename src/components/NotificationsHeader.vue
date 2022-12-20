@@ -1,11 +1,11 @@
 <template>
-  <section id="demo2">
+  <section id="demo2" :class="{ 'set-lang': $t('lang') == 'ar' }">
     <div class="ghanti" @click="opendropDown">
       <img src="../assets/images/bell.svg" />
     </div>
     <div class="drop" v-if="dropDown">
       <div class="head-title">
-        <h1>{{$t("header.notifications")}}</h1>
+        <h1>{{ $t("header.notifications") }}</h1>
       </div>
       <section class="message-section" v-if="!loading">
         <div v-if="notifications && notifications.length">
@@ -24,7 +24,7 @@
           </div>
         </div>
         <div v-else class="not-found">
-          <h1>{{$t('error.notFound')}}</h1>
+          <h1>{{ $t("error.notFound") }}</h1>
         </div>
       </section>
       <section v-else class="loading">
@@ -37,7 +37,7 @@
 <script>
 export default {
   name: "NotificationsHeader",
-  props:['RemOutClick'],
+  props: ["RemOutClick"],
   data() {
     return {
       notifications: [],
@@ -66,7 +66,7 @@ export default {
   },
   mounted() {
     this.getNotifications();
-    if(!this.RemOutClick){
+    if (!this.RemOutClick) {
       var close = () => {
         this.dropDown = false;
       };
@@ -147,12 +147,17 @@ export default {
 .not-found {
   padding: 10px;
 }
+.set-lang .drop {
+  min-width: 346px;
+  left: 25%;
+  right: 61%;
+}
 @media (max-width: 479px) and (min-width: 320px) {
-  .ghanti{
+  .ghanti {
     width: 19px;
     margin-top: -4px;
   }
-  .drop{
+  .drop {
     min-width: 220px;
   }
 }

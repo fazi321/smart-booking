@@ -1,5 +1,9 @@
 {
   "lang": "en",
+  "language": {
+    "eng": "Eng",
+    "ar": "Ar"
+  },
   "header": {
     "notifications": "Notifications",
     "login": "Login",
@@ -89,43 +93,43 @@
     "lastName": "Last name",
     "done": "Done"
   },
-  "favourites":{
-   "favourites" :"FAVOURITES"
+  "favourites": {
+    "favourites": "FAVOURITES"
   },
-  "serviceBookings":{
-    "serviceBookings":"SERVICE BOOKINGS",
-    "title":"You can your service booking here"
+  "serviceBookings": {
+    "serviceBookings": "SERVICE BOOKINGS",
+    "title": "You can your service booking here"
   },
-  "myBookingPage":{
-    "myBookings":"MY BOOKINGS",
-    "bookingRequests":"Booking Requests",
-    "upcoming":"Upcoming",
-    "current":"Current",
-    "completed":"Completed",
-    "cancelled":"Cancelled"
+  "myBookingPage": {
+    "myBookings": "MY BOOKINGS",
+    "bookingRequests": "Booking Requests",
+    "upcoming": "Upcoming",
+    "current": "Current",
+    "completed": "Completed",
+    "cancelled": "Cancelled"
   },
-  "myServicePage":{
-   "myServices":"MY SERVICES"
+  "myServicePage": {
+    "myServices": "MY SERVICES"
   },
-  "chatPage":{
-    "messages":"MESSAGES",
-    "allMessages":"ALL MESSAGES",
-    "searchMessages":"Search Messages"
+  "chatPage": {
+    "messages": "MESSAGES",
+    "allMessages": "ALL MESSAGES",
+    "searchMessages": "Search Messages"
   },
-  "inputs":{
-    "update":"Update",
-    "personalInformation":"Personal Information",
-    "myProfile":"MY PROFILE",
+  "inputs": {
+    "update": "Update",
+    "personalInformation": "Personal Information",
+    "myProfile": "MY PROFILE",
     "firstName": "First name",
     "lastName": "Last name",
     "mobileNumber": "Mobile Number",
-    "email":"Email",
-    "nationality":"Nationality",
-    "IDNumber":"ID Number",
-    "dateOfBirth":"Date Of Birth",
-    "securityAmount":"security amount",
-    "days":"days",
-    "discountPercentage":"Discount Percentage"
+    "email": "Email",
+    "nationality": "Nationality",
+    "IDNumber": "ID Number",
+    "dateOfBirth": "Date Of Birth",
+    "securityAmount": "security amount",
+    "days": "days",
+    "discountPercentage": "Discount Percentage"
   },
   "AddService": {
     "addService": "Add Service",
@@ -184,22 +188,22 @@
     "inDoorSwimmingPool": "indoor SwimmingPool",
     "24-HourRequest": "24-Hour Request",
     "privateEntrance": "Private Entrance",
-    "indoorSeating":"Indoor Seating",
-    "outdoorSeating":"Outdoor Seating",
-    "additionSeating":"Addition Seating",
-    "livingRoom":"Living Room",
-    "fromDate":"From Date",
-    "toDate":"To Date",
-    "chalets":"Chalets",
-    "resorts":"Resorts",
-    "stadium":"Stadium",
-    "apartment":"Apartments",
-    "lounges":"Lounges",
-    "camps":"Camps",
-    "hotel":"Hotel",
-    "wedding":"Wedding",
-    "halls":"Halls",
-    "farms":"Farms"
+    "indoorSeating": "Indoor Seating",
+    "outdoorSeating": "Outdoor Seating",
+    "additionSeating": "Addition Seating",
+    "livingRoom": "Living Room",
+    "fromDate": "From Date",
+    "toDate": "To Date",
+    "chalets": "Chalets",
+    "resorts": "Resorts",
+    "stadium": "Stadium",
+    "apartment": "Apartments",
+    "lounges": "Lounges",
+    "camps": "Camps",
+    "hotel": "Hotel",
+    "wedding": "Wedding",
+    "halls": "Halls",
+    "farms": "Farms"
   },
   "serviceDescription": {
     "serviceDescription": "Service Description",
@@ -303,8 +307,8 @@
     "company": "Company",
     "mpersonal": "I am a personal",
     "host": "Host",
-    "CommercialIDNo":"Commercial ID No",
-    "Uploadfile":"Upload File"
+    "CommercialIDNo": "Commercial ID No",
+    "Uploadfile": "Upload File"
   },
   "listingPage": {
     "filters": "Filters",
@@ -378,33 +382,42 @@
     "outdoorWithoutBarrier": "Outdoor Without Barrier",
     "swimmingWithWaterGames": "Swimming With Water Games"
   },
-  "placeholders":{
-    "numberOfRooms":"Number of Rooms",
-    "section":"Section",
-    "bedrooms":"Bedrooms",
-    "doubleBed":"doubleBed",
-    "singleBed":"singleBed",
-    "singleBeds":"SingleBeds",
-    "maxGuest":"max Guest",
-    "bathrooms":"bathrooms",
-    "dressingRooms":"Dressing Rooms",
-    "stands":"Stands",
-    "NumOfMajlesTents":"NumOf Majles Tents",
-    "roomType":"Room Type",
-    "numberUnits":"Number Units",
-    "numberChildren":"Number Children",
-    "serviceNameEn":"Service Name (English)",
-    "serviceNameAr":"Service Name (Arabic)",
-    "secondaryPhone":"Secondary Phone",
-    "area":"Area",
-    "PropertyDescriptionEn":"Property Description (English)",
-    "PropertyDescriptionAr":"Property Description (Arabic)",
-    "addserviceimage":"Add service image",
-    "address":"Address",
-    "propertyNumber":"Property Number",
-    "city":"City",
-    "landMark":"Landmark",
-    "pitchGrassType":"Pitch Grass Type"
+  "placeholders": {
+    "numberOfRooms": "Number of Rooms",
+    "section": "Section",
+    "bedrooms": "Bedrooms",
+    "doubleBed": "doubleBed",
+    "singleBed": "singleBed",
+    "singleBeds": "SingleBeds",
+    "maxGuest": "max Guest",
+    "bathrooms": "bathrooms",
+    "dressingRooms": "Dressing Rooms",
+    "stands": "Stands",
+    "NumOfMajlesTents": "NumOf Majles Tents",
+    "roomType": "Room Type",
+    "numberUnits": "Number Units",
+    "numberChildren": "Number Children",
+    "serviceNameEn": "Service Name (English)",
+    "serviceNameAr": "Service Name (Arabic)",
+    "secondaryPhone": "Secondary Phone",
+    "area": "Area",
+    "PropertyDescriptionEn": "Property Description (English)",
+    "PropertyDescriptionAr": "Property Description (Arabic)",
+    "addserviceimage": "Add service image",
+    "address": "Address",
+    "propertyNumber": "Property Number",
+    "city": "City",
+    "landMark": "Landmark",
+    "pitchGrassType": "Pitch Grass Type",
+    "numberAdults":"Number Adults",
+    "numOfTents":"Number Of Tents",
+    "indoorSeating": "Indoor Seating",
+    "outdoorSeating": "Outdoor Seating",
+    "outdoorWithoutBarrier":"Outdoor Without Barrier",
+    "outdoorWithBarrier":"Outdoor With Barrier",
+    "indoorWithoutBarrier":"Indoor Without Barrier",
+    "indoorWithBarrier":"Indoor With Barrier",
+    "travelers":"travelers"
   },
   "detailPage": {
     "vendorProfile": "Vendor Profile",
@@ -414,15 +427,15 @@
     "terms": "Terms",
     "map": "Map",
     "book": "Book",
-    "request":"Request",
+    "request": "Request",
     "amenities": "Amenities",
     "leisure": "Leisure",
     "homeAmenities": "Home Amenities",
-    "checkInDate":"Check-in date",
-    "checkOutDate":"Check-out date",
-    "checkInTime":"Check-in time",
-    "checkOutTime":"Check-out time",
-    "perNight":"Per Night"
+    "checkInDate": "Check-in date",
+    "checkOutDate": "Check-out date",
+    "checkInTime": "Check-in time",
+    "checkOutTime": "Check-out time",
+    "perNight": "Per Night"
   },
   "success": {
     "requestSubmit": "Request Submitted Successfully!"
@@ -452,10 +465,9 @@
     "instagram": "Instagram",
     "facebook": "Facebook",
     "youTube": "YouTube"
-
   },
   "error": {
     "numberError": "Mobile Number Error!",
-    "notFound":"NOT FOUND"
+    "notFound": "NOT FOUND"
   }
 }
