@@ -1,7 +1,7 @@
 <template>
   <div class="container smart-booking">
     <div class="smart-title">
-      <h1>{{$t('homePage.exploreCities')}}</h1>
+      <h1>{{ $t("homePage.exploreCities") }}</h1>
     </div>
     <div class="card-container">
       <SmartBookingCard
@@ -34,16 +34,16 @@ export default {
     return {
       categoryModel: false,
       smartBooking: [
-        { title: "Jeddah", image: "jeddah.png", categoryCount: "681" },
-        { title: "Medina", image: "medina.png", categoryCount: "681" },
-        { title: "Riyadh", image: "riyadh.png", categoryCount: "681" },
-        { title: "Mecca", image: "mecca.png", categoryCount: "681" },
+        { title: this.$t('footer.jeddah'), image: "jeddah.png", categoryCount: "681" },
+        { title: this.$t('footer.madinah'), image: "medina.png", categoryCount: "681" },
+        { title: this.$t('footer.riyadh'), image: "riyadh.png", categoryCount: "681" },
+        { title: this.$t('footer.makkah'), image: "mecca.png", categoryCount: "681" },
       ],
       //
       selectedCity: {},
     };
   },
-  created(){
+  created() {
     this.getData();
   },
   methods: {
@@ -62,8 +62,10 @@ export default {
         console.log(error);
       }
     },
-    searchNow(val){
-      this.$router.push(`search?city=${this.selectedCity.title}&categoryId=${val._id}&page=1`)
+    searchNow(val) {
+      this.$router.push(
+        `search?city=${this.selectedCity.title}&categoryId=${val._id}&page=1`
+      );
     },
     goToUrl(val) {
       this.selectedCity = val;

@@ -5,7 +5,7 @@
     </div>
     <section class="container" v-if="!loading">
       <div class="service-booking">
-        <h1>SEARCH</h1>
+        <h1>{{$t('searchHeader.search')}}</h1>
       </div>
       <div class="service-container" v-if="searchList && searchList.length">
         <!-- <section class="filters-container">

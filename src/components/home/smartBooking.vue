@@ -28,25 +28,25 @@ export default {
       loading:false,
       smartBooking: [
         {
-          title: "Apartments",
+          title: this.$t('header.apartments'),
           image: "apartment.svg",
           categoryCount: "681",
           link: "/apartments?page=1",
         },
         {
-          title: "Hotels",
+          title: this.$t('header.hotels'),
           image: "hotel.svg",
           categoryCount: "681",
           link: "/hotels?page=1",
         },
         {
-          title: "Camps",
+          title: this.$t('header.camps'),
           image: "camps.svg",
           categoryCount: "681",
           link: "/camps?page=1",
         },
         {
-          title: "Resorts",
+          title: this.$t('header.resorts'),
           image: "resort.png",
           categoryCount: "681",
           link: "/resorts?page=1",

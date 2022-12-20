@@ -51,7 +51,16 @@
     "checkIn": "Check-in",
     "checkOut": "Check-out",
     "city": "City",
-    "search": "Search"
+    "search": "Search",
+    "apartment": "Apartment",
+    "farms": "Farms",
+    "hotel": "Hotel",
+    "resorts": "Resorts",
+    "lounges": "Lounges",
+    "stadium": "Stadium",
+    "camps": "Camps",
+    "weddingHalls": "Wedding Halls",
+    "chalets": "Chalets"
   },
   "signUp": {
     "createAccount": "Please create your account",
