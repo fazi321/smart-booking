@@ -13,7 +13,7 @@
           <div v-for="(message, index) in notifications" :key="index">
             <div class="primary-container">
               <div class="secondry-container">
-                <img src="../assets/images/imageProfile.jpeg" />
+                <img src="../assets/images/imageProfile.png" />
               </div>
               <div>
                 <div>

@@ -3,7 +3,7 @@
     <!-- / -->
     <div class="primary-container" v-for="(review, index) in reviews" :key="index">
       <div class="secondry-container">
-        <img src="../assets/images/imageProfile.jpeg" />
+        <img src="../assets/images/imageProfile.png" />
       </div>
       <div>
         <div>
