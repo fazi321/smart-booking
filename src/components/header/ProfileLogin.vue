@@ -1,14 +1,16 @@
 <template>
   <section class="btns">
-    <section v-if="!$store.state.auth.user">
+    <section v-if="!$store.state.auth.user" :class="{ 'set-lang': $t('lang') == 'ar' }">
       <button class="btn btn-transparent" @click="vendorModelShow">
         {{ $t("header.becomeVendor") }}
       </button>
       <button class="btn btn-filled" @click="loginModelShow">
         {{ $t("header.login") }}
       </button>
+      <LanguageDrop />
       <LoginModel :model="loginModel || $store.state.auth.loginModel" />
       <SignUpModel :model="signUpModel" @getUserName="userModel" />
+      
     </section>
     <!-- after login -->
     <section
@@ -198,6 +200,9 @@ export default {
 }
 .set-lang {
   flex-direction: row-reverse;
+}
+.set-lang .btn{
+  margin-right:5px;
 }
 .set-lang #demo {
   margin: 0px 10px;
