@@ -47,7 +47,15 @@
   "homePage": {
     "whatWeDo": "WHAT CAN WE DO FOR YOU?",
     "exploreMore": "EXPLORE MORE ON SMART BOOKINGS",
-    "exploreCities": "EXPLORE CITIES"
+    "exploreCities": "EXPLORE CITIES",
+    "InstantReservation": "Instant Reservation",
+    "CustomerService": "Customer service",
+    "Advancedandintelligentsearch": "Advanced and intelligent search",
+    "SafePaymentMethods": "Safe Payment Methods",
+    "TrustedReviews": "Trusted Reviews",
+    "Photosandvideos": "Photos and videos",
+    "MultipleandsecurepaymentMethods": "Multiple and secure payment Methods",
+    "Seephotosfromyourplace": "See photos from your place"
   },
   "searchHeader": {
     "location": "Location",
@@ -409,15 +417,15 @@
     "city": "City",
     "landMark": "Landmark",
     "pitchGrassType": "Pitch Grass Type",
-    "numberAdults":"Number Adults",
-    "numOfTents":"Number Of Tents",
+    "numberAdults": "Number Adults",
+    "numOfTents": "Number Of Tents",
     "indoorSeating": "Indoor Seating",
     "outdoorSeating": "Outdoor Seating",
-    "outdoorWithoutBarrier":"Outdoor Without Barrier",
-    "outdoorWithBarrier":"Outdoor With Barrier",
-    "indoorWithoutBarrier":"Indoor Without Barrier",
-    "indoorWithBarrier":"Indoor With Barrier",
-    "travelers":"travelers"
+    "outdoorWithoutBarrier": "Outdoor Without Barrier",
+    "outdoorWithBarrier": "Outdoor With Barrier",
+    "indoorWithoutBarrier": "Indoor Without Barrier",
+    "indoorWithBarrier": "Indoor With Barrier",
+    "travelers": "travelers"
   },
   "detailPage": {
     "vendorProfile": "Vendor Profile",
@@ -464,7 +472,8 @@
     "twitter": "Twitter",
     "instagram": "Instagram",
     "facebook": "Facebook",
-    "youTube": "YouTube"
+    "youTube": "YouTube",
+    "AllRightsReserved":"All Rights Reserved"
   },
   "error": {
     "numberError": "Mobile Number Error!",

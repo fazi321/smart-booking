@@ -95,7 +95,7 @@
         </div>
       </section>
       <div class="reserved">
-        <p>All Rights Reserved © 2022 Smart Booking</p>
+        <p>{{ $t("footer.AllRightsReserved") }} © 2022 Smart Booking</p>
       </div>
     </div>
   </footer>

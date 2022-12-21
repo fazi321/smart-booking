@@ -3,8 +3,9 @@
     <div class="smart-title">
       <h1>{{$t('homePage.whatWeDo')}}</h1>
     </div>
-    <div class="card-container">
-      <WhatWeDo v-for="(item, index) in WhatWeDo" :dataItem="item" :key="index" />
+    <div >
+      <!-- <WhatWeDo v-for="(item, index) in WhatWeDo" :dataItem="item" :key="index" /> -->
+      <WhatWeDo />
     </div>
   </div>
 </template>
@@ -18,14 +19,14 @@ export default {
   },
   data() {
     return {
-      WhatWeDo: [
-        { title: "Instant Reservation", image: "reserve.svg", text: "Your reservation is 100% guaranteed." },
-        { title: "Customer service", image: "customer.svg", text: "We support you throughout the week" },
-        { title: "Advanced and intelligent search", image: "search.svg", text: "All kinds of search at your fingertips" },
-        { title: "Safe Payment Methods", image: "payment.svg", text: "Multiple and secure payment methods" },
-        { title: "Trusted Reviews", image: "review.svg", text: "Certified reviews and comments" },
-        { title: "Photos and videos", image: "photo.svg", text: "See photos from your place" }
-      ]
+      // WhatWeDo: [
+      //   { title: this.$t('homePage.InstantReservation'), image: "reserve.svg", text: "Your reservation is 100% guaranteed." },
+      //   { title: this.$t('homePage.CustomerService'), image: "customer.svg", text: "We support you throughout the week" },
+      //   { title: this.$t('homePage.Advancedandintelligentsearch'), image: "search.svg", text: "All kinds of search at your fingertips" },
+      //   { title: this.$t('homePage.SafePaymentMethods'), image: "payment.svg", text: this.$t('homePage.MultipleandsecurepaymentMethods') },
+      //   { title: this.$t('homePage.TrustedReviews'), image: "review.svg", text: "Certified reviews and comments" },
+      //   { title: this.$t('homePage.Photosandvideos'), image: "photo.svg", text: this.$t('homePage.Seephotosfromyourplace') }
+      // ]
     };
   }
 };
