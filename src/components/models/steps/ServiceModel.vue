@@ -538,9 +538,9 @@
               <div class="inputs-container">
                 <div>
                   <input
+                    type="text"
                     :class="{ activeErr: errors.address }"
                     @input="resolveErr('address')"
-                    type="text"
                     :placeholder="$t('placeholders.address')"
                     v-model="address.address"
                   />
@@ -579,6 +579,42 @@
                     @input="resolveErr('landMark')"
                     :placeholder="$t('placeholders.landMark')"
                     v-model="address.landMark"
+                  />
+                </div>
+                <div>
+                  <input
+                    type="text"
+                    :class="{ activeErr: errors.destination }"
+                    @input="resolveErr('destination')"
+                    :placeholder="$t('placeholders.destination')"
+                    v-model="address.destination"
+                  />
+                </div>
+                <div>
+                  <input
+                    type="text"
+                    :class="{ activeErr: errors.district }"
+                    @input="resolveErr('district')"
+                    :placeholder="$t('placeholders.district')"
+                    v-model="address.district"
+                  />
+                </div>
+                <div>
+                  <input
+                    type="text"
+                    :class="{ activeErr: errors.direction }"
+                    @input="resolveErr('direction')"
+                    :placeholder="$t('placeholders.direction')"
+                    v-model="address.direction"
+                  />
+                </div>
+                <div>
+                  <input
+                    type="text"
+                    :class="{ activeErr: errors.siteInfo }"
+                    @input="resolveErr('siteInfo')"
+                    :placeholder="$t('placeholders.siteInfo')"
+                    v-model="address.siteInfo"
                   />
                 </div>
                 <!-- <div>

@@ -28,8 +28,7 @@
                 <img src="../../assets/tick.png" v-if="cached == 'service' || cached == 'price'" />
               </h5>
               <h6>
-                Lorem ipsum dolor sit amet, consectetur <br />
-                adipiscing elit. Fusce ac odio at urna curs <br />us lacinia.
+               {{ $t("AddService.fewQuestion") }}
               </h6>
             </div>
           </div>
@@ -46,8 +45,7 @@
                 <img src="../../assets/tick.png" v-if="cached == 'price'" />
               </h5>
               <h6>
-                Lorem ipsum dolor sit amet, consectetur <br />
-                adipiscing elit. Fusce ac odio at urna curs <br />us lacinia.
+                {{ $t("AddService.Settherules") }}
               </h6>
             </div>
           </div>
@@ -60,10 +58,7 @@
             </div>
             <div class="content">
               <h5>{{ $t("AddService.priceDetails") }}</h5>
-              <h6>
-                Lorem ipsum dolor sit amet, consectetur <br />
-                adipiscing elit. Fusce ac odio at urna curs <br />us lacinia.
-              </h6>
+              <h6>{{ $t("AddService.SetPrice") }}</h6>
             </div>
           </div>
         </div>
@@ -239,6 +234,7 @@ img {
   text-align: left;
   line-height: 1.5;
   position: relative;
+  width: 205px;
 }
 .container-vendor .primary-cards .content h5 img {
   width: 20px;

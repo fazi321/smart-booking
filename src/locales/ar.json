@@ -8,7 +8,7 @@
         "notifications": "الإشعارات",
         "login": "تسجيل الدخول",
         "becomeVendor": "اشترك لإضافة عقارك",
-        "addService": "أضف خدمة",
+        "addService": "إضافة الخدمة",
         "home": "الرئيسية",
         "categories": "فئات",
         "privacy": "سياسة الخصوصية",
@@ -73,7 +73,8 @@
         "breakFast": "وجبة افطار",
         "lunch": "غداء",
         "dinner": "وجبة عشاء",
-        "audditionailRules": "الاختبار القواعد"
+        "audditionailRules": "الاختبار القواعد",
+        "barbequeCorner": "ركن الشواء"
     },
     "pricing": {
         "priceDetails": "تفاصيل السعر",
@@ -233,12 +234,16 @@
         "dateOfBirth": "تاريخ الميلاد"
     },
     "AddService": {
+        "swimmingWithWaterGames":"swimming With Water Games",
         "addService": "أضف خدمة",
         "subAddService": "الرجاء إضافة تفاصيل الخدمة الجديدة",
-        "basicInformation": "المعلومات الأساسية",
-        "serviceDescription": "تفاصيل الخدمة",
-        "priceDetails": "تفاصيل الأسعار",
-        "next": "التالي",
+        "basicInformation": "معلومات اساسية",
+        "fewQuestion":"أسئلة قليلة حول نوع الخدمة والغرف والحمام ووسائل الراحة",
+        "serviceDescription": "وصف الخدمة",
+        "Settherules":"ضع القواعد وانشر أفضل الصور ووصف المشهد للضيوف",
+        "priceDetails": "تحديد السعر",
+        "SetPrice":"تحديد الأسعار والتوافر وإعدادات الحجز",
+        "next": "المتابعة",
         "serviceType": "نوع الخدمة",
         "back": "الى الخلف",
         "room&guest": "الغرف والضيوف",
@@ -425,7 +430,14 @@
         "outdoorWithBarrier": "Outdoor With Barrier",
         "indoorWithoutBarrier": "Indoor Without Barrier",
         "indoorWithBarrier": "Indoor With Barrier",
-        "travelers": "مسافرين"
+        "travelers": "مسافرين",
+        "descriptionInEnglish":"الوصف باللغة الإنجليزية",
+        "descriptionInArabic":"الوصف باللغة العربية",
+        "destination":"الوجهة",
+        "district":"الحي",
+        "direction":"الاتجاه",
+        "siteInfo":"siteInfo",
+        "childrenAllowed":"مسموح للأطفال"
     },
     "detailPage": {
         "vendorProfile": "ملف المالك",

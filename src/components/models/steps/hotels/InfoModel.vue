@@ -58,6 +58,16 @@
                 <input
                   type="number"
                   min="1"
+                  :class="{ activeErr: errors.numberAdults }"
+                  @input="resolveErr('numberAdults')"
+                  :placeholder="$t('placeholders.numberAdults')"
+                  v-model="unitsAndGuest.numberAdults"
+                />
+              </div>
+              <div>
+                <input
+                  type="number"
+                  min="1"
                   :class="{ activeErr: errors.numberChildren }"
                   @input="resolveErr('numberChildren')"
                   :placeholder="$t('placeholders.numberChildren')"
@@ -374,6 +384,13 @@
                   <img src="../../../../assets/images/speakers.png" alt="" />
                   <h6>{{ $t("AddService.speakers") }}</h6>
                 </div>
+                <div
+                  :class="{ active: isExist('swimmingWithWaterGames') }"
+                  @click="selectedAmenities('swimmingWithWaterGames')"
+                >
+                  <img src="../../../../assets/images/swimming-pool.png" alt="" />
+                  <h6>{{ $t("AddService.swimmingWithWaterGames") }}</h6>
+                </div>
                 <!-- <div
                   :class="{ active: isExist('laserLights') }"
                   @click="selectedAmenities('laserLights')"
@@ -495,6 +512,11 @@ export default {
         }
         if (!verifyInputs.numberUnits) {
           this.errors.numberUnits = true;
+          this.focusInput();
+          return;
+        }
+        if (!verifyInputs.numberAdults) {
+          this.errors.numberAdults = true;
           this.focusInput();
           return;
         }

@@ -3,7 +3,11 @@
     <div class="hotel-wrapper">
       <div class="title">
         <h2 v-if="storeState && storeState.description">
-          {{ storeState.description.nameInEnglish }}
+          {{
+            $t("lang") == "ar"
+              ? storeState.description.nameInArabic
+              : storeState.description.nameInEnglish
+          }}
         </h2>
       </div>
       <div class="overview">

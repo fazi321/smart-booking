@@ -1,9 +1,9 @@
 <template>
   <section class="facilities-container">
-    <h5>{{$t('detailPage.amenities')}}</h5>
+    <h5>{{ $t("detailPage.amenities") }}</h5>
     <!-- Sports -->
     <div class="facility-icons" v-if="sportsCheck">
-      <h6>{{$t('AddService.sports')}}</h6>
+      <h6>{{ $t("AddService.sports") }}</h6>
       <div class="facility-card">
         <div
           class="icon-card"
@@ -15,7 +15,7 @@
                 <img src="../../assets/images/fitness.png" alt />
               </div>
             </div>
-            <p>{{$t('AddService.gym')}}</p>
+            <p>{{ $t("AddService.gym") }}</p>
           </div>
         </div>
         <div
@@ -28,7 +28,7 @@
                 <img src="../../assets/images/billiards.png" alt />
               </div>
             </div>
-            <p>{{$t('AddService.billiard')}}</p>
+            <p>{{ $t("AddService.billiard") }}</p>
           </div>
         </div>
         <div
@@ -43,7 +43,7 @@
                 <img src="../../assets/images/court.png" alt />
               </div>
             </div>
-            <p>{{$t('AddService.tennisCourt')}}</p>
+            <p>{{ $t("AddService.tennisCourt") }}</p>
           </div>
         </div>
         <div
@@ -60,7 +60,7 @@
                 <img src="../../assets/images/hockey.png" alt />
               </div>
             </div>
-            <p>{{$t('AddService.airHockey')}}</p>
+            <p>{{ $t("AddService.airHockey") }}</p>
           </div>
         </div>
         <div
@@ -75,7 +75,7 @@
                 <img src="../../assets/images/football-field.png" alt />
               </div>
             </div>
-            <p>{{$t('AddService.soccerField')}}</p>
+            <p>{{ $t("AddService.soccerField") }}</p>
           </div>
         </div>
         <div
@@ -90,7 +90,7 @@
                 <img src="../../assets/images/trampoline.png" alt />
               </div>
             </div>
-            <p>{{$t('AddService.trampoline')}}</p>
+            <p>{{ $t("AddService.trampoline") }}</p>
           </div>
         </div>
         <div
@@ -105,7 +105,7 @@
                 <img src="../../assets/images/beach-volleyball.png" alt />
               </div>
             </div>
-            <p>{{$t('AddService.volleyBall')}}</p>
+            <p>{{ $t("AddService.volleyBall") }}</p>
           </div>
         </div>
       </div>
@@ -113,8 +113,25 @@
     <!-- Sports -->
     <!-- Leisure -->
     <div class="facility-icons" v-if="Leisure">
-      <h6>{{$t('AddService.leisure')}}</h6>
+      <h6>{{ $t("AddService.leisure") }}</h6>
       <div class="facility-card">
+        <div
+          class="icon-card"
+          v-if="
+            storeState &&
+            storeState.swimmingWithWaterGames &&
+            storeState.leisure.swimmingWithWaterGames
+          "
+        >
+          <div>
+            <div class="icon-img">
+              <div>
+                <img src="../../assets/images/swimming-pool.png" alt />
+              </div>
+            </div>
+            <p>{{ $t("AddService.swimmingWithWaterGames") }}</p>
+          </div>
+        </div>
         <div
           class="icon-card"
           v-if="
@@ -127,7 +144,7 @@
                 <img src="../../assets/images/hot-bath.png" alt />
               </div>
             </div>
-            <p>{{$t('AddService.steamBath')}}</p>
+            <p>{{ $t("AddService.steamBath") }}</p>
           </div>
         </div>
         <div
@@ -142,7 +159,7 @@
                 <img src="../../assets/images/airSlider.png" alt />
               </div>
             </div>
-            <p>{{$t('AddService.airSlider')}}</p>
+            <p>{{ $t("AddService.airSlider") }}</p>
           </div>
         </div>
         <div
@@ -157,7 +174,7 @@
                 <img src="../../assets/images/sandGames.png" alt />
               </div>
             </div>
-            <p>{{$t('AddService.sandGames')}}</p>
+            <p>{{ $t("AddService.sandGames") }}</p>
           </div>
         </div>
         <div
@@ -172,7 +189,7 @@
                 <img src="../../assets/images/waterGames.png" alt />
               </div>
             </div>
-            <p>{{$t('AddService.waterGames')}}</p>
+            <p>{{ $t("AddService.waterGames") }}</p>
           </div>
         </div>
         <div
@@ -189,7 +206,7 @@
                 <img src="../../assets/images/swimming-pool.png" alt />
               </div>
             </div>
-            <p>{{$t('AddService.inDoorSwimmingPool')}} </p>
+            <p>{{ $t("AddService.inDoorSwimmingPool") }}</p>
           </div>
         </div>
         <div
@@ -206,7 +223,7 @@
                 <img src="../../assets/images/swimming-pool.png" alt />
               </div>
             </div>
-            <p>{{$t('AddService.outDoorSwimmingPool')}} </p>
+            <p>{{ $t("AddService.outDoorSwimmingPool") }}</p>
           </div>
         </div>
         <div
@@ -220,10 +237,10 @@
           <div>
             <div class="icon-img">
               <div>
-                <img src="../../assets/images/heater.svg" alt />
+                <img src="../../assets/images/heater.png" alt />
               </div>
             </div>
-            <p>{{$t('AddService.swimmingPoolHeater')}}</p>
+            <p>{{ $t("AddService.swimmingPoolHeater") }}</p>
           </div>
         </div>
         <div
@@ -238,7 +255,7 @@
                 <img src="../../assets/images/hairstylist.png" alt />
               </div>
             </div>
-            <p>{{$t('AddService.hairStylist')}}</p>
+            <p>{{ $t("AddService.hairStylist") }}</p>
           </div>
         </div>
         <div
@@ -253,7 +270,7 @@
                 <img src="../../assets/images/playground.png" alt />
               </div>
             </div>
-            <p>{{$t('AddService.playground')}}</p>
+            <p>{{ $t("AddService.playground") }}</p>
           </div>
         </div>
         <div
@@ -266,7 +283,7 @@
                 <img src="../../assets/images/hot-bath.png" alt />
               </div>
             </div>
-            <p>{{$t('AddService.spa')}}</p>
+            <p>{{ $t("AddService.spa") }}</p>
           </div>
         </div>
         <div
@@ -279,14 +296,14 @@
                 <img src="../../assets/images/hotTub.png" alt />
               </div>
             </div>
-            <p>{{$t('AddService.hotTub')}}</p>
+            <p>{{ $t("AddService.hotTub") }}</p>
           </div>
         </div>
       </div>
     </div>
     <!-- Home Amenities -->
     <div class="facility-icons" v-if="Amenities">
-      <h6>{{$t('AddService.homeAmenities')}}</h6>
+      <h6>{{ $t("AddService.homeAmenities") }}</h6>
       <div class="facility-card">
         <div
           class="icon-card"
@@ -300,7 +317,7 @@
                 <img src="../../assets/images/24-hours.png" alt />
               </div>
             </div>
-            <p>{{$t('AddService.24-HourRequest')}}</p>
+            <p>{{ $t("AddService.24-HourRequest") }}</p>
           </div>
         </div>
         <div
@@ -317,7 +334,7 @@
                 <img src="../../assets/images/wheelchair.png" alt />
               </div>
             </div>
-            <p>{{$t('AddService.wheelChair')}}</p>
+            <p>{{ $t("AddService.wheelChair") }}</p>
           </div>
         </div>
         <div
@@ -334,7 +351,7 @@
                 <img src="../../assets/images/entrance.png" alt />
               </div>
             </div>
-            <p>{{$t('AddService.privateEntrance')}}</p>
+            <p>{{ $t("AddService.privateEntrance") }}</p>
           </div>
         </div>
         <div
@@ -347,7 +364,7 @@
                 <img src="../../assets/images/doorman.png" alt />
               </div>
             </div>
-            <p>{{$t('AddService.doorman')}}</p>
+            <p>{{ $t("AddService.doorman") }}</p>
           </div>
         </div>
         <div
@@ -360,7 +377,7 @@
                 <img src="../../assets/images/parking.png" alt />
               </div>
             </div>
-            <p>{{$t('AddService.parking')}}</p>
+            <p>{{ $t("AddService.parking") }}</p>
           </div>
         </div>
         <div
@@ -373,7 +390,7 @@
                 <img src="../../assets/images/elevator.png" alt />
               </div>
             </div>
-            <p>{{$t('AddService.elevator')}}</p>
+            <p>{{ $t("AddService.elevator") }}</p>
           </div>
         </div>
         <div
@@ -386,7 +403,7 @@
                 <img src="../../assets/images/saftyBox.png" alt />
               </div>
             </div>
-            <p>{{$t('AddService.saftyBox')}}</p>
+            <p>{{ $t("AddService.saftyBox") }}</p>
           </div>
         </div>
         <div
@@ -403,7 +420,7 @@
                 <img src="../../assets/images/air-conditioner.png" alt />
               </div>
             </div>
-            <p>{{$t('AddService.conditioning')}}</p>
+            <p>{{ $t("AddService.conditioning") }}</p>
           </div>
         </div>
         <div
@@ -416,7 +433,7 @@
                 <img src="../../assets/images/tv.png" alt />
               </div>
             </div>
-            <p>{{$t('AddService.tv')}}</p>
+            <p>{{ $t("AddService.tv") }}</p>
           </div>
         </div>
         <div
@@ -429,7 +446,7 @@
                 <img src="../../assets/images/wifi.png" alt />
               </div>
             </div>
-            <p>{{$t('AddService.wifi')}}</p>
+            <p>{{ $t("AddService.wifi") }}</p>
           </div>
         </div>
         <div
@@ -442,7 +459,7 @@
                 <img src="../../assets/images/speakers.png" alt />
               </div>
             </div>
-            <p>{{$t('AddService.speakers')}}</p>
+            <p>{{ $t("AddService.speakers") }}</p>
           </div>
         </div>
         <div
@@ -455,7 +472,7 @@
                 <img src="../../assets/images/stage.png" alt />
               </div>
             </div>
-            <p>{{$t('AddService.stage')}}</p>
+            <p>{{ $t("AddService.stage") }}</p>
           </div>
         </div>
         <div
@@ -470,7 +487,7 @@
                 <img src="../../assets/images/laser.png" alt />
               </div>
             </div>
-            <p>{{$t('AddService.laserLights')}}</p>
+            <p>{{ $t("AddService.laserLights") }}</p>
           </div>
         </div>
       </div>
@@ -516,7 +533,9 @@ export default {
           this.storeState.leisure.swimmingPoolWithHeat) ||
         (this.storeState.leisure && this.storeState.leisure.playground) ||
         (this.storeState.leisure && this.storeState.leisure.spa) ||
-        (this.storeState.leisure && this.storeState.leisure.hotTub)
+        (this.storeState.leisure && this.storeState.leisure.hotTub) ||
+        (this.storeState.swimmingWithWaterGames &&
+          this.storeState.leisure.swimmingWithWaterGames)
       ) {
         return true;
       } else {

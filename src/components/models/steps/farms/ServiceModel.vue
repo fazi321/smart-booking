@@ -137,6 +137,26 @@
               <div class="price-inputs">
                 <div class="price-checkbox">
                   <label class="container-input"
+                    >{{ $t("serviceDescription.audditionailRules") }}
+                    <input
+                      type="checkbox"
+                      v-model="suitableFor.audditionailRules"
+                    />
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+                <div class="input-price">
+                  <input
+                    type="text"
+                    v-model="suitablePrice.audditionailRules"
+                    :disabled="!suitableFor.audditionailRules"
+                  />
+                </div>
+              </div>
+              <!-- block -->
+              <div class="price-inputs">
+                <div class="price-checkbox">
+                  <label class="container-input"
                     >{{ $t("serviceDescription.suitableForInfants") }}
                     <input
                       type="checkbox"
@@ -293,6 +313,13 @@
               <label class="container-input"
                 >{{ $t("serviceDescription.greenYard") }}
                 <input type="checkbox" v-model="outdoors.greenYard" />
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div>
+              <label class="container-input"
+                >{{ $t("serviceDescription.barbequeCorner") }}
+                <input type="checkbox" v-model="outdoors.barbequeCorner" />
                 <span class="checkmark"></span>
               </label>
             </div>
@@ -500,7 +527,7 @@
           </div>
           <div class="upload-file">
             <label for="inputTag" :class="{ activeErr: verifyImages > 5 }">
-               {{$t('placeholders.addserviceimage')}}
+              {{ $t("placeholders.addserviceimage") }}
               <input
                 id="inputTag"
                 type="file"
@@ -588,6 +615,42 @@
                     v-model="address.landMark"
                   />
                 </div>
+                <div>
+                  <input
+                    type="text"
+                    :class="{ activeErr: errors.destination }"
+                    @input="resolveErr('destination')"
+                    :placeholder="$t('placeholders.destination')"
+                    v-model="address.destination"
+                  />
+                </div>
+                <div>
+                  <input
+                    type="text"
+                    :class="{ activeErr: errors.district }"
+                    @input="resolveErr('district')"
+                    :placeholder="$t('placeholders.district')"
+                    v-model="address.district"
+                  />
+                </div>
+                <div>
+                  <input
+                    type="text"
+                    :class="{ activeErr: errors.direction }"
+                    @input="resolveErr('direction')"
+                    :placeholder="$t('placeholders.direction')"
+                    v-model="address.direction"
+                  />
+                </div>
+                <div>
+                  <input
+                    type="text"
+                    :class="{ activeErr: errors.siteInfo }"
+                    @input="resolveErr('siteInfo')"
+                    :placeholder="$t('placeholders.siteInfo')"
+                    v-model="address.siteInfo"
+                  />
+                </div>
                 <!-- <div>
                   <input
                     type="text"
@@ -600,7 +663,9 @@
         </div>
         <div class="form-container">
           <div class="input-div step-btn">
-            <button type="submit" @click="submited">{{ $t("AddService.next") }}</button>
+            <button type="submit" @click="submited">
+              {{ $t("AddService.next") }}
+            </button>
           </div>
         </div>
       </div>
@@ -696,9 +761,9 @@ export default {
         reader.readAsDataURL(e.target.files[i]);
       }
       this.$emit("images", formData);
-      e.target.value = ''
+      e.target.value = "";
     },
-     lastStep() {
+    lastStep() {
       this.$parent.accountOpt = "price";
     },
     submited() {
@@ -709,7 +774,11 @@ export default {
         if (value) {
           for (const [pkey, pValue] of Object.entries(this.suitablePrice)) {
             if (key == pkey) {
-              newObjC[key] = pValue;
+              if (key == "audditionailRules") {
+                newObjC[key] = [pValue];
+              } else {
+                newObjC[key] = pValue;
+              }
             }
           }
         }
@@ -737,7 +806,7 @@ export default {
       };
       console.log(finalDetail);
       this.$emit("decription", finalDetail);
-      this.step = 7
+      this.step = 7;
       // this.$parent.accountOpt = "price";
     },
     changeStep(step) {

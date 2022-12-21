@@ -477,6 +477,9 @@ export default {
           this.$store.dispatch("details/setLoading", false);
           setTimeout(() => {
             this.$router.push("/my-services");
+            if (this.$route.path == "/my-services") {
+              location.reload();
+            }
           }, 3000);
         }
       } catch (error) {

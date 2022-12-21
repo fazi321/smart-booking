@@ -141,10 +141,14 @@
   },
   "AddService": {
     "addService": "Add Service",
+    "swimmingWithWaterGames":"swimming With Water Games",
     "subAddService": "Please add details for new service",
     "basicInformation": "Basic information",
+    "fewQuestion":"Few questions about type of service, rooms, bath and amenities",
     "serviceDescription": "Service Description",
+    "Settherules":"Set the rules, post best pictures and describe the scene to guests",
     "priceDetails": "Price details",
+    "SetPrice":"Set prices, availability and booking settings",
     "next": "Next",
     "serviceType": "Service type",
     "back": "back",
@@ -211,7 +215,8 @@
     "hotel": "Hotel",
     "wedding": "Wedding",
     "halls": "Halls",
-    "farms": "Farms"
+    "farms": "Farms",
+    
   },
   "serviceDescription": {
     "serviceDescription": "Service Description",
@@ -261,7 +266,8 @@
     "breakFast": "Break Fast",
     "lunch": "Lunch",
     "dinner": "Dinner",
-    "audditionailRules": "AudditionailRules"
+    "audditionailRules": "AudditionailRules",
+    "barbequeCorner": "Barbeque Corner"
   },
   "pricing": {
     "priceDetails": "Price Details",
@@ -425,7 +431,14 @@
     "outdoorWithBarrier": "Outdoor With Barrier",
     "indoorWithoutBarrier": "Indoor Without Barrier",
     "indoorWithBarrier": "Indoor With Barrier",
-    "travelers": "travelers"
+    "travelers": "travelers",
+    "descriptionInEnglish":"Description In English",
+    "descriptionInArabic":"Description In Arabic",
+    "destination":"destination",
+    "district":"district",
+    "direction":"direction",
+    "siteInfo":"siteInfo",
+    "childrenAllowed":"children Allowed"
   },
   "detailPage": {
     "vendorProfile": "Vendor Profile",

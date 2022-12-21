@@ -519,7 +519,7 @@
           </div>
           <div class="upload-file">
             <label for="inputTag" :class="{ activeErr: verifyImages > 5 }">
-             {{$t('placeholders.addserviceimage')}}
+              {{ $t("placeholders.addserviceimage") }}
               <input
                 id="inputTag"
                 type="file"
@@ -605,6 +605,42 @@
                     @input="resolveErr('landMark')"
                     :placeholder="$t('placeholders.landMark')"
                     v-model="address.landMark"
+                  />
+                </div>
+                <div>
+                  <input
+                    type="text"
+                    :class="{ activeErr: errors.destination }"
+                    @input="resolveErr('destination')"
+                    :placeholder="$t('placeholders.destination')"
+                    v-model="address.destination"
+                  />
+                </div>
+                <div>
+                  <input
+                    type="text"
+                    :class="{ activeErr: errors.district }"
+                    @input="resolveErr('district')"
+                    :placeholder="$t('placeholders.district')"
+                    v-model="address.district"
+                  />
+                </div>
+                <div>
+                  <input
+                    type="text"
+                    :class="{ activeErr: errors.direction }"
+                    @input="resolveErr('direction')"
+                    :placeholder="$t('placeholders.direction')"
+                    v-model="address.direction"
+                  />
+                </div>
+                <div>
+                  <input
+                    type="text"
+                    :class="{ activeErr: errors.siteInfo }"
+                    @input="resolveErr('siteInfo')"
+                    :placeholder="$t('placeholders.siteInfo')"
+                    v-model="address.siteInfo"
                   />
                 </div>
                 <!-- <div>
@@ -715,7 +751,7 @@ export default {
         reader.readAsDataURL(e.target.files[i]);
       }
       this.$emit("images", formData);
-      e.target.value = ''
+      e.target.value = "";
     },
     lastStep() {
       this.$parent.accountOpt = "price";
@@ -728,11 +764,16 @@ export default {
         if (value) {
           for (const [pkey, pValue] of Object.entries(this.suitablePrice)) {
             if (key == pkey) {
-              newObjC[key] = pValue;
+              if (key == "audditionailRules") {
+                newObjC[key] = [pValue];
+              } else {
+                newObjC[key] = pValue;
+              }
             }
           }
         }
       }
+      console.log(newObjC, "new obj");
       // price
       const newObj = {};
       for (const [key, value] of Object.entries(this.rules)) {

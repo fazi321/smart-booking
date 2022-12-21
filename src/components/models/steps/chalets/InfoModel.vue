@@ -272,6 +272,13 @@
                   <h6>{{ $t("AddService.outDoor") }}</h6>
                   <h6>{{ $t("AddService.swimmingPool") }}</h6>
                 </div>
+                <div
+                  :class="{ active: isExist('playground') }"
+                  @click="selectedAmenities('playground')"
+                >
+                  <img src="../../../../assets/images/playground.png" alt="" />
+                  <h6>{{ $t("AddService.playground") }}</h6>
+                </div>
                 <!-- <div
                   :class="{ active: isExist('playground') }"
                   @click="selectedAmenities('playground')"
@@ -302,6 +309,13 @@
                   <img src="../../../../assets/images/entrance.png" alt="" />
                   <h6>{{ $t("AddService.private") }}</h6>
                   <h6>{{ $t("AddService.entrance") }}</h6>
+                </div>
+                <div
+                  :class="{ active: isExist('parking') }"
+                  @click="selectedAmenities('parking')"
+                >
+                  <img src="../../../../assets/images/parking.png" alt="" />
+                  <h6>{{ $t("AddService.parking") }}</h6>
                 </div>
                 <div
                   :class="{ active: isExist('doorman') }"

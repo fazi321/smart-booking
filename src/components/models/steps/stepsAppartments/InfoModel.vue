@@ -20,11 +20,12 @@
             <div class="inputs-container">
               <div>
                 <input
-                  type="text"
+                  type="number"
+                  min="1"
                   :class="{ activeErr: errors.numRooms }"
                   @input="resolveErr('numRooms')"
                   :placeholder="$t('placeholders.numberOfRooms')"
-                  v-model="roomsGuest.numRooms"
+                  v-model="unitsAndGuest.numRooms"
                 />
               </div>
               <!-- <div>
@@ -37,40 +38,50 @@
               <div>
                 <input
                   type="test"
-                  :placeholder="$t('placeholders.section')"
-                  :class="{ activeErr: errors.section }"
-                  @input="resolveErr('section')"
-                  v-model="roomsGuest.section"
+                  :class="{ activeErr: errors.roomType }"
+                  @input="resolveErr('roomType')"
+                  :placeholder="$t('placeholders.roomType')"
+                  v-model="unitsAndGuest.roomType"
                 />
               </div>
               <div>
                 <input
                   type="number"
                   min="1"
-                  :placeholder="$t('placeholders.doubleBed')"
-                  :class="{ activeErr: errors.doubleBed }"
-                  @input="resolveErr('doubleBed')"
-                  v-model="roomsGuest.doubleBed"
+                  :class="{ activeErr: errors.numberUnits }"
+                  @input="resolveErr('numberUnits')"
+                  :placeholder="$t('placeholders.numberUnits')"
+                  v-model="unitsAndGuest.numberUnits"
                 />
               </div>
               <div>
                 <input
                   type="number"
                   min="1"
-                  :class="{ activeErr: errors.singleBed }"
-                  @input="resolveErr('singleBed')"
-                  :placeholder="$t('placeholders.singleBed')"
-                  v-model="roomsGuest.singleBed"
+                  :class="{ activeErr: errors.numberAdults }"
+                  @input="resolveErr('numberAdults')"
+                  :placeholder="$t('placeholders.numberAdults')"
+                  v-model="unitsAndGuest.numberAdults"
                 />
               </div>
               <div>
                 <input
                   type="number"
                   min="1"
-                  :class="{ activeErr: errors.maxGuest }"
-                  @input="resolveErr('maxGuest')"
-                  :placeholder="$t('placeholders.maxGuest')"
-                  v-model="roomsGuest.maxGuest"
+                  :class="{ activeErr: errors.childrenAllowed }"
+                  @input="resolveErr('childrenAllowed')"
+                  :placeholder="$t('placeholders.childrenAllowed')"
+                  v-model="unitsAndGuest.childrenAllowed"
+                />
+              </div>
+              <div>
+                <input
+                  type="number"
+                  min="1"
+                  :class="{ activeErr: errors.singleBeds }"
+                  @input="resolveErr('singleBeds')"
+                  :placeholder="$t('placeholders.singleBeds')"
+                  v-model="unitsAndGuest.singleBeds"
                 />
               </div>
               <div>
@@ -80,19 +91,16 @@
                   :class="{ activeErr: errors.bathrooms }"
                   @input="resolveErr('bathrooms')"
                   :placeholder="$t('placeholders.bathrooms')"
-                  v-model="roomsGuest.bathrooms"
+                  v-model="unitsAndGuest.bathrooms"
                 />
               </div>
-              <div>
+              <!-- <div>
                 <input
                   type="number"
-                  min="1"
-                  :class="{ activeErr: errors.numOfMajlesTents }"
-                  @input="resolveErr('numOfMajlesTents')"
                   :placeholder="$t('placeholders.NumOfMajlesTents')"
                   v-model="roomsGuest.numOfMajlesTents"
                 />
-              </div>
+              </div> -->
               <!-- <div>
                 <input
                   type="number"
@@ -102,18 +110,25 @@
               </div> -->
               <div class="rules">
                 <label class="container-input"
-                  >{{$t('AddService.indoorSeating')}}
-                  <input type="checkbox" v-model="roomsGuest.indoorSeating" />
+                  >{{ $t("AddService.livingRoom") }}
+                  <input type="checkbox" v-model="unitsAndGuest.livingRoom" />
                   <span class="checkmark"></span>
                 </label>
               </div>
-              <div class="rules">
+              <!-- <div class="rules">
                 <label class="container-input"
-                  >{{$t('AddService.outdoorSeating')}}
-                  <input type="checkbox" v-model="roomsGuest.outdoorSeating" />
+                  >Outdoor Seating
+                  <input type="checkbox" v-model="unitsAndGuest.outdoorSeating" />
                   <span class="checkmark"></span>
                 </label>
-              </div>
+              </div> -->
+              <!-- <div class="rules">
+                <label class="container-input"
+                  >{{$t('AddService.additionSeating')}}
+                  <input type="checkbox" v-model="roomsGuest.additionSeating" />
+                  <span class="checkmark"></span>
+                </label>
+              </div> -->
             </div>
           </div>
         </div>
@@ -150,6 +165,13 @@
             <div class="container-service container-amenities">
               <div class="cards">
                 <div
+                  :class="{ active: isExist('gym') }"
+                  @click="selectedAmenities('gym')"
+                >
+                  <img src="../../../../assets/images/fitness.png" alt="" />
+                  <h6>{{ $t("AddService.gym") }}</h6>
+                </div>
+                <div
                   :class="{ active: isExist('billard') }"
                   @click="selectedAmenities('billard')"
                 >
@@ -164,37 +186,120 @@
                   <h6>{{ $t("AddService.tennisCourt") }}</h6>
                 </div>
                 <div
+                  :class="{ active: isExist('airHockeyTable') }"
+                  @click="selectedAmenities('airHockeyTable')"
+                >
+                  <img src="../../../../assets/images/hockey.png" alt="" />
+                  <h6>{{ $t("AddService.airHockey") }}</h6>
+                </div>
+                <!-- <div
                   :class="{ active: isExist('soccerField') }"
                   @click="selectedAmenities('soccerField')"
                 >
-                  <img src="../../../../assets/images/football-field.png" alt="" />
-                  <h6>{{ $t("AddService.soccerField") }}</h6>
-                </div>
-                <div
+                  <img src="../../../../assets/images/air-conditioner.png" alt="" />
+                  <h6>Soccer Field</h6>
+                </div> -->
+                <!-- <div
                   :class="{ active: isExist('volleyBall') }"
                   @click="selectedAmenities('volleyBall')"
                 >
-                  <img src="../../../../assets/images/beach-volleyball.png" alt="" />
-                  <h6>{{ $t("AddService.volleyBall") }}</h6>
-                </div>
-                <div
+                  <img src="../../../../assets/images/air-conditioner.png" alt="" />
+                  <h6>Volley Ball</h6>
+                </div> -->
+                <!-- <div
                   :class="{ active: isExist('trampoline') }"
                   @click="selectedAmenities('trampoline')"
                 >
-                  <img src="../../../../assets/images/trampoline.png" alt="" />
-                  <h6>{{ $t("AddService.trampoline") }}</h6>
+                  <img src="../../../../assets/images/air-conditioner.png" alt="" />
+                  <h6>Trambolin</h6>
+                </div> -->
+                <!-- <div
+                  :class="{ active: isExist('airSlider') }"
+                  @click="selectedAmenities('airSlider')"
+                >
+                  <img src="../../../../assets/images/hotTub.png" alt="" />
+                  <h6>Air Slider</h6>
+                </div> -->
+                <!-- <div
+                  :class="{ active: isExist('sandGames') }"
+                  @click="selectedAmenities('sandGames')"
+                >
+                  <img src="../../../../assets/images/hotTub.png" alt="" />
+                  <h6>Sand Games</h6>
+                </div>
+                <div
+                  :class="{ active: isExist('waterGames') }"
+                  @click="selectedAmenities('waterGames')"
+                >
+                  <img src="../../../../assets/images/hotTub.png" alt="" />
+                  <h6>Water Games</h6>
+                </div> -->
+                <div
+                  :class="{ active: isExist('hotTub') }"
+                  @click="selectedAmenities('hotTub')"
+                >
+                  <img src="../../../../assets/images/hotTub.png" alt="" />
+                  <h6>{{ $t("AddService.hotTub") }}</h6>
+                </div>
+                <div
+                  :class="{ active: isExist('steamBath') }"
+                  @click="selectedAmenities('steamBath')"
+                >
+                  <img src="../../../../assets/images/hot-bath.png" alt="" />
+                  <h6>{{ $t("AddService.steamBath") }}</h6>
                 </div>
               </div>
             </div>
           </div>
           <div>
             <div class="head">
-              <h1>
-                <h6>{{ $t("AddService.sports") }}</h6>
-              </h1>
+              <h1>{{ $t("AddService.sports") }}</h1>
             </div>
             <div class="container-service container-amenities">
               <div class="cards">
+                <div
+                  :class="{ active: isExist('indoorSwimmingPool') }"
+                  @click="selectedAmenities('indoorSwimmingPool')"
+                >
+                  <img
+                    src="../../../../assets/images/swimming-pool.png"
+                    alt=""
+                  />
+                  <h6>{{ $t("AddService.indoor") }}</h6>
+                  <h6>{{ $t("AddService.swimmingPool") }}</h6>
+                </div>
+                <div
+                  :class="{ active: isExist('outdoorSwimmingPool') }"
+                  @click="selectedAmenities('outdoorSwimmingPool')"
+                >
+                  <img
+                    src="../../../../assets/images/swimming-pool.png"
+                    alt=""
+                  />
+                  <h6>{{ $t("AddService.outDoor") }}</h6>
+                  <h6>{{ $t("AddService.swimmingPool") }}</h6>
+                </div>
+                <div
+                  :class="{ active: isExist('playground') }"
+                  @click="selectedAmenities('playground')"
+                >
+                  <img src="../../../../assets/images/playground.png" alt="" />
+                  <h6>{{ $t("AddService.playground") }}</h6>
+                </div>
+                <div
+                  :class="{ active: isExist('hairStylist') }"
+                  @click="selectedAmenities('hairStylist')"
+                >
+                  <img src="../../../../assets/images/hairstylist.png" alt="" />
+                  <h6>{{ $t("AddService.hairStylist") }}</h6>
+                </div>
+                <div
+                  :class="{ active: isExist('spa') }"
+                  @click="selectedAmenities('spa')"
+                >
+                  <img src="../../../../assets/images/playground.png" alt="" />
+                  <h6>Spa</h6>
+                </div>
                 <div
                   :class="{ active: isExist('accessInHours') }"
                   @click="selectedAmenities('accessInHours')"
@@ -227,10 +332,34 @@
                   <h6>{{ $t("AddService.doorman") }}</h6>
                 </div>
                 <div
+                  :class="{ active: isExist('parking') }"
+                  @click="selectedAmenities('parking')"
+                >
+                  <img src="../../../../assets/images/parking.png" alt="" />
+                  <h6>{{ $t("AddService.parking") }}</h6>
+                </div>
+                <div
+                  :class="{ active: isExist('elevator') }"
+                  @click="selectedAmenities('elevator')"
+                >
+                  <img src="../../../../assets/images/elevator.png" alt="" />
+                  <h6>{{ $t("AddService.elevator") }}</h6>
+                </div>
+                <div
+                  :class="{ active: isExist('saftyBox') }"
+                  @click="selectedAmenities('saftyBox')"
+                >
+                  <img src="../../../../assets/images/saftyBox.png" alt="" />
+                  <h6>{{ $t("AddService.saftyBox") }}</h6>
+                </div>
+                <div
                   :class="{ active: isExist('airConditioning') }"
                   @click="selectedAmenities('airConditioning')"
                 >
-                  <img src="../../../../assets/images/air-conditioner.png" alt="" />
+                  <img
+                    src="../../../../assets/images/air-conditioner.png"
+                    alt=""
+                  />
                   <h6 v-if="$t('AddService.conditioning') == 'Conditioning'">
                     Air
                   </h6>
@@ -250,6 +379,13 @@
                   <img src="../../../../assets/images/wifi.png" alt="" />
                   <h6>{{ $t("AddService.wifi") }}</h6>
                 </div>
+                <!-- <div
+                  :class="{ active: isExist('stage') }"
+                  @click="selectedAmenities('stage')"
+                >
+                  <img src="../../../../assets/images/beach-volleyball.png" alt="" />
+                  <h6>stage</h6>
+                </div> -->
                 <div
                   :class="{ active: isExist('speakers') }"
                   @click="selectedAmenities('speakers')"
@@ -257,27 +393,20 @@
                   <img src="../../../../assets/images/speakers.png" alt="" />
                   <h6>{{ $t("AddService.speakers") }}</h6>
                 </div>
-                <div
+                <!-- <div
+                  :class="{ active: isExist('swimmingWithWaterGames') }"
+                  @click="selectedAmenities('swimmingWithWaterGames')"
+                >
+                  <img src="../../../../assets/images/swimming-pool.png" alt="" />
+                  <h6>{{ $t("AddService.swimmingWithWaterGames") }}</h6>
+                </div> -->
+                <!-- <div
                   :class="{ active: isExist('laserLights') }"
                   @click="selectedAmenities('laserLights')"
                 >
-                  <img src="../../../../assets/images/laser.png" alt="" />
-                  <h6>{{ $t("AddService.laserLights") }}</h6>
-                </div>
-                <div
-                  :class="{ active: isExist('playground') }"
-                  @click="selectedAmenities('playground')"
-                >
-                  <img src="../../../../assets/images/playground.png" alt="" />
-                  <h6>{{ $t("AddService.playground") }}</h6>
-                </div>
-                <div
-                  :class="{ active: isExist('parking') }"
-                  @click="selectedAmenities('parking')"
-                >
-                  <img src="../../../../assets/images/parking.png" alt="" />
-                  <h6>{{ $t("AddService.parking") }}</h6>
-                </div>
+                  <img src="../../../../assets/images/beach-volleyball.png" alt="" />
+                  <h6>laserLights</h6>
+                </div> -->
               </div>
             </div>
           </div>
@@ -317,6 +446,7 @@
         @lastStep="lastStep"
       />
     </section>
+    <!-- step three end -->
   </section>
 </template>
 
@@ -338,7 +468,7 @@ export default {
       // istransition: false,
       AmenitieSelected: [],
       unitsAndGuest: {},
-      roomsGuest: {},
+      // roomsGuest: {},
       leisure: {},
       accessCheck: false,
       accessInHoursCheck: null,
@@ -377,40 +507,40 @@ export default {
       }, 100);
     },
     changeStep(step) {
-      var verifyInputs = this.roomsGuest;
+      var verifyInputs = this.unitsAndGuest;
       if (step == 2) {
         if (!verifyInputs.numRooms) {
           this.errors.numRooms = true;
           this.focusInput();
           return;
         }
-        if (!verifyInputs.section) {
-          this.errors.section = true;
+        if (!verifyInputs.roomType) {
+          this.errors.roomType = true;
           this.focusInput();
           return;
         }
-        if (!verifyInputs.doubleBed) {
-          this.errors.doubleBed = true;
+        if (!verifyInputs.numberUnits) {
+          this.errors.numberUnits = true;
           this.focusInput();
           return;
         }
-        if (!verifyInputs.singleBed) {
-          this.errors.singleBed = true;
+        if (!verifyInputs.numberAdults) {
+          this.errors.numberAdults = true;
           this.focusInput();
           return;
         }
-        if (!verifyInputs.maxGuest) {
-          this.errors.maxGuest = true;
+        if (!verifyInputs.childrenAllowed) {
+          this.errors.childrenAllowed = true;
+          this.focusInput();
+          return;
+        }
+        if (!verifyInputs.singleBeds) {
+          this.errors.singleBeds = true;
           this.focusInput();
           return;
         }
         if (!verifyInputs.bathrooms) {
           this.errors.bathrooms = true;
-          this.focusInput();
-          return;
-        }
-        if (!verifyInputs.numOfMajlesTents) {
-          this.errors.numOfMajlesTents = true;
           this.focusInput();
           return;
         }
@@ -434,10 +564,9 @@ export default {
       // } else {
       //   delete this.leisure.accessInHours;
       // }
-      // console.log(basicInfo);
-      basicInfo.roomsGuest = this.roomsGuest;
+      basicInfo.unitsAndGuest = this.unitsAndGuest;
       basicInfo.leisure = this.leisure;
-      this.step = 3
+      this.step = 3;
       //  this.$parent.accountOpt = "service";
       this.$emit("basicInfo", basicInfo);
     },

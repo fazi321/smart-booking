@@ -1,9 +1,13 @@
 <template>
   <section class="primary-contianer-des">
     <section class="description">
-      <h3>{{$t('detailPage.description')}}</h3>
+      <h3>{{ $t("detailPage.description") }}</h3>
       <p v-if="storeState && storeState.description">
-        {{ storeState.description.descriptionInEnglish }}
+        {{
+          $t("lang") == "ar"
+            ? storeState.description.descriptionInEnglish
+            : storeState.description.descriptionInArabic
+        }}
       </p>
       <p v-else>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce erat
@@ -16,7 +20,9 @@
       </p>
     </section>
     <section class="btn-review">
-      <button class="btn" @click="openVendor">{{$t('detailPage.vendorProfile')}}</button>
+      <button class="btn" @click="openVendor">
+        {{ $t("detailPage.vendorProfile") }}
+      </button>
     </section>
   </section>
 </template>
@@ -31,7 +37,7 @@ export default {
   },
   methods: {
     openVendor() {
-      this.$emit('show')
+      this.$emit("show");
     },
   },
 };
@@ -62,7 +68,7 @@ export default {
   justify-content: space-between;
 }
 .btn-review .btn {
-  width:140px;
+  width: 140px;
   background: #febb12;
   color: #000;
   box-shadow: 0 10px 10px -5px #00000038;

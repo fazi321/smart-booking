@@ -16,7 +16,7 @@ import HotelSlider from "@/components/home/hotelSlider.vue";
 import SmartBooking from "@/components/home/smartBooking.vue";
 import ExploreCity from "@/components/home/exploreCity.vue";
 import WhatCanWeDo from "@/components/home/whatCanWeDo.vue";
-import { io } from "socket.io-client";
+// import { io } from "socket.io-client";
 // import  i18n  from "../i18n";
 export default {
   name: "HomeView",
@@ -29,28 +29,28 @@ export default {
     WhatCanWeDo,
   },
   methods: {
-    notificationModel(arg) {
-      const Toast = this.$swal.mixin({
-        toast: true,
-        position: "top-end",
-        showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.addEventListener("mouseenter", this.$swal.stopTimer);
-          toast.addEventListener("mouseleave", this.$swal.resumeTimer);
-        },
-      });
-      Toast.fire({
-        icon: "success",
-        title: `${arg.data?.notification?.title}`,
-        position: "top-end",
-        text: `${arg.data?.notification?.body}`,
-        showConfirmButton: false,
-        toast: true,
-        timer: 3000,
-      });
-    },
+    // notificationModel(arg) {
+    //   const Toast = this.$swal.mixin({
+    //     toast: true,
+    //     position: "top-end",
+    //     showConfirmButton: false,
+    //     timer: 3000,
+    //     timerProgressBar: true,
+    //     didOpen: (toast) => {
+    //       toast.addEventListener("mouseenter", this.$swal.stopTimer);
+    //       toast.addEventListener("mouseleave", this.$swal.resumeTimer);
+    //     },
+    //   });
+    //   Toast.fire({
+    //     icon: "success",
+    //     title: `${arg.data?.notification?.title}`,
+    //     position: "top-end",
+    //     text: `${arg.data?.notification?.body}`,
+    //     showConfirmButton: false,
+    //     toast: true,
+    //     timer: 3000,
+    //   });
+    // },
     // send() {
     //   const Toast = this.$swal.mixin({
     //     toast: true,
@@ -73,31 +73,31 @@ export default {
     //     timer: 3000,
     //   });
     // },
-    getProfile() {
-      var user = this.$store.state.auth.user;
-      if (user) {
-        const socket = io("https://www.testingserver.tech", {
-          query: `userId=${user._id}`,
-        });
-        socket.on("connect", () => {
-          // console.log(socket && socket.id);
-          console.log("connected");
-        });
-        socket.on("notification", (arg) => {
-          // console.log('homePage', arg)
-          this.notificationModel(arg);
-        });
-      }
-    },
+    // getProfile() {
+    //   var user = this.$store.state.auth.user;
+    //   if (user) {
+    //     const socket = io("https://www.testingserver.tech", {
+    //       query: `userId=${user._id}`,
+    //     });
+    //     socket.on("connect", () => {
+    //       // console.log(socket && socket.id);
+    //       console.log("connected");
+    //     });
+    //     socket.on("notification", (arg) => {
+    //       // console.log('homePage', arg)
+    //       this.notificationModel(arg);
+    //     });
+    //   }
+    // },
   },
-  watch: {
-    "$store.state.auth.user": {
-      immediate: true,
-      handler() {
-        this.getProfile();
-      },
-    },
-  },
+  // watch: {
+  //   "$store.state.auth.user": {
+  //     immediate: true,
+  //     handler() {
+  //       this.getProfile();
+  //     },
+  //   },
+  // },
   // methods: {
   //   send() {
   //     // eslint-disable-next-line

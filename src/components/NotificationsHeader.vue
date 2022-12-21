@@ -1,6 +1,7 @@
 <template>
   <section id="demo2" :class="{ 'set-lang': $t('lang') == 'ar' }">
     <div class="ghanti" @click="opendropDown">
+      <sup>1</sup>
       <img src="../assets/images/bell.svg" />
     </div>
     <div class="drop" v-if="dropDown">
@@ -92,6 +93,22 @@ export default {
   margin-left: 10px;
   position: relative;
   top: 4px;
+}
+.ghanti sup{
+  position: absolute;
+  width:16px;
+  height: 16px;
+  overflow: hidden;
+  top: -3px;
+  left: -4px;
+  border-radius: 50px;
+  background:#febb12;
+  color:#0e4763;
+  font-size:8px;
+  font-weight: bold;
+  display: flex;
+  align-items:center;
+  justify-content: center;
 }
 .drop {
   box-shadow: 0px 0px 7px 0px #adadada6;
