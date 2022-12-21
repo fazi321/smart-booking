@@ -1035,5 +1035,13 @@ img {
   overflow-y: scroll;
   height: 350px;
 }
+
 /* step three end */
+.inputs-container {
+  height: 400px;
+  overflow-y: scroll;
+}
+.inputs-container input{
+  min-width:222px!important;
+}
 </style>
