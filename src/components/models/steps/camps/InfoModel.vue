@@ -28,7 +28,7 @@
                   v-model="unitsAndGuest.numRooms"
                 />
               </div>
-              <div>
+              <!-- <div>
                 <input
                   type="number"
                   min="1"
@@ -37,7 +37,7 @@
                   :placeholder="$t('placeholders.numberAdults')"
                   v-model="unitsAndGuest.numberAdults"
                 />
-              </div>
+              </div> -->
               <div>
                 <input
                   type="number"
@@ -88,7 +88,7 @@
                   v-model="unitsAndGuest.singleBed"
                 />
               </div>
-              <div>
+              <!-- <div>
                 <input
                   type="number"
                   min="1"
@@ -107,7 +107,7 @@
                   :placeholder="$t('placeholders.outdoorSeating')"
                   v-model="unitsAndGuest.outdoorSeating"
                 />
-              </div>
+              </div> -->
               <div>
                 <input
                   type="number"
@@ -128,7 +128,7 @@
                   v-model="unitsAndGuest.bathrooms"
                 />
               </div>
-              <div>
+              <!-- <div>
                 <input
                   type="number"
                   min="1"
@@ -167,6 +167,27 @@
                   :placeholder="$t('placeholders.indoorWithBarrier')"
                   v-model="unitsAndGuest.indoorWithBarrier"
                 />
+              </div> -->
+              <div class="rules">
+                <label class="container-input"
+                  >{{$t('AddService.indoorSeating')}}
+                  <input type="checkbox" v-model="roomsGuest.indoorSeating" />
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+              <div class="rules">
+                <label class="container-input"
+                  >{{$t('AddService.outdoorSeating')}}
+                  <input type="checkbox" v-model="roomsGuest.outdoorSeating" />
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+              <!-- <div class="rules">
+                <label class="container-input"
+                  >{{$t('AddService.additionSeating')}}
+                  <input type="checkbox" v-model="roomsGuest.additionSeating" />
+                  <span class="checkmark"></span>
+                </label>
               </div>
               <div class="rules">
                 <label class="container-input"
@@ -174,7 +195,7 @@
                   <input type="checkbox" v-model="unitsAndGuest.travelers" />
                   <span class="checkmark"></span>
                 </label>
-              </div>
+              </div> -->
 
               <!-- <div>
                 <input
@@ -631,11 +652,11 @@ export default {
           this.focusInput();
           return;
         }
-        if (!verifyInputs.numberAdults) {
-          this.errors.numberAdults = true;
-          this.focusInput();
-          return;
-        }
+        // if (!verifyInputs.numberAdults) {
+        //   this.errors.numberAdults = true;
+        //   this.focusInput();
+        //   return;
+        // }
         if (!verifyInputs.section) {
           this.errors.section = true;
           this.focusInput();
@@ -661,16 +682,16 @@ export default {
           this.focusInput();
           return;
         }
-        if (!verifyInputs.indoorSeating) {
-          this.errors.indoorSeating = true;
-          this.focusInput();
-          return;
-        }
-        if (!verifyInputs.outdoorSeating) {
-          this.errors.outdoorSeating = true;
-          this.focusInput();
-          return;
-        }
+        // if (!verifyInputs.indoorSeating) {
+        //   this.errors.indoorSeating = true;
+        //   this.focusInput();
+        //   return;
+        // }
+        // if (!verifyInputs.outdoorSeating) {
+        //   this.errors.outdoorSeating = true;
+        //   this.focusInput();
+        //   return;
+        // }
         if (!verifyInputs.maxGuest) {
           this.errors.maxGuest = true;
           this.focusInput();
@@ -681,26 +702,26 @@ export default {
           this.focusInput();
           return;
         }
-        if (!verifyInputs.outdoorWithoutBarrier) {
-          this.errors.outdoorWithoutBarrier = true;
-          this.focusInput();
-          return;
-        }
-        if (!verifyInputs.outdoorWithBarrier) {
-          this.errors.outdoorWithBarrier = true;
-          this.focusInput();
-          return;
-        }
-        if (!verifyInputs.indoorWithoutBarrier) {
-          this.errors.indoorWithoutBarrier = true;
-          this.focusInput();
-          return;
-        }
-        if (!verifyInputs.indoorWithBarrier) {
-          this.errors.indoorWithBarrier = true;
-          this.focusInput();
-          return;
-        }
+        // if (!verifyInputs.outdoorWithoutBarrier) {
+        //   this.errors.outdoorWithoutBarrier = true;
+        //   this.focusInput();
+        //   return;
+        // }
+        // if (!verifyInputs.outdoorWithBarrier) {
+        //   this.errors.outdoorWithBarrier = true;
+        //   this.focusInput();
+        //   return;
+        // }
+        // if (!verifyInputs.indoorWithoutBarrier) {
+        //   this.errors.indoorWithoutBarrier = true;
+        //   this.focusInput();
+        //   return;
+        // }
+        // if (!verifyInputs.indoorWithBarrier) {
+        //   this.errors.indoorWithBarrier = true;
+        //   this.focusInput();
+        //   return;
+        // }
 
         // if (!verifyInputs.numberUnits) {
         //   this.errors.numberUnits = true;

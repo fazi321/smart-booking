@@ -18,7 +18,7 @@
         <div class="container-vendor">
           <div>
             <div class="inputs-container">
-              <div>
+              <!-- <div>
                 <input
                   type="text"
                   :class="{ activeErr: errors.numRooms }"
@@ -26,7 +26,7 @@
                   :placeholder="$t('placeholders.numberOfRooms')"
                   v-model="roomsGuest.numRooms"
                 />
-              </div>
+              </div> --> 
               <!-- <div>
                 <input
                   type="text"
