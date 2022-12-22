@@ -18,7 +18,7 @@
         <div class="container-vendor">
           <div>
             <div class="inputs-container">
-              <div>
+              <!-- <div>
                 <input
                   type="number"
                   min="1"
@@ -27,7 +27,7 @@
                   :placeholder="$t('placeholders.numberOfRooms')"
                   v-model="unitsAndGuest.numRooms"
                 />
-              </div>
+              </div> -->
               <!-- <div>
                 <input
                   type="number"
@@ -385,6 +385,20 @@
                   <img src="../../../../assets/images/trampoline.png" alt="" />
                   <h6>{{ $t("AddService.trampoline") }}</h6>
                 </div>
+                <div
+                  :class="{ active: isExist('airSlider') }"
+                  @click="selectedAmenities('airSlider')"
+                >
+                  <img src="../../../../assets/images/airSlider.png" alt="" />
+                  <h6>{{ $t("AddService.airSlider") }}</h6>
+                </div>
+                <div
+                  :class="{ active: isExist('sandGames') }"
+                  @click="selectedAmenities('sandGames')"
+                >
+                  <img src="../../../../assets/images/sandGames.png" alt="" />
+                  <h6>{{ $t("AddService.sandGames") }}</h6>
+                </div>
                 <!-- <div
                   :class="{ active: isExist('airSlider') }"
                   @click="selectedAmenities('airSlider')"
@@ -647,11 +661,11 @@ export default {
     changeStep(step) {
       var verifyInputs = this.unitsAndGuest;
       if (step == 2) {
-        if (!verifyInputs.numRooms) {
-          this.errors.numRooms = true;
-          this.focusInput();
-          return;
-        }
+        // if (!verifyInputs.numRooms) {
+        //   this.errors.numRooms = true;
+        //   this.focusInput();
+        //   return;
+        // }
         // if (!verifyInputs.numberAdults) {
         //   this.errors.numberAdults = true;
         //   this.focusInput();

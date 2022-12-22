@@ -18,7 +18,7 @@
         <div class="container-vendor">
           <div>
             <div class="inputs-container">
-              <div>
+              <!-- <div>
                 <input
                   type="number"
                   min="1"
@@ -27,7 +27,7 @@
                   :placeholder="$t('placeholders.numberOfRooms')"
                   v-model="unitsAndGuest.numRooms"
                 />
-              </div>
+              </div> -->
               <!-- <div>
                 <input
                   type="text"
@@ -509,11 +509,11 @@ export default {
     changeStep(step) {
       var verifyInputs = this.unitsAndGuest;
       if (step == 2) {
-        if (!verifyInputs.numRooms) {
-          this.errors.numRooms = true;
-          this.focusInput();
-          return;
-        }
+        // if (!verifyInputs.numRooms) {
+        //   this.errors.numRooms = true;
+        //   this.focusInput();
+        //   return;
+        // }
         if (!verifyInputs.roomType) {
           this.errors.roomType = true;
           this.focusInput();

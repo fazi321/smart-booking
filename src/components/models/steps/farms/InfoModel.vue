@@ -492,11 +492,11 @@ export default {
     changeStep(step) {
       var verifyInputs = this.roomsGuest;
       if (step == 2) {
-        if (!verifyInputs.numRooms) {
-          this.errors.numRooms = true;
-          this.focusInput();
-          return;
-        }
+        // if (!verifyInputs.numRooms) {
+        //   this.errors.numRooms = true;
+        //   this.focusInput();
+        //   return;
+        // }
         if (!verifyInputs.section) {
           this.errors.section = true;
           this.focusInput();
