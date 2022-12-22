@@ -15,10 +15,10 @@
            <h6>{{conversation.firstName}}</h6>
          </div>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed
+            <!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed
             convallis massa, at laoreet ligula. Etiam tempus lobortis pharetra.
             Praesent nec cursus quam, non blandit purus. Proin placerat purus
-            nisl.
+            nisl. -->
           </p>
         </div>
       </div>

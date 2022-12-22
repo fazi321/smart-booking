@@ -137,10 +137,10 @@
               <div class="price-inputs">
                 <div class="price-checkbox">
                   <label class="container-input"
-                    >{{ $t("serviceDescription.audditionailRules") }}
+                    >{{ $t("serviceDescription.additionalRules") }}
                     <input
                       type="checkbox"
-                      v-model="suitableFor.audditionailRules"
+                      v-model="suitableFor.additionalRules"
                     />
                     <span class="checkmark"></span>
                   </label>
@@ -148,8 +148,8 @@
                 <div class="input-price">
                   <input
                     type="text"
-                    v-model="suitablePrice.audditionailRules"
-                    :disabled="!suitableFor.audditionailRules"
+                    v-model="suitablePrice.additionalRules"
+                    :disabled="!suitableFor.additionalRules"
                   />
                 </div>
               </div>
@@ -774,7 +774,7 @@ export default {
         if (value) {
           for (const [pkey, pValue] of Object.entries(this.suitablePrice)) {
             if (key == pkey) {
-              if (key == "audditionailRules") {
+              if (key == "additionalRules") {
                 newObjC[key] = [pValue];
               } else {
                 newObjC[key] = pValue;
