@@ -470,7 +470,7 @@ export default {
       const data = {
         amount: this.dataApi.booking.totalPrice * 1000,
         currency: "SAR",
-        callback_url: `https://smartbookings.co/success?bookid=${this.$route.params.id}`,
+        callback_url: `https://www.example.com/store/payment_completed.jsp?cart_no=429`,
       };
       if (this.paymentMethod != "applepay") {
         data.source = {
