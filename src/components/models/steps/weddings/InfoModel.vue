@@ -27,11 +27,38 @@
               </div> -->
               <div>
                 <input
-                  type="test"
+                  type="number"
                   :class="{ activeErr: errors.section }"
                   @input="resolveErr('section')"
                   :placeholder="$t('placeholders.section')"
                   v-model="roomsGuest.section"
+                />
+              </div>
+              <div>
+                <input
+                  type="number"
+                  :class="{ activeErr: errors.maleRooms }"
+                  @input="resolveErr('maleRooms')"
+                  :placeholder="$t('placeholders.maleRooms')"
+                  v-model="roomsGuest.maleRooms"
+                />
+              </div>
+              <div>
+                <input
+                  type="number"
+                  :class="{ activeErr: errors.femaleRooms }"
+                  @input="resolveErr('femaleRooms')"
+                  :placeholder="$t('placeholders.femaleRooms')"
+                  v-model="roomsGuest.femaleRooms"
+                />
+              </div>
+              <div>
+                <input
+                  type="number"
+                  :class="{ activeErr: errors.maxSittingCapacity }"
+                  @input="resolveErr('maxSittingCapacity')"
+                  :placeholder="$t('placeholders.maxSittingCapacity')"
+                  v-model="roomsGuest.maxSittingCapacity"
                 />
               </div>
               <div>
@@ -44,7 +71,7 @@
                   v-model="roomsGuest.maxGuest"
                 />
               </div>
-              <div>
+              <!-- <div>
                 <input
                   type="text"
                   :class="{ activeErr: errors.roomType }"
@@ -52,7 +79,7 @@
                   :placeholder="$t('placeholders.roomType')"
                   v-model="roomsGuest.roomType"
                 />
-              </div>
+              </div> -->
               <div>
                 <input
                   type="number"
@@ -158,14 +185,45 @@
                   <h6>{{ $t("AddService.doorman") }}</h6>
                 </div>
                 <div
+                  :class="{ active: isExist('elevator') }"
+                  @click="selectedAmenities('elevator')"
+                >
+                  <img src="../../../../assets/images/elevator.png" alt="" />
+                  <h6>{{ $t("AddService.elevator") }}</h6>
+                </div>
+                <div
+                  :class="{ active: isExist('saftyBox') }"
+                  @click="selectedAmenities('saftyBox')"
+                >
+                  <img src="../../../../assets/images/saftyBox.png" alt="" />
+                  <h6>{{ $t("AddService.saftyBox") }}</h6>
+                </div>
+                <div
                   :class="{ active: isExist('airConditioning') }"
                   @click="selectedAmenities('airConditioning')"
                 >
-                  <img src="../../../../assets/images/air-conditioner.png" alt="" />
+                  <img
+                    src="../../../../assets/images/air-conditioner.png"
+                    alt=""
+                  />
                   <h6 v-if="$t('AddService.conditioning') == 'Conditioning'">
                     Air
                   </h6>
                   <h6>{{ $t("AddService.conditioning") }}</h6>
+                </div>
+                <div
+                  :class="{ active: isExist('stage') }"
+                  @click="selectedAmenities('stage')"
+                >
+                  <img src="../../../../assets/images/stage.png" alt="" />
+                  <h6>{{ $t("AddService.stage") }}</h6>
+                </div>
+                <div
+                  :class="{ active: isExist('parking') }"
+                  @click="selectedAmenities('parking')"
+                >
+                  <img src="../../../../assets/images/parking.png" alt="" />
+                  <h6>{{ $t("AddService.parking") }}</h6>
                 </div>
                 <div
                   :class="{ active: isExist('tv') }"
@@ -309,16 +367,26 @@ export default {
           this.focusInput();
           return;
         }
+        if (!verifyInputs.maleRooms) {
+          this.errors.maleRooms = true;
+          this.focusInput();
+          return;
+        }
+        if (!verifyInputs.femaleRooms) {
+          this.errors.femaleRooms = true;
+          this.focusInput();
+          return;
+        }
         if (!verifyInputs.maxGuest) {
           this.errors.maxGuest = true;
           this.focusInput();
           return;
         }
-        if (!verifyInputs.roomType) {
-          this.errors.roomType = true;
-          this.focusInput();
-          return;
-        }
+        // if (!verifyInputs.roomType) {
+        //   this.errors.roomType = true;
+        //   this.focusInput();
+        //   return;
+        // }
         if (!verifyInputs.bathrooms) {
           this.errors.bathrooms = true;
           this.focusInput();

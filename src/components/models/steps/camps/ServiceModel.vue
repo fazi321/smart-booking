@@ -180,7 +180,7 @@
                   </label>
                 </div>
                 <div class="input-price">
-                   <input
+                  <input
                     type="number"
                     min="1"
                     v-model="suitablePrice.suitableForInfants"
@@ -242,6 +242,13 @@
               <label class="container-input"
                 >{{ $t("serviceDescription.coffeeMachine") }}
                 <input type="checkbox" v-model="kitchen.coffeeMachine" />
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div>
+              <label class="container-input"
+                >{{ $t("serviceDescription.firePlace") }}
+                <input type="checkbox" v-model="kitchen.firePlace" />
                 <span class="checkmark"></span>
               </label>
             </div>
@@ -429,6 +436,7 @@
                 <span class="checkmark"></span>
               </label>
             </div>
+
             <div>
               <label class="container-input"
                 >{{ $t("serviceDescription.mandiPit") }}
@@ -436,6 +444,14 @@
                 <span class="checkmark"></span>
               </label>
             </div>
+            <div>
+              <label class="container-input"
+                >{{ $t("serviceDescription.barbequeCorner") }}
+                <input type="checkbox" v-model="outdoors.barbequeCorner" />
+                <span class="checkmark"></span>
+              </label>
+            </div>
+      
           </div>
         </div>
         <div class="form-container">
@@ -534,7 +550,7 @@
           </div>
           <div class="upload-file">
             <label for="inputTag" :class="{ activeErr: verifyImages > 5 }">
-               {{$t('placeholders.addserviceimage')}}
+              {{ $t("placeholders.addserviceimage") }}
               <input
                 id="inputTag"
                 type="file"
@@ -698,7 +714,7 @@ export default {
   props: ["model"],
   components: {
     GoogleMap,
-    AddService
+    AddService,
   },
   data() {
     return {
@@ -765,9 +781,9 @@ export default {
         reader.readAsDataURL(e.target.files[i]);
       }
       this.$emit("images", formData);
-      e.target.value = ''
+      e.target.value = "";
     },
-     lastStep() {
+    lastStep() {
       this.$parent.accountOpt = "price";
     },
     submited() {
@@ -806,7 +822,7 @@ export default {
       };
       console.log(finalDetail);
       this.$emit("decription", finalDetail);
-      this.step = 8
+      this.step = 8;
       // this.$parent.accountOpt = "price"
     },
     changeStep(step) {

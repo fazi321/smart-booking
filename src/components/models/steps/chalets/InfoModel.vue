@@ -36,7 +36,7 @@
               </div> -->
               <div>
                 <input
-                  type="test"
+                  type="number"
                   :class="{ activeErr: errors.section }"
                   @input="resolveErr('section')"
                   :placeholder="$t('placeholders.section')"

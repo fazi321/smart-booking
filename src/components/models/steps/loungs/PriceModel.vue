@@ -520,6 +520,35 @@
             <div class="price-inputs">
               <div class="price-checkbox">
                 <label class="container-input"
+                  >{{ $t("pricing.sleepover") }}
+                  <input type="checkbox" v-model="addOnsCheck.sleepover" />
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+              <div class="input-price">
+                <input type="text" v-model="addOnsPrice.sleepover" :disabled="!addOnsCheck.sleepover"/>
+              </div>
+            </div>
+            <!-- block -->
+            <div class="price-inputs">
+              <div class="price-checkbox">
+                <label class="container-input"
+                  >{{$t('pricing.birthdayArrangements')}}
+                  <input
+                    type="checkbox"
+                    v-model="addOnsCheck.brithdayArrangements"
+                  />
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+              <div class="input-price">
+                <input type="text" v-model="addOnsPrice.brithdayArrangements" :disabled="!addOnsCheck.brithdayArrangements"/>
+              </div>
+            </div>
+            <!-- block -->
+            <div class="price-inputs">
+              <div class="price-checkbox">
+                <label class="container-input"
                   >{{ $t("pricing.weddingArrangements") }}
                   <input
                     type="checkbox"
@@ -533,6 +562,18 @@
               </div>
             </div>
             <!-- block -->
+            <div class="price-inputs">
+              <div class="price-checkbox">
+                <label class="container-input"
+                  >{{ $t("pricing.buffet") }}
+                  <input type="checkbox" v-model="addOnsCheck.buffet" />
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+              <div class="input-price">
+                <input type="text" v-model="addOnsPrice.buffet" :disabled="!addOnsCheck.buffet" />
+              </div>
+            </div>
             <!-- <div class="price-inputs">
               <div class="price-checkbox">
                 <label class="container-input"

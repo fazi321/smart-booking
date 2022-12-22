@@ -639,7 +639,7 @@
               <div class="input-price">
                 <input type="text" v-model="addOnsPrice.buffet" :disabled="!addOnsCheck.buffet" />
               </div>
-            </div>
+            </div> -->
             <div class="rules">
               <label class="container-input"
                 >{{ $t("pricing.photographer") }}
@@ -653,7 +653,7 @@
                 <input type="checkbox" v-model="addOnsPrice.weddingCake" />
                 <span class="checkmark"></span>
               </label>
-            </div> -->
+            </div>
             <!-- block -->
             <!-- <div class="price-inputs">
               <div class="price-checkbox">

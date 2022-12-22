@@ -234,15 +234,15 @@
         "dateOfBirth": "تاريخ الميلاد"
     },
     "AddService": {
-        "swimmingWithWaterGames":"swimming With Water Games",
+        "swimmingWithWaterGames": "swimming With Water Games",
         "addService": "أضف خدمة",
         "subAddService": "الرجاء إضافة تفاصيل الخدمة الجديدة",
         "basicInformation": "معلومات اساسية",
-        "fewQuestion":"أسئلة قليلة حول نوع الخدمة والغرف والحمام ووسائل الراحة",
+        "fewQuestion": "أسئلة قليلة حول نوع الخدمة والغرف والحمام ووسائل الراحة",
         "serviceDescription": "وصف الخدمة",
-        "Settherules":"ضع القواعد وانشر أفضل الصور ووصف المشهد للضيوف",
+        "Settherules": "ضع القواعد وانشر أفضل الصور ووصف المشهد للضيوف",
         "priceDetails": "تحديد السعر",
-        "SetPrice":"تحديد الأسعار والتوافر وإعدادات الحجز",
+        "SetPrice": "تحديد الأسعار والتوافر وإعدادات الحجز",
         "next": "المتابعة",
         "serviceType": "نوع الخدمة",
         "back": "الى الخلف",
@@ -431,13 +431,16 @@
         "indoorWithoutBarrier": "Indoor Without Barrier",
         "indoorWithBarrier": "Indoor With Barrier",
         "travelers": "مسافرين",
-        "descriptionInEnglish":"الوصف باللغة الإنجليزية",
-        "descriptionInArabic":"الوصف باللغة العربية",
-        "destination":"الوجهة",
-        "district":"الحي",
-        "direction":"الاتجاه",
-        "siteInfo":"siteInfo",
-        "childrenAllowed":"مسموح للأطفال"
+        "descriptionInEnglish": "الوصف باللغة الإنجليزية",
+        "descriptionInArabic": "الوصف باللغة العربية",
+        "destination": "الوجهة",
+        "district": "الحي",
+        "direction": "الاتجاه",
+        "siteInfo": "siteInfo",
+        "childrenAllowed": "مسموح للأطفال",
+        "maleRooms": "غرف الذكور",
+        "femaleRooms": "غرف البنات",
+        "maxSittingCapacity": "أقصى سعة جلوس"
     },
     "detailPage": {
         "vendorProfile": "ملف المالك",
@@ -485,7 +488,7 @@
         "instagram": "Instagram",
         "facebook": "Facebook",
         "youTube": "YouTube",
-        "AllRightsReserved":"جميع الحقوق محفوظة"
+        "AllRightsReserved": "جميع الحقوق محفوظة"
     },
     "error": {
         "numberError": "رقم الجوال خطأ!",

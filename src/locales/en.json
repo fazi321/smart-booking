@@ -438,7 +438,11 @@
     "district":"district",
     "direction":"direction",
     "siteInfo":"siteInfo",
-    "childrenAllowed":"children Allowed"
+    "childrenAllowed":"children Allowed",
+    "maleRooms":"male Rooms",
+    "femaleRooms":"female Rooms",
+    "maxSittingCapacity":"maxSittingCapacity"
+    
   },
   "detailPage": {
     "vendorProfile": "Vendor Profile",

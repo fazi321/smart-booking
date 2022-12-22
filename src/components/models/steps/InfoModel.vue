@@ -36,7 +36,7 @@
               </div> -->
               <div>
                 <input
-                  type="test"
+                  type="number"
                   :class="{ activeErr: errors.section }"
                   @input="resolveErr('section')"
                   :placeholder="$t('placeholders.section')"
@@ -302,6 +302,13 @@
                 >
                   <img src="../../../assets/images/doorman.png" alt="" />
                   <h6>{{ $t("AddService.doorman") }}</h6>
+                </div>
+                <div
+                  :class="{ active: isExist('parking') }"
+                  @click="selectedAmenities('parking')"
+                >
+                  <img src="../../../assets/images/parking.png" alt="" />
+                  <h6>{{ $t("AddService.parking") }}</h6>
                 </div>
                 <div
                   :class="{ active: isExist('elevator') }"

@@ -36,14 +36,14 @@
               </div> -->
               <div>
                 <input
-                  type="test"
+                  type="number"
                   :class="{ activeErr: errors.section }"
                   @input="resolveErr('section')"
                   :placeholder="$t('placeholders.section')"
                   v-model="roomsGuest.section"
                 />
               </div>
-              <div>
+              <!-- <div>
                 <input
                   type="number"
                   min="1"
@@ -52,8 +52,8 @@
                   :placeholder="$t('placeholders.bedrooms')"
                   v-model="roomsGuest.bedrooms"
                 />
-              </div>
-              <div>
+              </div> -->
+              <!-- <div>
                 <input
                   type="number"
                   min="1"
@@ -62,8 +62,8 @@
                   :placeholder="$t('placeholders.doubleBed')"
                   v-model="roomsGuest.doubleBed"
                 />
-              </div>
-              <div>
+              </div> -->
+              <!-- <div>
                 <input
                   type="number"
                   min="1"
@@ -72,7 +72,7 @@
                   :placeholder="$t('placeholders.singleBed')"
                   v-model="roomsGuest.singleBed"
                 />
-              </div>
+              </div> -->
               <div>
                 <input
                   type="number"
@@ -369,6 +369,13 @@
                   <img src="../../../../assets/images/laser.png" alt="" />
                   <h6>{{ $t("AddService.laserLights") }}</h6>
                 </div>
+                <div
+                  :class="{ active: isExist('parking') }"
+                  @click="selectedAmenities('parking')"
+                >
+                  <img src="../../../../assets/images/parking.png" alt="" />
+                  <h6>{{ $t("AddService.parking") }}</h6>
+                </div>
               </div>
             </div>
           </div>
@@ -481,21 +488,21 @@ export default {
           this.focusInput();
           return;
         }
-        if (!verifyInputs.bedrooms) {
-          this.errors.bedrooms = true;
-          this.focusInput();
-          return;
-        }
-        if (!verifyInputs.doubleBed) {
-          this.errors.doubleBed = true;
-          this.focusInput();
-          return;
-        }
-        if (!verifyInputs.singleBed) {
-          this.errors.singleBed = true;
-          this.focusInput();
-          return;
-        }
+        // if (!verifyInputs.bedrooms) {
+        //   this.errors.bedrooms = true;
+        //   this.focusInput();
+        //   return;
+        // }
+        // if (!verifyInputs.doubleBed) {
+        //   this.errors.doubleBed = true;
+        //   this.focusInput();
+        //   return;
+        // }
+        // if (!verifyInputs.singleBed) {
+        //   this.errors.singleBed = true;
+        //   this.focusInput();
+        //   return;
+        // }
         if (!verifyInputs.maxGuest) {
           this.errors.maxGuest = true;
           this.focusInput();

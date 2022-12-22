@@ -130,6 +130,26 @@
               <div class="price-inputs">
                 <div class="price-checkbox">
                   <label class="container-input"
+                    >{{ $t("serviceDescription.additionalRules") }}
+                    <input
+                      type="checkbox"
+                      v-model="suitableFor.additionalRules"
+                    />
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+                <div class="input-price">
+                  <input
+                    type="text"
+                    v-model="suitablePrice.additionalRules"
+                    :disabled="!suitableFor.additionalRules"
+                  />
+                </div>
+              </div>
+              <!-- block -->
+              <div class="price-inputs">
+                <div class="price-checkbox">
+                  <label class="container-input"
                     >{{ $t("serviceDescription.suitableForInfants") }}
                     <input
                       type="checkbox"
@@ -345,6 +365,13 @@
                 <span class="checkmark"></span>
               </label>
             </div>
+            <div>
+              <label class="container-input"
+                >{{ $t("serviceDescription.balcony") }}
+                <input type="checkbox" v-model="roomsbath.balcony" />
+                <span class="checkmark"></span>
+              </label>
+            </div>
           </div>
         </div>
         <div class="form-container">
@@ -385,6 +412,13 @@
               <label class="container-input"
                 >{{ $t("serviceDescription.greenYard") }}
                 <input type="checkbox" v-model="outdoors.greenYard" />
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <div>
+              <label class="container-input"
+                >{{ $t("serviceDescription.barbequeCorner") }}
+                <input type="checkbox" v-model="outdoors.barbequeCorner" />
                 <span class="checkmark"></span>
               </label>
             </div>
