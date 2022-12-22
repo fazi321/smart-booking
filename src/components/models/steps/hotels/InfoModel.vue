@@ -500,11 +500,11 @@ export default {
     changeStep(step) {
       var verifyInputs = this.unitsAndGuest;
       if (step == 2) {
-        if (!verifyInputs.numRooms) {
-          this.errors.numRooms = true;
-          this.focusInput();
-          return;
-        }
+        // if (!verifyInputs.numRooms) {
+        //   this.errors.numRooms = true;
+        //   this.focusInput();
+        //   return;
+        // }
         if (!verifyInputs.roomType) {
           this.errors.roomType = true;
           this.focusInput();
