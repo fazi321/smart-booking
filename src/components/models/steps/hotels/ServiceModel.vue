@@ -470,7 +470,7 @@
               </div>
               <div>
                 <input
-                  type="text"
+                  type="number"
                   :class="{ activeErr: errors.secondryPhone }"
                   @input="resolveErr('secondryPhone')"
                   :placeholder="$t('placeholders.secondaryPhone')"
