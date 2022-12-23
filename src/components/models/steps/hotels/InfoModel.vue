@@ -37,7 +37,8 @@
               </div> -->
               <div>
                 <input
-                  type="test"
+                  type="text"
+                  onkeydown="return /[a-z]/i.test(event.key)"
                   :class="{ activeErr: errors.roomType }"
                   @input="resolveErr('roomType')"
                   :placeholder="$t('placeholders.roomType')"

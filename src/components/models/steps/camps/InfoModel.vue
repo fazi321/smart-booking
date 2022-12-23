@@ -199,7 +199,7 @@
 
               <!-- <div>
                 <input
-                  type="test"
+                  type="text"
                   :class="{ activeErr: errors.section }"
                   @input="resolveErr('section')"
                   :placeholder="$t('placeholders.section')"

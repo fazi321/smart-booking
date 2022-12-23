@@ -574,6 +574,7 @@
                 <div>
                   <input
                     type="text"
+                    hidden
                     :class="{ activeErr: errors.houseNumber }"
                     @input="resolveErr('houseNumber')"
                     :placeholder="$t('placeholders.propertyNumber')"
@@ -583,6 +584,7 @@
                 <div>
                   <input
                     type="text"
+                    hidden
                     :class="{ activeErr: errors.city }"
                     @input="resolveErr('city')"
                     :placeholder="$t('placeholders.city')"
@@ -592,6 +594,7 @@
                 <div>
                   <input
                     type="text"
+                    hidden
                     :class="{ activeErr: errors.area }"
                     @input="resolveErr('area')"
                     :placeholder="$t('placeholders.area')"
@@ -601,13 +604,14 @@
                 <div>
                   <input
                     type="text"
+                    hidden
                     :class="{ activeErr: errors.landMark }"
                     @input="resolveErr('landMark')"
                     :placeholder="$t('placeholders.landMark')"
                     v-model="address.landMark"
                   />
                 </div>
-                <div>
+                <!-- <div>
                   <input
                     type="text"
                     :class="{ activeErr: errors.destination }"
@@ -642,7 +646,7 @@
                     :placeholder="$t('placeholders.siteInfo')"
                     v-model="address.siteInfo"
                   />
-                </div>
+                </div> -->
                 <!-- <div>
                   <input
                     type="text"
@@ -773,7 +777,6 @@ export default {
           }
         }
       }
-      console.log(newObjC, "new obj");
       // price
       const newObj = {};
       for (const [key, value] of Object.entries(this.rules)) {
@@ -887,31 +890,31 @@ export default {
         this.focusInput();
         return;
       }
-      if (!verifyInputs.houseNumber) {
-        this.errors.houseNumber = true;
-        this.focusInput();
-        return;
-      }
-      if (!verifyInputs.city) {
-        this.errors.city = true;
-        this.focusInput();
-        return;
-      }
-      if (!verifyInputs.area) {
-        this.errors.area = true;
-        this.focusInput();
-        return;
-      }
-      if (!verifyInputs.area) {
-        this.errors.area = true;
-        this.focusInput();
-        return;
-      }
-      if (!verifyInputs.landMark) {
-        this.errors.landMark = true;
-        this.focusInput();
-        return;
-      }
+      // if (!verifyInputs.houseNumber) {
+      //   this.errors.houseNumber = true;
+      //   this.focusInput();
+      //   return;
+      // }
+      // if (!verifyInputs.city) {
+      //   this.errors.city = true;
+      //   this.focusInput();
+      //   return;
+      // }
+      // if (!verifyInputs.area) {
+      //   this.errors.area = true;
+      //   this.focusInput();
+      //   return;
+      // }
+      // if (!verifyInputs.area) {
+      //   this.errors.area = true;
+      //   this.focusInput();
+      //   return;
+      // }
+      // if (!verifyInputs.landMark) {
+      //   this.errors.landMark = true;
+      //   this.focusInput();
+      //   return;
+      // }
       return true;
     },
     focusInput() {

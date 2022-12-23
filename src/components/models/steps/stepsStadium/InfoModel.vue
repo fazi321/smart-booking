@@ -41,7 +41,7 @@
               <div>
                 <input
                   :class="{ activeErr: errors.stands }"
-                  type="test"
+                  type="text"
                   :placeholder="$t('placeholders.stands')"
                   @input="resolveErr('stands')"
                   v-model="roomsGuest.stands"
