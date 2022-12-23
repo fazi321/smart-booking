@@ -89,6 +89,12 @@ export default {
 .details-main .detail-right {
   width: 33%;
 }
+.set-lang{
+  direction:rtl;
+}
+.set-dir{
+  flex-direction: row-reverse;
+}
 @media (max-width: 479px) and (min-width: 320px) {
   .details-main .detail-left {
     width: 100%;
