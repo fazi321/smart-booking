@@ -96,7 +96,7 @@ export default {
     },
     async cancelConfirmed(id) {
       try {
-        var res = await this.$axios.delete(`booking/cancel/${id}`);
+        var res = await this.$axios.get(`booking/cancel/${id}`);
         if (res) {
           const imagePath = require("../assets/images/icontick.png");
           this.$swal({

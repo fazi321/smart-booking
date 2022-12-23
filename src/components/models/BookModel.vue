@@ -470,7 +470,8 @@ export default {
       const data = {
         amount: this.dataApi.booking.totalPrice * 1000,
         currency: "SAR",
-        callback_url: `http://localhost:8080/success?bookid=${this.$route.params.id}`,
+        callback_url: `http://localhost:8080/success?bookid=${this.dataApi.booking._id}`,
+        // callback_url: `http://localhost:8080/success?bookid=${this.$route.params.id}`,
       };
       if (this.paymentMethod != "applepay") {
         data.source = {

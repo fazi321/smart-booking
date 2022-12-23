@@ -2,7 +2,7 @@
   <default-layout>
     <section class="success">
       <router-link to="/">
-        <h1>Success!!!</h1>
+        <h1>Payment Success!</h1>
       </router-link>
     </section>
   </default-layout>
@@ -20,7 +20,7 @@ export default {
       // https://www.testingserver.tech/api/v1/booking/success/${req.params.id?id=''&status=''&message=''
       var {id,bookid, message ,status} = this.$route.query;
       try {
-        var success = await this.$axios.post(`booking/success/${bookid}?id=${id}&status=${status}&message=${message}`);
+        var success = await this.$axios.get(`booking/success/${bookid}?id=${id}&status=${status}&message=${message}`);
         if(success){
           console.log(success)
         }
