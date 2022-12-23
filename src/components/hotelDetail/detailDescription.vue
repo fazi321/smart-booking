@@ -19,11 +19,11 @@
         Suspendisse non tellus sem. Aliquam eu elit velit.
       </p>
     </section>
-    <section class="btn-review">
+    <!-- <section class="btn-review">
       <button class="btn" @click="openVendor">
         {{ $t("detailPage.vendorProfile") }}
       </button>
-    </section>
+    </section> -->
   </section>
 </template>
 
