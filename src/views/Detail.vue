@@ -1,8 +1,8 @@
 <template>
   <default-layout>
     <HotelCard />
-    <div class="details-main container">
-      <section class="detail-left">
+    <div :class="['details-main container',{'set-dir':$t('lang') == 'ar'}]">
+      <section :class="['detail-left', {'set-lang':$t('lang') == 'ar'}]">
         <HotelDescription @show="showModel" />
         <VendorModel
           :model="vendorReviewModel"
@@ -95,6 +95,13 @@ export default {
 .details-main .detail-right {
   width: 28%;
 }
+.set-lang{
+  direction:rtl;
+}
+.set-dir{
+  flex-direction: row-reverse;
+}
+
 @media (max-width: 479px) and (min-width: 320px) {
   .details-main .detail-left {
     width: 100%;

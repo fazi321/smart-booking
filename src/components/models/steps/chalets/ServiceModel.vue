@@ -525,9 +525,12 @@
               <button v-show="previewImage" @click="removeImage(key)">X</button>
             </div>
           </div>
+          <div>
+            <h4>You can pick maximum 5 images here</h4>
+          </div>
           <div class="upload-file">
             <label for="inputTag" :class="{ activeErr: verifyImages > 5 }">
-              {{$t('placeholders.addserviceimage')}}
+              {{ $t("placeholders.addserviceimage") }}
               <input
                 id="inputTag"
                 type="file"
@@ -654,7 +657,8 @@
                     :placeholder="$t('placeholders.siteInfo')"
                     v-model="address.siteInfo"
                   />
-                </div> -->
+                </div>
+                -->
                 <!-- <div>
                   <input
                     type="text"
@@ -713,7 +717,7 @@ export default {
       suitableFor: {},
       suitablePrice: {},
       step: 1,
-      
+
       // errors
       errors: {},
       verifyImages: 0,
@@ -763,7 +767,7 @@ export default {
         reader.readAsDataURL(e.target.files[i]);
       }
       this.$emit("images", formData);
-      e.target.value = ''
+      e.target.value = "";
     },
     lastStep() {
       this.$parent.accountOpt = "price";
@@ -776,7 +780,7 @@ export default {
         if (value) {
           for (const [pkey, pValue] of Object.entries(this.suitablePrice)) {
             if (key == pkey) {
-             if (key == "additionalRules") {
+              if (key == "additionalRules") {
                 newObjC[key] = [pValue];
               } else {
                 newObjC[key] = pValue;
@@ -1145,7 +1149,7 @@ img {
   display: none;
 }
 .upload-file {
-  margin: 30px 10px 10px 10px;
+  margin: 20px 10px 10px 10px;
 }
 .upload-file label {
   box-shadow: 0px 0px 8px 2px #e9e8e8;

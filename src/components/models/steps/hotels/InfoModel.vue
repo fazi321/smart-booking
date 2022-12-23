@@ -38,7 +38,7 @@
               <div>
                 <input
                   type="text"
-                  onkeydown="return /[a-z]/i.test(event.key)"
+                  onkeydown="return /^[ A-Za-z_@./#&+-]*$/.test(event.key)"
                   :class="{ activeErr: errors.roomType }"
                   @input="resolveErr('roomType')"
                   :placeholder="$t('placeholders.roomType')"

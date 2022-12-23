@@ -1,6 +1,6 @@
 <template>
   <section class="container">
-    <div class="hotel-wrapper">
+    <div :class="['hotel-wrapper',{'set-lang':$t('lang') == 'ar'}]">
       <div class="title">
         <h2 v-if="storeState && storeState.description">
           {{
@@ -206,6 +206,20 @@ export default {
   background: #eee;
   margin-bottom: 15px;
   border-radius: 11px;
+}
+.set-lang{
+  direction: rtl;
+}
+.set-lang .title h2{
+  text-align: right;
+}
+.set-lang .overview .icon{
+  margin-right:0;
+  margin-left:40px;
+}
+.overview .icon img{
+  margin-right:0;
+  margin-left:15px;
 }
 @media (max-width: 479px) and (min-width: 320px) {
   .hotel-wrapper {

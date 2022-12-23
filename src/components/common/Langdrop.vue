@@ -1,72 +1,118 @@
 <template>
-  <div class="selected-lang">
-    <select
+  <div class="selected-lang" id="clickbox">
+    <div :class="['main-div', { 'set-lang': $t('lang') == 'ar' }]">
+      <div class="main-drop" @click="dropDownShow">
+        <p>{{ $t("lang") == "en" ? $t("language.eng") : $t("language.ar") }}</p>
+      </div>
+      <div class="dropdown-menu" v-if="show">
+        <p @click="language('en')" v-if="$t('lang') == 'ar'">
+          {{ $t("language.eng") }}
+        </p>
+        <p @click="language('ar')" v-if="$t('lang') == 'en'">
+          {{ $t("language.ar") }}
+        </p>
+      </div>
+    </div>
+    <!-- <select
       :class="['select', { 'set-lang': $t('lang') == 'ar' }]"
-      @change="language"
+      @input="language"
     >
-      <option value="ar" :selected="$t('lang') == 'ar'">
+      <option value="ar" :selected="$t('lang') == 'ar'" @click="language">
         {{ $t("language.ar") }}
       </option>
       <option value="en" :selected="$t('lang') == 'en'">
         {{ $t("language.eng") }}
       </option>
-    </select>
+    </select> -->
   </div>
 </template>
 
 <script>
 export default {
   name: "langDrop",
+  data() {
+    return {
+      show: false,
+    };
+  },
+  mounted() {
+    var _this = this;
+    window.addEventListener("click", function (e) {
+      var ele = document.getElementById("clickbox");
+      if (!ele.contains(e.target)) {
+        _this.show = false;
+      }
+    });
+  },
   methods: {
+    handleFocusOut() {
+      console.log("working");
+    },
+    dropDownShow() {
+      this.show = !this.show;
+    },
     language(e) {
-      this.$i18n.locale = e.target.value;
+      this.$i18n.locale = e;
+      this.show = false;
     },
   },
 };
 </script>
 
 <style scoped>
-.select-wrapper {
+.main-div {
+  text-align: left;
   position: relative;
-  width: 350px;
 }
-.select-wrapper::after {
-  color: black;
-  content: "▾";
-  margin-right: 10px;
-  pointer-events: none;
-  position: absolute;
-  right: 10px;
-  top: 7px;
+.main-drop p {
   font-size: 14px;
-}
-.select {
-  /* -moz-appearance: none;
-  -webkit-appearance: none; */
-  background: white;
-  border: none;
-  border-radius: 0;
-  cursor: pointer;
-  /* padding: 12px; */
-  width: 100%;
-  font-size: 14px;
-  outline: none;
   color: gray;
+  min-width: 45px;
+  margin-left: 6px;
 }
-.select:focus {
-  color: black;
-}
-/* option:hover {
-  background-color: yellow;
-} */
-.selected-lang {
+.main-drop p::after {
+  background-color: white;
+  border-right: 2px solid gray;
+  border-bottom: 2px solid gray;
+  width: 5px;
+  display: inline-block;
+  height: 5px;
+  transform: rotate(45deg);
+  -webkit-transform: scale(1) rotate(45deg) translate(0px, 0px);
+  -moz-transform: rotate(45deg) scale(1);
+  -o-transform: rotate(45deg) scale(1);
+  content: "";
   margin-left: 5px;
+  top: 5px;
+  position: absolute;
+  right: 8px;
 }
-.set-lang.select {
-  direction: rtl;
+.dropdown-menu {
+  position: absolute;
+  width: 44px;
+  box-shadow: 0px 0px 6px 2px #cfcfcf6b;
+  border: 1px solid #bbbbbb;
+  margin-top: 3px;
+  margin-left: 7px;
+}
+.dropdown-menu p:hover {
+  background: #febb12;
+  color: #0e4763;
+}
+.dropdown-menu p {
+  color: gray;
+  padding: 2px 5px;
+  cursor: pointer;
+}
+.set-lang p {
   text-align: right;
+  margin-left: 0;
 }
-/* .select::-ms-expand {
-  display: none;
-} */
+.set-lang .main-drop p::after {
+  right: unset;
+  left: 0;
+}
+.set-lang .dropdown-menu {
+  margin-left: 0;
+}
 </style>

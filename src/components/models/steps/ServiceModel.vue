@@ -525,6 +525,9 @@
               <button v-show="previewImage" @click="removeImage(key)">X</button>
             </div>
           </div>
+          <div>
+            <h4>You can pick maximum 5 images here</h4>
+          </div>
           <div class="upload-file">
             <label for="inputTag" :class="{ activeErr: verifyImages > 5 }">
               {{$t('placeholders.addserviceimage')}}
@@ -1141,7 +1144,7 @@ img {
   display: none;
 }
 .upload-file {
-  margin: 30px 10px 10px 10px;
+  margin: 20px 10px 10px 10px;
 }
 .upload-file label {
   box-shadow: 0px 0px 8px 2px #e9e8e8;

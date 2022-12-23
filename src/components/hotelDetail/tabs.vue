@@ -6,22 +6,67 @@
           :class="{ active: tab == 'Facilities' }"
           @click="selected('Facilities')"
         >
-          {{$t('detailPage.facilities')}}
+          {{ $t("detailPage.facilities") }}
         </p>
         <p :class="{ active: tab == 'Reviews' }" @click="selected('Reviews')">
-          {{$t('detailPage.reviews')}}
+          {{ $t("detailPage.reviews") }}
         </p>
         <p :class="{ active: tab == 'Terms' }" @click="selected('Terms')">
-          {{$t('detailPage.terms')}}
+          {{ $t("detailPage.terms") }}
         </p>
-        <p :class="{ active: tab == 'Map' }" @click="selected('Map')">{{$t('detailPage.map')}}</p>
+        <p :class="{ active: tab == 'Map' }" @click="selected('Map')">
+          {{ $t("detailPage.map") }}
+        </p>
       </div>
     </div>
     <Facilities v-if="tab == 'Facilities'" />
-    <ReviewsDetail v-if="tab == 'Reviews'" :reviews="storeState.reviews"/>
-    <section v-if="tab == 'Terms'" class="terms">
-      <p v-if="storeState.terms">{{ storeState.terms }}</p>
-      <p v-else>{{$t('error.notFound')}}</p>
+    <ReviewsDetail v-if="tab == 'Reviews'" :reviews="storeState.reviews" />
+    <section
+      v-if="tab == 'Terms'"
+      :class="['terms', { 'set-lang': $t('lang') == 'ar' }]"
+    >
+      <div>
+        <div class="title">
+          <h1>{{ $t("pricing.cancellationPolicy") }}</h1>
+        </div>
+        <div :class="'primary-cards'" v-if="storeState.bookingSetting?.canellationPolicy == 'Flexible'">
+          <!-- <div class="rounded-btn"></div> -->
+          <div class="content">
+            <h5>{{ $t("pricing.flexible") }}</h5>
+            <h6>
+              {{ $t("pricing.flexibleSubTitle") }}
+            </h6>
+          </div>
+        </div>
+        <div :class="'primary-cards'" v-if="storeState.bookingSetting?.canellationPolicy == 'Moderate'">
+          <!-- <div class="rounded-btn"></div> -->
+          <div class="content">
+            <h5>{{ $t("pricing.moderate") }}</h5>
+            <h6>
+              {{ $t("pricing.moderateSubTitle") }}
+            </h6>
+          </div>
+        </div>
+        <div :class="'primary-cards'" v-if="storeState.bookingSetting?.canellationPolicy == 'Strict'">
+          <!-- <div class="rounded-btn"></div> -->
+          <div class="content">
+            <h5>{{ $t("pricing.strict") }}</h5>
+            <h6>
+              {{ $t("pricing.strictSubTitle") }}
+            </h6>
+          </div>
+        </div>
+        <div :class="'primary-cards'" v-if="storeState.bookingSetting?.canellationPolicy == 'Non-Refundable'">
+          <!-- <div class="rounded-btn"></div> -->
+          <div class="content">
+            <h5>{{ $t("pricing.nonRefundable") }}</h5>
+            <h6>
+              {{ $t("pricing.nonRefundableSubTitle") }}
+            </h6>
+          </div>
+        </div>
+      </div>
+      <!-- <p v-else>{{ $t("error.notFound") }}</p> -->
     </section>
     <section v-if="tab == 'Map'" class="terms">
       <MapDetail />
@@ -32,7 +77,7 @@
 <script>
 import Facilities from "@/components/hotelDetail/facilities.vue";
 import ReviewsDetail from "../ReviewsDetail.vue";
-import MapDetail from "@/components/common/mapDetail.vue"
+import MapDetail from "@/components/common/mapDetail.vue";
 export default {
   name: "DetailTabs",
   components: {
@@ -101,11 +146,51 @@ export default {
   border-radius: 12px;
   opacity: 1;
 }
+.set-lang p {
+  text-align: right;
+}
+.primary-cards {
+  width: 46%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 0 1px 11px -5px #0000006b;
+  cursor: pointer;
+  border: 1px solid transparent;
+  padding: 0px 15px;
+  text-align: left;
+  margin-bottom: 22px;
+  position: relative;
+}
+.booking-type .primary-cards .content {
+  text-align: left;
+  line-height: 1.5;
+}
+.primary-cards h5 {
+  font-size: 14px;
+}
+.primary-cards h6 {
+  color: #393f45;
+  margin-top: 3px;
+  font-size: 12px;
+}
+.set-lang .primary-cards {
+  text-align: right;
+}
+.terms .title h1 {
+  text-align: left;
+  margin:10px 0;
+}
+.set-lang .terms .title h1 {
+  text-align: right;
+  margin:10px 0;
+}
 @media (max-width: 479px) and (min-width: 320px) {
-  .detail-tabs .tabs{
+  .detail-tabs .tabs {
     width: 100%;
   }
-  .detail-tabs .tabs p{
+  .detail-tabs .tabs p {
     padding: 12px 15px;
   }
 }

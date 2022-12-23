@@ -1,5 +1,5 @@
 <template>
-  <section class="facilities-container">
+  <section :class="['facilities-container',{'set-lang': $t('lang') == 'ar'}]" >
     <h5>{{ $t("detailPage.amenities") }}</h5>
     <!-- Sports -->
     <div class="facility-icons" v-if="sportsCheck">
@@ -643,6 +643,9 @@ export default {
   align-items: center;
   justify-content: center;
   /* white-space: nowrap; */
+}
+.set-lang .facilities-container h5,.set-lang .facility-icons h6{
+  text-align:right;
 }
 @media (max-width: 479px) and (min-width: 320px) {
 }

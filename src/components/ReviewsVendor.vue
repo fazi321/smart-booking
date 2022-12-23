@@ -6,9 +6,9 @@
           Reviews <span>({{ storeState && storeState.numReviews }})</span>
         </h1>
       </div>
-      <div>
+      <!-- <div>
         <h1 class="add-riveiw" @click="addModel">+ Add Review</h1>
-      </div>
+      </div> -->
     </div>
     <section class="reviews-section">
       <!-- block -->

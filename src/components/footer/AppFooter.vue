@@ -228,7 +228,10 @@ export default {
 .set-footer .footer-row .col .contact-list li{
   flex-direction: row-reverse;
 }
-
+.set-footer .reserved p{
+  text-align:right;
+  direction:rtl;
+}
 /* reponsive start */
 @media (max-width: 479px) and (min-width: 320px) {
   .footer .footer-row .col {

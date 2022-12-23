@@ -1,6 +1,6 @@
 <template>
   <section class="form-book">
-    <div class="book-container">
+    <div :class="['book-container',{'set-inputs':$t('lang') == 'ar'}]">
       <div class="heading" v-if="storeState && storeState.price">
         <h6>SAR {{ storeState && storeState.price.dayPrice }}</h6>
         <p>{{ $t("detailPage.perNight") }}</p>
@@ -406,6 +406,17 @@ export default {
 }
 .set-time input {
   text-align: right;
+}
+.set-inputs{
+  direction:rtl;
+}
+.set-inputs .filter-option img{
+  margin-right:0;
+  margin-left: 15px;
+}
+.set-inputs .heading h6{
+  margin-right:0;
+  margin-left: 10px;
 }
 @media (max-width: 479px) and (min-width: 320px) {
 }

@@ -1,6 +1,6 @@
 <template>
   <section class="primary-contianer-des">
-    <section class="description">
+    <section :class="['description', {'set-lang':$t('lang') == 'ar'}]">
       <h3>{{ $t("detailPage.description") }}</h3>
       <p v-if="storeState && storeState.description">
         {{
@@ -19,11 +19,11 @@
         Suspendisse non tellus sem. Aliquam eu elit velit.
       </p>
     </section>
-    <!-- <section class="btn-review">
+    <section class="btn-review">
       <button class="btn" @click="openVendor">
         {{ $t("detailPage.vendorProfile") }}
       </button>
-    </section> -->
+    </section>
   </section>
 </template>
 
@@ -75,6 +75,12 @@ export default {
   border-radius: 50px;
   border: 1px solid #febb12;
   padding: 10px 20px;
+}
+.set-lang .description h3{
+  text-align: right;
+}
+.set-lang .description p{
+  text-align: right;
 }
 @media (max-width: 479px) and (min-width: 320px) {
 }
