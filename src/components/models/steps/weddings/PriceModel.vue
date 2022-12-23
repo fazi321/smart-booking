@@ -329,13 +329,32 @@
                 <div>
                   <div class="content" @click="showBookPop('book')">
                     <h5>{{ $t("pricing.bookingType") }}</h5>
-                    <h6>{{ $t("pricing.bookingTypeNameHere") }}</h6>
+                    <h6>
+                      {{
+                        bookingSetting.bookingType == "instant"
+                          ? $t("pricing.instantBooking")
+                          : bookingSetting.bookingType == "24-Hour"
+                          ? $t("pricing.24-HourRequest")
+                          : $t("pricing.bookingTypeNameHere")
+                      }}
+                    </h6>
                   </div>
                 </div>
                 <div>
                   <div class="content" @click="showBookPop('cencel')">
-                    <h5>{{ $t("pricing.cancellationPolicy") }}</h5>
-                    <h6>{{ $t("pricing.cancellationPolicyNameHere") }}</h6>
+                    <h6>
+                      {{
+                        bookingSetting.canellationPolicy == "Flexible"
+                          ? $t("pricing.flexible")
+                          : bookingSetting.canellationPolicy == "Moderate"
+                          ? $t("pricing.moderate")
+                          : bookingSetting.canellationPolicy == "Strict"
+                          ? $t("pricing.strict")
+                          : bookingSetting.canellationPolicy == "Non-Refundable"
+                          ? $t("pricing.nonRefundable")
+                          : $t("pricing.cancellationPolicyNameHere")
+                      }}
+                    </h6>
                   </div>
                 </div>
               </div>
