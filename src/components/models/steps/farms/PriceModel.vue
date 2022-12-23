@@ -268,7 +268,8 @@
                 </div>
                 <div>
                   <div class="content" @click="showBookPop('cencel')">
-                   <h6>
+                    <h5>{{ $t("pricing.cancellationPolicy") }}</h5>
+                    <h6>
                       {{
                         bookingSetting.canellationPolicy == "Flexible"
                           ? $t("pricing.flexible")
@@ -436,8 +437,7 @@
                 <div class="content">
                   <h5>{{ $t("pricing.flexible") }}</h5>
                   <h6>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Fusce ac odio at urna curs us lacinia.
+                    {{$t("pricing.flexibleSubTitle")}}
                   </h6>
                 </div>
               </div>
@@ -450,10 +450,9 @@
               >
                 <!-- <div class="rounded-btn"></div> -->
                 <div class="content">
-                  <h5> {{ $t("pricing.moderate") }}</h5>
+                  <h5>{{ $t("pricing.moderate") }}</h5>
                   <h6>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Fusce ac odio at urna curs us lacinia.
+                    {{$t("pricing.moderateSubTitle")}}
                   </h6>
                 </div>
               </div>
@@ -466,10 +465,9 @@
               >
                 <!-- <div class="rounded-btn"></div> -->
                 <div class="content">
-                  <h5> {{ $t("pricing.strict") }}</h5>
+                  <h5>{{ $t("pricing.strict") }}</h5>
                   <h6>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Fusce ac odio at urna curs us lacinia.
+                    {{$t("pricing.strictSubTitle")}}
                   </h6>
                 </div>
               </div>
@@ -485,10 +483,9 @@
               >
                 <!-- <div class="rounded-btn"></div> -->
                 <div class="content">
-                  <h5> {{ $t("pricing.nonRefundable") }}</h5>
+                  <h5>{{ $t("pricing.nonRefundable") }}</h5>
                   <h6>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Fusce ac odio at urna curs us lacinia.
+                    {{$t("pricing.nonRefundableSubTitle")}}
                   </h6>
                 </div>
               </div>

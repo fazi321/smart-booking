@@ -9,7 +9,7 @@
           </div>
         </div>
         <div class="headings">
-          <h1>{{$t('pricing.priceDetails')}}</h1>
+          <h1>{{ $t("pricing.priceDetails") }}</h1>
           <h4><button @click="back(2)">back</button>Pricing</h4>
         </div>
         <section class="price-container">
@@ -30,7 +30,12 @@
                 </label>
               </div>
               <div class="input-price">
-                <input type="number" min='1' v-model="price.dayPrice" :disabled="!daySelected.dayPrice"/>
+                <input
+                  type="number"
+                  min="1"
+                  v-model="price.dayPrice"
+                  :disabled="!daySelected.dayPrice"
+                />
               </div>
             </div>
             <!-- block -->
@@ -44,7 +49,12 @@
                 </label>
               </div>
               <div class="input-price">
-                <input type="number" min="1" v-model="price.weekDaysPrice" :disabled="!daySelected.weekDaysPrice"/>
+                <input
+                  type="number"
+                  min="1"
+                  v-model="price.weekDaysPrice"
+                  :disabled="!daySelected.weekDaysPrice"
+                />
               </div>
             </div>
             <!-- block -->
@@ -52,12 +62,23 @@
               <div class="price-checkbox">
                 <label class="container-input"
                   >{{ $t("pricing.sunday") }}
-                  <input type="checkbox" v-model="daySelected.sundayPrice" :disabled="daySelected.weekDaysPrice" />
+                  <input
+                    type="checkbox"
+                    v-model="daySelected.sundayPrice"
+                    :disabled="daySelected.weekDaysPrice"
+                  />
                   <span class="checkmark"></span>
                 </label>
               </div>
               <div class="input-price">
-                <input type="number" min="1" v-model="price.sundayPrice" :disabled="!daySelected.sundayPrice || daySelected.weekDaysPrice" />
+                <input
+                  type="number"
+                  min="1"
+                  v-model="price.sundayPrice"
+                  :disabled="
+                    !daySelected.sundayPrice || daySelected.weekDaysPrice
+                  "
+                />
               </div>
             </div>
             <!-- block -->
@@ -65,12 +86,23 @@
               <div class="price-checkbox">
                 <label class="container-input"
                   >{{ $t("pricing.monday") }}
-                  <input type="checkbox" v-model="daySelected.mondayPrice" :disabled="daySelected.weekDaysPrice" />
+                  <input
+                    type="checkbox"
+                    v-model="daySelected.mondayPrice"
+                    :disabled="daySelected.weekDaysPrice"
+                  />
                   <span class="checkmark"></span>
                 </label>
               </div>
               <div class="input-price">
-                <input type="number" min="1" v-model="price.mondayPrice" :disabled="!daySelected.mondayPrice || daySelected.weekDaysPrice"/>
+                <input
+                  type="number"
+                  min="1"
+                  v-model="price.mondayPrice"
+                  :disabled="
+                    !daySelected.mondayPrice || daySelected.weekDaysPrice
+                  "
+                />
               </div>
             </div>
             <!-- block -->
@@ -78,12 +110,23 @@
               <div class="price-checkbox">
                 <label class="container-input"
                   >{{ $t("pricing.tuesday") }}
-                  <input type="checkbox" v-model="daySelected.tuesdayPrice" :disabled="daySelected.weekDaysPrice" />
+                  <input
+                    type="checkbox"
+                    v-model="daySelected.tuesdayPrice"
+                    :disabled="daySelected.weekDaysPrice"
+                  />
                   <span class="checkmark"></span>
                 </label>
               </div>
               <div class="input-price">
-                <input type="number" min="1" v-model="price.tuesdayPrice" :disabled="!daySelected.tuesdayPrice || daySelected.weekDaysPrice" />
+                <input
+                  type="number"
+                  min="1"
+                  v-model="price.tuesdayPrice"
+                  :disabled="
+                    !daySelected.tuesdayPrice || daySelected.weekDaysPrice
+                  "
+                />
               </div>
             </div>
             <!-- block -->
@@ -91,12 +134,23 @@
               <div class="price-checkbox">
                 <label class="container-input"
                   >{{ $t("pricing.wednesday") }}
-                  <input type="checkbox" v-model="daySelected.wednesdayPrice" :disabled="daySelected.weekDaysPrice"/>
+                  <input
+                    type="checkbox"
+                    v-model="daySelected.wednesdayPrice"
+                    :disabled="daySelected.weekDaysPrice"
+                  />
                   <span class="checkmark"></span>
                 </label>
               </div>
               <div class="input-price">
-                <input type="number" min="1" v-model="price.wednesdayPrice" :disabled="!daySelected.wednesdayPrice || daySelected.weekDaysPrice"/>
+                <input
+                  type="number"
+                  min="1"
+                  v-model="price.wednesdayPrice"
+                  :disabled="
+                    !daySelected.wednesdayPrice || daySelected.weekDaysPrice
+                  "
+                />
               </div>
             </div>
             <!-- block -->
@@ -109,7 +163,12 @@
                 </label>
               </div>
               <div class="input-price">
-                <input type="number" min="1" v-model="price.thrusdayPrice" :disabled="!daySelected.thrusdayPrice"/>
+                <input
+                  type="number"
+                  min="1"
+                  v-model="price.thrusdayPrice"
+                  :disabled="!daySelected.thrusdayPrice"
+                />
               </div>
             </div>
             <!-- block -->
@@ -122,7 +181,12 @@
                 </label>
               </div>
               <div class="input-price">
-                <input type="number" min="1" v-model="price.fridayPrice" :disabled="!daySelected.fridayPrice"/>
+                <input
+                  type="number"
+                  min="1"
+                  v-model="price.fridayPrice"
+                  :disabled="!daySelected.fridayPrice"
+                />
               </div>
             </div>
             <!-- block -->
@@ -135,20 +199,29 @@
                 </label>
               </div>
               <div class="input-price">
-                <input type="number" min="1" v-model="price.saturdayPrice" :disabled="!daySelected.saturdayPrice"/>
+                <input
+                  type="number"
+                  min="1"
+                  v-model="price.saturdayPrice"
+                  :disabled="!daySelected.saturdayPrice"
+                />
               </div>
             </div>
             <!-- block -->
           </div>
           <div class="booking-date">
             <div class="head-booking">
-             <h5>
-                {{$t('pricing.howLongServiceOpen')}}
+              <h5>
+                {{ $t("pricing.howLongServiceOpen") }}
               </h5>
             </div>
             <div class="date-input">
               <div @click="showModelDate('fd')">
-                <input type="text" :placeholder="$t('AddService.fromDate')" v-model="fromDate" />
+                <input
+                  type="text"
+                  :placeholder="$t('AddService.fromDate')"
+                  v-model="fromDate"
+                />
                 <input
                   type="date"
                   @change="checkDate"
@@ -158,7 +231,11 @@
                 />
               </div>
               <div @click="showModelDate('td')">
-                <input type="text" :placeholder="$t('AddService.toDate')" v-model="toDate" />
+                <input
+                  type="text"
+                  :placeholder="$t('AddService.toDate')"
+                  v-model="toDate"
+                />
                 <input
                   type="date"
                   @change="checkDate"
@@ -171,7 +248,7 @@
           </div>
           <!-- block -->
           <div class="booking-date">
-           <div class="head-booking">
+            <div class="head-booking">
               <h5>{{ $t("pricing.checkIn&CheckOut") }}</h5>
             </div>
             <div class="date-input">
@@ -189,7 +266,9 @@
         </section>
         <div class="form-container">
           <div class="input-div">
-            <button type="submit" @click="changeStep(2)">{{$t('AddService.next')}}</button>
+            <button type="submit" @click="changeStep(2)">
+              {{ $t("AddService.next") }}
+            </button>
           </div>
         </div>
       </div>
@@ -203,13 +282,16 @@
           </div>
         </div>
         <div class="headings">
-          <h1>{{$t('pricing.priceDetails')}}</h1>
-          <h4><button @click="goBack(1)">{{$t("AddService.back")}}</button>{{$t("pricing.bookingSettings")}}</h4>
+          <h1>{{ $t("pricing.priceDetails") }}</h1>
+          <h4>
+            <button @click="goBack(1)">{{ $t("AddService.back") }}</button
+            >{{ $t("pricing.bookingSettings") }}
+          </h4>
         </div>
         <section class="booking">
           <div>
-             <div class="head">
-              <h1>{{$t("pricing.category")}}</h1>
+            <div class="head">
+              <h1>{{ $t("pricing.category") }}</h1>
             </div>
             <div class="container-service container-amenities">
               <div class="cards">
@@ -223,8 +305,8 @@
                     src="../../../../assets/images/familiesSingle.svg"
                     alt=""
                   />
-                  <h6>{{$t("pricing.families&")}}</h6>
-                  <h6>{{$t("pricing.singles")}}</h6>
+                  <h6>{{ $t("pricing.families&") }}</h6>
+                  <h6>{{ $t("pricing.singles") }}</h6>
                 </div>
                 <div
                   :class="{
@@ -233,7 +315,7 @@
                   @click="bookSettings('families_only')"
                 >
                   <img src="../../../../assets/images/families.svg" alt="" />
-                  <h6>{{$t("pricing.familiesOnly")}}</h6>
+                  <h6>{{ $t("pricing.familiesOnly") }}</h6>
                 </div>
                 <div
                   :class="{
@@ -242,14 +324,14 @@
                   @click="bookSettings('ladies_only')"
                 >
                   <img src="../../../../assets/images/ladies.svg" alt="" />
-                  <h6>{{$t("pricing.ladiesOnly")}}</h6>
+                  <h6>{{ $t("pricing.ladiesOnly") }}</h6>
                 </div>
               </div>
             </div>
           </div>
           <div>
             <div class="head">
-              <h1>{{$t("pricing.other")}}</h1>
+              <h1>{{ $t("pricing.other") }}</h1>
             </div>
             <div class="container-service container-amenities card-other">
               <div class="cards">
@@ -269,7 +351,8 @@
                 </div>
                 <div>
                   <div class="content" @click="showBookPop('cencel')">
-                   <h6>
+                    <h5>{{ $t("pricing.cancellationPolicy") }}</h5>
+                    <h6>
                       {{
                         bookingSetting.canellationPolicy == "Flexible"
                           ? $t("pricing.flexible")
@@ -289,7 +372,7 @@
           </div>
           <div class="deposite-section">
             <div class="head">
-              <h5>{{$t("pricing.securityDeposit")}}</h5>
+              <h5>{{ $t("pricing.securityDeposit") }}</h5>
             </div>
             <div class="toggle-btn">
               <label class="switch">
@@ -312,10 +395,23 @@
           <div class="deposite-section deposite-set">
             <div class="head">
               <h5>{{ $t("pricing.lastMinuteDiscount") }}</h5>
-              <div class="inputLastMinute" v-if="bookingSetting.lastMinuteDiscount">
+              <div
+                class="inputLastMinute"
+                v-if="bookingSetting.lastMinuteDiscount"
+              >
                 <div>
-                  <input type="number" min="1" v-model="bookingSetting.days" :placeholder="$t('AddService.days')"/>
-                  <input type="number" min="1" v-model="bookingSetting.discountPercentage" :placeholder="$t('AddService.discountPercentage')"/>
+                  <input
+                    type="number"
+                    min="1"
+                    v-model="bookingSetting.days"
+                    :placeholder="$t('AddService.days')"
+                  />
+                  <input
+                    type="number"
+                    min="1"
+                    v-model="bookingSetting.discountPercentage"
+                    :placeholder="$t('AddService.discountPercentage')"
+                  />
                 </div>
               </div>
               <!-- <p>
@@ -337,7 +433,9 @@
         </section>
         <div class="form-container">
           <div class="input-div">
-            <button type="submit" @click="changeStep(5)">{{$t('AddService.next')}}</button>
+            <button type="submit" @click="changeStep(5)">
+              {{ $t("AddService.next") }}
+            </button>
           </div>
         </div>
       </div>
@@ -351,7 +449,7 @@
           </div>
         </div>
         <div class="headings">
-          <h1>{{$t('pricing.priceDetails')}}</h1>
+          <h1>{{ $t("pricing.priceDetails") }}</h1>
           <h4>{{ $t("pricing.bookingType") }}</h4>
         </div>
         <section class="booking-type">
@@ -406,7 +504,9 @@
         </section>
         <div class="form-container">
           <div class="input-div">
-            <button type="submit" @click="changeStep(2)">{{$t('AddService.next')}}</button>
+            <button type="submit" @click="changeStep(2)">
+              {{ $t("AddService.next") }}
+            </button>
           </div>
         </div>
       </div>
@@ -420,7 +520,7 @@
           </div>
         </div>
         <div class="headings">
-          <h1>{{$t('pricing.priceDetails')}}</h1>
+          <h1>{{ $t("pricing.priceDetails") }}</h1>
           <h4>{{ $t("pricing.cancellationPolicy") }}</h4>
         </div>
         <section class="booking-type">
@@ -437,8 +537,7 @@
                 <div class="content">
                   <h5>{{ $t("pricing.flexible") }}</h5>
                   <h6>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Fusce ac odio at urna curs us lacinia.
+                    {{ $t("pricing.flexibleSubTitle") }}
                   </h6>
                 </div>
               </div>
@@ -451,10 +550,9 @@
               >
                 <!-- <div class="rounded-btn"></div> -->
                 <div class="content">
-                  <h5> {{ $t("pricing.moderate") }}</h5>
+                  <h5>{{ $t("pricing.moderate") }}</h5>
                   <h6>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Fusce ac odio at urna curs us lacinia.
+                    {{ $t("pricing.moderateSubTitle") }}
                   </h6>
                 </div>
               </div>
@@ -467,10 +565,9 @@
               >
                 <!-- <div class="rounded-btn"></div> -->
                 <div class="content">
-                  <h5> {{ $t("pricing.strict") }}</h5>
+                  <h5>{{ $t("pricing.strict") }}</h5>
                   <h6>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Fusce ac odio at urna curs us lacinia.
+                    {{ $t("pricing.strictSubTitle") }}
                   </h6>
                 </div>
               </div>
@@ -486,10 +583,9 @@
               >
                 <!-- <div class="rounded-btn"></div> -->
                 <div class="content">
-                  <h5> {{ $t("pricing.nonRefundable") }}</h5>
+                  <h5>{{ $t("pricing.nonRefundable") }}</h5>
                   <h6>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Fusce ac odio at urna curs us lacinia.
+                    {{ $t("pricing.nonRefundableSubTitle") }}
                   </h6>
                 </div>
               </div>
@@ -498,7 +594,9 @@
         </section>
         <div class="form-container">
           <div class="input-div">
-            <button type="submit" @click="changeStep(2)">{{$t('AddService.next')}}</button>
+            <button type="submit" @click="changeStep(2)">
+              {{ $t("AddService.next") }}
+            </button>
           </div>
         </div>
       </div>
@@ -512,15 +610,18 @@
           </div>
         </div>
         <div class="headings">
-          <h1>{{$t('pricing.priceDetails')}}</h1>
-          <h4><button @click="goBack(2)">{{ $t("AddService.back") }}</button>{{ $t("pricing.addOns") }}</h4>
+          <h1>{{ $t("pricing.priceDetails") }}</h1>
+          <h4>
+            <button @click="goBack(2)">{{ $t("AddService.back") }}</button
+            >{{ $t("pricing.addOns") }}
+          </h4>
         </div>
         <section class="price-unset">
           <div class="container-price">
             <div class="price-primary">
               <div class="head-price">
-               <h5>{{$t('pricing.name')}}</h5>
-                <h5>{{$t('pricing.price')}}</h5>
+                <h5>{{ $t("pricing.name") }}</h5>
+                <h5>{{ $t("pricing.price") }}</h5>
               </div>
             </div>
             <!-- block -->
@@ -533,7 +634,11 @@
                 </label>
               </div>
               <div class="input-price">
-                <input type="text" v-model="addOnsPrice.namePrice" :disabled="!addOnsCheck.namePrice"/>
+                <input
+                  type="text"
+                  v-model="addOnsPrice.namePrice"
+                  :disabled="!addOnsCheck.namePrice"
+                />
               </div>
             </div>
             <!-- block -->
@@ -546,14 +651,18 @@
                 </label>
               </div>
               <div class="input-price">
-                <input type="text" v-model="addOnsPrice.sleepover" :disabled="!addOnsCheck.sleepover"/>
+                <input
+                  type="text"
+                  v-model="addOnsPrice.sleepover"
+                  :disabled="!addOnsCheck.sleepover"
+                />
               </div>
             </div>
             <!-- block -->
             <div class="price-inputs">
               <div class="price-checkbox">
                 <label class="container-input"
-                  >{{$t('pricing.birthdayArrangements')}}
+                  >{{ $t("pricing.birthdayArrangements") }}
                   <input
                     type="checkbox"
                     v-model="addOnsCheck.brithdayArrangements"
@@ -562,7 +671,11 @@
                 </label>
               </div>
               <div class="input-price">
-                <input type="text" v-model="addOnsPrice.brithdayArrangements" :disabled="!addOnsCheck.brithdayArrangements"/>
+                <input
+                  type="text"
+                  v-model="addOnsPrice.brithdayArrangements"
+                  :disabled="!addOnsCheck.brithdayArrangements"
+                />
               </div>
             </div>
             <!-- block -->
@@ -578,7 +691,11 @@
                 </label>
               </div>
               <div class="input-price">
-                <input type="text" v-model="addOnsPrice.weddingArrangements" :disabled="!addOnsCheck.weddingArrangements"/>
+                <input
+                  type="text"
+                  v-model="addOnsPrice.weddingArrangements"
+                  :disabled="!addOnsCheck.weddingArrangements"
+                />
               </div>
             </div>
             <!-- block -->
@@ -591,7 +708,11 @@
                 </label>
               </div>
               <div class="input-price">
-                <input type="text" v-model="addOnsPrice.buffet" :disabled="!addOnsCheck.buffet" />
+                <input
+                  type="text"
+                  v-model="addOnsPrice.buffet"
+                  :disabled="!addOnsCheck.buffet"
+                />
               </div>
             </div>
             <!-- <div class="price-inputs">
@@ -653,7 +774,9 @@
         </section>
         <div class="form-container">
           <div class="input-div" v-if="!$store.state.details.btnLastLoading">
-            <button type="submit" @click="submitedData">{{$t('AddService.next')}}</button>
+            <button type="submit" @click="submitedData">
+              {{ $t("AddService.next") }}
+            </button>
           </div>
           <div class="input-div" v-else>
             <button type="submit">Loading...</button>
@@ -693,10 +816,10 @@ export default {
     };
   },
   methods: {
-    formatedDate(val){
-      var arr = val.split("-")
-      var s = `${arr[1]}-${arr[2]}-${arr[0]}` 
-      return s
+    formatedDate(val) {
+      var arr = val.split("-");
+      var s = `${arr[1]}-${arr[2]}-${arr[0]}`;
+      return s;
     },
     back(step) {
       this.$parent.backServiceModel(step, "service");
@@ -716,11 +839,11 @@ export default {
           }
         }
       }
-      if(this.fromDate){
-        newObj.openFrom = this.formatedDate(this.fromDate)
+      if (this.fromDate) {
+        newObj.openFrom = this.formatedDate(this.fromDate);
       }
-      if(this.toDate){
-        newObj.openTo = this.formatedDate(this.toDate)
+      if (this.toDate) {
+        newObj.openTo = this.formatedDate(this.toDate);
       }
       //  time check in out
       var check = {};
@@ -742,7 +865,7 @@ export default {
       if (!this.bookingSetting.securityDeposit) {
         delete this.bookingSetting.securityAmount;
       }
-      if(!this.bookingSetting.lastMinuteDiscount){
+      if (!this.bookingSetting.lastMinuteDiscount) {
         delete this.bookingSetting.days;
         delete this.bookingSetting.discountPercentage;
       }
@@ -808,19 +931,19 @@ export default {
     },
   },
   watch: {
-    'daySelected.weekDaysPrice': {
+    "daySelected.weekDaysPrice": {
       handler(newValue) {
-        if(newValue){
+        if (newValue) {
           this.daySelected.sundayPrice = true;
           this.daySelected.mondayPrice = true;
           this.daySelected.tuesdayPrice = true;
           this.daySelected.wednesdayPrice = true;
-          
+
           this.price.sundayPrice = this.price.weekDaysPrice;
           this.price.mondayPrice = this.price.weekDaysPrice;
           this.price.tuesdayPrice = this.price.weekDaysPrice;
           this.price.wednesdayPrice = this.price.weekDaysPrice;
-        }else{
+        } else {
           this.daySelected.sundayPrice = false;
           this.daySelected.mondayPrice = false;
           this.daySelected.tuesdayPrice = false;
@@ -832,16 +955,16 @@ export default {
           this.price.wednesdayPrice = null;
         }
       },
-      deep: true
+      deep: true,
     },
-    'price.weekDaysPrice': {
+    "price.weekDaysPrice": {
       handler(newValue) {
-        if(newValue){
+        if (newValue) {
           this.price.sundayPrice = newValue;
           this.price.mondayPrice = newValue;
           this.price.tuesdayPrice = newValue;
           this.price.wednesdayPrice = newValue;
-        }else{
+        } else {
           this.price.weekDaysPrice = null;
           this.price.sundayPrice = null;
           this.price.mondayPrice = null;
@@ -849,9 +972,9 @@ export default {
           this.price.wednesdayPrice = null;
         }
       },
-      deep: true
-    }
-  }
+      deep: true,
+    },
+  },
 };
 </script>
 
