@@ -5,8 +5,11 @@
         <img :src="require(`../../assets/images/${dataItem.image}`)" />
       </div>
       <div class="detail">
-        <h5>{{ dataItem.category }}</h5>
-        <p>{{ dataItem.title }}</p>
+        <!-- <h5>{{ dataItem.category }}</h5> -->
+        <p v-if="dataItem.title == 'apartments'">{{$t('header.apartments')}}</p>
+        <p v-if="dataItem.title == 'hotels'">{{$t('header.hotels')}}</p>
+        <p v-if="dataItem.title == 'camps'">{{$t('header.camps')}}</p>
+        <p v-if="dataItem.title == 'resorts'">{{$t('header.resorts')}}</p>
       </div>
     </router-link>
   </section>
@@ -17,8 +20,11 @@
         <img :src="require(`../../assets/images/${dataItem.image}`)" />
       </div>
       <div class="detail">
-        <h5>{{ dataItem.category }}</h5>
-        <p>{{ dataItem.title }}</p>
+        <!-- <h5>{{ dataItem.category }}</h5> -->
+        <p v-if="dataItem.title == 'jeddah'">{{$t('footer.jeddah')}}</p>
+        <p v-if="dataItem.title == 'madinah'">{{$t('footer.madinah')}}</p>
+        <p v-if="dataItem.title == 'riyadh'">{{$t('footer.riyadh')}}</p>
+        <p v-if="dataItem.title == 'makkah'">{{$t('footer.makkah')}}</p>
       </div>
     </div>
   </section>

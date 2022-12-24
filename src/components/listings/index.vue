@@ -1,6 +1,6 @@
 <template>
   <div class="container apartment-main">
-    <div class="search-wrapper">
+    <div class="search-wrapper" >
       <SearchHeader />
     </div>
     <Filters />

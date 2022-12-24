@@ -1,5 +1,5 @@
 <template>
-  <section class="card-container">
+  <section :class="['card-container',{'rtl-set':$t('lang') == 'ar'}]">
     <router-link to="" class="what-card">
       <div class="image">
         <img :src="require(`../../assets/images/reserve.svg`)" />
@@ -107,6 +107,13 @@ export default {
   justify-content: space-between;
   flex-wrap: wrap;
   padding: 10px 0;
+}
+.rtl-set .what-card .detail h5,.rtl-set .what-card .detail p{
+   text-align: right;
+}
+.rtl-set .what-card .image{
+  margin-left:20px;
+  margin-right:0;
 }
 @media (max-width: 479px) and (min-width: 320px) {
   .what-card {

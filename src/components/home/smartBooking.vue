@@ -3,7 +3,7 @@
     <div class="smart-title">
       <h1>{{$t('homePage.exploreMore')}}</h1>
     </div>
-    <div class="card-container" v-if="!loading">
+    <div :class="['card-container',{'rtl-set':$t('lang') == 'ar'}]" v-if="!loading">
       <SmartBookingCard
         v-for="(item, index) in smartBooking"
         :dataItem="item"
@@ -28,25 +28,25 @@ export default {
       loading:false,
       smartBooking: [
         {
-          title: this.$t('header.apartments'),
+          title: "apartments",
           image: "apartment.svg",
           categoryCount: "681",
           link: "/apartments?page=1",
         },
         {
-          title: this.$t('header.hotels'),
+          title: "hotels",
           image: "hotel.svg",
           categoryCount: "681",
           link: "/hotels?page=1",
         },
         {
-          title: this.$t('header.camps'),
+          title: "camps",
           image: "camps.svg",
           categoryCount: "681",
           link: "/camps?page=1",
         },
         {
-          title: this.$t('header.resorts'),
+          title: "resorts",
           image: "resort.png",
           categoryCount: "681",
           link: "/resorts?page=1",

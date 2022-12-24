@@ -4,7 +4,7 @@
       :settings="settings"
       :wrap-around="true"
       :breakpoints="breakpoints"
-      class="carousel-container"
+      :class="['carousel-container',{'rtl-set':$t('lang') == 'ar'}]"
     >
       <slide :key="1">
         <router-link to="/" class="hotel-image">

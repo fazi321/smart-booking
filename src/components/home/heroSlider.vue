@@ -5,6 +5,7 @@
       :autoplay="4000"
       :wrap-around="true"
       :breakpoints="breakpoints"
+      :dir="$t('lang') == 'ar' ? 'rtl' : 'lft'"
       class="carousel-container"
     >
       <slide :key="1">
@@ -28,10 +29,12 @@
       <template #addons>
         <navigation>
           <template #next>
-            <img src="../../assets/images/right-arrow.png" />
+            <img src="../../assets/images/right-arrow.png" v-if="$t('lang') == 'en'"/>
+            <img src="../../assets/images/arrow-left.png" v-if="$t('lang') == 'ar'"/>
           </template>
           <template #prev>
-            <img src="../../assets/images/arrow-left.png" />
+            <img src="../../assets/images/arrow-left.png" v-if="$t('lang') == 'en'"/>
+            <img src="../../assets/images/right-arrow.png" v-if="$t('lang') == 'ar'"/>
           </template>
         </navigation>
         <pagination />
@@ -93,6 +96,7 @@ export default {
   bottom: -9px;
   left: 0;
 }
+
 .hero-slider .primary-search {
   box-shadow: 0px 4px 8px -3px #cfcfcf6b !important;
 }

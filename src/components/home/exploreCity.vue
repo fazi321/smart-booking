@@ -3,7 +3,7 @@
     <div class="smart-title">
       <h1>{{ $t("homePage.exploreCities") }}</h1>
     </div>
-    <div class="card-container">
+    <div :class="['card-container',{'rtl-set':$t('lang') == 'ar'}]">
       <SmartBookingCard
         v-for="(item, index) in smartBooking"
         :dataItem="item"
@@ -12,6 +12,7 @@
         :city="true"
       />
       <CategoryModel
+        :class="{'rtl-set':$t('lang') == 'ar'}"
         :model="categoryModel"
         :city="selectedCity"
         @search="searchNow"
@@ -34,10 +35,10 @@ export default {
     return {
       categoryModel: false,
       smartBooking: [
-        { title: this.$t('footer.jeddah'), image: "jeddah.png", categoryCount: "681" },
-        { title: this.$t('footer.madinah'), image: "medina.png", categoryCount: "681" },
-        { title: this.$t('footer.riyadh'), image: "riyadh.png", categoryCount: "681" },
-        { title: this.$t('footer.makkah'), image: "mecca.png", categoryCount: "681" },
+        { title: "jeddah", image: "jeddah.png", categoryCount: "681" },
+        { title: "madinah", image: "medina.png", categoryCount: "681" },
+        { title: "riyadh", image: "riyadh.png", categoryCount: "681" },
+        { title:  "makkah", image: "mecca.png", categoryCount: "681" },
       ],
       //
       selectedCity: {},

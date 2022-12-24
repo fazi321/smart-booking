@@ -108,6 +108,9 @@ export default {
   text-align: right;
   margin-left: 0;
 }
+.set-lang .main-drop p {
+  margin-right:10px;
+}
 .set-lang .main-drop p::after {
   right: unset;
   left: 0;

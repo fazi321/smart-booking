@@ -1,5 +1,5 @@
 <template>
-  <section class="search">
+  <section :class="['search', { 'set-lang': $t('lang') == 'ar' }]">
     <div :class="['primary-search', { shadowFull: $route.path == '/' }]">
       <!-- block -->
       <div class="search-block">
@@ -8,7 +8,7 @@
             <img src="./../assets/images/locationsearch.svg" alt="search" />
           </div>
           <div>
-            <span>{{$t('searchHeader.location')}}</span>
+            <span>{{ $t("searchHeader.location") }}</span>
           </div>
         </div>
         <div class="location" id="input">
@@ -74,27 +74,15 @@
             <img src="./../assets/images/bed.svg" alt="search" />
           </div>
           <div>
-            <span>{{$t('searchHeader.city')}}</span>
-          </div>
-        </div>
-        <div>
-          <input type="number" :placeholder="'1'" v-model="search.rooms" min='1'/>
-        </div>
-      </div>
-      <!-- block -->
-      <div class="search-block">
-        <div class="head-category">
-          <div class="img">
-            <img src="./../assets/images/checkin.svg" alt="search" />
-          </div>
-          <div>
-            <span>{{$t('searchHeader.checkIn')}}</span>
+            <span>{{ $t("searchHeader.city") }}</span>
           </div>
         </div>
         <div>
           <input
-            type="date"
-            v-model="search.checkIn"
+            type="number"
+            :placeholder="'1'"
+            v-model="search.rooms"
+            min="1"
           />
         </div>
       </div>
@@ -105,7 +93,21 @@
             <img src="./../assets/images/checkin.svg" alt="search" />
           </div>
           <div>
-            <span>{{$t('searchHeader.checkOut')}}</span>
+            <span>{{ $t("searchHeader.checkIn") }}</span>
+          </div>
+        </div>
+        <div>
+          <input type="date" v-model="search.checkIn" />
+        </div>
+      </div>
+      <!-- block -->
+      <div class="search-block">
+        <div class="head-category">
+          <div class="img">
+            <img src="./../assets/images/checkin.svg" alt="search" />
+          </div>
+          <div>
+            <span>{{ $t("searchHeader.checkOut") }}</span>
           </div>
         </div>
         <div>
@@ -123,7 +125,7 @@
             <img src="./../assets/images/icon-search.svg" alt="search" />
           </div>
           <div>
-            <span>{{$t('searchHeader.search')}}</span>
+            <span>{{ $t("searchHeader.search") }}</span>
           </div>
         </div>
       </div>
@@ -161,9 +163,9 @@ export default {
     openDropdown() {
       this.dropdownCities = true;
     },
-    selectedCity(city){
+    selectedCity(city) {
       this.search.city = city;
-      console.log(city)
+      console.log(city);
     },
     // formateDate(val) {
     //   const index = val.indexOf("-");
@@ -319,6 +321,18 @@ export default {
   border-radius: 25px;
   border: 1px solid #0e4763;
   width: 95%;
+}
+.set-lang.search {
+  direction: rtl;
+}
+.set-lang .primary-search {
+  direction: rtl;
+  padding-left: unset;
+  padding-right: 18px;
+}
+.set-lang.search .head-category .img {
+  margin-right: 0;
+  margin-left: 10px;
 }
 @media (max-width: 479px) and (min-width: 320px) {
   .search .primary-search {

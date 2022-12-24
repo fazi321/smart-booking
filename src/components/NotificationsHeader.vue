@@ -169,6 +169,9 @@ export default {
   left: 25%;
   right: 61%;
 }
+.set-lang .ghanti{
+  margin-left:0px;
+}
 @media (max-width: 479px) and (min-width: 320px) {
   .ghanti {
     width: 19px;

@@ -485,6 +485,9 @@ header.active .container .nav ul li a {
   border: 1px solid transparent;
   border-radius: 5px;
 }
+.rtl-set{
+  direction: rtl;
+}
 /* .price-container {
   width: 85%;
 } */
