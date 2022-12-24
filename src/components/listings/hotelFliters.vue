@@ -1,5 +1,5 @@
 <template>
-  <section class="apartments-filters">
+  <section :class="['apartments-filters',{'rtl-set':$t('lang') == 'ar'}]">
     <div :class="['inner',{'set-langauge':$t('lang') == 'ar'}]">
       <!-- location section  -->
       <section class="location-filter">
@@ -1091,7 +1091,7 @@ export default {
   right:0!important;
 }
 .set-langauge .checkbox-container,.set-langauge label{
-  justify-content: flex-end;
+  /* justify-content: flex-end; */
   padding-right: 30px;
 }
 .set-langauge .location-filter .form{
@@ -1105,8 +1105,8 @@ export default {
   left:unset!important;
   right: 0;
 }
-.set-langauge .bedrooms{
+/* .set-langauge .bedrooms{
  flex-direction: row-reverse;
-}
+} */
 /* side end */
 </style>
