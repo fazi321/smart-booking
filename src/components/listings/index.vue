@@ -4,7 +4,7 @@
       <SearchHeader />
     </div>
     <Filters />
-    <div class="apartment-wrapper">
+    <div :class="['apartment-wrapper', {'rtl-set': $t('lang') == 'ar'}]">
       <div class="apartment-left">
         <HotelFilters />
       </div>

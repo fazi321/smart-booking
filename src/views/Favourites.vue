@@ -2,9 +2,9 @@
   <default-layout>
     <section class="container">
       <div class="service-booking">
-        <h1>{{$t('favourites.favourites')}}</h1>
+        <h1>{{ $t("favourites.favourites") }}</h1>
       </div>
-      <div class="service-container">
+      <div :class="['service-container', { 'rtl-set': $t('lang') == 'ar' }]">
         <section class="filters-container">
           <div class="filter-buttons">
             <div class="filter-option">
@@ -19,15 +19,16 @@
           </div>
         </section>
         <div class="booking-cards favourite">
-           <div class="card" v-for="(item, key) in favList" :key="key">
-            <MyServicesCard :item="item" @removedWish="getFav"/>
+          <div class="card" v-for="(item, key) in filteredData" :key="key">
+            <MyServicesCard :item="item" @removedWish="getFav" />
           </div>
         </div>
         <div class="pagination-container">
           <paginate
+            v-model="pageSelected"
             :page-range="3"
             :margin-pages="2"
-            :page-count="10"
+            :page-count="pageCount"
             :click-handler="clickCallback"
             :prev-text="'<'"
             :next-text="'>'"
@@ -47,17 +48,21 @@ import Paginate from "vuejs-paginate-next";
 
 export default {
   name: "FavouritesView",
-  data(){
-   return {
-     favList: [],
-   }
+  data() {
+    return {
+      favList: [],
+      filteredData: [],
+      //
+      pageSelected: 1,
+      pageCount: 15,
+    };
   },
   components: {
     DefaultLayout,
     MyServicesCard,
-    Paginate
+    Paginate,
   },
-  mounted(){
+  mounted() {
     this.getFav();
   },
   methods: {
@@ -65,16 +70,19 @@ export default {
       try {
         var res = await this.$axios.get("user/favorite");
         this.favList = res.data;
-        console.log(res.data)
-        // console.log(res.data);
+        this.pageSelected = 1;
+        this.clickCallback(1);
       } catch (error) {
         console.log(error);
       }
     },
     clickCallback(num) {
-      this.$refs.slider.slideTo(num);
-    }
-  }
+      var copyFrom = num * 6 - 6;
+      var copyTo = num * 6;
+      this.pageCount = Math.ceil(this.favList.length / 6);
+      this.filteredData = this.favList.slice(copyFrom, copyTo);
+    },
+  },
 };
 </script>
 <style scoped>
@@ -147,7 +155,7 @@ export default {
   .booking-cards .card {
     width: 100%;
   }
-  .service-container h3{
+  .service-container h3 {
     margin: 0 10px;
   }
 }

@@ -1,5 +1,5 @@
 <template>
-  <section class="filters-container">
+  <section :class="['filters-container', {'rtl-set': $t('lang') == 'ar'}]">
     <div>
       <h6>{{$t("listingPage.filters")}}</h6>
     </div>
