@@ -43,7 +43,7 @@
                 <img src="../assets/images/msg-profile.svg" />
               </div>
               <div class="msg-title">
-                <h6>{{ chatUserName ? chatUserName : "jhon Doe" }}</h6>
+                <h6>{{ userName ? userName : "jhon Doe" }}</h6>
               </div>
             </div>
             <div class="chating-container" ref="scrollFun">
@@ -62,6 +62,7 @@
                 type="text"
                 placeholder="Write Something"
                 v-model="chatMessage"
+                v-on:keyup.enter="send()"
               />
               <img src="../assets/images/send.svg" @click="send()" />
             </div>
@@ -116,14 +117,14 @@ export default {
   },
   methods: {
     async createConversation(chat) {
+      this.userName = chat.firstName
       try {
         const createNow = await this.$axios.post(`conversation`, {
           msg: "",
           receiverId: chat._id,
         });
         if (createNow) {
-
-          this.getAllMessages(createNow.data.conversation);
+          this.getAllMessages(createNow.data.conversation, true);
         }
       } catch (error) {
         console.log(error);
@@ -172,12 +173,14 @@ export default {
     setName(name){
       this.chatUserName = name;
     },
-    async getAllMessages(chat) {
-      if (chat.receiverId._id != this.$store.state.auth.user._id) {
+    async getAllMessages(chat, isName) {
+     if(!isName){
+       if (chat.receiverId._id != this.$store.state.auth.user._id) {
         this.userName = chat.receiverId.firstName;
       } else {
         this.userName = chat.senderId.firstName;
       }
+     }
       this.chatWith = chat;
       try {
         const messages = await this.$axios.get(`message/${chat._id}`);
@@ -213,6 +216,7 @@ export default {
         console.log("socket connected");
       });
       this.socket.on("newMessage", (arg) => {
+        console.log('message', arg)
         newMessageCheck(arg);
       });
     },
