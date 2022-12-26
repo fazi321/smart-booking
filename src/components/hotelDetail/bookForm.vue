@@ -108,18 +108,22 @@
         </div>
       </section>
     </div>
+    <success-model-2 v-if="successMode" @close="closeModel"/>
     <BookModel v-if="bookingModel" :dataApi="dataBookingApi" />
   </section>
 </template>
 
 <script>
 import BookModel from "@/components/models/BookModel.vue";
+import SuccessModel2 from "@/components/models/SuccessModel2.vue";
 export default {
   components: {
     BookModel,
+    SuccessModel2,
   },
   data() {
     return {
+      successMode:false,
       bookingModel: false,
       inputDetail: {},
       dataBookingApi: null,
@@ -136,6 +140,9 @@ export default {
     },
   },
   methods: {
+    closeModel(){
+      this.successModel = false;
+    },
     async chatWith() {
       if(!this.storeState.vender) return
       try {
@@ -276,8 +283,12 @@ export default {
           // this.bookingModel = false;
           // this.paymentModel = true;
           this.loading = false;
-          this.dataBookingApi = res.data;
-          this.bookingModel = true;
+          if(this.storeState?.bookingSetting?.bookingType == "24-Hour"){
+            this.successMode = true;
+          }else{
+            this.dataBookingApi = res.data;
+            this.bookingModel = true;
+          }  
         }
       } catch (error) {
         this.loading = false;
