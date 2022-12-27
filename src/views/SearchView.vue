@@ -1,69 +1,68 @@
 <template>
   <default-layout>
-    <div class="search-wrapper">
-      <SearchHeader />
-    </div>
-    <section class="container" v-if="!loading">
-      <div class="service-booking">
-        <h1>{{$t('searchHeader.search')}}</h1>
+    <div class="container apartment-main">
+      <div class="search-wrapper">
+        <SearchHeader />
       </div>
-      <div class="service-container" v-if="searchList && searchList.length">
-        <!-- <section class="filters-container">
-          <div class="filter-buttons">
-            <div class="filter-option">
-              <img src="../assets/images/sort.svg" />
-              <select name="sort">
-                <option value>Sort by</option>
-                <option value>Price low to high</option>
-                <option value>Price high to low</option>
-                <option value>Discount low to high</option>
-              </select>
+      <div class="search-header">
+        <h3>{{$t('searchHeader.search')}}</h3>
+      </div>
+      <Filters />
+      <div :class="['apartment-wrapper', { 'rtl-set': $t('lang') == 'ar' }]">
+        <div class="apartment-left">
+          <HotelFilters />
+        </div>
+        <div class="apartment-right" v-if="!loading">
+          <div v-if="filteredData && filteredData.length">
+            <FilterCard
+              v-for="(items, index) in filteredData"
+              :key="index"
+              :item="items"
+            />
+            <div class="pagination-container">
+              <paginate
+                v-model="pageSelected"
+                :page-range="3"
+                :margin-pages="2"
+                :page-count="pageCount"
+                :click-handler="clickCallback"
+                :prev-text="'<'"
+                :next-text="'>'"
+                :container-class="'pagination'"
+                :page-class="'page-item'"
+              ></paginate>
             </div>
           </div>
-        </section> -->
-        <div class="booking-cards favourite">
-          <div class="card" v-for="(item, key) in filteredData" :key="key">
-            <MyServicesCard :item="item" @removedWish="getFav" />
-          </div>
+          <div class="text-container" v-else>{{ $t("error.notFound") }}</div>
         </div>
-        <div class="pagination-container">
-          <paginate
-            v-model="pageSelected"
-            :page-range="3"
-            :margin-pages="2"
-            :page-count="pageCount"
-            :click-handler="clickCallback"
-            :prev-text="'<'"
-            :next-text="'>'"
-            :container-class="'pagination'"
-            :page-class="'page-item'"
-          ></paginate>
+        <div class="apartment-right" v-else>
+          <SkeletonCard
+            v-for="(skeleton, loading) in skeleton"
+            :key="loading"
+          />
         </div>
       </div>
-      <section class="set-content nofound" v-else>
-        <h1>{{$t('error.notFound')}}</h1>
-      </section>
-    </section>
-    <section class="set-content" v-else>
-      <h1>Loading...</h1>
-    </section>
+    </div>
   </default-layout>
 </template>
 
 <script>
 import DefaultLayout from "@/components/layouts/DefaultLayout.vue";
-import MyServicesCard from "@/components/common/filterCard.vue";
-import Paginate from "vuejs-paginate-next";
+import Filters from "@/components/listings/filter.vue";
+import HotelFilters from "@/components/listings/hotelFliters.vue";
+import FilterCard from "@/components/common/filterCard.vue";
+import SkeletonCard from "@/components/common/cardSkeleton.vue";
 import SearchHeader from "@/components/SearchHeader.vue";
+import Paginate from "vuejs-paginate-next";
 
 export default {
-  name: "FavouritesView",
+  name: "SearchPage",
   data() {
     return {
       searchList: [],
-      filteredData:[],
+      filteredData: [],
       // pagination
-      pageSelected:1,
+      pageSelected: 1,
       pageCount: 1,
       showItem: 15,
       loading: false,
@@ -71,9 +70,12 @@ export default {
   },
   components: {
     DefaultLayout,
-    MyServicesCard,
+    Filters,
+    HotelFilters,
+    FilterCard,
     Paginate,
     SearchHeader,
+    SkeletonCard,
   },
   mounted() {
     this.getData();
@@ -124,87 +126,48 @@ export default {
 };
 </script>
 <style scoped>
-.set-content {
-  margin: 50px 50px 50px 50px;
-}
-.nofound{
-  margin: 0px 50px 50px 50px!important;
-}
-.set-content h1 {
+.text-container {
   color: #e3e3e3;
   font-size: 28px;
+  margin-top: 45px;
 }
-.service-booking {
-  padding: 30px 0;
+.search-wrapper .search .primary-search {
+  width: 70%;
 }
-.service-booking h1 {
-  font-size: 20px;
-  letter-spacing: 0.7px;
-  color: #231f20;
-  opacity: 0.8;
+</style>
+<style scoped>
+.search-wrapper {
+  margin-bottom: 50px;
+  margin-top: 10px;
 }
-.service-container h3 {
-  text-align: left;
-  letter-spacing: 0.5px;
-  color: #231f20;
-  opacity: 0.8;
-  font-size: 16px;
+.apartment-main {
   padding: 15px 0;
 }
-.booking-cards {
-  padding: 20px 0 0px 0;
+.apartment-wrapper {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  padding: 20px 0;
 }
-.booking-cards .card {
-  width: 47%;
+.apartment-wrapper .apartment-left {
+  width: 25%;
 }
-.filters-container {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 15px 0;
-}
-.filters-container div h6 {
-  color: #0e4763;
-  font-size: 18px;
-}
-.filter-buttons {
-  display: flex;
-}
-.filter-buttons .filter-option {
-  border: 1px solid #0e4763;
-  border-radius: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 20px;
-  width: 100%;
-}
-.filter-buttons .filter-option img {
-  width: 15px;
-  height: 15px;
-  margin-right: 10px;
-}
-.filter-buttons .filter-option select {
-  border: none;
-  outline: none;
-  color: #0e4763;
-  font-size: 14px;
+.apartment-wrapper .apartment-right {
   width: 70%;
-  cursor: pointer;
-  padding: 10px 0;
+  padding-right: 20px;
 }
 @media (max-width: 479px) and (min-width: 320px) {
-  .booking-cards {
-    margin: 0 10px;
+  .search-wrapper .search .primary-search {
+    width: 90%;
   }
-  .booking-cards .card {
+  .apartment-wrapper .apartment-left {
     width: 100%;
+    margin: 10px;
   }
-  .service-container h3 {
-    margin: 0 10px;
+  .apartment-wrapper .apartment-right {
+    width: 94%;
+    padding-right: 0px;
+    margin: 10px;
   }
 }
 </style>

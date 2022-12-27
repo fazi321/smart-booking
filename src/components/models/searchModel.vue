@@ -403,7 +403,7 @@ img {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 .container-vendor .cards {
   display: flex;
@@ -411,6 +411,8 @@ img {
   margin: 20px 0px 40px 0px;
   width: 96%;
   flex-wrap: wrap;
+   overflow-y: scroll;
+  height:300px;
 }
 .container-vendor .primary-cards {
   width: 100px;

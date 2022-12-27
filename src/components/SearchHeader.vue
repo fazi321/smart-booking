@@ -334,6 +334,7 @@ export default {
   margin-right: 0;
   margin-left: 10px;
 }
+
 @media (max-width: 479px) and (min-width: 320px) {
   .search .primary-search {
     flex-wrap: wrap;

@@ -1,5 +1,5 @@
 <template>
-  <section :class="['apartments-filters',{'rtl-set':$t('lang') == 'ar'}]">
+  <section :class="['apartments-filters',{'rtl-set':$t('lang') == 'ar'}]" @keypress="handleFilterNow">
     <div :class="['inner',{'set-langauge':$t('lang') == 'ar'}]">
       <!-- location section  -->
       <section class="location-filter">
@@ -769,6 +769,9 @@ export default {
     this.filters = q;
   },
   methods: {
+    handleFilterNow(){
+     console.log('working')
+    },
     getCheckIn(ev) {
       this.filters.checkIn = ev.target.value;
       this.pushUrl();
