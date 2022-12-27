@@ -96,6 +96,7 @@ export default {
       return s;
     },
     async getReviews() {
+      if(!this.storeState.vender) return
       try {
         var res = await this.$axios.get(
           `vender/profile/${this.storeState.vender}`

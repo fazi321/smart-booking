@@ -11,9 +11,7 @@
       </div>
       <div class="user-details">
         <p>{{ messages.message }}</p>
-        <div class="time">
-          <p>36 Min Ago</p>
-        </div>
+       <TimeCounter :time="messages.createdAt"/>
       </div>
     </div>
     <!-- message card  -->
@@ -21,9 +19,11 @@
 </template>
 
 <script>
+import TimeCounter from '@/components/common/TimeCounter.vue'
 export default {
   name: "UserChat",
   props: ["messages"],
+  components:{TimeCounter}
 };
 </script>
 

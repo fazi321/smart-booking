@@ -2,38 +2,41 @@
   <default-layout>
     <section class="container">
       <div class="messages-main">
-        <h1>{{$t('chatPage.messages')}}</h1>
+        <h1>{{ $t("chatPage.messages") }}</h1>
         <div class="message-container">
           <div class="message-left">
-            <h3>{{$t('chatPage.allMessages')}}</h3>
-            <div :class="['search', {'set-lang': $t('lang') == 'ar'}]">
+            <h3>{{ $t("chatPage.allMessages") }}</h3>
+            <div :class="['search', { 'set-lang': $t('lang') == 'ar' }]">
               <img src="../assets/images/msg-search.svg" />
               <input type="text" :placeholder="$t('chatPage.searchMessages')" />
             </div>
             <div class="primary-users">
               <div
-              class="user"
-              v-for="(chat, index) in conversation"
-              :key="index"
-              @click="getAllMessages(chat)"
-            >
-              <MessageCard :conversation="chat"  @click="setName(chat?.receiverId.firstName)"/>
-            </div>
-            <div>
-              <h1>Users</h1>
-            </div>
-            <div
-              v-for="(chat, index) in allUsers"
-              :key="index"
-              @click="createConversation(chat)"
-            >
-              <MessageCard
-                @click="setName(chat.firstName)"
-                :conversation="chat"
-                :usersCard="true"
-                v-if="chat.firstName"
-              />
-            </div>
+                class="user"
+                v-for="(chat, index) in conversation"
+                :key="index"
+                @click="getAllMessages(chat)"
+              >
+                <MessageCard
+                  :conversation="chat"
+                  @click="setName(chat?.receiverId.firstName)"
+                />
+              </div>
+              <!-- <div>
+                <h1>Users</h1>
+              </div>
+              <div
+                v-for="(chat, index) in allUsers"
+                :key="index"
+                @click="createConversation(chat)"
+              >
+                <MessageCard
+                  @click="setName(chat.firstName)"
+                  :conversation="chat"
+                  :usersCard="true"
+                  v-if="chat.firstName"
+                />
+              </div> -->
             </div>
           </div>
           <!-- / -->
@@ -97,7 +100,7 @@ export default {
       messages: [],
       //
       userName: "",
-       chatUserName:"",
+      chatUserName: "",
       //
       chatMessage: "",
       //
@@ -110,14 +113,15 @@ export default {
   },
   mounted() {
     this.getAllConverstion();
-    // console.log(this.timeSince(1666727737165))
-    // var check = new Date(1666727737165)
+    // console.log(this.timeSince('1666727737165'))
+    // var check = new Date('2022-12-27T12:32:32.274Z')
+    // console.log(this.timeSince(check))
     // console.log(check.toString())
     this.getAllUsers();
   },
   methods: {
     async createConversation(chat) {
-      this.userName = chat.firstName
+      this.userName = chat.firstName;
       try {
         const createNow = await this.$axios.post(`conversation`, {
           msg: "",
@@ -129,30 +133,6 @@ export default {
       } catch (error) {
         console.log(error);
       }
-    },
-    timeSince(date) {
-      var seconds = Math.floor((new Date() - Date.parse(date)) / 1000);
-      var interval = seconds / 31536000;
-      if (interval > 1) {
-        return Math.floor(interval) + " years";
-      }
-      interval = seconds / 2592000;
-      if (interval > 1) {
-        return Math.floor(interval) + " months";
-      }
-      interval = seconds / 86400;
-      if (interval > 1) {
-        return Math.floor(interval) + " days";
-      }
-      interval = seconds / 3600;
-      if (interval > 1) {
-        return Math.floor(interval) + " hours";
-      }
-      interval = seconds / 60;
-      if (interval > 1) {
-        return Math.floor(interval) + " minutes";
-      }
-      return Math.floor(seconds) + " seconds";
     },
     async getAllConverstion() {
       try {
@@ -166,21 +146,22 @@ export default {
       try {
         const allUsers = await this.$axios.get("conversation/users");
         this.allUsers = allUsers.data;
+        console.log("allUsers", allUsers);
       } catch (error) {
         console.log(error);
       }
     },
-    setName(name){
+    setName(name) {
       this.chatUserName = name;
     },
     async getAllMessages(chat, isName) {
-     if(!isName){
-       if (chat.receiverId._id != this.$store.state.auth.user._id) {
-        this.userName = chat.receiverId.firstName;
-      } else {
-        this.userName = chat.senderId.firstName;
+      if (!isName) {
+        if (chat.receiverId._id != this.$store.state.auth.user._id) {
+          this.userName = chat.receiverId.firstName;
+        } else {
+          this.userName = chat.senderId.firstName;
+        }
       }
-     }
       this.chatWith = chat;
       try {
         const messages = await this.$axios.get(`message/${chat._id}`);
@@ -216,7 +197,7 @@ export default {
         console.log("socket connected");
       });
       this.socket.on("newMessage", (arg) => {
-        console.log('message', arg)
+        console.log("message", arg);
         newMessageCheck(arg);
       });
     },
@@ -234,8 +215,8 @@ export default {
       immediate: true,
       handler(user) {
         if (user) {
-          this.createConversation(user)
-          this.setName(user.firstName)
+          this.createConversation(user);
+          this.setName(user.firstName);
         }
       },
     },
@@ -248,9 +229,9 @@ export default {
 };
 </script>
 <style scoped>
-.set-lang input{
-  text-align: right!important;
-  direction: rtl!important;
+.set-lang input {
+  text-align: right !important;
+  direction: rtl !important;
 }
 .messages-main {
   padding: 30px 0;
@@ -371,9 +352,10 @@ export default {
 }
 .user {
   cursor: pointer;
+  margin:4px;
 }
-.primary-users{
- height: 400px;
+.primary-users {
+  height: 400px;
   overflow-y: scroll;
 }
 </style>

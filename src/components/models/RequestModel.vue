@@ -1,26 +1,26 @@
 <template>
-  <section class="model">
-    <div class="success">
-      <div class="main-login">
-        <div class="logo-close">
-          <div class="close-icon" @click="close">
-            <img src="../../assets/images/close-icon.svg" alt="" />
-          </div>
+  <section class="success">
+    <div class="main-login">
+      <div class="logo-close">
+        <div class="close-icon" @click="close">
+          <img src="../../assets/images/close-icon.svg" alt="" />
         </div>
-        <div class="headings">
-          <h1>{{ $t("myBookingPage.bookingRequests") }}</h1>
+      </div>
+      <div class="headings">
+        <h1>{{$t('myBookingPage.bookingRequests')}}</h1>
+      </div>
+      <div class="container-content">
+        <div class="success-img">
+          <img src="../../assets/images/success.svg" alt="" />
         </div>
-        <div class="container-content">
-          <div class="success-img">
-            <img src="../../assets/images/success.svg" alt="" />
-          </div>
-          <div class="success-content">
-            <h5>Notification Sent Successfully!</h5>
-            <p>Notification has been sent to the customer successfully.</p>
-          </div>
-          <div class="input-div">
-            <button type="submit" @click="close">Done</button>
-          </div>
+        <div class="success-content">
+          <h5>Booking Requests</h5>
+          <p>
+           Notification has been sent to the customer successfully.
+          </p>
+        </div>
+        <div class="input-div">
+          <button type="submit">Done</button>
         </div>
       </div>
     </div>
@@ -38,8 +38,8 @@ export default {
 </script>
 
 <style scoped>
-.main-login {
-  width: 100%;
+.main-login{
+    width: 100%;
 }
 .container-content {
   align-items: center;
@@ -135,18 +135,6 @@ img {
   color: #393f45;
   font-size: 12px;
   line-height: 1.8;
-}
-.model {
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background: #0000004d;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 99;
 }
 /* step success end */
 /* responsive */

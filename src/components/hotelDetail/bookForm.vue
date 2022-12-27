@@ -108,7 +108,7 @@
         </div>
       </section>
     </div>
-    <success-model-2 v-if="successMode" @close="closeModel"/>
+    <success-model-2 v-if="successModel" @close="closeModel"/>
     <BookModel v-if="bookingModel" :dataApi="dataBookingApi" />
   </section>
 </template>
@@ -123,7 +123,7 @@ export default {
   },
   data() {
     return {
-      successMode:false,
+      successModel:false,
       bookingModel: false,
       inputDetail: {},
       dataBookingApi: null,
