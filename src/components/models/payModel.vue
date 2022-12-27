@@ -470,9 +470,9 @@ export default {
       // payload.cardCvv = cardCvv;
       // payload.cardName = cardName;
       const data = {
-        amount: this.dataApi.totalPrice,
+        amount: this.dataApi.totalPrice * 1000,
         currency: "SAR",
-        callback_url: `http://localhost:8080/success?bookid=${this.dataApi._id}`,
+        callback_url: `https://www.smartbookings.co/success?bookid=${this.dataApi.booking._id}`,
       };
       if (this.paymentMethod != "applepay") {
         data.source = {
