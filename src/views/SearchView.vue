@@ -65,6 +65,7 @@ export default {
       pageSelected: 1,
       pageCount: 1,
       showItem: 15,
+      skeleton: 6,
       loading: false,
     };
   },
@@ -110,19 +111,34 @@ export default {
         console.log(error);
       }
     },
+    pushUrl(page) {
+      var q = this.$route.query;
+      // delete q.page;
+      var url = this.constructURL(this.$route.path, q) + "page=" + page;
+      this.$router.push(url);
+    },
+    constructURL(url, fl) {
+      url += "?";
+      Object.keys(fl).forEach((e) => {
+        if (fl[e] && fl[e] !== "undefined" && fl[e].length > 0)
+          url += `${e}=${fl[e]}&`;
+      });
+      return url;
+    },
     clickCallback(page) {
       var copyFrom = page * this.showItem - this.showItem;
       var copyTo = page * this.showItem;
       this.filteredData = this.searchList.slice(copyFrom, copyTo);
+      this.pushUrl(page);
     },
   },
-  watch: {
-    $route: {
-      handler() {
-        this.getData();
-      },
-    },
-  },
+  // watch: {
+  //   "$route.params": {
+  //     handler() {
+  //      this.getData();
+  //     },
+  //   },
+  // },
 };
 </script>
 <style scoped>
