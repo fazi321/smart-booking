@@ -14,33 +14,41 @@ export default {
   },
   mounted() {
     var check = new Date(this.time);
-    console.log(this.timeSince(check));
-    window.setInterval(() => {
-      this.timeSince(check);
-      // this.now = Math.trunc((new Date()).getTime() / 1000);
-    }, 1000);
+    if (check) {
+      window.setInterval(() => {
+        this.timeSince(check);
+      }, 1000);
+    }
   },
   methods: {
     timeSince(date) {
       var seconds = Math.floor((new Date() - Date.parse(date)) / 1000);
       var interval = seconds / 31536000;
       if (interval > 1) {
-        this.updatedTime = Math.floor(interval) + `${Math.floor(interval) == 1 ? '  years Ago': '  years Ago'}`;
+        this.updatedTime =
+          Math.floor(interval) +
+          `${Math.floor(interval) == 1 ? "  years Ago" : "  years Ago"}`;
         return;
       }
       interval = seconds / 2592000;
       if (interval > 1) {
-        this.updatedTime = Math.floor(interval) + `${Math.floor(interval) == 1 ? ' month Ago': ' months Ago'}`;
+        this.updatedTime =
+          Math.floor(interval) +
+          `${Math.floor(interval) == 1 ? " month Ago" : " months Ago"}`;
         return;
       }
       interval = seconds / 86400;
       if (interval > 1) {
-        this.updatedTime = Math.floor(interval) + `${Math.floor(interval) == 1 ? ' day Ago': " days Ago"}`;
+        this.updatedTime =
+          Math.floor(interval) +
+          `${Math.floor(interval) == 1 ? " day Ago" : " days Ago"}`;
         return;
       }
       interval = seconds / 3600;
       if (interval > 1) {
-        this.updatedTime = Math.floor(interval) + `${Math.floor(interval) == 1 ? ' hour Ago': " hours Ago"}`;
+        this.updatedTime =
+          Math.floor(interval) +
+          `${Math.floor(interval) == 1 ? " hour Ago" : " hours Ago"}`;
         return;
       }
       interval = seconds / 60;
@@ -48,7 +56,7 @@ export default {
         this.updatedTime = Math.floor(interval) + " Min Ago";
         return;
       }
-      this.updatedTime = ' Now';
+      this.updatedTime = " Now";
     },
   },
 };
@@ -56,7 +64,7 @@ export default {
 
 <style>
 .time {
-  width: 18%;
+  width: 24%;
   display: flex;
   justify-content: flex-end;
 }

@@ -7,7 +7,12 @@
           <img src="../../assets/images/msg-profile.svg" />
         </div>
         <div class="msg-details">
-          <div v-if="!usersCard">
+          <div >
+            <h6>
+              {{ conversation?.receiverId?.firstName }}
+            </h6>
+          </div>
+          <!-- <div v-if="!usersCard">
             <h6
               v-if="conversation.receiverId?._id != $store.state.auth.user?._id"
             >
@@ -17,7 +22,7 @@
           </div>
           <div v-else>
             <h6>{{ conversation.firstName }}</h6>
-          </div>
+          </div> -->
           <p>
             <!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed
             convallis massa, at laoreet ligula. Etiam tempus lobortis pharetra.
@@ -26,7 +31,7 @@
           </p>
         </div>
       </div>
-      <TimeCounter :time="conversation.createdAt"/>
+      <TimeCounter :time="conversation.createdAt" />
       <!-- <div class="time">
         <p>36 Min Ago</p>
       </div> -->
@@ -76,7 +81,7 @@ export default {
 .message-card .msg-wrapper .msg-details {
   line-height: 1.7;
   width: 85%;
-  margin-top:10px;
+  margin-top: 10px;
 }
 .message-card .msg-wrapper .msg-details h6 {
   text-align: left;

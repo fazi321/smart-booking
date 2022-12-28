@@ -8,12 +8,16 @@
             <h3>{{ $t("chatPage.allMessages") }}</h3>
             <div :class="['search', { 'set-lang': $t('lang') == 'ar' }]">
               <img src="../assets/images/msg-search.svg" />
-              <input type="text" :placeholder="$t('chatPage.searchMessages')" />
+              <input
+                type="text"
+                :placeholder="$t('chatPage.searchMessages')"
+                v-model="search"
+              />
             </div>
             <div class="primary-users">
               <div
                 class="user"
-                v-for="(chat, index) in conversation"
+                v-for="(chat, index) in getConversation"
                 :key="index"
                 @click="getAllMessages(chat)"
               >
@@ -96,6 +100,7 @@ export default {
   },
   data() {
     return {
+      search: "",
       conversation: [],
       messages: [],
       //
@@ -110,6 +115,20 @@ export default {
       //
       socket: null,
     };
+  },
+  computed: {
+    getConversation() {
+      var search = this.search;
+      if (search) {
+        return this.conversation.filter((key) =>
+          key.receiverId.firstName
+            .toLowerCase()
+            .startsWith(search.toLowerCase())
+        );
+      }else{
+        return this.conversation
+      }
+    },
   },
   mounted() {
     this.getAllConverstion();
@@ -152,15 +171,16 @@ export default {
       }
     },
     setName(name) {
-      this.chatUserName = name;
+      this.userName = name;
     },
     async getAllMessages(chat, isName) {
       if (!isName) {
-        if (chat.receiverId._id != this.$store.state.auth.user._id) {
+        // if (chat.receiverId._id != this.$store.state.auth.user._id) {
           this.userName = chat.receiverId.firstName;
-        } else {
-          this.userName = chat.senderId.firstName;
-        }
+        // }
+        //  else {
+        //   this.userName = chat.senderId.firstName;
+        // }
       }
       this.chatWith = chat;
       try {
@@ -352,7 +372,7 @@ export default {
 }
 .user {
   cursor: pointer;
-  margin:4px;
+  margin: 4px;
 }
 .primary-users {
   height: 400px;
