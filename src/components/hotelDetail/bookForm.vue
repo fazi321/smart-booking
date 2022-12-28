@@ -284,7 +284,7 @@ export default {
           // this.paymentModel = true;
           this.loading = false;
           if(this.storeState?.bookingSetting?.bookingType == "24-Hour"){
-            this.successMode = true;
+            this.successModel = true;
           }else{
             this.dataBookingApi = res.data;
             this.bookingModel = true;
