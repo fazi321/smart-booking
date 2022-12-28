@@ -205,12 +205,15 @@
           </div>
         </div>
         <div class="book-btn" v-if="dataApi">
-          <button @click="bookingForm" :disabled="loadingBook">
+          <button @click="bookingForm" :disabled="loadingBook" v-if="!dataApi.isPaid">
             {{
               !loadingBook
-                ? `Pay (SAR ${dataApi.totalPrice} )`
+                ? `Pay Now (SAR ${dataApi.totalPrice} )`
                 : "Loading..."
             }}
+          </button>
+          <button v-else>
+              Already Paid
           </button>
         </div>
       </div>
@@ -363,6 +366,9 @@ export default {
       return this.$store.state.details && this.$store.state.details.details;
     },
   },
+  mounted(){
+    console.log(this.dataApi, '===>')
+  },
   methods: {
     showLocalDate(val) {
       const event = new Date(val);
@@ -472,7 +478,7 @@ export default {
       const data = {
         amount: this.dataApi.totalPrice * 1000,
         currency: "SAR",
-        callback_url: `https://www.smartbookings.co/success?bookid=${this.dataApi.booking._id}`,
+        callback_url: `https://www.smartbookings.co/success?bookid=${this.dataApi._id}`,
       };
       if (this.paymentMethod != "applepay") {
         data.source = {
