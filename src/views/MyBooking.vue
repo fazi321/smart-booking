@@ -39,10 +39,12 @@
             </p>
           </div>
         </div>
-        <div class="booking-cards">
+        <div class="booking-cards" v-if="tab != 'bookingRequests'">
           <div class="card" v-for="(data, index) in filteredData" :key="index">
             <MyCard :items="data" />
           </div>
+        </div>
+        <div class="booking-cards" v-if="tab == 'bookingRequests'">
           <div
             class="card"
             v-for="(data, index) in bookingRequests"
@@ -124,7 +126,7 @@ export default {
       if (val.status != "waiting") {
         this.dataBookingApi = val?.bookngRequest[0];
         this.bookingModel = true;
-      }else{
+      } else {
         this.$swal({
           icon: "success",
           title: "Request in Waiting!",
