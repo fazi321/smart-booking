@@ -11,31 +11,31 @@
               :class="{ active: tab == 'bookingRequests' }"
               @click="selected('bookingRequests')"
             >
-              {{$t('myBookingPage.bookingRequests')}}
+              {{ $t("myBookingPage.bookingRequests") }}
             </p>
             <p
               :class="{ active: tab == 'Upcoming' }"
               @click="selected('Upcoming')"
             >
-              {{$t('myBookingPage.upcoming')}}
+              {{ $t("myBookingPage.upcoming") }}
             </p>
             <p
               :class="{ active: tab == 'current' }"
               @click="selected('current')"
             >
-              {{$t('myBookingPage.current')}}
+              {{ $t("myBookingPage.current") }}
             </p>
             <p
               :class="{ active: tab == 'Completed' }"
               @click="selected('Completed')"
             >
-              {{$t('myBookingPage.completed')}}
+              {{ $t("myBookingPage.completed") }}
             </p>
             <p
               :class="{ active: tab == 'Cancelled' }"
               @click="selected('Cancelled')"
             >
-              {{$t('myBookingPage.cancelled')}}
+              {{ $t("myBookingPage.cancelled") }}
             </p>
           </div>
         </div>
@@ -121,8 +121,17 @@ export default {
       this.bookingModel = false;
     },
     payModel(val) {
-      this.dataBookingApi = val?.bookngRequest[0];
-      this.bookingModel = true;
+      if (val.status != "waiting") {
+        this.dataBookingApi = val?.bookngRequest[0];
+        this.bookingModel = true;
+      }else{
+        this.$swal({
+          icon: "success",
+          title: "Request in Waiting!",
+          showConfirmButton: false,
+          timer: 3000,
+        });
+      }
     },
     clickCallback(num) {
       var copyFrom = num * 6 - 6;
