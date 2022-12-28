@@ -23,7 +23,7 @@
               >
                 <MessageCard
                   :conversation="chat"
-                  @click="setName(chat?.receiverId.firstName)"
+                  @click="setName(chat?.receiverId?._id != $store.state.auth.user?._id ? chat?.receiverId.firstName : chat?.senderId.firstName)"
                 />
               </div>
               <!-- <div>
@@ -173,15 +173,15 @@ export default {
     setName(name) {
       this.userName = name;
     },
-    async getAllMessages(chat, isName) {
-      if (!isName) {
+    async getAllMessages(chat) {
+      // if (!isName) {
         // if (chat.receiverId._id != this.$store.state.auth.user._id) {
-          this.userName = chat.receiverId.firstName;
+          // this.userName = chat.receiverId.firstName;
         // }
         //  else {
         //   this.userName = chat.senderId.firstName;
         // }
-      }
+      // }
       this.chatWith = chat;
       try {
         const messages = await this.$axios.get(`message/${chat._id}`);
