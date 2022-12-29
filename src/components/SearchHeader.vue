@@ -18,17 +18,17 @@
             v-model="search.city"
             @focus="openDropdown"
           />
-          <div class="dropdown" v-if="dropdownCities">
+          <div :class="['dropdown', {'set-lang-dropdown': $t('lang') == 'ar'}]" v-if="dropdownCities">
             <div class="city-search">
               <input
                 type="text"
                 v-model="searchCities"
-                placeholder="Search Location"
+                :placeholder="$t('searchHeader.searchLocation')"
               />
             </div>
             <div class="city-list" v-if="!searchCities">
               <ul>
-                <li class="head">Cities</li>
+                <li class="head">{{$t('searchHeader.cities')}}</li>
                 <li
                   v-for="(city, c) in cities"
                   @click="selectedCity(city)"
@@ -230,6 +230,12 @@ export default {
 </script>
 
 <style scoped>
+.set-lang-dropdown{
+  left:unset!important;
+}
+.set-lang-dropdown ul li{
+  text-align:right!important;
+}
 #input{
   position:relative;
 }

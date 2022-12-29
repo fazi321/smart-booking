@@ -72,7 +72,9 @@
     "stadium": "Stadium",
     "camps": "Camps",
     "weddingHalls": "Wedding Halls",
-    "chalets": "Chalets"
+    "chalets": "Chalets",
+    "searchLocation":"Search Location",
+    "cities":"Cities"
   },
   "signUp": {
     "createAccount": "Please create your account",

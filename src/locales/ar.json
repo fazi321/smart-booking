@@ -172,7 +172,9 @@
         "stadium": "ملاعب",
         "camps": "مخيمات",
         "weddingHalls": "قاعات الأفراح",
-        "chalets": "شاليهات"
+        "chalets": "شاليهات",
+        "searchLocation":"موقع البحث",
+        "cities":"مدن"
     },
     "signUp": {
         "createAccount": "الرجاء إنشاء حسابك",
