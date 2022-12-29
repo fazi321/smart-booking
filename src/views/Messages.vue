@@ -208,7 +208,7 @@ export default {
       const newMessageCheck = (data) => {
         this.messages = [...this.messages, data.message];
       };
-      this.socket = io("https://www.testingserver.tech", {
+      this.socket = io("https://www.testingserver.tech:6000", {
         query: {
           userId: `${this.$store.state.auth.user._id}`,
         },

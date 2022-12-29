@@ -36,13 +36,13 @@ export default {
     };
   },
   mounted() {
-    var _this = this;
-    window.addEventListener("click", function (e) {
-      var ele = document.getElementById("clickbox");
-      if (!ele.contains(e.target)) {
-        _this.show = false;
-      }
-    });
+    // var _this = this;
+    // window.addEventListener("click", function (e) {
+    //   var ele = document.getElementById("clickbox");
+    //   if (!ele.contains(e.target)) {
+    //     _this.show = false;
+    //   }
+    // });
   },
   methods: {
     handleFocusOut() {

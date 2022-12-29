@@ -1,7 +1,12 @@
 <template>
   <header>
     <div class="container">
-      <div :class="['mobile-header header disktop']">
+      <div
+        :class="[
+          'mobile-header header disktop',
+          { 'rtl-set': $t('lang') == 'ar' },
+        ]"
+      >
         <Logo />
         <section class="navigation-profile">
           <div class="nav">
@@ -14,7 +19,9 @@
                   <button class="btn btn-filled" @click="loginModelShow">
                     <img src="../../assets/images/user.png" alt="avatar" />
                   </button>
-                  <LoginModel :model="loginModel || $store.state.auth.loginModel" />
+                  <LoginModel
+                    :model="loginModel || $store.state.auth.loginModel"
+                  />
                   <SignUpModel :model="signUpModel" @getUserName="userModel" />
                 </section>
                 <!-- after login -->
@@ -43,7 +50,9 @@
                         $store.state.auth.user.role == 'Vender')
                     "
                     @click="serviceModelShow"
-                  ><img src="../../assets/images/add-new.png" /></button>
+                  >
+                    <img src="../../assets/images/add-new.png" />
+                  </button>
                   <div id="demo">
                     <div class="avatar" @click="toggleDropdown">
                       <img
@@ -54,13 +63,18 @@
                           !$store.state.auth.user.file
                         "
                       />
-                      <img :src="$store.state.auth.user.file" alt="avatar" v-else />
+                      <img
+                        :src="$store.state.auth.user.file"
+                        alt="avatar"
+                        v-else
+                      />
                     </div>
                     <DropDownMenu v-if="dropDown" />
                   </div>
-
                   <AddServiceModel :model="serviceModel" />
-                  <VendorModel :model="vendorModel || $store.state.details.vendor" />
+                  <VendorModel
+                    :model="vendorModel || $store.state.details.vendor"
+                  />
                 </section>
                 <div class="profile-pic shadowActive" @click="menuModelShow">
                   <svg class="svg-icon" viewBox="0 0 20 20">
@@ -73,6 +87,7 @@
                     />
                   </svg>
                 </div>
+                <Langdrop />
               </section>
               <MobMenu v-if="openSidebar" />
             </div>
@@ -93,6 +108,7 @@ import AddServiceModel from "@/components/models/AddServiceModel.vue";
 import NotificationsHeader from "../NotificationsHeader.vue";
 import DropDownMenu from "../DropdownMenu.vue";
 import Cookies from "js-cookie";
+import Langdrop from "@/components/common/Langdrop.vue";
 
 export default {
   name: "MobileIndex",
@@ -105,7 +121,8 @@ export default {
     AddServiceModel,
     DropDownMenu,
     UserModel,
-    NotificationsHeader
+    NotificationsHeader,
+    Langdrop,
   },
   data() {
     return {
@@ -116,7 +133,7 @@ export default {
       serviceModel: false,
       dropDown: false,
       user: false,
-      userName: false
+      userName: false,
     };
   },
   mounted() {
@@ -156,7 +173,7 @@ export default {
     },
     menuModelShow() {
       this.openSidebar = !this.openSidebar;
-    }
+    },
   },
   created() {
     let auth = Cookies.get("Authorization");
@@ -165,12 +182,12 @@ export default {
     } else {
       this.user = true;
     }
-  }
+  },
 };
 </script>
 
 <style scoped>
-.svg-icon{
+.svg-icon {
   width: 22px;
 }
 header {
@@ -249,7 +266,7 @@ header {
   position: relative;
   gap: 8px;
 }
-.login-container .btns .login-inner img{
+.login-container .btns .login-inner img {
   width: 22px;
 }
 .login-container .btns {
@@ -265,6 +282,8 @@ header {
 .profile-pic {
   overflow: hidden;
   width: 30px;
+  display: flex;
+  align-items: center;
   /* height: 30px; */
   cursor: pointer;
 }
@@ -330,10 +349,19 @@ header {
   background: transparent !important;
 }
 .mobile-dropdown img {
-  margin-left: 5px;
+  /* margin-left: 5px; */
   width: 22px;
 }
-
+.avatar {
+  width: 22px;
+  height: 22px;
+  border-radius: 50px;
+  overflow: hidden;
+}
+.avatar img {
+  width: 100%;
+  height: 100%;
+}
 @media (max-width: 479px) and (min-width: 320px) {
 }
 </style>

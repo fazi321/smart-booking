@@ -4,7 +4,8 @@
       <div class="close-icon" @click="closeSlide">
         <img src="../../assets/images/close-icon.svg" alt="" />
       </div>
-      <ul :class="{'set-lang': $t('lang') == 'ar'}">
+
+      <ul>
         <li :class="{ active: $route.path == '/' }">
           <router-link to="/">{{$t('header.home')}}</router-link>
         </li>
@@ -150,10 +151,11 @@ export default {
   justify-content: flex-end;
   align-items: center;
   padding: 10px 15px 10px 0;
+  margin:0 10px;
 }
 .logout-inner .close-icon img {
-  width: 25px;
-  height: 25px;
+  width: 22px;
+  height: 22px;
   cursor: pointer;
 }
 .logout-container {
@@ -185,9 +187,9 @@ export default {
     right: 0;
   }
 }
-.category{
+/* .category{
   text-align:left;
-}
+} */
 .logout-container ul {
   display: flex;
   flex-direction: column;

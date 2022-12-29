@@ -230,6 +230,9 @@ export default {
 </script>
 
 <style scoped>
+#input{
+  position:relative;
+}
 .search {
   display: flex;
   justify-content: center;
@@ -302,7 +305,7 @@ export default {
   border: 1px solid #eee;
   min-width: 218px;
   left: 7px;
-  top: 88%;
+  top: 100%;
   padding: 12px 5px;
   border-radius: 5px;
 }
@@ -339,7 +342,7 @@ export default {
   .search .primary-search {
     flex-wrap: wrap;
     width: 100% !important;
-    padding-left: 0px;
+    padding: 0px;
     margin: 20px 10px;
   }
   .search-block {

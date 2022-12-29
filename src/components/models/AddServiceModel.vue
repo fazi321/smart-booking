@@ -7,7 +7,7 @@
     ]"
   >
     <!-- step one -->
-    <section v-if="step == 1">
+    <section v-if="step == 1" class="accountRes">
       <AddService :cached="accountOpt" :firstStep="true" />
     </section>
     <!-- categories -->

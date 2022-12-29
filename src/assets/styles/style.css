@@ -354,7 +354,7 @@ header.active .container .nav ul li a {
   .hero-slider .carousel__pagination {
     top: 0;
     position: unset;
-    padding-left: 0;
+    padding: 0;
   }
 
   .smart-title h1 {
@@ -494,7 +494,7 @@ header.active .container .nav ul li a {
 /* responsive */
 @media (max-width: 479px) and (min-width: 320px) {
   .inputs-container {
-    overflow: scroll;
+    overflow-y: scroll;
     height: 314px;
     padding: 0px 20px !important;
   }
@@ -502,7 +502,7 @@ header.active .container .nav ul li a {
     width: 83% !important;
   }
   .container-vendor .primary-cards {
-    width: 50px!important;
+    /* width: 50px!important; */
     height: 64px!important;
   }
   .container-amenities .cards > div {
@@ -562,5 +562,19 @@ header.active .container .nav ul li a {
   }
   .deposite-section {
     padding: 0px 8px 0 8px;
+  }
+  .set-lang .main-drop p{
+    margin-right:0!important;
+  }
+  .profile-pic{
+    width:unset!important;
+  }
+  .main-drop p{
+    margin-left:unset!important;
+  }
+  .accountRes{
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
