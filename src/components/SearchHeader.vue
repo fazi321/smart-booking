@@ -281,9 +281,9 @@ export default {
   margin-top: 20px;
   width: 100%;
 }
-.search input {
+/* .search input {
   background: #fff;
-}
+} */
 .search-block input::placeholder {
   color: gray;
   font-weight: bold;
