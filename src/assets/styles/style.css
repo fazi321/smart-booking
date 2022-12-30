@@ -382,6 +382,9 @@ header.active .container .nav ul li a {
   .apartment-right .smart-card .image{
     width: 50%!important;
   }
+  .set-lang .overview .icon{
+    margin-left: 12px!important;
+  }
 }
 
 /* reponsive start */

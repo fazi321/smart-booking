@@ -218,8 +218,12 @@ export default {
   margin-left:40px;
 }
 .overview .icon img{
-  margin-right:0;
-  margin-left:15px;
+  margin-right: 10px;
+  margin-left: 0;
+}
+.set-lang .overview .icon img{
+  margin-right: 0;
+  margin-left: 10px;
 }
 @media (max-width: 479px) and (min-width: 320px) {
   .hotel-wrapper {
@@ -230,8 +234,17 @@ export default {
   }
   .overview .icon {
     margin-bottom: 10px;
-    margin-right: 15px;
+    margin-right: 10px;
   }
+  .overview .icon img{
+    margin-right: 10px;
+    margin-left: 0;
+  }
+  .set-lang .overview .icon img{
+    margin-right: 0;
+    margin-left: 10px;
+  }
+  
   /* .hotel-images {
     margin: 10px;
   } */
