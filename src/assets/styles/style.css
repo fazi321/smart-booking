@@ -379,7 +379,7 @@ header.active .container .nav ul li a {
   .smart-card{
     height: 134px!important;
   }
-  .smart-card .image{
+  .apartment-right .smart-card .image{
     width: 50%!important;
   }
 }
