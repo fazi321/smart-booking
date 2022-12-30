@@ -7,10 +7,10 @@
       <div class="search-header">
         <h3>{{$t('searchHeader.search')}}</h3>
       </div>
-      <Filters />
+      <Filters @openFilterMobile="openFilterMobile" />
       <div :class="['apartment-wrapper', { 'rtl-set': $t('lang') == 'ar' }]">
         <div class="apartment-left">
-          <HotelFilters />
+          <HotelFilters :isShow="mobileFilter"/>
         </div>
         <div class="apartment-right" v-if="!loading">
           <div v-if="filteredData && filteredData.length">
@@ -67,6 +67,7 @@ export default {
       showItem: 15,
       skeleton: 6,
       loading: false,
+       mobileFilter:false
     };
   },
   components: {
@@ -82,6 +83,9 @@ export default {
     this.getData();
   },
   methods: {
+    openFilterMobile(){
+      this.mobileFilter = !this.mobileFilter
+    },
     convertDate(val) {
       var date = new Date(val);
       return date.toLocaleDateString("en-US");
@@ -132,13 +136,14 @@ export default {
       this.pushUrl(page);
     },
   },
-  // watch: {
-  //   "$route.params": {
-  //     handler() {
-  //      this.getData();
-  //     },
-  //   },
-  // },
+  watch: {
+    "$route.params": {
+      handler() {
+      //  this.getData();
+       this.mobileFilter =  false;
+      },
+    },
+  },
 };
 </script>
 <style scoped>

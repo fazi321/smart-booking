@@ -373,6 +373,15 @@ header.active .container .nav ul li a {
   .apartment-wrapper{
     padding-top: 0!important;
   }
+  .terms .primary-cards{
+    width:100%;
+  }
+  .smart-card{
+    height: 134px!important;
+  }
+  .smart-card .image{
+    width: 50%!important;
+  }
 }
 
 /* reponsive start */
