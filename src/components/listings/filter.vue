@@ -1,6 +1,9 @@
 <template>
-  <section :class="['filters-container', {'rtl-set': $t('lang') == 'ar'}]">
-    <div>
+  <section :class="['filters-container', {'rtl-set': $t('lang') == 'ar'},{'set-l':$t('lang') == 'ar'}]">
+    <div class="disktop-filter">
+      <h6>{{$t("listingPage.filters")}}</h6>
+    </div>
+    <div class="mobile-filter" @click="openFilter">
       <h6>{{$t("listingPage.filters")}}</h6>
     </div>
     <div class="filter-buttons">
@@ -28,7 +31,12 @@
 
 <script>
 export default {
-  name: "ApartFilter"
+  name: "ApartFilter",
+  methods:{
+    openFilter(){
+      this.$emit('openFilterMobile')
+    }
+  }
 };
 </script>
 
@@ -81,6 +89,9 @@ export default {
   }
   .filters-container div h6{
     margin-left: 10px;
+  }
+  .set-l{
+    padding:15px 10px;
   }
 }
 </style>

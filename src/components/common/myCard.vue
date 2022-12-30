@@ -164,6 +164,7 @@ export default {
   .filter-card .image {
     width: 40%;
     display: flex;
+    
   }
   .filter-card .card-detail {
     width: 60%;

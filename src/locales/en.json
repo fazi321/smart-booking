@@ -55,7 +55,11 @@
     "TrustedReviews": "Trusted Reviews",
     "Photosandvideos": "Photos and videos",
     "MultipleandsecurepaymentMethods": "Multiple and secure payment Methods",
-    "Seephotosfromyourplace": "See photos from your place"
+    "Seephotosfromyourplace": "See photos from your place",
+    "Allkinds":"All kinds of search at your fingertips.",
+    "WeSupport":"We support you throughout the week.",
+    "YourReservation":"Your reservation is 100% guaranteed.",
+    "CertifiedReviews":"Certified reviews and comments."
   },
   "searchHeader": {
     "location": "Location",

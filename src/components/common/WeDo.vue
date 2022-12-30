@@ -6,7 +6,7 @@
       </div>
       <div class="detail">
         <h5>{{ $t("homePage.InstantReservation") }}</h5>
-        <p>Your reservation is 100% guaranteed.</p>
+        <p>{{ $t("homePage.YourReservation") }}</p>
       </div>
     </router-link>
     <router-link to="" class="what-card">
@@ -15,7 +15,7 @@
       </div>
       <div class="detail">
         <h5>{{ $t("homePage.CustomerService") }}</h5>
-        <p>We support you throughout the week</p>
+        <p>{{ $t("homePage.WeSupport") }}</p>
       </div>
     </router-link>
     <router-link to="" class="what-card">
@@ -24,7 +24,7 @@
       </div>
       <div class="detail">
         <h5>{{ $t("homePage.Advancedandintelligentsearch") }}</h5>
-        <p>All kinds of search at your fingertips</p>
+        <p>{{$t('homePage.Allkinds')}}</p>
       </div>
     </router-link>
     <router-link to="" class="what-card">
@@ -42,7 +42,7 @@
       </div>
       <div class="detail">
         <h5>{{ $t("homePage.TrustedReviews") }}</h5>
-        <p>Certified reviews and comments</p>
+        <p>{{ $t("homePage.CertifiedReviews") }}</p>
       </div>
     </router-link>
     <router-link to="" class="what-card">

@@ -290,6 +290,7 @@ export default {
   .filter-card .image {
     width: 40%;
     display: flex;
+    height:124px;
   }
   .filter-card .card-detail {
     width: 60%;

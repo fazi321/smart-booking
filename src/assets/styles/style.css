@@ -370,6 +370,9 @@ header.active .container .nav ul li a {
   .apartment-main{
     padding: 0!important;
   }
+  .apartment-wrapper{
+    padding-top: 0!important;
+  }
 }
 
 /* reponsive start */
@@ -488,6 +491,15 @@ header.active .container .nav ul li a {
 .rtl-set{
   direction: rtl;
 }
+.apartments-filters{
+  display: block;
+}
+.disktop-filter{
+  display: block;
+}
+.mobile-filter{
+  display: none;
+}
 /* .price-container {
   width: 85%;
 } */
@@ -579,5 +591,17 @@ header.active .container .nav ul li a {
   }
   .container-vendor .primary-cards .category-img{
     left:unset!important
+  }
+  .apartments-filters{
+    display: none;
+  }
+  .active-filters{
+    display: block!important;
+  }
+  .disktop-filter{
+    display: none;
+  }
+  .mobile-filter{
+    display: block;
   }
 }

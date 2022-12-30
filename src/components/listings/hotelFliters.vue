@@ -1,5 +1,5 @@
 <template>
-  <section :class="['apartments-filters',{'rtl-set':$t('lang') == 'ar'}]" @keypress="handleFilterNow">
+  <section :class="['apartments-filters ',{'rtl-set':$t('lang') == 'ar'},{'active-filters': isShow}]" @keypress="handleFilterNow">
     <div :class="['inner',{'set-langauge':$t('lang') == 'ar'}]">
       <!-- location section  -->
       <section class="location-filter">
@@ -754,6 +754,7 @@ import AreaSlider from "./areaSlider.vue";
 // import facilitiesVue from '../hotelDetail/facilities.vue';
 export default {
   name: "HotelFilters",
+  props:['isShow'],
   data() {
     return {
       filters: {},

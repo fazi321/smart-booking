@@ -3,10 +3,10 @@
     <div class="search-wrapper" >
       <SearchHeader />
     </div>
-    <Filters />
+    <Filters @openFilterMobile="openFilterMobile" />
     <div :class="['apartment-wrapper', {'rtl-set': $t('lang') == 'ar'}]">
-      <div class="apartment-left">
-        <HotelFilters />
+      <div class="apartment-left ">
+        <HotelFilters :isShow="mobileFilter"/>
       </div>
       <div class="apartment-right" v-if="!loading">
         <div v-if="filteredData && filteredData.length">
@@ -65,12 +65,16 @@ export default {
       skeleton: 6,
       // prevent double api
       isLoad: true,
+      mobileFilter:false
     };
   },
   created() {
     this.pageSelected = parseInt(this.$route.query.page);
   },
   methods: {
+    openFilterMobile(){
+      this.mobileFilter = !this.mobileFilter
+    },
     convertDate(val) {
       var date = new Date(val);
       return date.toLocaleDateString("en-US");
@@ -182,6 +186,7 @@ export default {
             this.getData();
           }
         }
+        this.mobileFilter =  false;
       },
     },
   },
@@ -225,7 +230,7 @@ export default {
   }
   .apartment-wrapper .apartment-left {
     width: 100%;
-    margin: 10px;
+    margin: 0 10px;
   }
   .apartment-wrapper .apartment-right {
     width: 94%;

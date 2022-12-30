@@ -155,7 +155,11 @@
         "TrustedReviews": "تقييمات موثوقة",
         "Photosandvideos": "الصور ومقاطع الفيديو ",
         "MultipleandsecurepaymentMethods": "طرق دفع متعددة وآمنة",
-        "Seephotosfromyourplace": "شاهد الصور من مكانك"
+        "Seephotosfromyourplace": "شاهد الصور من مكانك",
+        "Allkinds":"جميع أنواع البحث في متناول يدك.",
+        "WeSupport":"خدمة العملاء متاحة طوال أيام الأسبوع.",
+        "YourReservation":"حجزك مضمون 100٪.",
+        "CertifiedReviews":" التقييمات والتعليقات موثقة."
     },
     "searchHeader": {
         "location": "لموقع",

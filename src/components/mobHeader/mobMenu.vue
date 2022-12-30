@@ -127,6 +127,13 @@ export default {
       this.$parent.openSidebar = false;
     },
   },
+  watch: {
+    "$route": {
+      handler() {
+        this.closeSlide()
+      },
+    },
+  },
 };
 </script>
 
