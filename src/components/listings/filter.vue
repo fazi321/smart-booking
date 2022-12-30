@@ -48,6 +48,9 @@ export default {
   
   padding: 15px 0;
 }
+.filters-container select {
+  background: #fff;
+}
 .filters-container div h6 {
   color: #0e4763;
   font-size: 18px;

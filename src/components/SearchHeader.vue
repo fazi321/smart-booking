@@ -253,6 +253,7 @@ export default {
   position: relative;
   background: #fff;
 }
+
 .shadowFull {
   box-shadow: 0px 2px 4px 0px #cfcfcf6b !important;
 }
@@ -279,6 +280,9 @@ export default {
   font-weight: bold;
   margin-top: 20px;
   width: 100%;
+}
+.search input {
+  background: #fff;
 }
 .search-block input::placeholder {
   color: gray;
