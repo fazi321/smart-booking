@@ -570,6 +570,7 @@ header.active .container .nav ul li a {
   }
   .container-service .cards {
     padding: 0 !important;
+    width: 92%;
   }
   .booking-type .cards {
     flex-direction: column !important;
