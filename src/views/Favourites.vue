@@ -158,5 +158,8 @@ export default {
   .service-container h3 {
     margin: 0 10px;
   }
+  .rtl-set .filter-buttons .filter-option{
+    margin:0 10px;
+  }
 }
 </style>

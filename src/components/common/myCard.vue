@@ -164,7 +164,7 @@ export default {
   .filter-card .image {
     width: 40%;
     display: flex;
-    
+    height: 119px;
   }
   .filter-card .card-detail {
     width: 60%;
@@ -182,7 +182,7 @@ export default {
   }
   .filter-card .card-detail p {
     font-size: 10px;
-    padding-top: 8px;
+    padding-top: 0px;
   }
   .filter-card .card-detail .sar {
     padding-top: 0;

@@ -64,4 +64,9 @@ export default {
   justify-content: center;
   overflow: hidden;
 }
+@media (max-width: 479px) and (min-width: 320px) {
+  .main-container-div .primary-container  {
+    width: 88%;
+  }
+}
 </style>

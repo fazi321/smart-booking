@@ -1294,9 +1294,9 @@ img {
   margin-bottom: 22px;
   position: relative;
 }
-.book-instant .primary-cards {
+/* .book-instant .primary-cards {
   width: 47% !important;
-}
+} */
 .booking-type .primary-cards .category-img {
   width: 50px;
   height: 50px;

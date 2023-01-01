@@ -1222,7 +1222,7 @@ img {
   position: relative;
 }
 .book-instant .primary-cards {
-  width: 47% !important;
+  width: 47%;
 }
 .booking-type .primary-cards .category-img {
   width: 50px;

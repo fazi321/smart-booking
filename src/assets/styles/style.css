@@ -374,7 +374,7 @@ header.active .container .nav ul li a {
     padding-top: 0!important;
   }
   .terms .primary-cards{
-    width:100%;
+    width:80%;
   }
   .smart-card{
     height: 134px!important;
@@ -617,4 +617,20 @@ header.active .container .nav ul li a {
   .mobile-filter{
     display: block;
   }
+  .detail-tabs {
+    margin: 0px 10px;
+  }
+  .service-container .detail-tabs .tabs{
+    width:100%!important;
+  }
+  .service-container .detail-tabs .tabs p{
+    padding:10px 0px!important;
+  }
+  .service-container .detail-tabs.active-res .tabs p{
+    padding:10px 20px!important;
+  }
+  .service-booking{
+    padding: 10px 0!important;
+  }
+  .card{overflow: hidden!important;}
 }

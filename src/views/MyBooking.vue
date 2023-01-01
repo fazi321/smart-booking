@@ -4,8 +4,8 @@
       <div class="service-booking">
         <h1>{{ $t("myBookingPage.myBookings") }}</h1>
       </div>
-      <div class="service-container" v-if="!loading">
-        <div class="detail-tabs">
+      <div :class="['service-container',{'active-res': $t('lang') == 'ar'}]" v-if="!loading" >
+        <div :class="['detail-tabs',{'active-res': $t('lang') == 'ar'}]">
           <div class="tabs">
             <p
               :class="{ active: tab == 'bookingRequests' }"

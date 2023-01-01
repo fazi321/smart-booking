@@ -645,7 +645,7 @@
                     v-model="address.landMark"
                   />
                 </div>
-                <div>
+                <!-- <div>
                   <input
                     type="text"
                     :class="{ activeErr: errors.destination }"
@@ -680,7 +680,7 @@
                     :placeholder="$t('placeholders.siteInfo')"
                     v-model="address.siteInfo"
                   />
-                </div> -->
+                </div> --> 
                 <!-- <div>
                   <input
                     type="text"

@@ -193,5 +193,8 @@ export default {
   .detail-tabs .tabs p {
     padding: 12px 15px;
   }
+  .main-container-div .primary-container{
+     width:89%!important;
+  }
 }
 </style>

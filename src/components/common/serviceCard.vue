@@ -156,6 +156,7 @@ export default {
 @media (max-width: 479px) and (min-width: 320px) {
   .filter-card {
     height: unset !important;
+    overflow: hidden;
   }
   .filter-card .image {
     width: 40%;
@@ -188,5 +189,6 @@ export default {
   .filter-card .card-detail .sar p {
     font-size: 10px;
   }
+  
 }
 </style>
