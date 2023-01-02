@@ -235,6 +235,5 @@ export default {
   background: #febb12;
   cursor: pointer;
 }
-@media ((max-width: 700px)) and (min-width: 320px) {
-}
+
 </style>

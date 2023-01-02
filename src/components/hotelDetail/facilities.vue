@@ -647,6 +647,6 @@ export default {
 .set-lang .facilities-container h5,.set-lang .facility-icons h6{
   text-align:right;
 }
-@media ((max-width: 700px)) and (min-width: 320px) {
+@media (max-width: 700px) and (min-width: 320px) {
 }
 </style>

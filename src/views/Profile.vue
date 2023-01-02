@@ -310,7 +310,7 @@ export default {
   margin-top: 40px;
   cursor: pointer;
 }
-@media ((max-width: 700px)) and (min-width: 320px) {
+@media (max-width: 700px) and (min-width: 320px) {
   .profile-form {
     margin: 0 10px;
   }

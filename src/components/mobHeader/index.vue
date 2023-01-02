@@ -362,6 +362,6 @@ header {
   width: 100%;
   height: 100%;
 }
-@media ((max-width: 700px)) and (min-width: 320px) {
+@media (max-width: 700px) and (min-width: 320px) {
 }
 </style>

@@ -82,7 +82,7 @@ export default {
    cursor: pointer;
    padding: 10px 0;
 }
-@media ((max-width: 700px)) and (min-width: 320px) {
+@media (max-width: 700px) and (min-width: 320px) {
   .filter-buttons .filter-option select {
     width: 55%;
   }

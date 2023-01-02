@@ -225,7 +225,7 @@ export default {
   margin-right: 0;
   margin-left: 10px;
 }
-@media ((max-width: 700px)) and (min-width: 320px) {
+@media (max-width: 700px) and (min-width: 320px) {
   .hotel-wrapper {
     margin: 0 10px;
   }

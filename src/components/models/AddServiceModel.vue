@@ -750,7 +750,7 @@ img {
   border: 1px solid #febb12;
 }
 /* categories */
-@media ((max-width: 700px)) and (min-width: 320px) {
+@media (max-width: 700px) and (min-width: 320px) {
   .container-vendor .primary-cards {
     width: 87%;
   }

@@ -36,7 +36,7 @@ export default {
 .mobile-header {
   display: none;
 }
-@media ((max-width: 700px)) and (min-width: 320px) {
+@media (max-width: 700px) and (min-width: 320px) {
   .desktop-header {
     display: none;
   }

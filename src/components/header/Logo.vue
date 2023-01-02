@@ -18,7 +18,7 @@ export default {
   position: relative;
   top: -6px;
 }
-@media ((max-width: 700px)) and (min-width: 320px) {
+@media (max-width: 700px) and (min-width: 320px) {
   .logo {
     width: 55px;
     height: 50px;

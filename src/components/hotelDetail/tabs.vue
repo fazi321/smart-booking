@@ -186,7 +186,7 @@ export default {
   text-align: right;
   margin:10px 0;
 }
-@media ((max-width: 700px)) and (min-width: 320px) {
+@media (max-width: 700px) and (min-width: 320px) {
   .detail-tabs .tabs {
     width: 100%;
   }

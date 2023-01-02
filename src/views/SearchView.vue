@@ -177,7 +177,7 @@ export default {
   width: 70%;
   padding-right: 20px;
 }
-@media ((max-width: 700px)) and (min-width: 320px) {
+@media (max-width: 700px) and (min-width: 320px) {
   .search-wrapper .search .primary-search {
     width: 90%;
   }
