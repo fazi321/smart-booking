@@ -115,7 +115,7 @@ export default {
   margin-left:20px;
   margin-right:0;
 }
-@media (max-width: 479px) and (min-width: 320px) {
+@media ((max-width: 700px)) and (min-width: 320px) {
   .what-card {
     width: 100%;
     margin: 0 10px 20px 10px;

@@ -82,6 +82,6 @@ export default {
 .set-lang .description p{
   text-align: right;
 }
-@media (max-width: 479px) and (min-width: 320px) {
+@media ((max-width: 700px)) and (min-width: 320px) {
 }
 </style>

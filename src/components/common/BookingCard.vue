@@ -66,7 +66,7 @@ export default {
   opacity: 0.6;
   text-align: center;
 }
-@media (max-width: 479px) and (min-width: 320px) {
+@media ((max-width: 700px)) and (min-width: 320px) {
   .smart-card {
     width: 48%;
     margin: 10px 0;

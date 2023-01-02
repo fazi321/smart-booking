@@ -76,7 +76,7 @@ export default {
   padding: 30px 0;
   min-height: 200px;
 }
-@media (max-width: 479px) and (min-width: 320px) {
+@media ((max-width: 700px)) and (min-width: 320px) {
 .hotel-slider{
   min-height: 100%;
   padding: 10px 0!important;

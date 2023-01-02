@@ -266,7 +266,7 @@ img {
   right:unset!important;
   left:0!important;
 }
-@media (max-width: 479px) and (min-width: 320px) {
+@media ((max-width: 700px)) and (min-width: 320px) {
   .container-vendor .primary-cards {
     width: 87%;
   }

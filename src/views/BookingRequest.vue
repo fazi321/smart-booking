@@ -95,7 +95,7 @@ export default {
 .booking-cards .card {
   width: 49%;
 }
-@media (max-width: 479px) and (min-width: 320px) {
+@media ((max-width: 700px)) and (min-width: 320px) {
   .booking-cards {
     margin: 0 10px;
   }

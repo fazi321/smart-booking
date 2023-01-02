@@ -384,7 +384,7 @@ export default {
   height: 400px;
   overflow-y: scroll;
 }
-@media (max-width: 479px) and (min-width: 320px) {
+@media (max-width: 700px) and (min-width: 320px) {
   .message-container .message-left {
     width: 95%;
     margin: 10px;
@@ -392,9 +392,19 @@ export default {
   .message-container {
     flex-direction: column;
   }
-  .message-container .message-right{
+  .message-container .message-right {
     width: 95%;
-    margin:10px;
+    margin: 10px;
+    /* position: absolute;
+    top: 0;
+    z-index: 65; */
+    background: #fff;
+  }
+  .message-container {
+    position: relative;
+  }
+  .text-msg input{
+    width: 67%;
   }
 }
 </style>

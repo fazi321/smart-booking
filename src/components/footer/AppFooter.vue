@@ -233,7 +233,7 @@ export default {
   direction:rtl;
 }
 /* reponsive start */
-@media (max-width: 479px) and (min-width: 320px) {
+@media ((max-width: 700px)) and (min-width: 320px) {
   .footer .footer-row .col {
     width: 100%;
   }

@@ -172,7 +172,7 @@ export default {
 .set-lang .ghanti{
   margin-left:0px;
 }
-@media (max-width: 479px) and (min-width: 320px) {
+@media ((max-width: 700px)) and (min-width: 320px) {
   .ghanti {
     width: 19px;
     margin-top: -4px;
