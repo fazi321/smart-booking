@@ -236,6 +236,7 @@ export default {
     width: 94%;
     padding-right: 0px;
     margin: 10px;
+    overflow: hidden;
   }
 }
 </style>
