@@ -23,7 +23,13 @@
               >
                 <MessageCard
                   :conversation="chat"
-                  @click="setName(chat?.receiverId?._id != $store.state.auth.user?._id ? chat?.receiverId.firstName : chat?.senderId.firstName)"
+                  @click="
+                    setName(
+                      chat?.receiverId?._id != $store.state.auth.user?._id
+                        ? chat?.receiverId.firstName
+                        : chat?.senderId.firstName
+                    )
+                  "
                 />
               </div>
               <!-- <div>
@@ -125,8 +131,8 @@ export default {
             .toLowerCase()
             .startsWith(search.toLowerCase())
         );
-      }else{
-        return this.conversation
+      } else {
+        return this.conversation;
       }
     },
   },
@@ -175,12 +181,12 @@ export default {
     },
     async getAllMessages(chat) {
       // if (!isName) {
-        // if (chat.receiverId._id != this.$store.state.auth.user._id) {
-          // this.userName = chat.receiverId.firstName;
-        // }
-        //  else {
-        //   this.userName = chat.senderId.firstName;
-        // }
+      // if (chat.receiverId._id != this.$store.state.auth.user._id) {
+      // this.userName = chat.receiverId.firstName;
+      // }
+      //  else {
+      //   this.userName = chat.senderId.firstName;
+      // }
       // }
       this.chatWith = chat;
       try {
@@ -377,5 +383,18 @@ export default {
 .primary-users {
   height: 400px;
   overflow-y: scroll;
+}
+@media (max-width: 479px) and (min-width: 320px) {
+  .message-container .message-left {
+    width: 95%;
+    margin: 10px;
+  }
+  .message-container {
+    flex-direction: column;
+  }
+  .message-container .message-right{
+    width: 95%;
+    margin:10px;
+  }
 }
 </style>
