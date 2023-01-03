@@ -1,55 +1,56 @@
 <template>
   <section class="form-book">
-    <div :class="['book-container',{'set-inputs':$t('lang') == 'ar'}]">
+    <div :class="['book-container', { 'set-inputs': $t('lang') == 'ar' }]">
       <div class="heading" v-if="storeState && storeState.price">
         <h6>SAR {{ storeState && storeState.price.dayPrice }}</h6>
         <p>{{ $t("detailPage.perNight") }}</p>
       </div>
-      <div
-        :class="[
-          'filter-option',
-          { active: error.checkInDate && !inputDetail.checkInDate },
-          { 'set-langauge': $t('lang') == 'ar' },
-        ]"
-        @click="showModelDate('cn')"
-      >
-        <img src="../../assets/images/date.svg" />
-        <input
-          type="text"
-          v-model="inputDetail.checkInDate"
-          :placeholder="$t('detailPage.checkInDate')"
-          readonly
-        />
-        <input
-          type="date"
-          id="date"
-          ref="cn"
-          @change="dateChange($event, 'cn')"
-        />
-      </div>
-      <div
-        :class="[
-          'filter-option',
-          { active: error.checkOutDate && !inputDetail.checkOutDate },
-          { 'set-langauge': $t('lang') == 'ar' },
-        ]"
-        @click="showModelDate('co')"
-      >
-        <img src="../../assets/images/date.svg" />
-        <input
-          type="text"
-          v-model="inputDetail.checkOutDate"
-          :placeholder="$t('detailPage.checkOutDate')"
-          readonly
-        />
-        <input
-          type="date"
-          id="date"
-          ref="co"
-          @change="dateChange($event, 'co')"
-        />
-      </div>
-      <!-- <div
+      <section v-if="$route.params.cat != 'stadiums'">
+        <div
+          :class="[
+            'filter-option ',
+            { active: error.checkInDate && !inputDetail.checkInDate },
+            { 'set-langauge': $t('lang') == 'ar' },
+          ]"
+          @click="showModelDate('cn')"
+        >
+          <img src="../../assets/images/date.svg" />
+          <input
+            type="text"
+            v-model="inputDetail.checkInDate"
+            placeholder="Select Date"
+            readonly
+          />
+          <input
+            type="date"
+            id="date"
+            ref="cn"
+            @change="dateChange($event, 'cn')"
+          />
+        </div>
+        <div
+          :class="[
+            'filter-option',
+            { active: error.checkOutDate && !inputDetail.checkOutDate },
+            { 'set-langauge': $t('lang') == 'ar' },
+          ]"
+          @click="showModelDate('co')"
+        >
+          <img src="../../assets/images/date.svg" />
+          <input
+            type="text"
+            v-model="inputDetail.checkOutDate"
+            :placeholder="$t('detailPage.checkOutDate')"
+            readonly
+          />
+          <input
+            type="date"
+            id="date"
+            ref="co"
+            @change="dateChange($event, 'co')"
+          />
+        </div>
+        <!-- <div
         :class="[
           'filter-option',
           { active: error.checkInTime && !inputDetail.checkInTime },
@@ -91,6 +92,109 @@
           @input="timeChange($event, 'cot')"
         />
       </div> -->
+      </section>
+      <!-- stadium -->
+      <section v-else>
+        <div
+          :class="[
+            'filter-option ',
+            { active: error.checkInDate && !inputDetail.checkInDate },
+            { 'set-langauge': $t('lang') == 'ar' },
+          ]"
+          @click="showModelDate('cn')"
+        >
+          <img src="../../assets/images/date.svg" />
+          <input
+            type="text"
+            v-model="inputDetail.checkInDate"
+            :placeholder="$t('detailPage.Selectdate')"
+            readonly
+          />
+          <input
+            type="date"
+            id="date"
+            ref="cn"
+            @change="dateChange($event, 'cn')"
+          />
+        </div>
+        <div
+          :class="[
+            'filter-option',
+            { active: error.checkInTime && !inputDetail.checkInTime },
+            { 'set-time': $t('lang') == 'ar' },
+          ]"
+          @click="showModelDate('cit')"
+        >
+          <img src="../../assets/images/time.svg" />
+          <input
+            type="text"
+            v-model="inputDetail.checkInTime"
+            :placeholder="$t('detailPage.time')"
+          />
+          <input
+            type="time"
+            id="date"
+            ref="cit"
+            @input="timeChange($event, 'cit')"
+          />
+        </div>
+        <div
+          :class="[
+            'filter-option ',
+            { active: error.hour && !inputDetail.hour },
+            { 'set-langauge': $t('lang') == 'ar' },
+          ]"
+        >
+          <img src="../../assets/images/date.svg" />
+          <input
+            type="number"
+            v-model="inputDetail.hour"
+            :placeholder="$t('detailPage.Howmanyhours')"
+          />
+        </div>
+        <!-- <div
+        :class="[
+          'filter-option',
+          { active: error.checkInTime && !inputDetail.checkInTime },
+          { 'set-time': $t('lang') == 'ar' },
+        ]"
+        @click="showModelDate('cit')"
+      >
+        <img src="../../assets/images/time.svg" />
+        <input
+          type="text"
+          v-model="inputDetail.checkInTime"
+          :placeholder="$t('detailPage.checkInTime')"
+        />
+        <input
+          type="time"
+          id="date"
+          ref="cit"
+          @input="timeChange($event, 'cit')"
+        />
+      </div>
+      <div
+        :class="[
+          'filter-option',
+          { active: error.checkOutTime && !inputDetail.checkOutTime },
+          { 'set-time': $t('lang') == 'ar' },
+        ]"
+        @click="showModelDate('cot')"
+      >
+        <img src="../../assets/images/time.svg" />
+        <input
+          type="text"
+          v-model="inputDetail.checkOutTime"
+          :placeholder="$t('detailPage.checkOutTime')"
+        />
+        <input
+          type="time"
+          id="date"
+          ref="cot"
+          @input="timeChange($event, 'cot')"
+        />
+      </div> -->
+      </section>
       <section class="book-btn-section">
         <div @click="chatWith" class="image-container">
           <img src="../../assets/images/chaticon.svg" />
@@ -108,7 +212,7 @@
         </div>
       </section>
     </div>
-    <success-model-2 v-if="successModel" @close="closeModel"/>
+    <success-model-2 v-if="successModel" @close="closeModel" />
     <BookModel v-if="bookingModel" :dataApi="dataBookingApi" />
   </section>
 </template>
@@ -123,7 +227,7 @@ export default {
   },
   data() {
     return {
-      successModel:false,
+      successModel: false,
       bookingModel: false,
       inputDetail: {},
       dataBookingApi: null,
@@ -140,19 +244,19 @@ export default {
     },
   },
   methods: {
-    closeModel(){
+    closeModel() {
       this.successModel = false;
     },
     async chatWith() {
-      if(!this.storeState.vender) return
+      if (!this.storeState.vender) return;
       try {
         var res = await this.$axios.get(
           `vender/profile/${this.storeState.vender}`
         );
         if (res.data) {
           // this.vendorInfo = res.data;
-          this.$store.commit('auth/createChat', res.data);
-          this.$router.push('/messages')
+          this.$store.commit("auth/createChat", res.data);
+          this.$router.push("/messages");
         }
       } catch (error) {
         console.log(error);
@@ -245,7 +349,8 @@ export default {
       var {
         checkInDate,
         checkOutDate,
-        // checkInTime,
+        checkInTime,
+        hour,
         // checkOutTime,
         // timeIn,
         // timeOut,
@@ -253,8 +358,18 @@ export default {
       if (!checkInDate) {
         return (this.error.checkInDate = true);
       }
-      if (!checkOutDate) {
-        return (this.error.checkOutDate = true);
+      if (this.$route.params.cat != "stadiums") {
+        if (!checkOutDate) {
+          return (this.error.checkOutDate = true);
+        }
+      }
+      if (this.$route.params.cat == "stadiums") {
+        if (!checkInTime) {
+          return (this.error.checkInTime = true);
+        }
+        if (!hour) {
+          return (this.error.hour = true);
+        }
       }
       // if (!checkInTime) {
       //   return (this.error.checkInTime = true);
@@ -266,12 +381,19 @@ export default {
       // var checkOut = this.formateDate(checkOutDate, timeOut);
       // var amount = this.storeState?.price?.dayPrice;
       var payload = {
-        // amount,
-        // nights,
         paymentMethod: "online",
-        // checkIn,
-        // checkOut,
       };
+      var checkIn = checkInDate;
+      if (this.$route.params.cat == "stadiums") {
+        payload.checkIn = checkIn;
+        payload.time = checkInTime;
+        payload.hours = hour;
+      } else {
+        var checkOut = checkOutDate;
+        payload.checkIn = checkIn;
+        payload.checkOut = checkOut;
+      }
+      console.log(payload, "payload");
       try {
         this.loading = true;
         const res = await this.$axios.post(
@@ -283,12 +405,12 @@ export default {
           // this.bookingModel = false;
           // this.paymentModel = true;
           this.loading = false;
-          if(this.storeState?.bookingSetting?.bookingType == "24-Hour"){
+          if (this.storeState?.bookingSetting?.bookingType == "24-Hour") {
             this.successModel = true;
-          }else{
+          } else {
             this.dataBookingApi = res.data;
             this.bookingModel = true;
-          }  
+          }
         }
       } catch (error) {
         this.loading = false;
@@ -418,16 +540,15 @@ export default {
 .set-time input {
   text-align: right;
 }
-.set-inputs{
-  direction:rtl;
+.set-inputs {
+  direction: rtl;
 }
-.set-inputs .filter-option img{
-  margin-right:0;
+.set-inputs .filter-option img {
+  margin-right: 0;
   margin-left: 15px;
 }
-.set-inputs .heading h6{
-  margin-right:0;
+.set-inputs .heading h6 {
+  margin-right: 0;
   margin-left: 10px;
 }
-
 </style>

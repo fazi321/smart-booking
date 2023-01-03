@@ -468,7 +468,10 @@
         "checkOutDate": "تاريخ الخروج",
         "checkInTime": "وقت الدخول",
         "checkOutTime": "وقت الخروج",
-        "perNight": "لليلة"
+        "perNight": "لليلة",
+        "Howmanyhours":"كم ساعة",
+        "time":"وقت",
+        "Selectdate":"حدد تاريخ"
     },
     "success": {
         "RequestSubmit": "تم إرسال الطلب بنجاح"
