@@ -49,7 +49,7 @@
           @change="dateChange($event, 'co')"
         />
       </div>
-      <div
+      <!-- <div
         :class="[
           'filter-option',
           { active: error.checkInTime && !inputDetail.checkInTime },
@@ -90,7 +90,7 @@
           ref="cot"
           @input="timeChange($event, 'cot')"
         />
-      </div>
+      </div> -->
       <section class="book-btn-section">
         <div @click="chatWith" class="image-container">
           <img src="../../assets/images/chaticon.svg" />
@@ -245,10 +245,10 @@ export default {
       var {
         checkInDate,
         checkOutDate,
-        checkInTime,
-        checkOutTime,
-        timeIn,
-        timeOut,
+        // checkInTime,
+        // checkOutTime,
+        // timeIn,
+        // timeOut,
       } = this.inputDetail;
       if (!checkInDate) {
         return (this.error.checkInDate = true);
@@ -256,21 +256,21 @@ export default {
       if (!checkOutDate) {
         return (this.error.checkOutDate = true);
       }
-      if (!checkInTime) {
-        return (this.error.checkInTime = true);
-      }
-      if (!checkOutTime) {
-        return (this.error.checkOutTime = true);
-      }
-      var checkIn = this.formateDate(checkInDate, timeIn);
-      var checkOut = this.formateDate(checkOutDate, timeOut);
+      // if (!checkInTime) {
+      //   return (this.error.checkInTime = true);
+      // }
+      // if (!checkOutTime) {
+      //   return (this.error.checkOutTime = true);
+      // }
+      // var checkIn = this.formateDate(checkInDate, timeIn);
+      // var checkOut = this.formateDate(checkOutDate, timeOut);
       // var amount = this.storeState?.price?.dayPrice;
       var payload = {
         // amount,
         // nights,
         paymentMethod: "online",
-        checkIn,
-        checkOut,
+        // checkIn,
+        // checkOut,
       };
       try {
         this.loading = true;
