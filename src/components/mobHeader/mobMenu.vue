@@ -7,78 +7,95 @@
 
       <ul>
         <li :class="{ active: $route.path == '/' }">
-          <router-link to="/">{{$t('header.home')}}</router-link>
+          <router-link to="/">{{ $t("header.home") }}</router-link>
         </li>
         <li
           :class="{ active: $route.path == '/category' }"
           class="category-menu"
         >
-          <div class="category" @click="openDropdown">{{$t('header.categories')}}</div>
+          <div class="category" @click="openDropdown">
+            {{ $t("header.categories") }}
+          </div>
           <div class="sub-menu" v-if="dropDown">
             <ul class="sub-list">
               <!-- <li>
               <router-link to="/">Home</router-link>
             </li>-->
-              <li
-                :class="{ active: $route.params.category == 'apartments' }"
-                @click="addRecent('apartments')"
-              >
-                <router-link to="/apartments?page=1">{{$t('header.apartments')}}</router-link>
-              </li>
-              <li
-                :class="{ active: $route.params.category == 'farms' }"
-                @click="addRecent('farms')"
-              >
-                <router-link to="/farms?page=1">{{$t('header.farms')}}</router-link>
-              </li>
-              <li
-                :class="{ active: $route.params.category == 'hotels' }"
-                @click="addRecent('hotels')"
-              >
-                <router-link to="/hotels?page=1">{{$t('header.hotels')}}</router-link>
-              </li>
-              <li
-                :class="{ active: $route.params.category == 'resorts' }"
-                @click="addRecent('resorts')"
-              >
-                <router-link to="/resorts?page=1">{{$t('header.resorts')}}</router-link>
-              </li>
-              <li
-                :class="{ active: $route.params.category == 'lounges' }"
-                @click="addRecent('lounges')"
-              >
-                <router-link to="/lounges?page=1">{{$t('header.lounges')}}</router-link>
-              </li>
+
               <li
                 :class="{ active: $route.params.category == 'stadiums' }"
                 @click="addRecent('stadiums')"
               >
-                <router-link to="/stadiums?page=1">{{$t('header.stadium')}}</router-link>
+                <router-link to="/stadiums?page=1">{{
+                  $t("header.stadium")
+                }}</router-link>
               </li>
               <li
                 :class="{ active: $route.params.category == 'Camps' }"
                 @click="addRecent('Camps')"
               >
-                <router-link to="/Camps?page=1">{{$t('header.camps')}}</router-link>
+                <router-link to="/Camps?page=1">{{
+                  $t("header.camps")
+                }}</router-link>
               </li>
               <li
                 :class="{ active: $route.params.category == 'wedding-halls' }"
                 @click="addRecent('wedding-halls')"
               >
-                <router-link to="/wedding-halls?page=1"
-                  >{{$t('header.weddingHalls')}}</router-link
-                >
+                <router-link to="/wedding-halls?page=1">{{
+                  $t("header.weddingHalls")
+                }}</router-link>
               </li>
               <li
                 :class="{ active: $route.params.category == 'chalets' }"
                 @click="addRecent('chalets')"
               >
-                <router-link to="/chalets?page=1">{{$t('header.chalets')}}</router-link>
+                <router-link to="/chalets?page=1">{{
+                  $t("header.chalets")
+                }}</router-link>
               </li>
             </ul>
           </div>
         </li>
         <li
+          :class="{ active: $route.params.category == 'apartments' }"
+          @click="addRecent('apartments')"
+        >
+          <router-link to="/apartments?page=1">{{
+            $t("header.apartments")
+          }}</router-link>
+        </li>
+        <li
+          :class="{ active: $route.params.category == 'farms' }"
+          @click="addRecent('farms')"
+        >
+          <router-link to="/farms?page=1">{{ $t("header.farms") }}</router-link>
+        </li>
+        <li
+          :class="{ active: $route.params.category == 'hotels' }"
+          @click="addRecent('hotels')"
+        >
+          <router-link to="/hotels?page=1">{{
+            $t("header.hotels")
+          }}</router-link>
+        </li>
+        <li
+          :class="{ active: $route.params.category == 'resorts' }"
+          @click="addRecent('resorts')"
+        >
+          <router-link to="/resorts?page=1">{{
+            $t("header.resorts")
+          }}</router-link>
+        </li>
+        <li
+          :class="{ active: $route.params.category == 'lounges' }"
+          @click="addRecent('lounges')"
+        >
+          <router-link to="/lounges?page=1">{{
+            $t("header.lounges")
+          }}</router-link>
+        </li>
+        <!-- <li
           :class="{ active: $route.params.category == 'privacy' }"
           @click="addRecent('privacy')"
         >
@@ -101,7 +118,7 @@
           @click="addRecent('about')"
         >
           <router-link to="/about?page=1">{{$t('header.aboutUs')}}</router-link>
-        </li>
+        </li> -->
       </ul>
     </div>
   </div>
@@ -113,12 +130,12 @@ export default {
   components: {},
   data() {
     return {
-      dropDown:false,
+      dropDown: false,
     };
   },
   methods: {
-    openDropdown(){
-      this.dropDown = !this.dropDown
+    openDropdown() {
+      this.dropDown = !this.dropDown;
     },
     addRecent(slug) {
       localStorage.setItem("slug", slug);
@@ -128,9 +145,9 @@ export default {
     },
   },
   watch: {
-    "$route": {
+    $route: {
       handler() {
-        this.closeSlide()
+        this.closeSlide();
       },
     },
   },
@@ -138,8 +155,8 @@ export default {
 </script>
 
 <style scoped>
-.sub-list{
-  border: unset!important;
+.sub-list {
+  border: unset !important;
 }
 .hi p {
   width: 30px !important;
@@ -158,7 +175,7 @@ export default {
   justify-content: flex-end;
   align-items: center;
   padding: 10px 15px 10px 0;
-  margin:0 10px;
+  margin: 0 10px;
 }
 .logout-inner .close-icon img {
   width: 22px;
@@ -204,11 +221,11 @@ export default {
   border-top: 2px solid #eee;
   padding: 10px;
 }
-.set-lang{
+.set-lang {
   align-items: flex-end !important;
 }
-.set-lang .category{
-  text-align:right!important;
+.set-lang .category {
+  text-align: right !important;
 }
 .logout-container ul li {
   padding: 15px 10px;
