@@ -386,21 +386,21 @@
             </div>
           </div>
           <!-- block -->
-          <div class="booking-date">
+          <!-- <div class="booking-date">
             <div class="head-booking">
               <h5>{{ $t("pricing.checkIn&CheckOut") }}</h5>
             </div>
             <div class="date-input">
               <div @click="showModelDate('cn')">
-                <!-- <input type="text" placeholder="Check in" v-model="checkIn" /> -->
+                <input type="text" placeholder="Check in" v-model="checkIn" />
                 <input type="time" v-model="checkIn" id="date" ref="cn" />
               </div>
               <div @click="showModelDate('co')">
-                <!-- <input type="text" placeholder="Check out" v-model="checkOut" /> -->
+                <input type="text" placeholder="Check out" v-model="checkOut" />
                 <input type="time" v-model="checkOut" id="date" ref="co" />
               </div>
             </div>
-          </div>
+          </div> -->
         </section>
         <div class="form-container">
           <div class="input-div">
