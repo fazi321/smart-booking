@@ -13,7 +13,7 @@
           :class="{ active: $route.path == '/category' }"
           class="category-menu"
         >
-          <div class="category" @click="openDropdown">
+          <div :class="['category',{'set': $t('lang') == 'ar'}]" @click="openDropdown">
             {{ $t("header.categories") }}
           </div>
           <div class="sub-menu" v-if="dropDown">
@@ -21,13 +21,12 @@
               <!-- <li>
               <router-link to="/">Home</router-link>
             </li>-->
-
               <li
-                :class="{ active: $route.params.category == 'stadiums' }"
-                @click="addRecent('stadiums')"
+                :class="{ active: $route.params.category == 'apartments' }"
+                @click="addRecent('apartments')"
               >
-                <router-link to="/stadiums?page=1">{{
-                  $t("header.stadium")
+                <router-link to="/apartments?page=1">{{
+                  $t("header.apartments")
                 }}</router-link>
               </li>
               <li
@@ -58,11 +57,11 @@
           </div>
         </li>
         <li
-          :class="{ active: $route.params.category == 'apartments' }"
-          @click="addRecent('apartments')"
+          :class="{ active: $route.params.category == 'stadiums' }"
+          @click="addRecent('stadiums')"
         >
-          <router-link to="/apartments?page=1">{{
-            $t("header.apartments")
+          <router-link to="/stadiums?page=1">{{
+            $t("header.stadium")
           }}</router-link>
         </li>
         <li
@@ -224,8 +223,26 @@ export default {
 .set-lang {
   align-items: flex-end !important;
 }
-.set-lang .category {
+.set.category {
   text-align: right !important;
+}
+.category {
+  text-align: left;
+  position:relative;
+}
+.category::after {
+  background-color: white;
+  border-right: 2px solid gray;
+  border-bottom: 2px solid gray;
+  width: 5px;
+  display: inline-block;
+  height: 5px;
+  transform: rotate(45deg);
+  /* margin-top: 10px; */
+  content: "";
+  margin: 0 10px;
+  top: 3px;
+  position: absolute;
 }
 .logout-container ul li {
   padding: 15px 10px;

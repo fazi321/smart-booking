@@ -1,6 +1,6 @@
 <template>
   <section class="nav">
-    <ul :class="{'lang':$t('lang') == 'ar'}">
+    <ul :class="{ lang: $t('lang') == 'ar' }">
       <li :class="{ active: $route.path == '/' }">
         <router-link to="/">{{ $t("header.home") }}</router-link>
       </li>
@@ -42,12 +42,13 @@
                 $t("header.lounges")
               }}</router-link>
             </li> -->
+
             <li
-              :class="{ active: $route.params.category == 'stadiums' }"
-              @click="addRecent('stadiums')"
+              :class="{ active: $route.params.category == 'apartments' }"
+              @click="addRecent('apartments')"
             >
-              <router-link to="/stadiums?page=1">{{
-                $t("header.stadium")
+              <router-link to="/apartments?page=1">{{
+                $t("header.apartments")
               }}</router-link>
             </li>
             <li
@@ -78,11 +79,11 @@
         </div>
       </li>
       <li
-        :class="{ active: $route.params.category == 'apartments' }"
-        @click="addRecent('apartments')"
+        :class="{ active: $route.params.category == 'stadiums' }"
+        @click="addRecent('stadiums')"
       >
-        <router-link to="/apartments?page=1">{{
-          $t("header.apartments")
+        <router-link to="/stadiums?page=1">{{
+          $t("header.stadium")
         }}</router-link>
       </li>
       <li
@@ -260,7 +261,7 @@ export default {
 .nav ul li.active a {
   color: #febb12;
 }
-.lang{
+.lang {
   flex-direction: row-reverse;
 }
 @media only screen and (max-width: 1199px) {
