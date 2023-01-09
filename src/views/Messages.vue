@@ -125,9 +125,9 @@ export default {
   computed: {
     getConversation() {
       var search = this.search;
-      if (search) {
+      if (search && this.conversation) {
         return this.conversation.filter((key) =>
-          key.receiverId.firstName
+          key.receiverId?.firstName
             .toLowerCase()
             .startsWith(search.toLowerCase())
         );
