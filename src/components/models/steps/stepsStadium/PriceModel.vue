@@ -439,10 +439,7 @@
                   }"
                   @click="bookSettings('Families_and_Singles')"
                 >
-                  <img
-                    src="../../../../assets/images/familiesSingle.svg"
-                    alt=""
-                  />
+                  <img src="../../../../assets/images/familiesSingle.svg" alt="" />
                   <h6>{{ $t("pricing.families&") }}</h6>
                   <h6>{{ $t("pricing.singles") }}</h6>
                 </div>
@@ -489,6 +486,7 @@
                 </div>
                 <div>
                   <div class="content" @click="showBookPop('cencel')">
+                    <h5>{{ $t("pricing.cancellationPolicy") }}</h5>
                     <h6>
                       {{
                         bookingSetting.canellationPolicy == "Flexible"
@@ -674,7 +672,7 @@
                 <div class="content">
                   <h5>{{ $t("pricing.flexible") }}</h5>
                   <h6>
-                    {{$t("pricing.flexibleSubTitle")}}
+                    {{ $t("pricing.flexibleSubTitle") }}
                   </h6>
                 </div>
               </div>
@@ -689,7 +687,7 @@
                 <div class="content">
                   <h5>{{ $t("pricing.moderate") }}</h5>
                   <h6>
-                    {{$t("pricing.moderateSubTitle")}}
+                    {{ $t("pricing.moderateSubTitle") }}
                   </h6>
                 </div>
               </div>
@@ -704,7 +702,7 @@
                 <div class="content">
                   <h5>{{ $t("pricing.strict") }}</h5>
                   <h6>
-                    {{$t("pricing.strictSubTitle")}}
+                    {{ $t("pricing.strictSubTitle") }}
                   </h6>
                 </div>
               </div>
@@ -722,7 +720,7 @@
                 <div class="content">
                   <h5>{{ $t("pricing.nonRefundable") }}</h5>
                   <h6>
-                    {{$t("pricing.nonRefundableSubTitle")}}
+                    {{ $t("pricing.nonRefundableSubTitle") }}
                   </h6>
                 </div>
               </div>
@@ -779,6 +777,79 @@
               </div>
             </div>
             <!-- block -->
+            <!-- <div class="price-inputs">
+              <div class="price-checkbox">
+                <label class="container-input"
+                  >{{ $t("pricing.sleepover") }}
+                  <input type="checkbox" v-model="addOnsCheck.sleepover" />
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+              <div class="input-price">
+                <input
+                  type="text"
+                  v-model="addOnsPrice.sleepover"
+                  :disabled="!addOnsCheck.sleepover"
+                />
+              </div>
+            </div> -->
+            <!-- block -->
+            <!-- <div class="price-inputs">
+              <div class="price-checkbox">
+                <label class="container-input"
+                  >{{ $t("pricing.birthdayArrangements") }}
+                  <input
+                    type="checkbox"
+                    v-model="addOnsCheck.brithdayArrangements"
+                  />
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+              <div class="input-price">
+                <input
+                  type="text"
+                  v-model="addOnsPrice.brithdayArrangements"
+                  :disabled="!addOnsCheck.brithdayArrangements"
+                />
+              </div>
+            </div> -->
+            <!-- block -->
+            <!-- <div class="price-inputs">
+              <div class="price-checkbox">
+                <label class="container-input"
+                  >{{ $t("pricing.weddingArrangements") }}
+                  <input
+                    type="checkbox"
+                    v-model="addOnsCheck.weddingArrangements"
+                  />
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+              <div class="input-price">
+                <input
+                  type="text"
+                  v-model="addOnsPrice.weddingArrangements"
+                  :disabled="!addOnsCheck.weddingArrangements"
+                />
+              </div>
+            </div> -->
+            <!-- block -->
+            <!-- <div class="price-inputs">
+              <div class="price-checkbox">
+                <label class="container-input"
+                  >{{ $t("pricing.buffet") }}
+                  <input type="checkbox" v-model="addOnsCheck.buffet" />
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+              <div class="input-price">
+                <input
+                  type="text"
+                  v-model="addOnsPrice.buffet"
+                  :disabled="!addOnsCheck.buffet"
+                />
+              </div>
+            </div> -->
             <!-- <div class="price-inputs">
               <div class="price-checkbox">
                 <label class="container-input"
