@@ -33,7 +33,7 @@
                 <input
                   type="number"
                   min="1"
-                  v-model="price.dayPrice"
+                  v-model="price.hourPrice"
                   :disabled="!daySelected.hourPrice"
                 />
               </div>
