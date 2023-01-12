@@ -1017,7 +1017,6 @@ export default {
       var finalData = {
         addOns: { ...newAddon },
         price: { ...newObj },
-        check: { ...check },
         bookingSetting: { ...this.bookingSetting },
       };
       this.$emit("price", finalData);
