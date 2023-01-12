@@ -988,7 +988,7 @@ export default {
         newObj.setTime = this.setTime;
       }
       if (this.setDate) {
-        newObj.setDate = this.setDate;
+        newObj.setdate = this.setDate;
       }
       //  time check in out
       var check = {};
