@@ -549,13 +549,13 @@
                   >{{$t('pricing.birthdayArrangements')}}
                   <input
                     type="checkbox"
-                    v-model="addOnsCheck.brithdayArrangements"
+                    v-model="addOnsCheck.birthdayArrangements"
                   />
                   <span class="checkmark"></span>
                 </label>
               </div>
               <div class="input-price">
-                <input type="text" v-model="addOnsPrice.brithdayArrangements" :disabled="!addOnsCheck.brithdayArrangements"/>
+                <input type="text" v-model="addOnsPrice.birthdayArrangements" :disabled="!addOnsCheck.birthdayArrangements"/>
               </div>
             </div>
             <!-- block -->

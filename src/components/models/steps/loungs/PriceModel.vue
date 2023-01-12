@@ -558,7 +558,7 @@
                 </label>
               </div>
               <div class="input-price">
-                <input type="text" v-model="addOnsPrice.brithdayArrangements" :disabled="!addOnsCheck.brithdayArrangements"/>
+                <input type="text" v-model="addOnsPrice.birthdayArrangements" :disabled="!addOnsCheck.birthdayArrangements"/>
               </div>
             </div>
             <!-- block -->
