@@ -991,11 +991,11 @@ export default {
         newObj.setdate = this.setDate;
       }
       //  time check in out
-      var check = {};
-      if (this.checkIn && this.checkOut) {
-        check.checkInTime = this.timeFormate(this.checkIn);
-        check.checkOutTime = this.timeFormate(this.checkOut);
-      }
+      // var check = {};
+      // if (this.checkIn && this.checkOut) {
+      //   check.checkInTime = this.timeFormate(this.checkIn);
+      //   check.checkOutTime = this.timeFormate(this.checkOut);
+      // }
       // addon's
       const newAddon = {};
       for (const [key, value] of Object.entries(this.addOnsCheck)) {
